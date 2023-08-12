@@ -30,9 +30,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/swiper/swiper.css",
+              "src/styles/styles.scss"
+              
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/popper.js/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/swiper/swiper.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -93,12 +100,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles/styles.scss"
             ],
             "scripts": []
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "463cc9af-d33e-48d3-9479-e21cd92c702e"
   }
 }

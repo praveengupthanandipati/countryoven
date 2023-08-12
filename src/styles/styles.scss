@@ -1,0 +1,40 @@
+@import "./variables";
+@import "./mixins";
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800&display=swap");
+body {
+  @include siteMain;
+
+  p,
+  h1,
+  .h1 h2 .h2,
+  h3,
+  .h3,
+  h4,
+  .h4,
+  h5,
+  .h5,
+  h6,
+  .h6 {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.custom-container {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.topheader {
+  background: map-get($colors, primary);
+  color: map-get($colors, white);
+
+  .offers {
+    .h6 {
+      font-size: $fsize + 3;
+    }
+    p {
+      font-size: $fsize;
+    }
+  }
+}
