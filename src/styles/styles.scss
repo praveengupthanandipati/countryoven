@@ -1,5 +1,6 @@
 @import "./variables";
 @import "./mixins";
+@import "./fonts";
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800&display=swap");
 body {
   @include siteMain;
@@ -14,9 +15,13 @@ body {
   h5,
   .h5,
   h6,
-  .h6 {
+  .h6,
+  ul,
+  li,
+  * {
     margin: 0;
     padding: 0;
+    list-style: none;
   }
 }
 
@@ -31,10 +36,66 @@ body {
 
   .offers {
     .h6 {
-      font-size: $fsize + 3;
+      font-size: $fsize + 1;
     }
     p {
+      font-size: $fsize - 1;
+    }
+  }
+  .nav {
+    .nav-link {
+      color: map-get($colors, white);
+      text-transform: uppercase;
+      font-size: $fsize - 2;
+    }
+  }
+}
+
+.mid-header {
+  background: map-get($colors, lightgradient);
+
+  .brand-logo {
+    width: 150px;
+  }
+  .searchbox {
+    margin-left: 15px;
+    min-width: 400px;
+    .icomoon {
+      color: map-get($colors, gray);
+    }
+  }
+  .headerinput {
+    background: map-get($colors, white);
+    font-size: $fsize - 1;
+    padding: 6px 0;
+    border-radius: 3px;
+    border: 1px solid map-get($colors, lightgray);
+    color: map-get($colors, black);
+    text-decoration: none;
+  }
+  .deliver {
+    padding: 14px 15px;
+    margin-left: 15px;
+
+    .icon-location {
+      color: map-get($colors, primary);
+    }
+    .h6 {
       font-size: $fsize;
+
+      span {
+        color: map-get($colors, primary);
+      }
+    }
+  }
+  .dropdown{
+    padding:10px 15px;
+    margin-left:15px;
+
+    button{
+        background:none;
+        border:none;
+        
     }
   }
 }

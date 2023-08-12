@@ -8,6 +8,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import Swiper from 'swiper';
 import { TopheaderComponent } from './components/header/topheader/topheader.component';
+import { MidheaderComponent } from './components/header/midheader/midheader.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { TopheaderComponent } from './components/header/topheader/topheader.comp
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    TopheaderComponent,    
+    TopheaderComponent,
+    MidheaderComponent,    
   ],
   imports: [
     BrowserModule,
