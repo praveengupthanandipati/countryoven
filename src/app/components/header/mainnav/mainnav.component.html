@@ -67,7 +67,8 @@
                     </ul>
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><span class="icon-menu h5 pe-2"></span><span
+                            <a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#moremenu"
+                                aria-controls="offcanvasRight"><span class="icon-menu h5 pe-2"></span><span
                                     class="align-self-center">More</span> </a>
                         </li>
 
@@ -75,5 +76,15 @@
                 </div>
             </div>
         </nav>
+    </div>
+</div>
+
+<div class="offcanvas offcanvas-end moremenu" tabindex="-1" id="moremenu" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        ...
     </div>
 </div>
