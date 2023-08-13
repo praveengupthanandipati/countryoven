@@ -23,6 +23,10 @@ body {
     padding: 0;
     list-style: none;
   }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 
 .custom-container {
@@ -67,7 +71,7 @@ body {
   .headerinput {
     background: map-get($colors, white);
     font-size: $fsize - 1;
-    padding: 6px 0;
+    padding: 5px 0;
     border-radius: 3px;
     border: 1px solid map-get($colors, lightgray);
     color: map-get($colors, black);
@@ -88,14 +92,27 @@ body {
       }
     }
   }
-  .dropdown{
-    padding:10px 15px;
-    margin-left:15px;
+  .dropdown {
+    padding: 12px 15px;
+    margin-left: 15px;
 
-    button{
-        background:none;
-        border:none;
-        
+    button {
+      background: none;
+      border: none;
+    }
+  }
+  .navrt {
+    a{
+        width:75px;        
+    }
+    .icomoon {
+      font-size: $fsize * 2 + 13;
+      position: relative;
+      top:10px;
+    }
+    small {
+      color: map-get($colors, primary);
+      font-size:$fsize - 3;
     }
   }
 }
