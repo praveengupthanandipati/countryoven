@@ -1,0 +1,21 @@
+@import "../../../../styles/styles";
+
+.mainmenu{
+    @include box-shadow(0, 3px, 3px, map-get($colors, lightgray));
+    background:map-get($colors, white);
+
+    .nav-item{
+        .nav-link{
+            text-transform: uppercase;
+            color:map-get($colors, black);
+            font-size:$fsize - 1;
+            text-transform: uppercase;
+        }
+    }
+    .dropdown-menu-full-width {
+        width: 100%;
+        left: 0 !important;
+        right: 0 !important;
+        border-radius: 0;
+      }
+}

@@ -32,12 +32,9 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/swiper/swiper.css",
-              "src/styles/styles.scss",
-              "src/styles/fonts.css"
-              
+              "src/styles/styles.scss"
             ],
-            "scripts": [              
-              
+            "scripts": [   
               "node_modules/popper.js/dist/umd/popper.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
               "node_modules/swiper/swiper.js"

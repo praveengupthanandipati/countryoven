@@ -7,42 +7,180 @@
                         <img src="assets/images/logo.png" alt="Country Oven" class="brand-logo">
                     </a>
                     <div class="d-flex align-self-center ps-3 headerinput searchbox">
-                        <span class="icon-search icomoon align-self-center"></span>
+                        <span class="icon-magnifying-glass icomoon align-self-center"></span>
                         <div class="w-100 ps-2">
                             <input type="text" placeholder="Search Cakes, Flowers, Gifts, etc..."
                                 class="searchinput no-border form-control-plaintext w-100">
                         </div>
                     </div>
-                    <a class="d-block align-self-center headerinput deliver" href="javascript:void(0)">
+                    <a class="d-block align-self-center headerinput deliver" href="javascript:void(0)"
+                        data-bs-toggle="offcanvas" data-bs-target="#selectcity" aria-controls="offcanvasTop">
                         <div class="d-flex align-self-center">
-                            <span class="icon-location icomoon align-self-center"></span>
+                            <span class="icon-pin icomoon align-self-center"></span>
                             <div class="h6 px-2">Deliver to <span class="font-bold">500090</span></div>
-                            <span class="icon-circle-down icomoon align-self-center"></span>
+                            <span class="icon-right-chevron icomoon align-self-center"></span>
                         </div>
                     </a>
-                    <div class="dropdown btn headerinput align-self-center">
-                        <button class="dropdown-toggle no-border" type="button" id="dropdownMenuButton"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Select Country
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item" href="#">Item 1</a></li>
-                            <li><a class="dropdown-item" href="#">Item 2</a></li>
-                            <li><a class="dropdown-item" href="#">Item 3</a></li>
-                        </ul>
+                    <div class="headerinput align-self-center ms-3">
+                        <select class="form-select border-0" aria-label="Default select example">
+                            <option selected>INR - ₹</option>
+                            <option value="1">USA - $</option>
+                        </select>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 justify-content-end align-self-center text-end navrt">
-                <a href="javascript:void(0)" class="d-inline-block text-center text-black">
-                    <div><span class="icon-user icomoon"></span></div>
-                    <div><small class="text-uppercase font-bold">Profile</small></div>
+                <a class="dropdown user-dropdown" href="javascript:void(0)">
+                    <div class="d-inline-block text-center text-black dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <div><span class="icon-user icomoon"></span></div>
+                        <div><small class="text-uppercase font-bold">Profile</small></div>
+                    </div>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">
+                                <div class="d-flex">
+                                    <span class="icon-login h4 align-self-center"></span>
+                                    <div class="ps-3">
+                                        <h6 class="font-bold">Login / Register</h6>
+                                        <p class="font-bold"><span>View your Profile / Mange your Products</span></p>
+                                    </div>
+                                </div>
+                            </a></li>
+                        <li><a class="dropdown-item" href="#">
+                                <div class="d-flex">
+                                    <span class="icon-setting h4 align-self-center"></span>
+                                    <div class="ps-3">
+                                        <h6 class="font-bold">My Account</h6>
+                                        <p class="font-bold"><span>Edit Your Profile / Manage Your Profile</span></p>
+                                    </div>
+                                </div>
+                            </a></li>
+                        <li><a class="dropdown-item" href="#">
+                                <div class="d-flex">
+                                    <span class="icon-gift-box h4 align-self-center"></span>
+                                    <div class="ps-3">
+                                        <h6 class="font-bold">My Orders</h6>
+                                        <p class="font-bold"><span>Track Your Orders status</span></p>
+                                    </div>
+                                </div>
+                            </a></li>
+                        <li><a class="dropdown-item" href="#">
+                                <div class="d-flex">
+                                    <span class="icon-call h4 align-self-center"></span>
+                                    <div class="ps-3">
+                                        <h6 class="font-bold">Contact us</h6>
+                                        <p class="font-bold"><span>Reach us / Send mail ur queries</span></p>
+                                    </div>
+                                </div>
+                            </a></li>
+                        <li><a class="dropdown-item" href="#">
+                                <div class="d-flex">
+                                    <span class="icon-question h4 align-self-center"></span>
+                                    <div class="ps-3">
+                                        <h6 class="font-bold">FAQ’s</h6>
+                                        <p class="font-bold"><span>Frequently Asked Questions</span></p>
+                                    </div>
+                                </div>
+                            </a></li>
+                        <li><a class="dropdown-item" href="#">
+                                <div class="d-flex">
+                                    <span class="icon-exit h4 align-self-center"></span>
+                                    <div class="ps-3">
+                                        <h6 class="font-bold">Logout</h6>
+                                        <p class="font-bold"><span>Go to home</span></p>
+                                    </div>
+                                </div>
+                            </a></li>
+                    </ul>
                 </a>
                 <a href="javascript:void(0)" class="d-inline-block text-center text-black">
                     <div><span class="icon-cart icomoon"></span></div>
                     <div><small class="text-uppercase font-bold">Cart</small></div>
+                    <span class="badge badge-light position-absolute">10</span>
                 </a>
             </div>
         </div>
     </div>
 </section>
+
+<div class="offcanvas offcanvas-top" tabindex="-1" id="selectcity" aria-labelledby="offcanvasTopLabel">
+    <div class="offcanvas-header">
+        <article class="mx-auto">
+            <h4 class="offcanvas-title font-bold text-black text-center" id="offcanvasTopLabel">Select Delivery Location
+            </h4>
+            <p>Select a delivery location to see product availability</p>
+        </article>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <a class="citycol d-flex justify-content-center align-items-center rounded text-center mx-auto"
+                        href="javascript:void(0)">
+                        <span class="icon-charminar icomoon"></span>
+                    </a>
+                    <p class="text-center font-bold pt-2">Hyderabad</p>
+                </div>
+                <div class="col-md-2">
+                    <a class="citycol d-flex justify-content-center align-items-center rounded text-center mx-auto"
+                        href="javascript:void(0)">
+                        <span class="icon-redfort icomoon"></span>
+                    </a>
+                    <p class="text-center font-bold pt-2">Delhi</p>
+                </div>
+                <div class="col-md-2">
+                    <a class="citycol d-flex justify-content-center align-items-center rounded text-center mx-auto"
+                        href="javascript:void(0)">
+                        <span class="icon-mumbai icomoon"></span>
+                    </a>
+                    <p class="text-center font-bold pt-2">Mumbai</p>
+                </div>
+                <div class="col-md-2">
+                    <a class="citycol d-flex justify-content-center align-items-center rounded text-center mx-auto"
+                        href="javascript:void(0)">
+                        <span class="icon-bengaluru icomoon"></span>
+                    </a>
+                    <p class="text-center font-bold pt-2">Bengaluru</p>
+                </div>
+                <div class="col-md-2">
+                    <a class="citycol d-flex justify-content-center align-items-center rounded text-center mx-auto"
+                        href="javascript:void(0)">
+                        <span class="icon-kolkatta icomoon"></span>
+                    </a>
+                    <p class="text-center font-bold pt-2">Kolkatta</p>
+                </div>
+                <div class="col-md-2">
+                    <a class="citycol d-flex justify-content-center align-items-center rounded text-center mx-auto"
+                        href="javascript:void(0)">
+                        <span class="icon-chennai icomoon"></span>
+                    </a>
+                    <p class="text-center font-bold pt-2">Chennai</p>
+                </div>
+            </div>
+            <div class="row pt-5">
+                <div class="col-md-12 text-center">
+                    <article class="mx-auto py-3">
+                        <h4 class="offcanvas-title font-bold text-black text-center" id="offcanvasTopLabel">Select
+                            More Cities We deliver
+                        </h4>
+                    </article>
+                    <div>
+                        <a class="badge rounded-pill d-inline-block py-3 px-5 border morecity"
+                            href="javascript:void(0)">Vijayawada</a>
+                        <a class="badge rounded-pill d-inline-block py-3 px-5 border morecity"
+                            href="javascript:void(0)">Kakinada</a>
+                        <a class="badge rounded-pill d-inline-block py-3 px-5 border morecity"
+                            href="javascript:void(0)">Pune</a>
+                        <a class="badge rounded-pill d-inline-block py-3 px-5 border morecity"
+                            href="javascript:void(0)">Phopal</a>
+                        <a class="badge rounded-pill d-inline-block py-3 px-5 border morecity"
+                            href="javascript:void(0)">Warangal</a>
+                        <a class="badge rounded-pill d-inline-block py-3 px-5 border morecity"
+                            href="javascript:void(0)">Vizag</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

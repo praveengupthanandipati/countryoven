@@ -1,0 +1,144 @@
+@import "../../../../styles/styles";
+
+.mid-header {
+  background: map-get($colors, lightgradient);
+
+  .brand-logo {
+    width: 150px;
+  }
+  .searchbox {
+    margin-left: 15px;
+    max-width: 411px;
+    min-width: 350px;
+    .icomoon {
+      color: map-get($colors, gray);
+    }
+  }
+  .headerinput {
+    background: map-get($colors, white);
+    font-size: $fsize - 1;
+    padding: 5px 0;
+    border-radius: 3px;
+    border: 1px solid map-get($colors, lightgray);
+    color: map-get($colors, black);
+    text-decoration: none;
+  }
+  .deliver {
+    padding: 14px 15px;
+    margin-left: 15px;
+
+    .icon-pin {
+      color: map-get($colors, primary);
+    }
+    .h6 {
+      font-size: $fsize;
+
+      span {
+        color: map-get($colors, primary);
+      }
+    }
+    .icon-right-chevron {
+      transform: rotate(90deg);
+    }
+  }
+  .dropdown {
+    padding: 12px 15px;
+    margin-left: 15px;
+
+    button {
+      background: none;
+      border: none;
+    }
+  }
+  .navrt {
+    a {
+      width: 45px;
+      margin: 0 15px;
+      position: relative;
+
+      .badge {
+        top: 0;
+        right: 0;
+        background: map-get($colors, primary);
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        text-align: center;
+        line-height: 22px;
+        display: inline-block;
+        padding: 0;
+      }
+    }
+    .icomoon {
+      font-size: $fsize * 2 + 8;
+      position: relative;
+      top: 6px;
+    }
+    small {
+      color: map-get($colors, primary);
+      font-size: $fsize - 3;
+    }
+  }
+}
+
+.citycol {
+  background: map-get($colors, lightprimary);
+  min-width: 100px;
+  height: 100px;
+  @include transition(all 0.5s ease);
+
+  &:hover {
+    background: map-get($colors, primary);
+
+    .icomoon {
+      color: map-get($colors, white);
+    }
+  }
+
+  .icomoon {
+    font-size: $fsize * 5;
+    color: map-get($colors, darkgray);
+  }
+  p {
+    font-size: $fsize - 2;
+  }
+}
+
+.morecity {
+  @include transition(all 0.5s ease);
+  font-size: $fsize;
+  color: map-get($colors, darkgray);
+  margin-right: 10px;
+
+  &:hover {
+    background: map-get($colors, primary);
+    color: map-get($colors, white);
+  }
+}
+
+.user-dropdown {
+  .dropdown-toggle {
+    &:after {
+      border: none;
+      display: none;
+    }
+  }
+  .dropdown-menu {
+    width: 315px;
+    .dropdown-item {
+      margin-bottom: 10px;
+      display: block;
+      .icomoon {
+        font-size: $fsize + 10;
+      }
+      p {
+        font-size: $fsize - 3;
+        color: map-get($colors, darkgray);
+      }
+
+      &:hover {
+        background: map-get($colors, primary);
+      }
+    }
+  }
+}

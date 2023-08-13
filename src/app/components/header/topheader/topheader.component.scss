@@ -1,0 +1,22 @@
+@import "../../../../styles/styles";
+
+.topheader {
+  background: map-get($colors, primary);
+  color: map-get($colors, white);
+
+  .offers {
+    .h6 {
+      font-size: $fsize + 1;
+    }
+    p {
+      font-size: $fsize - 1;
+    }
+  }
+  .nav {
+    .nav-link {
+      color: map-get($colors, white);
+      text-transform: uppercase;
+      font-size: $fsize - 2;
+    }
+  }
+}

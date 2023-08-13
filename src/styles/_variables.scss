@@ -5,10 +5,12 @@ $colors: (
   red: #aa0607,
   gray: #828282,
   primary: #bf0067,
+  lightprimary: #f9e6f0,
   lightgray: #e4e4e4,
   lightgradient: (
     linear-gradient(270deg, #e9defa 0%, rgba(251, 252, 219, 0.5) 100%),
   ),
+  darkgray: #594454
 );
 
 $fsize: 15px;

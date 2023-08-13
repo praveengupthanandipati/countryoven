@@ -9,6 +9,7 @@ import { HomeComponent } from './pages/home/home.component';
 import Swiper from 'swiper';
 import { TopheaderComponent } from './components/header/topheader/topheader.component';
 import { MidheaderComponent } from './components/header/midheader/midheader.component';
+import { MainnavComponent } from './components/header/mainnav/mainnav.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { MidheaderComponent } from './components/header/midheader/midheader.comp
     FooterComponent,
     HomeComponent,
     TopheaderComponent,
-    MidheaderComponent,    
+    MidheaderComponent,
+    MainnavComponent,    
   ],
   imports: [
     BrowserModule,

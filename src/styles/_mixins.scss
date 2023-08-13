@@ -16,31 +16,6 @@
   font-family: "Roboto Flex", sans-serif;
 }
 
-//gradient
-@mixin linear-gradient($direction, $color-stops...) {
-  background: nth(nth($color-stops, 1), 1);
-  background: -webkit-linear-gradient(
-    legacy-direction($direction),
-    $color-stops
-  );
-  background: linear-gradient($direction, $color-stops);
-}
-
-//position
-@mixin position(
-  $position,
-  $top: null,
-  $right: null,
-  $bottom: null,
-  $left: null
-) {
-  position: $position;
-  top: $top;
-  right: $right;
-  bottom: $bottom;
-  left: $left;
-}
-
 //box shadow
 @mixin box-shadow($x-axis: null, $y-axis: null, $blur: null, $color: null) {
   box-shadow: $x-axis $y-axis $blur $color;
