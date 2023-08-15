@@ -1,0 +1,34 @@
+@import "../../../styles/styles";
+
+.find-gifts {
+  background: url(/assets/images/findgiftsbg.jpg) no-repeat 0 0;
+  padding: 35px 0;
+
+  .form {
+    background-color: rgba(map-get($colors, white), 0.3);
+    padding: 17px;
+    border: 1px solid lightenrgba(map-get($colors, gray) 1);
+    margin-top: 15px;
+
+    .form-control,
+    .form-select {
+      border-radius: 0;
+      padding: 10px 15px;
+      font-weight: 500;
+      font-size: $fsize - 1;
+
+      &:placeholder-shown {
+        color: map-get($colors, black);
+        font-weight: 700;
+      }
+    }
+    .pincode {
+      background: map-get($colors, white);
+      padding-left: 10px;
+
+      .icomoon {
+        color: map-get($colors, primary);
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+@import "../../../../styles/styles";
+
+.home-categories {
+  .category-col {
+    text-align: center;
+    display: inline-block;
+    @include transition(all, 0.3s ease);
+    img {
+      min-width: 82px;
+    }
+    h6 {
+      color: map-get($colors, black);
+      text-transform: uppercase;
+    }
+
+    &:hover{
+        h6{
+            color:map-get($colors, primary);
+        }
+    }
+  }
+}

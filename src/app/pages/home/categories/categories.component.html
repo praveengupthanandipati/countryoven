@@ -1,0 +1,12 @@
+<section class="home-categories py-4">
+    <div class="custom-container">
+        <div class="d-flex justify-content-between flex-wrap flex-row">
+            <a *ngFor="let category of categories" class="category-col" href="javascript:void(0)">
+                <figure>
+                    <img [src]="category.image" alt="">
+                </figure>
+                <h6 class="font-bold py-2">{{category.name}}</h6>
+            </a>          
+        </div>
+    </div>
+</section>

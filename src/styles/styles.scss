@@ -33,18 +33,25 @@ body {
   margin: 0 auto;
 }
 
-.color-btn{
-    background:map-get($colors, primary);
-    color:map-get($colors, white);
-    font-size:$fsize + 1;
-    text-align: center;
-    padding:8px 25px;
-    @include transition(all, 0.3s ease);
-    border-radius:5px;
+.color-btn {
+  background: map-get($colors, primary);
+  color: map-get($colors, white);
+  font-size: $fsize + 1;
+  text-align: center;
+  padding: 8px 25px;
+  @include transition(all, 0.3s ease);
+  border-radius: 5px;
 
-    &:hover{
-        background:map-get($colors, lightprimary);
-        color:map-get($colors, black);
+  &:hover {
+    background: map-get($colors, lightprimary);
+    color: map-get($colors, black);
+  }
+}
 
-    }
+.section-title {
+  text-align: center;
+
+  .h5 {
+    font-size: $fsize + 7;
+  }
 }
