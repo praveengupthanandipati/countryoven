@@ -154,3 +154,9 @@
     }
   }
 }
+
+.select-currency{
+  &:focus{
+    box-shadow: none;
+  }
+}
