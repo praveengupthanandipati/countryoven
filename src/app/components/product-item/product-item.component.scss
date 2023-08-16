@@ -1,0 +1,70 @@
+@import "../../../styles/styles.scss";
+
+.app-product-item {
+  width: 350px;
+  .product-item-figure {
+    position: relative;
+    img {
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+    .seller-label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: map-get($colors, primary);
+      color: map-get($colors, white);
+      font-size: $fsize - 3;
+      padding: 5px;
+      border-top-left-radius: 15px;
+    }
+  }
+  .item-title {
+    border: 1px solid map-get($colors, lightgray);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    h5 {
+      font-size: $fsize + 1;
+      line-height: 1.5rem;
+      a {
+        color: map-get($colors, black);
+      }
+    }
+    .price {
+      .offer-price {
+        font-size: $fsize + 3;
+        color: map-get($colors, black);
+      }
+      .icomoon {
+        font-size: $fsize;
+      }
+      .mrp {
+        font-size: $fsize + 3;
+        color: map-get($colors, lighten(black, 50%));
+        text-decoration: line-through;
+      }
+      .offer-percentage {
+        small {
+          color: map-get($colors, primary);
+          font-size: $fsize - 2;
+        }
+      }
+    }
+    .item-footer {
+      .icomoon {
+        color: map-get($colors, primary);
+        margin-right: 5px;
+      }
+      .deliver-date {
+        p {
+          color: map-get($colors, lighten(black, 50%));
+          font-size: $fsize - 2;
+
+          span {
+            color: map-get($colors, primary);
+          }
+        }
+      }
+    }
+  }
+}

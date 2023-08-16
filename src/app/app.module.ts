@@ -13,6 +13,7 @@ import { MidheaderComponent } from './components/header/midheader/midheader.comp
 import { MainnavComponent } from './components/header/mainnav/mainnav.component';
 import { CategoriesComponent } from './pages/home/categories/categories.component';
 import { CategoryBannersComponent } from './pages/home/category-banners/category-banners.component';
+import { ProductItemComponent } from './components/product-item/product-item.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CategoryBannersComponent } from './pages/home/category-banners/category
     MidheaderComponent,
     MainnavComponent,
     CategoriesComponent,
-    CategoryBannersComponent,     
+    CategoryBannersComponent,
+    ProductItemComponent,     
   ],
   imports: [
     BrowserModule,
