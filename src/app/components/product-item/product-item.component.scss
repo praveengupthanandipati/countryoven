@@ -2,6 +2,8 @@
 
 .app-product-item {
   width: 350px;
+  @include transition(all, 0.2s ease);
+  border-radius:20px;
   .product-item-figure {
     position: relative;
     img {
@@ -66,5 +68,8 @@
         }
       }
     }
+  }
+  &:hover{
+    @include box-shadow(0, 3px, 8px, lighten(map-get($colors, gray), 20%));
   }
 }
