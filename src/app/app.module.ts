@@ -15,6 +15,7 @@ import { CategoriesComponent } from './pages/home/categories/categories.componen
 import { CategoryBannersComponent } from './pages/home/category-banners/category-banners.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { CategoryItemComponent } from './components/category-item/category-item.component';
+import { ProductListComponent } from './pages/product-list/product-list.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CategoryItemComponent } from './components/category-item/category-item.
     CategoriesComponent,
     CategoryBannersComponent,
     ProductItemComponent,
-    CategoryItemComponent,     
+    CategoryItemComponent,
+    ProductListComponent,     
   ],
   imports: [
     BrowserModule,

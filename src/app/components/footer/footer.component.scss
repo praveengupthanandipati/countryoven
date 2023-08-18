@@ -1,5 +1,30 @@
 @import "../../../styles/styles.scss";
 
-p{
-    font-size:20px;
+@import "../../../styles/styles.scss";
+
+.footer{
+    background: map-get($colors, lightgradient);
+    min-height: 250px;
+
+    .top-footer{
+        background:map-get($colors, primary);
+        padding:10px 0;        
+
+        .top-footer-col{
+           color:map-get($colors, white);
+           width:55%;
+           margin:0 auto;           
+
+           .h5{
+            font-size:$fsize + 3;
+           }
+           p{
+            font-size:$fsize - 1;
+           }
+
+           .icomoon{
+            font-size:$fsize * 3;
+           }
+        }
+    }
 }
