@@ -10,8 +10,14 @@
     margin-left: 15px;
     max-width: 411px;
     min-width: 350px;
+    position: relative;
     .icomoon {
       color: map-get($colors, gray);
+    }
+    datalist{
+      width:100%;
+      position: absolute;
+      left:0;
     }
   }
   .headerinput {
