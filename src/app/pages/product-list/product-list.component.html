@@ -31,23 +31,14 @@
                         <div class="d-flex">
                             <span class="align-self-center">Filter by Price</span>
                             <div class="dropdown ms-2">
-                                <button class="dropdown-toggle" type="button" id="dropdownMenu2"
+                                <button class="dropdown-toggle" type="button" id="multiselectDropdown"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     Rs:500-999
                                 </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <li><button class="dropdown-item" type="button"><input type="checkbox"><span
-                                                class="ps-1 d-inline-block">Rs:500 - 999</span></button></li>
-                                    <li><button class="dropdown-item" type="button"><input type="checkbox"><span
-                                                class="ps-1 d-inline-block">Rs:1000 - 1499</span></button></li>
-                                    <li><button class="dropdown-item" type="button"><input type="checkbox"><span
-                                                class="ps-1 d-inline-block">Rs:1500 - 1999</span></button></li>
-                                    <li><button class="dropdown-item" type="button"><input type="checkbox"><span
-                                                class="ps-1 d-inline-block">Rs:2000 - 2499</span></button></li>
-                                    <li><button class="dropdown-item" type="button"><input type="checkbox"><span
-                                                class="ps-1 d-inline-block">Rs:2500 - 2999</span></button></li>
-                                    <li><button class="dropdown-item" type="button"><input type="checkbox"><span
-                                                class="ps-1 d-inline-block">Rs:3000 Above</span></button></li>
+                                <ul class="dropdown-menu" aria-labelledby="multiselectDropdown">
+                                    <li><button class="dropdown-item" *ngFor="let item of dropdownItems">
+                                            <input type="checkbox" [ngModel]="selectedItems.includes(item)" (ngModelChange)="toggleSelection(item)">
+                                            <span class="ps-1 d-inline-block">{{ item.text }}</span></button></li>
                                 </ul>
                             </div>
                         </div>

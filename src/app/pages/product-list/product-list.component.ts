@@ -186,4 +186,23 @@ export class ProductListComponent {
         DeliveryEstimate:'Today'
         },
   ];
+
+  selectedItems: any[] = [];
+  dropdownItems = [
+    { id: 1, text: 'Rs:500 - 999'},
+    { id: 2, text: 'Rs:1000 - 1499'},
+    { id: 3, text: 'Rs:1500 - 1999'},
+    { id: 4, text: 'Rs:2000 - 2499'},
+    { id: 5, text: 'Rs:2500 - 2999'},
+    { id: 6, text: 'Rs:3000 - 3999'},
+  ];
+
+  
+  toggleSelection(item:any): void {
+    if (this.selectedItems.includes(item)) {
+      this.selectedItems = this.selectedItems.filter(selectedItem => selectedItem !== item);
+    } else {
+      this.selectedItems.push(item);
+    }
+  };
 }
