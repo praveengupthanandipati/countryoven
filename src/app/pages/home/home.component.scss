@@ -37,12 +37,17 @@
   padding: 0 0 30px 0;
 }
 
-.terms-content{
-    p{
-        padding-bottom:20px;
-    }
+.terms-content {
+  p {
+    padding-bottom: 20px;
+  }
 }
 
-app-product-item{
-    width:calc(20% - 15px);
+.row-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.app-product-col {
+  height: 100%;
 }

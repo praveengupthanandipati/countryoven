@@ -1,28 +1,28 @@
 <div class="app-product-item">
     <figure class="product-item-figure">
         <a href="javascript:void(0)">
-            <img src="assets/images/products/product01.jpg" alt="" class="img-fluid w-100">
+            <img src="{{Productvalue.Image}}" alt="" class="img-fluid w-100">
         </a>
-        <span class="seller-label">Best Seller</span>
+        <span class="seller-label">{{Productvalue.Sellerlabel}}</span>
     </figure>
     <div class="item-title p-4 bg-white">
         <h5>
-            <a href="javascript:void(0)" class="font-semibold">Lovely Black Forest Cake with Red Roses with 2 kg</a>
+            <a href="javascript:void(0)" class="font-semibold">{{Productvalue.Title}}</a>
         </h5>
         <div class="price d-flex py-2 border-bottom">
-            <div class="offer-price font-bold"><span class="icon-inr icomoon font-bold"></span>1299.00</div>
+            <div class="offer-price font-bold"><span class="icon-inr icomoon font-bold"></span>{{Productvalue.OfferPrice}}</div>
             <div class="mrp font-semi-bold align-self-center px-2">
-                <span class="icon-inr icomoon font-bold"></span>1500.00
+                <span class="icon-inr icomoon font-bold"></span>{{Productvalue.Mrp}}
             </div>
-            <div class="offer-percentage align-self-center "><small class="font-bold">(17% Off)</small></div>
+            <div class="offer-percentage align-self-center "><small class="font-bold">{{Productvalue.Offer}}</small></div>
         </div>
         <div class="d-flex justify-content-between pt-2 item-footer">
             <div>
                 <span class="icon-star icomoon"></span>
-                <span>4.7</span>
+                <span>{{Productvalue.Rating}}</span>
             </div>
             <div class="deliver-date">
-                <p>Earliest Delivery: <span class="font-bold">Today</span></p>
+                <p>Earliest Delivery: <span class="font-bold">{{Productvalue.DeliveryEstimate}}</span></p>
             </div>
         </div>
 

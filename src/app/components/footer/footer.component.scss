@@ -1,10 +1,7 @@
 @import "../../../styles/styles.scss";
 
-@import "../../../styles/styles.scss";
-
 .footer{
-    background: map-get($colors, lightgradient);
-    min-height: 250px;
+    background: map-get($colors, lightgradient);   
 
     .top-footer{
         background:map-get($colors, primary);
@@ -25,6 +22,66 @@
            .icomoon{
             font-size:$fsize * 3;
            }
+        }
+    }
+    .bottom-footer{        
+        margin-bottom:15px;
+        .custom-container{
+            border-bottom:1px solid map-get($colors, primary);
+        }
+        .h5{
+            font-size:$fsize + 3;    
+            padding-bottom:15px;       
+        }
+       .links-col{
+        padding-right:50px;
+      
+        .links{
+            a{
+                color:map-get($colors, black);
+                @include transition(all, 0.2s ease);
+                font-size:$fsize;
+                display: block;
+                padding:5px 0;
+
+                &:hover{
+                    color:map-get($colors, primary);
+                }
+            }
+            .morelink{
+                color:map-get($colors, primary);
+            }
+        }
+       } 
+       .newsletter{
+         .form-control{
+            border:none;
+            background:map-get($colors, white);            
+         }
+       }
+       .footer-mainlinks{
+        a{
+            display: inline-block;
+            padding:10px;
+            color:map-get($colors, black);
+            &:hover{
+                color:map-get($colors, primary);
+            }
+        }
+       }
+    }
+    .end-footer{
+        .footer-social{
+            a{
+                color:map-get($colors, black);
+                border-radius:5px;
+                @include transition(all, 0.2s ease);
+
+                &:hover{
+                    background:map-get($colors, primary);
+                    color:map-get($colors, white);
+                }
+            }
         }
     }
 }

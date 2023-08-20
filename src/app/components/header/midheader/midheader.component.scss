@@ -103,10 +103,14 @@
     @include transition(all 0.5s ease);
 
     &:hover {
-      background: map-get($colors, primary);
-      color: map-get($colors, white);
-    }
+      background: map-get($colors, primary);      
 
+      .icomoon {       
+         &:before{
+          color: map-get($colors, white);
+         }
+      }
+    }
     .icomoon {
       font-size: $fsize * 5;
       color: map-get($colors, darkgray);

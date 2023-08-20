@@ -10,52 +10,86 @@
       color: map-get($colors, black);
       font-size: $fsize - 1;
       text-transform: uppercase;
+
+      &:hover {
+        color: map-get($colors, primary);
+      }
+    }
+    .spllink {
+      color: map-get($colors, primary);
     }
   }
-  .dropdown-menu-full-width {
-    width: 100%;
+  .nav-item.dropdown {
+    position: inherit;
+  }
+  .dropdown-menu-full-width.dropdown-menu.show {
+    width: 100vw;
     left: 0 !important;
     right: 0 !important;
     border-radius: 0;
+    transform: translateX(-3.5%);
+    top: 50px;
+
+    .main-div-links {
+      padding: 20px 0;
+      a {
+        color: map-get($colors, black);
+        display: block;
+        padding-bottom: 15px;
+
+        &:hover {
+          color: map-get($colors, primary);
+        }
+      }
+    }
+    .main-div-links > div  {
+      border-right: 1px solid map-get($colors, lightgray);
+      padding-right:50px;
+      margin-right:50px;
+
+      &:last-child{
+        border-right:none;
+      }
+    }
   }
 }
 
 .moremenu {
   height: 100vh;
 
-  .offcanvas-header{
-    background:map-get($colors, primary);
-    color:map-get($colors, white);
-    padding:10px 15px;
+  .offcanvas-header {
+    background: map-get($colors, primary);
+    color: map-get($colors, white);
+    padding: 10px 15px;
 
-    button{
-        background:none;
-        border:none;
-        .icomoon{
-            color:map-get($colors, white);
-        }
+    button {
+      background: none;
+      border: none;
+      .icomoon {
+        color: map-get($colors, white);
+      }
     }
   }
-  .list-group{
-    .list-group-item{
-        border-bottom:1px solid map-get($colors, lightgray);
-        border-radius:0;
-        border-top:0;
-        border-right:0;
-        border-left:0;
-        padding:0;
+  .list-group {
+    .list-group-item {
+      border-bottom: 1px solid map-get($colors, lightgray);
+      border-radius: 0;
+      border-top: 0;
+      border-right: 0;
+      border-left: 0;
+      padding: 0;
 
-        a{
-            color:map-get($colors, black);
-            display: block;
-            padding:10px 15px;
-            @include transition(all 0.2s ease);
+      a {
+        color: map-get($colors, black);
+        display: block;
+        padding: 10px 15px;
+        @include transition(all 0.2s ease);
 
-            &:hover{
-                background:map-get($colors, primary);
-                color:map-get($colors, white);
-            }
+        &:hover {
+          background: map-get($colors, primary);
+          color: map-get($colors, white);
         }
+      }
     }
   }
 }

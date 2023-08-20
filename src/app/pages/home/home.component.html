@@ -68,12 +68,12 @@
     </div>
     <!--/ Trending Now Products-->
     <section class="custom-container">
-        <div class="products-list d-flex mt-3 justify-content-between">
-            <app-product-item></app-product-item>
-            <app-product-item></app-product-item>
-            <app-product-item></app-product-item>
-            <app-product-item></app-product-item>
-            <app-product-item></app-product-item>
+        <div class="products-list mt-3">
+            <div class="row row-flex">
+                <div class="col-md-3" *ngFor="let productitem of productvalues">
+                    <app-product-item [Productvalue]="productitem" class="app-product-col"></app-product-item>
+                </div>
+            </div>
         </div>
     </section>
 </section>
@@ -95,24 +95,9 @@
     <!--/ Trending Now Products-->
     <section class="custom-container">
         <div class="row pt-3">
-            <div class="col-md-2">
-                <app-category-item></app-category-item>
-            </div>
-            <div class="col-md-2">
-                <app-category-item></app-category-item>
-            </div>
-            <div class="col-md-2">
-                <app-category-item></app-category-item>
-            </div>
-            <div class="col-md-2">
-                <app-category-item></app-category-item>
-            </div>
-            <div class="col-md-2">
-                <app-category-item></app-category-item>
-            </div>
-            <div class="col-md-2">
-                <app-category-item></app-category-item>
-            </div>
+            <div class="col-md-2" *ngFor="let birthdaycollectionitem of birthdaycollectionsitems">
+                <app-category-item [Birthdaycollections]="birthdaycollectionitem"></app-category-item>
+            </div>           
         </div>
     </section>
 </section>
@@ -134,24 +119,9 @@
     <!--/ Trending Now Products-->
     <section class="custom-container">
         <div class="row pt-3">
-            <div class="col-md-2">
-                <app-category-item></app-category-item>
-            </div>
-            <div class="col-md-2">
-                <app-category-item></app-category-item>
-            </div>
-            <div class="col-md-2">
-                <app-category-item></app-category-item>
-            </div>
-            <div class="col-md-2">
-                <app-category-item></app-category-item>
-            </div>
-            <div class="col-md-2">
-                <app-category-item></app-category-item>
-            </div>
-            <div class="col-md-2">
-                <app-category-item></app-category-item>
-            </div>
+            <div class="col-md-2" *ngFor="let birthdaycollectionitem of birthdaycollectionsitems">
+                <app-category-item [Birthdaycollections]="birthdaycollectionitem"></app-category-item>
+            </div>           
         </div>
     </section>
 </section>
@@ -185,12 +155,12 @@
     </div>
     <!--/ Trending Now Products-->
     <section class="custom-container">
-        <div class="products-list d-flex flex-wrap mt-3 justify-content-between">
-            <app-product-item></app-product-item>
-            <app-product-item></app-product-item>
-            <app-product-item></app-product-item>
-            <app-product-item></app-product-item>
-            <app-product-item></app-product-item>
+        <div class="products-list mt-3">
+            <div class="row row-flex">
+                <div class="col-md-3" *ngFor="let productitem of productvalues">
+                    <app-product-item [Productvalue]="productitem"></app-product-item>
+                </div>
+            </div>
         </div>
     </section>
 </section>
@@ -212,24 +182,9 @@
     <!--/ Trending Now Products-->
     <section class="custom-container">
         <div class="row pt-3">
-            <div class="col-md-2">
-                <app-category-item></app-category-item>
-            </div>
-            <div class="col-md-2">
-                <app-category-item></app-category-item>
-            </div>
-            <div class="col-md-2">
-                <app-category-item></app-category-item>
-            </div>
-            <div class="col-md-2">
-                <app-category-item></app-category-item>
-            </div>
-            <div class="col-md-2">
-                <app-category-item></app-category-item>
-            </div>
-            <div class="col-md-2">
-                <app-category-item></app-category-item>
-            </div>
+            <div class="col-md-2" *ngFor="let birthdaycollectionitem of birthdaycollectionsitems">
+                <app-category-item [Birthdaycollections]="birthdaycollectionitem"></app-category-item>
+            </div>           
         </div>
     </section>
 </section>
