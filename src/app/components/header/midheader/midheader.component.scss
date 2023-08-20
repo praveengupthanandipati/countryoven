@@ -142,18 +142,19 @@
   .dropdown-menu {
     width: 315px;
     .dropdown-item {
-      margin-bottom: 10px;
+      margin: 10px 0;
       display: block;
+      width:100%;
       .icomoon {
         font-size: $fsize + 10;
       }
       p {
-        font-size: $fsize - 3;
-        color: map-get($colors, darkgray);
+        font-size: $fsize - 3;        
       }
 
       &:hover {
         background: map-get($colors, primary);
+        color:map-get($colors, white);
       }
     }
   }

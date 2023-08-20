@@ -1,0 +1,77 @@
+@import "../../../styles/styles";
+
+.list-products-header {
+  background: map-get($colors, lightblue);
+  padding: 50px 0;
+
+  h1 {
+    font-size: $fsize + 13;
+    padding-bottom: 18px;
+
+    span {
+      font-size: $fsize + 3;
+      text-transform: lowercase;
+    }
+  }
+  .filter-links {
+    padding-top: 18px;
+
+    a {
+      color: map-get($colors, primary);
+      padding: 8px 20px;
+      border: 1px solid;
+      font-size: $fsize;
+      border-radius: 5px;
+      @include transition(all 0.2s ease);
+      display: inline-block;
+      margin:15px 15px 0 0;
+
+      &:hover {
+        background: map-get($colors, primary);
+        color: map-get($colors, white);
+        border:1px solid transparent;
+      }
+    }
+  }
+}
+
+.list-products-body{
+    .products-filters{
+        padding:30px 0;
+        font-size:$fsize - 2;
+
+        .breadcrumb{
+            li{
+                font-size:$fsize - 2;
+                a{
+                    color:map-get($colors, black);
+                }
+            }
+            .active{
+                color:map-get($colors, primary);
+            }
+        }
+        .filter-dropdowns{
+           button.dropdown-toggle{
+            background:none;
+            padding:10px;
+            border-radius:5px;
+            border:1px solid map-get($colors, gray);
+            font-size:$fsize - 1;
+           } 
+           .dropdown-item{
+            font-size:$fsize - 1;
+
+            &:active{
+                background:none;
+            }
+           }
+        }
+    }
+   
+}
+.products-list-items{
+   .app-product-col{
+    margin-bottom:25px;  
+   } 
+}
