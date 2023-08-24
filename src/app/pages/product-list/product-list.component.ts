@@ -196,7 +196,6 @@ export class ProductListComponent {
     { id: 5, text: 'Rs:2500 - 2999'},
     { id: 6, text: 'Rs:3000 - 3999'},
   ];
-
   
   toggleSelection(item:any): void {
     if (this.selectedItems.includes(item)) {

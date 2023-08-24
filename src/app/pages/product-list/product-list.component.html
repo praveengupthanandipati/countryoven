@@ -37,7 +37,8 @@
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="multiselectDropdown">
                                     <li><button class="dropdown-item" *ngFor="let item of dropdownItems">
-                                            <input type="checkbox" [ngModel]="selectedItems.includes(item)" (ngModelChange)="toggleSelection(item)">
+                                            <input type="checkbox" [ngModel]="selectedItems.includes(item)"
+                                                (ngModelChange)="toggleSelection(item)">
                                             <span class="ps-1 d-inline-block">{{ item.text }}</span></button></li>
                                 </ul>
                             </div>
@@ -124,6 +125,44 @@
                     </div>
                 </div>
             </div>
+
+            <!-- page nav -->
+            <div class="row pagenavrow border-top border-bottom mb-4">
+                <div class="col-md-6">
+                    <p class="font-bold">Pages <span>1</span> of <span>25</span></p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-end">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><span
+                                        class="icon-left-chevron"></span></a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">..</a></li>
+                            <li class="page-item"><a class="page-link" href="#">8</a></li>
+                            <li class="page-item"><a class="page-link" href="#">9</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"><span class="icon-right-chevron"></span></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!--/ page nav -->
+            <article class="terms-content">
+                <h5 class="font-bold pb-3">Customers at Country Oven</h5>
+                <p>Welcome to CountryOven - your one-stop-shop for online cakes and flowers gifting! We are thrilled to
+                    offer you an exquisite collection of cakes and flowers for all your special occasions. At
+                    CountryOven, we understand the importance of creating unforgettable moments that last a lifetime.
+                    That is why we bring to you a wide range of delectable cakes, exquisite flower arrangements, and
+                    thoughtful gift hampers to make every occasion special.</p>
+                <p>Our cakes are made with love and passion by our experienced bakers who use only the finest quality
+                    ingredients. From classic flavours like vanilla, chocolate, and strawberry to exotic flavours like
+                    blueberry, red velvet, and black forest, we have something for every taste bud. We also offer a
+                    range of eggless and sugar-free cakes for our health-conscious customers.</p>
+            </article>
         </div>
     </div>
 </section>

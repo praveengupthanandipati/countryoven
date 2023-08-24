@@ -75,3 +75,17 @@
     margin-bottom:25px;  
    } 
 }
+
+.pagenavrow{
+  padding:45px 0;
+  color:map-get($colors, black);
+
+  .page-link{
+    color:map-get($colors, black);
+
+    &:hover{
+      background:map-get($colors, primary);
+      color:map-get($colors, white);
+    }
+  }
+}
