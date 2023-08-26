@@ -17,6 +17,7 @@ import { ProductItemComponent } from './components/product-item/product-item.com
 import { CategoryItemComponent } from './components/category-item/category-item.component';
 import { ProductListComponent } from './pages/product-list/product-list.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ProductDetailComponent } from './pages/product-detail/product-detail.co
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    LoginModule
    
   ],
   providers: [],
