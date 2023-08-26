@@ -16,6 +16,7 @@ import { CategoryBannersComponent } from './pages/home/category-banners/category
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { CategoryItemComponent } from './components/category-item/category-item.component';
 import { ProductListComponent } from './pages/product-list/product-list.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ProductListComponent } from './pages/product-list/product-list.componen
     CategoryBannersComponent,
     ProductItemComponent,
     CategoryItemComponent,
-    ProductListComponent,     
+    ProductListComponent,
+    ProductDetailComponent,     
   ],
   imports: [
     BrowserModule,

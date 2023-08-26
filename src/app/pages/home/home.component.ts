@@ -49,6 +49,12 @@ export class HomeComponent {
     DeliveryEstimate:'Today'
     },   
   ];
+
+  banneritems:any[]=[
+    {bannerimage:'assets/images/banner01.jpg'},
+    {bannerimage:'assets/images/banner02.jpg'},
+    {bannerimage:'assets/images/banner03.jpg'}
+  ];
   
   birthdaycollectionsitems:any[] = [
     {

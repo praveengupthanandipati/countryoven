@@ -1,6 +1,7 @@
 @import "./variables";
 @import "./mixins";
 @import "./fonts";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800&display=swap");
 body {
   @include siteMain;
@@ -56,7 +57,7 @@ body {
   }
 }
 
-.subpage{
+.subpage {
   min-height: 50vh;
 }
 
@@ -66,3 +67,29 @@ body {
   }
 }
 
+.rating-title {
+  .rating-label {
+    background: map-get($colors, green);
+    font-size: $fsize - 2;
+  }
+  .review-count {
+    color: map-get($colors, primary);
+    font-size: $fsize - 2;
+  }
+}
+
+.badge-pill {
+  a {
+    &:hover {
+      background: map-get($colors, primary);
+      color: map-get($colors, white);
+    }
+  }
+}
+
+.form-control {
+  &:focus {
+    box-shadow: none;
+    outline: none;
+  }
+}

@@ -12,6 +12,12 @@ $colors: (
   ),
   darkgray: #594454,
   lightblue:#ECF2FF,
+  green:green,
+  lightgreen:#D4ECDD,
+  yellow:#FFD66C,
+  darkyellow:#EFB153,
+  lightengray:#EEEEEE,
+  lightengrayborder:#C9C9C9
 );
 
 $fsize: 15px;
@@ -41,5 +47,14 @@ $font-weights: (
 @each $weight-name, $weight-value in $font-weights {
   .font-#{$weight-name} {
     font-weight: $weight-value;
+  }
+}
+
+@each $color-name, $color-value in $colors{
+  .font-#{$color-name}{
+    color:$color-value;
+  }
+  .background-#{$color-name}{
+    background:$color-value;
   }
 }

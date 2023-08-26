@@ -1,0 +1,423 @@
+<section class="subpage">
+    <div class="custom-container">
+        <!-- bread crumb-->
+        <div class="row">
+            <div class="col-md-12">
+                <nav aria-label="breadcrumb" class="align-self-center py-3">
+                    <ol class="breadcrumb pb-0 mb-0">
+                        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Hyderabad</a></li>
+                        <li class="breadcrumb-item"><a href="#">Birthday Cakes</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Chocolate Truffle</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <!--/ bread crumb-->
+        <!-- product detail -->
+        <div class="row">
+            <!-- left -->
+            <div class="col-md-4">
+                <div class="sticky-top">
+                    <!-- carousel -->
+                    <div id="carouselExampleDark"
+                        class="carousel carousel-dark slide product-detail-carousel d-flex justify-content-between"
+                        data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0"
+                                class="active" aria-current="true" aria-label="Slide 1">
+                                <img src="assets/images/products/product01.jpg" class="img-fluid w-100"
+                                    alt="..."></button>
+                            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                                aria-label="Slide 2">
+                                <img src="assets/images/products/product02.jpg" class="img-fluid w-100" alt="...">
+                            </button>
+                            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                                aria-label="Slide 3">
+                                <img src="assets/images/products/product03.jpg" class="img-fluid w-100" alt="...">
+                            </button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" data-bs-interval="10000">
+                                <img src="assets/images/products/product01.jpg" class="img-fluid w-100" alt="...">
+                            </div>
+                            <div class="carousel-item" data-bs-interval="2000">
+                                <img src="assets/images/products/product02.jpg" class="img-fluid w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="assets/images/products/product03.jpg" class="img-fluid w-100" alt="...">
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ carousel -->
+
+                    <article>
+                        <p class="text-center py-3">
+                            <small>NOTE: Design and icing of cake may vary from the image shown here since each chef
+                                has his/her own way of baking and designing a cake.
+                            </small>
+                        </p>
+                    </article>
+
+                    <!-- safe instruction-->
+                    <div class="safe-instruction">
+                        <div class="safe-inner">
+                            <article>
+                                <h3 class="font-bold">Safe & Hygienic Bakery</h3>
+                                <p class="small">Our bakery prioritizes safety and hygiene to ensure customers enjoy
+                                    delicious treats
+                                    without worries. Cleanliness is our priority!</p>
+                            </article>
+                            <img src="assets/images/serverimg.png" alt="">
+                        </div>
+                    </div>
+                    <div class="py-3">
+                        <p><span class="icon-lock"></span> <small>100% Safe and Secure Payments</small></p>
+                    </div>
+                    <!--/ safe incstruction-->
+                </div>
+            </div>
+            <!--/ left -->
+            <!-- right -->
+            <div class="col-md-8">
+                <div class="product-detail-right">
+                    <h1 class="font-semibold">{{productname}}</h1>
+                    <div class="rating-title d-flex py-3">
+                        <div class="rating-label d-inline-block text-white py-1 px-2 rounded"><span
+                                class="d-inline-block pe-1">4.7</span> <span class="icon-star"></span></div>
+                        <div class="review-count font-bold align-self-center ps-2">150 Reviews</div>
+                    </div>
+                    <div class="price d-flex py-2">
+                        <div class="offer-price font-bold"><span class="icon-inr icomoon font-bold"></span>1299.00</div>
+                        <div class="mrp font-semi-bold align-self-center px-2">
+                            <span class="icon-inr icomoon font-bold"></span>1500.00
+                        </div>
+                        <div class="offer-percentage align-self-center "><small class="font-bold">(17% off)</small>
+                        </div>
+                        <p class="align-self-center ps-2 small">Inclusive of all taxes</p>
+                    </div>
+                    <div class="basic-features row ">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="d-flex form-group">
+                                    <label class="align-self-center pe-2">Flavour:</label>
+                                    <select class="form-control" style="width:100px;">
+                                        <option>Apple</option>
+                                        <option>Orange</option>
+                                        <option>Apple</option>
+                                        <option>Apple</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 align-self-center">
+                                <p class="font-bold text-secondary">Shape <span class="d-inline-block px-2">:</span>
+                                    <span class="text-dark">Round</span>
+                                </p>
+                            </div>
+                            <div class="col-md-3 align-self-center">
+                                <p class="font-bold text-secondary">Type of Cake <span
+                                        class="d-inline-block px-2">:</span>
+                                    <span class="text-dark">Cream</span>
+                                </p>
+                            </div>
+                            <div class="col-md-3 align-self-center">
+                                <a href="javascript:void(0)" class="font-primary font-bold">View More details...</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="background-lightblue p-3 py-2 my-3">
+                        <p class="font-bold font-gray pb-2">Weight</p>
+                        <div class="badge-pill">
+                            <a href="javascript:void(0)"
+                                class="d-inline-block rounded-pill py-1 px-3 font-white me-3 background-primary">500
+                                gms</a>
+                            <a href="javascript:void(0)"
+                                class="d-inline-block rounded-pill border py-1 px-3 font-black me-3">1 Kg</a>
+                            <a href="javascript:void(0)"
+                                class="d-inline-block rounded-pill border py-1 px-3 font-black me-3">1.5 kg</a>
+                            <a href="javascript:void(0)"
+                                class="d-inline-block rounded-pill border py-1 px-3 font-black me-3">2 kg</a>
+                            <a href="javascript:void(0)"
+                                class="d-inline-block rounded-pill border py-1 px-3 font-black me-3">3 kg</a>
+                            <a href="javascript:void(0)"
+                                class="d-inline-block rounded-pill border py-1 px-3 font-black me-3">3.5 kg</a>
+                        </div>
+                        <div class="badge-pill mt-3">
+                            <a href="javascript:void(0)"
+                                class="d-inline-block rounded-pill border py-1 px-3 font-black me-3">Sugar free </a>
+                            <a href="javascript:void(0)"
+                                class="d-inline-block rounded-pill border py-1 px-3 font-black me-3">Egg less</a>
+                            <a href="javascript:void(0)"
+                                class="d-inline-block rounded-pill border py-1 px-3 font-black me-3">Round Shape</a>
+                            <a href="javascript:void(0)"
+                                class="d-inline-block rounded-pill border py-1 px-3 font-black me-3">Heart Shape</a>
+                            <a href="javascript:void(0)"
+                                class="d-inline-block rounded-pill border py-1 px-3 font-black me-3">Square Shape</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Select Delivery Location</label>
+                            <div class="form-group d-flex p-2  background-lightprimary rounded">
+                                <span
+                                    class="icon-pin font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
+                                <input type="text" class="form-control border-0 bg-transparent"
+                                    placeholder="500090, Hyderabad, Telangana State">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Select Delivery Date and time</label>
+                            <div class="form-group d-flex p-2  background-lightprimary rounded">
+                                <span
+                                    class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
+                                <input type="datetime-local" class="form-control border-0 bg-transparent"
+                                    placeholder="Select Delivery Date">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Browse a picture for photo cake</label>
+                            <div class="form-group d-flex p-2  background-lightprimary rounded">
+                                <span
+                                    class="icon-upload2 font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
+                                <input type="text" class="form-control border-0 bg-transparent"
+                                    placeholder="Browse a picture for photo cake">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group d-flex p-2  background-lightprimary rounded mt-3">
+                                <span
+                                    class="icon-writing font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
+                                <input type="text" class="form-control border-0 bg-transparent"
+                                    placeholder="Message on Cake 25 Characters (Option)">
+                            </div>
+                        </div>
+                        <div class="mt-3 d-flex">
+                            <a href="javascript:void(0)" class="color-btn">Add to Cart</a>
+                            <span
+                                class="background-lightgreen font-black  ms-3 px-2 py-2 badge rounded-pill align-self-center"><span
+                                    class="icon-circular-alarm-clock-tool d-inline-block me-1"></span>Get Today Order
+                                within 10:19:29 Hrs</span>
+                        </div>
+                    </div>
+                    <!-- poroduct info -->
+                    <div class="product-info">
+                        <article class="pb-4">
+                            <h3 class="font-bold pb-3 mb-2">Description</h3>
+                            <div class="py-2">
+                                <p class="pb-2 font-bold">Product Details</p>
+                                <ul class="list-style-desc">
+                                    <li>Cake Flavour- Truffle</li>
+                                    <li>Weight- Half Kg</li>
+                                    <li>Shape- Round</li>
+                                    <li>Serves- 4-6 People</li>
+                                    <li>Size- 6 inches in Diameter</li>
+                                </ul>
+                                <p class="py-2 font-bold">Please Note:</p>
+                                <ul class="list-style-desc">
+                                    <li>The cake stand, cutlery & accessories used in the image are only for
+                                        representation purposes. They are not delivered with the cake.</li>
+                                    <li>This cake is hand delivered in a good quality cardboard box.</li>
+                                    <li>Country of Origin: India</li>
+                                </ul>
+                            </div>
+                        </article>
+
+                        <article class="pb-4">
+                            <h3 class="font-bold pb-3 mb-2">Delivery Information</h3>
+                            <div class="py-2">
+                                <ul class="list-style-desc">
+                                    <li>Every cake we offer is handcrafted and since each chef has his/her own way of
+                                        baking and designing a cake, there might be slight variation in the product in
+                                        terms of design and shape.</li>
+                                    <li>The chosen delivery time is an estimate and depends on the availability of the
+                                        product and the destination to which you want the product to be delivered.</li>
+                                    <li>Since cakes are perishable in nature, we attempt delivery of your order only
+                                        once. The delivery cannot be redirected to any other address.</li>
+                                    <li>This product is hand delivered and will not be delivered along with courier
+                                        products.</li>
+                                    <li>Occasionally, substitutions of flavours/designs is necessary due to temporary
+                                        and/or regional unavailability issues.</li>
+                                </ul>
+                            </div>
+                        </article>
+
+                        <article class="pb-4">
+                            <h3 class="font-bold pb-3 mb-2">Care Instructions</h3>
+                            <div class="py-2">
+                                <ul class="list-style-desc">
+                                    <li>Store cream cakes in a refrigerator. Fondant cakes should be stored in an air
+                                        conditioned environment.</li>
+                                    <li>Slice and serve the cake at room temperature and make sure it is not exposed to
+                                        heat.</li>
+                                    <li>Use a serrated knife to cut a fondant cake.</li>
+                                    <li>Sculptural elements and figurines may contain wire supports or toothpicks or
+                                        wooden skewers for support.</li>
+                                    <li>Please check the placement of these items before serving to small children.</li>
+                                    <li>The cake should be consumed within 24 hours.</li>
+                                    <li>Enjoy your cake!</li>
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
+                    <!--/product info-->
+
+                    <!-- product reviews -->
+                    <div class="product-reviews">
+                        <div class="d-flex justify-content-between mb-3 heading py-3">
+                            <h3 class="font-bold align-self-center">Product Reviews <span>(25)</span></h3>
+                            <div class="text-end align-self-center">
+                                <a href="javascript:void(0)" class="text-blue font-bold small">View all Reviews</a>
+                                <a href="javascript:void(0)" class="color-btn d-inline-block ms-3">Write Review</a>
+                            </div>
+                        </div>
+                        <p class="font-bold small pb-3">Reviews</p>
+                        <div class="star-rating-block mb-3">
+                            <div class="rating-block-in d-flex py-2">
+                                <span class="d-inline-block pe-2 font-bold">5</span>
+                                <span class="icon-star icomoon align-self-center font-yellow"></span>
+                                <div class="ranger-col background-lightengray align-self-center position-relative">
+                                    <div class="range-col-width background-yellow" style="width:75%"></div>
+                                </div>
+                                <span class="d-inline-block ps-3 font-bold">106</span>
+                            </div>
+                            <div class="rating-block-in d-flex py-2">
+                                <span class="d-inline-block pe-2 font-bold">4</span>
+                                <span class="icon-star icomoon align-self-center font-yellow"></span>
+                                <div class="ranger-col background-lightengray align-self-center position-relative">
+                                    <div class="range-col-width background-yellow" style="width:30%"></div>
+                                </div>
+                                <span class="d-inline-block ps-3 font-bold">32</span>
+                            </div>
+                            <div class="rating-block-in d-flex py-2">
+                                <span class="d-inline-block pe-2 font-bold">3</span>
+                                <span class="icon-star icomoon align-self-center font-yellow"></span>
+                                <div class="ranger-col background-lightengray align-self-center position-relative">
+                                    <div class="range-col-width background-yellow" style="width:10%"></div>
+                                </div>
+                                <span class="d-inline-block ps-3 font-bold">10</span>
+                            </div>
+                            <div class="rating-block-in d-flex py-2">
+                                <span class="d-inline-block pe-2 font-bold">5</span>
+                                <span class="icon-star icomoon align-self-center font-yellow"></span>
+                                <div class="ranger-col background-lightengray align-self-center position-relative">
+                                    <div class="range-col-width background-yellow" style="width:5%"></div>
+                                </div>
+                                <span class="d-inline-block ps-3 font-bold">5</span>
+                            </div>
+                            <div class="rating-block-in d-flex py-2">
+                                <span class="d-inline-block pe-2 font-bold">1</span>
+                                <span class="icon-star icomoon align-self-center font-yellow"></span>
+                                <div class="ranger-col background-lightengray align-self-center position-relative">
+                                    <div class="range-col-width background-yellow" style="width:0%"></div>
+                                </div>
+                                <span class="d-inline-block ps-3 font-bold">0</span>
+                            </div>
+                        </div>
+                        <div class="reviews-users">
+                            <!-- review user-->
+                            <div class="user-review-item p-3 border rounded mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <div class="rating-stars">
+                                        <span class="icon-star font-primary"></span>
+                                        <span class="icon-star font-primary"></span>
+                                        <span class="icon-star font-primary"></span>
+                                        <span class="icon-star font-primary"></span>
+                                        <span class="icon-star font-primary"></span>
+                                    </div>
+                                    <span class="small">02/07/2023 8:39 AM</span>
+                                </div>
+                                <div class="py-2">
+                                    <h6 class="font-bold h6 pb-2">Great Service and Quality</h6>
+                                    <p class="font-gray pb-2">As always great service and quality cakes. Great to see
+                                        they are accepting US credit cards as well.</p>
+                                    <p><span class="font-bold">VIJAY BEJUGAM</span><small
+                                            class="small d-inline-block ps-2"><i class="bi bi-check-lg"></i>
+                                            Invoice
+                                            No:970726</small></p>
+                                </div>
+                            </div>
+                            <!--/ review user-->
+                            <!-- review user-->
+                            <div class="user-review-item p-3 border rounded mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <div class="rating-stars">
+                                        <span class="icon-star font-primary"></span>
+                                        <span class="icon-star font-primary"></span>
+                                        <span class="icon-star font-primary"></span>
+                                        <span class="icon-star font-primary"></span>
+                                        <span class="icon-star font-primary"></span>
+                                    </div>
+                                    <span class="small">02/07/2023 8:39 AM</span>
+                                </div>
+                                <div class="py-2">
+                                    <h6 class="font-bold h6 pb-2">DELICIOUS DELICIOUS DELICOUS.</h6>
+                                    <p class="font-gray pb-2">IT IS a pleasure to write a review about them. I am doing
+                                        business with them for almost 10 years and they never disappointed me. Always
+                                        on-time delivery and very delicous.</p>
+                                    <p><span class="font-bold">Shahid Siddiqui</span><small
+                                            class="small d-inline-block ps-2"><i class="bi bi-check-lg"></i>
+                                            Invoice
+                                            No:970726</small></p>
+                                </div>
+                            </div>
+                            <!--/ review user-->
+                            <!-- review user-->
+                            <div class="user-review-item p-3 border rounded mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <div class="rating-stars">
+                                        <span class="icon-star font-primary"></span>
+                                        <span class="icon-star font-primary"></span>
+                                        <span class="icon-star font-primary"></span>
+                                        <span class="icon-star font-primary"></span>
+                                        <span class="icon-star font-primary"></span>
+                                    </div>
+                                    <span class="small">02/07/2023 8:39 AM</span>
+                                </div>
+                                <div class="py-2">
+                                    <h6 class="font-bold h6 pb-2">Quality products</h6>
+                                    <p class="font-gray pb-2">IT IS a pleasure to write a review about them. I am doing
+                                        business with them for almost 10 years and they never disappointed me. Always
+                                        on-time delivery and very delicous.</p>
+                                    <p><span class="font-bold">Shahid Siddiqui</span><small
+                                            class="small d-inline-block ps-2"><i class="bi bi-check-lg"></i>
+                                            Invoice
+                                            No:970726</small></p>
+                                </div>
+                            </div>
+                            <!--/ review user-->
+                            <!-- review user-->
+                            <div class="user-review-item p-3 border rounded mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <div class="rating-stars">
+                                        <span class="icon-star font-primary"></span>
+                                        <span class="icon-star font-primary"></span>
+                                        <span class="icon-star font-primary"></span>
+                                        <span class="icon-star font-primary"></span>
+                                        <span class="icon-star font-primary"></span>
+                                    </div>
+                                    <span class="small">02/07/2023 8:39 AM</span>
+                                </div>
+                                <div class="py-2">
+                                    <h6 class="font-bold h6 pb-2">Great Service and Quality</h6>
+                                    <p class="font-gray pb-2">As always great service and quality cakes. Great to see
+                                        they are accepting US credit cards as well.</p>
+                                    <p><span class="font-bold">VIJAY BEJUGAM</span><small
+                                            class="small d-inline-block ps-2"><i class="bi bi-check-lg"></i>
+                                            Invoice
+                                            No:970726</small></p>
+                                </div>
+                            </div>
+                            <!--/ review user-->
+                        </div>
+                        <div class="text-end pb-5">
+                            <a href="javascript:void(0)" class="color-btn d-inline-block">Veiw All Reviews</a>
+                        </div>
+                    </div>
+                    <!--/ product reviews-->
+                </div>
+            </div>
+            <!--/ right -->
+        </div>
+        <!--/ product detail-->
+    </div>
+</section>

@@ -1,0 +1,145 @@
+@import "../../../styles/styles";
+
+.breadcrumb {
+  li {
+    font-size: $fsize - 2;
+    a {
+      color: map-get($colors, black);
+    }
+  }
+  .active {
+    color: map-get($colors, primary);
+  }
+}
+
+.product-detail-carousel {
+  .carousel-indicators {
+    width: 85px;
+    margin: 0;
+    position: relative;
+    display: block;
+
+    button {
+      width: 80px;
+      height: 80px;
+      background: None;
+      text-indent: 0;
+      border: 0;
+      margin: 0 5px 5px 0;
+
+      img {
+        height: 80px;
+      }
+    }
+  }
+}
+
+.safe-instruction {
+  background: map-get($colors, lightblue);
+  border-radius: 15px;
+  padding: 20px;
+  position: relative;
+
+  .safe-inner {
+    width: 100%;
+    height: 100%;
+    border: 1px solid map-get($colors, lightgray);
+    height: 132px;
+    border-radius: 15px;
+
+    article {
+      width: 70%;
+      padding: 20px 0 0 25px;
+      h3 {
+        font-size: $fsize + 2;
+      }
+      p {
+        color: map-get($colors, gray);
+        padding-top: 10px;
+      }
+    }
+
+    img {
+      height: 158px;
+      position: absolute;
+      right: 10%;
+      top: 35px;
+    }
+  }
+}
+
+.product-detail-right {
+    font-size:$fsize - 1;
+  h1 {
+    font-size: $fsize + 7;
+  }
+  .price {
+    .offer-price {
+      font-size: $fsize + 10;
+      color: map-get($colors, black);
+    }
+    .icomoon {
+        font-size: $fsize + 5;
+    }
+    .mrp {
+      font-size: $fsize + 3;
+      color: map-get($colors, lighten(black, 50%));
+      text-decoration: line-through;
+
+      .icomoon {
+        font-size: $fsize;
+    }
+    }
+    .offer-percentage {
+      small {
+        color: map-get($colors, primary);
+        font-size: $fsize - 2;
+      }
+    }
+  }
+}
+
+.product-info{
+    margin-top:50px;
+
+    article{
+        h3{
+            font-size:$fsize + 7;
+            border-bottom:1px dashed map-get($colors, primary);
+        }
+    }
+    .list-style-desc{
+        li{
+            list-style-type: disc;
+            margin-left:22px;
+            margin-bottom:5px;
+        }
+    }
+}
+
+.product-reviews{
+    h3{
+        font-size:$fsize + 7;        
+    }
+
+    .heading{
+        border-bottom:1px dashed map-get($colors, primary);
+    }
+}
+
+.ranger-col{
+    width:428px;
+    height:10px;
+    border:1px solid map-get($colors, lightengrayborder);
+    margin-left:10px;
+    border-radius:5px;
+
+    .range-col-width{
+        height:10px;
+        border:1px solid map-get($colors, darkyellow);
+        position: absolute;
+        top:0;
+        left:0;
+        border-radius:5px;
+    }
+}
