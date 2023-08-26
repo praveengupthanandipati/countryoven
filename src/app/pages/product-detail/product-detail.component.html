@@ -419,5 +419,17 @@
             <!--/ right -->
         </div>
         <!--/ product detail-->
+        <!-- you may also like -->
+        <section class="you-may-also-like my-5">
+            <h5 class="font-bold pb-3 mb-2 h5 border-bottom ">You may also like</h5>
+            <div class="products-list my-3">
+                <div class="row row-flex">
+                    <div class="col-md-3" *ngFor="let productitem of productvalues">
+                        <app-product-item [Productvalue]="productitem" class="app-product-col"></app-product-item>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--/ you mayt also like-->
     </div>
 </section>
