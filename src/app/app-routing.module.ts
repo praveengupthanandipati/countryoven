@@ -15,20 +15,22 @@ import { LoginFormComponent } from './login/login-form/login-form.component';
 
 
 const routes: Routes = [
-  {path:'', component:HomeComponent},
-  {path:'products-list', component:ProductListComponent},
-  {path:'product-detail', component:ProductDetailComponent},
-  {path:'Aboutus', component:AboutusComponent},
-  {path:'Stores', component:StoresComponent},
-  {path: 'Reviews', component:ReviewsComponent},
-  {path: 'Contact', component:ContactComponent},  
-  {path: 'Coupon-Partners', component:CouponpartnersComponent},
-  {path: 'Franchises', component:FranchisesComponent},  
-  {path:'Login', loadChildren:()=>import('./login/login.module').then(m=>m.LoginModule)},  
+    // {path:'', component:HomeComponent},
+    // {path:'products-list', component:ProductListComponent},
+    // {path:'product-detail', component:ProductDetailComponent},
+    // {path:'Aboutus', component:AboutusComponent},
+    // {path:'Stores', component:StoresComponent},
+    // {path: 'Reviews', component:ReviewsComponent},
+    // {path: 'Contact', component:ContactComponent},  
+    // {path: 'Coupon-Partners', component:CouponpartnersComponent},
+    // {path: 'Franchises', component:FranchisesComponent},  
+  {path:'', loadChildren:()=>import('./frontend/frontend.module').then(m=>m.FrontendModule)},  
+  {path:'login', loadChildren:()=>import('./login/login.module').then(m=>m.LoginModule)},  
+  {path:'cart', loadChildren:()=>import('./cart/cart.module').then(m=>m.CartModule)},  
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), LoginModule],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
   
 })

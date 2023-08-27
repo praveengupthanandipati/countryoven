@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
+import { LoginRoutingModule } from './login-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -12,7 +13,11 @@ import { RegistrationFormComponent } from './registration-form/registration-form
     RegistrationFormComponent
   ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    SharedModule,
+    LoginRoutingModule
+  ],
+  exports: [ LoginFormComponent,
+    RegistrationFormComponent],
 })
 export class LoginModule { }
