@@ -10,6 +10,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { LoginModule } from './login/login.module';
 import { CouponpartnersComponent } from './pages/couponpartners/couponpartners.component';
 import { FranchisesComponent } from './pages/franchises/franchises.component';
+import { LoginFormComponent } from './login/login-form/login-form.component';
 
 
 
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'Reviews', component:ReviewsComponent},
   {path: 'Contact', component:ContactComponent},  
   {path: 'Coupon-Partners', component:CouponpartnersComponent},
-  {path: 'Franchises', component:FranchisesComponent}
+  {path: 'Franchises', component:FranchisesComponent},  
+  {path:'Login', loadChildren:()=>import('./login/login.module').then(m=>m.LoginModule)},  
 ];
 
 @NgModule({

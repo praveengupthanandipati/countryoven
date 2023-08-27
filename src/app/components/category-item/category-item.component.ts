@@ -5,7 +5,6 @@ import { Component, Input } from '@angular/core';
   templateUrl: './category-item.component.html',
   styleUrls: ['./category-item.component.scss']
 })
-export class CategoryItemComponent {
-  @Input() Birthdaycollections:any;
-  @Input() Anniversarycollections:any;
+export class CategoryItemComponent { 
+  @Input() Collections:any;
 }
