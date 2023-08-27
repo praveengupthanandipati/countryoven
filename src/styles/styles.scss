@@ -93,3 +93,29 @@ body {
     outline: none;
   }
 }
+
+.static-page {
+ padding:15px 0;
+
+ p{
+  padding-bottom:15px;
+  font-size:$fsize - 1
+ }
+ ul{
+  li{
+    font-size:$fsize - 1;
+  }
+ }
+}
+
+.breadcrumb {
+  li {
+    font-size: $fsize - 2;
+    a {
+      color: map-get($colors, black);
+    }
+  }
+  .active {
+    color: map-get($colors, primary);
+  }
+}

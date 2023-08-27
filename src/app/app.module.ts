@@ -18,6 +18,12 @@ import { CategoryItemComponent } from './components/category-item/category-item.
 import { ProductListComponent } from './pages/product-list/product-list.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { LoginModule } from './login/login.module';
+import { AboutusComponent } from './pages/aboutus/aboutus.component';
+import { StoresComponent } from './pages/stores/stores.component';
+import { ReviewsComponent } from './pages/reviews/reviews.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { CouponpartnersComponent } from './pages/couponpartners/couponpartners.component';
+import { FranchisesComponent } from './pages/franchises/franchises.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +39,13 @@ import { LoginModule } from './login/login.module';
     ProductItemComponent,
     CategoryItemComponent,
     ProductListComponent,
-    ProductDetailComponent,     
+    ProductDetailComponent,
+    AboutusComponent,
+    StoresComponent,
+    ReviewsComponent,
+    ContactComponent,
+    CouponpartnersComponent,
+    FranchisesComponent,     
   ],
   imports: [
     BrowserModule,
