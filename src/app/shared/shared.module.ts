@@ -19,8 +19,7 @@ import { FooterComponent } from '../components/footer/footer.component';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
-    
+    RouterModule    
   ],
 
   exports: [

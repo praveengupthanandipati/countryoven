@@ -1,4 +1,29 @@
 <app-header></app-header>
-<p>registration-form works!</p>
-
+<section class="subpage-login">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <h1 class="h5 font-bold text-center">Register with us</h1>
+                <form class="login-form pt-3">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="usrname" placeholder="Enter your Name">
+                        <label for="usrname">Enter your Name <span class="font-red font-bold">*</span></label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="useremail" placeholder="Enter your Email">
+                        <label for="useremail">Email Address <span class="font-red font-bold">*</span></label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" id="userphone" placeholder="Enter your Phone Number">
+                        <label for="userphone">Mobile Number <span class="font-red font-bold">*</span></label>
+                    </div>
+                    <button class="btn color-btn w-100 text-center font-bold">Verify Phone Number</button>
+                    <p class="py-3 text-center">Already have an account? <a routerLink="/Login"
+                            class="font-primary font-bold">Sign in</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<router-outlet></router-outlet>
 <app-footer></app-footer>

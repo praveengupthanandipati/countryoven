@@ -1,8 +1,27 @@
 <app-header></app-header>
-<section class="subpage">
-    <p>login-form works!</p>
+<section class="subpage-login">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <h1 class="h5 font-bold text-center">Welcome back to Country Oven</h1>
+                <form class="login-form pt-3">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="username" placeholder="Username">
+                        <label for="username">Username <span class="font-red font-bold">*</span></label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" class="form-control" id="password" placeholder="Password">
+                        <label for="password">Password <span class="font-red font-bold">*</span></label>
+                    </div>
+                    <p class="py-3 text-center">Forgot Password? <a routerLink="/Reset"
+                            class="font-primary font-bold">Reset Now</a></p>
+                    <button class="btn color-btn w-100 text-center font-bold">Login</button>
+                    <p class="py-3 text-center">Don’t have an account? <a routerLink="/Signup"
+                            class="font-primary font-bold">Sign up</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
 </section>
-
 <router-outlet></router-outlet>
-
 <app-footer></app-footer>
