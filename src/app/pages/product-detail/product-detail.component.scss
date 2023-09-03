@@ -57,77 +57,53 @@
 }
 
 .product-detail-right {
-    font-size:$fsize - 1;
+  font-size: $fsize - 1;
   h1 {
     font-size: $fsize + 7;
   }
-  .price {
-    .offer-price {
-      font-size: $fsize + 10;
-      color: map-get($colors, black);
-    }
-    .icomoon {
-        font-size: $fsize + 5;
-    }
-    .mrp {
-      font-size: $fsize + 3;
-      color: map-get($colors, lighten(black, 50%));
-      text-decoration: line-through;
+}
 
-      .icomoon {
-        font-size: $fsize;
+.product-info {
+  margin-top: 50px;
+
+  article {
+    h3 {
+      font-size: $fsize + 7;
+      border-bottom: 1px dashed map-get($colors, primary);
     }
-    }
-    .offer-percentage {
-      small {
-        color: map-get($colors, primary);
-        font-size: $fsize - 2;
-      }
+  }
+  .list-style-desc {
+    li {
+      list-style-type: disc;
+      margin-left: 22px;
+      margin-bottom: 5px;
     }
   }
 }
 
-.product-info{
-    margin-top:50px;
+.product-reviews {
+  h3 {
+    font-size: $fsize + 7;
+  }
 
-    article{
-        h3{
-            font-size:$fsize + 7;
-            border-bottom:1px dashed map-get($colors, primary);
-        }
-    }
-    .list-style-desc{
-        li{
-            list-style-type: disc;
-            margin-left:22px;
-            margin-bottom:5px;
-        }
-    }
+  .heading {
+    border-bottom: 1px dashed map-get($colors, primary);
+  }
 }
 
-.product-reviews{
-    h3{
-        font-size:$fsize + 7;        
-    }
+.ranger-col {
+  width: 428px;
+  height: 10px;
+  border: 1px solid map-get($colors, lightengrayborder);
+  margin-left: 10px;
+  border-radius: 5px;
 
-    .heading{
-        border-bottom:1px dashed map-get($colors, primary);
-    }
-}
-
-.ranger-col{
-    width:428px;
-    height:10px;
-    border:1px solid map-get($colors, lightengrayborder);
-    margin-left:10px;
-    border-radius:5px;
-
-    .range-col-width{
-        height:10px;
-        border:1px solid map-get($colors, darkyellow);
-        position: absolute;
-        top:0;
-        left:0;
-        border-radius:5px;
-    }
+  .range-col-width {
+    height: 10px;
+    border: 1px solid map-get($colors, darkyellow);
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 5px;
+  }
 }

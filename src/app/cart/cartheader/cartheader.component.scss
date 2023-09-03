@@ -1,0 +1,47 @@
+@import "../../../styles/styles";
+
+.cart-header {
+  @include box-shadow(0, 2px, 3px, lighten(map-get($colors, gray), 20%));
+  .brand-logo {
+    width: 135px;
+  }
+  .navbar-nav {
+    position: relative;
+    &:before {
+      content: "";
+      width: 360px;
+      height: 1px;
+      border: 1px dashed map-get($colors, gray);
+      position: absolute;
+      top: 20px;
+      left: 30px;
+      z-index: 0;
+    }
+    .nav-link {
+      padding: 0 25px;
+      position: relative;
+      z-index: 10;
+      div {
+        width: 40px;
+        height: 40px;
+        background: map-get($colors, lightgray);
+        line-height: 46px;
+        margin: 0 auto;
+        border-radius: 50px;
+
+        .icomoon {
+          font-size: $fsize + 5;
+        }
+      }
+    }
+    .select {
+      div {
+        background: map-get($colors, primary);
+
+        .icomoon {
+          color: map-get($colors, white);
+        }
+      }
+    }
+  }
+}

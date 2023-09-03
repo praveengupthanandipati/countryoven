@@ -2,7 +2,7 @@
 
 .app-product-item {
   height: 100%;
-  @include transition(all, 0.2s ease); 
+  @include transition(all, 0.2s ease);
   border-radius: 20px;
   border: 1px solid map-get($colors, lightgray);
   .product-item-figure {
@@ -35,26 +35,7 @@
         color: map-get($colors, black);
       }
     }
-    .price {
-      .offer-price {
-        font-size: $fsize + 3;
-        color: map-get($colors, black);
-      }
-      .icomoon {
-        font-size: $fsize;
-      }
-      .mrp {
-        font-size: $fsize + 3;
-        color: map-get($colors, lighten(black, 50%));
-        text-decoration: line-through;
-      }
-      .offer-percentage {
-        small {
-          color: map-get($colors, primary);
-          font-size: $fsize - 2;
-        }
-      }
-    }
+
     .item-footer {
       .icomoon {
         color: map-get($colors, primary);

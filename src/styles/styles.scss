@@ -39,13 +39,29 @@ body {
   color: map-get($colors, white);
   font-size: $fsize + 1;
   text-align: center;
-  padding: 8px 25px;
+  padding: 8px 15px;
   @include transition(all, 0.3s ease);
   border-radius: 5px;
 
   &:hover {
     background: map-get($colors, lightprimary);
     color: map-get($colors, black);
+  }
+}
+
+.color-border-btn {
+  background: map-get($colors, white);
+  color: map-get($colors, primary);
+  font-size: $fsize + 1;
+  text-align: center;
+  padding: 8px 15px;
+  @include transition(all, 0.3s ease);
+  border-radius: 5px;
+  border: 1px solid map-get($colors, primary);
+
+  &:hover {
+    background: map-get($colors, primary);
+    color: map-get($colors, white);
   }
 }
 
@@ -95,17 +111,17 @@ body {
 }
 
 .static-page {
- padding:15px 0;
+  padding: 15px 0;
 
- p{
-  padding-bottom:15px;
-  font-size:$fsize - 1
- }
- ul{
-  li{
-    font-size:$fsize - 1;
+  p {
+    padding-bottom: 15px;
+    font-size: $fsize - 1;
   }
- }
+  ul {
+    li {
+      font-size: $fsize - 1;
+    }
+  }
 }
 
 .breadcrumb {
@@ -120,7 +136,32 @@ body {
   }
 }
 
-.subpage-login{
+.subpage-login {
   min-height: 150px;
-  padding:100px 0;
+  padding: 100px 0;
+}
+
+.cart-subpage {
+  padding-top: 30px;
+}
+
+.price {
+  .offer-price {
+    font-size: $fsize + 3;
+    color: map-get($colors, black);
+  }
+  .icomoon {
+    font-size: $fsize;
+  }
+  .mrp {
+    font-size: $fsize + 3;
+    color: map-get($colors, lighten(black, 50%));
+    text-decoration: line-through;
+  }
+  .offer-percentage {
+    small {
+      color: map-get($colors, primary);
+      font-size: $fsize - 2;
+    }
+  }
 }
