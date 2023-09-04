@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -7,6 +8,7 @@ import { Component } from '@angular/core';
 })
 export class CartComponent {
   cartCount:number =4;
+  PinNumber:number =500090;
 
   constructor(){
     function increaseValue():void {
@@ -51,6 +53,5 @@ export class CartComponent {
       Percentage:17,
       ShippingType:'Express'
     }
-  ];
- 
+  ];   
 }

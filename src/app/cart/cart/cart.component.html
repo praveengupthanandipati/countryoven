@@ -9,7 +9,7 @@
                         <span class="icon-route h1 font-primary"></span>
                         <div class="ps-3 align-self-center">
                             <h6 class="font-gray">Deliver to: <span
-                                    class="font-black d-inline-block ps-3 font-semibold">500090</span>
+                                    class="font-black d-inline-block ps-3 font-semibold">{{PinNumber}}</span>
                             </h6>
                         </div>
                     </div>
@@ -76,8 +76,53 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="d-flex p-2 applycoupons">
+                    <span class="icon-coupon h1 font-primary pb-0 mb-0"></span>
+                    <h6 class="h6 font-black font-semibold ps-3 align-self-center">Apply Coupons</h6>
+                </div>
+                <div class="PriceDetails p-2 border my-3">
+                    <h6 class="h6 font-black font-semibold align-self-center pb-3">Price Details</h6>
+                    <div class="d-flex justify-content-between py-1">
+                        <p>MRP Details</p>
+                        <p class="text-end">₹ 2,407</p>
+                    </div>
+                    <div class="d-flex justify-content-between py-1">
+                        <p>MRP Discount</p>
+                        <p class="text-end font-green">-₹ 750</p>
+                    </div>
+                    <div class="d-flex justify-content-between py-1">
+                        <p>Delivery Charges</p>
+                        <p class="text-end font-green">FREE</p>
+                    </div>
+                    <div class="d-flex justify-content-between py-1">
+                        <p>Convenience Charges</p>
+                        <p class="text-end">₹ 52</p>
+                    </div>
+                    <div class="d-flex justify-content-between py-3 totalamount my-2">
+                        <h6 class="h6 font-bold">Total Amount</h6>
+                        <p class="text-end font-bold">₹ 1,662</p>
+                    </div>
+                    <a href="javascript:void(0)" class="color-btn d-block ">Continue to Checkout</a>
+                    <p class="font-green font-bold py-3 text-center">You will save ₹ 750 on this order</p>
+                </div>
+                <a href="javascript:void(0)" class="color-border-btn d-block ">Continue Shopping</a>
+
+            </div>
         </div>
+
+        <!-- explore products -->
+        <div class="explore-products">
+            <h1 class="h5 font-semibold pb-3">Explore Addons Along with your order</h1>
+            <div class="container">
+                <div class="products-list-items">
+                    <div class="row row-flex">
+                        <p>List of Product Items</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ explore products-->
 
     </div>
 </section>

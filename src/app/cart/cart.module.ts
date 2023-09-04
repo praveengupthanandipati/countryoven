@@ -9,12 +9,12 @@ import { CartheaderComponent } from './cartheader/cartheader.component';
 @NgModule({
   declarations: [
     CartComponent,
-    CartheaderComponent
+    CartheaderComponent  
   ],
   imports: [
     CommonModule,
     SharedModule,
-    CartRoutingModule
+    CartRoutingModule    
   ]
 })
 export class CartModule { }
