@@ -165,3 +165,14 @@ body {
     }
   }
 }
+
+.content-cart-col {
+  height: 190px;
+}
+.applycoupons {
+  border: 1px dotted map-get($colors, black);
+}
+.totalamount {
+  border-top: 1px dotted map-get($colors, black);
+  border-bottom: 1px dotted map-get($colors, black);
+}

@@ -103,10 +103,11 @@
                         <h6 class="h6 font-bold">Total Amount</h6>
                         <p class="text-end font-bold">₹ 1,662</p>
                     </div>
-                    <a href="javascript:void(0)" class="color-btn d-block ">Continue to Checkout</a>
+                    <a routerLink="Address-Cart" class="color-btn d-block" data-bs-toggle="modal"
+                        data-bs-target="#AddonsProducts">Continue to Checkout</a>
                     <p class="font-green font-bold py-3 text-center">You will save ₹ 750 on this order</p>
                 </div>
-                <a href="javascript:void(0)" class="color-border-btn d-block ">Continue Shopping</a>
+                <a routerLink=" " class="color-border-btn d-block ">Continue Shopping</a>
 
             </div>
         </div>
@@ -123,6 +124,26 @@
             </div>
         </div>
         <!--/ explore products-->
-
     </div>
 </section>
+
+
+<!-- addons product popup modal-->
+<div class="modal fade" id="AddonsProducts" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Addons Products to Cart</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">                
+                <button type="button" class="color-btn border-0" data-bs-dismiss="modal">Go to Cart</button>
+                <button type="button" class="color-border-btn" >Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+</div>
