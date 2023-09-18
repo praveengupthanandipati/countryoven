@@ -1,7 +1,7 @@
 <app-cartheader></app-cartheader>
 <section class="cart-subpage">
     <div class="container">
-        <h1 class="h5 font-semibold pb-3">Shopping Cart ({{cartCount}})</h1>
+        <h1 class="h5 font-medium pb-3">Shopping Cart ({{cartCount}})</h1>
         <div class="row">
             <div class="col-md-8">
                 <div class="deliver-location d-flex justify-content-between p-2 border">
@@ -43,8 +43,7 @@
                                             </form>
                                         </div>
                                         <div>
-                                            <p><small>Shipping Type: <span
-                                                        class="font-green font-semibold">{{CartItem.ShippingType}}</span></small>
+                                            <p><small>Shipping Type: <span class="font-green font-semibold">{{CartItem.ShippingType}}</span></small>
                                             </p>
                                         </div>
                                     </div>
@@ -52,8 +51,8 @@
                                 <div class="col-md-6">
                                     <div class="d-flex justify-content-between flex-column content-cart-col">
                                         <div class="price py-2">
-                                            <div class="offer-price font-bold text-end"><span
-                                                    class="icon-inr icomoon font-bold"></span>{{CartItem.Offerprice}}.00
+                                            <div class="offer-price text-end font-bold"><span
+                                                    class="icon-inr icomoon"></span>{{CartItem.Offerprice}}.00
                                             </div>
                                             <div class="d-flex justify-content-end">
                                                 <div class="mrp font-semi-bold align-self-center px-2">
@@ -67,7 +66,7 @@
                                         </div>
                                         <div class="text-end">
                                             <a href="javascript:void(0)"><span class="icon-delete font-black"></span>
-                                                <span class="font-red font-semibold">Delete</span></a>
+                                                <span class="font-red font-medium">Delete</span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -79,42 +78,41 @@
             <div class="col-md-4">
                 <div class="d-flex p-2 applycoupons">
                     <span class="icon-coupon h1 font-primary pb-0 mb-0"></span>
-                    <h6 class="h6 font-black font-semibold ps-3 align-self-center">Apply Coupons</h6>
+                    <h6 class="h6 font-black font-medium ps-3 align-self-center">Apply Coupons</h6>
                 </div>
                 <div class="PriceDetails p-2 border my-3">
-                    <h6 class="h6 font-black font-semibold align-self-center pb-3">Price Details</h6>
-                    <div class="d-flex justify-content-between py-1">
+                    <h6 class="h6 font-black font-medium align-self-center pb-3">Price Details</h6>
+                    <div class="d-flex justify-content-between py-2">
                         <p>MRP Details</p>
                         <p class="text-end">₹ 2,407</p>
                     </div>
-                    <div class="d-flex justify-content-between py-1">
+                    <div class="d-flex justify-content-between py-2">
                         <p>MRP Discount</p>
                         <p class="text-end font-green">-₹ 750</p>
                     </div>
-                    <div class="d-flex justify-content-between py-1">
+                    <div class="d-flex justify-content-between py-2">
                         <p>Delivery Charges</p>
                         <p class="text-end font-green">FREE</p>
                     </div>
-                    <div class="d-flex justify-content-between py-1">
-                        <p>Convenience Charges</p>
+                    <div class="d-flex justify-content-between py-2">
+                        <p>Convenience Charges <span class="icon-info"></span> </p>
                         <p class="text-end">₹ 52</p>
                     </div>
                     <div class="d-flex justify-content-between py-3 totalamount my-2">
-                        <h6 class="h6 font-bold">Total Amount</h6>
-                        <p class="text-end font-bold">₹ 1,662</p>
+                        <h6 class="h6 font-semibold">Total Amount</h6>
+                        <p class="text-end font-semibold">₹ 1,662</p>
                     </div>
                     <a routerLink="Address-Cart" class="color-btn d-block" data-bs-toggle="modal"
                         data-bs-target="#AddonsProducts">Continue to Checkout</a>
-                    <p class="font-green font-bold py-3 text-center">You will save ₹ 750 on this order</p>
+                    <p class="font-green font-medium py-3 text-center">You will save ₹ 750 on this order</p>
                 </div>
                 <a routerLink=" " class="color-border-btn d-block ">Continue Shopping</a>
-
             </div>
         </div>
 
         <!-- explore products -->
         <div class="explore-products">
-            <h1 class="h5 font-semibold pb-3">Explore Addons Along with your order</h1>
+            <h1 class="h5 font-medium pb-3">Explore Addons Along with your order</h1>
             <div class="container">
                 <div class="products-list-items">
                     <div class="row row-flex">
@@ -140,9 +138,9 @@
             <div class="modal-body">
                 ...
             </div>
-            <div class="modal-footer">                
+            <div class="modal-footer">
                 <button type="button" class="color-btn border-0" data-bs-dismiss="modal">Go to Cart</button>
-                <button type="button" class="color-border-btn" >Proceed to Checkout</button>
+                <button type="button" class="color-border-btn">Proceed to Checkout</button>
             </div>
         </div>
     </div>

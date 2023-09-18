@@ -8,15 +8,13 @@ import { CartModule } from './cart/cart.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-      
+    AppComponent,      
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CartModule,
     LoginModule
-   
   ],
   providers: [],
   bootstrap: [AppComponent]

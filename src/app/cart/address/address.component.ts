@@ -37,5 +37,31 @@ export class AddressComponent {
       Label:'Guest House',
       Address:'Flat No:G-4, Kondaveedu Enclave, Maa Villas Road, Kousalya colony, Bachupally, Nellore'      
     }
-  ]
+  ];
+  CartItems:any=[
+    {
+      Image: 'assets/images/products/product01.jpg', 
+      Name: 'Precious Beauty',
+      Offerprice:1299,
+      Mrp:1500,
+      Percentage:17,
+      EstimateDelivery:'Today'
+    },
+    {
+      Image: 'assets/images/products/product02.jpg', 
+      Name: 'Precious Beauty',
+      Offerprice:1299,
+      Mrp:1500,
+      Percentage:17,
+      EstimateDelivery:'Tomorrow'
+    },
+    {
+      Image: 'assets/images/products/product03.jpg', 
+      Name: 'Precious Beauty',
+      Offerprice:1299,
+      Mrp:1500,
+      Percentage:17,
+      EstimateDelivery:'Today'
+    }
+  ];
 }

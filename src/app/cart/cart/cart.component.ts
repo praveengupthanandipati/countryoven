@@ -53,5 +53,5 @@ export class CartComponent {
       Percentage:17,
       ShippingType:'Express'
     }
-  ];   
+  ]; 
 }

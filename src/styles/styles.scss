@@ -104,6 +104,8 @@ body {
 }
 
 .form-control {
+  border-radius: 0;
+  padding: 10px;
   &:focus {
     box-shadow: none;
     outline: none;
@@ -143,6 +145,10 @@ body {
 
 .cart-subpage {
   padding-top: 30px;
+
+  .PriceDetails {
+    font-size: $fsize - 1;
+  }
 }
 
 .price {
