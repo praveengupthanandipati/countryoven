@@ -4,7 +4,6 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
-
 const routes: Routes = [
   {path:'Login', component:LoginFormComponent},
   {path:'Signup', component:RegistrationFormComponent},  

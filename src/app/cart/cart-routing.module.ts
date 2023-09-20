@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './cart/cart.component';
 import { AddressComponent } from './address/address.component';
 import { PersonalizeComponent } from './personalize/personalize.component';
+import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
   {path:'', component:CartComponent},
-  {path:'Address-Cart', component:AddressComponent},
+  {path:'Address', component:AddressComponent},
   {path:'Personalize', component:PersonalizeComponent},
+  {path:'Payment', component:PaymentComponent}
 ];
 
 @NgModule({

@@ -4,19 +4,85 @@
         <h1 class="h5 font-semibold pb-3">Personalize Your Gift </h1>
         <div class="row">
             <div class="col-md-8">
-                <div class="deliver-location d-flex justify-content-between p-2 border">
-                    <div class="d-flex">
-                        <span class="icon-route h1 font-primary"></span>
-                        <div class="ps-3 align-self-center">
-                            <h6 class="font-gray">Deliver to: <span
-                                    class="font-black d-inline-block ps-3 font-semibold">{{PinNumber}}</span>
-                            </h6>
+                <div class="address-cards pt-4">
+                    <div class="card mb-3 rounded-0">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <h6 class="card-title font-gray h6 align-self-center">Deliver to: <span
+                                        class="text-black font-semibold">Praveen Kumar N, 500090</span><span
+                                        class="badge bg-light text-dark d-inline-block ms-2 border">Home</span>
+                                </h6>
+                                <a href="" class="color-border-btn">Change</a>
+                            </div>
+                            <div class="py-1">
+                                <p>Flat No:G-4, Kondaveedu Enclave, Maa Villas Road, Kousalya colony, Bachupally,
+                                    Hyderabad</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="align-self-center">
-                        <a href="javascript:void(0)" class="color-border-btn">Change Pincode</a>
+                </div>
+
+                <!-- personalize information of cart-->
+                <div class="pt-2 row">
+                    <div class="col-md-4">
+                        <label>Select Delivery Date and time</label>
+                        <div class="form-group d-flex p-2 background-lightprimary rounded">
+                            <span
+                                class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
+                            <input type="datetime-local" class="form-control border-0 bg-transparent"
+                                placeholder="Select Delivery Date">
+                        </div>
+                    </div>
+                    <div class="col-md-12 pt-3">
+                        <p class="font-bold font-gray">Select Occasion</p>
+                        <div class="badge-pill">
+                            <a href="javascript:void(0)"
+                                class="d-inline-block rounded-pill py-1 px-3 font-white me-3 background-primary">Birthday</a>
+                            <a href="javascript:void(0)"
+                                class="d-inline-block rounded-pill border py-1 px-3 font-black me-3">Anniversary</a>
+                            <a href="javascript:void(0)"
+                                class="d-inline-block rounded-pill border py-1 px-3 font-black me-3">Other Occasion</a>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group d-flex p-2  background-lightprimary rounded mt-3">
+                            <span
+                                class="icon-writing font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
+                            <input type="text" class="form-control border-0 bg-transparent"
+                                placeholder="Happy Birthday Vishnu, All the best for future Career">
+                        </div>
                     </div>
                 </div>
+
+                <div class="row pt-4">
+                    <div class="col-md-12">
+                        <h5 class="h5 pb-3">Sender Information <small style="font-size:12px;" class="font-secondary">Order related
+                                communication
+                                will also be sent on these
+                                details.</small></h5>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label small mb-0">Senders Name</label>
+                            <input type="text" class="form-control" placeholder="Senders Name" value="Praveen Kumar">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label small mb-0">Senders Phone Number</label>
+                            <input type="text" class="form-control" placeholder="Senders Phone Number"
+                                value="+91 7995165789">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3 form-check pt-2">
+                            <input type="checkbox" class="form-check-input" id="hideSenderInfo">
+                            <label class="form-check-label" for="hideSenderInfo">Hide Sender Information from
+                                Recipient</label>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <div class="col-md-4">
                 <div class="d-flex p-2 applycoupons">
@@ -48,9 +114,9 @@
                     <div class="form-check py-2">
                         <input class="form-check-input" type="checkbox" value="" id="agreeTerms">
                         <label class="form-check-label" for="agreeTerms">
-                          I Agree with <a href="/" class="font-primary">Terms & Conditions</a>
+                            I Agree with <a href="/" class="font-primary">Terms & Conditions</a>
                         </label>
-                      </div>
+                    </div>
                     <a routerLink="Address-Cart" class="color-btn d-block font-semibold">Continue to Payment</a>
                 </div>
             </div>

@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { CartheaderComponent } from './cartheader/cartheader.component';
 import { AddressComponent } from './address/address.component';
 import { PersonalizeComponent } from './personalize/personalize.component';
+import { PaymentComponent } from './payment/payment.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { PersonalizeComponent } from './personalize/personalize.component';
     CartComponent,
     CartheaderComponent,
     AddressComponent,
-    PersonalizeComponent  
+    PersonalizeComponent,
+    PaymentComponent  
   ],
   imports: [
     CommonModule,
