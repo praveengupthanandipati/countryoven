@@ -7,9 +7,23 @@
                 <li class="breadcrumb-item active" aria-current="page">My Account</li>
             </ol>
         </nav>
-        <div class="profile-page-title px-2 d-flex justify-content-between background-lightprimary py-3 my-2">
+        <div class="profile-page-title px-3 d-flex justify-content-between background-lightprimary py-3 my-2">
             <h5 class="h5 text-uppercase font-bold">My Account</h5>
-            <h6 class="h6">Hi, Praveen Kumar</h6>
+            <h6 class="h6 tex-end">Hi, Praveen Kumar</h6>
+        </div>
+        <div class="profile-subpage">
+            <div class="row">
+                <div class="col-md-4" *ngFor="let userDbItem of userDbItems">
+                    <a class="profile-db-card border py-3 my-3 text-cente d-block" routerLink="{{userDbItem.Link}}">
+                        <div class="mx-auto icon rounded-circle">
+                            <span class="{{userDbItem.Icon}} icomoon"></span>
+                        </div>
+                        <h6 class="h6 font-semibold text-center pt-3 font-black">{{userDbItem.Title}}</h6>
+                        <p class="font-gray text-center"><small>{{userDbItem.LinkName}}</small></p>
+                    </a>
+                </div>               
+            </div>
         </div>
     </div>
 </section>
+<app-footer></app-footer>

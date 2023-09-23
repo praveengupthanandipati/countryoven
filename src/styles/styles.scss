@@ -182,3 +182,8 @@ body {
   border-top: 1px dotted map-get($colors, black);
   border-bottom: 1px dotted map-get($colors, black);
 }
+
+//profile styles
+.userProfile{
+  min-height: 500px;
+}
