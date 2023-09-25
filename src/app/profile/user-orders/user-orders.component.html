@@ -1,0 +1,61 @@
+<app-header></app-header>
+<section class="userProfile py-3">
+    <div class="container">
+        <nav aria-label="breadcrumb" class="align-self-center">
+            <ol class="breadcrumb pb-0 mb-0">
+                <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+                <li class="breadcrumb-item"><a routerLink="/Profile">My Account</a></li>
+                <li class="breadcrumb-item active" aria-current="page">My Orders</li>
+            </ol>
+        </nav>
+        <div class="profile-page-title px-3 d-flex justify-content-between background-lightprimary py-3 my-2">
+            <h5 class="h5 text-uppercase font-bold">My Orders</h5>
+            <h6 class="h6 tex-end">Hi, Praveen Kumar</h6>
+        </div>
+        <app-profile-nav></app-profile-nav>
+        <div class="userprofile-body">
+            <div class="user-order border p-2 mb-3">
+                <div class="row">
+                    <div class="col-md-2">
+                        <a href="/product-detail">
+                            <img src="assets/images/products/product01.jpg" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="d-flex justify-content-between flex-column user-order-col">
+                                    <div>
+                                        <h5 class="h5">
+                                            <a href="/product-detail" class="font-black font-semibold">Precious
+                                                Beauty Flowers</a>
+                                        </h5>
+                                        <p><small class="font-gray"><span class="icon-star"></span> Delivered on <span
+                                                    class="font-green font-semibold">July 20</span></small></p>
+                                    </div>
+                                    <div>
+                                        <p><small>Your item has been delivered</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex justify-content-between flex-column user-order-col">
+                                    <div>
+                                        <div class="price py-2">
+                                            <div class="offer-price text-end font-bold"><span
+                                                    class="icon-inr icomoon"></span>1299.00 </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-end">
+                                        <a href="/Reviews" class="font-blue font-semibold"><span
+                                                class="icon-star"></span> Rate & Review Product</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

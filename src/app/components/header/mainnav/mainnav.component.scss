@@ -93,3 +93,16 @@
     }
   }
 }
+
+.navbar-toggler {
+  @include max(map-get($breakpoints, "sm")) {
+    position: absolute;
+    top: -156px;
+    left: 0;
+    border:none;
+
+    &:focus{
+      box-shadow: none;
+    }
+  }
+}

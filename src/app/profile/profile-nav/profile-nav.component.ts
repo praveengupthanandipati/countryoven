@@ -16,13 +16,9 @@ export class ProfileNavComponent {
       navLabel:'My Profile'
     },
     {
-      navLink:'/My Profile',
+      navLink:'/Orders',
       navLabel:'My Orders'
-    },
-    {
-      navLink:'/My Profile',
-      navLabel:'My Reminders'
-    },
+    },    
     {
       navLink:'/My Profile',
       navLabel:'Address'

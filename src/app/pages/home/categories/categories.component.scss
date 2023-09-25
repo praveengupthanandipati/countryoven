@@ -5,12 +5,27 @@
     text-align: center;
     display: inline-block;
     @include transition(all, 0.3s ease);
+   
+    @include minMax(map-get($breakpoints, "xs"), map-get($breakpoints, "sm")){
+      width:33.3%;
+      margin-bottom:15px;
+    }
     img {
-      min-width: 82px;
+      min-width: 95px;
+
+      @include minMax(map-get($breakpoints, "xs"), map-get($breakpoints, "sm")){
+        width:33.3%;
+        min-width: auto;
+      }
     }
     h6 {
       color: map-get($colors, black);
       text-transform: uppercase;
+
+      @include minMax(map-get($breakpoints, "xs"), map-get($breakpoints, "sm")){
+       font-size:12px;
+       text-transform: capitalize;
+      }
     }
 
     &:hover{

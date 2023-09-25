@@ -5,12 +5,14 @@ import { SharedModule } from '../shared/shared.module';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ProfileNavComponent } from './profile-nav/profile-nav.component';
+import { UserOrdersComponent } from './user-orders/user-orders.component';
 
 @NgModule({
   declarations: [
     UserDashboardComponent,
     UserProfileComponent,
-    ProfileNavComponent
+    ProfileNavComponent,
+    UserOrdersComponent
   ],
   imports: [
     CommonModule,

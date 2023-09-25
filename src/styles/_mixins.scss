@@ -24,54 +24,21 @@
   -ms-box-shadow: $x-axis $y-axis $blur $color;
 }
 
-//mixins for devices responsive
-@mixin xs {
-  @media (min-width: map-get($breakpoints, "xs")) {
+ //mixins for devices responsive
+ @mixin minMax($min, $max) {
+  @media (min-width: #{$min}) and (max-width: #{$max}) {
     @content;
   }
 }
 
-@mixin sm {
-  @media (min-width: map-get($breakpoints, "sm")) {
+@mixin min($min) {
+  @media (min-width: #{$min}) {
     @content;
   }
 }
 
-@mixin md {
-  @media (min-width: map-get($breakpoints, "md")) {
+@mixin max($max) {
+  @media (max-width: #{$max}) {
     @content;
   }
 }
-
-@mixin lg {
-  @media (min-width: map-get($breakpoints, "lg")) {
-    @content;
-  }
-}
-@mixin xl {
-  @media (min-width: map-get($breakpoints, "xl")) {
-    @content;
-  }
-}
-@mixin xxl {
-  @media (min-width: map-get($breakpoints, "xxl")) {
-    @content;
-  }
-}
-
-//custom break point
-@mixin breakpoints($bp: 0) {
-  @media (min-width: $bp) {
-    @content;
-  }
-}
-
-
-//example
-// @include breakpoints(1600px) {
-//   color: red;
-// }
-
-// @include sm {
-//   color: yellow;
-// }

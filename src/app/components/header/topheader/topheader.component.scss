@@ -4,7 +4,17 @@
   background: map-get($colors, primary);
   color: map-get($colors, white);
 
-  .offers {
+  @include max(map-get($breakpoints, "sm")){
+    display: none;
+  }
+
+  .offers {   
+    display: flex;
+
+    // @include minMax(map-get($breakpoints, "xs"), map-get($breakpoints, "sm")){
+    //   display: none;
+    // }
+
     .h6 {
       font-size: $fsize + 1;
     }
