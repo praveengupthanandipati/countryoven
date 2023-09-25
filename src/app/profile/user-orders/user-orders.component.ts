@@ -7,4 +7,37 @@ import { Component } from '@angular/core';
 })
 export class UserOrdersComponent {
 
+  userOrders=[
+    {
+      Image:'assets/images/products/product01.jpg', 
+      Name:'Precious Beauty Flowers', 
+      Date:'July 20',
+      Status:'Your item has been delivered',
+      Price:1299,
+    },
+    {
+      Image:'assets/images/products/product02.jpg', 
+      Name:'Precious Beauty Flowers', 
+      Date:'July 20',
+      Status:'Your item has been delivered',
+      Price:1299,
+    },
+    {
+      Image:'assets/images/products/product03.jpg', 
+      Name:'Precious Beauty Flowers', 
+      Date:'July 20',
+      Status:'Your item has been delivered',
+      Price:1299,
+    },
+    {
+      Image:'assets/images/products/product04.jpg', 
+      Name:'Precious Beauty Flowers', 
+      Date:'July 20',
+      Status:'Your item has been delivered',
+      Price:1299,
+    },
+    
+  ]
+
+
 }

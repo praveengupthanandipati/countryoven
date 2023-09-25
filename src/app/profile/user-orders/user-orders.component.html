@@ -14,11 +14,11 @@
         </div>
         <app-profile-nav></app-profile-nav>
         <div class="userprofile-body">
-            <div class="user-order border p-2 mb-3">
+            <div class="user-order border p-2 mb-3" *ngFor="let userOrder of userOrders">
                 <div class="row">
                     <div class="col-md-2">
                         <a href="/product-detail">
-                            <img src="assets/images/products/product01.jpg" alt="" class="img-fluid">
+                            <img src="{{userOrder.Image}}" alt="" class="img-fluid">
                         </a>
                     </div>
                     <div class="col-md-10">
@@ -27,14 +27,13 @@
                                 <div class="d-flex justify-content-between flex-column user-order-col">
                                     <div>
                                         <h5 class="h5">
-                                            <a href="/product-detail" class="font-black font-semibold">Precious
-                                                Beauty Flowers</a>
+                                            <a href="/product-detail" class="font-black font-semibold">{{userOrder.Name}}</a>
                                         </h5>
                                         <p><small class="font-gray"><span class="icon-star"></span> Delivered on <span
-                                                    class="font-green font-semibold">July 20</span></small></p>
+                                                    class="font-green font-semibold">{{userOrder.Date}}</span></small></p>
                                     </div>
                                     <div>
-                                        <p><small>Your item has been delivered</small></p>
+                                        <p><small>{{userOrder.Status}}</small></p>
                                     </div>
                                 </div>
                             </div>
@@ -43,7 +42,7 @@
                                     <div>
                                         <div class="price py-2">
                                             <div class="offer-price text-end font-bold"><span
-                                                    class="icon-inr icomoon"></span>1299.00 </div>
+                                                    class="icon-inr icomoon"></span>{{userOrder.Price}}.00 </div>
                                         </div>
                                     </div>
                                     <div class="text-end">
