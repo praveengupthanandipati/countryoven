@@ -17,7 +17,7 @@
             <div class="user-order border p-2 mb-3" *ngFor="let userOrder of userOrders">
                 <div class="row">
                     <div class="col-md-2">
-                        <a href="/product-detail">
+                        <a href="/Order-Detail">
                             <img src="{{userOrder.Image}}" alt="" class="img-fluid">
                         </a>
                     </div>
@@ -27,7 +27,7 @@
                                 <div class="d-flex justify-content-between flex-column user-order-col">
                                     <div>
                                         <h5 class="h5">
-                                            <a href="/product-detail" class="font-black font-semibold">{{userOrder.Name}}</a>
+                                            <a href="/Order-Detail" class="font-black font-semibold">{{userOrder.Name}}</a>
                                         </h5>
                                         <p><small class="font-gray"><span class="icon-star"></span> Delivered on <span
                                                     class="font-green font-semibold">{{userOrder.Date}}</span></small></p>
@@ -58,3 +58,4 @@
         </div>
     </div>
 </section>
+<app-footer></app-footer>

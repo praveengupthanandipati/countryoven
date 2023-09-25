@@ -6,13 +6,15 @@ import { ProfileRoutingModule } from './profile-routing.module';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ProfileNavComponent } from './profile-nav/profile-nav.component';
 import { UserOrdersComponent } from './user-orders/user-orders.component';
+import { UserOrderDetailComponent } from './user-order-detail/user-order-detail.component';
 
 @NgModule({
   declarations: [
     UserDashboardComponent,
     UserProfileComponent,
     ProfileNavComponent,
-    UserOrdersComponent
+    UserOrdersComponent,
+    UserOrderDetailComponent
   ],
   imports: [
     CommonModule,
