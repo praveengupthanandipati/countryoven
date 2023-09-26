@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-midheader',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls:['./midheader.component.scss']
 })
 export class MidheaderComponent {
-
+  @Input('searchList') searchList:any;
 }

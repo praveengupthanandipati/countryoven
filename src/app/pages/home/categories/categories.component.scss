@@ -11,8 +11,8 @@
       margin-bottom:15px;
     }
     img {
-      min-width: 95px;
-
+      width: 95px;
+height:95px;
       @include minMax(map-get($breakpoints, "xs"), map-get($breakpoints, "sm")){
         width:33.3%;
         min-width: auto;

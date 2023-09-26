@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CurdService } from 'src/app/services/curd.service';
 
 
 @Component({
@@ -6,7 +7,17 @@ import { Component } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrls:['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
+  banners:any;
+  iconicBanners:any;
+  smallBanners:any;
+  constructor(private _crud:CurdService)
+  {
+  
+  }
+  ngOnInit(): void {
+    this.getBanners()
+  }
   productvalues:any[] = [
     {
     Image: 'assets/images/products/product01.jpg', 
@@ -109,4 +120,17 @@ export class HomeComponent {
       Name:'Personalised Flowers'
     },
   ]
+
+
+  getBanners(): void {
+     
+      
+    this._crud.getBanners().subscribe(res => {
+     console.log(res)
+     this.banners=res.banners;
+    this.iconicBanners=res.iconicBanners;
+    this.smallBanners=res.smallBanners;
+    })
+  }
+
 }

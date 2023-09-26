@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-mainnav',
@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./mainnav.component.scss']
 })
 export class MainnavComponent {
+  @Input('categoryList') categoryList:any;
+  @Input('menuList') menuList:any;
+  constructor()
+{
 
+}
+  ngOnInit(): void {
+    console.log(this.categoryList)
+  }
 }

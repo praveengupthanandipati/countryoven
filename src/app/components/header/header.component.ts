@@ -1,10 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CurdService } from 'src/app/services/curd.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls:['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent  implements OnInit {
+  categoryList:any;
+  menuList:any;
+  scrollingMessage:any;
+  scrollingOn:any;
+  searchList:any;
 
-}
+  constructor(private _crud:CurdService)
+  {
+  
+  }
+    ngOnInit(): void {
+      this.getData()
+    }
+  
+    
+    getData(): void {
+     
+      
+        this._crud.getTopHeader('').subscribe(res => {
+         console.log(res)
+         this.scrollingMessage=res.scrollingMessage
+         this.categoryList=res.categoryList;
+         this.menuList=res.menuList;
+         this.searchList=res.searchList;
+        })
+      }
+    
+  }

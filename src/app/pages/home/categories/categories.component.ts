@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-categories',
@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent {
+  @Input('iconicBanners') iconicBanners:any;
   categories=[
     {name: 'CAKES', image:'assets/images/categories/cakes.svg'},
     {name: 'FLOWERS', image:'assets/images/categories/flowers.svg'},

@@ -5,7 +5,27 @@
     </div>
     <div class="custom-container">
         <div class="row pt-4">
-            <div class="col-md-6">
+
+            <ng-container *ngFor="let sb of smallBanners">
+                <div class="col-md-6"  [ngClass]="{'col-md-6': !sb.isSmall, 'col-md-3' : sb.isSmall }">
+                    <div class="category-banner-item position-relative">
+                        <figure>
+                            <div class="figurediv position-relative">
+                              <img [src]="sb.imageName" class="img-fluid w-100">
+                                <!-- <img src="assets/images/categories/chocolate-cake-dessert-sweets-cake-chocolate.jpg" alt=""
+                                    class="img-fluid w-100"> -->
+                            </div>
+                        </figure>
+                        <article class="position-absolute">
+                            <h5 class="font-bold text-white pb-3">{{sb.imageText}}</h5>
+                            <div>
+                                <a class="color-btn" href="javascript:void(0)">Shop Now</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </ng-container>
+            <!-- <div class="col-md-6">
                 <div class="category-banner-item position-relative">
                     <figure>
                         <div class="figurediv position-relative">
@@ -96,7 +116,7 @@
                         </div>
                     </article>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </section>

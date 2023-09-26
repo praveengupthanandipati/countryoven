@@ -12,10 +12,8 @@
                             <input type="text" placeholder="Search Cakes, Flowers, Gifts, etc..."
                                 class="searchinput no-border form-control-plaintext" list="search-products">
                             <datalist id="search-products">
-                                <option value="Cakes"></option>
-                                <option value="Flowers"></option>
-                                <option value="Chocolates"></option>
-                                <option value="Combos"></option>
+                                <option *ngFor="let i of searchList" [value]="i"></option>
+                               
                             </datalist>
                         </div>
                     </div>

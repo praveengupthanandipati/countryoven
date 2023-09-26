@@ -9,12 +9,88 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link active dropdown-toggle font-bold spllink" aria-current="page"
                                 routerLink="/products-list" routerLinkActive="active">Rakhis</a>
+                        </li> -->
+
+                        <li *ngFor="let menu of categoryList" class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle font-bold" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            {{menu.title}}
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-full-width" *ngIf="menu.subCategoryList.length">
+                            <div class="custom-container pe-0">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="main-div-links d-flex">
+                                           
+                                           
+                                           
+                                           
+                                           
+                                           
+                                            <ng-container *ngIf="menu.subCategoryList.length ">
+                                                <div> <a *ngFor="let item of menu.subCategoryList.slice(0, menu.subCategoryList.length / 2)">{{ item.title }}</a>
+                                                  
+                                                </div>
+                                                <div> <a *ngFor="let item of menu.subCategoryList.slice(menu.subCategoryList.length / 2)">{{ item.title }}</a>
+                                                  
+                                                </div>
+                                              </ng-container>
+                                            
+                                           
+                                           
+                                           
+                                           
+                                           
+                                           
+                                           
+                                           
+                                           
+                                           
+                                           
+                                           
+                                           
+                                           
+                                           
+                                           
+                                           
+                                            <!-- <div>
+                                                <a href="javascript:void(0)">All Cakes</a>
+                                                <a href="javascript:void(0)">Best Sellers</a>
+                                                <a href="javascript:void(0)">Tail Cakes</a>
+                                                <a href="javascript:void(0)">Personalized Cakes</a>
+                                                <a href="javascript:void(0)">Tier Cakes</a>
+                                                <a href="javascript:void(0)">Theme Cakes</a>
+                                                <a href="javascript:void(0)">Best Collections</a>
+                                                <a href="javascript:void(0)">Chocolate Cakes</a>
+                                                <a href="javascript:void(0)">Customized Cakes</a>
+                                            </div>
+                                            <div>
+                                                <a href="javascript:void(0)">New Collection</a>
+                                                <a href="javascript:void(0)">Barbie Cakes</a>
+                                                <a href="javascript:void(0)">Fruit Cakes</a>
+                                                <a href="javascript:void(0)">Fancy Cakes</a>
+                                                <a href="javascript:void(0)">Sugar Free Cakes</a>
+                                                <a href="javascript:void(0)">Designer Cakes</a>
+                                                <a href="javascript:void(0)">Kids Cakes</a>
+                                                <a href="javascript:void(0)">Emoji Cakes</a>
+                                                <a href="javascript:void(0)">Eggless Cakes</a>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 px-0 text-end">
+                                        <img [src]="menu.categoryImagePath" alt=""
+                                            class="img-fluid w-100">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         </li>
 
-                        <li class="nav-item dropdown">
+                        <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle font-bold" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Cakes
@@ -55,8 +131,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </li>
-                        <li class="nav-item">
+                        </li> -->
+                        <!-- <li class="nav-item">
                             <a class="nav-link dropdown-toggle font-bold" href="#" data-bs-toggle="dropdown"
                                 aria-expanded="false" href="#">Flowers</a>
                         </li>
@@ -91,7 +167,7 @@
                         <li class="nav-item">
                             <a class="nav-link dropdown-toggle font-bold" href="#" data-bs-toggle="dropdown"
                                 aria-expanded="false" href="#">SUGAR FREE CAKES</a>
-                        </li>
+                        </li> -->
                     </ul>
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
@@ -115,33 +191,11 @@
     </div>
     <div class="offcanvas-body px-0 py-3">
         <ul class="list-group">
-            <li class="list-group-item">
-                <a class="fbold" href="javascript:void(0)">Corporate Gifts</a>
+
+            <li class="list-group-item" *ngFor="let m of menuList">
+                <a class="fbold" href="javascript:void(0)">{{m.title}}</a>
             </li>
-            <li class="list-group-item">
-                <a class="fbold" href="javascript:void(0)">Help</a>
-            </li>
-            <li class="list-group-item">
-                <a class="fbold" href="javascript:void(0)">Franchise</a>
-            </li>
-            <li class="list-group-item">
-                <a class="fbold" href="javascript:void(0)">Stores Locater</a>
-            </li>
-            <li class="list-group-item">
-                <a class="fbold" href="javascript:void(0)">Become a Partner</a>
-            </li>
-            <li class="list-group-item">
-                <a class="fbold" href="javascript:void(0)">Contact</a>
-            </li>
-            <li class="list-group-item">
-                <a class="fbold" href="javascript:void(0)">About Countryoven</a>
-            </li>
-            <li class="list-group-item">
-                <a class="fbold" href="javascript:void(0)">Offers / Deals</a>
-            </li>
-            <li class="list-group-item">
-                <a class="fbold" href="javascript:void(0)">FAQ’s</a>
-            </li>
+          
         </ul>
     </div>
 </div>
