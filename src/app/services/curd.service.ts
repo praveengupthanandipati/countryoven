@@ -42,11 +42,21 @@ export class CurdService {
 
 
 getBanners(): Observable<any> {
-  const data = {
-    category: 'a'
-  }
+   return this.http.post(`${environment.apiUrl}/home/Banner`, {});
+}
+getFooters(): Observable<any> {
+  return this.http.post(`${environment.apiUrl}/home/Footer`, {});
+}
 
-  return this.http.post(`${environment.apiUrl}/home/Banner`, {});
+
+
+getProducts(obj:any):Observable<any>{
+  const data={
+    cityname:'Hyderabad',
+    country:'India',
+    currencySelected:'INR'
+  }
+return this.http.post(`${environment.apiUrl}/home/homepageproducts`,data)
 }
 
 }

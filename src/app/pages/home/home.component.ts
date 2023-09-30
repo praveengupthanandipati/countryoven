@@ -11,12 +11,14 @@ export class HomeComponent implements OnInit{
   banners:any;
   iconicBanners:any;
   smallBanners:any;
+  productSecions: any;
   constructor(private _crud:CurdService)
   {
   
   }
   ngOnInit(): void {
     this.getBanners()
+    this.getProducts();
   }
   productvalues:any[] = [
     {
@@ -123,13 +125,21 @@ export class HomeComponent implements OnInit{
 
 
   getBanners(): void {
-     
-      
     this._crud.getBanners().subscribe(res => {
      console.log(res)
      this.banners=res.banners;
     this.iconicBanners=res.iconicBanners;
     this.smallBanners=res.smallBanners;
+    })
+  }
+
+
+  
+  getProducts(): void {
+          
+    this._crud.getProducts('s').subscribe(res => {
+     console.log(res)
+     this.productSecions=res
     })
   }
 

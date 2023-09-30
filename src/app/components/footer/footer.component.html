@@ -47,7 +47,20 @@
             <div class="row py-3">
                 <div class="col-md-8">
                     <div class="d-flex justify-content-between flex-wrap">
-                        <div class="links-col">
+
+<ng-container *ngFor="let menu of footerlinks.slice(1,footerlinks.length)">
+    <div class="links-col">
+        <h5 class="h5 text-uppercase font-extrabold">{{menu.headerTitle}}</h5>
+        <div class="links">
+            <a href="javascript:void(0)" *ngFor="let sm of menu.footerLinks">{{sm.title}}</a>
+           
+        </div>
+    </div>
+
+</ng-container>
+
+
+                        <!-- <div class="links-col">
                             <h5 class="h5 text-uppercase font-extrabold">Customer Services</h5>
                             <div class="links">
                                 <a href="javascript:void(0)">Customize a Cake</a>
@@ -98,7 +111,7 @@
                                 <a href="javascript:void(0)">Special Sitemap</a>
                                 <a href="javascript:void(0)">Product Detail Sitemap</a>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="col-md-4">
