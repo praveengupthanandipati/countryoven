@@ -7,6 +7,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ProfileNavComponent } from './profile-nav/profile-nav.component';
 import { UserOrdersComponent } from './user-orders/user-orders.component';
 import { UserOrderDetailComponent } from './user-order-detail/user-order-detail.component';
+import { UserAddressComponent } from './user-address/user-address.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { UserOrderDetailComponent } from './user-order-detail/user-order-detail.
     UserProfileComponent,
     ProfileNavComponent,
     UserOrdersComponent,
-    UserOrderDetailComponent
+    UserOrderDetailComponent,
+    UserAddressComponent
   ],
   imports: [
     CommonModule,

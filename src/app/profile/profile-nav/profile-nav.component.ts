@@ -20,7 +20,7 @@ export class ProfileNavComponent {
       navLabel:'My Orders'
     },    
     {
-      navLink:'/My Profile',
+      navLink:'/User-Address',
       navLabel:'Address'
     },
     {

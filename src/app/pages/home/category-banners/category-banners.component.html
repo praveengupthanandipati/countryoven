@@ -7,7 +7,7 @@
         <div class="row pt-4">
 
             <ng-container *ngFor="let sb of smallBanners">
-                <div class="col-md-6"  [ngClass]="{'col-md-6': !sb.isSmall, 'col-md-3' : sb.isSmall }">
+                <div class="col-md-6"  [ngClass]="{'col-md-6': !sb.isSmall, 'col-6 col-md-3' : sb.isSmall }">
                     <div class="category-banner-item position-relative">
                         <figure>
                             <div class="figurediv position-relative">
@@ -18,7 +18,7 @@
                         </figure>
                         <article class="position-absolute">
                             <h5 class="font-bold text-white pb-3">{{sb.imageText}}</h5>
-                            <div>
+                            <div class="d-none d-md-block">
                                 <a class="color-btn" href="javascript:void(0)">Shop Now</a>
                             </div>
                         </article>
