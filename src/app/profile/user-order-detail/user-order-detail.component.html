@@ -1,5 +1,110 @@
 <app-header></app-header>
 <section class="userProfile py-3">
+    <div class="container">
+        <nav aria-label="breadcrumb" class="align-self-center">
+            <ol class="breadcrumb pb-0 mb-0">
+                <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+                <li class="breadcrumb-item"><a routerLink="/Profile">My Account</a></li>
+                <li class="breadcrumb-item"><a routerLink="/Orders">My Orders</a></li>
+                <li class="breadcrumb-item active" aria-current="page">OD428651524608933100</li>
+            </ol>
+        </nav>
+        <div class="profile-page-title px-3 d-flex justify-content-between background-lightprimary py-3 my-2">
+            <h5 class="h5 text-uppercase font-bold">My Orders</h5>
+            <h6 class="h6 tex-end">Hi, Praveen Kumar</h6>
+        </div>
+        <app-profile-nav></app-profile-nav>
+        <div class="userprofile-body">
+            <div class="row mb-3">
+                <div class="col-md-8">
+                    <div class="user-order-detail-box p-3 shadow-sm border">
+                        <h6 class="font-bold pb-2">Delivery Address</h6>
+                        <p class="font-bold">Praveen Kumar</p>
+                        <p class="py-3">Flat No: G-4, Kondaveedu Enclave, Maa Villas Road, Kousalya Colony, Bachupally
+                            Bachupally,
+                            Opp: Maa Villas Hyderabad - 500090, Telangana</p>
+                        <p><span class="font-bold">Phone Number:</span><span>7995165789</span>,
+                            <span>9642123254</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="user-order-detail-box p-3 shadow-sm border">
+                        <h6 class="font-bold pb-2">More Actions</h6>
+                        <a href="javascript:void(0)" class="d-flex justify-content-between border-bottom py-3 w-100">
+                            <span class="font-black">Download Invoice</span>
+                            <span class="icon-download font-black icomoon"></span>
+                        </a>
+                        <a href="javascript:void(0)" class="d-flex justify-content-between border-bottom py-3 w-100">
+                            <span class="font-black">Rate & Review Product</span>
+                            <span class="icon-star font-black icomoon"></span>
+                        </a>
 
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="user-order-detail-box p-3 shadow-sm border">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a href="/Order-Detail">
+                                    <img src="assets/images/products/product01.jpg" alt="" class="img-fluid">
+                                </a>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="d-flex justify-content-between flex-column user-order-col">
+                                            <div>
+                                                <h5 class="h5">
+                                                    <a href="/Order-Detail" class="font-black font-semibold">Precious
+                                                        Beauty Flowers</a>
+                                                </h5>
+                                                <p><small class="font-gray"><span class="icon-star"></span> Delivered on
+                                                        <span class="font-green font-semibold">July 20</span></small>
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <p><small>Your item has been delivered</small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="d-flex justify-content-between flex-column user-order-col">
+                                            <div>
+                                                <div class="price py-2">
+                                                    <div class="offer-price text-end font-bold"><span
+                                                            class="icon-inr icomoon"></span>1299.00
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="user-order-detail-box p-3 shadow-sm border">
+                        <h6 class="font-bold pb-2">Delivery Status</h6>
+                        <p class="d-flex justify-content-between border-bottom py-3">
+                            <span>Order Confirmed</span>
+                            <span class="font-bold font-green">Tue, 18th Jul</span>
+                        </p>
+                        <p class="d-flex justify-content-between border-bottom py-3">
+                            <span>Order Shipped</span>
+                            <span class="font-bold font-green">Friday, 20th Jul</span>
+                        </p>
+                        <p class="d-flex justify-content-between border-bottom py-3">
+                            <span>Delivered</span>
+                            <span class="font-bold font-green">Sat, 21st Jul</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 <app-footer></app-footer>

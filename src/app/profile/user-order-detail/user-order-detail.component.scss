@@ -1,0 +1,10 @@
+@import "../../../styles/styles";
+
+.user-order-detail-box {
+  font-size: $fsize - 1;
+  min-height: 200px;
+
+  .user-order-col {
+    height: 190px;
+  }
+}
