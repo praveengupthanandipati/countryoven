@@ -44,4 +44,8 @@
 
 .app-product-col {
   height: 100%;
+
+  @include minMax(map-get($breakpoints, "xs"), map-get($breakpoints, "sm")) {
+    margin-bottom: 15px;
+  }
 }

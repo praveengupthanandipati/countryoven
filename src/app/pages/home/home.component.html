@@ -1,11 +1,11 @@
 <section class="home-banner-swiper">
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
-            <ng-container  *ngFor="let b of banners; let i=index">
-            <button  type="button" data-bs-target="#carouselExampleIndicators"  [attr.data-bs-slide-to]="i" [class.active]="i === 0"
-                aria-current="true" aria-label="Slide 1"></button>
+            <ng-container *ngFor="let b of banners; let i=index">
+                <button type="button" data-bs-target="#carouselExampleIndicators" [attr.data-bs-slide-to]="i"
+                    [class.active]="i === 0" aria-current="true" aria-label="Slide 1"></button>
             </ng-container>
-          
+
         </div>
         <div class="carousel-inner">
             <div class="carousel-item" *ngFor="let b of banners; let i = index" [class.active]="i === 0">
@@ -80,33 +80,32 @@
 <app-category-banners *ngIf="smallBanners" [smallBanners]="smallBanners"></app-category-banners>
 
 
-<ng-container *ngFor="let cat of productSecions" >
+<ng-container *ngFor="let cat of productSecions">
 
-<section class="product-row">
-    
-    <div class="section-heading">
-        <div class="custom-container">
-            <div class="row justify-content-between border-bottom pb-3">
-                <div class="col-6">
-                    <h4 class="h4 font-bold">{{cat.sectionType}}</h4>
-                </div>
-                <div class="col-6 text-end">
-                    <a href="javascript:void(0)" class="color-btn">View All</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <section class="custom-container">
-        <div class="products-list mt-3">
-            <div class="row row-flex">
-                <div class="col-md-3 col-6" *ngFor="let productitem of cat.productList  | slice:0:4">
-                    <app-product-item [Productvalue]="productitem" class="app-product-col"></app-product-item>
+    <section class="product-row">
+        <div class="section-heading">
+            <div class="custom-container">
+                <div class="row justify-content-between border-bottom pb-3">
+                    <div class="col-6">
+                        <h4 class="h4 font-bold">{{cat.sectionType}}</h4>
+                    </div>
+                    <div class="col-6 text-end">
+                        <a href="javascript:void(0)" class="color-btn">View All</a>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <section class="custom-container">
+            <div class="products-list mt-3">
+                <div class="row row-flex">
+                    <div class="col-md-3 col-6" *ngFor="let productitem of cat.productList  | slice:0:4">
+                        <app-product-item [Productvalue]="productitem" class="app-product-col"></app-product-item>
+                    </div>
+                </div>
+            </div>
+        </section>
     </section>
-</section>
 </ng-container>
 
 <!-- krishna-->

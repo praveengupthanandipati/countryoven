@@ -4,6 +4,11 @@
   height: 100%;
   @include transition(all, 0.2s ease);
   border-radius: 20px;
+  @include minMax(map-get($breakpoints, "xs"), map-get($breakpoints, "sm")) {
+    border-radius: 10px;
+    margin-bottom: 10px;
+    height: auto;
+  }
   border: 1px solid map-get($colors, lightgray);
   .product-item-figure {
     position: relative;
@@ -11,6 +16,14 @@
     img {
       border-top-left-radius: 20px;
       border-top-right-radius: 20px;
+
+      @include minMax(
+        map-get($breakpoints, "xs"),
+        map-get($breakpoints, "sm")
+      ) {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
     }
     .seller-label {
       position: absolute;
@@ -26,11 +39,22 @@
   .item-title {
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    @include max(map-get($breakpoints, "sm")) {
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
 
     h5 {
       font-size: $fsize + 1;
       line-height: 1.5rem;
       height: 45px;
+      @include minMax(
+        map-get($breakpoints, "xs"),
+        map-get($breakpoints, "sm")
+      ) {
+        font-size: $fsize - 2;
+        line-height: 1.1rem;
+      }
       a {
         color: map-get($colors, black);
       }
@@ -45,6 +69,10 @@
         p {
           color: map-get($colors, lighten(black, 50%));
           font-size: $fsize - 2;
+
+          @include max(map-get($breakpoints, "sm")) {
+            font-size: $fsize - 4;
+          }
 
           span {
             color: map-get($colors, primary);
