@@ -17,6 +17,8 @@ export class HomeComponent implements OnInit{
   
   }
   ngOnInit(): void {
+localStorage.setItem('city', 'Hyderabad')
+
     this.getBanners()
     this.getProducts();
   }

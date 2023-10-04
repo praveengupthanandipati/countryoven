@@ -1,11 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CurdService } from 'src/app/services/curd.service';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
+  cityname:any;
+  type:any;
+  PageName:any;
+
+constructor (private _crud:CurdService, private route:ActivatedRoute)
+{}
+  ngOnInit(): void {
+  this.getPageRoutes();
+    this.getMeta();
+  this.getProductDetails();
+
+  }
+
+  getPageRoutes()
+  {
+    this.route.params.subscribe((params) => {
+      this.cityname = params['cityname']; 
+      this.type = params['type']; 
+      this.PageName = params['PageName']; 
+     
+     
+    });
+  }
+
   Filteritems=[
     {subcatname:'New Collection'},
     {subcatname:'Best Sellers'},
@@ -204,4 +230,40 @@ export class ProductListComponent {
       this.selectedItems.push(item);
     }
   };
+
+
+
+  getMeta(): void {
+    // http://test.countryoven.com/api/Product/meta?cityname=Hyderabad&Type=C&PageName=cakes
+    const data={
+      cityname:this.cityname,
+      Type:this.type,
+      PageName:this.PageName
+    }
+
+    this._crud.getMeta(data).subscribe(res => {
+     console.log(res)
+    
+    })
+  }
+
+
+  getProductDetails(): void {
+    
+    const data={
+      cityname:this.cityname,
+      country:'India',
+      Type:this.type,
+      PageName:this.PageName,
+      currencySelected:'INR',
+      PageNumber:1,
+      PageSize:40
+    }
+
+    this._crud.getProductDetails(data).subscribe(res => {
+     console.log(res)
+    
+    })
+  }
+
 }

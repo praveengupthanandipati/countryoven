@@ -15,7 +15,7 @@
                         </li> -->
 
                         <li *ngFor="let menu of categoryList" class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle font-bold" href="#" role="button"
+                            <a class="nav-link dropdown-toggle font-bold" href="javascript:;" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             {{menu.title}}
                         </a>
@@ -31,10 +31,10 @@
                                            
                                            
                                             <ng-container *ngIf="menu.subCategoryList.length ">
-                                                <div> <a *ngFor="let item of menu.subCategoryList.slice(0, menu.subCategoryList.length / 2)">{{ item.title }}</a>
+                                                <div> <a href="javascript:;" (click)="gotoroute(item.type, item.seoTitle)" *ngFor="let item of menu.subCategoryList.slice(0, menu.subCategoryList.length / 2)">{{ item.title }}</a>
                                                   
                                                 </div>
-                                                <div> <a *ngFor="let item of menu.subCategoryList.slice(menu.subCategoryList.length / 2)">{{ item.title }}</a>
+                                                <div> <a href="javascript:;" (click)="gotoroute(item.type, item.seoTitle)" *ngFor="let item of menu.subCategoryList.slice(menu.subCategoryList.length / 2)">{{ item.title }}</a>
                                                   
                                                 </div>
                                               </ng-container>
