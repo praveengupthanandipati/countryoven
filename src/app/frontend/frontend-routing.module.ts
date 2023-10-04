@@ -16,6 +16,8 @@ const routes: Routes = [
     path: '', component: FrontendComponent, children: [
       {path:'', component:HomeComponent},
       {path:'products-list', component:ProductListComponent},
+      {path:'products-list/:cityname/:type/:PageName', component:ProductListComponent},
+      
       {path:'product-detail', component:ProductDetailComponent},
       {path:'Aboutus', component:AboutusComponent},
       {path:'Stores', component:StoresComponent},

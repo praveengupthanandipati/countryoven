@@ -59,4 +59,29 @@ getProducts(obj:any):Observable<any>{
 return this.http.post(`${environment.apiUrl}/home/homepageproducts`,data)
 }
 
+
+getMeta(obj:any):Observable<any>{
+    // const data={
+    //   cityname:'Hyderabad',
+    //   Type:'India',
+    //   PageName:'INR'
+    // }
+
+  
+return this.http.post(`${environment.apiUrl}/Product/meta`,obj)
+}
+
+
+getFilters(obj:any):Observable<any>{
+ 
+  
+return this.http.post(`${environment.apiUrl}/Product/filter`,obj)
+}
+
+
+getProductDetails(obj:any):Observable<any>{
+  
+return this.http.post(`${environment.apiUrl}/Product/details`,obj)
+}
+
 }
