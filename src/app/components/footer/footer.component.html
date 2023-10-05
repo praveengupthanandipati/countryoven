@@ -46,7 +46,7 @@
         <div class="custom-container">
             <div class="row py-3">
                 <div class="col-md-8">
-                    <div class="d-flex justify-content-between flex-wrap">
+                    <div class="d-flex justify-content-between flex-wrap" *ngIf="footerlinks">
 
 <ng-container *ngFor="let menu of footerlinks.slice(1,footerlinks.length)">
     <div class="links-col">
