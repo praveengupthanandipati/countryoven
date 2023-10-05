@@ -11,13 +11,25 @@ export class ProductListComponent implements OnInit {
   cityname:any;
   type:any;
   PageName:any;
+  productData:any;
+  products:any
+filters:any=[]
+filterswrapper:any;
+
+
+currentPage: number=0;
+  totalPages: number=0;
+  pagesBeforeCurrent: number[] = [];
+  pagesAfterCurrent: number[] = [];
+
 
 constructor (private _crud:CurdService, private route:ActivatedRoute)
 {}
   ngOnInit(): void {
   this.getPageRoutes();
     this.getMeta();
-  this.getProductDetails();
+  this.getProductDetails(this.filters, 1);
+  this.getFiltersDetails()
 
   }
 
@@ -50,178 +62,7 @@ constructor (private _crud:CurdService, private route:ActivatedRoute)
     {subcatname:'Theme Cakes'},
   ];
 
-  productvalues:any[] = [
-    {
-    Image: 'assets/images/products/product01.jpg', 
-    Sellerlabel:'Best Seller', 
-    Title:'Lovely Black Forest Cake with Red Roses with 2 kg',
-    OfferPrice:'1299.00',
-    Mrp:'1500.00',
-    Offer:'(17% Off)',
-    Rating:'4.7',
-    DeliveryEstimate:'Today'
-    },
-    {
-    Image: 'assets/images/products/product02.jpg', 
-    Sellerlabel:'New Launch', 
-    Title:'Lovely Black Forest Cake with Red Roses with 3 kg',
-    OfferPrice:'1359.00',
-    Mrp:'1800.00',
-    Offer:'(12% Off)',
-    Rating:'5.0',
-    DeliveryEstimate:'Tomorrow'
-    },
-    {
-    Image: 'assets/images/products/product03.jpg', 
-    Sellerlabel:'New Launch', 
-    Title:'Black Forest Cake with Red Roses with 1 kg',
-    OfferPrice:'1359.00',
-    Mrp:'1800.00',
-    Offer:'(12% Off)',
-    Rating:'5.0',
-    DeliveryEstimate:'Tomorrow'
-    },
-    {
-    Image: 'assets/images/products/product04.jpg', 
-    Sellerlabel:'New Launch', 
-    Title:'Lovely Black Forest Cake with Red Roses with 3 kg Forest Cake with',
-    OfferPrice:'1359.00',
-    Mrp:'1800.00',
-    Offer:'(12% Off)',
-    Rating:'5.0',
-    DeliveryEstimate:'Today'
-    },  
-    {
-    Image: 'assets/images/products/product05.jpg', 
-    Sellerlabel:'Best Seller', 
-    Title:'Lovely Black Forest Cake with Red Roses with 2 kg',
-    OfferPrice:'1299.00',
-    Mrp:'1500.00',
-    Offer:'(17% Off)',
-    Rating:'4.7',
-    DeliveryEstimate:'Today'
-    },
-    {
-    Image: 'assets/images/products/product06.jpg', 
-    Sellerlabel:'New Launch', 
-    Title:'Lovely Black Forest Cake with Red Roses with 3 kg',
-    OfferPrice:'1359.00',
-    Mrp:'1800.00',
-    Offer:'(12% Off)',
-    Rating:'5.0',
-    DeliveryEstimate:'Tomorrow'
-    },
-    {
-    Image: 'assets/images/products/product07.jpg', 
-    Sellerlabel:'New Launch', 
-    Title:'Black Forest Cake with Red Roses with 1 kg',
-    OfferPrice:'1359.00',
-    Mrp:'1800.00',
-    Offer:'(12% Off)',
-    Rating:'5.0',
-    DeliveryEstimate:'Tomorrow'
-    },
-    {
-    Image: 'assets/images/products/product08.jpg', 
-    Sellerlabel:'New Launch', 
-    Title:'Lovely Black Forest Cake with Red Roses with 3 kg Forest Cake with',
-    OfferPrice:'1359.00',
-    Mrp:'1800.00',
-    Offer:'(12% Off)',
-    Rating:'5.0',
-    DeliveryEstimate:'Today'
-    }, 
-    {
-      Image: 'assets/images/products/product09.jpg', 
-      Sellerlabel:'Best Seller', 
-      Title:'Lovely Black Forest Cake with Red Roses with 2 kg',
-      OfferPrice:'1299.00',
-      Mrp:'1500.00',
-      Offer:'(17% Off)',
-      Rating:'4.7',
-      DeliveryEstimate:'Today'
-      },
-      {
-      Image: 'assets/images/products/product10.jpg', 
-      Sellerlabel:'New Launch', 
-      Title:'Lovely Black Forest Cake with Red Roses with 3 kg',
-      OfferPrice:'1359.00',
-      Mrp:'1800.00',
-      Offer:'(12% Off)',
-      Rating:'5.0',
-      DeliveryEstimate:'Tomorrow'
-      },
-      {
-      Image: 'assets/images/products/product11.jpg', 
-      Sellerlabel:'New Launch', 
-      Title:'Black Forest Cake with Red Roses with 1 kg',
-      OfferPrice:'1359.00',
-      Mrp:'1800.00',
-      Offer:'(12% Off)',
-      Rating:'5.0',
-      DeliveryEstimate:'Tomorrow'
-      },
-      {
-      Image: 'assets/images/products/product12.jpg', 
-      Sellerlabel:'New Launch', 
-      Title:'Lovely Black Forest Cake with Red Roses with 3 kg Forest Cake with',
-      OfferPrice:'1359.00',
-      Mrp:'1800.00',
-      Offer:'(12% Off)',
-      Rating:'5.0',
-      DeliveryEstimate:'Today'
-      },
-      {
-        Image: 'assets/images/products/product13.jpg', 
-        Sellerlabel:'Best Seller', 
-        Title:'Lovely Black Forest Cake with Red Roses with 2 kg',
-        OfferPrice:'1299.00',
-        Mrp:'1500.00',
-        Offer:'(17% Off)',
-        Rating:'4.7',
-        DeliveryEstimate:'Today'
-        },
-        {
-        Image: 'assets/images/products/product14.jpg', 
-        Sellerlabel:'New Launch', 
-        Title:'Lovely Black Forest Cake with Red Roses with 3 kg',
-        OfferPrice:'1359.00',
-        Mrp:'1800.00',
-        Offer:'(12% Off)',
-        Rating:'5.0',
-        DeliveryEstimate:'Tomorrow'
-        },
-        {
-        Image: 'assets/images/products/product15.jpg', 
-        Sellerlabel:'New Launch', 
-        Title:'Black Forest Cake with Red Roses with 1 kg',
-        OfferPrice:'1359.00',
-        Mrp:'1800.00',
-        Offer:'(12% Off)',
-        Rating:'5.0',
-        DeliveryEstimate:'Tomorrow'
-        },
-        {
-        Image: 'assets/images/products/product16.jpg', 
-        Sellerlabel:'New Launch', 
-        Title:'Lovely Black Forest Cake with Red Roses with 3 kg Forest Cake with',
-        OfferPrice:'1359.00',
-        Mrp:'1800.00',
-        Offer:'(12% Off)',
-        Rating:'5.0',
-        DeliveryEstimate:'Today'
-        },
-  ];
-
   selectedItems: any[] = [];
-  dropdownItems = [
-    { id: 1, text: 'Rs:500 - 999'},
-    { id: 2, text: 'Rs:1000 - 1499'},
-    { id: 3, text: 'Rs:1500 - 1999'},
-    { id: 4, text: 'Rs:2000 - 2499'},
-    { id: 5, text: 'Rs:2500 - 2999'},
-    { id: 6, text: 'Rs:3000 - 3999'},
-  ];
   
   toggleSelection(item:any): void {
     if (this.selectedItems.includes(item)) {
@@ -242,13 +83,13 @@ constructor (private _crud:CurdService, private route:ActivatedRoute)
     }
 
     this._crud.getMeta(data).subscribe(res => {
-     console.log(res)
+     
     
     })
   }
 
 
-  getProductDetails(): void {
+  getProductDetails(filters:any, pagenumber?:any): void {
     
     const data={
       cityname:this.cityname,
@@ -256,14 +97,62 @@ constructor (private _crud:CurdService, private route:ActivatedRoute)
       Type:this.type,
       PageName:this.PageName,
       currencySelected:'INR',
-      PageNumber:1,
-      PageSize:40
+      PageNumber:pagenumber,
+      PageSize:10,
+      productFilters:filters
     }
 
     this._crud.getProductDetails(data).subscribe(res => {
-     console.log(res)
+     
+    this.productData=res;
+    console.log(this.productData)
+    this.products=this.productData.items
+    this.currentPage=this.productData.pageNumber;
+this.totalPages=this.productData.totalPages
+  })
+  }
+
+  getFiltersDetails(): void {
     
-    })
+    const data={
+      cityname:this.cityname,
+    
+      Type:this.type,
+      PageName:this.PageName,
+     
+    }
+
+    this._crud.getFilters(data).subscribe(res => {
+     console.log(res)
+   this.filterswrapper=res;
+
+  })
+  }
+
+  get pages(): number[] {
+    return Array.from({ length: this.totalPages }, (_, i) => i + 1);
+  }
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.getProductDetails(this.filters, this.currentPage);
+    }
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.getProductDetails(this.filters, this.currentPage);
+    }
+  }
+
+  goToPage(page: number) {
+    if (page >= 1 && page <= this.totalPages && page !== this.currentPage) {
+      this.currentPage = page;
+      this.getProductDetails(this.filters, this.currentPage);
+
+
+    }
   }
 
 }

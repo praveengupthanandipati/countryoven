@@ -28,22 +28,39 @@
                         </ol>
                     </nav>
                     <div class="filter-dropdowns d-flex ps-5 align-self-center">
-                        <div class="d-flex">
-                            <span class="align-self-center">Filter by Price</span>
+                      
+                        <!-- <div *ngFor="let filter of filterswrapper">
+
+
+
+
+                            <mat-form-field>
+                              <mat-label>{{ filter.fitlerType }}</mat-label>
+                              
+                              <mat-select  name="{{ filter }}">
+                                <mat-option *ngFor="let option of filter.filterOptions" >{{ option.fitlerName }}</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div> -->
+                      
+                      
+                      
+                        <div class="d-flex" *ngFor="let filter of filterswrapper">
+                            <span class="align-self-center">{{ filter.fitlerType }}</span>
                             <div class="dropdown ms-2">
                                 <button class="dropdown-toggle" type="button" id="multiselectDropdown"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    Rs:500-999
+                                    
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="multiselectDropdown">
-                                    <li><button class="dropdown-item" *ngFor="let item of dropdownItems">
-                                            <input type="checkbox" [ngModel]="selectedItems.includes(item)"
-                                                (ngModelChange)="toggleSelection(item)">
-                                            <span class="ps-1 d-inline-block">{{ item.text }}</span></button></li>
+                                    <li><button class="dropdown-item" *ngFor="let option of filter.filterOptions">
+                                            <input type="checkbox" [ngModel]="selectedItems.includes(option)"
+                                                (ngModelChange)="toggleSelection(option)">
+                                            <span class="ps-1 d-inline-block">{{ option.fitlerName }}</span></button></li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="d-flex ps-3">
+                        <!-- <div class="d-flex ps-3">
                             <span class="align-self-center">Filter by Weight</span>
                             <div class="dropdown ms-2">
                                 <button class="dropdown-toggle" type="button" id="dropdownMenu2"
@@ -88,7 +105,7 @@
                                                 class="ps-1 d-inline-block">Fruit Cakes</span></button></li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="filter-dropdowns">
@@ -120,19 +137,48 @@
             <!--/ filters-->
             <div class="products-list-items">
                 <div class="row row-flex">
-                    <div class="col-md-3 mb-4" *ngFor="let productitem of productvalues">
+                    
+                    <div class="col-md-3 mb-4" *ngFor="let productitem of products">
                         <app-product-item [Productvalue]="productitem" class="app-product-col"></app-product-item>
                     </div>
                 </div>
             </div>
 
             <!-- page nav -->
-            <div class="row pagenavrow border-top border-bottom mb-4">
+            
+            <div class="row pagenavrow border-top border-bottom mb-4" *ngIf="productData && productData.totalPages >= 1">
                 <div class="col-md-6">
-                    <p class="font-bold">Pages <span>1</span> of <span>25</span></p>
+                    <p class="font-bold">Pages <span>{{productData.pageNumber}}</span> of <span>{{productData.totalPages}}</span></p>
                 </div>
                 <div class="col-md-6 text-end">
+                  
+                  
+                  
                     <nav aria-label="Page navigation example">
+                        <ul class="pagination pagination justify-content-end">
+                          <li class="page-item" [class.disabled]="currentPage === 1">
+                            <a class="page-link" (click)="previousPage()" aria-label="Previous">
+                                <span
+                                class="icon-left-chevron"></span>
+                            </a>
+                          </li>
+                          <li class="page-item" *ngFor="let page of pages" [class.active]="currentPage === page">
+                            <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
+                          </li>
+                          <li class="page-item" [class.disabled]="currentPage === totalPages">
+                            <a class="page-link" (click)="nextPage()" aria-label="Next">
+                                <span class="icon-right-chevron"></span>
+                            </a>
+                          </li>
+                        </ul>
+                      </nav>
+
+                  
+                  
+                  
+                  
+                  
+                    <!-- <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-end">
                             <li class="page-item disabled">
                                 <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><span
@@ -147,7 +193,7 @@
                                 <a class="page-link" href="#"><span class="icon-right-chevron"></span></a>
                             </li>
                         </ul>
-                    </nav>
+                    </nav> -->
                 </div>
             </div>
             <!--/ page nav -->
