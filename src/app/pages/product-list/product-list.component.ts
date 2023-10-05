@@ -16,11 +16,16 @@ export class ProductListComponent implements OnInit {
 filters:any=[]
 filterswrapper:any;
 
-
 currentPage: number=0;
   totalPages: number=0;
   pagesBeforeCurrent: number[] = [];
   pagesAfterCurrent: number[] = [];
+
+  isHiddensearchFilter=false;
+
+  toggleVisibility_SearchFilter():void{
+    this.isHiddensearchFilter=!this.isHiddensearchFilter;
+  }
 
 
 constructor (private _crud:CurdService, private route:ActivatedRoute)
@@ -150,8 +155,6 @@ this.totalPages=this.productData.totalPages
     if (page >= 1 && page <= this.totalPages && page !== this.currentPage) {
       this.currentPage = page;
       this.getProductDetails(this.filters, this.currentPage);
-
-
     }
   }
 

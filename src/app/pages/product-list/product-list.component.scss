@@ -77,3 +77,18 @@
     }
   }
 }
+
+.filters-display {
+  a {
+    background: map-get($colors, lightgray);
+    padding: 10px;
+    color: map-get($colors, black);
+    margin-right: 10px;
+    font-size:$fsize - 2;
+
+    .icomoon {
+      font-size: $fsize - 4;
+      margin-right: 10px;
+    }
+  }
+}

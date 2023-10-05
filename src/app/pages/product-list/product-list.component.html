@@ -27,13 +27,8 @@
                             <li class="breadcrumb-item active" aria-current="page">Birthday Cakes</li>
                         </ol>
                     </nav>
-                    <div class="filter-dropdowns d-flex ps-5 align-self-center">
-                      
+                    <div class="filter-dropdowns d-flex ps-5 align-self-center">                      
                         <!-- <div *ngFor="let filter of filterswrapper">
-
-
-
-
                             <mat-form-field>
                               <mat-label>{{ filter.fitlerType }}</mat-label>
                               
@@ -42,9 +37,6 @@
                               </mat-select>
                             </mat-form-field>
                           </div> -->
-                      
-                      
-                      
                         <div class="d-flex" *ngFor="let filter of filterswrapper">
                             <span class="align-self-center">{{ filter.fitlerType }}</span>
                             <div class="dropdown ms-2">
@@ -135,25 +127,39 @@
                 </div>
             </div>
             <!--/ filters-->
+            <!-- filters display-->
+            <div class="filters-display pb-3">
+                <a href="javascript:void(0)" class="rounded" (click)="toggleVisibility_SearchFilter()" *ngIf="!isHiddensearchFilter">
+                    <span class="icon-cancel icomoon"></span>
+                    <span>Cake Name</span>
+                </a>
+                <a href="javascript:void(0)" class="rounded" (click)="toggleVisibility_SearchFilter()" *ngIf="!isHiddensearchFilter">
+                    <span class="icon-cancel icomoon"></span>
+                    <span>Birthday Cakes</span>
+                </a>
+                <a href="javascript:void(0)" class="rounded" (click)="toggleVisibility_SearchFilter()" *ngIf="!isHiddensearchFilter">
+                    <span class="icon-cancel icomoon"></span>
+                    <span>Fruit Cakes</span>
+                </a>
+                <a href="javascript:void(0)" class="rounded" (click)="toggleVisibility_SearchFilter()" *ngIf="!isHiddensearchFilter">
+                    <span class="icon-cancel icomoon"></span>
+                    <span>Popular Cakes</span>
+                </a>
+            </div>
+            <!--/ filters display-->
             <div class="products-list-items">
-                <div class="row row-flex">
-                    
+                <div class="row row-flex">                    
                     <div class="col-md-3 mb-4" *ngFor="let productitem of products">
                         <app-product-item [Productvalue]="productitem" class="app-product-col"></app-product-item>
                     </div>
                 </div>
             </div>
-
-            <!-- page nav -->
-            
+            <!-- page nav -->            
             <div class="row pagenavrow border-top border-bottom mb-4" *ngIf="productData && productData.totalPages >= 1">
                 <div class="col-md-6">
                     <p class="font-bold">Pages <span>{{productData.pageNumber}}</span> of <span>{{productData.totalPages}}</span></p>
                 </div>
                 <div class="col-md-6 text-end">
-                  
-                  
-                  
                     <nav aria-label="Page navigation example">
                         <ul class="pagination pagination justify-content-end">
                           <li class="page-item" [class.disabled]="currentPage === 1">
@@ -172,12 +178,6 @@
                           </li>
                         </ul>
                       </nav>
-
-                  
-                  
-                  
-                  
-                  
                     <!-- <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-end">
                             <li class="page-item disabled">
