@@ -155,19 +155,35 @@ body {
   .offer-price {
     font-size: $fsize + 3;
     color: map-get($colors, black);
+
+    @include max(map-get($breakpoints, "sm")) {
+      font-size: $fsize - 3;
+      align-self: center;
+    }
   }
   .icomoon {
     font-size: $fsize;
+    @include max(map-get($breakpoints, "sm")) {
+      font-size: $fsize - 4;
+    }
   }
   .mrp {
     font-size: $fsize + 3;
     color: map-get($colors, lighten(black, 50%));
     text-decoration: line-through;
+
+    @include max(map-get($breakpoints, "sm")) {
+      font-size: $fsize - 3;
+    }
   }
   .offer-percentage {
     small {
       color: map-get($colors, primary);
       font-size: $fsize - 2;
+
+      @include max(map-get($breakpoints, "sm")) {
+        font-size: $fsize - 4;
+      }
     }
   }
 }
@@ -184,6 +200,6 @@ body {
 }
 
 //profile styles
-.userProfile{
+.userProfile {
   min-height: 500px;
 }
