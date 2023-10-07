@@ -27,7 +27,14 @@
                             <li class="breadcrumb-item active" aria-current="page">Birthday Cakes</li>
                         </ol>
                     </nav>
-                    <div class="filter-dropdowns d-flex ps-5 align-self-center">                      
+                    <div class="filter-dropdowns d-flex ps-5 align-self-center">    
+                        
+                        
+                          
+                          
+
+
+                        
                         <!-- <div *ngFor="let filter of filterswrapper">
                             <mat-form-field>
                               <mat-label>{{ filter.fitlerType }}</mat-label>
@@ -37,67 +44,26 @@
                               </mat-select>
                             </mat-form-field>
                           </div> -->
+
+                         
+
                         <div class="d-flex" *ngFor="let filter of filterswrapper">
                             <span class="align-self-center">{{ filter.fitlerType }}</span>
                             <div class="dropdown ms-2">
                                 <button class="dropdown-toggle" type="button" id="multiselectDropdown"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    
+                                    Select
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="multiselectDropdown">
                                     <li><button class="dropdown-item" *ngFor="let option of filter.filterOptions">
-                                            <input type="checkbox" [ngModel]="selectedItems.includes(option)"
-                                                (ngModelChange)="toggleSelection(option)">
+                                            <!-- <input type="checkbox" [ngModel]="selectedItems.includes(option)"
+                                                (ngModelChange)="toggleSelection(option)"> -->
+                                                <input type="checkbox" [(ngModel)]="option.selected" (change)="filterChanged(option)">
                                             <span class="ps-1 d-inline-block">{{ option.fitlerName }}</span></button></li>
                                 </ul>
                             </div>
                         </div>
-                        <!-- <div class="d-flex ps-3">
-                            <span class="align-self-center">Filter by Weight</span>
-                            <div class="dropdown ms-2">
-                                <button class="dropdown-toggle" type="button" id="dropdownMenu2"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    500g - 1kg
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <li><button class="dropdown-item" type="button"><input type="checkbox"><span
-                                                class="ps-1 d-inline-block">1kg - 2kg</span></button></li>
-                                    <li><button class="dropdown-item" type="button"><input type="checkbox"><span
-                                                class="ps-1 d-inline-block">2kg - 3kg</span></button></li>
-                                    <li><button class="dropdown-item" type="button"><input type="checkbox"><span
-                                                class="ps-1 d-inline-block">3kg - 4kg</span></button></li>
-                                    <li><button class="dropdown-item" type="button"><input type="checkbox"><span
-                                                class="ps-1 d-inline-block">4kg - 5kg</span></button></li>
-                                    <li><button class="dropdown-item" type="button"><input type="checkbox"><span
-                                                class="ps-1 d-inline-block">5kg - 6kg</span></button></li>
-                                    <li><button class="dropdown-item" type="button"><input type="checkbox"><span
-                                                class="ps-1 d-inline-block">6kg - 7kg</span></button></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="d-flex ps-3">
-                            <span class="align-self-center">Filter by Flavor</span>
-                            <div class="dropdown ms-2">
-                                <button class="dropdown-toggle" type="button" id="dropdownMenu2"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Apple
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <li><button class="dropdown-item" type="button"><input type="checkbox"><span
-                                                class="ps-1 d-inline-block">Vanila Cakes</span></button></li>
-                                    <li><button class="dropdown-item" type="button"><input type="checkbox"><span
-                                                class="ps-1 d-inline-block">Chocolate</span></button></li>
-                                    <li><button class="dropdown-item" type="button"><input type="checkbox"><span
-                                                class="ps-1 d-inline-block">Pineapple</span></button></li>
-                                    <li><button class="dropdown-item" type="button"><input type="checkbox"><span
-                                                class="ps-1 d-inline-block">Red Velvet</span></button></li>
-                                    <li><button class="dropdown-item" type="button"><input type="checkbox"><span
-                                                class="ps-1 d-inline-block">Black Forest</span></button></li>
-                                    <li><button class="dropdown-item" type="button"><input type="checkbox"><span
-                                                class="ps-1 d-inline-block">Fruit Cakes</span></button></li>
-                                </ul>
-                            </div>
-                        </div> -->
+                       
                     </div>
                 </div>
                 <div class="filter-dropdowns">
@@ -127,24 +93,22 @@
                 </div>
             </div>
             <!--/ filters-->
-            <!-- filters display-->
+    <!-- filters display-->
             <div class="filters-display pb-3">
-                <a href="javascript:void(0)" class="rounded" (click)="toggleVisibility_SearchFilter()" *ngIf="!isHiddensearchFilter">
-                    <span class="icon-cancel icomoon"></span>
-                    <span>Cake Name</span>
-                </a>
-                <a href="javascript:void(0)" class="rounded" (click)="toggleVisibility_SearchFilter()" *ngIf="!isHiddensearchFilter">
-                    <span class="icon-cancel icomoon"></span>
-                    <span>Birthday Cakes</span>
-                </a>
-                <a href="javascript:void(0)" class="rounded" (click)="toggleVisibility_SearchFilter()" *ngIf="!isHiddensearchFilter">
-                    <span class="icon-cancel icomoon"></span>
-                    <span>Fruit Cakes</span>
-                </a>
-                <a href="javascript:void(0)" class="rounded" (click)="toggleVisibility_SearchFilter()" *ngIf="!isHiddensearchFilter">
-                    <span class="icon-cancel icomoon"></span>
-                    <span>Popular Cakes</span>
-                </a>
+<ng-container *ngFor="let filter of filterswrapper">
+<ng-container *ngFor="let option of filter.filterOptions">
+    <a href="javascript:void(0)" class="rounded" *ngIf="option.selected">
+        <span class="icon-cancel icomoon" (click)="option.selected=false;filterChanged(option)"></span>
+        <span>{{option.fitlerName}}</span>
+    </a>
+
+</ng-container>
+
+</ng-container>
+
+
+
+
             </div>
             <!--/ filters display-->
             <div class="products-list-items">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CurdService } from 'src/app/services/curd.service';
 
@@ -23,18 +24,62 @@ currentPage: number=0;
 
   isHiddensearchFilter=false;
 
-  toggleVisibility_SearchFilter():void{
-    this.isHiddensearchFilter=!this.isHiddensearchFilter;
+  filterData: any[] = [
+    {
+      "filterType": "Price",
+      "filterOptions": [
+        { "filterName": "Rs.0-500", "value": 100 },
+        { "filterName": "Rs.500-1000", "value": 200 },
+        { "filterName": "Rs.1000-1500", "value": 300 },
+        
+      ]
+    },
+    {
+      "filterType": "qty",
+      "filterOptions": [
+        { "filterName": "1kg", "value": 15 },
+        { "filterName": "2kg", "value": 25 },
+       
+      ]
+    }
+  ]
+    
+    
+    filterChanged(filterOption: any): void {
+
+const filterGroup = this.filterswrapper.find((group:any) => group.filterOptions.includes(filterOption));
+
+if (filterGroup) {
+  const selectedValuesByFilterType:any = {};
+  for (const filterGroup of this.filterswrapper) {
+    const selectedValues = filterGroup.filterOptions
+      .filter((option:any) => option.selected)
+      .map((selectedOption:any) => selectedOption.value);
+  
+    if (selectedValues.length > 0) {
+      selectedValuesByFilterType[filterGroup.fitlerType] = selectedValues;
+    }
   }
+  console.log(selectedValuesByFilterType);
+} }
+ 
 
 
-constructor (private _crud:CurdService, private route:ActivatedRoute)
-{}
+constructor (private _crud:CurdService, private route:ActivatedRoute, private formBuilder: FormBuilder)
+{
+
+
+}
+
+
+
   ngOnInit(): void {
   this.getPageRoutes();
     this.getMeta();
   this.getProductDetails(this.filters, 1);
   this.getFiltersDetails()
+
+
 
   }
 
@@ -69,13 +114,6 @@ constructor (private _crud:CurdService, private route:ActivatedRoute)
 
   selectedItems: any[] = [];
   
-  toggleSelection(item:any): void {
-    if (this.selectedItems.includes(item)) {
-      this.selectedItems = this.selectedItems.filter(selectedItem => selectedItem !== item);
-    } else {
-      this.selectedItems.push(item);
-    }
-  };
 
 
 
@@ -157,5 +195,11 @@ this.totalPages=this.productData.totalPages
       this.getProductDetails(this.filters, this.currentPage);
     }
   }
+
+
+
+  /* test code */
+
+  
 
 }

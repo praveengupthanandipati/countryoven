@@ -22,6 +22,7 @@ import { ProductListComponent } from '../pages/product-list/product-list.compone
 import { ReviewsComponent } from '../pages/reviews/reviews.component';
 import { StoresComponent } from '../pages/stores/stores.component';
 import { SharedModule } from '../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     SharedModule,
+    ReactiveFormsModule,
     FrontendRoutingModule
   ]
 })
