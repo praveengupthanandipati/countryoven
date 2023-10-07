@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { CurdService } from 'src/app/services/curd.service';
 
 @Component({
@@ -21,30 +21,8 @@ currentPage: number=0;
   totalPages: number=0;
   pagesBeforeCurrent: number[] = [];
   pagesAfterCurrent: number[] = [];
-
   isHiddensearchFilter=false;
-
-  filterData: any[] = [
-    {
-      "filterType": "Price",
-      "filterOptions": [
-        { "filterName": "Rs.0-500", "value": 100 },
-        { "filterName": "Rs.500-1000", "value": 200 },
-        { "filterName": "Rs.1000-1500", "value": 300 },
-        
-      ]
-    },
-    {
-      "filterType": "qty",
-      "filterOptions": [
-        { "filterName": "1kg", "value": 15 },
-        { "filterName": "2kg", "value": 25 },
-       
-      ]
-    }
-  ]
-    
-    
+  metaData: any;
     filterChanged(filterOption: any): void {
 
 const filterGroup = this.filterswrapper.find((group:any) => group.filterOptions.includes(filterOption));
@@ -61,6 +39,21 @@ if (filterGroup) {
     }
   }
   console.log(selectedValuesByFilterType);
+ 
+//   [
+//     {
+//          "SubCategoryIds": [2001,2003],
+//          "PriceIds": [5,6],
+//          "WeightIds":[3]
+//     }  
+// ],
+const fliterV="[" + selectedValuesByFilterType + "]"
+this.currentPage=1;
+  this.getProductDetails([selectedValuesByFilterType], this.currentPage);
+
+
+
+
 } }
  
 
@@ -74,10 +67,20 @@ constructor (private _crud:CurdService, private route:ActivatedRoute, private fo
 
 
   ngOnInit(): void {
+
+
+    this.route.paramMap.subscribe((params: ParamMap) => {
+     
+     console.log('sddfds')
+     
   this.getPageRoutes();
-    this.getMeta();
-  this.getProductDetails(this.filters, 1);
-  this.getFiltersDetails()
+  this.getMeta();
+this.getProductDetails(this.filters, 1);
+this.getFiltersDetails()
+     
+    });
+
+
 
 
 
@@ -94,24 +97,6 @@ constructor (private _crud:CurdService, private route:ActivatedRoute, private fo
     });
   }
 
-  Filteritems=[
-    {subcatname:'New Collection'},
-    {subcatname:'Best Sellers'},
-    {subcatname:'Fruit Cakes'},
-    {subcatname:'Fancy Cakes'},
-    {subcatname:'Tier Cakes'},
-    {subcatname:'Best Collection'},
-    {subcatname:'Designer Cakes'},
-    {subcatname:'Kids Cakes'},
-    {subcatname:'Emoji Cakes'},
-    {subcatname:'Chocolate Cakes'},
-    {subcatname:'Barbie Cakes'},
-    {subcatname:'Theme Cakes'},
-    {subcatname:'Photo Cakes'},
-    {subcatname:'Customized Cakes'},
-    {subcatname:'Theme Cakes'},
-  ];
-
   selectedItems: any[] = [];
   
 
@@ -126,7 +111,8 @@ constructor (private _crud:CurdService, private route:ActivatedRoute, private fo
     }
 
     this._crud.getMeta(data).subscribe(res => {
-     
+     this.metaData=res;
+      console.log(res)
     
     })
   }
@@ -149,6 +135,7 @@ constructor (private _crud:CurdService, private route:ActivatedRoute, private fo
      
     this.productData=res;
     console.log(this.productData)
+    console.log(this.productData.items.length)
     this.products=this.productData.items
     this.currentPage=this.productData.pageNumber;
 this.totalPages=this.productData.totalPages

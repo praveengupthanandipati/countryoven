@@ -1,7 +1,7 @@
 <section class="subpage">
     <div class="list-products-header">
-        <div class="custom-container">
-            <h1 class="font-extrabold text-uppercase">Send Cakes to Hyderabad <span class="font-regular">25 of 497
+        <div class="custom-container" [innerHtml]="metaData?.richSnippetContent">
+            <!-- <h1 class="font-extrabold text-uppercase">Send Cakes to Hyderabad <span class="font-regular">25 of 497
                     Cakes</span></h1>
             <p>Choose from our wide range of online cakes to surprise your loved ones on th eir birthda y or any other
                 special occasion. Cakes are indeed the best option to make your loved ones feel special. It is an ideal
@@ -11,7 +11,12 @@
                 <a routerLink="/product-list" *ngFor="let Filteritem of Filteritems">
                     <span>{{Filteritem.subcatname}}</span>
                 </a>
-            </div>
+            </div> -->
+
+
+
+
+
         </div>
     </div>
     <div class="list-products-body">
@@ -161,8 +166,8 @@
                 </div>
             </div>
             <!--/ page nav -->
-            <article class="terms-content">
-                <h5 class="font-bold pb-3">Customers at Country Oven</h5>
+            <article class="terms-content"  [innerHtml]="metaData?.footerDescription">
+                <!-- <h5 class="font-bold pb-3">Customers at Country Oven</h5>
                 <p>Welcome to CountryOven - your one-stop-shop for online cakes and flowers gifting! We are thrilled to
                     offer you an exquisite collection of cakes and flowers for all your special occasions. At
                     CountryOven, we understand the importance of creating unforgettable moments that last a lifetime.
@@ -171,7 +176,7 @@
                 <p>Our cakes are made with love and passion by our experienced bakers who use only the finest quality
                     ingredients. From classic flavours like vanilla, chocolate, and strawberry to exotic flavours like
                     blueberry, red velvet, and black forest, we have something for every taste bud. We also offer a
-                    range of eggless and sugar-free cakes for our health-conscious customers.</p>
+                    range of eggless and sugar-free cakes for our health-conscious customers.</p> -->
             </article>
         </div>
     </div>
