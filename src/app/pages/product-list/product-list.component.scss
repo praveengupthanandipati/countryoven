@@ -7,6 +7,7 @@
   h1 {
     font-size: $fsize + 13;
     padding-bottom: 18px;
+    font-weight: map-get($font-weights, bold);
 
     span {
       font-size: $fsize + 3;
@@ -84,7 +85,7 @@
     padding: 10px;
     color: map-get($colors, black);
     margin-right: 10px;
-    font-size:$fsize - 2;
+    font-size: $fsize - 2;
 
     .icomoon {
       font-size: $fsize - 4;

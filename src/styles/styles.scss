@@ -80,6 +80,17 @@ body {
 .terms-content {
   p {
     padding-bottom: 20px;
+
+    @include max(map-get($breakpoints, "sm")) {
+      font-size: $fsize - 2;
+    }
+  }
+
+  h2,
+  h3 {
+    @include max(map-get($breakpoints, "sm")) {
+      font-size: $fsize + 3;
+    }
   }
 }
 

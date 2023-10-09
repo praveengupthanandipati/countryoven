@@ -12,18 +12,13 @@
                     <span>{{Filteritem.subcatname}}</span>
                 </a>
             </div> -->
-
-
-
-
-
         </div>
     </div>
     <div class="list-products-body">
         <div class="custom-container">
             <!-- filters-->
-            <div class="products-filters d-flex justify-content-between">
-                <div class="d-flex">
+            <div class="products-filters d-md-flex justify-content-md-between">
+                <div class="d-md-flex">
                     <nav aria-label="breadcrumb" class="align-self-center">
                         <ol class="breadcrumb pb-0 mb-0">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -32,14 +27,7 @@
                             <li class="breadcrumb-item active" aria-current="page">Birthday Cakes</li>
                         </ol>
                     </nav>
-                    <div class="filter-dropdowns d-flex ps-5 align-self-center">    
-                        
-                        
-                          
-                          
-
-
-                        
+                    <div class="filter-dropdowns d-md-flex ps-md-5 align-self-center">
                         <!-- <div *ngFor="let filter of filterswrapper">
                             <mat-form-field>
                               <mat-label>{{ filter.fitlerType }}</mat-label>
@@ -49,8 +37,6 @@
                               </mat-select>
                             </mat-form-field>
                           </div> -->
-
-                         
 
                         <div class="d-flex" *ngFor="let filter of filterswrapper">
                             <span class="align-self-center">{{ filter.fitlerType }}</span>
@@ -63,16 +49,18 @@
                                     <li><button class="dropdown-item" *ngFor="let option of filter.filterOptions">
                                             <!-- <input type="checkbox" [ngModel]="selectedItems.includes(option)"
                                                 (ngModelChange)="toggleSelection(option)"> -->
-                                                <input type="checkbox" [(ngModel)]="option.selected" (change)="filterChanged(option)">
-                                            <span class="ps-1 d-inline-block">{{ option.fitlerName }}</span></button></li>
+                                            <input type="checkbox" [(ngModel)]="option.selected"
+                                                (change)="filterChanged(option)">
+                                            <span class="ps-1 d-inline-block">{{ option.fitlerName }}</span></button>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
-                       
+
                     </div>
                 </div>
                 <div class="filter-dropdowns">
-                    <div class="d-flex">
+                    <div class="d-flex mt-2 mt-md-0">
                         <span class="align-self-center">Sort By</span>
                         <div class="dropdown ms-2">
                             <button class="dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
@@ -98,55 +86,51 @@
                 </div>
             </div>
             <!--/ filters-->
-    <!-- filters display-->
+            <!-- filters display-->
             <div class="filters-display pb-3">
-<ng-container *ngFor="let filter of filterswrapper">
-<ng-container *ngFor="let option of filter.filterOptions">
-    <a href="javascript:void(0)" class="rounded" *ngIf="option.selected">
-        <span class="icon-cancel icomoon" (click)="option.selected=false;filterChanged(option)"></span>
-        <span>{{option.fitlerName}}</span>
-    </a>
-
-</ng-container>
-
-</ng-container>
-
-
-
-
+                <ng-container *ngFor="let filter of filterswrapper">
+                    <ng-container *ngFor="let option of filter.filterOptions">
+                        <a href="javascript:void(0)" class="rounded" *ngIf="option.selected">
+                            <span class="icon-cancel icomoon"
+                                (click)="option.selected=false;filterChanged(option)"></span>
+                            <span>{{option.fitlerName}}</span>
+                        </a>
+                    </ng-container>
+                </ng-container>
             </div>
             <!--/ filters display-->
             <div class="products-list-items">
-                <div class="row row-flex">                    
-                    <div class="col-md-3 mb-4" *ngFor="let productitem of products">
+                <div class="row row-flex">
+                    <div class="col-md-3 col-6 mb-4" *ngFor="let productitem of products">
                         <app-product-item [Productvalue]="productitem" class="app-product-col"></app-product-item>
                     </div>
                 </div>
             </div>
-            <!-- page nav -->            
-            <div class="row pagenavrow border-top border-bottom mb-4" *ngIf="productData && productData.totalPages >= 1">
-                <div class="col-md-6">
-                    <p class="font-bold">Pages <span>{{productData.pageNumber}}</span> of <span>{{productData.totalPages}}</span></p>
+            <!-- page nav -->
+            <div class="row pagenavrow border-top border-bottom mb-4"
+                *ngIf="productData && productData.totalPages >= 1">
+                <div class="col-md-6 text-center text-md-start pb-2 pb-md-0">
+                    <p class="font-bold">Pages <span>{{productData.pageNumber}}</span> of
+                        <span>{{productData.totalPages}}</span></p>
                 </div>
-                <div class="col-md-6 text-end">
+                <div class="col-md-6 text-md-end justify-content-center">
                     <nav aria-label="Page navigation example">
-                        <ul class="pagination pagination justify-content-end">
-                          <li class="page-item" [class.disabled]="currentPage === 1">
-                            <a class="page-link" (click)="previousPage()" aria-label="Previous">
-                                <span
-                                class="icon-left-chevron"></span>
-                            </a>
-                          </li>
-                          <li class="page-item" *ngFor="let page of pages" [class.active]="currentPage === page">
-                            <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
-                          </li>
-                          <li class="page-item" [class.disabled]="currentPage === totalPages">
-                            <a class="page-link" (click)="nextPage()" aria-label="Next">
-                                <span class="icon-right-chevron"></span>
-                            </a>
-                          </li>
+                        <ul class="pagination pagination justify-content-md-end justify-content-center">
+                            <li class="page-item" [class.disabled]="currentPage === 1">
+                                <a class="page-link" (click)="previousPage()" aria-label="Previous">
+                                    <span class="icon-left-chevron"></span>
+                                </a>
+                            </li>
+                            <li class="page-item" *ngFor="let page of pages" [class.active]="currentPage === page">
+                                <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
+                            </li>
+                            <li class="page-item" [class.disabled]="currentPage === totalPages">
+                                <a class="page-link" (click)="nextPage()" aria-label="Next">
+                                    <span class="icon-right-chevron"></span>
+                                </a>
+                            </li>
                         </ul>
-                      </nav>
+                    </nav>
                     <!-- <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-end">
                             <li class="page-item disabled">
@@ -166,7 +150,7 @@
                 </div>
             </div>
             <!--/ page nav -->
-            <article class="terms-content"  [innerHtml]="metaData?.footerDescription">
+            <article class="terms-content" [innerHtml]="metaData?.footerDescription">
                 <!-- <h5 class="font-bold pb-3">Customers at Country Oven</h5>
                 <p>Welcome to CountryOven - your one-stop-shop for online cakes and flowers gifting! We are thrilled to
                     offer you an exquisite collection of cakes and flowers for all your special occasions. At
