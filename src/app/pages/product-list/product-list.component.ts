@@ -90,7 +90,43 @@ this.getFiltersDetails()
   {
     this.route.params.subscribe((params) => {
       this.cityname = params['cityname']; 
-      this.type = params['type']; 
+    let typeName=params['type']
+    //  this.type = params['type']; 
+
+
+      if(typeName == 'cakes')
+      {
+        this.type='C'
+      } else if(typeName=='best-sellers-cakes-online')
+      {
+        this.type='SC'
+      }
+      else if(typeName=='birthday-gifts-online')
+      {
+        this.type='OCC'
+      }
+      else if(typeName=='same-day-gifts')
+      {
+        this.type='SPL'
+      }
+      else if(typeName=='almond')
+      {
+        this.type='FLV'
+      }
+      else if(typeName=='cakes')
+      {
+        this.type='SE'
+      }
+      else
+      {
+        this.type=typeName
+      }
+
+
+
+
+
+
       this.PageName = params['PageName']; 
      
      
