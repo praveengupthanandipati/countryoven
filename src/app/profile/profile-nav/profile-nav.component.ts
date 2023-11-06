@@ -24,11 +24,11 @@ export class ProfileNavComponent {
       navLabel:'Address'
     },
     {
-      navLink:'/My Profile',
+      navLink:'/User-Change-Password',
       navLabel:'Change Password'
     },
     {
-      navLink:'/My Profile',
+      navLink:'/User-Vouchers',
       navLabel:'Vouchers'
     },
     {

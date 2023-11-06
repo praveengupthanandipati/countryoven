@@ -5,7 +5,7 @@
             <ol class="breadcrumb pb-0 mb-0">
                 <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
                 <li class="breadcrumb-item"><a routerLink="/Profile">My Account</a></li>
-                <li class="breadcrumb-item active" aria-current="page">My Orders</li>
+                <li class="breadcrumb-item active" aria-current="page">My Address</li>
             </ol>
         </nav>
         <div class="profile-page-title px-3 d-flex justify-content-between background-lightprimary py-3 my-2">
@@ -13,5 +13,101 @@
             <h6 class="h6 tex-end">Hi, Praveen Kumar</h6>
         </div>
         <app-profile-nav></app-profile-nav>
+        <div class="userprofile-body">
+            <div class="text-end align-self-center pb-3">
+                <a href="" class="font-semibold" data-bs-toggle="modal" data-bs-target="#AddNewAddress">Add New
+                    Address</a>
+            </div>
+            <div class="address-cards">
+                <div class="card mb-3" *ngFor="let deliveraddress of deliverAddress">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <h6 class="card-title font-gray h6 align-self-center">Deliver to: <span
+                                    class="text-black font-semibold">{{deliveraddress.Name}},
+                                    {{deliveraddress.Pin}}</span><span
+                                    class="badge bg-light text-dark d-inline-block ms-2 border">{{deliveraddress.Label}}</span>
+                            </h6>
+                            <!-- <button class="color-border-btn d-block ">Deliver here</button> -->
+                        </div>
+                        <div class="py-3">
+                            <p>{{deliveraddress.Address}}</p>
+                        </div>
+                        <div class="d-flex justify-content-between pt-3 border-top">
+                            <a href="#" class="font-black"><span class="icon-draw"></span> Edit Address</a>
+                            <a href="#" class="font-black"><span class="icon-delete"></span> Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
+
+<!-- add new address modal-->
+<div class="modal fade" id="AddNewAddress" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-black" id="staticBackdropLabel">Add Delivery Address</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <input type="text" class="form-control" placeholder="Receipient Name *">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <input type="text" class="form-control" placeholder="Receipient Mobile Number *">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group mb-3">
+                                <textarea class="form-control" placeholder="Receipient Address *"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <input type="text" class="form-control" placeholder="Pincode *">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <input type="text" class="form-control" placeholder="City *">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group mb-3">
+                                <input type="text" class="form-control" placeholder="Landmark *">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="Home"
+                                    value="Home">
+                                <label class="form-check-label" for="Home">Home</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="Office"
+                                    value="Office">
+                                <label class="form-check-label" for="Office">Office</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="Other"
+                                    value="Other">
+                                <label class="form-check-label" for="Other">Other</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="color-border-btn" data-bs-dismiss="modal">Save Address</button>
+            </div>
+        </div>
+    </div>
+</div>
