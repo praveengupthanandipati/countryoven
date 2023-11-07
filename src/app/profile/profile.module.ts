@@ -8,6 +8,8 @@ import { ProfileNavComponent } from './profile-nav/profile-nav.component';
 import { UserOrdersComponent } from './user-orders/user-orders.component';
 import { UserOrderDetailComponent } from './user-order-detail/user-order-detail.component';
 import { UserAddressComponent } from './user-address/user-address.component';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
+import { UserVouchersComponent } from './user-vouchers/user-vouchers.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { UserAddressComponent } from './user-address/user-address.component';
     ProfileNavComponent,
     UserOrdersComponent,
     UserOrderDetailComponent,
-    UserAddressComponent
+    UserAddressComponent,
+    ChangepasswordComponent,
+    UserVouchersComponent
   ],
   imports: [
     CommonModule,
