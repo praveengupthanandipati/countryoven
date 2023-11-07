@@ -121,6 +121,9 @@ body {
     box-shadow: none;
     outline: none;
   }
+  &::placeholder {
+    font-size: $fsize - 1;
+  }
 }
 
 .static-page {
