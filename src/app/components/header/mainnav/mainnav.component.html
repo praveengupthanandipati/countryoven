@@ -23,13 +23,7 @@
                             <div class="custom-container pe-0">
                                 <div class="row">
                                     <div class="col-md-8">
-                                        <div class="main-div-links d-flex">
-                                           
-                                           
-                                           
-                                           
-                                           
-                                           
+                                        <div class="main-div-links d-md-flex">
                                             <ng-container *ngIf="menu.subCategoryList.length ">
                                                 <div> <a href="javascript:;" (click)="gotoroute(item.type, item.seoTitle)" *ngFor="let item of menu.subCategoryList.slice(0, menu.subCategoryList.length / 2)">{{ item.title }}</a>
                                                   
@@ -38,24 +32,6 @@
                                                   
                                                 </div>
                                               </ng-container>
-                                            
-                                           
-                                           
-                                           
-                                           
-                                           
-                                           
-                                           
-                                           
-                                           
-                                           
-                                           
-                                           
-                                           
-                                           
-                                           
-                                           
-                                           
                                             <!-- <div>
                                                 <a href="javascript:void(0)">All Cakes</a>
                                                 <a href="javascript:void(0)">Best Sellers</a>
@@ -191,11 +167,9 @@
     </div>
     <div class="offcanvas-body px-0 py-3">
         <ul class="list-group">
-
             <li class="list-group-item" *ngFor="let m of menuList">
                 <a class="fbold" href="javascript:void(0)">{{m.title}}</a>
-            </li>
-          
+            </li>          
         </ul>
     </div>
 </div>
