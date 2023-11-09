@@ -23,6 +23,7 @@ import { ReviewsComponent } from '../pages/reviews/reviews.component';
 import { StoresComponent } from '../pages/stores/stores.component';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProductsComponent } from '../pages/products/products.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ContactComponent,
     CouponpartnersComponent,
     FranchisesComponent,  
+    ProductsComponent
   ],
   imports: [
     CommonModule,

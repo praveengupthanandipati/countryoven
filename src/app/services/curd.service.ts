@@ -84,4 +84,50 @@ getProductDetails(obj:any):Observable<any>{
 return this.http.post(`${environment.apiUrl}/Product/details`,obj)
 }
 
+
+//Product Details
+// recent viewed
+
+
+getProductReviews(obj:any):Observable<any>{
+  
+  return this.http.post(`${environment.apiUrl}/ProductDetails/ReviewsById`,obj)
+  }
+  
+  
+getViewedProducts(obj:any):Observable<any>{
+  
+  return this.http.post(`${environment.apiUrl}/ProductDetails/ViewedProducts`,obj)
+  }
+  
+  
+getRelatedProducts(obj:any):Observable<any>{
+  
+  return this.http.post(`${environment.apiUrl}/ProductDetails/RelatedProducts`,obj)
+  }
+  
+
+
+  
+  //getProductDetailsById 
+  getProductDetailsById(obj:any):Observable<any>{
+  
+    return this.http.post(`${environment.apiUrl}/ProductDetails/Id`,obj)
+    }
+  
+    //Bind Delivery Timings
+getBindDeliveryTimes(obj:any):Observable<any>{
+  
+  return this.http.post(`${environment.apiUrl}/ProductDetails/BindDeliveryTimes`,obj)
+  }
+  
+    
+getSaveProductDetails(obj:any):Observable<any>{
+  
+  return this.http.post(`${environment.apiUrl}/ProductDetails`,obj)
+  }
+  
+
+  
+
 }

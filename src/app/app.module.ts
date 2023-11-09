@@ -7,10 +7,12 @@ import { LoginModule } from './login/login.module';
 import { CartModule } from './cart/cart.module';
 import { ProfileModule } from './profile/profile.module';
 import { HttpClientModule } from '@angular/common/http';
+// import { ProductsComponent } from './pages/products/products.component';
 
 @NgModule({
   declarations: [
-    AppComponent,      
+    AppComponent,
+    // ProductsComponent,      
   ],
   imports: [
     BrowserModule,

@@ -10,15 +10,18 @@ import { ProductListComponent } from '../pages/product-list/product-list.compone
 import { ReviewsComponent } from '../pages/reviews/reviews.component';
 import { StoresComponent } from '../pages/stores/stores.component';
 import { FrontendComponent } from './frontend/frontend.component';
+import { ProductsComponent } from '../pages/products/products.component';
 
 const routes: Routes = [
   {
     path: '', component: FrontendComponent, children: [
       {path:'', component:HomeComponent},
       {path:'products-list', component:ProductListComponent},
-      {path:'products-list/:cityname/:type/:PageName', component:ProductListComponent},
-      
-      {path:'product-detail', component:ProductDetailComponent},
+      {path:':type/:cityname/:PageName', component:ProductsComponent},
+   
+      // {path:':type/:cityname/:PageName', component:ProductListComponent},
+      // {path:'product-detail/:PageName', component:ProductDetailComponent},
+      // {path:':cityname/send-online/:PageName', component:ProductDetailComponent},
       {path:'Aboutus', component:AboutusComponent},
       {path:'Stores', component:StoresComponent},
       {path: 'Reviews', component:ReviewsComponent},
