@@ -1,6 +1,6 @@
 @import "../../../styles/styles";
 
-form {
+.btnsec {
   .value-button {
     display: inline-block;
     border: 1px solid map-get($colors, lightprimary);
@@ -47,3 +47,6 @@ form {
     margin: 0;
   }
 }
+
+.products-list{ display:flex; flex-wrap: wrap;}
+  .app-product-item{width: 33.33%;}

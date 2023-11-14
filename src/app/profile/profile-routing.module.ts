@@ -10,7 +10,7 @@ import { UserVouchersComponent } from './user-vouchers/user-vouchers.component';
 
 const routes: Routes = [
   {path:'', component:UserDashboardComponent},  
-  {path:'My Profile', component:UserProfileComponent},
+  {path:'My_Profile', component:UserProfileComponent},
   {path:'Orders', component:UserOrdersComponent},
   {path:'User-Order-Detail', component:UserOrderDetailComponent},
   {path: 'User-Address', component:UserAddressComponent},
