@@ -5,9 +5,9 @@ import { RegistrationFormComponent } from './registration-form/registration-form
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
 const routes: Routes = [
-  {path:'Login', component:LoginFormComponent},
-  {path:'Signup', component:RegistrationFormComponent},  
-  {path:'Reset', component:ResetpasswordComponent} 
+  {path:'login', component:LoginFormComponent},
+  {path:'signup', component:RegistrationFormComponent},  
+  {path:'reset', component:ResetpasswordComponent} 
 ];
 
 @NgModule({

@@ -4,21 +4,21 @@
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <h1 class="h5 font-bold text-center">Register with us</h1>
-                <form class="login-form pt-3">
+                <form class="login-form pt-3"  [formGroup]="userForm"  (ngSubmit)="onSubmit()">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="usrname" placeholder="Enter your Name">
+                        <input type="text" class="form-control" id="usrname" placeholder="Enter your Name" formControlName="usrname">
                         <label for="usrname">Enter your Name <span class="font-red font-bold">*</span></label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="useremail" placeholder="Enter your Email">
+                        <input type="text" class="form-control" id="useremail" placeholder="Enter your Email" formControlName="useremail">
                         <label for="useremail">Email Address <span class="font-red font-bold">*</span></label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="number" class="form-control" id="userphone" placeholder="Enter your Phone Number">
+                        <input type="number" class="form-control" id="userphone" placeholder="Enter your Phone Number"  formControlName="userphone">
                         <label for="userphone">Mobile Number <span class="font-red font-bold">*</span></label>
                     </div>
-                    <button class="btn color-btn w-100 text-center font-bold">Verify Phone Number</button>
-                    <p class="py-3 text-center">Already have an account? <a routerLink="/Login"
+                    <button type="submit" [disabled]="!userForm.valid" class="btn color-btn w-100 text-center font-bold">Verify Phone Number</button>
+                    <p class="py-3 text-center">Already have an account? <a routerLink="/login"
                             class="font-primary font-bold">Sign in</a></p>
                 </form>
             </div>

@@ -7,6 +7,7 @@ import { MainnavComponent } from '../components/header/mainnav/mainnav.component
 import { MidheaderComponent } from '../components/header/midheader/midheader.component';
 import { TopheaderComponent } from '../components/header/topheader/topheader.component';
 import { FooterComponent } from '../components/footer/footer.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,13 @@ import { FooterComponent } from '../components/footer/footer.component';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule    
+    RouterModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+     positionClass: 'toast-bottom-center',
+     preventDuplicates: true,
+      progressBar: true,
+    })    
   ],
 
   exports: [

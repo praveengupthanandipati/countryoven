@@ -128,6 +128,87 @@ getSaveProductDetails(obj:any):Observable<any>{
   }
   
 
+  /* cart */
+/*Get Shopping Cart */
+postShopingCart(obj:any):Observable<any>{
+  
+  return this.http.post(`${environment.apiUrl}/Cart`,obj)
+  }
+
+  postAddOn(obj:any):Observable<any>{
+  
+    return this.http.post(`${environment.apiUrl}/Cart/GetAddOn`,obj)
+    }
+
+    addAddOn(obj:any):Observable<any>{
+  
+      return this.http.post(`${environment.apiUrl}/Cart/AddAddOn`,obj)
+      }
+
+      deleteProduct(obj:any):Observable<any>{
+  
+        return this.http.post(`${environment.apiUrl}/Cart/DeleteProduct`,obj)
+        }
+        updateQuantity(obj:any):Observable<any>{
+  
+          return this.http.post(`${environment.apiUrl}/Cart/UpdateQuantity`,obj)
+          }
+    
+
+/* card end */
+
+
+/*customer */
+createCustomer(obj:any):Observable<any>{
+  
+  return this.http.post(`${environment.apiUrl}/customer/CreateCustomer`,obj)
+  }
+
+
+login(obj:any):Observable<any>{
+  
+    return this.http.post(`${environment.apiUrl}/customer/Login`,obj)
+    }
+  
   
 
-}
+forgotpwd(obj:any):Observable<any>{
+  
+  return this.http.post(`${environment.apiUrl}/customer/ForgetPassword`,obj)
+  }
+
+  
+
+  changePassword(obj:any):Observable<any>{
+  
+  return this.http.post(`${environment.apiUrl}/customer/ChangePassword`,obj)
+  }
+
+   
+
+  updateProfile(obj:any):Observable<any>{
+  
+    return this.http.post(`${environment.apiUrl}/customer/UpdateProfile`,obj)
+    }
+
+
+    
+    getByCustomerId(obj:any):Observable<any>{
+  
+    return this.http.post(`${environment.apiUrl}/customer/GetByCustomerId`,obj)
+    }
+    
+    getMyOrders(obj:any):Observable<any>{
+  
+    return this.http.post(`${environment.apiUrl}/customer/GetMyOrders`,obj)
+    }
+    
+    getTrackOrder(obj:any):Observable<any>{
+  
+    return this.http.post(`${environment.apiUrl}/customer/GetTrackOrder`,obj)
+    }
+ 
+    getIpAddress(): Observable<any> {
+      return this.http.get('https://api.ipify.org?format=json');
+    }
+  }
