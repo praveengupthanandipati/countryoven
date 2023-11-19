@@ -1,0 +1,196 @@
+@import "../../../styles/styles";
+
+.mid-header {
+    background: map-get($colors, lightgradient);
+  
+    @include max(map-get($breakpoints, "sm")) {
+      background: none;
+    }
+    .top-header-logo {
+      @include max(map-get($breakpoints, "sm")) {
+        position: relative;
+        left: 50px;
+      }
+      .brand-logo {
+        width: 150px;
+  
+        @include max(map-get($breakpoints, "sm")) {
+          width: 90px;
+        }
+      }
+    }
+  
+    .searchbox {
+      margin-left: 15px;
+      max-width: 411px;
+      min-width: 350px;
+      position: relative;
+      display: flex;
+  
+      @include max(map-get($breakpoints, "sm")) {
+        margin: 3px 0;
+        max-width: 100%;
+        min-width: 100%;
+      }
+  
+      .icomoon {
+        color: map-get($colors, gray);
+      }
+      datalist {
+        width: 100%;
+        position: absolute;
+        left: 0;
+      }
+    }
+    .headerinput {
+      background: map-get($colors, white);
+      font-size: $fsize - 1;
+      padding: 5px 0;
+      border-radius: 3px;
+      border: 1px solid map-get($colors, lightgray);
+      color: map-get($colors, black);
+      text-decoration: none;
+  
+      @include max(map-get($breakpoints, "sm")) {    
+        float: left;
+      }
+    }
+    .deliver {
+      padding: 14px 15px;
+      margin-left: 15px;
+  
+      @include max(map-get($breakpoints, "sm")) {
+        margin-left: 0;
+        width:60%;
+      }
+  
+      .icon-pin {
+        color: map-get($colors, primary);
+      }
+      .h6 {
+        font-size: $fsize;
+  
+        span.pincode {
+          color: map-get($colors, primary);
+        }
+      }
+      .icon-right-chevron {
+        transform: rotate(90deg);
+      }
+    }
+    .dropdown {
+      padding: 12px 15px;
+      margin-left: 15px;
+  
+      button {
+        background: none;
+        border: none;
+      }
+    }
+    .navrt {
+      @include max(map-get($breakpoints, "sm")) {
+        position: absolute;
+        top: 4px;
+        right: 0;
+        width:50%;
+      }
+      a {
+        width: 45px;
+        margin: 0 15px;
+        position: relative;
+  
+        @include max(map-get($breakpoints, "sm")) {
+          width: auto;
+          margin: 0 10px;
+        }
+  
+        .badge {
+          top: 0;
+          right: 0;
+          background: map-get($colors, primary);
+          border-radius: 50%;
+          width: 22px;
+          height: 22px;
+          text-align: center;
+          line-height: 22px;
+          display: inline-block;
+          padding: 0;
+        }
+      }
+      .icomoon {
+        font-size: $fsize * 2 + 8;
+        position: relative;
+        top: 6px;
+  
+        @include max(map-get($breakpoints, "sm")) {
+          font-size: $fsize * 2;
+        }
+      }
+      small {
+        color: map-get($colors, primary);
+        font-size: $fsize - 3;
+  
+        @include max(map-get($breakpoints, "sm")) {
+          font-size: $fsize - 5;
+        }
+      }
+    }
+  }
+  
+
+
+    .morecity {
+      @include transition(all 0.5s ease);
+      font-size: $fsize;
+      color: map-get($colors, darkgray);
+      margin-right: 10px;
+  
+      &:hover, &.selected {
+        background: map-get($colors, primary);
+        color: map-get($colors, white);
+      }
+    }
+  
+    .citycol {
+      background: map-get($colors, lightprimary);
+      width:auto;
+      height: 100px;
+      @include transition(all 0.5s ease);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+      @include max(map-get($breakpoints, "sm")){
+        display: block;
+      }
+  
+      &:hover, &.selected {
+        background: map-get($colors, primary);
+  
+        .icomoon {
+          &:before {
+            color: map-get($colors, white);
+          }
+        }
+      }
+      .icomoon {
+        font-size: $fsize * 5;
+        color: map-get($colors, darkgray);
+      }
+      p {
+        font-size: $fsize - 2;
+      }
+    }
+  
+    .search-header {
+      .form-control {
+        &:focus {
+          box-shadow: none;
+        }
+      }
+      .icomoon {
+        color: map-get($colors, primary);
+      }
+    }
+  
+  

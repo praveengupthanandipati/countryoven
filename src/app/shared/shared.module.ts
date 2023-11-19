@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from '../components/header/header.component';
 import { MainnavComponent } from '../components/header/mainnav/mainnav.component';
 import { MidheaderComponent } from '../components/header/midheader/midheader.component';
 import { TopheaderComponent } from '../components/header/topheader/topheader.component';
 import { FooterComponent } from '../components/footer/footer.component';
 import { ToastrModule } from 'ngx-toastr';
+import { SetLocComponent } from '../components/set-loc/set-loc.component';
+import { DisplylocpopupComponent } from '../components/displylocpopup/displylocpopup.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,15 @@ import { ToastrModule } from 'ngx-toastr';
     TopheaderComponent,
     MidheaderComponent,
     MainnavComponent,
-    FooterComponent
+    FooterComponent ,
+    SetLocComponent,
+    DisplylocpopupComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot({
       timeOut: 3000,
      positionClass: 'toast-bottom-center',
@@ -31,9 +36,13 @@ import { ToastrModule } from 'ngx-toastr';
 
   exports: [
     FormsModule,
+    ReactiveFormsModule,
+
     HeaderComponent,
     TopheaderComponent,
     MidheaderComponent,
+    SetLocComponent,
+    DisplylocpopupComponent,
     MainnavComponent,
     FooterComponent
    

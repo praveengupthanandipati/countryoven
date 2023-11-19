@@ -4,47 +4,54 @@
         <nav aria-label="breadcrumb" class="align-self-center">
             <ol class="breadcrumb pb-0 mb-0">
                 <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-                <li class="breadcrumb-item"><a routerLink="/Profile">My Account</a></li>
+                <li class="breadcrumb-item"><a routerLink="/profile">My Account</a></li>
                 <li class="breadcrumb-item active" aria-current="page">My Account</li>
             </ol>
         </nav>
         <div class="profile-page-title px-3 d-flex justify-content-between background-lightprimary py-3 my-2">
             <h5 class="h5 text-uppercase font-bold">My Profile</h5>
-            <h6 class="h6 tex-end">Hi, Praveen Kumar</h6>
+            <h6 class="h6 tex-end">Hi, {{custName}}</h6>
         </div>
         <app-profile-nav></app-profile-nav>
         <div class="userprofile-body">
-            <form>
+            <form [formGroup]="userForm"  (ngSubmit)="onSubmit()">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control is-invalid" id="userName" placeholder="Write Name"
-                                value="Praveen Kumar">
+                    <input type="text" class="form-control"  [ngClass]="{'is-invalid': userForm.get('customerFirstName').invalid}" id="userName" placeholder="Write Name"
+                            formControlName="customerFirstName" >
                             <label for="userName">Your Name <span class="font-red font-bold">*</span></label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="phoneNumber" placeholder="Phone Number"
-                                value="+91 7995165789">
+                            <input type="text" class="form-control" id="mobileNumber" placeholder="Mobile Number"
+                            formControlName="MobilePhone">
+                            <label for="mobileNumber">Mobile Number </label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control"  [ngClass]="{'is-invalid': userForm.get('phoneNo').invalid}"  id="phoneNumber" placeholder="Phone Number"
+                            formControlName="phoneNo">
                             <label for="phoneNumber">Phone Number <span class="font-red font-bold">*</span></label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="email" placeholder="Phone Number"
-                                value="praveennandipati@gmail.com">
+                            <input type="email" class="form-control" id="email" placeholder="Email"
+                                formControlName="email"  [ngClass]="{'is-invalid': userForm.get('email').invalid}" >
                             <label for="email">Email <span class="font-red font-bold">*</span></label>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                         <div class="form-floating mb-3">
                             <input type="date" class="form-control" id="dob" placeholder="Date of Birth"
                                 value="04-08-1981">
-                            <label for="dob">Dte of Birth <span class="font-red font-bold">*</span></label>
+                            <label for="dob">Date of Birth <span class="font-red font-bold">*</span></label>
                         </div>
-                    </div>
-                    <div class="col-md-4">
+                    </div> -->
+                    <!-- <div class="col-md-4">
                         <div class="form-floating mb-3">
                             <select class="form-select" id="selectGender">
                                 <option selected>Male</option>
@@ -53,47 +60,57 @@
                             </select>
                             <label for="selectGender">Select Gender <span class="font-red font-bold">*</span> </label>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="addressline01" placeholder="Address Line 01"
-                                value="Plot No:65, KV Enclave, Kousalya colony">
-                            <label for="addressline01">Address Line 01 <span class="font-red font-bold">*</span></label>
+                                formControlName="Address1">
+                            <label for="addressline01">Address Line 01</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="addressline02" placeholder="Address Line 02"
-                                value="Kukatpally, Medchal Malkajgiri">
+                                 formControlName="Address2">
                             <label for="addressline02">Address Line 02 </label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
-                            <input type="number" class="form-control" id="pinCode" placeholder="Pincode" value="500090">
-                            <label for="pinCode">Pincode <span class="font-red font-bold">*</span></label>
+                            <input type="number" class="form-control" id="pinCode" placeholder="Pincode" value="" formControlName="zipCode">
+                            <label for="pinCode">Pincode </label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="city" placeholder="City" value="Hyderabad">
-                            <label for="city">City <span class="font-red font-bold">*</span></label>
+                            <input type="text" class="form-control" id="city" placeholder="City" formControlName="cityName">
+                            <label for="city">City </label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
-                            <select class="form-select" id="country">
-                                <option selected>India</option>
-                                <option>USA</option>
-                                <option>Canada</option>
+                            <select class="form-select" id="country" formControlName="countryId">
+                                <option [value]="c.countryId" *ngFor="let c of countryList">{{c.countryName}}</option>
+                              
                             </select>
-                            <label for="country">Country <span class="font-red font-bold">*</span> </label>
+                            <label for="country">Country  </label>
                         </div>
                     </div>
+
+
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3">
+                            <select class="form-select" id="country" formControlName="stateId">
+                                <option [value]="c.stateId" *ngFor="let c of stateList">{{c.stateName}}</option>
+                              
+                            </select>
+                            <label for="country">State  </label>
+                        </div>
+                    </div>  
                     <div class="col-md-12">
                         <div class="pt-3">
                             <button class="text-uppercase color-border-btn">Cancel</button>
-                            <button class="text-uppercase color-btn border-0 ms-3">Save</button>
+                            <button type="submit" [disabled]="!userForm.valid" class="text-uppercase color-btn border-0 ms-3">Save</button>
                         </div>
                     </div>
                 </div>
