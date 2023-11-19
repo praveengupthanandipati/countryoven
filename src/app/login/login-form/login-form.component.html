@@ -4,14 +4,23 @@
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <h1 class="h5 font-bold text-center">Welcome back to Country Oven</h1>
-                <form class="login-form pt-3"  [formGroup]="userForm"  (ngSubmit)="onSubmit()">
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="username" placeholder="Username"  formControlName="usrname">
-                        <label for="username">Username <span class="font-red font-bold">*</span></label>
+                <form class="login-form pt-3" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                    <div class="input-group mb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control is-invalid" id="username" placeholder="Username"
+                                formControlName="usrname">
+                            <label for="username">Username <span class="font-red font-bold">*</span></label>
+                        </div>
+                        <div class="invalid-feedback mt-0 d-block">
+                            Enter Valid User Name
+                        </div>
                     </div>
-                    <div class="form-floating">
-                        <input type="password" class="form-control" id="password" placeholder="Password"  formControlName="pwd">
-                        <label for="password">Password <span class="font-red font-bold">*</span></label>
+                    <div class="input-group mb-3">
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="password" placeholder="Password"
+                                formControlName="pwd">
+                            <label for="password">Password <span class="font-red font-bold">*</span></label>
+                        </div>
                     </div>
                     <p class="py-3 text-center">Forgot Password? <a routerLink="/reset"
                             class="font-primary font-bold">Reset Now</a></p>
