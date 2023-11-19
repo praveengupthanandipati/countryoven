@@ -8,31 +8,31 @@ import { Component } from '@angular/core';
 export class ProfileNavComponent {
   userLinks:any[] =[
     {
-      navLink:'/Profile',
+      navLink:'/profile',
       navLabel:'Dashboard'
     },
     {
-      navLink:'/My Profile',
+      navLink:'/my_profile',
       navLabel:'My Profile'
     },
     {
-      navLink:'/Orders',
+      navLink:'/orders',
       navLabel:'My Orders'
     },    
     {
-      navLink:'/User-Address',
+      navLink:'/user-address',
       navLabel:'Address'
     },
     {
-      navLink:'/User-Change-Password',
+      navLink:'/user-change-password',
       navLabel:'Change Password'
     },
     {
-      navLink:'/User-Vouchers',
+      navLink:'/user-vouchers',
       navLabel:'Vouchers'
     },
     {
-      navLink:'/My Profile',
+      navLink:'/',
       navLabel:'Logout'
     },
   ]

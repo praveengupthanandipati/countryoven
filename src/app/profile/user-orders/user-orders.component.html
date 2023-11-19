@@ -4,21 +4,24 @@
         <nav aria-label="breadcrumb" class="align-self-center">
             <ol class="breadcrumb pb-0 mb-0">
                 <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-                <li class="breadcrumb-item"><a routerLink="/Profile">My Account</a></li>
+                <li class="breadcrumb-item"><a routerLink="/profile">My Account</a></li>
                 <li class="breadcrumb-item active" aria-current="page">My Orders</li>
             </ol>
         </nav>
         <div class="profile-page-title px-3 d-flex justify-content-between background-lightprimary py-3 my-2">
             <h5 class="h5 text-uppercase font-bold">My Orders</h5>
-            <h6 class="h6 tex-end">Hi, Praveen Kumar</h6>
+            <h6 class="h6 tex-end">Hi, {{custName}}</h6>
         </div>
         <app-profile-nav></app-profile-nav>
         <div class="userprofile-body">
-            <div class="user-order border p-2 mb-3" *ngFor="let userOrder of userOrders">
+
+
+
+            <div class="user-order border p-2 mb-3" *ngFor="let order of orderDetails">
                 <div class="row">
                     <div class="col-md-2">
                         <a href="/User-Order-Detail">
-                            <img src="{{userOrder.Image}}" alt="" class="img-fluid">
+                            <img src="{{order.smallimageurl}}" alt="" class="img-fluid">
                         </a>
                     </div>
                     <div class="col-md-10">
@@ -28,14 +31,14 @@
                                     <div>
                                         <h5 class="h5">
                                             <a href="/User-Order-Detail"
-                                                class="font-black font-semibold">{{userOrder.Name}}</a>
+                                                class="font-black font-semibold">{{order.productName}}</a>
                                         </h5>
                                         <p><small class="font-gray"><span class="icon-star"></span> Delivered on <span
-                                                    class="font-green font-semibold">{{userOrder.Date}}</span></small>
+                                                    class="font-green font-semibold">{{order.deliveredDate}}</span></small>
                                         </p>
                                     </div>
                                     <div>
-                                        <p><small>{{userOrder.Status}}</small></p>
+                                        <p><small>{{order.orderStatus}}</small></p>
                                     </div>
                                 </div>
                             </div>
@@ -44,7 +47,7 @@
                                     <div>
                                         <div class="price py-2">
                                             <div class="offer-price text-end font-bold"><span
-                                                    class="icon-inr icomoon"></span>{{userOrder.Price}}.00 </div>
+                                                    class="icon-inr icomoon"></span>{{order.subTotal}}</div>
                                         </div>
                                     </div>
                                     <div class="text-end">
@@ -57,6 +60,9 @@
                     </div>
                 </div>
             </div>
+
+
+
         </div>
     </div>
 </section>

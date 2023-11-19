@@ -51,12 +51,8 @@ getFooters(): Observable<any> {
 
 
 getProducts(obj:any):Observable<any>{
-  const data={
-    cityname:'Hyderabad',
-    country:'India',
-    currencySelected:'INR'
-  }
-return this.http.post(`${environment.apiUrl}/home/homepageproducts`,data)
+ 
+return this.http.post(`${environment.apiUrl}/home/homepageproducts`,obj)
 }
 
 
@@ -211,4 +207,38 @@ forgotpwd(obj:any):Observable<any>{
     getIpAddress(): Observable<any> {
       return this.http.get('https://api.ipify.org?format=json');
     }
+
+    getCountry(obj:any): Observable<any> {
+      return this.http.post(`${environment.apiUrl}/home/Country`,obj)
+    }
+    getState(obj:any): Observable<any> {
+      return this.http.post(`${environment.apiUrl}/home/State`,obj)
+    }
+    getCity(obj:any): Observable<any> {
+      return this.http.post(`${environment.apiUrl}/home/City`,obj)
+    }
+
+    getDeliveryCity(obj:any): Observable<any> {
+      return this.http.post(`${environment.apiUrl}/home/DeliveryCity`,obj)
+    }
+// address
+
+getAddressByCustomerId(obj:any): Observable<any> {
+  return this.http.post(`${environment.apiUrl}/AddressBook/GetAddressByCustomerId`,obj)
+}
+
+getAddressByAddressId(obj:any): Observable<any> {
+  return this.http.post(`${environment.apiUrl}/AddressBook/GetAddressByAddressId`,obj)
+}
+addAddress(obj:any): Observable<any> {
+  return this.http.post(`${environment.apiUrl}/AddressBook/AddAddress`,obj)
+}
+
+updateAddress(obj:any): Observable<any> {
+  return this.http.post(`${environment.apiUrl}/AddressBook/UpdateAddress`,obj)
+}
+
+deleteAddress(obj:any): Observable<any> {
+  return this.http.post(`${environment.apiUrl}/AddressBook/DeleteAddress`,obj)
+}
   }

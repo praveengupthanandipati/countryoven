@@ -137,68 +137,74 @@
   }
 }
 
+
 .selectcity-offcanvas {
   height: auto;
+  overflow: auto;
 
-  @include max(map-get($breakpoints, "sm")){
-    width:100%;
-    display: block;   
-  }
-
-  .morecity {
-    @include transition(all 0.5s ease);
-    font-size: $fsize;
-    color: map-get($colors, darkgray);
-    margin-right: 10px;
-
-    &:hover {
-      background: map-get($colors, primary);
-      color: map-get($colors, white);
-    }
-  }
-
-  .citycol {
-    background: map-get($colors, lightprimary);
-    width:auto;
-    height: 100px;
-    @include transition(all 0.5s ease);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    @include max(map-get($breakpoints, "sm")){
-      display: block;
-    }
-
-    &:hover {
-      background: map-get($colors, primary);
-
-      .icomoon {
-        &:before {
-          color: map-get($colors, white);
-        }
-      }
-    }
-    .icomoon {
-      font-size: $fsize * 5;
-      color: map-get($colors, darkgray);
-    }
-    p {
-      font-size: $fsize - 2;
-    }
-  }
-
-  .search-header {
-    .form-control {
-      &:focus {
-        box-shadow: none;
-      }
-    }
-    .icomoon {
-      color: map-get($colors, primary);
-    }
-  }
 }
+// .selectcity-offcanvas {
+//   height: auto;
+
+//   @include max(map-get($breakpoints, "sm")){
+//     width:100%;
+//     display: block;   
+//   }
+
+//   .morecity {
+//     @include transition(all 0.5s ease);
+//     font-size: $fsize;
+//     color: map-get($colors, darkgray);
+//     margin-right: 10px;
+
+//     &:hover {
+//       background: map-get($colors, primary);
+//       color: map-get($colors, white);
+//     }
+//   }
+
+//   .citycol {
+//     background: map-get($colors, lightprimary);
+//     width:auto;
+//     height: 100px;
+//     @include transition(all 0.5s ease);
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+
+//     @include max(map-get($breakpoints, "sm")){
+//       display: block;
+//     }
+
+//     &:hover {
+//       background: map-get($colors, primary);
+
+//       .icomoon {
+//         &:before {
+//           color: map-get($colors, white);
+//         }
+//       }
+//     }
+//     .icomoon {
+//       font-size: $fsize * 5;
+//       color: map-get($colors, darkgray);
+//     }
+//     p {
+//       font-size: $fsize - 2;
+//     }
+//   }
+
+//   .search-header {
+//     .form-control {
+//       &:focus {
+//         box-shadow: none;
+//       }
+//     }
+//     .icomoon {
+//       color: map-get($colors, primary);
+//     }
+//   }
+// }
 
 .user-dropdown {
   .dropdown-toggle {

@@ -62,6 +62,10 @@ let data={
   else
   {
     this.toastr.success(res.successMessage);
+    localStorage.setItem('email', this.userForm.get('usrname').value)
+    localStorage.setItem('customerId', res.customerId);
+    localStorage.setItem('custName', res.customerName);
+    
   }
         });
 }

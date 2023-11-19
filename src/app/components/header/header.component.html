@@ -1,3 +1,8 @@
 <app-topheader *ngIf="scrollingMessage" [scrollingMessage]="scrollingMessage"></app-topheader>
 <app-midheader *ngIf="searchList" [searchList]="searchList" ></app-midheader>
 <app-mainnav *ngIf="categoryList && menuList" [menuList]="menuList" [categoryList]="categoryList"></app-mainnav>
+
+<ng-container>
+
+    <app-displylocpopup></app-displylocpopup>
+</ng-container>

@@ -10,12 +10,12 @@ import { UserVouchersComponent } from './user-vouchers/user-vouchers.component';
 
 const routes: Routes = [
   {path:'', component:UserDashboardComponent},  
-  {path:'My_Profile', component:UserProfileComponent},
-  {path:'Orders', component:UserOrdersComponent},
-  {path:'User-Order-Detail', component:UserOrderDetailComponent},
-  {path: 'User-Address', component:UserAddressComponent},
-  {path: 'User-Change-Password', component:ChangepasswordComponent},
-  {path: 'User-Vouchers', component:UserVouchersComponent}
+  {path:'my_profile', component:UserProfileComponent},
+  {path:'orders', component:UserOrdersComponent},
+  {path:'user-order-detail', component:UserOrderDetailComponent},
+  {path: 'user-address', component:UserAddressComponent},
+  {path: 'user-change-password', component:ChangepasswordComponent},
+  {path: 'user-vouchers', component:UserVouchersComponent}
 ];
 
 @NgModule({

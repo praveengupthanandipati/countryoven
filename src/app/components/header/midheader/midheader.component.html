@@ -45,7 +45,7 @@
                         <div><small class="text-uppercase font-bold">Profile</small></div>
                     </div>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" routerLink="/login">
+                        <li *ngIf="!email"><a class="dropdown-item" routerLink="/Login">
                                 <div class="d-flex">
                                     <span class="icon-login h4 align-self-center"></span>
                                     <div class="ps-3">
@@ -54,7 +54,7 @@
                                     </div>
                                 </div>
                             </a></li>
-                        <li><a class="dropdown-item" routerLink="/Profile">
+                        <li *ngIf="email"><a class="dropdown-item" routerLink="/profile">
                                 <div class="d-flex">
                                     <span class="icon-setting h4 align-self-center"></span>
                                     <div class="ps-3">
@@ -63,7 +63,7 @@
                                     </div>
                                 </div>
                             </a></li>
-                        <li><a class="dropdown-item" href="/Orders">
+                        <li *ngIf="email"><a class="dropdown-item" href="/orders">
                                 <div class="d-flex">
                                     <span class="icon-gift-box h4 align-self-center"></span>
                                     <div class="ps-3">
@@ -90,7 +90,7 @@
                                     </div>
                                 </div>
                             </a></li>
-                        <li><a class="dropdown-item" routerLink="/">
+                        <li *ngIf="email"><a class="dropdown-item" routerLink="/">
                                 <div class="d-flex">
                                     <span class="icon-exit h4 align-self-center"></span>
                                     <div class="ps-3">
@@ -113,92 +113,8 @@
 
 <div class="offcanvas offcanvas-top selectcity-offcanvas" tabindex="-1" id="selectcity"
     aria-labelledby="offcanvasTopLabel">
-    <div class="offcanvas-header">
-        <article class="mx-auto">
-            <h4 class="offcanvas-title font-bold text-black text-center" id="offcanvasTopLabel">Select Delivery Location
-            </h4>
-            <p>Select a delivery location to see product availability</p>
-        </article>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2 col-6 col">
-                    <a class="citycol rounded text-center mx-auto" href="javascript:void(0)">
-                        <span class="icon-charminar icomoon"></span>
-                    </a>
-                    <p class="text-center font-bold pt-2">Hyderabad</p>
-                </div>
-                <div class="col-md-2 col-6 col">
-                    <a class="citycol rounded text-center mx-auto" href="javascript:void(0)">
-                        <span class="icon-redfort icomoon"></span>
-                    </a>
-                    <p class="text-center font-bold pt-2">Delhi</p>
-                </div>
-                <div class="col-md-2 col-6 col">
-                    <a class="citycol rounded text-center mx-auto" href="javascript:void(0)">
-                        <span class="icon-mumbai icomoon"></span>
-                    </a>
-                    <p class="text-center font-bold pt-2">Mumbai</p>
-                </div>
-                <div class="col-md-2 col-6 col">
-                    <a class="citycol rounded text-center mx-auto" href="javascript:void(0)">
-                        <span class="icon-bengaluru icomoon"></span>
-                    </a>
-                    <p class="text-center font-bold pt-2">Bengaluru</p>
-                </div>
-                <div class="col-md-2 col-6 col">
-                    <a class="citycol rounded text-center mx-auto" href="javascript:void(0)">
-                        <span class="icon-kolkatta icomoon"></span>
-                    </a>
-                    <p class="text-center font-bold pt-2">Kolkatta</p>
-                </div>
-                <div class="col-md-2 col-6 col">
-                    <a class="citycol rounded text-center mx-auto" href="javascript:void(0)">
-                        <span class="icon-chennai icomoon"></span>
-                    </a>
-                    <p class="text-center font-bold pt-2">Chennai</p>
-                </div>
-            </div>
-            <div class="row pt-5">
-                <div class="col-md-12 text-center">
-                    <article class="mx-auto py-3">
-                        <h4 class="offcanvas-title font-bold text-black text-center" id="offcanvasTopLabel">Select
-                            More Cities We deliver
-                        </h4>
-                    </article>
-                    <div class="py-3">
-                        <a class="badge rounded-pill d-inline-block border morecity px-3 py-2"
-                            href="javascript:void(0)">Vijayawada</a>
-                        <a class="badge rounded-pill d-inline-block border morecity px-3 py-2"
-                            href="javascript:void(0)">Kakinada</a>
-                        <a class="badge rounded-pill d-inline-block border morecity px-3 py-2"
-                            href="javascript:void(0)">Pune</a>
-                        <a class="badge rounded-pill d-inline-block border morecity px-3 py-2"
-                            href="javascript:void(0)">Phopal</a>
-                        <a class="badge rounded-pill d-inline-block border morecity px-3 py-2"
-                            href="javascript:void(0)">Warangal</a>
-                        <a class="badge rounded-pill d-inline-block border morecity px-3 py-2"
-                            href="javascript:void(0)">Vizag</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class="search-header d-flex justify-content-between mt-4 px-4 py-1 border rounded-pill">
-                        <div class="d-flex">
-                            <span class="icon-magnifying-glass icomoon align-self-center"></span>
-                            <input type="text" class="form-control ms-2 border-0" name=""
-                                placeholder="Enter your Pincode">
-                        </div>
-                        <span class="icon-pin icomoon align-self-center"></span>
-                    </div>
-                    <div class="text-center">
-                        <a href="javascript:void(0)" class="color-btn d-inline-block mt-4">Proceed to Shopping</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    <app-set-loc></app-set-loc>
+     
+       
 </div>

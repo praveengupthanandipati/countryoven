@@ -12,14 +12,24 @@ export class HomeComponent implements OnInit{
   iconicBanners:any;
   smallBanners:any;
   productSecions: any;
+  city:any;
+  countryname:any;
+  currency:any;
   constructor(private _crud:CurdService)
   {
   
   }
   ngOnInit(): void {
-localStorage.setItem('city', 'Hyderabad')
+
 localStorage.setItem('country', 'India')
 localStorage.setItem('currency', 'INR')
+
+
+this.city=localStorage.getItem('city')
+this.countryname=localStorage.getItem('country');
+this.currency=localStorage.getItem('currency');
+
+
 
     this.getBanners()
     this.getProducts();
@@ -140,8 +150,12 @@ localStorage.setItem('currency', 'INR')
 
   
   getProducts(): void {
-          
-    this._crud.getProducts('s').subscribe(res => {
+    const data={
+      cityname:this.city,
+      country:this.countryname,
+      currencySelected:this.currency
+    }    
+    this._crud.getProducts(data).subscribe(res => {
      console.log(res)
      this.productSecions=res
     })

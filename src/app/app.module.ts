@@ -9,9 +9,13 @@ import { ProfileModule } from './profile/profile.module';
 import { HttpClientModule } from '@angular/common/http';
 // import { ProductsComponent } from './pages/products/products.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 @NgModule({
   declarations: [
     AppComponent,
+   
+    
     // ProductsComponent,      
   ],
   imports: [

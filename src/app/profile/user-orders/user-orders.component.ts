@@ -1,43 +1,53 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { CurdService } from 'src/app/services/curd.service';
 
 @Component({
   selector: 'app-user-orders',
   templateUrl: './user-orders.component.html',
   styleUrls: ['./user-orders.component.scss']
 })
-export class UserOrdersComponent {
+export class UserOrdersComponent implements OnInit {
 
-  userOrders=[
-    {
-      Image:'assets/images/products/product01.jpg', 
-      Name:'Precious Beauty Flowers', 
-      Date:'July 20',
-      Status:'Your item has been delivered',
-      Price:1299,
-    },
-    {
-      Image:'assets/images/products/product02.jpg', 
-      Name:'Precious Beauty Flowers', 
-      Date:'July 20',
-      Status:'Your item has been delivered',
-      Price:1299,
-    },
-    {
-      Image:'assets/images/products/product03.jpg', 
-      Name:'Precious Beauty Flowers', 
-      Date:'July 20',
-      Status:'Your item has been delivered',
-      Price:1299,
-    },
-    {
-      Image:'assets/images/products/product04.jpg', 
-      Name:'Precious Beauty Flowers', 
-      Date:'July 20',
-      Status:'Your item has been delivered',
-      Price:1299,
-    },
-    
-  ]
+
+  isLogend:boolean=false;
+  email:any;
+  custID:any;
+  custName:any;
+  orderDetails:any;
+
+  constructor(private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private route:Router)
+  {
+   if(localStorage.getItem('email'))
+   {
+    this.isLogend=true;
+    this.email=localStorage.getItem('email');
+    this.custID=localStorage.getItem('customerId')
+    this.custName=localStorage.getItem('custName')
+   }
+  }
+  ngOnInit(): void {
+    this.getMyOrders();
+  }
+
+
+
+
+  getMyOrders()
+  {
+    this.custID="5012";
+    let data={ "customerId": this.custID}
+    this._crud.getMyOrders(data).subscribe(res => {
+      console.log(res)
+      this.orderDetails=res;
+    });
+  }
+
+
+
+
 
 
 }
