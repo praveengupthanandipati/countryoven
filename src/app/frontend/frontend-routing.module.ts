@@ -11,6 +11,14 @@ import { ReviewsComponent } from '../pages/reviews/reviews.component';
 import { StoresComponent } from '../pages/stores/stores.component';
 import { FrontendComponent } from './frontend/frontend.component';
 import { ProductsComponent } from '../pages/products/products.component';
+import { CareersComponent } from '../pages/careers/careers.component';
+import { CustomizedCakesComponent } from '../pages/customized-cakes/customized-cakes.component';
+import { CorporateOrdersComponent } from '../pages/corporate-orders/corporate-orders.component';
+import { CustomerServicesComponent } from '../pages/customer-services/customer-services.component';
+import { HelpComponent } from '../pages/help/help.component';
+import { FaqComponent } from '../pages/faq/faq.component';
+import { ShippingComponent } from '../pages/shipping/shipping.component';
+import { DeliverCitiesComponent } from '../pages/deliver-cities/deliver-cities.component';
 
 const routes: Routes = [
   {
@@ -28,6 +36,14 @@ const routes: Routes = [
       {path: 'Contact', component:ContactComponent},  
       {path: 'Coupon-Partners', component:CouponpartnersComponent},
       {path: 'Franchises', component:FranchisesComponent},  
+      {path: 'Careers', component:CareersComponent},
+      {path: 'Customized-Cakes', component:CustomizedCakesComponent},
+      {path: 'Corporate-Orders', component:CorporateOrdersComponent },
+      {path: 'Customer-Services', component:CustomerServicesComponent},
+      {path: 'Help', component:HelpComponent},
+      {path:'FAQ', component:FaqComponent},
+      {path: 'Shipping', component:ShippingComponent},
+      {path: 'Delivery-Cities', component:DeliverCitiesComponent}
     ]},
  
 ];
