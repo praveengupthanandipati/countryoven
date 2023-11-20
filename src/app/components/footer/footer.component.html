@@ -48,15 +48,14 @@
                 <div class="col-md-8">
                     <div class="d-flex justify-content-between flex-wrap" *ngIf="footerlinks">
 
-<ng-container *ngFor="let menu of footerlinks.slice(1,footerlinks.length)">
-    <div class="links-col">
-        <h5 class="h5 text-uppercase font-extrabold">{{menu.headerTitle}}</h5>
-        <div class="links">
-            <a href="javascript:void(0)" *ngFor="let sm of menu.footerLinks">{{sm.title}}</a>
-           
-        </div>
-    </div>
-</ng-container>
+                        <ng-container *ngFor="let menu of footerlinks.slice(1,footerlinks.length)">
+                            <div class="links-col">
+                                <h5 class="h5 text-uppercase font-extrabold">{{menu.headerTitle}}</h5>
+                                <div class="links">
+                                    <a href="javascript:void(0)" *ngFor="let sm of menu.footerLinks">{{sm.title}}</a>
+                                </div>
+                            </div>
+                        </ng-container>
 
 
                         <!-- <div class="links-col">
@@ -128,7 +127,7 @@
                         <a routerLink="/Stores" class="font-semibold">Our Stores</a>
                         <a routerLink="/Reviews" class="font-semibold">Reviews</a>
                         <a routerLink="/Contact" class="font-semibold">Contact</a>
-                        <a href="javascript:void(0)" class="font-semibold">Careers</a>
+                        <a href="/Careers" class="font-semibold">Careers</a>
                         <a href="https://countryovenglobal.blogspot.com/" class="font-semibold" target="_blank">Blog</a>
                         <a routerLink="/Coupon-Partners" class="font-semibold">Coupon Partners</a>
                         <a routerLink="/Franchises" class="font-semibold">Franchises</a>

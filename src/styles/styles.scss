@@ -276,3 +276,20 @@ body {
     }
   }
 }
+
+.list-items {
+  li {
+    list-style-type: disc;
+    margin-left: 5px;
+  }
+}
+
+.cities-list {
+  a {
+    background:map-get($colors, lightblue);
+    &:hover {
+      background: map-get($colors, primary);
+      color:map-get($colors, white);
+    }
+  }
+}

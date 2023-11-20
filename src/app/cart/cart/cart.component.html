@@ -37,10 +37,11 @@
                                             <div class="btnsec">
                                                 <div class="value-button" id="decrease" (click)="decrementQuantity(i)"
                                                     value="Decrease Value">-</div>
-                                                <input type="number" id="number" min="0" [(ngModel)]="CartItem.quantity" />
-                                                <div class="value-button" id="increase" 
-                                                    value="Increase Value" (click)="incrementQuantity(i)">+</div>
-                                                    <a (click)="updateCartItem(CartItem.sNo, CartItem.quantity)">Update</a>
+                                                <input type="number" id="number" min="0"
+                                                    [(ngModel)]="CartItem.quantity" />
+                                                <div class="value-button" id="increase" value="Increase Value"
+                                                    (click)="incrementQuantity(i)">+</div>
+                                                <a (click)="updateCartItem(CartItem.sNo, CartItem.quantity)">Update</a>
                                             </div>
                                         </div>
                                         <!-- <div>
@@ -66,7 +67,8 @@
                                             </div> -->
                                         </div>
                                         <div class="text-end">
-                                            <a href="javascript:void(0)" (click)="DeleteCartItem(CartItem.sNo)"><span class="icon-delete font-black"></span>
+                                            <a href="javascript:void(0)" (click)="DeleteCartItem(CartItem.sNo)"><span
+                                                    class="icon-delete font-black"></span>
                                                 <span class="font-red font-medium">Delete</span></a>
                                         </div>
                                     </div>
@@ -87,7 +89,7 @@
                         <p>MRP Details</p>
                         <p class="text-end">₹ 2,407</p>
                     </div>
-                 
+
                     <div class="d-flex justify-content-between py-2">
                         <p>Delivery Charges</p>
                         <p class="text-end font-green">FREE</p>
@@ -102,7 +104,7 @@
                     </div>
                     <a routerLink="Address-Cart" class="color-btn d-block" data-bs-toggle="modal"
                         data-bs-target="#AddonsProducts" (click)="addOnProducts()">Continue to Checkout</a>
-                   
+
                 </div>
                 <a routerLink=" " class="color-border-btn d-block ">Continue Shopping</a>
             </div>
@@ -127,7 +129,7 @@
 <!-- addons product popup modal-->
 <div class="modal fade" id="AddonsProducts" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">Addons Products to Cart</h5>
@@ -135,36 +137,33 @@
             </div>
             <div class="modal-body">
                 <section class="products-list">
-
-                <div class="app-product-item" *ngFor="let Productvalue of addonproducts">
-                    <figure class="product-item-figure">
-                      
-                            <a>
-                
-                
-                            <!-- hyderabad/send-online/ -->
-                            <img src="{{Productvalue.imageURL}}" alt="" class="img-fluid w-100">
-                        </a>
-                        
-                    </figure>
-                    <div class="item-title p-2 p-md-3 bg-white">
-                        <h5>
-                            <a href="javascript:void(0)" class="font-semibold">{{Productvalue.productName}}</a>
-                        </h5>
-                        <div class="price d-flex py-2 border-bottom">
-                            <div class="offer-price font-bold"><span
-                                    class="icon-inr icomoon font-bold"></span>{{Productvalue.price}}</div>
-                           
-                        </div>
-                        <div class="d-flex justify-content-between pt-2 item-footer">
-                          
-                          <button type="button"  class="color-btn border-0">Add to Cart</button>
-                         
+                    <div class="row">
+                        <div class="col-lg-3" *ngFor="let Productvalue of addonproducts">
+                            <div class="app-product-item w-100">
+                                <figure class="product-item-figure">
+                                    <a>
+                                        <!-- hyderabad/send-online/ -->
+                                        <img src="{{Productvalue.imageURL}}" alt="" class="img-fluid w-100">
+                                    </a>
+                                </figure>
+                                <div class="item-title p-2 p-md-3 bg-white">
+                                    <h5>
+                                        <a href="javascript:void(0)"
+                                            class="font-semibold font-black">{{Productvalue.productName}}</a>
+                                    </h5>
+                                    <div class="price d-flex py-2 border-bottom">
+                                        <div class="offer-price font-bold"><span
+                                                class="icon-inr icomoon font-bold"></span>{{Productvalue.price}}</div>
+                                    </div>
+                                    <div class="d-flex justify-content-between pt-2 item-footer">
+                                        <button type="button" class="color-btn border-0">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-            </section>
+                </section>
 
 
             </div>
