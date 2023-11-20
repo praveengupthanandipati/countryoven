@@ -52,7 +52,9 @@
                             <div class="links-col">
                                 <h5 class="h5 text-uppercase font-extrabold">{{menu.headerTitle}}</h5>
                                 <div class="links">
-                                    <a href="javascript:void(0)" *ngFor="let sm of menu.footerLinks">{{sm.title}}</a>
+                                    <ng-container *ngFor="let sm of menu.footerLinks">
+                                    <a href="javascript:void(0)" [routerLink]="sm.seoTitle" >{{sm.title}}</a>
+                                </ng-container>
                                 </div>
                             </div>
                         </ng-container>
@@ -122,15 +124,22 @@
                     <div class="text-end">
                         <img src="assets/images/footer-cards.png" alt="" />
                     </div>
+
+                 
+
+                   
                     <div class="footer-mainlinks pt-3 text-center">
-                        <a routerLink="/Aboutus" class="font-semibold">About us</a>
+                        <ng-container *ngFor="let sm of footerlinks[0].footerLinks">
+                            <a href="javascript:void(0)" [routerLink]="sm.seoTitle" class="font-semibold" >{{sm.title}}</a>
+                        <!-- <a routerLink="/Aboutus" class="font-semibold">About us</a>
                         <a routerLink="/Stores" class="font-semibold">Our Stores</a>
                         <a routerLink="/Reviews" class="font-semibold">Reviews</a>
                         <a routerLink="/Contact" class="font-semibold">Contact</a>
                         <a href="/Careers" class="font-semibold">Careers</a>
                         <a href="https://countryovenglobal.blogspot.com/" class="font-semibold" target="_blank">Blog</a>
                         <a routerLink="/Coupon-Partners" class="font-semibold">Coupon Partners</a>
-                        <a routerLink="/Franchises" class="font-semibold">Franchises</a>
+                        <a routerLink="/Franchises" class="font-semibold">Franchises</a> -->
+                        </ng-container>
                     </div>
                 </div>
             </div>
