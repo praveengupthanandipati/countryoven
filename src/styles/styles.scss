@@ -281,15 +281,29 @@ body {
   li {
     list-style-type: disc;
     margin-left: 5px;
+    margin-bottom: 10px;
+  }
+}
+
+.list-items2 {
+  li {
+    list-style-type: decimal;
+    margin-bottom: 10px;
+    margin-left: 5px;
   }
 }
 
 .cities-list {
   a {
-    background:map-get($colors, lightblue);
+    background: map-get($colors, lightblue);
+    text-transform: capitalize;
     &:hover {
       background: map-get($colors, primary);
-      color:map-get($colors, white);
+      color: map-get($colors, white);
     }
   }
+}
+
+ol {
+  list-style-type: decimal !important;
 }

@@ -19,6 +19,9 @@ import { HelpComponent } from '../pages/help/help.component';
 import { FaqComponent } from '../pages/faq/faq.component';
 import { ShippingComponent } from '../pages/shipping/shipping.component';
 import { DeliverCitiesComponent } from '../pages/deliver-cities/deliver-cities.component';
+import { ReturnpolicyComponent } from '../pages/returnpolicy/returnpolicy.component';
+import { PrivacypolicyComponent } from '../pages/privacypolicy/privacypolicy.component';
+import { TermsandconditionsComponent } from '../pages/termsandconditions/termsandconditions.component';
 
 const routes: Routes = [
   {
@@ -43,7 +46,10 @@ const routes: Routes = [
       {path: 'Help', component:HelpComponent},
       {path:'content/faq', component:FaqComponent},
       {path: 'content/shipping', component:ShippingComponent},
-      {path: 'deliverycities', component:DeliverCitiesComponent}
+      {path: 'deliverycities', component:DeliverCitiesComponent},
+      {path: 'returnpolicy', component:ReturnpolicyComponent},
+      {path: 'privacypolicy', component:PrivacypolicyComponent},
+      {path: 'termsandconditions', component:TermsandconditionsComponent}
     ]},
  
 ];
