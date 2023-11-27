@@ -14,7 +14,7 @@ constructor()
 
 }
   ngOnInit(): void {
-    console.log(this.scrollingMessage)
+  //  console.log(this.scrollingMessage)
   }
 
   

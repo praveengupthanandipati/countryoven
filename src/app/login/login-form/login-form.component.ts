@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
 import { CurdService } from 'src/app/services/curd.service';
@@ -14,8 +15,8 @@ export class LoginFormComponent {
 
   sessionId:any;
   userForm: any;
-  
-  constructor(private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private cookieService: CookieService){
+  orderlogin:boolean=false;
+  constructor(private route:ActivatedRoute,  private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private cookieService: CookieService, private router:Router){
     this.sessionId= this.cookieService.get('sessionID');
     this.userForm = this.fb.group({
       usrname: ['', Validators.required],
@@ -25,8 +26,18 @@ export class LoginFormComponent {
   }
   ngOnInit() {
   
+
+  const queryParams = this.route.snapshot.queryParams;
+  if(queryParams['arg'] =='ck')
+  {
+    this.orderlogin=true;
   }
- 
+  else
+  {
+    this.orderlogin=false;
+  }
+console.log(this.orderlogin)
+  }
 
   onSubmit()
   {
@@ -65,7 +76,14 @@ let data={
     localStorage.setItem('email', this.userForm.get('usrname').value)
     localStorage.setItem('customerId', res.customerId);
     localStorage.setItem('custName', res.customerName);
-    
+    if(this.orderlogin)
+    {
+      this.router.navigateByUrl('/checkout')
+    }
+   else
+   {
+    this.router.navigateByUrl('/')
+   }
   }
         });
 }

@@ -37,7 +37,7 @@ export class UserOrdersComponent implements OnInit {
 
   getMyOrders()
   {
-    this.custID="5012";
+    // this.custID="5012";
     let data={ "customerId": this.custID}
     this._crud.getMyOrders(data).subscribe(res => {
       console.log(res)

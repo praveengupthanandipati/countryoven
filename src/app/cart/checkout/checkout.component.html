@@ -1,0 +1,117 @@
+<app-cartheader></app-cartheader>
+<section class="cart-subpage">
+    <div class="container">
+     
+        <div class="row">
+            <div class="col-md-8">
+                <div class="deliver-location d-flex justify-content-between p-2 border">
+                  
+                  <div class="d-flex">
+                  Logged In as  {{custName}}
+                  </div>
+                  
+                    <div class="d-flex">
+                        <span class="icon-route h1 font-primary"></span>
+                        <div class="ps-3 align-self-center">
+                            <h6 class="font-gray">Deliver to: <span
+                                    class="font-black d-inline-block ps-3 font-semibold">{{city}}</span>
+                            </h6>
+                        </div>
+                    </div>
+                   
+                </div>
+
+<div class="tabheading" (click)="addressShow =!addressShow" *ngIf="addressId">Delivery to {{addressName}} {{addressCity}}</div>
+
+<section *ngIf="addressShow">
+<app-address-list [selectedAddressId]="addressId"  (sendAddId)="getaddressId($event)" [checkoutaddress]="true"></app-address-list>
+</section> 
+
+
+
+<div class="tabheading" (click)="reviewShow =!reviewShow">Review Order</div>
+
+<section *ngIf="reviewShow">
+<table class="producttable"><thead><tr><th>Image</th><th>Description</th><th>Price</th><th>Qty</th></tr></thead>
+<tbody><tr *ngFor="let items of cartItems"><th>
+    <img [src]="items.produtImage" />
+    </th>
+    <td><span *ngIf="items.productName">{{items.productName}}</span>
+        <span *ngIf="items.additionalWeight"><em>Weight:</em> {{items.additionalWeight}}</span>
+    <span *ngIf="items.productId"><em>Product Id:</em>{{items.productId}}</span>
+
+
+</td>
+<td>{{items.price}}</td>
+<td>{{items.quantity}}</td>
+</tr></tbody>
+</table>
+
+
+
+ <div class="totalAmountwrap">
+<ng-container *ngIf="couponappled">
+    <div> Discount Applicable Amoun:</div>
+    <div>Discount Amount</div>
+</ng-container>
+    <div class="totalAmount">Total Amount : {{totalAmount}}</div>
+ </div>
+
+
+
+<div>Delivery City:{{city}}</div>
+<div>deliveryDate : {{firstlistItem.deliveryDate }}</div>
+<div>Coupon Code 
+    <form [formGroup]="couponForm" (ngSubmit)="onSubmit()"> 
+         <div class="form-group mb-3">
+        <input type="text" class="form-control" [ngClass]="{'is-invalid' :errorcode }" formControlName="couponcode"
+            placeholder="Coupon*">
+
+    </div>
+    <div class="invalid-feedback mt-0 d-block" *ngIf="errorcode">
+        {{errorcodemessage}}
+    </div>
+    <button type="submit" [disabled]="!couponForm.valid"  class="color-border-btn">Apply</button>
+    
+</form>
+
+<button (click)="SaveOrderDetails()">Continue payment</button>
+
+</div>
+</section> 
+
+<!-- <app-user-address></app-user-address> -->
+
+            </div>
+            <div class="col-md-4">
+                <!-- <div class="d-flex p-2 applycoupons">
+                    <span class="icon-coupon h1 font-primary pb-0 mb-0"></span>
+                    <h6 class="h6 font-black font-medium ps-3 align-self-center">Apply Coupons</h6>
+                </div> -->
+                <div class="PriceDetails p-2 border my-3">
+                    <h6 class="h6 font-black font-medium align-self-center pb-3">Price Details</h6>
+                    <div class="d-flex justify-content-between py-2">
+                        <p>MRP Details</p>
+                        <p class="text-end" *ngIf="firstlistItem && firstlistItem.totalAmount">₹ {{firstlistItem.subTotal}}</p>
+                    </div>
+
+                    <div class="d-flex justify-content-between py-2">
+                        <p>Delivery Charges</p>
+                        <p class="text-end font-green" *ngIf="firstlistItem "> <ng-container *ngIf="firstlistItem.deliveryCharges ==0">FREE</ng-container><ng-container *ngIf="firstlistItem.deliveryCharges >0">{{firstlistItem.deliveryCharges}}</ng-container>  </p>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between py-3 totalamount my-2">
+                        <h6 class="h6 font-semibold">Total Amount</h6>
+                        <p class="text-end font-semibold" *ngIf="firstlistItem && firstlistItem.grandTotal">₹ {{firstlistItem.grandTotal}}</p>
+                    </div>
+                 
+
+                </div>
+              
+            </div>
+        </div>
+
+        <!--/ explore products-->
+    </div>
+</section>
+<app-footer></app-footer>

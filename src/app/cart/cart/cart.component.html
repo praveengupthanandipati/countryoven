@@ -79,30 +79,27 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="d-flex p-2 applycoupons">
+                <!-- <div class="d-flex p-2 applycoupons">
                     <span class="icon-coupon h1 font-primary pb-0 mb-0"></span>
                     <h6 class="h6 font-black font-medium ps-3 align-self-center">Apply Coupons</h6>
-                </div>
+                </div> -->
                 <div class="PriceDetails p-2 border my-3">
                     <h6 class="h6 font-black font-medium align-self-center pb-3">Price Details</h6>
                     <div class="d-flex justify-content-between py-2">
                         <p>MRP Details</p>
-                        <p class="text-end">₹ 2,407</p>
+                        <p class="text-end">₹ {{firstlistItem.totalAmount}}</p>
                     </div>
 
                     <div class="d-flex justify-content-between py-2">
                         <p>Delivery Charges</p>
-                        <p class="text-end font-green">FREE</p>
+                        <p class="text-end font-green"> <ng-container *ngIf="firstlistItem.deliveryCharges ==0">FREE</ng-container><ng-container *ngIf="firstlistItem.deliveryCharges >0">{{firstlistItem.deliveryCharges}}</ng-container>  </p>
                     </div>
-                    <div class="d-flex justify-content-between py-2">
-                        <p>Convenience Charges <span class="icon-info"></span> </p>
-                        <p class="text-end">₹ 52</p>
-                    </div>
+                    
                     <div class="d-flex justify-content-between py-3 totalamount my-2">
                         <h6 class="h6 font-semibold">Total Amount</h6>
-                        <p class="text-end font-semibold">₹ 1,662</p>
+                        <p class="text-end font-semibold">₹ {{firstlistItem.grandTotal}}</p>
                     </div>
-                    <a routerLink="Address-Cart" class="color-btn d-block" data-bs-toggle="modal"
+                    <a class="color-btn d-block" data-bs-toggle="modal"
                         data-bs-target="#AddonsProducts" (click)="addOnProducts()">Continue to Checkout</a>
 
                 </div>
@@ -169,7 +166,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="color-btn border-0" data-bs-dismiss="modal">Go to Cart</button>
-                <button type="button" class="color-border-btn">Proceed to Checkout</button>
+                <button type="button" class="color-border-btn" data-bs-dismiss="modal" (click)="gotocheckout()">Proceed to Checkout</button>
             </div>
         </div>
     </div>

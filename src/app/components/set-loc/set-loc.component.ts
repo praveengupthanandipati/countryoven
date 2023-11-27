@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Location } from '@angular/common';
 import { CurdService } from 'src/app/services/curd.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class SetLocComponent  implements OnInit{
   @Input() env?:any;
   @Output() selectEvent:any= new EventEmitter();
  
-constructor(private _crud:CurdService)
+constructor(private _crud:CurdService, private location: Location)
 {
   
   
@@ -43,7 +44,8 @@ selectedCity(c:any)
 {
   this.city=c;  
   localStorage.setItem('city', c);
-  this.selectEvent.emit()
+  this.selectEvent.emit();
+  window.location.reload();
 }
 
 
@@ -52,7 +54,7 @@ getDeliveryCity()
 {
   let data={}
   this._crud.getDeliveryCity(data).subscribe(res => {
-    console.log(res)
+ //   console.log(res)
     
   });
 }

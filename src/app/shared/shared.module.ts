@@ -10,6 +10,8 @@ import { FooterComponent } from '../components/footer/footer.component';
 import { ToastrModule } from 'ngx-toastr';
 import { SetLocComponent } from '../components/set-loc/set-loc.component';
 import { DisplylocpopupComponent } from '../components/displylocpopup/displylocpopup.component';
+import { AddressListComponent } from '../address-list/address-list.component';
+
 
 @NgModule({
   declarations: [
@@ -20,6 +22,9 @@ import { DisplylocpopupComponent } from '../components/displylocpopup/displylocp
     FooterComponent ,
     SetLocComponent,
     DisplylocpopupComponent,
+    AddressListComponent,
+    
+
   ],
   imports: [
     CommonModule,
@@ -44,7 +49,9 @@ import { DisplylocpopupComponent } from '../components/displylocpopup/displylocp
     SetLocComponent,
     DisplylocpopupComponent,
     MainnavComponent,
-    FooterComponent
+    FooterComponent,
+    AddressListComponent,
+    
    
   ],
   providers: [],

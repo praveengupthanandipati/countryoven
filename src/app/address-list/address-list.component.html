@@ -1,0 +1,288 @@
+     
+        <div class="userprofile-body">
+            <div class="text-end align-self-center pb-3">
+                <a href="" class="font-semibold" (click)="addNewAddress()" data-bs-toggle="modal" data-bs-target="#AddNewAddress">Add New
+                    Address</a>
+            </div>
+            <div class="address-cards">
+                <div class="card mb-3" [ngClass]="{'selected':selectedaddress== da.addressId}" *ngFor="let da of deliverAddress">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <h6 class="card-title font-gray h6 align-self-center">Deliver to: <span
+                                    class="text-black font-semibold">{{da.recipientFirstName}} {{da.recipientLastName}}
+                                </span>
+                                <span class="badge bg-light text-dark d-inline-block ms-2 border">{{da.zipCode}}</span>
+                            </h6>
+                            <!-- <button class="color-border-btn d-block ">Deliver here</button> -->
+                        </div>
+                        <div class="py-3">
+                            <p>{{da.address1}} {{da.address2}} <br />
+                                {{da.landmark}} {{da.cityName}}
+                            </p>
+                        </div>
+                        <div class="d-flex justify-content-between pt-3 border-top">
+                            <!--  -->
+                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#editAddress"  (click)="editAddress(da.addressId)" class="font-black"><span
+                                    class="icon-draw"></span> Edit Address</a>
+                            <a href="javascript:;" (click)="deleteAddress(da.addressId, da.customerId)"
+                                class="font-black"><span class="icon-delete"></span> Delete</a>
+                        </div>
+                    </div>
+
+<ng-container *ngIf="isCheckout">
+<button (click)="selectAdd(da)"> Delivery Here</button>
+</ng-container>
+
+                </div>
+            </div>
+        </div>
+   
+<!-- Edit address modal-->
+
+<div class="modal fade" #EditModal  id="editAddress" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-black" id="staticBackdropLabel">Update Delivery Address</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" #EditButton></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <input type="text" class="form-control" formControlName="recipientFirstName"
+                                    placeholder="First Name *">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <input type="text" class="form-control" formControlName="recipientLastName"
+                                    placeholder="Last Name *">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <input type="text" formControlName="email" class="form-control" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <input type="text" formControlName="phone" class="form-control" placeholder="Phone *">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <input type="text" formControlName="mobilePhone" class="form-control"
+                                    placeholder="Mobile Phone *">
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <div class="form-group mb-3">
+                                <textarea class="form-control" formControlName="address1"
+                                    placeholder="Address 1 *"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group mb-3">
+                                <textarea class="form-control" formControlName="address2"
+                                    placeholder="Address 2 *"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group mb-3">
+                                <input type="text" class="form-control" formControlName="landmark"
+                                    placeholder="landmark *" />
+                            </div>
+                        </div>
+                       
+
+
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <select class="form-select" (change)="onaddCountryChange($event)" formControlName="countryId">
+                                    <option [value]="c.countryId" *ngFor="let c of countryList">{{c.countryName}}
+                                    </option>
+
+                                </select>
+                                <label>Country </label>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <select class="form-select" (change)="onstateChange($event)"  formControlName="stateId">
+                                    <option [value]="c.stateId" *ngFor="let c of stateList">{{c.stateName}}</option>
+
+                                </select>
+                                <label>State </label>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <select class="form-select"  formControlName="cityName">
+                                    <option [value]="cl.cityName" *ngFor="let cl of cityList">{{cl.cityName}}
+                                    </option>
+
+                                </select>
+                                <label>City </label>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <input type="text" formControlName="zipCode" class="form-control"
+                                    placeholder="Pincode *">
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" [disabled]="!userForm.valid" class="color-border-btn">Save Address</button>
+                    </div>
+            </form>
+        </div>
+        <!-- data-bs-dismiss="modal" -->
+    </div>
+</div>
+</div>
+
+
+
+<!-- add new address modal-->
+<div class="modal fade" id="AddNewAddress" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-black" id="staticBackdropLabel">Add Delivery Address</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" #AddButton></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="adduserForm" (ngSubmit)="onAddSubmit()">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <input type="text" class="form-control" formControlName="addRecipientFirstName"
+                                    placeholder="First Name*">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <input type="text" class="form-control" formControlName="addRecipientLastName"
+                                    placeholder="Last Name *">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <input type="text" formControlName="addEmail" class="form-control" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <input type="text" formControlName="addPhone" class="form-control" placeholder="Phone *">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <input type="text" formControlName="addMobilePhone" class="form-control"
+                                    placeholder="Mobile Phone *">
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <div class="form-group mb-3">
+                                <textarea class="form-control" formControlName="addaddress1"
+                                    placeholder="Address 1 *"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group mb-3">
+                                <textarea class="form-control" formControlName="addaddress2"
+                                    placeholder="Address 2 *"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group mb-3">
+                                <input type="text" class="form-control" formControlName="addlandmark"
+                                    placeholder="landmark *" />
+                            </div>
+                        </div>
+                       
+
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <select class="form-select" (change)="onaddCountryChange($event)" id="country" formControlName="addcountryId">
+                                    <option [value]="c.countryId" *ngFor="let c of countryList">{{c.countryName}}
+                                    </option>
+
+                                </select>
+                                <label for="country">Country </label>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <select class="form-select"  (change)="onstateChange($event)"  formControlName="addstateId">
+                                    <option [value]="c.stateId" *ngFor="let c of stateList">{{c.stateName}}</option>
+
+                                </select>
+                                <label>State </label>
+                            </div>
+                        </div>
+
+
+
+
+
+                      
+
+
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <select class="form-select"  formControlName="addcityName">
+                                    <option [value]="cl.cityName" *ngFor="let cl of cityList">{{cl.cityName}}
+                                    </option>
+
+                                </select>
+                                <label>City </label>
+                            </div>
+                        </div>
+
+
+                      
+
+
+
+
+
+
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <input type="text" formControlName="addzipCode" class="form-control"
+                                    placeholder="Pincode *">
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" [disabled]="!adduserForm.valid" class="color-border-btn" >Save Address</button>
+                    </div>
+            </form>
+        </div>
+       
+    </div>
+</div>
+</div>

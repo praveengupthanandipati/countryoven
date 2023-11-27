@@ -1,0 +1,62 @@
+@import "../../../styles/styles";
+
+.btnsec {
+  .value-button {
+    display: inline-block;
+    border: 1px solid map-get($colors, lightprimary);
+    margin: 0px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  #decrease {
+    border-radius: 3px;
+    margin-top: -2px;
+  }
+  #increase {
+    border-radius: 3px;
+    margin-top: -2px;
+  }
+  #input-wrap {
+    margin: 0px;
+    padding: 0px;
+  }
+  #number {
+    text-align: center;
+    border: 1px solid map-get($colors, lightprimary);
+    border-radius: 3px;
+    margin: 0px 3px;
+    width: 34px;
+    height: 25px;
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.products-list{ display:flex; flex-wrap: wrap;}
+  .app-product-item{width: 33.33%;}
+
+
+  .producttable{ border: 1px solid #ccc; width: 100%;
+  & th, &td{ padding:10px;  & span{ display: block; width:100%;}
+& img{ width:80px; height: 80px;}
+}
+  }
+
+  .tabheading{ border:1px solid #ccc; padding: 10px; width: 100%; cursor: pointer; margin-top: 10px;}
+  .totalAmountwrap{text-align: right; width: 100%;& div{ text-align: right; width: 100%; }}

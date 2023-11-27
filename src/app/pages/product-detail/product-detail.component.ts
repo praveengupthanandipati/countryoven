@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,  Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { CurdService } from 'src/app/services/curd.service';
 
@@ -36,7 +36,7 @@ export class ProductDetailComponent  implements OnInit{
   productPrice:any;
   isegglessChecked:boolean=false;
   sNo:any;
-  constructor(private _crud:CurdService, private route:ActivatedRoute, private fb: FormBuilder, private cookieService: CookieService)
+  constructor(private _crud:CurdService, private route:ActivatedRoute, private fb: FormBuilder, private cookieService: CookieService, private router:Router)
   {
     this.dynamicForm = this.fb.group({});
     this.cityName=localStorage.getItem('city')
@@ -114,6 +114,7 @@ console.log(res)
 if(res.sNo)
 {
   this.sNo=res.sNo;
+  this.router.navigateByUrl('/cart')
   alert(res.successMessage)
 }
     });

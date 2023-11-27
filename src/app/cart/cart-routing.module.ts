@@ -4,12 +4,15 @@ import { CartComponent } from './cart/cart.component';
 import { AddressComponent } from './address/address.component';
 import { PersonalizeComponent } from './personalize/personalize.component';
 import { PaymentComponent } from './payment/payment.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
   {path:'', component:CartComponent},
   {path:'Address', component:AddressComponent},
   {path:'Personalize', component:PersonalizeComponent},
-  {path:'Payment', component:PaymentComponent}
+  {path:'Payment', component:PaymentComponent},
+  {path:'checkout', component:CheckoutComponent},
+  
 ];
 
 @NgModule({

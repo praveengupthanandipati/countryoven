@@ -149,9 +149,29 @@ postShopingCart(obj:any):Observable<any>{
   
           return this.http.post(`${environment.apiUrl}/Cart/UpdateQuantity`,obj)
           }
-    
+
+
+       
 
 /* card end */
+
+
+/* checkout */
+UpdateMessage(obj:any):Observable<any>{
+  
+  return this.http.post(`${environment.apiUrl}/Checkout/UpdateMessage`,obj)
+  }
+
+  SaveOrderDetails(obj:any):Observable<any>{
+  
+    return this.http.post(`${environment.apiUrl}/Checkout/SaveOrderDetails`,obj)
+    }
+
+    
+applyCoupon(obj:any): Observable<any> {
+  return this.http.post(`${environment.apiUrl}/Checkout/ApplyCoupon`,obj)
+}
+/* checkout */
 
 
 /*customer */
@@ -241,4 +261,7 @@ updateAddress(obj:any): Observable<any> {
 deleteAddress(obj:any): Observable<any> {
   return this.http.post(`${environment.apiUrl}/AddressBook/DeleteAddress`,obj)
 }
+
+
+
   }
