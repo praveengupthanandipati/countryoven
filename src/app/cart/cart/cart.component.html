@@ -9,16 +9,13 @@
                         <span class="icon-route h1 font-primary"></span>
                         <div class="ps-3 align-self-center">
                             <h6 class="font-gray">Deliver to: <span
-                                    class="font-black d-inline-block ps-3 font-semibold">{{PinNumber}}</span>
-                            </h6>
+                                class="font-black d-inline-block ps-3 font-semibold">{{city}}</span>
+                        </h6>
                         </div>
                     </div>
-                    <div class="align-self-center">
-                        <a href="javascript:void(0)" class="color-border-btn">Change Pincode</a>
-                    </div>
+                  
                 </div>
-                <p class="py-2"><small>Estimated Delivery: <span class="font-green font-semibold">25th July 2023 at 2
-                            PM</span></small></p>
+               
                 <div class="cart-product-item border p-2 mb-3" *ngFor="let CartItem of cartItems; let i = index">
                     <div class="row">
                         <div class="col-md-3">
@@ -153,7 +150,7 @@
                                                 class="icon-inr icomoon font-bold"></span>{{Productvalue.price}}</div>
                                     </div>
                                     <div class="d-flex justify-content-between pt-2 item-footer">
-                                        <button type="button" class="color-btn border-0">Add to Cart</button>
+                                        <button type="button" class="color-btn border-0" (click)="addOnProductsupdateCart(Productvalue.addOnProductId)">Add to Cart</button>
                                     </div>
                                 </div>
                             </div>

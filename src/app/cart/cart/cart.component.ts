@@ -11,7 +11,7 @@ import { CurdService } from 'src/app/services/curd.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit{
-  cartCount:number =4;
+  cartCount:number =0;
   PinNumber:number =500090;
   sessionId:any;
  city:any;
@@ -77,6 +77,7 @@ let data={
   this._crud.postShopingCart(data).subscribe(res => {
     console.log(res)
     this.cartItems=res;
+    this.cartCount=res.length
 this.firstlistItem=this.cartItems[0];
         });
 }

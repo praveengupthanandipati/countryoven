@@ -75,7 +75,7 @@
     
 </form>
 
-<button (click)="SaveOrderDetails()">Continue payment</button>
+<button (click)="SaveOrderDetails()" class="color-border-btn">Continue payment</button>
 
 </div>
 </section> 
@@ -92,7 +92,7 @@
                     <h6 class="h6 font-black font-medium align-self-center pb-3">Price Details</h6>
                     <div class="d-flex justify-content-between py-2">
                         <p>MRP Details</p>
-                        <p class="text-end" *ngIf="firstlistItem && firstlistItem.totalAmount">₹ {{firstlistItem.subTotal}}</p>
+                        <p class="text-end" *ngIf="firstlistItem && firstlistItem.totalAmount">₹ {{firstlistItem.totalAmount}}</p>
                     </div>
 
                     <div class="d-flex justify-content-between py-2">

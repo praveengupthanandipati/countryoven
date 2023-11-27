@@ -12,7 +12,7 @@ import { CurdService } from 'src/app/services/curd.service';
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit{
-  cartCount: number = 4;
+  cartCount: number = 0;
   custName: any;
   sessionId: any;
   city: any;
@@ -84,6 +84,7 @@ this.reviewShow=true;
     this._crud.postShopingCart(data).subscribe(res => {
       console.log(res)
       this.cartItems = res;
+      this.cartCount=res.length;
       this.firstlistItem = this.cartItems[0];
 
       this.totalAmount=this.firstlistItem.grandTotal
