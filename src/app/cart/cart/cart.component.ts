@@ -77,7 +77,10 @@ let data={
   this._crud.postShopingCart(data).subscribe(res => {
     console.log(res)
     this.cartItems=res;
-    this.cartCount=res.length
+    this.cartCount=res.length;
+
+    this._crud.updateHeaderData(this.cartCount);
+
 this.firstlistItem=this.cartItems[0];
         });
 }

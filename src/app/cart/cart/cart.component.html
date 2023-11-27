@@ -1,4 +1,5 @@
-<app-cartheader></app-cartheader>
+<!-- <app-cartheader></app-cartheader> -->
+<app-header></app-header>
 <section class="cart-subpage">
     <div class="container">
         <h1 class="h5 font-medium pb-3">Shopping Cart ({{cartCount}})</h1>
@@ -84,17 +85,17 @@
                     <h6 class="h6 font-black font-medium align-self-center pb-3">Price Details</h6>
                     <div class="d-flex justify-content-between py-2">
                         <p>MRP Details</p>
-                        <p class="text-end">₹ {{firstlistItem.totalAmount}}</p>
+                        <p class="text-end" *ngIf="firstlistItem">₹ {{firstlistItem?.totalAmount}}</p>
                     </div>
 
                     <div class="d-flex justify-content-between py-2">
                         <p>Delivery Charges</p>
-                        <p class="text-end font-green"> <ng-container *ngIf="firstlistItem.deliveryCharges ==0">FREE</ng-container><ng-container *ngIf="firstlistItem.deliveryCharges >0">{{firstlistItem.deliveryCharges}}</ng-container>  </p>
+                        <p class="text-end font-green"> <ng-container *ngIf="firstlistItem?.deliveryCharges ==0">FREE</ng-container><ng-container *ngIf="firstlistItem?.deliveryCharges >0">{{firstlistItem?.deliveryCharges}}</ng-container>  </p>
                     </div>
                     
                     <div class="d-flex justify-content-between py-3 totalamount my-2">
                         <h6 class="h6 font-semibold">Total Amount</h6>
-                        <p class="text-end font-semibold">₹ {{firstlistItem.grandTotal}}</p>
+                        <p class="text-end font-semibold">₹ {{firstlistItem?.grandTotal}}</p>
                     </div>
                     <a class="color-btn d-block" data-bs-toggle="modal"
                         data-bs-target="#AddonsProducts" (click)="addOnProducts()">Continue to Checkout</a>

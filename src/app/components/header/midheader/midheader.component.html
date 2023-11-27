@@ -104,7 +104,7 @@
                 <a routerLink="/cart" class="d-inline-block text-center text-black">
                     <div><span class="icon-cart icomoon"></span></div>
                     <div><small class="text-uppercase font-bold">Cart</small></div>
-                    <span class="badge badge-light position-absolute">10</span>
+                    <span *ngIf="count" class="badge badge-light position-absolute">{{count}}</span>
                 </a>
             </div>
         </div>

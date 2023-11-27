@@ -1,4 +1,6 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { CurdService } from 'src/app/services/curd.service';
 
 @Component({
   selector: 'app-midheader',
@@ -11,8 +13,9 @@ export class MidheaderComponent  implements OnInit{
   email:any;
   custID:any;
   custName:any;
-
-  constructor()
+  count:any;
+  private subscription!: Subscription;
+  constructor(private _curdService:CurdService)
   {
    if(localStorage.getItem('email'))
    {
@@ -25,7 +28,12 @@ export class MidheaderComponent  implements OnInit{
 
   }
   ngOnInit(): void {
-  
-  
+      this.subscription = this._curdService.headerData$.subscribe((data) => {
+      console.log(data)
+      this.count=data;
+    });
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

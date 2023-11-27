@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 
@@ -9,6 +9,12 @@ import { environment } from 'src/environments/environment';
 })
 export class CurdService {
 
+
+  private headerDataSubject = new Subject<string>();
+  headerData$ = this.headerDataSubject.asObservable();
+  updateHeaderData(data: any) {
+    this.headerDataSubject.next(data);
+  }
   private headers = new HttpHeaders({
     'Content-Type': 'application/json'
   });
