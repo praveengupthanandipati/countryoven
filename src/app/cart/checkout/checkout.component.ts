@@ -33,7 +33,12 @@ totalAmount:any;
   errorcode: boolean=false;
   errorcodemessage: any;
   couponappled: boolean=false;
-  couponcode: any;
+  
+  
+couponcode: any;
+couponData:any;
+
+
   constructor(private fb: FormBuilder,private route: Router, private toastr: ToastrService, private _crud: CurdService, private cookieService: CookieService) {
     this.sessionId = this.cookieService.get('sessionID')
     this.city = localStorage.getItem('city')
@@ -103,6 +108,7 @@ this.reviewShow=true;
     }
     this._crud.applyCoupon(data).subscribe(res => {
       console.log(res);
+      this.couponData=res;
       if(res.isEroor)
       {
         this.errorcode=true;
@@ -111,7 +117,10 @@ this.reviewShow=true;
       }
       else
       {
-        this.totalAmount=this.totalAmount - res.discount
+        if(res.couponType =='Instant')
+        {
+        this.totalAmount=this.totalAmount - res.maxDiscount
+        }
         this.errorcode=false;
         this.couponappled=true
       }

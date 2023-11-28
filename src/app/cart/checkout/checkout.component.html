@@ -50,9 +50,9 @@
 
 
  <div class="totalAmountwrap">
-<ng-container *ngIf="couponappled">
-    <div> Discount Applicable Amoun:</div>
-    <div>Discount Amount</div>
+<ng-container *ngIf="couponappled && couponData.couponType =='Instant'">
+    <div> Discount Applicable Amount:  {{couponData.discountApplicableAmount}}</div>
+    <div>Discount Amount :  {{couponData.maxDiscount}}</div>
 </ng-container>
     <div class="totalAmount">Total Amount : {{totalAmount}}</div>
  </div>
