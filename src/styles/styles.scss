@@ -251,7 +251,7 @@ body {
 .terms-content {
   padding-bottom: 20px;
   p {
-    padding-bottom: 20px;
+    padding-bottom: 15px;
     color: map-get($colors, gray);
     font-size: $fsize - 1;
 
@@ -308,8 +308,16 @@ ol {
   list-style-type: decimal !important;
 }
 
-app-checkout { .address-cards{ border:1px solid #ccc; display: flex; flex-wrap: wrap;
+app-checkout {
+  .address-cards {
+    border: 1px solid #ccc;
+    display: flex;
+    flex-wrap: wrap;
 
-& .card{ border: 0 !important; width:33.33%; padding: 10px;}
-}
+    & .card {
+      border: 0 !important;
+      width: 33.33%;
+      padding: 10px;
+    }
+  }
 }
