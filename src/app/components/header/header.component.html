@@ -1,4 +1,4 @@
-<app-topheader *ngIf="scrollingMessage" [scrollingMessage]="scrollingMessage"></app-topheader>
+<app-topheader  *ngIf="scrollingMessage" [topList]="topList" [scrolling]="scrollingOn" [scrollingMessage]="scrollingMessage"></app-topheader>
 <app-midheader *ngIf="searchList" [searchList]="searchList" ></app-midheader>
 <app-mainnav *ngIf="categoryList && menuList" [menuList]="menuList" [categoryList]="categoryList"></app-mainnav>
 

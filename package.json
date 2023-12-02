@@ -22,12 +22,13 @@
     "@angular/router": "^16.0.0",
     "bootstrap": "^5.3.1",
     "bootstrap-icons": "^1.10.5",
+    "ng-select2-component": "^13.0.9",
     "ngx-cookie-service": "^16.0.1",
+    "ngx-toastr": "^16.0.2",
     "popper.js": "^1.16.1",
     "rxjs": "~7.8.0",
     "swiper": "^10.1.0",
     "tslib": "^2.3.0",
-    "ngx-toastr": "^16.0.2",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {

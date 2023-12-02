@@ -21,37 +21,48 @@ this.city=localStorage.getItem('city')
 gotoroute( t:any, pname:any)
 {
 console.log(t)
+let c=localStorage.getItem('city')   
+
+
   if(t == 'C')
   {
-    t='cakes'
+    t='online-delivery';
+    this.route.navigateByUrl('/'+ t + '/'+ c + '/' + pname)
+    
   } else if(t=='SC')
   {
-    t='best-sellers-cakes-online'
+    t='order';
+    this.route.navigateByUrl('/'+ t + '/'+ c + '/' + pname)
   }
   else if(t=='OCC')
   {
-    t='birthday-gifts-online'
+    t='send';
+    this.route.navigateByUrl('/'+ t + '/'+ c + '/' + pname)
   }
   else if(t=='SPL')
   {
-    t='same-day-gifts'
+  
+    this.route.navigateByUrl('/'+ pname +'-' + c)
   }
   else if(t=='FLV')
   {
-    t='almond'
+    
+    let link=pname + '-to-' +c
+    this.route.navigateByUrl('/'+ link)
   }
-  else if(t=='SE')
+  else if(t=='CTY')
   {
-    t='cakes'
+    
+   
+    this.route.navigateByUrl('/'+c +'/'+pname)
   }
+ 
   else
   {
     t=t
   }
 
-  console.log(t)
-  let c=localStorage.getItem('city')   
-this.route.navigateByUrl('/'+ t + '/'+ c + '/' + pname)
+
 }
 
 }

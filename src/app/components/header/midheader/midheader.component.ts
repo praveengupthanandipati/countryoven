@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Subscription } from 'rxjs';
 import { CurdService } from 'src/app/services/curd.service';
@@ -21,7 +22,10 @@ export class MidheaderComponent  implements OnInit{
   currency:any;
   customerId:any=0;
   private subscription!: Subscription;
-  constructor(private _curdService:CurdService,private cookieService: CookieService)
+  selectedCurrency:any;
+  currencydrop:any=['INR', 'USA'];
+  searchkeyword:any;
+  constructor(private route:Router,  private _curdService:CurdService,private cookieService: CookieService)
   {
    if(localStorage.getItem('email'))
    {
@@ -42,12 +46,32 @@ if(localStorage.getItem('customerId'))
 }
 
   }
+  onCurrecnySelected()
+  {
+    console.log(this.selectedCurrency)
+    
+    localStorage.setItem('currency', this.selectedCurrency)
+    window.location.reload();
+  }
+
   ngOnInit(): void {
       this.subscription = this._curdService.headerData$.subscribe((data) => {
       console.log(data)
       this.count=data;
     });
     this.getCarts();
+    
+
+    if(localStorage.getItem('currency'))
+    {
+      this.selectedCurrency=localStorage.getItem('currency')
+    }
+    else
+    {
+      
+    }
+
+
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
@@ -72,6 +96,18 @@ if(localStorage.getItem('customerId'))
       this.count=res.length;
   
           });
+  }
+
+
+
+  gotoroute()
+  {
+  
+  let c=localStorage.getItem('city') ;
+  console.log(this.searchkeyword)  
+  this.route.navigateByUrl('/search_result'+  '/'+ this.searchkeyword + '/' + c)
+  
+   
   }
 
 

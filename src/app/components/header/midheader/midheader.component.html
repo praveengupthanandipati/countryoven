@@ -1,16 +1,16 @@
 <section class="mid-header py-2">
     <div class="custom-container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <div class="d-md-flex">
                     <a routerLink="/" class="top-header-logo">
                         <img src="assets/images/logo.png" alt="Country Oven" class="brand-logo">
                     </a>
                     <div class="align-self-center ps-3 headerinput searchbox">
-                        <span class="icon-magnifying-glass icomoon align-self-center"></span>
+                        <span class="icon-magnifying-glass icomoon align-self-center" (click)="gotoroute()"></span>
                         <div class="ps-2 w-100">
                             <input type="text" placeholder="Search Cakes, Flowers, Gifts, etc..."
-                                class="searchinput no-border form-control-plaintext" list="search-products">
+                            [(ngModel)]="searchkeyword" class="searchinput no-border form-control-plaintext" list="search-products">
                             <datalist id="search-products">
                                 <option *ngFor="let i of searchList" [value]="i"></option>
 
@@ -24,20 +24,21 @@
                             <span class="icon-pin icomoon align-self-center"></span>
                             <div class="d-flex justify-content-between w-100">
                                 <div class="h6 px-2 d-flex"><span class="font-black d-none d-md-block px-md-2">Deliver
-                                        to </span> <span class="font-bold pincode">500090</span></div>
+                                        to </span> <span class="font-bold pincode">{{this.city}}</span></div>
                                 <span class="icon-right-chevron icomoon align-self-center"></span>
                             </div>
                         </div>
                     </a>
                     <div class="headerinput align-self-center ms-3">
-                        <select class="form-select border-0 select-currency" aria-label="Default select example">
-                            <option selected>INR - ₹</option>
-                            <option value="1">USA - $</option>
+                        <select class="form-select border-0 select-currency" (change)="onCurrecnySelected()"  [(ngModel)]="selectedCurrency" aria-label="">
+                            <option *ngFor="let c of currencydrop" [value]="c">{{ c }}</option>
+                              <!-- <option value="INR">INR - ₹</option>
+                            <option value="usa">USA - $</option> -->
                         </select>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 justify-content-end align-self-center text-end navrt">
+            <div class="col-md-3 justify-content-end align-self-center text-end navrt">
                 <a class="dropdown user-dropdown" href="javascript:void(0)">
                     <div class="d-inline-block text-center text-black dropdown-toggle" data-bs-toggle="dropdown"
                         aria-expanded="false">

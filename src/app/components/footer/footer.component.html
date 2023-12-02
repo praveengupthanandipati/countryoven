@@ -130,15 +130,16 @@
                    
                     <div class="footer-mainlinks pt-3 text-center" *ngIf="footerlinks && footerlinks[0]">
                         <ng-container *ngFor="let sm of footerlinks[0].footerLinks">
-                            <a href="javascript:void(0)" [routerLink]="sm.seoTitle" class="font-semibold" >{{sm.title}}</a>
-                        <!-- <a routerLink="/Aboutus" class="font-semibold">About us</a>
-                        <a routerLink="/Stores" class="font-semibold">Our Stores</a>
-                        <a routerLink="/Reviews" class="font-semibold">Reviews</a>
-                        <a routerLink="/Contact" class="font-semibold">Contact</a>
-                        <a href="/Careers" class="font-semibold">Careers</a>
-                        <a href="https://countryovenglobal.blogspot.com/" class="font-semibold" target="_blank">Blog</a>
-                        <a routerLink="/Coupon-Partners" class="font-semibold">Coupon Partners</a>
-                        <a routerLink="/Franchises" class="font-semibold">Franchises</a> -->
+                          <ng-container *ngIf="sm.title !='Blog'">
+                            <a href="javascript:void(0)" [routerLink]="sm.seoTitle" class="font-semibold" >{{sm.title}}</a> 
+                        </ng-container>
+                        <ng-container *ngIf="sm.title=='Blog'">
+                            <a [href]="'https://' + sm.seoTitle" target="_blank" class="font-semibold" >{{sm.title}}</a>
+                        </ng-container>
+                        
+                       
+                          
+                     
                         </ng-container>
                     </div>
                 </div>
@@ -154,16 +155,14 @@
                 </div>
                 <div class="col-md-6 text-end">
                     <div class="footer-social">
-                        <a href="javascript:void(0)" target="_blank" class="d-inline-block p-3">
+                        <a href="https://www.facebook.com/countryovenbakeries/" target="_blank" class="d-inline-block p-3">
                             <span class="icon-fb icomoon"></span>
                         </a>
-                        <a href="javascript:void(0)" target="_blank" class="d-inline-block p-3">
+                        <a href="https://twitter.com/CountryOven93" target="_blank" class="d-inline-block p-3">
                             <span class="icon-twitter icomoon"></span>
                         </a>
-                        <a href="javascript:void(0)" target="_blank" class="d-inline-block p-3">
-                            <span class="icon-linkedin icomoon"></span>
-                        </a>
-                        <a href="javascript:void(0)" target="_blank" class="d-inline-block p-3">
+                      
+                        <a href="https://in.pinterest.com/CountryOven4U/" target="_blank" class="d-inline-block p-3">
                             <span class="icon-pinterest icomoon"></span>
                         </a>
                     </div>

@@ -11,6 +11,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { SetLocComponent } from '../components/set-loc/set-loc.component';
 import { DisplylocpopupComponent } from '../components/displylocpopup/displylocpopup.component';
 import { AddressListComponent } from '../address-list/address-list.component';
+import { Select2Module } from 'ng-select2-component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { AddressListComponent } from '../address-list/address-list.component';
     CommonModule,
     FormsModule,
     RouterModule,
+    Select2Module,
     ReactiveFormsModule,
     ToastrModule.forRoot({
       timeOut: 3000,
@@ -42,7 +44,7 @@ import { AddressListComponent } from '../address-list/address-list.component';
   exports: [
     FormsModule,
     ReactiveFormsModule,
-
+    Select2Module,
     HeaderComponent,
     TopheaderComponent,
     MidheaderComponent,

@@ -70,13 +70,16 @@
                     <div class="d-flex">
                         <span class="icon-magnifying-glass icomoon align-self-center"></span>
                         <input type="text" class="form-control ms-2 border-0" name=""
-                            placeholder="Enter your Pincode">
+                            placeholder="Enter your Delivery Location">
                     </div>
                     <span class="icon-pin icomoon align-self-center"></span>
                 </div>
-                <div class="text-center">
+
+                <select2 [data]="data" (update)="update($event)"> </select2>
+
+                <!-- <div class="text-center">
                     <a href="javascript:void(0)" class="color-btn d-inline-block mt-4">Proceed to Shopping</a>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

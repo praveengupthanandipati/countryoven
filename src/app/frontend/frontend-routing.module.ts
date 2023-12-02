@@ -29,6 +29,8 @@ const routes: Routes = [
       {path:'', component:HomeComponent},
       {path:'products-list', component:ProductListComponent},
       {path:':type/:cityname/:PageName', component:ProductsComponent},
+      {path:':cityname1/:PageName1', component:ProductsComponent},
+      {path:':favspl', component:ProductsComponent},
    
       // {path:':type/:cityname/:PageName', component:ProductListComponent},
       // {path:'product-detail/:PageName', component:ProductDetailComponent},
@@ -38,7 +40,7 @@ const routes: Routes = [
       {path: 'reviews', component:ReviewsComponent},
       {path: 'content/contactus', component:ContactComponent},  
       {path: 'content/couponpartners', component:CouponpartnersComponent},
-      {path: 'franchises', component:FranchisesComponent},  
+      {path: 'franchise', component:FranchisesComponent},  
       {path: 'careers', component:CareersComponent},
       {path: 'customizedcakes', component:CustomizedCakesComponent},
       {path: 'corporateorders', component:CorporateOrdersComponent },
@@ -47,9 +49,9 @@ const routes: Routes = [
       {path:'content/faq', component:FaqComponent},
       {path: 'content/shipping', component:ShippingComponent},
       {path: 'deliverycities', component:DeliverCitiesComponent},
-      {path: 'returnpolicy', component:ReturnpolicyComponent},
-      {path: 'privacypolicy', component:PrivacypolicyComponent},
-      {path: 'termsandconditions', component:TermsandconditionsComponent}
+      {path: 'content/returnpolicy', component:ReturnpolicyComponent},
+      {path: 'content/privacypolicy', component:PrivacypolicyComponent},
+      {path: 'content/termsandcondition', component:TermsandconditionsComponent}
     ]},
  
 ];

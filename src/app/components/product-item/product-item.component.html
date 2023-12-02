@@ -25,12 +25,14 @@
             </ng-container>
         </div>
         <div class="d-flex justify-content-between pt-2 item-footer">
-            <div>
+            <div >
+                <p *ngIf="Productvalue.weightText">Weight: <span class="font-bold">{{Productvalue.weightText}}</span></p>
+                
                 <!-- <span class="icon-star icomoon"></span>
                 <span>{{Productvalue.Rating}}</span> -->
             </div>
             <div class="deliver-date">
-                <p>Earliest Delivery: <span class="font-bold">{{Productvalue.leadTimeDays}}</span></p>
+                <p>Delivery: <span class="font-bold">{{Productvalue.leadTimeDays}}</span></p>
             </div>
         </div>
     </div>

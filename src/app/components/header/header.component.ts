@@ -12,7 +12,7 @@ export class HeaderComponent  implements OnInit {
   scrollingMessage:any;
   scrollingOn:any;
   searchList:any;
-
+  topList:any;
   constructor(private _crud:CurdService)
   {
   
@@ -28,9 +28,11 @@ export class HeaderComponent  implements OnInit {
         this._crud.getTopHeader('').subscribe(res => {
        //  console.log(res)
          this.scrollingMessage=res.scrollingMessage
+         this.scrollingOn=res.scrollingOn
          this.categoryList=res.categoryList;
          this.menuList=res.menuList;
          this.searchList=res.searchList;
+         this.topList=res.topList;
         })
       }
     

@@ -23,6 +23,7 @@ currentPage: number=0;
   pagesAfterCurrent: number[] = [];
   isHiddensearchFilter=false;
   metaData: any;
+  typeName:any;
     filterChanged(filterOption: any): void {
 
 const filterGroup = this.filterswrapper.find((group:any) => group.filterOptions.includes(filterOption));
@@ -40,13 +41,6 @@ if (filterGroup) {
   }
   console.log(selectedValuesByFilterType);
  
-//   [
-//     {
-//          "SubCategoryIds": [2001,2003],
-//          "PriceIds": [5,6],
-//          "WeightIds":[3]
-//     }  
-// ],
 const fliterV="[" + selectedValuesByFilterType + "]"
 this.currentPage=1;
   this.getProductDetails([selectedValuesByFilterType], this.currentPage);
@@ -86,50 +80,113 @@ this.getFiltersDetails()
 
   }
 
-  getPageRoutes()
-  {
+  // getPageRoutes()
+  // {
+  //   this.route.params.subscribe((params) => {
+  //     this.cityname = params['cityname']; 
+  //   let typeName=params['type']
+  //       if(typeName == 'online-delivery')
+  //     {
+  //       this.type='C'
+  //     } else if(typeName=='order')
+  //     {
+  //       this.type='SC'
+  //     }
+  //     else if(typeName=='send')
+  //     {
+  //       this.type='OCC'
+  //     }
+  //     this.PageName = params['PageName']; 
+  //   });
+  // }
+
+
+
+
+  getPageRoutes() {
     this.route.params.subscribe((params) => {
-      this.cityname = params['cityname']; 
-    let typeName=params['type']
-    //  this.type = params['type']; 
-
-
-      if(typeName == 'cakes')
-      {
-        this.type='C'
-      } else if(typeName=='best-sellers-cakes-online')
-      {
-        this.type='SC'
+      if (params['favspl']) {
+        let urlparms = params['favspl'].split('-to-');
+        if (urlparms.length > 1) {
+          this.typeName = 'FLV';
+          this.cityname = urlparms[1];
+          this.PageName = this.cityname
+        }
+        else {
+          let urlparms1 = params['favspl'].split('-');
+          this.cityname = urlparms1[urlparms1.length - 1]
+          this.typeName = 'SPL';
+          let resultArray:any='';
+          for (let i = 0; i < urlparms1.length -1; i++) {
+            if(resultArray == '')
+            {
+              resultArray = urlparms1[i];
+            }
+            else
+            {
+              resultArray = resultArray + '-' + urlparms1[i];
+            }
+            
+          }
+          this.PageName = resultArray
+        }
+        
       }
-      else if(typeName=='birthday-gifts-online')
-      {
-        this.type='OCC'
+      else if (params['cityname1']) {
+
+        this.cityname = params['cityname1'];
+        this.typeName = 'CTY';
+        this.PageName = params['PageName1'];
+
       }
-      else if(typeName=='same-day-gifts')
-      {
-        this.type='SPL'
+      else if (params['type']) {
+        this.cityname = params['cityname'];
+        this.typeName = params['type'];
+        this.PageName = params['PageName'];
       }
-      else if(typeName=='almond')
-      {
-        this.type='FLV'
-      }
-      else if(typeName=='cakes')
-      {
-        this.type='SE'
-      }
-      else
-      {
-        this.type=typeName
+      else {
+
       }
 
 
+      if (this.typeName == 'online-delivery') {
+        this.type = 'C';
+        
+      } else if (this.typeName == 'order') {
+        this.type = 'SC';
+        
+      }
+      else if (this.typeName == 'send') {
+        this.type = 'OCC';
+        
+      }
+
+      else if (this.typeName == 'SPL') {
+        this.type = 'SPL';
+        
+      }
+
+      else if (this.typeName == 'FLV') {
+        this.type = 'FLV';
+        
+      }
+      else if (this.typeName == 'search_result') {
+        this.type = 'SE';
+        this.cityname = params['PageName'];
+       
+        this.PageName = params['cityname'];
+      }
 
 
 
 
-      this.PageName = params['PageName']; 
-     
-     
+      else {
+        this.type = this.typeName;
+        
+      }
+
+
+      // this.PageName = params['PageName'];
     });
   }
 

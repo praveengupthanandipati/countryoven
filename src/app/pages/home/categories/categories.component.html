@@ -1,7 +1,7 @@
 <section class="home-categories py-4">
     <div class="custom-container">
         <div class="d-flex justify-content-md-between flex-wrap flex-row">
-            <a *ngFor="let category of iconicBanners" class="category-col" href="javascript:void(0)">
+            <a *ngFor="let category of iconicBanners" class="category-col" (click)="gotoroute(category.type, category.seoName)" href="javascript:void(0)">
                 <figure>
                     <img [src]="category.imageName" alt="">
                 </figure>

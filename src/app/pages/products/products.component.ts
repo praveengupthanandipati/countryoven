@@ -7,76 +7,102 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent {
-  cityname:any;
-  type:any;
-  PageName:any;
-  showproductDetails:any;
-  constructor ( private route:ActivatedRoute)
-  {
-  
-  this.getPageRoutes();
+  cityname: any;
+  type: any;
+  PageName: any;
+  showproductDetails: any;
+  typeName: any;
+  constructor(private route: ActivatedRoute) {
+
+    this.getPageRoutes();
   }
 
-  
-  getPageRoutes()
-  {
+
+  getPageRoutes() {
     this.route.params.subscribe((params) => {
-      this.cityname = params['cityname']; 
-    let typeName=params['type']
-    //  this.type = params['type']; 
+      if (params['favspl']) {
+
+        let urlparms = params['favspl'].split('-to-');
+
+        if (urlparms.length > 1) {
+
+          this.typeName = 'FLV';
+          this.cityname = urlparms[1];
+        }
+        else {
+
+          let urlparms1 = params['favspl'].split('-');
+
+          this.cityname = urlparms1[urlparms1.length - 1]
+          this.typeName = 'SPL';
+
+        }
+        this.showproductDetails = false;
+      }
+      else if (params['cityname1']) {
+        this.showproductDetails = false;
+        this.typeName = 'CTY';
 
 
-      if(typeName == 'cakes')
-      {
-        this.type='C';
-        this.showproductDetails=false;
-      } else if(typeName=='best-sellers-cakes-online')
-      {
-        this.type='SC';
-        this.showproductDetails=false;
       }
-      else if(typeName=='birthday-gifts-online')
-      {
-        this.type='OCC';
-        this.showproductDetails=false;
+      else if (params['type']) {
+        this.cityname = params['cityname'];
+        this.typeName = params['type']
       }
-      else if(typeName=='same-day-gifts')
-      {
-        this.type='SPL';
-        this.showproductDetails=false;
-      }
-      else if(typeName=='almond')
-      {
-        this.type='FLV';
-        this.showproductDetails=false;
-      }
-      else if(typeName=='cakes')
-      {
-        this.type='SE'
-        this.showproductDetails=false;
-      }
-      else if(typeName=='send-online')
-      {
-        this.type='send-online';
-        this.showproductDetails=true;
-      }
-      else
-      {
-        this.type=typeName;
-        console.log('yes')
-        if(this.cityname == 'send-online')
-        {
-          console.log('prod')
-          this.showproductDetails=true}
-          else
-          {
-            console.log('nopro')
-        this.showproductDetails=false;
-          }
+      else {
+
       }
 
-      
-     this.PageName = params['PageName']; 
+
+      if (this.typeName == 'online-delivery') {
+        this.type = 'C';
+        this.showproductDetails = false;
+      } else if (this.typeName == 'order') {
+        this.type = 'SC';
+        this.showproductDetails = false;
+      }
+      else if (this.typeName == 'send') {
+        this.type = 'OCC';
+        this.showproductDetails = false;
+      }
+
+      else if (this.typeName == 'SPL') {
+        this.type = 'SPL';
+        this.showproductDetails = false;
+      }
+
+      else if (this.typeName == 'FLV') {
+        this.type = 'FLV';
+        this.showproductDetails = false;
+      }
+      else if (this.typeName == 'CTY') {
+        this.type = 'CTY';
+        this.showproductDetails = false;
+      }
+    
+
+
+      else if (this.typeName == 'send-online') {
+        this.type = 'send-online';
+        this.showproductDetails = true;
+      }
+
+
+
+
+      else {
+        this.type = this.typeName;
+        if (this.cityname == 'send-online') {
+          this.showproductDetails = true
+        }
+        else {
+          
+          this.showproductDetails = false;
+        }
+      }
+
+
+      this.PageName = params['PageName'];
     });
   }
 

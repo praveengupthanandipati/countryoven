@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit{
   ngOnInit(): void {
 
 localStorage.setItem('country', 'India')
-localStorage.setItem('currency', 'INR')
+//localStorage.setItem('currency', 'INR')
 
 
 this.city=localStorage.getItem('city')
