@@ -4,11 +4,11 @@
   background: map-get($colors, primary);
   color: map-get($colors, white);
 
-  @include max(map-get($breakpoints, "sm")){
+  @include max(map-get($breakpoints, "lg")) {
     display: none;
   }
 
-  .offers {   
+  .offers {
     display: flex;
 
     // @include minMax(map-get($breakpoints, "xs"), map-get($breakpoints, "sm")){

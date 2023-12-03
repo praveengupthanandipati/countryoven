@@ -53,8 +53,8 @@
                                 <h5 class="h5 text-uppercase font-extrabold">{{menu.headerTitle}}</h5>
                                 <div class="links">
                                     <ng-container *ngFor="let sm of menu.footerLinks">
-                                    <a href="javascript:void(0)" [routerLink]="sm.seoTitle" >{{sm.title}}</a>
-                                </ng-container>
+                                        <a href="javascript:void(0)" [routerLink]="sm.seoTitle">{{sm.title}}</a>
+                                    </ng-container>
                                 </div>
                             </div>
                         </ng-container>
@@ -122,24 +122,18 @@
                         <button class="color-btn text-uppercase border-0 rounded-0">Subscribe</button>
                     </div>
                     <div class="text-end">
-                        <img src="assets/images/footer-cards.png" alt="" />
+                        <img src="assets/images/footer-cards.png" alt="" class="payment-img" />
                     </div>
-
-                 
-
-                   
                     <div class="footer-mainlinks pt-3 text-center" *ngIf="footerlinks && footerlinks[0]">
                         <ng-container *ngFor="let sm of footerlinks[0].footerLinks">
-                          <ng-container *ngIf="sm.title !='Blog'">
-                            <a href="javascript:void(0)" [routerLink]="sm.seoTitle" class="font-semibold" >{{sm.title}}</a> 
-                        </ng-container>
-                        <ng-container *ngIf="sm.title=='Blog'">
-                            <a [href]="'https://' + sm.seoTitle" target="_blank" class="font-semibold" >{{sm.title}}</a>
-                        </ng-container>
-                        
-                       
-                          
-                     
+                            <ng-container *ngIf="sm.title !='Blog'">
+                                <a href="javascript:void(0)" [routerLink]="sm.seoTitle"
+                                    class="font-semibold">{{sm.title}}</a>
+                            </ng-container>
+                            <ng-container *ngIf="sm.title=='Blog'">
+                                <a [href]="'https://' + sm.seoTitle" target="_blank"
+                                    class="font-semibold">{{sm.title}}</a>
+                            </ng-container>
                         </ng-container>
                     </div>
                 </div>
@@ -151,17 +145,18 @@
         <div class="custom-container">
             <div class="row">
                 <div class="col-md-6 align-self-center">
-                    <p class="text-black">© CountryOven 2023. All Rights Reserved.</p>
+                    <p class="text-black copylink">© CountryOven 2023. All Rights Reserved.</p>
                 </div>
                 <div class="col-md-6 text-end">
                     <div class="footer-social">
-                        <a href="https://www.facebook.com/countryovenbakeries/" target="_blank" class="d-inline-block p-3">
+                        <a href="https://www.facebook.com/countryovenbakeries/" target="_blank"
+                            class="d-inline-block p-3">
                             <span class="icon-fb icomoon"></span>
                         </a>
                         <a href="https://twitter.com/CountryOven93" target="_blank" class="d-inline-block p-3">
                             <span class="icon-twitter icomoon"></span>
                         </a>
-                      
+
                         <a href="https://in.pinterest.com/CountryOven4U/" target="_blank" class="d-inline-block p-3">
                             <span class="icon-pinterest icomoon"></span>
                         </a>
@@ -171,3 +166,7 @@
         </div>
     </section>
 </section>
+
+<div class="loader-overlay d-none">
+    <div class="loader"></div>
+</div>

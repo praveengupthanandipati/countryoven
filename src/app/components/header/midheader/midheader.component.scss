@@ -3,31 +3,28 @@
 .mid-header {
   background: map-get($colors, lightgradient);
 
-  @include max(map-get($breakpoints, "sm")) {
+  @include max(map-get($breakpoints, "lg")) {
     background: none;
   }
   .top-header-logo {
-    @include max(map-get($breakpoints, "sm")) {
+    @include max(map-get($breakpoints, "lg")) {
       position: relative;
       left: 50px;
     }
     .brand-logo {
       width: 150px;
 
-      @include max(map-get($breakpoints, "sm")) {
+      @include max(map-get($breakpoints, "lg")) {
         width: 90px;
       }
     }
   }
 
   .searchbox {
-    margin-left: 15px;
-    max-width: 411px;
-    min-width: 350px;
     position: relative;
     display: flex;
 
-    @include max(map-get($breakpoints, "sm")) {
+    @include max(map-get($breakpoints, "lg")) {
       margin: 3px 0;
       max-width: 100%;
       min-width: 100%;
@@ -50,19 +47,16 @@
     border: 1px solid map-get($colors, lightgray);
     color: map-get($colors, black);
     text-decoration: none;
+  }
 
-    @include max(map-get($breakpoints, "sm")) {    
-      float: left;
+  .select-currency {
+    .form-select {
+      width: 100%;
     }
   }
   .deliver {
     padding: 14px 15px;
     margin-left: 15px;
-
-    @include max(map-get($breakpoints, "sm")) {
-      margin-left: 0;
-      width:60%;
-    }
 
     .icon-pin {
       color: map-get($colors, primary);
@@ -88,18 +82,18 @@
     }
   }
   .navrt {
-    @include max(map-get($breakpoints, "sm")) {
+    @include max(map-get($breakpoints, "lg")) {
       position: absolute;
       top: 4px;
       right: 0;
-      width:50%;
+      width: 50%;
     }
     a {
       width: 45px;
       margin: 0 15px;
       position: relative;
 
-      @include max(map-get($breakpoints, "sm")) {
+      @include max(map-get($breakpoints, "lg")) {
         width: auto;
         margin: 0 10px;
       }
@@ -122,7 +116,7 @@
       position: relative;
       top: 6px;
 
-      @include max(map-get($breakpoints, "sm")) {
+      @include max(map-get($breakpoints, "lg")) {
         font-size: $fsize * 2;
       }
     }
@@ -130,25 +124,22 @@
       color: map-get($colors, primary);
       font-size: $fsize - 3;
 
-      @include max(map-get($breakpoints, "sm")) {
+      @include max(map-get($breakpoints, "lg")) {
         font-size: $fsize - 5;
       }
     }
   }
 }
 
-
 .selectcity-offcanvas {
-  height: auto;
-  overflow: auto;
-
+  height: 100vh;
 }
 // .selectcity-offcanvas {
 //   height: auto;
 
 //   @include max(map-get($breakpoints, "sm")){
 //     width:100%;
-//     display: block;   
+//     display: block;
 //   }
 
 //   .morecity {

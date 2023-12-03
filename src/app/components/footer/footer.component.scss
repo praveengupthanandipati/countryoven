@@ -1,117 +1,161 @@
 @import "../../../styles/styles.scss";
 
-.footer{
-    background: map-get($colors, lightgradient);   
-    .top-footer{
-        background:map-get($colors, primary);
-        padding:10px 0;        
+.footer {
+  background: map-get($colors, lightgradient);
+  .top-footer {
+    background: map-get($colors, primary);
+    padding: 10px 0;
 
-        .top-footer-col{
-           color:map-get($colors, white);
-           width:55%;
-           margin:0 auto;    
-           
-           @include max(map-get($breakpoints, "sm")){
-            width:100%;
-            margin-bottom:10px;
-           }
-           .h5{
-            font-size:$fsize + 3;
+    .top-footer-col {
+      color: map-get($colors, white);
+      width: 55%;
+      margin: 0 auto;
 
-            @include max(map-get($breakpoints, "sm")){
-                font-size:$fsize - 2;
-            }
-           }
-           p{
-            font-size:$fsize - 1;
+      @include max(map-get($breakpoints, "sm")) {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      .h5 {
+        font-size: $fsize + 3;
 
-            @include max(map-get($breakpoints, "sm")){
-                font-size:$fsize - 4;
-            }
-           }
-
-           .icomoon{
-            font-size:$fsize * 3;
-           }
+        @include max(map-get($breakpoints, "sm")) {
+          font-size: $fsize - 2;
         }
+      }
+      p {
+        font-size: $fsize - 1;
+
+        @include max(map-get($breakpoints, "sm")) {
+          font-size: $fsize - 4;
+        }
+      }
+
+      .icomoon {
+        font-size: $fsize * 3;
+      }
     }
-    .bottom-footer{        
-        margin-bottom:15px;
-        .custom-container{
-            border-bottom:1px solid map-get($colors, primary);
-        }
-        .h5{
-            font-size:$fsize + 3;    
-            padding-bottom:15px;    
-            
-            @include max(map-get($breakpoints, "sm")){
-                font-size:$fsize - 1;
-                padding-bottom:10px;
-            }
-        }
-       .links-col{
-        padding-right:50px;
-
-        @include max(map-get($breakpoints, "sm")){
-            padding-right:0;
-            width:50%;
-            padding-bottom:15px;
-        }
-      
-        .links{
-            a{
-                color:map-get($colors, black);
-                @include transition(all, 0.2s ease);
-                font-size:$fsize;
-                display: block;
-                padding:5px 0;
-
-                @include max(map-get($breakpoints, "sm")){
-                    font-size:$fsize - 2;
-                }
-
-                &:hover{
-                    color:map-get($colors, primary);
-                }
-            }
-            .morelink{
-                color:map-get($colors, primary);
-            }
-        }
-       } 
-       .newsletter{
-         .form-control{
-            border:none;
-            background:map-get($colors, white);            
-         }
-       }
-       .footer-mainlinks{
-        a{
-            display: inline-block;
-            padding:10px;
-            color:map-get($colors, black);
-
-            @include max(map-get($breakpoints, "sm")){
-                font-size:$fsize - 2;                
-            }
-            &:hover{
-                color:map-get($colors, primary);
-            }
-        }
-       }
+  }
+  .bottom-footer {
+    margin-bottom: 15px;
+    .custom-container {
+      border-bottom: 1px solid map-get($colors, primary);
     }
-    .end-footer{
-        .footer-social{
-            a{
-                color:map-get($colors, black);
-                border-radius:5px;
-                @include transition(all, 0.2s ease);
+    .h5 {
+      font-size: $fsize + 3;
+      padding-bottom: 15px;
 
-                &:hover{
-                    background:map-get($colors, primary);
-                    color:map-get($colors, white);
-                }
-            }
-        }
+      @include max(map-get($breakpoints, "sm")) {
+        font-size: $fsize - 1;
+        padding-bottom: 10px;
+      }
     }
+    .links-col {
+      padding-right: 50px;
+
+      @include max(map-get($breakpoints, "sm")) {
+        padding-right: 0;
+        width: 50%;
+        padding-bottom: 15px;
+      }
+
+      .links {
+        a {
+          color: map-get($colors, black);
+          @include transition(all, 0.2s ease);
+          font-size: $fsize;
+          display: block;
+          padding: 5px 0;
+
+          @include max(map-get($breakpoints, "sm")) {
+            font-size: $fsize - 2;
+          }
+
+          &:hover {
+            color: map-get($colors, primary);
+          }
+        }
+        .morelink {
+          color: map-get($colors, primary);
+        }
+      }
+    }
+    .newsletter {
+      .form-control {
+        border: none;
+        background: map-get($colors, white);
+      }
+    }
+    .footer-mainlinks {
+      a {
+        display: inline-block;
+        padding: 10px;
+        color: map-get($colors, black);
+
+        @include max(map-get($breakpoints, "sm")) {
+          font-size: $fsize - 2;
+        }
+        &:hover {
+          color: map-get($colors, primary);
+        }
+      }
+    }
+  }
+  .end-footer {
+    .footer-social {
+      a {
+        color: map-get($colors, black);
+        border-radius: 5px;
+        @include transition(all, 0.2s ease);
+
+        &:hover {
+          background: map-get($colors, primary);
+          color: map-get($colors, white);
+        }
+      }
+
+      @include max(map-get($breakpoints, "sm")) {
+        text-align: center;
+      }
+    }
+  }
+}
+
+.payment-img {
+  max-width: 100%;
+}
+
+.copylink {
+  @include max(map-get($breakpoints, "sm")) {
+    font-size: $fsize - 3;
+    text-align: center;
+  }
+}
+
+.loader-overlay{
+  background:rgba(map-get($colors, black), 0.9);
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  width:100vw;
+  height: 100vh;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+
+  .loader {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid (map-get($colors, primary)); /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

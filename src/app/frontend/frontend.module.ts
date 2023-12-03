@@ -26,6 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProductsComponent } from '../pages/products/products.component';
 
 
+
 @NgModule({
   declarations: [
     FrontendComponent,
@@ -48,6 +49,7 @@ import { ProductsComponent } from '../pages/products/products.component';
     CouponpartnersComponent,
     FranchisesComponent,  
     ProductsComponent
+
   ],
   imports: [
     CommonModule,
