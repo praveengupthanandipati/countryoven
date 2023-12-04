@@ -1,9 +1,10 @@
+import { LocationStrategy } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, ParamMap, Router } from '@angular/router';
 import { CurdService } from 'src/app/services/curd.service';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -11,6 +12,7 @@ import { CurdService } from 'src/app/services/curd.service';
 })
 export class ProductListComponent implements OnInit {
   cityname:any;
+  originalcityname:any;
   type:any;
   PageName:any;
   productData:any;
@@ -27,6 +29,7 @@ currentPage: number=0;
   typeName:any;
   breadTitle:any;
   breadcatTitle: any;
+  getOldUrl:any;
     filterChanged(filterOption: any): void {
 
 const filterGroup = this.filterswrapper.find((group:any) => group.filterOptions.includes(filterOption));
@@ -55,18 +58,16 @@ this.currentPage=1;
  
 
 
-constructor (  private titleService: Title, 
+constructor (  private titleService: Title, private location: Location, private locationStrategy: LocationStrategy,
   private meta: Meta,private _crud:CurdService, private route:ActivatedRoute, private formBuilder: FormBuilder, private router: Router)
 {
-
-  // this.router.events
-  // .pipe(filter((event: any) => event instanceof NavigationEnd))
-  // .subscribe((event: NavigationEnd) => {
-  //   // Extract the city name from the URL
-  //   const cityName = this.extractCityNameFromUrl(event.url);
-  //   // Perform any additional logic based on the city name
-  //   console.log('Selected city:', cityName);
-  // });
+  this.originalcityname=localStorage.getItem('city')
+   this.router.events.subscribe(() => {
+    
+ 
+    
+    //http://localhost:4200/order/Mumbai/christmas-cakes-online
+  });
 
 
 }
@@ -91,7 +92,14 @@ this.getFiltersDetails()
 
   }
 
-
+getnewurl(urlcity:any)
+{
+  this.getOldUrl= this.router.url;
+  
+  let newurl=  this.getOldUrl.replace(urlcity, this.cityname);
+  console.log(newurl)
+  this.location.replaceState(newurl);
+}
 
 
   getPageRoutes() {
@@ -101,11 +109,15 @@ this.getFiltersDetails()
         if (urlparms.length > 1) {
           this.typeName = 'FLV';
           this.cityname = urlparms[1];
+          this.cityname=this.originalcityname;
           this.PageName = this.cityname
+          this.getnewurl(urlparms[1])
         }
         else {
           let urlparms1 = params['favspl'].split('-');
-          this.cityname = urlparms1[urlparms1.length - 1]
+          this.cityname = urlparms1[urlparms1.length - 1];
+          this.getnewurl(urlparms1[urlparms1.length - 1])
+          this.cityname=this.originalcityname;
           this.typeName = 'SPL';
           let resultArray:any='';
           for (let i = 0; i < urlparms1.length -1; i++) {
@@ -126,14 +138,17 @@ this.getFiltersDetails()
       else if (params['cityname1']) {
 
         this.cityname = params['cityname1'];
+        
         this.typeName = 'CTY';
         this.PageName = params['PageName1'];
 
       }
       else if (params['type']) {
         this.cityname = params['cityname'];
+        this.cityname=this.originalcityname;
         this.typeName = params['type'];
         this.PageName = params['PageName'];
+        this.getnewurl(params['cityname'])
       }
       else {
 
@@ -164,7 +179,7 @@ this.getFiltersDetails()
       else if (this.typeName == 'search_result') {
         this.type = 'SE';
         this.cityname = params['PageName'];
-       
+        this.cityname=this.originalcityname;
         this.PageName = params['cityname'];
       }
 
