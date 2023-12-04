@@ -28,22 +28,17 @@
                                 <button type="button" data-bs-target="#carouselExampleDark" [attr.data-bs-slide-to]=i
                                     class="active" aria-current="true" aria-label="Slide 1">
                                     <img [src]="th.imageName" class="img-fluid w-100" alt="..."></button>
-
                             </ng-container>
 
                         </div>
                         <div class="carousel-inner">
-
                             <ng-container *ngFor="let th of productIamges; index as i">
                                 <div class="carousel-item" [class.active]="i ==0" data-bs-interval="10000">
                                     <img [src]="th.imageName" class="img-fluid w-100" alt="...">
                                 </div>
                             </ng-container>
-
-
                         </div>
                     </div>
-
                     <div *ngIf="!isMultipleImages">
                         <img [src]="productDetails?.imageName" class="img-fluid w-100" alt="...">
                     </div>
@@ -57,7 +52,7 @@
                         </p>
                     </article>
                     <!-- safe instruction-->
-                    <div class="safe-instruction" *ngIf="productDetails?.deliveryInformationRequired">
+                    <div class="safe-instruction d-none d-md-block" *ngIf="productDetails?.deliveryInformationRequired">
                         <div class="safe-inner">
                             <article>
                                 <h3 class="font-bold">Safe & Hygienic Bakery</h3>
@@ -95,62 +90,49 @@
                         <p class="align-self-center ps-2 small">Inclusive of all taxes</p>
                     </div>
 
-                    <div *ngIf="isEggless">
-                        <label>EggLess</label><input type="checkbox" (click)="egglesscheck($event)"
-                            [(ngModel)]="isegglessChecked" /> {{egglessPrice}}
-
+                    <div *ngIf="isEggless" class="pb-2">
+                        <input type="checkbox" (click)="egglesscheck($event)" [(ngModel)]="isegglessChecked" />
+                        <label class="ps-2">EggLess</label>
+                        Rs:{{egglessPrice}}
                     </div>
-
-
-
-
                     <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
-
                         <div class="basic-features row ">
                             <div class="row">
                                 <div class="col-md-3" *ngIf="flavourOptionsDto_array?.length >0">
-                                    <div class="d-flex form-group">
+                                    <div class="form-group pb-2">
                                         <label class="align-self-center pe-2">Flavour:</label>
-                                        <select class="form-select" style="width:100px;"
+                                        <select class="form-select">
                                             formControlName="flavourOptionsDto">
                                             <option *ngFor="let o of flavourOptionsDto_array" [value]="o.optionId">
                                                 {{o.optionValue}}</option>
-
                                         </select>
                                     </div>
                                 </div>
-
-                                <div class="col-md-4" *ngIf="weightOptionsDto_array?.length >0">
-                                    <div class="d-flex form-group">
+                                <div class="col-md-3" *ngIf="weightOptionsDto_array?.length >0">
+                                    <div class="form-group pb-2">
                                         <label class="align-self-center pe-2">Weight:</label>
                                         <select class="form-select" formControlName="weightOptionsDto">
                                             <ng-container *ngFor="let o of weightOptionsDto_array;let first = first">
                                                 <option [value]="o.optionId">{{o.optionValue}}</option>
-
                                             </ng-container>
                                         </select>
-
-
                                     </div>
                                 </div>
-
-
                                 <div class="col-md-3" *ngIf="voucherOptionsDto_array?.length >0">
-                                    <div class="d-flex form-group">
+                                    <div class="form-group pb-2">
                                         <label class="align-self-center pe-2">Voucher:</label>
-                                        <select class="form-select" style="width:100px;"
+                                        <select class="form-select">
                                             formControlName="voucherOptionsDto">
                                             <option *ngFor="let o of voucherOptionsDto_array" [value]="o.optionId">
                                                 {{o.optionValue}}</option>
-
                                         </select>
                                     </div>
                                 </div>
 
                                 <div class="col-md-3" *ngIf="numberOptionsDto_array?.length >0">
-                                    <div class="d-flex form-group">
+                                    <div class="form-group pb-2">
                                         <label class="align-self-center pe-2">Number:</label>
-                                        <select class="form-select" style="width:100px;"
+                                        <select class="form-select"
                                             formControlName="numberOptionsDto">
                                             <option *ngFor="let o of numberOptionsDto_array" [value]="o.optionId">
                                                 {{o.optionValue}}</option>
@@ -158,11 +140,8 @@
                                         </select>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-
-
                         <!-- <div *ngFor="let elementId of ['element1', 'element2', 'element3']">
                           <label for="{{elementId}}">{{elementId}}</label>
                           <input
@@ -174,13 +153,6 @@
                             This field is required.
                           </div>
                         </div> -->
-
-
-
-
-
-
-
                         <!-- <div class="basic-features row ">
                         <div class="row">
                             <div class="col-md-3">
@@ -237,33 +209,24 @@
                                     placeholder="500090, Hyderabad, Telangana State">
                             </div>
                         </div> -->
-                            <div class="col-md-4" *ngIf="deliveryDates_array?.length">
+                            <div class="col-md-4 pb-2" *ngIf="deliveryDates_array?.length">
                                 <label>Select Delivery Date </label>
-
-
-
-
-                                <div class="form-group d-flex p-2  background-lightprimary rounded">
-                                    <span
+                                <div class="form-group d-flex p-2  background-lightprimary rounded"> <span
                                         class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
-
                                     <select class="form-select" (change)="getBindDeliveryTimes($event)"
                                         formControlName="deliveryDates">
                                         <option *ngFor="let o of deliveryDates_array" [value]="o.deliveryDateValue">
                                             {{o.deliveryDateText}}</option>
-
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-4" *ngIf="deliveryDates_array?.length">
+                            <div class="col-md-4 pb-2" *ngIf="deliveryDates_array?.length">
                                 <label>Select time</label>
                                 <div class="form-group d-flex p-2  background-lightprimary rounded">
                                     <span
                                         class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
-
                                     <select class="form-select" formControlName="deliveryTimes">
                                         <option *ngFor="let o of deliveryTime" [value]="o.slotId">{{o.dtime}}</option>
-
                                     </select>
                                 </div>
                             </div>
@@ -287,16 +250,14 @@
                                         placeholder="Message on Cake 25 Characters (Option)">
                                 </div>
                             </div>
-                            <div class="mt-3 d-flex">
+                            <div class="mt-3 d-md-flex">
                                 <!-- <a href="javascript:void(0)" class="color-btn">Add to Cart</a> -->
-                                <button [disabled]="!dynamicForm.valid" type="submit" class="color-btn">Add to
+                                <button [disabled]="!dynamicForm.valid" type="submit" class="color-btn border-0">Add to
                                     Cart</button>
-
                                 <span
-                                    class="background-lightgreen font-black  ms-3 px-2 py-2 badge rounded-pill align-self-center"><span
+                                    class="background-lightgreen font-black  ms-md-3 ms-1 px-2 py-2 badge rounded-pill align-self-center"><span
                                         class="icon-circular-alarm-clock-tool d-inline-block me-1"></span>Get Today
-                                    Order
-                                    within 10:19:29 Hrs</span>
+                                    Order within 10:19:29 Hrs</span>
                             </div>
                         </div>
 
@@ -306,7 +267,7 @@
 
                     <!-- poroduct info -->
                     <div class="product-info">
-                        <article class="pb-4" *ngIf="productDetails?.description !=''">
+                        <article class="pb-md-4 pb-2" *ngIf="productDetails?.description !=''">
                             <h3 class="font-bold pb-3 mb-2">Description</h3>
                             <div class="py-2">
                                 <div [innerHtml]="productDetails?.description"></div>
@@ -371,7 +332,6 @@
                             <div class="py-2">
                                 <ul class="list-style-desc">
                                     <li>FLower cares </li>
-
                                 </ul>
                             </div>
                         </article>

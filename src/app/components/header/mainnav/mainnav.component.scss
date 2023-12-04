@@ -42,19 +42,19 @@
         }
       }
     }
-    .main-div-links > div  {
+    .main-div-links > div {
       border-right: 1px solid map-get($colors, lightgray);
-      padding-right:50px;
-      margin-right:50px;
+      padding-right: 50px;
+      margin-right: 50px;
 
-      @include max(map-get($breakpoints, "sm")){
-        padding-right:0;
-        margin-right:0;
-        border-right:none;
+      @include max(map-get($breakpoints, "lg")) {
+        padding-right: 0;
+        margin-right: 0;
+        border-right: none;
       }
 
-      &:last-child{
-        border-right:none;
+      &:last-child {
+        border-right: none;
       }
     }
   }
@@ -101,14 +101,18 @@
 }
 
 .navbar-toggler {
-  @include max(map-get($breakpoints, "sm")) {
+  @include max(map-get($breakpoints, "lg")) {
     position: absolute;
     top: -156px;
     left: 0;
-    border:none;
+    border: none;
 
-    &:focus{
+    &:focus {
       box-shadow: none;
     }
   }
+}
+
+.menu-cat-img {
+  width: 250px;
 }

@@ -8,6 +8,7 @@ import { CurdService } from 'src/app/services/curd.service';
 })
 export class FooterComponent implements OnInit{
   footerlinks:any;
+  
 constructor(private _crud:CurdService)
 {
 
@@ -24,3 +25,5 @@ getFooters(): void {
   })
 }
 }
+
+

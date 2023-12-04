@@ -61,6 +61,7 @@
     }
 
     .item-footer {
+      font-size: $fsize - 2;
       .icomoon {
         color: map-get($colors, primary);
         margin-right: 5px;

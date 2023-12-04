@@ -27,6 +27,7 @@ import { ProductsComponent } from '../pages/products/products.component';
 import { CustomizedCakesComponent } from '../pages/customized-cakes/customized-cakes.component';
 
 
+
 @NgModule({
   declarations: [
     FrontendComponent,
@@ -50,6 +51,7 @@ import { CustomizedCakesComponent } from '../pages/customized-cakes/customized-c
     FranchisesComponent,  
     CustomizedCakesComponent,
     ProductsComponent
+
   ],
   imports: [
     CommonModule,

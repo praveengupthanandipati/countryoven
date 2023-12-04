@@ -1,31 +1,32 @@
-<section class="topheader py-3">
+<section class="topheader py-1">
     <div class="custom-container">
         <div class="row justify-content-between">
-            <div class="col-lg-8">
+            <div class="col-lg-6">
                 <div class="offers">
                     <h6 class="h6 font-bold">Offers: </h6>
                     <div>
                         <ng-container *ngIf="!scrolling">
                             <p>{{scrollingMessage}}
-                               
-                            </p> 
+
+                            </p>
                         </ng-container>
                         <ng-container *ngIf="scrolling">
                             <marquee>{{scrollingMessage}}
-                               
-                            </marquee> 
+
+                            </marquee>
                         </ng-container>
-                        
-                       
+
+
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <ul class="nav justify-content-md-end">
+            <div class="col-lg-6">
+                <ul class="nav justify-content-md-end pt-1">
                     <li class="nav-item" *ngFor="let menu of topList">
-                        <a class="nav-link py-0"  (click)="gotoroute(menu.type, menu.seoTitle)" href="javascript:void(0)">{{menu.title}}</a>
+                        <a class="nav-link py-0" (click)="gotoroute(menu.type, menu.seoTitle)"
+                            href="javascript:void(0)">{{menu.title}}</a>
                     </li>
-                  
+
                 </ul>
             </div>
         </div>
