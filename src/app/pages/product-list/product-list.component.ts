@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
+import { ActivatedRoute, NavigationEnd, ParamMap, Router } from '@angular/router';
 import { CurdService } from 'src/app/services/curd.service';
 
 @Component({
@@ -24,6 +25,8 @@ currentPage: number=0;
   isHiddensearchFilter=false;
   metaData: any;
   typeName:any;
+  breadTitle:any;
+  breadcatTitle: any;
     filterChanged(filterOption: any): void {
 
 const filterGroup = this.filterswrapper.find((group:any) => group.filterOptions.includes(filterOption));
@@ -52,8 +55,18 @@ this.currentPage=1;
  
 
 
-constructor (private _crud:CurdService, private route:ActivatedRoute, private formBuilder: FormBuilder)
+constructor (  private titleService: Title, 
+  private meta: Meta,private _crud:CurdService, private route:ActivatedRoute, private formBuilder: FormBuilder, private router: Router)
 {
+
+  // this.router.events
+  // .pipe(filter((event: any) => event instanceof NavigationEnd))
+  // .subscribe((event: NavigationEnd) => {
+  //   // Extract the city name from the URL
+  //   const cityName = this.extractCityNameFromUrl(event.url);
+  //   // Perform any additional logic based on the city name
+  //   console.log('Selected city:', cityName);
+  // });
 
 
 }
@@ -64,9 +77,7 @@ constructor (private _crud:CurdService, private route:ActivatedRoute, private fo
 
 
     this.route.paramMap.subscribe((params: ParamMap) => {
-     
-     console.log('sddfds')
-     
+         
   this.getPageRoutes();
   this.getMeta();
 this.getProductDetails(this.filters, 1);
@@ -79,26 +90,6 @@ this.getFiltersDetails()
 
 
   }
-
-  // getPageRoutes()
-  // {
-  //   this.route.params.subscribe((params) => {
-  //     this.cityname = params['cityname']; 
-  //   let typeName=params['type']
-  //       if(typeName == 'online-delivery')
-  //     {
-  //       this.type='C'
-  //     } else if(typeName=='order')
-  //     {
-  //       this.type='SC'
-  //     }
-  //     else if(typeName=='send')
-  //     {
-  //       this.type='OCC'
-  //     }
-  //     this.PageName = params['PageName']; 
-  //   });
-  // }
 
 
 
@@ -206,7 +197,13 @@ this.getFiltersDetails()
     this._crud.getMeta(data).subscribe(res => {
      this.metaData=res;
       console.log(res)
-    
+      console.log(res.title)
+      this.titleService.setTitle(res.title);
+this.breadTitle=res.subCategoryNameCapital || res.seoSpecialPageName || res.occasionNameCapital;
+this.breadcatTitle=res.categoryNameCapital || res.specialPageCapital;
+      this.meta.updateTag({ name: 'description',  content: res.metaDescription });
+      this.meta.updateTag({ name: 'keywords',  content: res.metaKeywords });
+
     })
   }
 

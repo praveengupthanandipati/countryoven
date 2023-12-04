@@ -18,13 +18,13 @@
                     <h1 class="h3 font-bold font-primary pb-3">Customized Cakes</h1>
                     <img src="assets/images/customize-cake.jpg" class="img-fluid w-100" alt="...">
                     <p><small>This option is available only for deliveries in Hyderabad</small></p>
-                    <form>
+                    <form [formGroup]="form">
                         <div class="row">
                             <div class="col-sm-6 col-lg-6">
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" placeholder="Name "
-                                            formControlName="Name">
+                                            formControlName="name">
                                         <label for="Name">Name <span class="font-red font-bold">*</span></label>
                                     </div>
                                 </div>
@@ -33,7 +33,7 @@
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
                                         <input type="number" class="form-control" placeholder="Mobile Number"
-                                            formControlName="MobileNumber">
+                                            formControlName="mobile">
                                         <label for="MobileNumber">Mobile Number<span
                                                 class="font-red font-bold">*</span></label>
                                     </div>
@@ -43,7 +43,7 @@
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" placeholder="Email"
-                                            formControlName="Email">
+                                            formControlName="email">
                                         <label for="Email">Email <span class="font-red font-bold">*</span></label>
                                     </div>
                                 </div>
@@ -53,8 +53,8 @@
                                     <div class="form-floating">
                                         <input type="file" class="form-control"
                                             placeholder="Upload Reference Cake Image "
-                                            formControlName="UploadReferenceCakeImage ">
-                                        <label for="Email">Upload Reference Cake Image <span
+                                            formControlName="image">
+                                        <label for="image">Upload Reference Cake Image <span
                                                 class="font-red font-bold">*</span></label>
                                     </div>
                                 </div>
@@ -62,14 +62,14 @@
                             <div class="col-12">
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Your Comment" id="YourComment"
+                                        <textarea formControlName="comments" class="form-control" placeholder="Your Comment" id="YourComment"
                                             style="height: 100px"></textarea>
                                         <label for="YourComment">Your Comment <span
                                                 class="font-red font-bold">*</span></label>
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn color-btn w-100 text-center font-bold" type="submit">Submit</button>
+                            <button class="btn color-btn w-100 text-center font-bold" [disabled]="!form.valid" type="submit" (click)="submit()">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -99,7 +99,7 @@
                         <div class="card-header">Address</div>
                         <div class="card-body">
                             <p class="pb-0">
-                                <a href="/Stores" class="font-primary font-bold">Check out our stores in USA and
+                                <a  routerLink="/content/ourstores" class="font-primary font-bold">Check out our stores in USA and
                                     India.</a>
                             </p>
                         </div>

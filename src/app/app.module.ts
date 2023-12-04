@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 // import { ProductsComponent } from './pages/products/products.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CareersComponent } from './pages/careers/careers.component';
-import { CustomizedCakesComponent } from './pages/customized-cakes/customized-cakes.component';
+
 import { CorporateOrdersComponent } from './pages/corporate-orders/corporate-orders.component';
 import { CustomerServicesComponent } from './pages/customer-services/customer-services.component';
 import { HelpComponent } from './pages/help/help.component';
@@ -26,7 +26,7 @@ import { TermsandconditionsComponent } from './pages/termsandconditions/termsand
   declarations: [
     AppComponent,
     CareersComponent,
-    CustomizedCakesComponent,
+    
     CorporateOrdersComponent,
     CustomerServicesComponent,
     HelpComponent,

@@ -22,9 +22,9 @@
                     <nav aria-label="breadcrumb" class="align-self-center">
                         <ol class="breadcrumb pb-0 mb-0">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Hyderabad</a></li>
-                            <li class="breadcrumb-item"><a href="#">Cakes</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Birthday Cakes</li>
+                            <li class="breadcrumb-item"><a>{{cityname}}</a></li>
+                            <li class="breadcrumb-item" *ngIf="breadcatTitle"><a>{{breadcatTitle}}</a></li>
+                            <li class="breadcrumb-item active" aria-current="page" *ngIf="breadTitle">{{breadTitle}}</li>
                         </ol>
                     </nav>
                     <div class="filter-dropdowns d-flex ps-md-5 align-self-center flex-wrap">

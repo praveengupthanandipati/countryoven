@@ -269,5 +269,16 @@ deleteAddress(obj:any): Observable<any> {
 }
 
 
+postfranchises(obj:any):Observable<any>{
+  
+  return this.http.post(`${environment.apiUrl}/franchises`,obj)
+  }
+
+  
+postcustomize(obj:any):Observable<any>{
+  
+  return this.http.post(`${environment.apiUrl}/CustomizedCakes/Add`,obj)
+  }
+  
 
   }

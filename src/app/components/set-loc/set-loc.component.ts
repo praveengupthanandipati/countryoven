@@ -60,7 +60,7 @@ selectedCity(c:any)
   
   this.selectEvent.emit();
   console.log('enter')
- // window.location.reload();
+  window.location.reload();
 }
 
 

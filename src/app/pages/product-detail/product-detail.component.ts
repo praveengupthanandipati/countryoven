@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute,  Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { CurdService } from 'src/app/services/curd.service';
@@ -36,7 +37,11 @@ export class ProductDetailComponent  implements OnInit{
   productPrice:any;
   isegglessChecked:boolean=false;
   sNo:any;
-  constructor(private _crud:CurdService, private route:ActivatedRoute, private fb: FormBuilder, private cookieService: CookieService, private router:Router)
+  breadTitle: any;
+  breadcatTitle: any;
+  constructor(
+    private meta: Meta, private title:Title,
+    private _crud:CurdService, private route:ActivatedRoute, private fb: FormBuilder, private cookieService: CookieService, private router:Router)
   {
     this.dynamicForm = this.fb.group({});
     this.cityName=localStorage.getItem('city')
@@ -155,7 +160,16 @@ getProductDetailsById(): void {
     "currencySelected": this.currencySelected
   }       
     this._crud.getProductDetailsById(data).subscribe(res => {
-     console.log(res)
+     console.log(res);
+
+
+     this.breadTitle=res.subCategoryName;
+this.breadcatTitle=res.categoryName;
+      this.meta.updateTag({ name: 'description',  content: res.metaDescription });
+      this.meta.updateTag({ name: 'keywords',  content: res.metaKeywords });
+
+
+     
      this.productDetails=res;
      this.productId=res.productId;
      this.isMultipleImages=res.isMultipleImages;

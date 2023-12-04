@@ -27,6 +27,29 @@ const routes: Routes = [
   {
     path: '', component: FrontendComponent, children: [
       {path:'', component:HomeComponent},
+
+
+      {path: 'franchise', component:FranchisesComponent},  
+      {path: 'careers', component:CareersComponent},
+      {path: 'customizedcakes', component:CustomizedCakesComponent},
+      {path: 'corporateorders', component:CorporateOrdersComponent },
+
+      {path:'content/aboutus', component:AboutusComponent},
+      {path:'content/ourstores', component:StoresComponent},
+      {path: 'reviews', component:ReviewsComponent},
+      {path: 'content/contactus', component:ContactComponent},  
+      {path: 'content/couponpartners', component:CouponpartnersComponent},
+    
+      {path: 'content/customerservices', component:CustomerServicesComponent},
+      {path: 'Help', component:HelpComponent},
+      {path:'content/faq', component:FaqComponent},
+      {path: 'content/shipping', component:ShippingComponent},
+      {path: 'deliverycities', component:DeliverCitiesComponent},
+      {path: 'content/returnpolicy', component:ReturnpolicyComponent},
+      {path: 'content/privacypolicy', component:PrivacypolicyComponent},
+      {path: 'content/termsandcondition', component:TermsandconditionsComponent},
+
+
       {path:'products-list', component:ProductListComponent},
       {path:':type/:cityname/:PageName', component:ProductsComponent},
       {path:':cityname1/:PageName1', component:ProductsComponent},
@@ -35,23 +58,7 @@ const routes: Routes = [
       // {path:':type/:cityname/:PageName', component:ProductListComponent},
       // {path:'product-detail/:PageName', component:ProductDetailComponent},
       // {path:':cityname/send-online/:PageName', component:ProductDetailComponent},
-      {path:'content/aboutus', component:AboutusComponent},
-      {path:'content/ourstores', component:StoresComponent},
-      {path: 'reviews', component:ReviewsComponent},
-      {path: 'content/contactus', component:ContactComponent},  
-      {path: 'content/couponpartners', component:CouponpartnersComponent},
-      {path: 'franchise', component:FranchisesComponent},  
-      {path: 'careers', component:CareersComponent},
-      {path: 'customizedcakes', component:CustomizedCakesComponent},
-      {path: 'corporateorders', component:CorporateOrdersComponent },
-      {path: 'content/customerservices', component:CustomerServicesComponent},
-      {path: 'Help', component:HelpComponent},
-      {path:'content/faq', component:FaqComponent},
-      {path: 'content/shipping', component:ShippingComponent},
-      {path: 'deliverycities', component:DeliverCitiesComponent},
-      {path: 'content/returnpolicy', component:ReturnpolicyComponent},
-      {path: 'content/privacypolicy', component:PrivacypolicyComponent},
-      {path: 'content/termsandcondition', component:TermsandconditionsComponent}
+     
     ]},
  
 ];

@@ -24,6 +24,7 @@ import { StoresComponent } from '../pages/stores/stores.component';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductsComponent } from '../pages/products/products.component';
+import { CustomizedCakesComponent } from '../pages/customized-cakes/customized-cakes.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { ProductsComponent } from '../pages/products/products.component';
     ContactComponent,
     CouponpartnersComponent,
     FranchisesComponent,  
+    CustomizedCakesComponent,
     ProductsComponent
   ],
   imports: [

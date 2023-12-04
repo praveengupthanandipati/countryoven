@@ -19,13 +19,13 @@
 
             <div class="row">
                 <div class="col-md-8">
-                    <form>
+                    <form [formGroup]="form">
                         <div class="row">
                             <div class="col-sm-6 col-lg-4">
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" placeholder="First Name"
-                                            formControlName="usrname">
+                                            formControlName="firstname">
                                         <label for="username">First Name <span
                                                 class="font-red font-bold">*</span></label>
                                     </div>
@@ -35,7 +35,7 @@
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" placeholder="Last Name"
-                                            formControlName="usrname">
+                                            formControlName="lastname">
                                         <label for="username">Last Name <span
                                                 class="font-red font-bold">*</span></label>
                                     </div>
@@ -44,8 +44,8 @@
                             <div class="col-sm-6 col-lg-4">
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" placeholder="Age"
-                                            formControlName="usrname">
+                                        <input type="number" class="form-control" placeholder="Age"
+                                            formControlName="age">
                                         <label for="username">Age <span class="font-red font-bold">*</span></label>
                                     </div>
                                 </div>
@@ -54,7 +54,7 @@
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" placeholder="Mobile No"
-                                            formControlName="usrname">
+                                            formControlName="mobile">
                                         <label for="username">Mobile No: <span
                                                 class="font-red font-bold">*</span></label>
                                     </div>
@@ -64,18 +64,20 @@
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" placeholder="Email Address"
-                                            formControlName="usrname">
+                                            formControlName="emailId">
                                         <label for="username">Email Address: <span
                                                 class="font-red font-bold">*</span></label>
                                     </div>
                                 </div>
                             </div>
+                            
+                           
                             <div class="col-sm-6 col-lg-4">
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" placeholder="Country"
-                                            formControlName="usrname">
-                                        <label for="username">Country <span class="font-red font-bold">*</span></label>
+                                            formControlName="country">
+                                        <label for="country">Country <span class="font-red font-bold">*</span></label>
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +85,7 @@
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
                                         <textarea class="form-control" placeholder="Complete Address"
-                                            id="completeAddress" style="height: 100px"></textarea>
+                                            id="completeAddress" formControlName="address" style="height: 100px"></textarea>
                                         <label for="completeAddress">Complete Address <span
                                                 class="font-red font-bold">*</span></label>
                                     </div>
@@ -93,7 +95,7 @@
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" placeholder="State"
-                                            formControlName="State">
+                                            formControlName="state">
                                         <label for="State">State <span class="font-red font-bold">*</span></label>
                                     </div>
                                 </div>
@@ -102,7 +104,7 @@
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" placeholder="City"
-                                            formControlName="State">
+                                            formControlName="city">
                                         <label for="City">City <span class="font-red font-bold">*</span></label>
                                     </div>
                                 </div>
@@ -111,8 +113,8 @@
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" placeholder="Current Occupation"
-                                            formControlName="CurrentOccupation">
-                                        <label for="CurrentOccupation">City <span
+                                            formControlName="occupation">
+                                        <label for="CurrentOccupation">Occupation <span
                                                 class="font-red font-bold">*</span></label>
                                     </div>
                                 </div>
@@ -121,18 +123,18 @@
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" placeholder="Business/Career History"
-                                            formControlName="Business/CareerHistory">
+                                            formControlName="businessHistory">
                                         <label for="Business/CareerHistory">Business/Career History <span
                                                 class="font-red font-bold">*</span></label>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-lg-4">
+                            <div class="col-sm-6 col-lg-8">
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
                                         <input type="text" class="form-control"
                                             placeholder="Proposed location to open the franchise"
-                                            formControlName="Proposedlocationtoopenthefranchise">
+                                            formControlName="proposedLocation">
                                         <label for="Proposedlocationtoopenthefranchise">Proposed location to open the
                                             franchise <span class="font-red font-bold">*</span></label>
                                     </div>
@@ -142,13 +144,57 @@
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
                                         <textarea class="form-control" placeholder="Enter Message" id="EnterMessage"
-                                            style="height: 100px"></textarea>
+                                            style="height: 100px" formControlName="message"></textarea>
                                         <label for="EnterMessage">Enter Message <span
                                                 class="font-red font-bold">*</span></label>
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn color-btn w-100 text-center font-bold" type="submit">Submit</button>
+
+
+                            <!-- <div class="col-sm-6 col-lg-4">
+                                <div class="input-group mb-3">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control"
+                                            placeholder="franchiseFee"
+                                            formControlName="franchiseFee">
+                                        <label for="franchiseFee">franchiseFee<span class="font-red font-bold">*</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="input-group mb-3">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control"
+                                            placeholder="GateWay"
+                                            formControlName="gateWay">
+                                        <label for="gateWay">gateWay <span class="font-red font-bold">*</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="input-group mb-3">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control"
+                                            placeholder="transactionId"
+                                            formControlName="transactionId">
+                                        <label for="transactionId">transactionId <span class="font-red font-bold">*</span></label>
+                                    </div>
+                                </div>
+                            </div>  
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="input-group mb-3">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control"
+                                            placeholder="createdDate"
+                                            formControlName="createdDate">
+                                        <label for="createdDate">Created Date <span class="font-red font-bold">*</span></label>
+                                    </div>
+                                </div>
+                            </div> -->
+
+
+                            <button class="btn color-btn w-100 text-center font-bold" type="submit" (click)="submit()"  [disabled]="!form.valid">Submit</button>
                         </div>
                     </form>
                 </div>

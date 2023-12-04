@@ -109,6 +109,13 @@ if(localStorage.getItem('customerId'))
   
    
   }
+  selectLoc()
+  {
+    if(localStorage.getItem('city'))
+{
+ 
+}
 
+  }
 
 }
