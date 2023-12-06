@@ -232,7 +232,7 @@ this.breadcatTitle=res.categoryNameCapital || res.specialPageCapital;
       PageName:this.PageName,
       currencySelected:'INR',
       PageNumber:pagenumber,
-      PageSize:10,
+      PageSize:40,
       productFilters:filters
     }
 
