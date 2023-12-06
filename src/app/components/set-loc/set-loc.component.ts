@@ -42,7 +42,7 @@ desireCity=[{"icon": 'icon-charminar',name:'Hyderabad'},
 {"icon": 'icon-redfort',name:'Delhi'},
 {"icon": 'icon-mumbai',name:'Mumbai'},
 {"icon": 'icon-bengaluru',name:'Bangalore'},
-{"icon": 'icon-kolkatta',name:'Kolkatta'},
+{"icon": 'icon-kolkatta',name:'Kolkata'},
 {"icon": 'icon-chennai',name:'Chennai'}
  ]
  anotherCity=['Vijayawada','Kakinada','Pune','Bhopal','Warangal','Vizag']

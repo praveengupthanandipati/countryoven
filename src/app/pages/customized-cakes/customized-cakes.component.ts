@@ -12,6 +12,8 @@ import { CurdService } from 'src/app/services/curd.service';
 })
 export class CustomizedCakesComponent {
   form!: FormGroup;
+  selectedFile: any;
+  binaryData: any;
   constructor(
     private meta: Meta, private title:Title,
     private _crud:CurdService, private route:ActivatedRoute, private fb: FormBuilder, private cookieService: CookieService, private router:Router)
@@ -29,21 +31,66 @@ export class CustomizedCakesComponent {
     });
   }
 
-  submit()
+
+  private dataURItoBlob(dataURI: string): Blob {
+    const byteString = atob(dataURI.split(',')[1]);
+    const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const uint8Array = new Uint8Array(arrayBuffer);
+
+    for (let i = 0; i < byteString.length; i++) {
+      uint8Array[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([arrayBuffer], { type: mimeString });
+  }
+  onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0] as File;
+    console.log(this.selectedFile)
+    const reader = new FileReader();
+    reader.readAsDataURL(this.selectedFile);
+    reader.onload = (e) => {
+      const binaryString = e.target?.result as string;
+      this.binaryData = this.dataURItoBlob(binaryString);
+console.log(this.binaryData)
+    };
+
+  }
+
+  submit(formVal:any)
   {
+    // console.log(this.form.get('image'))
+    // console.log(this.form.get('image')?.value)
+
+   
+
+console.log(this.binaryData)
     let obj = {
-        customizedCakeDetails: [
+        customizedCakeDetails: 
         {
           "CustomizedCakeDetails.name": this.form.get('name')?.value,
-          "CustomizedCakeDetails.mobile": this.form.get('mobile')?.value,
+          "CustomizedCakeDetails.mobile":  this.form.get('mobile')?.value,
           "CustomizedCakeDetails.email": this.form.get('email')?.value,
           "CustomizedCakeDetails.comments": this.form.get('comments')?.value,
-          "CustomizedCakeDetails.image": this.form.get('image')?.value,
+          "CustomizedCakeDetails.imagePath": this.binaryData
          
         }
-        ]
+        
     }
    
+    let fd = formVal.value;
+
+    let formData = new FormData();
+    formData.append('name', fd.name);
+    formData.append('CustomizedCakeDetails.mobile', fd.mobile);
+    formData.append('CustomizedCakeDetails.email', fd.email);
+    formData.append('CustomizedCakeDetails.comments', fd.comments); 
+    formData.append('CustomizedCakeDetails.imagePath', fd.image);
+    let obj1 = {
+      customizedCakeDetails: formData
+      
+    }
     this._crud.postcustomize(obj).subscribe(res => {
      console.log(res)
      

@@ -36,7 +36,7 @@ export class CategoriesComponent {
     if(t == 'C')
     {
       t='online-delivery';
-      this.route.navigateByUrl('/'+ t + '/'+ c + '/' + pname)
+      this.route.navigateByUrl('/'+ pname + '/'+ c + '/' + t )
       
     } else if(t=='SC')
     {

@@ -46,7 +46,7 @@ export class FranchisesComponent {
     let obj = {
       // "UserID": this.userObj.UserID,
       // "pincode":  this.form.get('pincode')?.value
-      "franchisesDetails": [
+      "franchisesDetails": 
         {
           "firstname": this.form.get('firstname')?.value,
           "lastname": this.form.get('lastname')?.value,
@@ -71,7 +71,7 @@ export class FranchisesComponent {
           "transactionId": "TN02242023144",
           "createdDate": "2023-09-15T06:01:52.768Z"
         }
-      ]
+      
 
     }
    

@@ -42,7 +42,7 @@ if (filterGroup) {
       .map((selectedOption:any) => selectedOption.value);
   
     if (selectedValues.length > 0) {
-      selectedValuesByFilterType[filterGroup.fitlerType] = selectedValues;
+      selectedValuesByFilterType[filterGroup.filterType] = selectedValues;
     }
   }
   console.log(selectedValuesByFilterType);
@@ -155,7 +155,7 @@ getnewurl(urlcity:any)
       }
 
 
-      if (this.typeName == 'online-delivery') {
+      if (this.typeName == 'online-delivery' || this.PageName == 'online-delivery') {
         this.type = 'C';
         
       } else if (this.typeName == 'order') {
