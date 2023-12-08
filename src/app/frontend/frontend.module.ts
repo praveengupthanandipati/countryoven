@@ -25,6 +25,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductsComponent } from '../pages/products/products.component';
 import { CustomizedCakesComponent } from '../pages/customized-cakes/customized-cakes.component';
+import { NoproductsFoundComponent } from '../pages/noproducts-found/noproducts-found.component';
 
 
 
@@ -50,7 +51,8 @@ import { CustomizedCakesComponent } from '../pages/customized-cakes/customized-c
     CouponpartnersComponent,
     FranchisesComponent,  
     CustomizedCakesComponent,
-    ProductsComponent
+    ProductsComponent,
+    NoproductsFoundComponent
 
   ],
   imports: [

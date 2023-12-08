@@ -30,6 +30,9 @@ currentPage: number=0;
   breadTitle:any;
   breadcatTitle: any;
   getOldUrl:any;
+  sorder:any=1;
+  sortValue:any='Recommended';
+  loading:boolean=true;
     filterChanged(filterOption: any): void {
 
 const filterGroup = this.filterswrapper.find((group:any) => group.filterOptions.includes(filterOption));
@@ -49,7 +52,7 @@ if (filterGroup) {
  
 const fliterV="[" + selectedValuesByFilterType + "]"
 this.currentPage=1;
-  this.getProductDetails([selectedValuesByFilterType], this.currentPage);
+  this.getProductDetails([selectedValuesByFilterType], this.currentPage, this.sorder);
 
 
 
@@ -81,7 +84,7 @@ constructor (  private titleService: Title, private location: Location, private 
          
   this.getPageRoutes();
   this.getMeta();
-this.getProductDetails(this.filters, 1);
+this.getProductDetails(this.filters, 1, this.sorder);
 this.getFiltersDetails()
      
     });
@@ -223,8 +226,8 @@ this.breadcatTitle=res.categoryNameCapital || res.specialPageCapital;
   }
 
 
-  getProductDetails(filters:any, pagenumber?:any): void {
-    
+  getProductDetails(filters:any, pagenumber?:any, sortOrder?:any): void {
+    this.loading=true;
     const data={
       cityname:this.cityname,
       country:'India',
@@ -233,11 +236,12 @@ this.breadcatTitle=res.categoryNameCapital || res.specialPageCapital;
       currencySelected:'INR',
       PageNumber:pagenumber,
       PageSize:40,
-      productFilters:filters
+      productFilters:filters,
+      sortOrder:sortOrder
     }
 
     this._crud.getProductDetails(data).subscribe(res => {
-     
+     this.loading=false;
     this.productData=res;
     console.log(this.productData)
     console.log(this.productData.items.length)
@@ -270,26 +274,35 @@ this.totalPages=this.productData.totalPages
   previousPage() {
     if (this.currentPage > 1) {
       this.currentPage--;
-      this.getProductDetails(this.filters, this.currentPage);
+      this.getProductDetails(this.filters, this.currentPage, this.sorder);
     }
   }
 
   nextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
-      this.getProductDetails(this.filters, this.currentPage);
+      this.getProductDetails(this.filters, this.currentPage,this.sorder);
     }
   }
 
   goToPage(page: number) {
     if (page >= 1 && page <= this.totalPages && page !== this.currentPage) {
       this.currentPage = page;
-      this.getProductDetails(this.filters, this.currentPage);
+      this.getProductDetails(this.filters, this.currentPage,this.sorder);
     }
   }
 
+sortproducts()
+{
+  this.getProductDetails(this.filters, this.currentPage,this.sorder);
+}
 
-
+sodervalue(sorder:any, type:any)
+{
+this.sortValue=type;
+this.sorder=sorder;
+this.getProductDetails(this.filters, this.currentPage, this.sorder);
+}
   /* test code */
 
   
