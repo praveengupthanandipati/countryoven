@@ -20,7 +20,7 @@ import { DeliverCitiesComponent } from './pages/deliver-cities/deliver-cities.co
 import { ReturnpolicyComponent } from './pages/returnpolicy/returnpolicy.component';
 import { PrivacypolicyComponent } from './pages/privacypolicy/privacypolicy.component';
 import { TermsandconditionsComponent } from './pages/termsandconditions/termsandconditions.component';
-import { NoproductsFoundComponent } from './pages/noproducts-found/noproducts-found.component';
+// import { NoproductsFoundComponent } from './pages/noproducts-found/noproducts-found.component';
 
 
 @NgModule({
@@ -37,7 +37,7 @@ import { NoproductsFoundComponent } from './pages/noproducts-found/noproducts-fo
     ReturnpolicyComponent,
     PrivacypolicyComponent,
     TermsandconditionsComponent,
-    NoproductsFoundComponent,
+  //  NoproductsFoundComponent,
    
     
     // ProductsComponent,      
