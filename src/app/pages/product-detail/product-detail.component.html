@@ -108,7 +108,7 @@
                                         </select>
                                     </div>
 
-                                    <div class="invalid-feedback mt-0 d-block" *ngIf="dynamicForm.get('flavourOptionsDto').invalid && dynamicForm.get('flavourOptionsDto').touched">
+                                    <div class="invalid-feedback mt-0 d-block" *ngIf="dynamicForm.get('flavourOptionsDto')!.invalid && dynamicForm.get('flavourOptionsDto')!.touched">
                                         <p class="error-message">Select Flavour</p>
                                       </div>
                                    
@@ -123,7 +123,7 @@
                                         </select>
                                     </div>
                                  
-                                    <div class="invalid-feedback mt-0 d-block" *ngIf="dynamicForm.get('weightOptionsDto').invalid && dynamicForm.get('weightOptionsDto').touched">
+                                    <div class="invalid-feedback mt-0 d-block" *ngIf="dynamicForm.get('weightOptionsDto')!.invalid && dynamicForm.get('weightOptionsDto')!.touched">
                                         <p class="error-message">Select Weight</p>
                                       </div>
                                 </div>
@@ -136,7 +136,7 @@
                                         </select>
                                     </div>
                                   
-                                    <div class="invalid-feedback mt-0 d-block" *ngIf="dynamicForm.get('voucherOptionsDto').invalid && dynamicForm.get('voucherOptionsDto').touched">
+                                    <div class="invalid-feedback mt-0 d-block" *ngIf="dynamicForm.get('voucherOptionsDto')!.invalid && dynamicForm.get('voucherOptionsDto')!.touched">
                                         <p class="error-message">Select Voucher</p>
                                       </div>
                                 </div>
@@ -150,7 +150,7 @@
                                              </select>
                                     </div>
                                   
-                                    <div class="invalid-feedback mt-0 d-block" *ngIf="dynamicForm.get('numberOptionsDto').invalid && dynamicForm.get('numberOptionsDto').touched">
+                                    <div class="invalid-feedback mt-0 d-block" *ngIf="dynamicForm.get('numberOptionsDto')!.invalid && dynamicForm.get('numberOptionsDto')!.touched">
                                         <p class="error-message">Select Number</p>
                                       </div>
                                 </div>
@@ -171,7 +171,7 @@
                                 </div>
 
                                 
-                                <div class="invalid-feedback mt-0 d-block" *ngIf="dynamicForm.get('deliveryDates').invalid && dynamicForm.get('deliveryDates').touched">
+                                <div class="invalid-feedback mt-0 d-block" *ngIf="dynamicForm.get('deliveryDates')!.invalid && dynamicForm.get('deliveryDates')!.touched">
                                     <p class="error-message">Select Delivery Date</p>
                                   </div>
                             </div>
@@ -185,7 +185,7 @@
                                     </select>
                                 </div>
                                 
-                                <div class="invalid-feedback mt-0 d-block" *ngIf="dynamicForm.get('deliveryTimes').invalid && dynamicForm.get('deliveryTimes').touched">
+                                <div class="invalid-feedback mt-0 d-block" *ngIf="dynamicForm.get('deliveryTimes')!.invalid && dynamicForm.get('deliveryTimes')!.touched">
                                     <p class="error-message">Select Time</p>
                                   </div>
                             </div>
@@ -208,7 +208,7 @@
                                         class="form-control border-0 bg-transparent"
                                         placeholder="Message on Cake 25 Characters (Option)">
                                 </div>
-                                <div class="invalid-feedback mt-0 d-block" *ngIf="dynamicForm.get('message').invalid && dynamicForm.get('message').touched">
+                                <div class="invalid-feedback mt-0 d-block" *ngIf="dynamicForm.get('message')!.invalid && dynamicForm.get('message')!.touched">
                                     <p class="error-message">Select Message</p>
                                   </div>
                             </div>

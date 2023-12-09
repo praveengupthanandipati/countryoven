@@ -42,7 +42,7 @@ currentPage: number=0;
   }
   routeCategory(e:any)
   {
-    
+
   }
 
     filterChanged(filterOption: any): void {
@@ -238,6 +238,7 @@ getnewurl(urlcity:any)
       this.titleService.setTitle(res.title);
 this.breadTitle=res.subCategoryNameCapital || res.seoSpecialPageName || res.occasionNameCapital;
 this.breadcatTitle=res.categoryNameCapital || res.specialPageCapital;
+// this.breadcatTitle=res.seoCategoryName;
       this.meta.updateTag({ name: 'description',  content: res.metaDescription });
       this.meta.updateTag({ name: 'keywords',  content: res.metaKeywords });
 

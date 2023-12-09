@@ -93,7 +93,7 @@
                 <a *ngIf="isfilters" (click)="filterclear()">Clear All</a>
             </div>
             <!--/ filters display-->
-            <ngcontainer *ngIf="products && products.length >0">
+            <ng-container *ngIf="products && products.length >0">
           
            
             <div class="products-list-items">
@@ -103,9 +103,9 @@
                     </div>
                 </div>
             </div>
-        </ngcontainer>
-        <ngcontainer *ngIf="!(products && products.length >0) && !loading">
-            <app-noproducts-found></app-noproducts-found></ngcontainer>
+        </ng-container>
+        <ng-container *ngIf="!(products && products.length >0) && !loading">
+            <app-noproducts-found></app-noproducts-found></ng-container>
 
 
 
