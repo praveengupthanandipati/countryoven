@@ -20,6 +20,13 @@ export class ProductsComponent {
 
   getPageRoutes() {
     this.route.params.subscribe((params) => {
+    
+    if(params['cityname'] =='send-online')
+    {
+      this.showproductDetails = true
+    }
+else
+{
       if (params['favspl']) {
 
         let urlparms = params['favspl'].split('-to-');
@@ -54,6 +61,9 @@ export class ProductsComponent {
       }
 
 
+
+
+
       if (this.typeName == 'online-delivery') {
         this.type = 'C';
         this.showproductDetails = false;
@@ -79,7 +89,7 @@ export class ProductsComponent {
         this.type = 'CTY';
         this.showproductDetails = false;
       }
-    
+
 
 
       else if (this.typeName == 'send-online') {
@@ -96,13 +106,15 @@ export class ProductsComponent {
           this.showproductDetails = true
         }
         else {
-          
+
           this.showproductDetails = false;
         }
       }
 
 
       this.PageName = params['PageName'];
+
+    }
     });
   }
 

@@ -33,6 +33,18 @@ currentPage: number=0;
   sorder:any=1;
   sortValue:any='Recommended';
   loading:boolean=true;
+  isfilters:boolean=false;
+  totalCount: any;
+
+  routeCity(e:any)
+  {
+    this.router.navigateByUrl(e + '/gift-online');
+  }
+  routeCategory(e:any)
+  {
+    
+  }
+
     filterChanged(filterOption: any): void {
 
 const filterGroup = this.filterswrapper.find((group:any) => group.filterOptions.includes(filterOption));
@@ -48,8 +60,13 @@ if (filterGroup) {
       selectedValuesByFilterType[filterGroup.filterType] = selectedValues;
     }
   }
-  console.log(selectedValuesByFilterType);
- 
+  
+  
+ this.isfilters=Object.keys(selectedValuesByFilterType).length ? true : false;
+
+
+
+
 const fliterV="[" + selectedValuesByFilterType + "]"
 this.currentPage=1;
   this.getProductDetails([selectedValuesByFilterType], this.currentPage, this.sorder);
@@ -75,7 +92,10 @@ constructor (  private titleService: Title, private location: Location, private 
 
 }
 
-
+filterclear()
+{
+  window.location.reload();
+}
 
   ngOnInit(): void {
 
@@ -100,7 +120,7 @@ getnewurl(urlcity:any)
   this.getOldUrl= this.router.url;
   
   let newurl=  this.getOldUrl.replace(urlcity, this.cityname);
-  console.log(newurl)
+  
   this.location.replaceState(newurl);
 }
 
@@ -214,8 +234,7 @@ getnewurl(urlcity:any)
 
     this._crud.getMeta(data).subscribe(res => {
      this.metaData=res;
-      console.log(res)
-      console.log(res.title)
+     
       this.titleService.setTitle(res.title);
 this.breadTitle=res.subCategoryNameCapital || res.seoSpecialPageName || res.occasionNameCapital;
 this.breadcatTitle=res.categoryNameCapital || res.specialPageCapital;
@@ -243,11 +262,11 @@ this.breadcatTitle=res.categoryNameCapital || res.specialPageCapital;
     this._crud.getProductDetails(data).subscribe(res => {
      this.loading=false;
     this.productData=res;
-    console.log(this.productData)
-    console.log(this.productData.items.length)
+    
     this.products=this.productData.items
     this.currentPage=this.productData.pageNumber;
 this.totalPages=this.productData.totalPages
+this.totalCount=this.productData.totalCount;
   })
   }
 
@@ -262,7 +281,7 @@ this.totalPages=this.productData.totalPages
     }
 
     this._crud.getFilters(data).subscribe(res => {
-     console.log(res)
+     
    this.filterswrapper=res;
 
   })
@@ -301,6 +320,7 @@ sodervalue(sorder:any, type:any)
 {
 this.sortValue=type;
 this.sorder=sorder;
+
 this.getProductDetails(this.filters, this.currentPage, this.sorder);
 }
   /* test code */

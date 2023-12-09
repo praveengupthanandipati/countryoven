@@ -15,10 +15,10 @@
         </h5>
         <div class="price d-flex py-2 border-bottom">
             <div class="offer-price font-bold"><span
-                    class="icon-inr icomoon font-bold"></span>{{Productvalue.dicountPrice}}</div>
+                    class="icomoon font-bold" [class]="currencyClass"></span>{{Productvalue.dicountPrice}}</div>
             <ng-container *ngIf="Productvalue.discount > 0">
                 <div class="mrp font-semi-bold align-self-center px-2">
-                    <span class="icon-inr icomoon font-bold"></span>{{Productvalue.productPrice}}
+                    <span class="icon-issr icomoon font-bold" [class]="currencyClass"></span>{{Productvalue.productPrice}}
                 </div>
                 <div class="offer-percentage align-self-center "><small
                         class="font-bold">{{Productvalue.discount}}%</small></div>

@@ -39,6 +39,8 @@ export class ProductDetailComponent  implements OnInit{
   sNo:any;
   breadTitle: any;
   breadcatTitle: any;
+  currency:any;
+  currencyClass:any;
   constructor(
     private meta: Meta, private title:Title,
     private _crud:CurdService, private route:ActivatedRoute, private fb: FormBuilder, private cookieService: CookieService, private router:Router)
@@ -51,13 +53,26 @@ this.currencySelected=localStorage.getItem('currency');
 
   }
   ngOnInit(): void {
+    this.currency=localStorage.getItem('currency');
+    if(this.currency=='INR')
+    {
+      this.currencyClass='icon-inr'
+    }
+     else if(this.currency =='USA')
+     {
+      this.currencyClass='icon-dollar-currency-symbol'
+     }
+
     this.route.params.subscribe((params) => {
       this.productName = params['PageName']; 
     //  this.getProductReviews(this.productName)
     this.getProductDetailsById()
     });
   }
-  
+  onQtyChange(e:any)
+  {
+
+  }
   addFormControl(elementId: string) {
     this.dynamicForm.addControl(
       elementId,
@@ -65,8 +80,19 @@ this.currencySelected=localStorage.getItem('currency');
     );
   }
 
+  private markFormGroupTouched(formGroup: FormGroup) {
+    Object.values(formGroup.controls).forEach((control) => {
+      control.markAsTouched();
+console.log(control)
+      if (control instanceof FormGroup) {
+        this.markFormGroupTouched(control);
+      }
+    });
+  }
+
+
   onSubmit() {
-  
+     this.markFormGroupTouched(this.dynamicForm);
     if (this.dynamicForm.valid) {
       const formData = this.dynamicForm.value;
       console.log('Form data:', formData);
@@ -192,24 +218,50 @@ if(this.deliveryDates_array.length >0)
 {
   this.addFormControl('deliveryDates');
   this.addFormControl('deliveryTimes');
-  console.log('1s')
+  setTimeout(() => {
+    this.dynamicForm.get('deliveryDates')?.setValue(this.deliveryDates_array[0].deliveryDateValue);
+    
+    const data={
+      "DeliveryDate": this.deliveryDates_array[0].deliveryDateValue,
+      "Leadtime":this.leadTime,
+      "ZipCode":1235,
+      "InstantDelivery":false,
+      "cityName": this.cityName
+    }     
+    this._crud.getBindDeliveryTimes(data).subscribe(res => {
+     console.log(res)
+     this.deliveryTime=res.deliveryTimingsDtos;
+     this.dynamicForm.get('deliveryTimes')?.setValue(this.deliveryTime[0].dtime);
+    })
+
+
+
+  }, 1000);
+  
+  
 }
 if(this.flavourOptionsDto_array.length >0)
 {
   this.addFormControl('flavourOptionsDto');
-  console.log('1')
+  setTimeout(() => {
+    this.dynamicForm.get('flavourOptionsDto')?.setValue(this.flavourOptionsDto_array[0].optionValue);
+    
+  }, 1000);
 }
 if(this.voucherOptionsDto_array.length >0)
 {
   this.addFormControl('voucherOptionsDto');
-  console.log('2')
+  setTimeout(() => {
+    this.dynamicForm.get('voucherOptionsDto')?.setValue(this.voucherOptionsDto_array[0].optionValue);
+    
+  }, 1000);
 }
 
 if(this.weightOptionsDto_array.length >0)
 {
   this.addFormControl('weightOptionsDto');
   setTimeout(() => {
-    this.dynamicForm.get('weightOptionsDto')?.setValue(this.weightOptionsDto_array[0].optionId);
+    this.dynamicForm.get('weightOptionsDto')?.setValue(this.weightOptionsDto_array[0].optionValue);
     console.log(this.weightOptionsDto_array[0])
   }, 1000);
  
@@ -217,7 +269,10 @@ if(this.weightOptionsDto_array.length >0)
 if(this.numberOptionsDto_array.length >0)
 {
   this.addFormControl('numberOptionsDto');
- 
+  setTimeout(() => {
+    this.dynamicForm.get('numberOptionsDto')?.setValue(this.numberOptionsDto_array[0].optionValue);
+    console.log(this.weightOptionsDto_array[0])
+  }, 1000);
 }
 
 if(this.photoRequired)
@@ -276,6 +331,7 @@ egglesscheck(event:any)
 getBindDeliveryTimes(e:any)
 {
   const selectedValue = (e.target as HTMLSelectElement).value;
+  console.log(selectedValue)
   const data={
     "DeliveryDate": selectedValue,
     "Leadtime":this.leadTime,

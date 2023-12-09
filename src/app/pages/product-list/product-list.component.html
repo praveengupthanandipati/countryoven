@@ -1,5 +1,9 @@
 <section class="subpage">
     <div class="list-products-header">
+        <div class="custom-container">
+           
+            <h1 class="font-extrabold text-uppercase"> Total:<span class="font-regular"> {{totalCount}}</span></h1>
+        </div>
         <div class="custom-container" [innerHtml]="metaData?.richSnippetContent">
             <!-- <h1 class="font-extrabold text-uppercase">Send Cakes to Hyderabad <span class="font-regular">25 of 497
                     Cakes</span></h1>
@@ -16,15 +20,14 @@
     </div>
     <div class="list-products-body">
         <div class="custom-container">
-            <ngcontainer *ngIf="products && products.length >0">
-            <!-- filters-->
-            <div class="products-filters d-md-flex justify-content-md-between">
+              <!-- filters-->
+              <div class="products-filters d-md-flex justify-content-md-between">
                 <div class="d-md-flex">
                     <nav aria-label="breadcrumb" class="align-self-center">
                         <ol class="breadcrumb pb-0 mb-0">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a>{{cityname}}</a></li>
-                            <li class="breadcrumb-item" *ngIf="breadcatTitle"><a>{{breadcatTitle}}</a></li>
+                            <li class="breadcrumb-item"><a (click)="routeCity(cityname)">{{cityname}}</a></li>
+                            <li class="breadcrumb-item" *ngIf="breadcatTitle"><a (click)="routeCategory(breadcatTitle)">{{breadcatTitle}}</a></li>
                             <li class="breadcrumb-item active" aria-current="page" *ngIf="breadTitle">{{breadTitle}}</li>
                         </ol>
                     </nav>
@@ -34,10 +37,10 @@
                         <div class="d-md-flex ms-md-2 mb-2 mb-md-0 item-filter-dropdown"
                             *ngFor="let filter of filterswrapper">
                             <span class="align-self-center pe-2">{{ filter.filterType }}</span>
+                         
                             <div class="dropdown ms-md-1">
-                                <button class="dropdown-toggle" type="button" id="multiselectDropdown"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Select
+                                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                     Select
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="multiselectDropdown">
                                     <li><button class="dropdown-item" *ngFor="let option of filter.filterOptions">
@@ -75,8 +78,8 @@
                 </div>
             </div>
             <!--/ filters-->
-            <!-- filters display-->
-            <div class="filters-display pb-3">
+             <!-- filters display-->
+             <div class="filters-display pb-3">
                 <ng-container *ngFor="let filter of filterswrapper">
                     <ng-container *ngFor="let option of filter.filterOptions">
                         <a href="javascript:void(0)" class="rounded" *ngIf="option.selected">
@@ -86,8 +89,13 @@
                         </a>
                     </ng-container>
                 </ng-container>
+                
+                <a *ngIf="isfilters" (click)="filterclear()">Clear All</a>
             </div>
             <!--/ filters display-->
+            <ngcontainer *ngIf="products && products.length >0">
+          
+           
             <div class="products-list-items">
                 <div class="row row-flex">
                     <div class="col-md-3 col-6 mb-4" *ngFor="let productitem of products">

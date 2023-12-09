@@ -80,9 +80,9 @@
                     </div> -->
                     <div class="price d-flex py-2">
                         <div class="offer-price font-bold"><span
-                                class="icon-inr icomoon font-bold"></span>{{productPrice}}</div>
+                                class="icomoon font-bold" [class]="currencyClass"></span>{{productPrice}}</div>
                         <div class="mrp font-semi-bold align-self-center px-2" *ngIf="productDetails?.discount">
-                            <span class="icon-inr icomoon font-bold"></span>{{productDetails?.productPrice}}
+                            <span class=" icomoon font-bold" [class]="currencyClass"></span>{{productDetails?.productPrice}}
                         </div>
                         <div class="offer-percentage align-self-center " *ngIf="productDetails?.discount"><small
                                 class="font-bold">({{productDetails?.discount}}% off)</small>
@@ -101,114 +101,64 @@
                                 <div class="col-md-3" *ngIf="flavourOptionsDto_array?.length >0">
                                     <div class="form-group pb-2">
                                         <label class="align-self-center pe-2">Flavour:</label>
-                                        <select class="form-select">
-                                            formControlName="flavourOptionsDto">
-                                            <option *ngFor="let o of flavourOptionsDto_array" [value]="o.optionId">
+                                        <select class="form-select" formControlName="flavourOptionsDto">
+                                            
+                                            <option *ngFor="let o of flavourOptionsDto_array" [value]="o.optionValue">
                                                 {{o.optionValue}}</option>
                                         </select>
                                     </div>
+
+                                    <div class="invalid-feedback mt-0 d-block" *ngIf="dynamicForm.get('flavourOptionsDto').invalid && dynamicForm.get('flavourOptionsDto').touched">
+                                        <p class="error-message">Select Flavour</p>
+                                      </div>
+                                   
                                 </div>
                                 <div class="col-md-3" *ngIf="weightOptionsDto_array?.length >0">
                                     <div class="form-group pb-2">
                                         <label class="align-self-center pe-2">Weight:</label>
-                                        <select class="form-select" formControlName="weightOptionsDto">
+                                        <select (change)="onQtyChange($event)" class="form-select" formControlName="weightOptionsDto">
                                             <ng-container *ngFor="let o of weightOptionsDto_array;let first = first">
-                                                <option [value]="o.optionId">{{o.optionValue}}</option>
+                                                <option [value]="o.optionValue">{{o.optionValue}}</option>
                                             </ng-container>
                                         </select>
                                     </div>
+                                 
+                                    <div class="invalid-feedback mt-0 d-block" *ngIf="dynamicForm.get('weightOptionsDto').invalid && dynamicForm.get('weightOptionsDto').touched">
+                                        <p class="error-message">Select Weight</p>
+                                      </div>
                                 </div>
                                 <div class="col-md-3" *ngIf="voucherOptionsDto_array?.length >0">
                                     <div class="form-group pb-2">
                                         <label class="align-self-center pe-2">Voucher:</label>
-                                        <select class="form-select">
-                                            formControlName="voucherOptionsDto">
-                                            <option *ngFor="let o of voucherOptionsDto_array" [value]="o.optionId">
+                                        <select class="form-select"  formControlName="voucherOptionsDto">
+                                            <option *ngFor="let o of voucherOptionsDto_array" [value]="o.optionValue">
                                                 {{o.optionValue}}</option>
                                         </select>
                                     </div>
+                                  
+                                    <div class="invalid-feedback mt-0 d-block" *ngIf="dynamicForm.get('voucherOptionsDto').invalid && dynamicForm.get('voucherOptionsDto').touched">
+                                        <p class="error-message">Select Voucher</p>
+                                      </div>
                                 </div>
 
                                 <div class="col-md-3" *ngIf="numberOptionsDto_array?.length >0">
                                     <div class="form-group pb-2">
                                         <label class="align-self-center pe-2">Number:</label>
-                                        <select class="form-select"
-                                            formControlName="numberOptionsDto">
-                                            <option *ngFor="let o of numberOptionsDto_array" [value]="o.optionId">
+                                        <select class="form-select" formControlName="numberOptionsDto">
+                                            <option *ngFor="let o of numberOptionsDto_array" [value]="o.optionValue">
                                                 {{o.optionValue}}</option>
-
-                                        </select>
+                                             </select>
                                     </div>
+                                  
+                                    <div class="invalid-feedback mt-0 d-block" *ngIf="dynamicForm.get('numberOptionsDto').invalid && dynamicForm.get('numberOptionsDto').touched">
+                                        <p class="error-message">Select Number</p>
+                                      </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- <div *ngFor="let elementId of ['element1', 'element2', 'element3']">
-                          <label for="{{elementId}}">{{elementId}}</label>
-                          <input
-                            type="text"
-                            [formControlName]="elementId"
-                            id="{{elementId}}"
-                          />
-                          <div *ngIf="dynamicForm.get(elementId).hasError('required')">
-                            This field is required.
-                          </div>
-                        </div> -->
-                        <!-- <div class="basic-features row ">
+                      
                         <div class="row">
-                            <div class="col-md-3">
-                                <div class="d-flex form-group">
-                                    <label class="align-self-center pe-2">Flavour:</label>
-                                    <select class="form-select" style="width:100px;">
-                                        <option>Apple</option>
-                                        <option>Orange</option>
-                                        <option>Apple</option>
-                                        <option>Apple</option>
-                                    </select>
-                                </div>
-                            </div>
                           
-                        </div>
-                    </div> -->
-                        <!-- <div class="background-lightblue p-3 py-2 my-3">
-                        <p class="font-bold font-gray pb-2">Weight</p>
-                        <div class="badge-pill">
-                            <a href="javascript:void(0)"
-                                class="d-inline-block rounded-pill py-1 px-3 font-white me-3 background-primary">500
-                                gms</a>
-                            <a href="javascript:void(0)"
-                                class="d-inline-block rounded-pill border py-1 px-3 font-black me-3">1 Kg</a>
-                            <a href="javascript:void(0)"
-                                class="d-inline-block rounded-pill border py-1 px-3 font-black me-3">1.5 kg</a>
-                            <a href="javascript:void(0)"
-                                class="d-inline-block rounded-pill border py-1 px-3 font-black me-3">2 kg</a>
-                            <a href="javascript:void(0)"
-                                class="d-inline-block rounded-pill border py-1 px-3 font-black me-3">3 kg</a>
-                            <a href="javascript:void(0)"
-                                class="d-inline-block rounded-pill border py-1 px-3 font-black me-3">3.5 kg</a>
-                        </div>
-                        <div class="badge-pill mt-3">
-                            <a href="javascript:void(0)"
-                                class="d-inline-block rounded-pill border py-1 px-3 font-black me-3">Sugar free </a>
-                            <a href="javascript:void(0)"
-                                class="d-inline-block rounded-pill border py-1 px-3 font-black me-3">Egg less</a>
-                            <a href="javascript:void(0)"
-                                class="d-inline-block rounded-pill border py-1 px-3 font-black me-3">Round Shape</a>
-                            <a href="javascript:void(0)"
-                                class="d-inline-block rounded-pill border py-1 px-3 font-black me-3">Heart Shape</a>
-                            <a href="javascript:void(0)"
-                                class="d-inline-block rounded-pill border py-1 px-3 font-black me-3">Square Shape</a>
-                        </div>
-                    </div> -->
-                        <div class="row">
-                            <!-- <div class="col-md-4">
-                            <label>Select Delivery Location</label>
-                            <div class="form-group d-flex p-2  background-lightprimary rounded">
-                                <span
-                                    class="icon-pin font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
-                                <input type="text" class="form-control border-0 bg-transparent"
-                                    placeholder="500090, Hyderabad, Telangana State">
-                            </div>
-                        </div> -->
                             <div class="col-md-4 pb-2" *ngIf="deliveryDates_array?.length">
                                 <label>Select Delivery Date </label>
                                 <div class="form-group d-flex p-2  background-lightprimary rounded"> <span
@@ -219,16 +169,25 @@
                                             {{o.deliveryDateText}}</option>
                                     </select>
                                 </div>
+
+                                
+                                <div class="invalid-feedback mt-0 d-block" *ngIf="dynamicForm.get('deliveryDates').invalid && dynamicForm.get('deliveryDates').touched">
+                                    <p class="error-message">Select Delivery Date</p>
+                                  </div>
                             </div>
                             <div class="col-md-4 pb-2" *ngIf="deliveryDates_array?.length">
-                                <label>Select time</label>
+                                <label>Select Time</label>
                                 <div class="form-group d-flex p-2  background-lightprimary rounded">
                                     <span
                                         class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
                                     <select class="form-select" formControlName="deliveryTimes">
-                                        <option *ngFor="let o of deliveryTime" [value]="o.slotId">{{o.dtime}}</option>
+                                        <option *ngFor="let o of deliveryTime" [value]="o.dtime">{{o.dtime}}</option>
                                     </select>
                                 </div>
+                                
+                                <div class="invalid-feedback mt-0 d-block" *ngIf="dynamicForm.get('deliveryTimes').invalid && dynamicForm.get('deliveryTimes').touched">
+                                    <p class="error-message">Select Time</p>
+                                  </div>
                             </div>
 
                             <div class="col-md-4" *ngIf="photoRequired">
@@ -249,10 +208,13 @@
                                         class="form-control border-0 bg-transparent"
                                         placeholder="Message on Cake 25 Characters (Option)">
                                 </div>
+                                <div class="invalid-feedback mt-0 d-block" *ngIf="dynamicForm.get('message').invalid && dynamicForm.get('message').touched">
+                                    <p class="error-message">Select Message</p>
+                                  </div>
                             </div>
                             <div class="mt-3 d-md-flex">
                                 <!-- <a href="javascript:void(0)" class="color-btn">Add to Cart</a> -->
-                                <button [disabled]="!dynamicForm.valid" type="submit" class="color-btn border-0">Add to
+                                <button  type="submit" class="color-btn border-0">Add to
                                     Cart</button>
                                 <span
                                     class="background-lightgreen font-black  ms-md-3 ms-1 px-2 py-2 badge rounded-pill align-self-center"><span

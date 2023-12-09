@@ -9,7 +9,7 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item" *ngFor="let b of banners; let i = index" [class.active]="i === 0">
-                <img [src]="b.imageName" [alt]="b.seoName" class="img-fluid w-100">
+                <img [src]="b.imageName" [alt]="b.seoName" (click)="gotoroute(b.type, b.seoName)" class="img-fluid w-100">
             </div>
             <!-- <div class="carousel-item">
                 <img src="assets/images/banner02.jpg" alt="" class="img-fluid w-100">
@@ -108,143 +108,6 @@
     </section>
 </ng-container>
 
-<!-- krishna-->
-<!-- 
-<section class="product-row">    
-    <div class="section-heading">
-        <div class="custom-container">
-            <div class="row justify-content-between border-bottom pb-3">
-                <div class="col-md-6">
-                    <h4 class="h4 font-bold">Trending Now</h4>
-                </div>
-                <div class="col-md-6 text-end">
-                    <a href="javascript:void(0)" class="color-btn">View All</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <section class="custom-container">
-        <div class="products-list mt-3">
-            <div class="row row-flex">
-                <div class="col-md-3" *ngFor="let productitem of productvalues">
-                    <app-product-item [Productvalue]="productitem" class="app-product-col"></app-product-item>
-                </div>
-            </div>
-        </div>
-    </section>
-</section> -->
-<!-- 
-<section class="product-row">
-   
-    <div class="section-heading">
-        <div class="custom-container">
-            <div class="row justify-content-between border-bottom pb-3">
-                <div class="col-md-6">
-                    <h4 class="h4 font-bold">Birthday Collections</h4>
-                </div>
-                <div class="col-md-6 text-end">
-                    <a href="javascript:void(0)" class="color-btn">View All</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <section class="custom-container">
-        <div class="row pt-3">
-            <div class="col-md-2" *ngFor="let birthdaycollectionitem of birthdaycollectionsitems">
-                <app-category-item [Collections]="birthdaycollectionitem"></app-category-item>
-            </div>
-        </div>
-    </section>
-</section>
-
-<section class="product-row">
-    
-    <div class="section-heading">
-        <div class="custom-container">
-            <div class="row justify-content-between border-bottom pb-3">
-                <div class="col-md-6">
-                    <h4 class="h4 font-bold">Anniversary Collections</h4>
-                </div>
-                <div class="col-md-6 text-end">
-                    <a href="javascript:void(0)" class="color-btn">View All</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <section class="custom-container">
-        <div class="row pt-3">
-            <div class="col-md-2" *ngFor="let birthdaycollectionitem of birthdaycollectionsitems">
-                <app-category-item [Collections]="birthdaycollectionitem"></app-category-item>
-            </div>
-        </div>
-    </section>
-</section> -->
-
-<!-- <div class="custom-container">
-    <div class="row">
-        <div class="col-md-6">
-            <a href="javascript:void(0)">
-                <img src="assets/images/adbanner01.jpg" alt="" class="img-fluid w-100">
-            </a>
-        </div>
-        <div class="col-md-6">
-            <img src="assets/images/adbanner02.jpg" alt="" class="img-fluid w-100">
-        </div>
-    </div>
-</div> -->
-<!-- 
-<section class="product-row pt-3">
-    
-    <div class="section-heading">
-        <div class="custom-container">
-            <div class="row justify-content-between border-bottom pb-3">
-                <div class="col-md-6">
-                    <h4 class="h4 font-bold">Best Sellers</h4>
-                </div>
-                <div class="col-md-6 text-end">
-                    <a href="javascript:void(0)" class="color-btn">View All</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <section class="custom-container">
-        <div class="products-list mt-3">
-            <div class="row row-flex">
-                <div class="col-md-3" *ngFor="let productitem of productvalues">
-                    <app-product-item [Productvalue]="productitem"></app-product-item>
-                </div>
-            </div>
-        </div>
-    </section>
-</section> -->
-<!-- 
-<section class="product-row">
-    
-    <div class="section-heading">
-        <div class="custom-container">
-            <div class="row justify-content-between border-bottom pb-3">
-                <div class="col-md-6">
-                    <h4 class="h4 font-bold">Tempting Cakes</h4>
-                </div>
-                <div class="col-md-6 text-end">
-                    <a href="javascript:void(0)" class="color-btn">View All</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <section class="custom-container">
-        <div class="row pt-3">
-            <div class="col-md-2" *ngFor="let birthdaycollectionitem of birthdaycollectionsitems">
-                <app-category-item [Collections]="birthdaycollectionitem"></app-category-item>
-            </div>
-        </div>
-    </section>
-</section> -->
 
 <div class="section-heading">
     <div class="custom-container">
@@ -550,29 +413,7 @@
                     products and services. </p>
                 <p>So, if you're looking for a gift that conveys your love and care, look no further than CountryOven.
                     We guarantee that your loved ones will be delighted with your gift, and you will be satisfied with
-                    your shopping experience. </p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            </div>
+                    your shopping experience. </p>  </div>
         </div>
     </div>
 </div>
