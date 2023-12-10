@@ -50,12 +50,15 @@ egglessstatus:boolean=false;
 tagMsg:any;
 tagClass:any;
 
-duration: string='02:01:10'; // Input in the format "HH:mm:ss"
+duration: string=''; // Input in the format "HH:mm:ss"
 timeLeftInSeconds: number=0;
 timerSubscription: Subscription = new Subscription;
 displayTime:any;
 textAreaInput = '';
 isMaxLengthExceeded = false;
+sameDayBlockMessage:any;
+  selectedItem: any;
+  selectedQty:any;
   constructor(
     private meta: Meta, private title:Title,
     private _crud:CurdService, private route:ActivatedRoute, private fb: FormBuilder, private cookieService: CookieService, private router:Router)
@@ -111,7 +114,7 @@ this.currencySelected=localStorage.getItem('currency');
   return value < 10 ? `0${value}` : `${value}`;
 }
   ngOnInit(): void {
-this.displayTimer();
+
     this.currency=localStorage.getItem('currency');
     if(this.currency=='INR')
     {
@@ -128,10 +131,7 @@ this.displayTimer();
     this.getProductDetailsById()
     });
   }
-  onQtyChange(e:any)
-  {
-
-  }
+ 
   addFormControl(elementId: string) {
     this.dynamicForm.addControl(
       elementId,
@@ -177,12 +177,12 @@ saveallProductDeatils(formData:any)
     "customerId": 0,
     "productId": this.productId,
     "productName": this.productName,
-    "price": this.productPrice,
+    "price": parseFloat(this.productPrice),
     "cityName": this.cityName,
     "eggless": this.isegglessChecked,
     "deliveryDate": formData.deliveryDates ? formData.deliveryDates : null,
     "deliveryTime": formData.deliveryTimes ? formData.deliveryTimes : null,
-    "additionalWeight": formData.weightOptionsDto ? formData.weightOptionsDto.toString() : null,
+    "additionalWeight": this.selectedQty ? this.selectedQty : null,
     "flavour": formData.flavourOptionsDto ? formData.flavourOptionsDto : null,
     "additionalNumber": formData.numberOptionsDto ? formData.numberOptionsDto : null,
     "additionalVoucher":  formData.voucherOptionsDto ? formData.voucherOptionsDto : null,
@@ -265,7 +265,12 @@ this.breadcatTitle=res.categoryName;
      this.stockQuantityStatus=this.productDetails?.stockQuantity ==0 ? true :false;
      this.isNewArriavalstatus=this.productDetails?.isNewArriaval;
      this.egglessstatus=this.productDetails?.egglessTagMessage;
-     
+     this.duration=this.productDetails?.sameDayBlockTime ? this.productDetails?.sameDayBlockTime : 0
+   this.sameDayBlockMessage=this.productDetails.sameDayBlockMessage;
+     if(this.productDetails?.sameDayBlockTime)
+     {
+     this.displayTimer();
+     }
      if(this.stockQuantityStatus)
      {
        //few stock  // out of stock
@@ -344,8 +349,8 @@ if(this.weightOptionsDto_array.length >0)
 {
   this.addFormControl('weightOptionsDto');
   setTimeout(() => {
-    this.dynamicForm.get('weightOptionsDto')?.setValue(this.weightOptionsDto_array[0].optionValue);
-    
+    this.dynamicForm.get('weightOptionsDto')?.setValue(this.weightOptionsDto_array[0]);
+    this.selectedQty=this.weightOptionsDto_array[0].optionValue
   }, 1000);
  
 }
@@ -397,14 +402,28 @@ egglesscheck(event:any)
   const checkbox = event.target as HTMLInputElement;
 
   if (checkbox.checked) {
-    this.productPrice =parseInt(this.productDetails.dicountPrice) + this.egglessPrice
+    // this.productPrice =parseInt(this.productDetails.dicountPrice) + this.egglessPrice
+    this.productPrice =parseFloat(this.productPrice) + this.egglessPrice
     
   } else {
-    this.productPrice =this.productDetails.dicountPrice; 
+    this.productPrice =parseFloat(this.productPrice) - this.egglessPrice
     
   }
 }
+onQtyChange(e:any)
+{
+  this.selectedQty=this.selectedItem.optionValue;
+ 
 
+if(this.isegglessChecked)
+{
+  this.productPrice =parseFloat(this.selectedItem.optionId) + this.egglessPrice
+} else
+{
+  this.productPrice = this.selectedItem.optionId
+}
+
+}
 getBindDeliveryTimes(e:any)
 {
   const selectedValue = (e.target as HTMLSelectElement).value;

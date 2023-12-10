@@ -52,6 +52,7 @@ if(localStorage.getItem('customerId'))
     }
   }  
   ngOnInit(): void {
+    
     this._crud.getIpAddress().subscribe((data: any) => {
       this.userIp = data.ip;
        
