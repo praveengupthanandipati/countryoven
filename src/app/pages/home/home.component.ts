@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { CurdService } from 'src/app/services/curd.service';
 
@@ -21,12 +21,22 @@ export class HomeComponent implements OnInit{
   showMore() {
     this.showLines += 3; // Increase by desired number of lines
   }
-  constructor(private _crud:CurdService, private route:Router)
+  constructor(private _crud:CurdService, private route:Router,  private renderer: Renderer2)
   {
   
   }
-  ngOnInit(): void {
 
+  addLoader()
+  {
+    this.renderer.addClass(document.body, 'bodyloader');
+  }
+  removeLoader()
+  {
+    this.renderer.removeClass(document.body, 'bodyloader');
+  }
+
+  ngOnInit(): void {
+this.addLoader();
 localStorage.setItem('country', 'India')
 //localStorage.setItem('currency', 'INR')
 
@@ -43,8 +53,9 @@ this.currency=localStorage.getItem('currency');
  
 
   getBanners(): void {
+    this.addLoader();
     this._crud.getBanners().subscribe(res => {
-     
+     this.removeLoader();
      this.banners=res.banners;
     this.iconicBanners=res.iconicBanners;
     this.smallBanners=res.smallBanners;
@@ -54,13 +65,14 @@ this.currency=localStorage.getItem('currency');
 
   
   getProducts(): void {
+    this.addLoader();
     const data={
       cityname:this.city,
       country:this.countryname,
       currencySelected:this.currency
     }    
     this._crud.getProducts(data).subscribe(res => {
-     
+     this.removeLoader();
      this.productSecions=res
     })
   }

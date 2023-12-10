@@ -1,5 +1,5 @@
 import { LocationStrategy } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, ParamMap, Router } from '@angular/router';
@@ -82,7 +82,7 @@ this.currentPage=1;
  
 
 
-constructor (  private titleService: Title, private location: Location, private locationStrategy: LocationStrategy,
+constructor ( private renderer: Renderer2,  private titleService: Title, private location: Location, private locationStrategy: LocationStrategy,
   private meta: Meta,private _crud:CurdService, private route:ActivatedRoute, private formBuilder: FormBuilder, private router: Router)
 {
   this.originalcityname=localStorage.getItem('city')
@@ -98,6 +98,15 @@ constructor (  private titleService: Title, private location: Location, private 
 
 }
 
+
+addLoader()
+  {
+    this.renderer.addClass(document.body, 'bodyloader');
+  }
+  removeLoader()
+  {
+    this.renderer.removeClass(document.body, 'bodyloader');
+  }
 filterclear()
 {
   window.location.reload();
@@ -115,7 +124,7 @@ ngOnDestroy() {
 }
   ngOnInit(): void {
 
-    
+    this.addLoader();
 
   this.paramMapSubscription=this.route.paramMap.subscribe((params: ParamMap) => {
          
@@ -282,6 +291,7 @@ this.breadcatTitle=res.categoryNameCapital || res.specialPageCapital;
 
 
   getProductDetails(filters:any, pagenumber?:any, sortOrder?:any): void {
+    this.addLoader();
     this.loading=true;
     const data={
       cityname:this.cityname,
@@ -296,6 +306,7 @@ this.breadcatTitle=res.categoryNameCapital || res.specialPageCapital;
     }
 
     this._crud.getProductDetails(data).subscribe(res => {
+      this.removeLoader();
      this.loading=false;
     this.productData=res;
     

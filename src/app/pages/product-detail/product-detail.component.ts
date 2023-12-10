@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute,  Router } from '@angular/router';
@@ -60,6 +60,7 @@ sameDayBlockMessage:any;
   selectedItem: any;
   selectedQty:any;
   constructor(
+    private renderer: Renderer2,
     private meta: Meta, private title:Title,
     private _crud:CurdService, private route:ActivatedRoute, private fb: FormBuilder, private cookieService: CookieService, private router:Router)
   {
@@ -71,6 +72,15 @@ this.currencySelected=localStorage.getItem('currency');
 
   }
 
+  addLoader()
+  {
+    this.renderer.addClass(document.body, 'bodyloader');
+  }
+  removeLoader()
+  {
+    this.renderer.removeClass(document.body, 'bodyloader');
+  }
+  
 
   onInput(event: Event): void {
     const target = event.target as HTMLTextAreaElement;
@@ -114,7 +124,7 @@ this.currencySelected=localStorage.getItem('currency');
   return value < 10 ? `0${value}` : `${value}`;
 }
   ngOnInit(): void {
-
+this.addLoader();
     this.currency=localStorage.getItem('currency');
     if(this.currency=='INR')
     {
@@ -205,7 +215,7 @@ if(res.sNo)
 {
   this.sNo=res.sNo;
   this.router.navigateByUrl('/cart')
-  alert(res.successMessage)
+  // alert(res.successMessage)
 }
     });
 
@@ -246,7 +256,7 @@ getProductDetailsById(): void {
   }       
     this._crud.getProductDetailsById(data).subscribe(res => {
      
-
+this.removeLoader();
 
      this.breadTitle=res.subCategoryName;
 this.breadcatTitle=res.categoryName;

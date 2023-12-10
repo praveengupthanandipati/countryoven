@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
 
@@ -10,7 +11,15 @@ import { CookieService } from 'ngx-cookie-service';
 export class AppComponent implements OnInit{
   sessionId:any;
   ngOnInit(): void {
-
+    console.log('ttt')
+    window.scrollTo(0, 0);
+  this.router.events.subscribe((evt) => {
+    if (evt instanceof NavigationEnd) {
+    
+        window.scrollTo(0, 0);
+      
+    }
+  });
 if(this.cookieService.check('sessionID'))
 {
   
@@ -25,10 +34,13 @@ else
   }
 
 
-constructor(private cookieService: CookieService)
+constructor(private cookieService: CookieService, private router: Router)
 {
-  
+
 }
+
+
+
 
   title = 'countryoven';
   
