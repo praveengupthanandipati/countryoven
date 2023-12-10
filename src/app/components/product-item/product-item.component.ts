@@ -24,7 +24,7 @@ export class ProductItemComponent implements OnInit {
      {
       this.currencyClass='icon-dollar-currency-symbol'
      }
-    console.log(this.Productvalue)
+    
     this.city=localStorage.getItem('city')
   }
   

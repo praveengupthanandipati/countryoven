@@ -1,16 +1,17 @@
 import { LocationStrategy } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, ParamMap, Router } from '@angular/router';
 import { CurdService } from 'src/app/services/curd.service';
 import { Location } from '@angular/common';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit ,OnDestroy {
   cityname:any;
   originalcityname:any;
   type:any;
@@ -35,7 +36,8 @@ currentPage: number=0;
   loading:boolean=true;
   isfilters:boolean=false;
   totalCount: any;
-
+  private paramMapSubscription: Subscription = new Subscription;
+  private paramMapSubscription1: Subscription = new Subscription;
   routeCity(e:any)
   {
     this.router.navigateByUrl(e + '/gift-online');
@@ -97,16 +99,27 @@ filterclear()
   window.location.reload();
 }
 
+ngOnDestroy() {
+  
+  // Unsubscribe when the component is destroyed
+  if (this.paramMapSubscription) {
+    this.paramMapSubscription.unsubscribe();
+  }
+  if (this.paramMapSubscription1) {
+    this.paramMapSubscription1.unsubscribe();
+  }
+}
   ngOnInit(): void {
 
+    
 
-    this.route.paramMap.subscribe((params: ParamMap) => {
+  this.paramMapSubscription=this.route.paramMap.subscribe((params: ParamMap) => {
          
   this.getPageRoutes();
   this.getMeta();
 this.getProductDetails(this.filters, 1, this.sorder);
 this.getFiltersDetails()
-     
+ 
     });
 
 
@@ -117,6 +130,7 @@ this.getFiltersDetails()
 
 getnewurl(urlcity:any)
 {
+  
   this.getOldUrl= this.router.url;
   
   let newurl=  this.getOldUrl.replace(urlcity, this.cityname);
@@ -126,7 +140,17 @@ getnewurl(urlcity:any)
 
 
   getPageRoutes() {
+    
     this.route.params.subscribe((params) => {
+
+      if(params['cityname'] =='send-online')
+      {
+        
+      }
+      else
+      {
+
+
       if (params['favspl']) {
         let urlparms = params['favspl'].split('-to-');
         if (urlparms.length > 1) {
@@ -213,10 +237,16 @@ getnewurl(urlcity:any)
         this.type = this.typeName;
         
       }
-
+    }
 
       // this.PageName = params['PageName'];
     });
+
+
+    if (this.paramMapSubscription1) {
+      this.paramMapSubscription1.unsubscribe();
+    }
+
   }
 
   selectedItems: any[] = [];
@@ -225,7 +255,7 @@ getnewurl(urlcity:any)
 
 
   getMeta(): void {
-    // http://test.countryoven.com/api/Product/meta?cityname=Hyderabad&Type=C&PageName=cakes
+    
     const data={
       cityname:this.cityname,
       Type:this.type,

@@ -32,7 +32,7 @@ onSubmit()
     }
   
     this._crud.forgotpwd(data).subscribe(res => {
-      console.log(res)
+      
     if(res.isEroor)
     {
       

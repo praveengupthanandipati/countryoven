@@ -36,18 +36,17 @@ export class LoginFormComponent {
   {
     this.orderlogin=false;
   }
-console.log(this.orderlogin)
+
   }
 
   onSubmit()
   {
     if(this.userForm.valid)
     {
-      console.log(this.userForm.get('usrname').value)
+      
       this.login();
     }
-  //  console.log(this.userForm.valid)
-    //console.log(this.userForm.value);
+  
   }
   login()
 {
@@ -64,7 +63,7 @@ let data={
   }
 
   this._crud.login(data).subscribe(res => {
-    console.log(res)
+    
   if(res.isEroor)
   {
     

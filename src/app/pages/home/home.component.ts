@@ -44,7 +44,7 @@ this.currency=localStorage.getItem('currency');
 
   getBanners(): void {
     this._crud.getBanners().subscribe(res => {
-     console.log(res)
+     
      this.banners=res.banners;
     this.iconicBanners=res.iconicBanners;
     this.smallBanners=res.smallBanners;
@@ -60,7 +60,7 @@ this.currency=localStorage.getItem('currency');
       currencySelected:this.currency
     }    
     this._crud.getProducts(data).subscribe(res => {
-     console.log(res)
+     
      this.productSecions=res
     })
   }
@@ -69,7 +69,7 @@ this.currency=localStorage.getItem('currency');
 
   gotoroute( t:any, pname:any)
   {
-  console.log(t)
+  
   let c=localStorage.getItem('city')   
   
   

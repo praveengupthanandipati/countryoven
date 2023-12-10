@@ -48,7 +48,7 @@ if(localStorage.getItem('customerId'))
   }
   onCurrecnySelected()
   {
-    console.log(this.selectedCurrency)
+    
     
     localStorage.setItem('currency', this.selectedCurrency)
     window.location.reload();
@@ -56,7 +56,7 @@ if(localStorage.getItem('customerId'))
 
   ngOnInit(): void {
       this.subscription = this._curdService.headerData$.subscribe((data) => {
-      console.log(data)
+      
       this.count=data;
     });
     this.getCarts();
@@ -91,7 +91,7 @@ if(localStorage.getItem('customerId'))
     }
   
     this._curdService.postShopingCart(data).subscribe(res => {
-      console.log(res)
+      
      
       this.count=res.length;
   
@@ -104,7 +104,7 @@ if(localStorage.getItem('customerId'))
   {
   
   let c=localStorage.getItem('city') ;
-  console.log(this.searchkeyword)  
+  
   this.route.navigateByUrl('/search_result'+  '/'+ this.searchkeyword + '/' + c)
   
    

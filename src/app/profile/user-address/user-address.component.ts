@@ -83,7 +83,7 @@ export class UserAddressComponent implements OnInit {
 
   onaddCountryChange(eve: any) {
     const selectedValue = eve.target.value;
-    console.log(selectedValue)
+    
     this.stateList=[];
     this.cityList=[];
 
@@ -102,7 +102,7 @@ export class UserAddressComponent implements OnInit {
   }
   onstateChange(eve: any) {
     const selectedValue = eve.target.value;
-    console.log(selectedValue)
+    
     this.cityList=[];
     this.userForm.patchValue(
       { cityName: '',
@@ -119,7 +119,7 @@ export class UserAddressComponent implements OnInit {
 
   onAddSubmit() {
 
-    console.log(this.adduserForm.value['addRecipientFirstName'])
+    
     let data = {
 
       "addressBookDetails": {
@@ -142,7 +142,7 @@ export class UserAddressComponent implements OnInit {
       }
     }
     this._crud.addAddress(data).subscribe(res => {
-      console.log(res)
+      
       if (!res.isEroor) {
         this.toastr.success(res.successMessage);
         const button: HTMLButtonElement = this.AddButton.nativeElement;
@@ -159,7 +159,7 @@ export class UserAddressComponent implements OnInit {
 
 
   onSubmit() {
-    console.log(this.userForm.value['cityName'])
+    
     let data = {
       "addressId": this.addressId,
       "addressBookDetails": {
@@ -184,7 +184,7 @@ export class UserAddressComponent implements OnInit {
 
 
     this._crud.updateAddress(data).subscribe(res => {
-      console.log(res)
+      
       if (!res.isEroor) {
         this.toastr.success(res.successMessage)
         const button: HTMLButtonElement = this.EditButton.nativeElement;
@@ -203,7 +203,7 @@ export class UserAddressComponent implements OnInit {
   getAddressByCustomerId() {
     let data = { "customerId": this.custID }
     this._crud.getAddressByCustomerId(data).subscribe(res => {
-      console.log(res)
+      
       this.deliverAddress = res;
     });
   }
@@ -226,7 +226,7 @@ export class UserAddressComponent implements OnInit {
   getAddressByAddressId(id: any) {
     let data = { "AddressId": id }
     this._crud.getAddressByAddressId(data).subscribe(res => {
-      console.log(res)
+      
 
 
       this.userForm.patchValue(
@@ -247,7 +247,7 @@ export class UserAddressComponent implements OnInit {
         }
       );
 
-      console.log(this.userForm.value['countryId'])
+      
       this.getCountry();
       this.getState(res.countryId);
 
@@ -262,7 +262,7 @@ this.getCity(res.stateId)
   getCountry() {
     let data = {}
     this._crud.getCountry(data).subscribe(res => {
-      console.log(res)
+      
       this.countryList = res;
     });
   }
@@ -272,7 +272,7 @@ this.getCity(res.stateId)
       countryId: id
     }
     this._crud.getState(data).subscribe(res => {
-      console.log(res)
+      
       this.stateList = res;
     });
   }
@@ -282,7 +282,7 @@ this.getCity(res.stateId)
       stateId: id
     }
     this._crud.getCity(data).subscribe(res => {
-      console.log(res)
+      
       this.cityList = res;
     });
   }
@@ -295,7 +295,6 @@ this.getCity(res.stateId)
       "customerId": custId
     }
     this._crud.deleteAddress(data).subscribe(res => {
-      console.log(res)
 
       if (!res.isEroor) {
         this.toastr.success(res.successMessage);

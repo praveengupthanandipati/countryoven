@@ -79,7 +79,7 @@ export class UserProfileComponent implements OnInit{
       "customerId": custId
     }
     this._crud.getByCustomerId(data).subscribe(res => {
-      console.log(res);
+      
       this.userForm.patchValue(
         {
           customerFirstName: this.custName,
@@ -107,7 +107,7 @@ getCountry()
 {
   let data={}
   this._crud.getCountry(data).subscribe(res => {
-    console.log(res)
+    
     this.countryList=res;
   });
 }
@@ -118,7 +118,7 @@ getState(id:any)
     countryId:id
   }
   this._crud.getState(data).subscribe(res => {
-    console.log(res)
+   
     this.stateList=res;
   });
 }
@@ -143,7 +143,7 @@ getState(id:any)
         }
       }
       this._crud.updateProfile(data).subscribe(res => {
-        console.log(res)
+        
       if(res.isEroor)
       {
         

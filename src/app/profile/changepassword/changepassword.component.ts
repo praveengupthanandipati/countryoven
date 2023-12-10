@@ -35,7 +35,7 @@ export class ChangepasswordComponent {
       }
     
       this._crud.changePassword(data).subscribe(res => {
-        console.log(res)
+        
       if(res.isEroor)
       {
         

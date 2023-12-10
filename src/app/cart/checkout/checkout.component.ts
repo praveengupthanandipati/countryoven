@@ -64,12 +64,12 @@ couponData:any;
   ngOnInit(): void {
     this._crud.getIpAddress().subscribe((data: any) => {
       this.userIp = data.ip;
-      console.log('User IP:', data.ip);
+      
     });
   }
   getaddressId(e:any)
   {
-console.log(e)
+
 this.addressShow=false
 this.addressCity=e.cityName;
 this.addressName=e.recipientFirstName + e.recipientLastName;
@@ -87,7 +87,7 @@ this.reviewShow=true;
     }
 
     this._crud.postShopingCart(data).subscribe(res => {
-      console.log(res)
+      
       this.cartItems = res;
       this.cartCount=res.length;
       this.firstlistItem = this.cartItems[0];
@@ -107,7 +107,7 @@ this.reviewShow=true;
       totalAmount:this.firstlistItem.grandTotal
     }
     this._crud.applyCoupon(data).subscribe(res => {
-      console.log(res);
+      
       this.couponData=res;
       if(res.isEroor)
       {
@@ -154,7 +154,7 @@ this.reviewShow=true;
     }
 
     this._crud.SaveOrderDetails(data).subscribe(res => {
-      console.log(res)
+      
 this.route.navigateByUrl('/orders')
     });
   }

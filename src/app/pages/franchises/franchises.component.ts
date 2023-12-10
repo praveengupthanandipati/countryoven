@@ -76,7 +76,7 @@ export class FranchisesComponent {
     }
    
     this._crud.postfranchises(obj).subscribe(res => {
-     console.log(res)
+     
      
      
     })

@@ -20,7 +20,7 @@ constructor(private _crud:CurdService)
 
 getFooters(): void {    
   this._crud.getFooters().subscribe(res => {
- //  console.log(res)
+ 
    this.footerlinks=res;
   })
 }

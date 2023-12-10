@@ -10,7 +10,7 @@ export class ProductsComponent {
   cityname: any;
   type: any;
   PageName: any;
-  showproductDetails: any;
+  showproductDetails: boolean=true;
   typeName: any;
   constructor(private route: ActivatedRoute) {
 
@@ -27,6 +27,7 @@ export class ProductsComponent {
     }
 else
 {
+  this.showproductDetails = false;
       if (params['favspl']) {
 
         let urlparms = params['favspl'].split('-to-');

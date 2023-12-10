@@ -83,7 +83,7 @@ this.currencySelected=localStorage.getItem('currency');
   private markFormGroupTouched(formGroup: FormGroup) {
     Object.values(formGroup.controls).forEach((control) => {
       control.markAsTouched();
-console.log(control)
+
       if (control instanceof FormGroup) {
         this.markFormGroupTouched(control);
       }
@@ -95,9 +95,9 @@ console.log(control)
      this.markFormGroupTouched(this.dynamicForm);
     if (this.dynamicForm.valid) {
       const formData = this.dynamicForm.value;
-      console.log('Form data:', formData);
+      
       // Here you can send formData to your backend or handle it as needed.
-console.log(formData.numberOptionsDto)
+
 
 this.saveallProductDeatils(formData);
 
@@ -141,7 +141,7 @@ saveallProductDeatils(formData:any)
   }
   }       
     this._crud.getSaveProductDetails(data).subscribe(res => {
-console.log(res)
+
 if(res.sNo)
 {
   this.sNo=res.sNo;
@@ -170,7 +170,7 @@ getRelatedProducts(): void {
 
   }        
   this._crud.getRelatedProducts(data).subscribe(res => {
-   console.log(res)
+   
    this.allProducts=res;
   })
 }
@@ -186,7 +186,7 @@ getProductDetailsById(): void {
     "currencySelected": this.currencySelected
   }       
     this._crud.getProductDetailsById(data).subscribe(res => {
-     console.log(res);
+     
 
 
      this.breadTitle=res.subCategoryName;
@@ -229,7 +229,7 @@ if(this.deliveryDates_array.length >0)
       "cityName": this.cityName
     }     
     this._crud.getBindDeliveryTimes(data).subscribe(res => {
-     console.log(res)
+     
      this.deliveryTime=res.deliveryTimingsDtos;
      this.dynamicForm.get('deliveryTimes')?.setValue(this.deliveryTime[0].dtime);
     })
@@ -262,7 +262,7 @@ if(this.weightOptionsDto_array.length >0)
   this.addFormControl('weightOptionsDto');
   setTimeout(() => {
     this.dynamicForm.get('weightOptionsDto')?.setValue(this.weightOptionsDto_array[0].optionValue);
-    console.log(this.weightOptionsDto_array[0])
+    
   }, 1000);
  
 }
@@ -271,7 +271,7 @@ if(this.numberOptionsDto_array.length >0)
   this.addFormControl('numberOptionsDto');
   setTimeout(() => {
     this.dynamicForm.get('numberOptionsDto')?.setValue(this.numberOptionsDto_array[0].optionValue);
-    console.log(this.weightOptionsDto_array[0])
+    
   }, 1000);
 }
 
@@ -284,7 +284,7 @@ if(this.photoRequired)
 if(this.messageRequired)
 {
   this.addFormControl('message');
-  console.log('5')
+  
 }
 
 
@@ -311,7 +311,6 @@ if(this.messageRequired)
 getViewedProducts(): void {
           
   this._crud.getRelatedProducts('s').subscribe(res => {
-   console.log(res)
    
   })
 }
@@ -331,7 +330,7 @@ egglesscheck(event:any)
 getBindDeliveryTimes(e:any)
 {
   const selectedValue = (e.target as HTMLSelectElement).value;
-  console.log(selectedValue)
+  
   const data={
     "DeliveryDate": selectedValue,
     "Leadtime":this.leadTime,
@@ -340,7 +339,7 @@ getBindDeliveryTimes(e:any)
     "cityName": this.cityName
   }     
   this._crud.getBindDeliveryTimes(data).subscribe(res => {
-   console.log(res)
+   
    this.deliveryTime=res.deliveryTimingsDtos;
    
   })
@@ -352,7 +351,7 @@ getProductReviews(id:any): void {
     ProductId:id,
   }     
   this._crud.getProductReviews(data).subscribe(res => {
-   console.log(res)
+   
    this.reviewData=res;
    
   })

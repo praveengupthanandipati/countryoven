@@ -20,7 +20,7 @@ constructor(private _crud:CurdService, private location: Location)
 }
 update(event:any)
 {
-  console.log(event)
+  
   this.selectedCity(event.value)
 }
 
@@ -59,7 +59,7 @@ selectedCity(c:any)
   }
   
   this.selectEvent.emit();
-  console.log('enter')
+  
   window.location.reload();
 }
 
@@ -69,13 +69,13 @@ getDeliveryCity()
 {
   let data={}
   this._crud.getDeliveryCity(data).subscribe(res => {
-    console.log(res)
+    
 
 // { value: 'FR-ARA', label: 'Auvergne-Rhône-Alpes' },
 
    // this.data=res;
     this.data= this.transformCities(res);
-    console.log(this.data)
+    
   });
 }
 

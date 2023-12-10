@@ -18,13 +18,13 @@ constructor(private route:Router )
 }
   ngOnInit(): void {
     
-  //  console.log(this.scrollingMessage)
+  
   }
 
   
 gotoroute( t:any, pname:any)
 {
-console.log(t)
+
 let c=localStorage.getItem('city')   
 
 

@@ -22,8 +22,6 @@ else
   this.cookieService.set('sessionID', this.sessionId)
 }
 
-    // Generate a session ID with length 24
-    console.log(this.sessionId)
   }
 
 

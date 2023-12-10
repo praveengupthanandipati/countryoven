@@ -25,7 +25,7 @@ export class RegistrationFormComponent {
   ngOnInit() {
     this._crud.getIpAddress().subscribe((data: any) => {
      this.userIp = data.ip;
-      console.log('User IP:', data.ip);
+      
     });
   }
  
@@ -34,11 +34,10 @@ export class RegistrationFormComponent {
   {
     if(this.userForm.valid)
     {
-      console.log(this.userForm.get('usrname').value)
+      
       this.register();
     }
-  //  console.log(this.userForm.valid)
-    //console.log(this.userForm.value);
+  
   }
 register()
 {
@@ -57,7 +56,7 @@ let data={
   }
 
   this._crud.createCustomer(data).subscribe(res => {
-    console.log(res)
+    
   if(res.isEroor)
   {
     

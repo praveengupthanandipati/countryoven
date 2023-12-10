@@ -54,7 +54,7 @@ if(localStorage.getItem('customerId'))
   ngOnInit(): void {
     this._crud.getIpAddress().subscribe((data: any) => {
       this.userIp = data.ip;
-       console.log('User IP:', data.ip);
+       
      });
   }
 
@@ -75,7 +75,7 @@ let data={
   }
 
   this._crud.postShopingCart(data).subscribe(res => {
-    console.log(res)
+    
     this.cartItems=res;
     this.cartCount=res.length;
 
@@ -101,14 +101,13 @@ decrementQuantity(index: number) {
 
 updateCartItem(sno:any, quntity:any)
 {
-  console.log(quntity)
+  
 let data={
   "sno": sno,
   "Quantity":quntity
   }
 
   this._crud.updateQuantity(data).subscribe(res => {
-    console.log(res)
   
         });
 }
@@ -121,7 +120,7 @@ let data={
   }
 
   this._crud.deleteProduct(data).subscribe(res => {
-    console.log(res)
+    
     this.getCarts();
         });
 }
@@ -142,7 +141,7 @@ let data={
   }
 
   this._crud.postAddOn(data).subscribe(res => {
-    console.log(res)
+    
   this.addonproducts=res
         });
 }
@@ -162,7 +161,7 @@ let data={
   }
 
   this._crud.addAddOn(data).subscribe(res => {
-    console.log(res)
+    
     if(res.isEroor)
     {
       
@@ -210,7 +209,7 @@ let data={
   }
 
   this._crud.SaveOrderDetails(data).subscribe(res => {
-    console.log(res)
+    
   
         });
 }

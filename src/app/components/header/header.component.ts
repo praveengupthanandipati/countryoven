@@ -26,7 +26,7 @@ export class HeaderComponent  implements OnInit {
      
       
         this._crud.getTopHeader('').subscribe(res => {
-       //  console.log(res)
+       
          this.scrollingMessage=res.scrollingMessage
          this.scrollingOn=res.scrollingOn
          this.categoryList=res.categoryList;

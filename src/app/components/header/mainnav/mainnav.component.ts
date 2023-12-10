@@ -20,7 +20,7 @@ this.city=localStorage.getItem('city')
 
 gotoroute( t:any, pname:any)
 {
-console.log(t)
+
 let c=localStorage.getItem('city')   
 
 

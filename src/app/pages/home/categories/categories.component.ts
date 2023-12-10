@@ -29,7 +29,7 @@ export class CategoriesComponent {
 
   gotoroute( t:any, pname:any)
   {
-  console.log(t)
+  
   let c=localStorage.getItem('city')   
   
   

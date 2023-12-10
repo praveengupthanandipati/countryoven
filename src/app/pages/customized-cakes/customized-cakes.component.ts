@@ -47,25 +47,24 @@ export class CustomizedCakesComponent {
   }
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0] as File;
-    console.log(this.selectedFile)
+    
     const reader = new FileReader();
     reader.readAsDataURL(this.selectedFile);
     reader.onload = (e) => {
       const binaryString = e.target?.result as string;
       this.binaryData = this.dataURItoBlob(binaryString);
-console.log(this.binaryData)
+
     };
 
   }
 
   submit(formVal:any)
   {
-    // console.log(this.form.get('image'))
-    // console.log(this.form.get('image')?.value)
+    
 
    
 
-console.log(this.binaryData)
+
     let obj = {
         customizedCakeDetails: 
         {
@@ -92,7 +91,7 @@ console.log(this.binaryData)
       
     }
     this._crud.postcustomize(obj).subscribe(res => {
-     console.log(res)
+     
      
      
     })
