@@ -107,3 +107,15 @@
     border-radius: 5px;
   }
 }
+
+
+.tagbadge{ position: absolute;
+  top: 5px;
+  left: 4px;
+  font-size: 9px;
+  color: #ffffff;
+  padding: 3px;
+  text-transform: uppercase;}
+  .greencls{ background: green;}
+  .errorcls{ background: #ff0000;}
+  .clr-green{ color: green;}

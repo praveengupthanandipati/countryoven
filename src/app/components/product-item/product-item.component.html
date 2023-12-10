@@ -6,6 +6,7 @@
 
             <!-- hyderabad/send-online/ -->
             <img src="{{Productvalue.imageURL}}" alt="" class="img-fluid w-100">
+            <span class="tagbadge" *ngIf="tagMsg" [class]="tagClass">{{tagMsg}}</span>
         </a>
         <!-- <span class="seller-label">{{Productvalue.productName}}</span> -->
     </figure>

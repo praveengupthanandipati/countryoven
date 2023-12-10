@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute,  Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { Subscription,timer } from 'rxjs';
 import { CurdService } from 'src/app/services/curd.service';
 
 @Component({
@@ -41,6 +42,18 @@ export class ProductDetailComponent  implements OnInit{
   breadcatTitle: any;
   currency:any;
   currencyClass:any;
+
+stockQuantityStatus:boolean=false;
+isNewArriavalstatus:boolean=false;
+egglessstatus:boolean=false;
+tagMsg:any;
+tagClass:any;
+
+duration: string='02:01:10'; // Input in the format "HH:mm:ss"
+timeLeftInSeconds: number=0;
+timerSubscription: Subscription = new Subscription;
+displayTime:any;
+
   constructor(
     private meta: Meta, private title:Title,
     private _crud:CurdService, private route:ActivatedRoute, private fb: FormBuilder, private cookieService: CookieService, private router:Router)
@@ -52,7 +65,36 @@ this.coutryName=localStorage.getItem('country');
 this.currencySelected=localStorage.getItem('currency');
 
   }
+
+ displayTimer()
+{
+  this.timeLeftInSeconds = this.parseDuration(this.duration);
+
+    this.timerSubscription = timer(0, 1000).subscribe(() => {
+      if (this.timeLeftInSeconds > 0) {
+        this.timeLeftInSeconds--;
+        this.updateDisplayTime();
+      }
+    });
+}
+ parseDuration(duration: string): number {
+  const [hours, minutes, seconds] = duration.split(':').map(Number);
+  return hours * 3600 + minutes * 60 + seconds;
+}
+
+ updateDisplayTime() {
+  const hours = Math.floor(this.timeLeftInSeconds / 3600);
+  const minutes = Math.floor((this.timeLeftInSeconds % 3600) / 60);
+  const seconds = this.timeLeftInSeconds % 60;
+
+  this.displayTime = `${this.formatNumber(hours)}:${this.formatNumber(minutes)}:${this.formatNumber(seconds)}`;
+}
+
+ formatNumber(value: number): string {
+  return value < 10 ? `0${value}` : `${value}`;
+}
   ngOnInit(): void {
+this.displayTimer();
     this.currency=localStorage.getItem('currency');
     if(this.currency=='INR')
     {
@@ -193,9 +235,6 @@ getProductDetailsById(): void {
 this.breadcatTitle=res.categoryName;
       this.meta.updateTag({ name: 'description',  content: res.metaDescription });
       this.meta.updateTag({ name: 'keywords',  content: res.metaKeywords });
-
-
-     
      this.productDetails=res;
      this.productId=res.productId;
      this.isMultipleImages=res.isMultipleImages;
@@ -205,6 +244,33 @@ this.breadcatTitle=res.categoryName;
      this.isEggless=this.productDetails.isEggless;
      this.egglessPrice= this.isEggless ? this.productDetails.egglessPrice : 0;
      this.productPrice=this.productDetails.dicountPrice
+
+     this.stockQuantityStatus=this.productDetails?.stockQuantity ==0 ? true :false;
+     this.isNewArriavalstatus=this.productDetails?.isNewArriaval;
+     this.egglessstatus=this.productDetails?.egglessTagMessage;
+     
+     if(this.stockQuantityStatus)
+     {
+       //few stock  // out of stock
+       this.tagMsg=this.productDetails?.stockQuantityMessage;
+    
+       this.tagClass='errorcls'
+    
+     } else if( this.isNewArriavalstatus)
+     {
+       this.tagClass='greencls'
+       this.tagMsg='Newly Added'
+     }
+     else if( this.egglessstatus)
+     {
+       this.tagClass='greencls'
+       this.tagMsg=this.isEggless
+     }
+
+
+
+
+
      this.getProductReviews(this.productId)
      this.getRelatedProducts();
 
@@ -286,22 +352,6 @@ if(this.messageRequired)
   this.addFormControl('message');
   
 }
-
-
-// flavourOptionsDto_array:any;
-// voucherOptionsDto_array:any;
-// weightOptionsDto_array:any;
-// numberOptionsDto_array:any;
-// messageRequired:any;
-// photoRequired:any;
-
-
-
-    
-   
-
-
-
 
     })
   }

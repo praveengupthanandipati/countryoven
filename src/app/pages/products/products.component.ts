@@ -54,8 +54,19 @@ else
 
       }
       else if (params['type']) {
-        this.cityname = params['cityname'];
-        this.typeName = params['type']
+
+        if(params['PageName']=='online-delivery')
+        {
+          this.cityname = params['cityname'];
+          this.typeName = params['PageName']
+        }
+        else
+        {
+          this.cityname = params['cityname'];
+          this.typeName = params['type']
+        }
+
+       
       }
       else {
 

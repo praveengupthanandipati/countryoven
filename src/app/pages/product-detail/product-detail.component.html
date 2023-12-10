@@ -13,6 +13,8 @@
                 </nav>
             </div>
         </div>
+      <!-- {{displayTime}} -->
+        <!-- {{timeLeft | date}} -->
         <!--/ bread crumb-->
         <!-- product detail -->
         <div class="row">
@@ -37,10 +39,12 @@
                                     <img [src]="th.imageName" class="img-fluid w-100" alt="...">
                                 </div>
                             </ng-container>
+                            <span class="tagbadge" *ngIf="tagMsg" [class]="tagClass">{{tagMsg}}</span>
                         </div>
                     </div>
                     <div *ngIf="!isMultipleImages">
                         <img [src]="productDetails?.imageName" class="img-fluid w-100" alt="...">
+                        <span class="tagbadge" *ngIf="tagMsg" [class]="tagClass">{{tagMsg}}</span>
                     </div>
 
                     <!--/ carousel -->
@@ -95,6 +99,11 @@
                         <label class="ps-2">EggLess</label>
                         Rs:{{egglessPrice}}
                     </div>
+                    <ng-container *ngIf="stockQuantityStatus">
+                        <p class="font-semibold clr-green">This Product is temporarily out of Stock</p>
+                    </ng-container>
+                    
+                    <ng-container *ngIf="!stockQuantityStatus && productDetails">
                     <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
                         <div class="basic-features row ">
                             <div class="row">
@@ -225,7 +234,7 @@
 
 
                     </form>
-
+                </ng-container>
 
                     <!-- poroduct info -->
                     <div class="product-info">

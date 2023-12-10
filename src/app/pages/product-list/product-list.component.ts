@@ -36,6 +36,8 @@ currentPage: number=0;
   loading:boolean=true;
   isfilters:boolean=false;
   totalCount: any;
+  currency:any;
+  country:any;
   private paramMapSubscription: Subscription = new Subscription;
   private paramMapSubscription1: Subscription = new Subscription;
   routeCity(e:any)
@@ -84,6 +86,8 @@ constructor (  private titleService: Title, private location: Location, private 
   private meta: Meta,private _crud:CurdService, private route:ActivatedRoute, private formBuilder: FormBuilder, private router: Router)
 {
   this.originalcityname=localStorage.getItem('city')
+  this.currency=localStorage.getItem('currency')
+  this.country=localStorage.getItem('country');
    this.router.events.subscribe(() => {
     
  
@@ -204,6 +208,7 @@ getnewurl(urlcity:any)
 
       if (this.typeName == 'online-delivery' || this.PageName == 'online-delivery') {
         this.type = 'C';
+        this.PageName=this.typeName;
         
       } else if (this.typeName == 'order') {
         this.type = 'SC';
@@ -280,10 +285,10 @@ this.breadcatTitle=res.categoryNameCapital || res.specialPageCapital;
     this.loading=true;
     const data={
       cityname:this.cityname,
-      country:'India',
+      country:this.country,
       Type:this.type,
       PageName:this.PageName,
-      currencySelected:'INR',
+      currencySelected:this.currency,
       PageNumber:pagenumber,
       PageSize:40,
       productFilters:filters,

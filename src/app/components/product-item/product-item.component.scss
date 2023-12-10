@@ -86,3 +86,13 @@
     @include box-shadow(0, 3px, 8px, lighten(map-get($colors, gray), 20%));
   }
 }
+
+.tagbadge{ position: absolute;
+  top: 5px;
+  left: 4px;
+  font-size: 9px;
+  color: #ffffff;
+  padding: 3px;
+  text-transform: uppercase;}
+  .greencls{ background: green;}
+  .errorcls{ background: #ff0000;}
