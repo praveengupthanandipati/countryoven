@@ -12,6 +12,7 @@ import { CurdService } from 'src/app/services/curd.service';
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent  implements OnInit{
+  
   productName:any;
   cityName:any;
   coutryName:any;
@@ -53,7 +54,8 @@ duration: string='02:01:10'; // Input in the format "HH:mm:ss"
 timeLeftInSeconds: number=0;
 timerSubscription: Subscription = new Subscription;
 displayTime:any;
-
+textAreaInput = '';
+isMaxLengthExceeded = false;
   constructor(
     private meta: Meta, private title:Title,
     private _crud:CurdService, private route:ActivatedRoute, private fb: FormBuilder, private cookieService: CookieService, private router:Router)
@@ -64,6 +66,21 @@ displayTime:any;
 this.coutryName=localStorage.getItem('country');
 this.currencySelected=localStorage.getItem('currency');
 
+  }
+
+
+  onInput(event: Event): void {
+    const target = event.target as HTMLTextAreaElement;
+    const currentLength = target.value.length;
+
+    if (currentLength > 25) {
+      // Truncate the value to 25 characters
+      target.value = target.value.substring(0, 25);
+      this.textAreaInput = target.value; // Update ngModel binding
+      this.isMaxLengthExceeded = true;
+    } else {
+      this.isMaxLengthExceeded = false;
+    }
   }
 
  displayTimer()
@@ -350,13 +367,24 @@ if(this.photoRequired)
 if(this.messageRequired)
 {
   this.addFormControl('message');
+  this.dynamicForm?.get('message')?.setValidators([this.maxLengthValidator(25)]);
   
 }
 
     })
   }
 
-  
+  maxLengthValidator(maxLength: number) {
+    return (control: { value: any; }) => {
+      const value = control.value;
+
+      if (value && value.length > maxLength) {
+        return { maxLength: true };
+      }
+
+      return null;
+    };
+  }
 //getRelatedProducts
 getViewedProducts(): void {
           
