@@ -41,6 +41,19 @@
                                                     (click)="incrementQuantity(i)">+</div>
                                                 <a (click)="updateCartItem(CartItem.sNo, CartItem.quantity)">Update</a>
                                             </div>
+                                            <ul class="list-style-desc">
+                                         
+                                            <li *ngIf="CartItem.additionalWeight">Weight	:	{{CartItem.additionalWeight}}</li>
+                                           <li *ngIf="CartItem.egglessPrice"> Eggless	:	{{CartItem.egglessPrice}}</li>
+                                            <li *ngIf="CartItem.productId">Product Id	:	{{CartItem.productId}}</li>
+                                            <li *ngIf="CartItem.flavour">Flavour : {{CartItem.flavour}}</li>
+                                            <li *ngIf="CartItem.additionalNumber">Number : {{CartItem.additionalNumber}}</li>
+                                            <li *ngIf="CartItem.message">Message: {{CartItem.message}}</li>
+                                            </ul>
+                                            
+
+
+
                                         </div>
                                         <!-- <div>
                                             <p><small>Shipping Type: <span class="font-green font-semibold">{{CartItem.ShippingType}}</span></small>
