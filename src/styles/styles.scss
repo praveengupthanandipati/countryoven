@@ -239,10 +239,10 @@ body {
       display: inline-block;
       margin: 15px 15px 0 0;
 
-      @include max(map-get($breakpoints, "sm")){
-        padding:3px;
-        font-size:$fsize - 3;
-        margin:3px;
+      @include max(map-get($breakpoints, "sm")) {
+        padding: 3px;
+        font-size: $fsize - 3;
+        margin: 3px;
       }
 
       &:hover {
@@ -256,9 +256,13 @@ body {
 
 .terms-content {
   padding-bottom: 20px;
+
+  .h6 {
+    padding-bottom: 15px;
+  }
   p {
     padding-bottom: 15px;
-    color: map-get($colors, gray);
+    color: darken(map-get($colors, gray), 25%);
     font-size: $fsize - 1;
 
     @include max(map-get($breakpoints, "sm")) {
@@ -276,7 +280,7 @@ body {
   h5 {
     font-size: $fsize + 5;
     font-weight: map-get($font-weights, bold);
-    padding-bottom: 5px;
+    padding-bottom: 15px;
     @include max(map-get($breakpoints, "sm")) {
       font-size: $fsize + 1;
     }

@@ -26,6 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProductsComponent } from '../pages/products/products.component';
 import { CustomizedCakesComponent } from '../pages/customized-cakes/customized-cakes.component';
 import { NoproductsFoundComponent } from '../pages/noproducts-found/noproducts-found.component';
+import { TermsContentComponent } from '../pages/home/terms-content/terms-content.component';
 
 
 
@@ -52,7 +53,8 @@ import { NoproductsFoundComponent } from '../pages/noproducts-found/noproducts-f
     FranchisesComponent,  
     CustomizedCakesComponent,
     ProductsComponent,
-    NoproductsFoundComponent
+    NoproductsFoundComponent,
+    TermsContentComponent
 
   ],
   imports: [
