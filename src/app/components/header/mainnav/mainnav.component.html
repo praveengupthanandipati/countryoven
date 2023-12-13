@@ -14,38 +14,26 @@
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 {{menu.title}}
                             </a>
-                            <div class="dropdown-menu dropdown-menu-full-width" *ngIf="menu.subCategoryList.length">
-                                <div class="custom-container">
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <div class="main-div-links d-sm-flex">
-                                                <ng-container *ngIf="menu.subCategoryList.length ">
-                                                    <div> <a href="javascript:;"
-                                                            (click)="gotoroute(item.type, item.seoTitle)"
-                                                            *ngFor="let item of menu.subCategoryList.slice(0, menu.subCategoryList.length / 2)">{{
-                                                            item.title }}</a>
-
-                                                    </div>
-                                                    <div> <a href="javascript:;"
-                                                            (click)="gotoroute(item.type, item.seoTitle)"
-                                                            *ngFor="let item of menu.subCategoryList.slice(menu.subCategoryList.length / 2)">{{
-                                                            item.title }}</a>
-
-                                                    </div>
-                                                </ng-container>
-
-                                            </div>
+                            <div class="dropdown-menu dropdown-menu-full-width shadow border-0"
+                                *ngIf="menu.subCategoryList.length">
+                                <div class="main-div-links d-sm-flex">
+                                    <ng-container *ngIf="menu.subCategoryList.length ">
+                                        <div> <a href="javascript:;" (click)="gotoroute(item.type, item.seoTitle)"
+                                                *ngFor="let item of menu.subCategoryList.slice(0, menu.subCategoryList.length / 2)">{{
+                                                item.title }}</a>
                                         </div>
-                                        <div class="col-md-4 px-0 text-end">
-                                            <img [src]="menu.categoryImagePath" alt=""
-                                                class="img-fluid menu-cat-img d-none d-md-block">
+                                        <div> <a href="javascript:;" (click)="gotoroute(item.type, item.seoTitle)"
+                                                *ngFor="let item of menu.subCategoryList.slice(menu.subCategoryList.length / 2)">{{
+                                                item.title }}</a>
                                         </div>
-                                    </div>
+                                    </ng-container>
+                                </div>
+
+                                <div class="col-md-4 px-0 text-end d-none">
+                                    <img [src]="menu.categoryImagePath" alt="" class="img-fluid menu-cat-img">
                                 </div>
                             </div>
-
                         </li>
-
                     </ul>
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
@@ -53,7 +41,6 @@
                                 aria-controls="offcanvasRight"><span class="icon-menu h5 pe-2"></span><span
                                     class="align-self-center font-bold">More</span> </a>
                         </li>
-
                     </ul>
                 </div>
             </div>

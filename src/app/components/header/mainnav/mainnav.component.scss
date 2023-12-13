@@ -5,6 +5,12 @@
   background: map-get($colors, white);
 
   .nav-item {
+    &:first-child {
+      .nav-link {
+        color: map-get($colors, primary);
+        border-radius: 3px;
+      }
+    }
     .nav-link {
       text-transform: uppercase;
       color: map-get($colors, black);
@@ -23,20 +29,16 @@
     position: inherit;
   }
   .dropdown-menu-full-width.dropdown-menu.show {
-    width: 100vw;
-    left: 0 !important;
-    right: 0 !important;
-    border-radius: 0;
-    transform: translateX(-3.5%);
-    top: 50px;
-    z-index: 9999;
+    left: inherit !important;
+    margin-top: 0;
 
     .main-div-links {
-      padding: 20px 0;
+      padding: 5px 0;
       a {
         color: map-get($colors, black);
         display: block;
-        padding-bottom: 15px;
+        padding-bottom: 10px;
+        font-size: $fsize - 1;
 
         &:hover {
           color: map-get($colors, primary);
@@ -45,8 +47,7 @@
     }
     .main-div-links > div {
       border-right: 1px solid map-get($colors, lightgray);
-      padding-right: 50px;
-      margin-right: 50px;
+      padding: 0 20px;
 
       @include max(map-get($breakpoints, "lg")) {
         padding-right: 0;

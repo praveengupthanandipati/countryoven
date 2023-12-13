@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CurdService } from 'src/app/services/curd.service';
 
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -125,6 +126,8 @@ this.currency=localStorage.getItem('currency');
   
   
   }
+
+
 
 
 
