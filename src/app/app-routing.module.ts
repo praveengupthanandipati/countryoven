@@ -17,7 +17,6 @@ const routes: Routes = [
   {path:'reset', component:ResetpasswordComponent} ,
   {path:'cart', loadChildren:()=>import('./cart/cart.module').then(m=>m.CartModule)},  
   {path:'profile', loadChildren:()=>import('./profile/profile.module').then(m=>m.ProfileModule)},
-
   {path:'my_profile', component:UserProfileComponent},
   {path:'orders', component:UserOrdersComponent},
   {path:'user-order-detail', component:UserOrderDetailComponent},
