@@ -13,7 +13,6 @@ import { UserVouchersComponent } from './profile/user-vouchers/user-vouchers.com
 
 const routes: Routes = [
   {path:'login', component:LoginFormComponent},
-  
   {path:'signup', component:RegistrationFormComponent},  
   {path:'reset', component:ResetpasswordComponent} ,
   {path:'cart', loadChildren:()=>import('./cart/cart.module').then(m=>m.CartModule)},  
