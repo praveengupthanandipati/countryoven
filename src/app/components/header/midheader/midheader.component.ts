@@ -117,5 +117,14 @@ if(localStorage.getItem('customerId'))
 }
 
   }
-
+  logout()
+  {
+    console.log('ss')
+    localStorage.removeItem('email');
+    localStorage.removeItem('custName');
+    localStorage.removeItem('customerId');
+    localStorage.removeItem('email');
+    this.route.navigateByUrl('/')
+    window.location.reload();
+  }
 }

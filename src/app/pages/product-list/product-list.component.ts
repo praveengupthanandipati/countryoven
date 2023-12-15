@@ -169,8 +169,10 @@ getnewurl(urlcity:any)
         if (urlparms.length > 1) {
           this.typeName = 'FLV';
           this.cityname = urlparms[1];
+          console.log(this.cityname)
           this.cityname=this.originalcityname;
-          this.PageName = this.cityname
+          console.log(urlparms[0])
+          this.PageName = urlparms[0]
           this.getnewurl(urlparms[1])
         }
         else {
@@ -217,7 +219,9 @@ getnewurl(urlcity:any)
 
       if (this.typeName == 'online-delivery' || this.PageName == 'online-delivery') {
         this.type = 'C';
-        this.PageName=this.typeName;
+        this.PageName=this.PageName;
+        
+
         
       } else if (this.typeName == 'order') {
         this.type = 'SC';
@@ -235,7 +239,7 @@ getnewurl(urlcity:any)
 
       else if (this.typeName == 'FLV') {
         this.type = 'FLV';
-        
+        console.log('hai ')
       }
       else if (this.typeName == 'search_result') {
         this.type = 'SE';

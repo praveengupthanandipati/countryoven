@@ -7,22 +7,23 @@
                 <form class="login-form pt-3" [formGroup]="userForm" (ngSubmit)="onSubmit()">
                     <div class="input-group mb-3">
                         <div class="form-floating">
-                            <input type="text" class="form-control is-invalid" id="username" placeholder="Username"
+                            <input type="text" class="form-control" [ngClass]="{'is-invalid' : userForm.get('usrname')!.invalid && userForm.get('usrname')!.touched}" id="username" placeholder="Username"
                                 formControlName="usrname">
                             <label for="username">Username <span class="font-red font-bold">*</span></label>
                         </div>
                        
-                        <div class="invalid-feedback mt-0 d-block">
-                          
-                          
+                        <div *ngIf="userForm.get('usrname')!.invalid && userForm.get('usrname')!.touched" class="invalid-feedback mt-0 d-block">
                             Enter Valid User Name
                         </div>
                     </div>
                     <div class="input-group mb-3">
                         <div class="form-floating">
                             <input type="password" class="form-control" id="password" placeholder="Password"
-                                formControlName="pwd">
+                                formControlName="pwd"  [ngClass]="{'is-invalid' : userForm.get('pwd')!.invalid && userForm.get('pwd')!.touched}">
                             <label for="password">Password <span class="font-red font-bold">*</span></label>
+                        </div>
+                        <div *ngIf="userForm.get('pwd')!.invalid && userForm.get('pwd')!.touched" class="invalid-feedback mt-0 d-block">
+                            Enter Password
                         </div>
                     </div>
                     <p class="py-3 text-center">Forgot Password? <a routerLink="/reset"
