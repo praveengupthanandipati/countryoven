@@ -81,15 +81,15 @@
                             <label for="pinCode">Pincode </label>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="city" placeholder="City" formControlName="cityName">
                             <label for="city">City </label>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
-                            <select class="form-select" id="country" formControlName="countryId">
+                            <select class="form-select" id="country" formControlName="countryId" (change)="onaddCountryChange($event)">
                                 <option [value]="c.countryId" *ngFor="let c of countryList">{{c.countryName}}</option>
                               
                             </select>
@@ -100,13 +100,27 @@
 
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
-                            <select class="form-select" id="country" formControlName="stateId">
+                            <select class="form-select" (change)="onstateChange($event)"  id="" formControlName="stateId">
                                 <option [value]="c.stateId" *ngFor="let c of stateList">{{c.stateName}}</option>
                               
                             </select>
                             <label for="country">State  </label>
                         </div>
                     </div>  
+
+
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3">
+                            <select class="form-select"  formControlName="cityName">
+                                <option [value]="cl.cityName" *ngFor="let cl of cityList">{{cl.cityName}}
+                                </option>
+
+                            </select>
+                            <label>City </label>
+                        </div>
+                    </div>
+
+
                     <div class="col-md-12">
                         <div class="pt-3">
                             <button class="text-uppercase color-border-btn">Cancel</button>

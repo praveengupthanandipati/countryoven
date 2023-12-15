@@ -57,7 +57,7 @@ isCheckout:boolean=false;
       landmark: ['', Validators.required],
       cityName: ['', Validators.required],
       stateId: ['', Validators.required],
-      countryId: ['', Validators.required],
+    //  countryId: ['', Validators.required],
       zipCode: ['', Validators.required],
     });
 
@@ -73,7 +73,7 @@ isCheckout:boolean=false;
       addlandmark: ['', Validators.required],
       addcityName: ['', Validators.required],
       addstateId: ['', Validators.required],
-      addcountryId: ['', Validators.required],
+    //  addcountryId: ['', Validators.required],
       addzipCode: ['', Validators.required],
     });
 
@@ -85,6 +85,7 @@ isCheckout:boolean=false;
       this.selectedaddress=this.selectedAddressId
     }
     this.getAddressByCustomerId();
+    
 
   }
   selectAdd(e:any)
@@ -97,7 +98,7 @@ this.sendAddId.emit(e)
 
   onaddCountryChange(eve: any) {
     const selectedValue = eve.target.value;
-    
+    console.log(eve.target.value)
     this.stateList=[];
     this.cityList=[];
 
@@ -112,7 +113,7 @@ this.sendAddId.emit(e)
        }
     )
 
-    this.getState(selectedValue);
+    this.getState(1);
   }
   onstateChange(eve: any) {
     const selectedValue = eve.target.value;
@@ -149,7 +150,7 @@ this.sendAddId.emit(e)
         "landmark": this.adduserForm.value['addlandmark'],
         "cityName": this.adduserForm.value['addcityName'],
         "stateId": this.adduserForm.value['addstateId'],
-        "countryId": this.adduserForm.value['addcountryId'],
+        "countryId":1,
         "zipCode": this.adduserForm.value['addzipCode'],
         "relationshipId": 10,
         "status": true
@@ -188,7 +189,7 @@ this.sendAddId.emit(e)
 
         "cityName": this.userForm.value['cityName'],
         "stateId": this.userForm.value['stateId'],
-        "countryId": this.userForm.value['countryId'],
+        "countryId": 1,
         "zipCode": this.userForm.value['zipCode'],
         "relationshipId": 10,
         "status": true
@@ -225,7 +226,9 @@ this.sendAddId.emit(e)
 
     this.stateList = [];
     this.countryList = [];
+    this.cityList=[];
     this.getCountry();
+    this.getState(1)
   }
   editAddress(addId: any) {
 
@@ -255,7 +258,7 @@ this.sendAddId.emit(e)
           landmark: res.landmark,
           cityName: res.cityName,
           stateId: res.stateId,
-          countryId: res.countryId,
+          countryId: 1,
           zipCode: res.zipCode
 
         }
@@ -263,7 +266,7 @@ this.sendAddId.emit(e)
 
       
       this.getCountry();
-      this.getState(res.countryId);
+      this.getState(1);
 
 this.getCity(res.stateId)
 

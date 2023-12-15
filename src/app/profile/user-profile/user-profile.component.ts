@@ -17,6 +17,7 @@ export class UserProfileComponent implements OnInit{
   userForm:any;
   countryList:any;
   stateList: any;
+  cityList:any;
   constructor(private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private route:Router)
   {
    if(localStorage.getItem('email'))
@@ -97,10 +98,42 @@ export class UserProfileComponent implements OnInit{
       );
       this.getCountry();
 this.getState(res.countryId);
-
+this.getCity(res.stateId)
 
     
           });
+  }
+
+
+  onaddCountryChange(eve: any) {
+    const selectedValue = eve.target.value;
+    console.log(eve.target.value)
+    this.stateList=[];
+    this.cityList=[];
+
+   
+    this.getState(1);
+  }
+
+
+  onstateChange(eve: any) {
+    console.log('hai')
+    const selectedValue = eve.target.value;
+    
+    this.cityList=[];
+   
+    this.getCity(selectedValue)
+  }
+
+
+  getCity(id: any) {
+    let data = {
+      stateId: id
+    }
+    this._crud.getCity(data).subscribe(res => {
+      
+      this.cityList = res;
+    });
   }
 
 getCountry()

@@ -103,12 +103,14 @@
 
                         <div class="col-md-6">
                             <div class="form-floating mb-3">
-                                <select class="form-select" (change)="onaddCountryChange($event)" formControlName="countryId">
+
+                                <!-- <input type="text" readonly  formControlName="countryId"  /> -->
+                                <!-- <select class="form-select" [attr.disabled]="true" (change)="onaddCountryChange($event)" formControlName="countryId">
                                     <option [value]="c.countryId" *ngFor="let c of countryList">{{c.countryName}}
                                     </option>
 
                                 </select>
-                                <label>Country </label>
+                                <label>Country </label> -->
                             </div>
                         </div>
 
@@ -220,16 +222,18 @@
                         </div>
                        
 
-                        <div class="col-md-6">
-                            <div class="form-floating mb-3">
-                                <select class="form-select" (change)="onaddCountryChange($event)" id="country" formControlName="addcountryId">
+                        <!-- <div class="col-md-6">
+                            <div class="form-floating mb-3"> -->
+                                <!-- (change)="onaddCountryChange($event)" -->
+                               
+                                <!-- <select class="form-select"   id="country" formControlName="addcountryId">
                                     <option [value]="c.countryId" *ngFor="let c of countryList">{{c.countryName}}
                                     </option>
 
                                 </select>
                                 <label for="country">Country </label>
                             </div>
-                        </div>
+                        </div> -->
 
 
                         <div class="col-md-6">
