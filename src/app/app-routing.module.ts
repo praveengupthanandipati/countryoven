@@ -9,12 +9,20 @@ import { UserAddressComponent } from './profile/user-address/user-address.compon
 import { UserOrderDetailComponent } from './profile/user-order-detail/user-order-detail.component';
 import { UserOrdersComponent } from './profile/user-orders/user-orders.component';
 import { UserVouchersComponent } from './profile/user-vouchers/user-vouchers.component';
+import { AddressComponent } from './cart/address/address.component';
+import { PersonalizeComponent } from './cart/personalize/personalize.component';
+import { PaymentComponent } from './cart/payment/payment.component';
+import { CheckoutComponent } from './cart/checkout/checkout.component';
 
 
 const routes: Routes = [
   {path:'login', component:LoginFormComponent},
   {path:'signup', component:RegistrationFormComponent},  
   {path:'reset', component:ResetpasswordComponent} ,
+  {path:'Address', component:AddressComponent},
+  {path:'Personalize', component:PersonalizeComponent},
+  {path:'Payment', component:PaymentComponent},
+  {path:'checkout', component:CheckoutComponent},
   {path:'cart', loadChildren:()=>import('./cart/cart.module').then(m=>m.CartModule)},  
   {path:'profile', loadChildren:()=>import('./profile/profile.module').then(m=>m.ProfileModule)},
   {path:'my_profile', component:UserProfileComponent},
@@ -25,9 +33,6 @@ const routes: Routes = [
   {path: 'user-vouchers', component:UserVouchersComponent},
   {path:'', loadChildren:()=>import('./frontend/frontend.module').then(m=>m.FrontendModule)},
   {path:'', loadChildren:()=>import('./login/login.module').then(m=>m.LoginModule)},  
-  
-
-  
    
 ];
 
