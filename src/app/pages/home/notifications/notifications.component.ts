@@ -4,14 +4,13 @@ import { ToastrService } from 'ngx-toastr';
 import { CurdService } from 'src/app/services/curd.service';
 
 @Component({
-  selector: 'app-reviews',
-  templateUrl: './reviews.component.html',
-  styleUrls: ['./reviews.component.scss']
+  selector: 'app-notifications',
+  templateUrl: './notifications.component.html',
+  styleUrls: ['./notifications.component.scss']
 })
-export class ReviewsComponent implements OnInit {
+export class NotificationsComponent implements OnInit {
   custID:any;
-  reviewData: any;
-
+allNotifications:any;
 constructor( private toastr: ToastrService, private _crud:CurdService, private route:Router)
 {
   
@@ -25,20 +24,19 @@ constructor( private toastr: ToastrService, private _crud:CurdService, private r
 
 }
   ngOnInit(): void {
-    this.getReview()
+    this.getNotifications()
   }
 
 
 
-getReview()
+getNotifications()
 {
- // this.custID="26368";
-  let data={ "id": this.custID}
-  this._crud.getReview(data).subscribe(res => {
+ 
+  let data={ "CustomerId": this.custID}
+  this._crud.getNotification(data).subscribe(res => {
    console.log(res) 
-   this.reviewData=res;
+   this.allNotifications=res;
   });
-
 
 
 

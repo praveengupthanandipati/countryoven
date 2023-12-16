@@ -23,6 +23,7 @@ import { ReturnpolicyComponent } from '../pages/returnpolicy/returnpolicy.compon
 import { PrivacypolicyComponent } from '../pages/privacypolicy/privacypolicy.component';
 import { TermsandconditionsComponent } from '../pages/termsandconditions/termsandconditions.component';
 import { NoproductsFoundComponent } from '../pages/noproducts-found/noproducts-found.component';
+import { NotificationsComponent } from '../pages/home/notifications/notifications.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,7 @@ const routes: Routes = [
       {path:'content/aboutus', component:AboutusComponent},
       {path:'content/ourstores', component:StoresComponent},
       {path: 'reviews', component:ReviewsComponent},
+      {path: 'notifications', component:NotificationsComponent},
       {path: 'content/contactus', component:ContactComponent},  
       {path: 'content/couponpartners', component:CouponpartnersComponent},
     

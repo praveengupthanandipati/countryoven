@@ -24,49 +24,64 @@
                             <div class="col-sm-6 col-lg-4">
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" placeholder="First Name"
+                                        <input  [ngClass]="{'is-invalid' : form.get('firstname')!.invalid && form.get('firstname')!.touched}" type="text" class="form-control" placeholder="First Name"
                                             formControlName="firstname">
                                         <label for="username">First Name <span
                                                 class="font-red font-bold">*</span></label>
                                     </div>
+                                    <div *ngIf="form.get('firstname')!.invalid && form.get('firstname')!.touched" class="invalid-feedback mt-0 d-block">
+                                        Required
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-lg-4">
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" placeholder="Last Name"
+                                        <input [ngClass]="{'is-invalid' : form.get('lastname')!.invalid && form.get('lastname')!.touched}" type="text" class="form-control" placeholder="Last Name"
                                             formControlName="lastname">
                                         <label for="username">Last Name <span
                                                 class="font-red font-bold">*</span></label>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-4">
-                                <div class="input-group mb-3">
-                                    <div class="form-floating">
-                                        <input type="number" class="form-control" placeholder="Age"
-                                            formControlName="age">
-                                        <label for="username">Age <span class="font-red font-bold">*</span></label>
+                                    <div *ngIf="form.get('lastname')!.invalid && form.get('lastname')!.touched" class="invalid-feedback mt-0 d-block">
+                                        Required
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-lg-4">
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" placeholder="Mobile No"
+                                        <input [ngClass]="{'is-invalid' : form.get('age')!.invalid && form.get('age')!.touched}" type="number" class="form-control" placeholder="Age"
+                                            formControlName="age">
+                                        <label for="username">Age <span class="font-red font-bold">*</span></label>
+                                    </div>
+                                    <div *ngIf="form.get('age')!.invalid && form.get('age')!.touched" class="invalid-feedback mt-0 d-block">
+                                        Required
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="input-group mb-3">
+                                    <div class="form-floating">
+                                        <input  [ngClass]="{'is-invalid' : form.get('mobile')!.invalid && form.get('mobile')!.touched}" type="text" class="form-control" placeholder="Mobile No"
                                             formControlName="mobile">
                                         <label for="username">Mobile No: <span
                                                 class="font-red font-bold">*</span></label>
                                     </div>
+                                    <div *ngIf="form.get('mobile')!.invalid && form.get('mobile')!.touched" class="invalid-feedback mt-0 d-block">
+                                        Required
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-lg-4">
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" placeholder="Email Address"
+                                        <input  [ngClass]="{'is-invalid' : form.get('emailId')!.invalid && form.get('emailId')!.touched}" type="text" class="form-control" placeholder="Email Address"
                                             formControlName="emailId">
                                         <label for="username">Email Address: <span
                                                 class="font-red font-bold">*</span></label>
+                                    </div>
+                                    <div *ngIf="form.get('emailId')!.invalid && form.get('emailId')!.touched" class="invalid-feedback mt-0 d-block">
+                                        Required
                                     </div>
                                 </div>
                             </div>
@@ -75,78 +90,102 @@
                             <div class="col-sm-6 col-lg-4">
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" placeholder="Country"
+                                        <input  [ngClass]="{'is-invalid' : form.get('country')!.invalid && form.get('country')!.touched}" type="text" class="form-control" placeholder="Country"
                                             formControlName="country">
                                         <label for="country">Country <span class="font-red font-bold">*</span></label>
+                                    </div>
+                                    <div *ngIf="form.get('country')!.invalid && form.get('country')!.touched" class="invalid-feedback mt-0 d-block">
+                                        Required
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Complete Address"
+                                        <textarea  [ngClass]="{'is-invalid' : form.get('address')!.invalid && form.get('address')!.touched}" class="form-control" placeholder="Complete Address"
                                             id="completeAddress" formControlName="address" style="height: 100px"></textarea>
                                         <label for="completeAddress">Complete Address <span
                                                 class="font-red font-bold">*</span></label>
                                     </div>
+                                    <div *ngIf="form.get('address')!.invalid && form.get('address')!.touched" class="invalid-feedback mt-0 d-block">
+                                        Required
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-lg-4">
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" placeholder="State"
+                                        <input  [ngClass]="{'is-invalid' : form.get('state')!.invalid && form.get('state')!.touched}" type="text" class="form-control" placeholder="State"
                                             formControlName="state">
                                         <label for="State">State <span class="font-red font-bold">*</span></label>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-4">
-                                <div class="input-group mb-3">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" placeholder="City"
-                                            formControlName="city">
-                                        <label for="City">City <span class="font-red font-bold">*</span></label>
+                                    <div *ngIf="form.get('state')!.invalid && form.get('state')!.touched" class="invalid-feedback mt-0 d-block">
+                                        Required
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-lg-4">
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" placeholder="Current Occupation"
+                                        <input  [ngClass]="{'is-invalid' : form.get('city')!.invalid && form.get('city')!.touched}" type="text" class="form-control" placeholder="City"
+                                            formControlName="city">
+                                        <label for="City">City <span class="font-red font-bold">*</span></label>
+                                    </div>
+                                    <div *ngIf="form.get('city')!.invalid && form.get('city')!.touched" class="invalid-feedback mt-0 d-block">
+                                        Required
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="input-group mb-3">
+                                    <div class="form-floating">
+                                        <input  [ngClass]="{'is-invalid' : form.get('occupation')!.invalid && form.get('occupation')!.touched}" type="text" class="form-control" placeholder="Current Occupation"
                                             formControlName="occupation">
                                         <label for="CurrentOccupation">Occupation <span
                                                 class="font-red font-bold">*</span></label>
                                     </div>
+                                    <div *ngIf="form.get('occupation')!.invalid && form.get('occupation')!.touched" class="invalid-feedback mt-0 d-block">
+                                        Required
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-lg-4">
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" placeholder="Business/Career History"
+                                        <input  [ngClass]="{'is-invalid' : form.get('businessHistory')!.invalid && form.get('businessHistory')!.touched}" type="text" class="form-control" placeholder="Business/Career History"
                                             formControlName="businessHistory">
                                         <label for="Business/CareerHistory">Business/Career History <span
                                                 class="font-red font-bold">*</span></label>
+                                    </div>
+                                    <div *ngIf="form.get('businessHistory')!.invalid && form.get('businessHistory')!.touched" class="invalid-feedback mt-0 d-block">
+                                        Required
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-lg-8">
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control"
+                                        <input  [ngClass]="{'is-invalid' : form.get('proposedLocation')!.invalid && form.get('proposedLocation')!.touched}" type="text" class="form-control"
                                             placeholder="Proposed location to open the franchise"
                                             formControlName="proposedLocation">
                                         <label for="Proposedlocationtoopenthefranchise">Proposed location to open the
                                             franchise <span class="font-red font-bold">*</span></label>
+                                    </div>
+                                    <div *ngIf="form.get('proposedLocation')!.invalid && form.get('proposedLocation')!.touched" class="invalid-feedback mt-0 d-block">
+                                        Required
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Enter Message" id="EnterMessage"
+                                        <textarea [ngClass]="{'is-invalid' : form.get('message')!.invalid && form.get('message')!.touched}" class="form-control" placeholder="Enter Message" id="EnterMessage"
                                             style="height: 100px" formControlName="message"></textarea>
                                         <label for="EnterMessage">Enter Message <span
                                                 class="font-red font-bold">*</span></label>
+                                    </div>
+                                    <div *ngIf="form.get('message')!.invalid && form.get('message')!.touched" class="invalid-feedback mt-0 d-block">
+                                        Required
                                     </div>
                                 </div>
                             </div>

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CurdService } from 'src/app/services/curd.service';
@@ -17,9 +17,42 @@ export class UserOrdersComponent implements OnInit {
   custID:any;
   custName:any;
   orderDetails:any;
+  reviewForm:any;
+  maxRating:any=5;
+  highlightedStars:any;
+  stars: number[] = [];
+  currentRating: number = 0;
+  reviewRate:any;
+  websitereviewRate:any;
+  serviceReviewRate:any;
+  webstars: number[] = [];
+  webhighlightedStars:any;
+  servicestars: number[] = [];
+  servicehighlightedStars:any;
+  getOrderId:any;
+  
+  @ViewChild('closeButton')
+  closeButton!: ElementRef;
 
-  constructor(private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private route:Router)
+  
+  @ViewChild('trackcloseButton')
+  trackcloseButton!: ElementRef;
+
+  
+  constructor(   private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private route:Router)
   {
+
+    this.reviewForm = this.fb.group({
+      title: ['', Validators.required],
+      review:[''],
+      email: [''],
+      reviewRate:[''],
+      websiteReview:[''],
+      serviceReview:['']
+    });
+
+   
+
    if(localStorage.getItem('email'))
    {
     this.isLogend=true;
@@ -30,6 +63,16 @@ export class UserOrdersComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getMyOrders();
+    this.stars = Array(this.maxRating).fill(0).map((_, i) => i + 1);
+    this.highlightedStars = Array(this.maxRating).fill(false);
+
+
+
+    this.webstars = Array(5).fill(0).map((_, i) => i + 1);
+    this.webhighlightedStars = Array(5).fill(false);
+
+    this.servicestars = Array(5).fill(0).map((_, i) => i + 1);
+    this.servicehighlightedStars = Array(5).fill(false);
   }
 
 
@@ -46,8 +89,83 @@ export class UserOrdersComponent implements OnInit {
   }
 
 
+  trackClick(e:any)
+  {
+ 
+
+  let data = {
+    "customerId": this.custID,
+    "OrderId":e
+  }
+  this._crud.track(data).subscribe(res => {
+    if (!res.isEroor) {
+      this.toastr.success(res.successMessage)
+      // const button: HTMLButtonElement = this.trackcloseButton.nativeElement;
+      // button.click();
+     
+
+    }
+    else {
+      this.toastr.error(res.errorMessage)
+    }
+   
+  });
 
 
 
+  }
+
+
+  reviewClick(e:any)
+  {
+this.getOrderId=e;
+  }
+  onaddreview()
+  {
+  
+    let data = {
+      "reviewsDetails": {
+     "customerName": this.custName,
+        "customerEmail": this.email,
+        "orderID": this.getOrderId,
+        "title": this.reviewForm.value['title'],
+        "review": this.reviewForm.value['title'],
+        "reviewDate": new Date(),
+        "reviewRate": this.reviewRate,
+        "websiteReview": this.websitereviewRate,
+        "serviceReview": this.serviceReviewRate,
+      }
+    }
+    this._crud.addReview(data).subscribe(res => {
+      if (!res.isEroor) {
+        this.toastr.success(res.successMessage)
+        const button: HTMLButtonElement = this.closeButton.nativeElement;
+        button.click();
+       
+
+      }
+      else {
+        this.toastr.error(res.errorMessage)
+      }
+     
+    });
+  }
+
+
+  rate(rating: number): void {
+    this.reviewRate=rating;
+    this.highlightedStars = this.stars.map((_, i) => i + 1 <= rating);
+  }
+webRatingfn(r:any)
+{
+this.websitereviewRate=r;
+this.webhighlightedStars=this.webstars.map((_, i) => i + 1 <= r);
+}
+
+serviceRatingfn(r:any)
+{
+this.serviceReviewRate=r;
+this.servicehighlightedStars=this.servicestars.map((_, i) => i + 1 <= r);
+}
 
 }

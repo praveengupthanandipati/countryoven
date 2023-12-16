@@ -279,6 +279,32 @@ postcustomize(obj:any):Observable<any>{
   
   return this.http.post(`${environment.apiUrl}/CustomizedCakes/Add`,obj)
   }
-  
 
+  addReview(obj:any):Observable<any>{
+  
+    return this.http.post(`${environment.apiUrl}/Reviews/Add`,obj)
+    }
+
+    getReview(obj:any):Observable<any>{
+  
+      return this.http.post(`${environment.apiUrl}/Reviews/GetAll`,obj)
+      }
+
+      getNotification(obj:any):Observable<any>{
+  
+        return this.http.post(`${environment.apiUrl}/Notifications/GetAll`,obj)
+        }
+  
+        subscribe(obj:any):Observable<any>{
+  
+          return this.http.post(`${environment.apiUrl}/Subscribe/Add`,obj)
+          }
+
+
+          track(obj:any):Observable<any>{
+  
+            return this.http.post(`${environment.apiUrl}/customer/GetTrackOrder`,obj)
+            }
+        
+    
   }

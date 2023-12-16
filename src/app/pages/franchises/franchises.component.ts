@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { ToastrService } from 'ngx-toastr';
 import { CurdService } from 'src/app/services/curd.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class FranchisesComponent {
   dynamicForm:any;
   form!: FormGroup;
   constructor(
+    private toastr:ToastrService,
     private meta: Meta, private title:Title,
     private _crud:CurdService, private route:ActivatedRoute, private fb: FormBuilder, private cookieService: CookieService, private router:Router)
   {
@@ -77,7 +79,15 @@ export class FranchisesComponent {
    
     this._crud.postfranchises(obj).subscribe(res => {
      
-     
+      if(res.isEroor)
+  {
+    
+    this.toastr.error(res.errorMessage);
+  }
+  else
+  {
+    this.toastr.success(res.successMessage);
+  }
      
     })
   }

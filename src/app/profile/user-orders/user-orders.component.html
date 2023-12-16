@@ -28,12 +28,16 @@
                         <div class="row">
                             <div class="col-md-6">
                                 {{order.sNo}}
-                                </div>
-                                <div class="col-md-6">
-                                <button class="color-btn d-inline-block">Track</button>
-                                </div>
-                                </div>
-                       
+                            </div>
+                            <div class="col-md-6">
+                                <!-- <button class="color-btn d-inline-block">Track</button> -->
+
+                                <a data-bs-toggle="modal" (click)="trackClick(order.orderId)"
+                                data-bs-target="#Trackmodal" class="color-btn d-inline-block"> Track</a>
+
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="d-flex justify-content-between flex-column user-order-col">
@@ -60,7 +64,8 @@
                                         </div>
                                     </div>
                                     <div class="text-end">
-                                        <a href="/Reviews" class="font-blue font-semibold"><span
+                                        <a data-bs-toggle="modal" (click)="reviewClick(order.orderId)"
+                                            data-bs-target="#Reviews" class="font-blue font-semibold"><span
                                                 class="icon-star"></span> Rate & Review Product</a>
                                     </div>
                                 </div>
@@ -76,3 +81,123 @@
     </div>
 </section>
 <app-footer></app-footer>
+
+
+
+
+
+<!-- add Review-->
+<div class="modal fade" id="Reviews" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-black" id="staticBackdropLabel">Add Review</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    #closeButton></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="reviewForm" (ngSubmit)="onaddreview()">
+
+                    <div class="col-md-12">
+                        <!-- <div class="form-group mb-3">
+                            <input type="text" class="form-control" formControlName="title"
+                                placeholder="Enter Review Title*">
+                        </div> -->
+
+
+                        <div class="form-floating mb-3">
+                            <input
+                                [ngClass]="{'is-invalid' : reviewForm.get('title')!.invalid && reviewForm.get('title')!.touched}"
+                                class="form-control" placeholder="Enter Review Title*" formControlName="title">
+                            <label for="userphone">Enter Review Title <span class="font-red font-bold">*</span></label>
+                        </div>
+
+                        <div *ngIf="reviewForm.get('title')!.invalid && reviewForm.get('title')!.touched"
+                            class="invalid-feedback mt-0 d-block">
+                            Enter Review Title
+                        </div>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" placeholder="Enter Review Description*"
+                            formControlName="review"></textarea>
+                        <label>Enter Review Description </label>
+                    </div>
+
+
+
+
+
+                    <label>Review</label>
+                    <div class="rating">
+                        <span *ngFor="let star of stars; let i = index" (click)="rate(star)"
+                            [class.active]="highlightedStars[i]">&#9733;</span>
+                    </div>
+
+
+
+                    <label>Webiste review</label>
+
+                    <div class="rating">
+                        <span *ngFor="let star of webstars; let i = index" (click)="webRatingfn(star)"
+                            [class.active]="webhighlightedStars[i]">&#9733;</span>
+                    </div>
+
+                    <label>Service review</label>
+
+                    <div class="rating">
+                        <span *ngFor="let star of servicestars; let i = index" (click)="serviceRatingfn(star)"
+                            [class.active]="servicehighlightedStars[i]">&#9733;</span>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" [disabled]="!reviewForm.valid" class="color-border-btn">Submit
+                            Review</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<!-- add Track modal-->
+<div class="modal fade" id="Trackmodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-black" id="staticBackdropLabel">Track</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    #trackcloseButton></button>
+            </div>
+            <div class="modal-body">
+                Track here
+               
+
+                    <div class="col-md-12">
+                     
+
+
+                     
+</div>
+
+                  
+
+
+
+
+               
+
+                    <div class="modal-footer">
+                        <button data-bs-dismiss="modal" class="color-border-btn">Close</button>
+                    </div>
+                
+            </div>
+
+        </div>
+    </div>
+</div>

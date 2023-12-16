@@ -16,82 +16,36 @@
             <h1 class="h3 font-bold font-primary pb-3">Customer Reviews & Testimonials</h1>
 
             <!-- card -->
-            <div class="card border review-card mb-2">
+            <div class="card border review-card mb-2" *ngFor="let r of reviewData">
                 <div class="card-header d-flex justify-content-between">
                     <div>
-                        <span class="font-bold">Madhavi</span>
-                        <span class="d-inline-block ps-3">24/08/2023 8:01AM</span>
+                        <span class="font-bold">{{r.customerName}}</span>
+                        <span class="d-inline-block ps-3">{{r.reviewDate | date}}</span>
                     </div>
-                    <div class="rating-stars">
-                        <span class="icon-star font-primary"></span>
-                        <span class="icon-star font-primary"></span>
-                        <span class="icon-star font-primary"></span>
-                        <span class="icon-star font-primary"></span>
-                        <span class="icon-star font-primary"></span>
+                    <div class="rating-stars" >
+                        <ng-container *ngFor="let s of [1,2,3,4,5]; index as i">
+                        <span class="icon-star " [ngClass]="{'font-primary' : i < r.reviewRate}" >
+
+
+                        </span>
+                    </ng-container>
+                       
                     </div>
 
                 </div>
                 <div class="card-body">
                     <article class="pb-2">
-                        <h5 class="h6 font-semibold">Cake and sweets</h5>
-                        <p class="pb-0">Awesome taste as usual</p>
+                        <h5 class="h6 font-semibold">{{r.title}}</h5>
+                        <!-- <p class="pb-0">Awesome taste as usual</p> -->
                     </article>
-                    <p><small>Invoice No:973206</small></p>
+                    <p><small>Invoice No:{{r.orderID}}</small></p>
                 </div>
             </div>
             <!--/ card-->
-            <!-- card -->
-            <div class="card border review-card mb-2">
-                <div class="card-header d-flex justify-content-between">
-                    <div>
-                        <span class="font-bold">Taher</span>
-                        <span class="d-inline-block ps-3">21/08/2023 8:37AM</span>
-                    </div>
-                    <div class="rating-stars">
-                        <span class="icon-star font-primary"></span>
-                        <span class="icon-star font-primary"></span>
-                        <span class="icon-star font-primary"></span>
-                        <span class="icon-star font-primary"></span>
-                        <span class="icon-star font-primary"></span>
-                    </div>
-
-                </div>
-                <div class="card-body">
-                    <article class="pb-2">
-                        <h5 class="h6 font-semibold">Delicious</h5>
-                        <p class="pb-0">Country Oven all cakes are very delicious. They don't disappoint you with their
-                            cakes It's my favourite place to order cakes</p>
-                    </article>
-                    <p><small>Invoice No:973102</small></p>
-                </div>
-            </div>
-            <!--/ card-->
-
-            <!-- card -->
-            <div class="card border review-card mb-2">
-                <div class="card-header d-flex justify-content-between">
-                    <div>
-                        <span class="font-bold">Nikhita Minas</span>
-                        <span class="d-inline-block ps-3">18/08/2023 4:19PM</span>
-                    </div>
-                    <div class="rating-stars">
-                        <span class="icon-star font-primary"></span>
-                        <span class="icon-star font-primary"></span>
-                        <span class="icon-star font-primary"></span>
-                        <span class="icon-star font-primary"></span>
-                        <span class="icon-star font-primary"></span>
-                    </div>
-
-                </div>
-                <div class="card-body">
-                    <article class="pb-2">
-                        <h5 class="h6 font-semibold">Great service!</h5>
-                        <p class="pb-0">Great service!</p>
-                    </article>
-                    <p><small>Invoice No:972842</small></p>
-                </div>
-            </div>
-            <!--/ card-->
+           
+            <ng-container *ngIf="!reviewData.length">
+                No ReViews found
+            </ng-container>
         </div>
     </div>
 </section>

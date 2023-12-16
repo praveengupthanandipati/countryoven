@@ -119,10 +119,16 @@
                 <div class="col-md-4">
                     <h5 class="h5 text-uppercase font-extrabold pb-0">News Letter</h5>
                     <p><small>Get updates on promotions and offers coupons</small></p>
+                   <form  [formGroup]="form"  (ngSubmit)="subscribe()">
                     <div class="form-group d-flex newsletter mb-4 shadow">
-                        <input type="text" class="form-control border-0 rounded-0" name="" placeholder="Your Email">
-                        <button class="color-btn text-uppercase border-0 rounded-0">Subscribe</button>
+                        <input type="text" class="form-control border-0 rounded-0" name="" placeholder="Your Email"
+                        [ngClass]="{'is-invalid' : form.get('emailId')!.invalid && form.get('emailId')!.touched}"  formControlName="emailId"
+                        
+                        >
+                        <button class="color-btn text-uppercase border-0 rounded-0"  type="submit" [disabled]="!form.valid">Subscribe</button>
                     </div>
+                    </form>
+                    
                 </div>
                 <div class="col-md-4 align-self-center">
                     <div class="text-end">

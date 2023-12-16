@@ -27,6 +27,8 @@ import { ProductsComponent } from '../pages/products/products.component';
 import { CustomizedCakesComponent } from '../pages/customized-cakes/customized-cakes.component';
 import { NoproductsFoundComponent } from '../pages/noproducts-found/noproducts-found.component';
 import { TermsContentComponent } from '../pages/home/terms-content/terms-content.component';
+import { NotificationsComponent } from '../pages/home/notifications/notifications.component';
+import { TrackComponent } from '../pages/track/track.component';
 
 
 
@@ -54,7 +56,9 @@ import { TermsContentComponent } from '../pages/home/terms-content/terms-content
     CustomizedCakesComponent,
     ProductsComponent,
     NoproductsFoundComponent,
-    TermsContentComponent
+    TermsContentComponent,
+    NotificationsComponent,
+    TrackComponent
 
   ],
   imports: [
