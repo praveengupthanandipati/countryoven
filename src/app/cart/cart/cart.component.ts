@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
 import { CurdService } from 'src/app/services/curd.service';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cart',
@@ -116,6 +116,17 @@ let data={
 
 DeleteCartItem(sno:any)
 {
+
+  Swal.fire({
+    width:'350px',
+ // imageUrl: '../../assets/images/tick.png',
+  imageHeight: 80,
+  text: 'Do you want to delete the item',  
+  showCancelButton: true,
+  confirmButtonText:'Okay'
+}).then((result) => {
+  if (result.isConfirmed) {
+  
 let data={
   "sno": sno
   }
@@ -124,6 +135,10 @@ let data={
     
     this.getCarts();
         });
+  }
+});
+
+
 }
 
 

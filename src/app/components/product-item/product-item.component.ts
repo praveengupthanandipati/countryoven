@@ -24,7 +24,7 @@ tagMsg:any;
    
   }
   ngOnInit(): void {
-    console.log(this.Productvalue)
+    
 this.stock=this.Productvalue.stockTagMessage;
 this.isNewArriaval=this.Productvalue.newTagMessage;
 this.isEggless=this.Productvalue.egglessTagMessage;

@@ -68,31 +68,32 @@ export class CustomizedCakesComponent {
     let obj = {
         customizedCakeDetails: 
         {
-          "CustomizedCakeDetails.name": this.form.get('name')?.value,
-          "CustomizedCakeDetails.mobile":  this.form.get('mobile')?.value,
-          "CustomizedCakeDetails.email": this.form.get('email')?.value,
-          "CustomizedCakeDetails.comments": this.form.get('comments')?.value,
-          "CustomizedCakeDetails.imagePath": this.binaryData
+          "name": this.form.get('name')?.value,
+          "mobile":  this.form.get('mobile')?.value,
+          "email": this.form.get('email')?.value,
+          "comments": this.form.get('comments')?.value,
+          "date":new Date()
+        //  "CustomizedCakeDetails.imagePath": this.binaryData
          
         }
         
     }
    
-    let fd = formVal.value;
+    // let fd = formVal.value;
 
-    let formData = new FormData();
-    formData.append('name', fd.name);
-    formData.append('CustomizedCakeDetails.mobile', fd.mobile);
-    formData.append('CustomizedCakeDetails.email', fd.email);
-    formData.append('CustomizedCakeDetails.comments', fd.comments); 
-    formData.append('CustomizedCakeDetails.imagePath', fd.image);
-    let obj1 = {
-      customizedCakeDetails: formData
+    // let formData = new FormData();
+    // formData.append('name', fd.name);
+    // formData.append('CustomizedCakeDetails.mobile', fd.mobile);
+    // formData.append('CustomizedCakeDetails.email', fd.email);
+    // formData.append('CustomizedCakeDetails.comments', fd.comments); 
+    // formData.append('CustomizedCakeDetails.imagePath', fd.image);
+    // let obj1 = {
+    //   customizedCakeDetails: formData
       
-    }
+    // }
     this._crud.postcustomize(obj).subscribe(res => {
      
-     
+     console.log(res)
      
     })
   }

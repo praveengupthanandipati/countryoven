@@ -277,7 +277,9 @@ postfranchises(obj:any):Observable<any>{
   
 postcustomize(obj:any):Observable<any>{
   
-  return this.http.post(`${environment.apiUrl}/CustomizedCakes/Add`,obj)
+  return this.http.post(`${environment.apiUrl}/CustomizedCakes/UploadCustomizedCake`,obj)
+
+  
   }
 
   addReview(obj:any):Observable<any>{

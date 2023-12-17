@@ -214,14 +214,8 @@
                                     <span
                                         class="icon-writing font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
                                     <input formControlName="message" [(ngModel)]="textAreaInput"  type="text"
-                                        class="form-control border-0 bg-transparent"
-                                        placeholder="Message on Cake 25 Characters (Option)">
-
-
-
-                                       
-
-                                </div>
+                                        class="form-control border-0 bg-transparent" 
+                                        placeholder="Message on Cake 25 Characters (Option)">  </div>
 
                                
                                   <div *ngIf="dynamicForm.get('message')?.hasError('maxLength') || isMaxLengthExceeded">
