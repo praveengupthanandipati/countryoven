@@ -57,7 +57,7 @@
     <div class="offcanvas-body px-0 py-3">
         <ul class="list-group">
             <li class="list-group-item" *ngFor="let m of menuList">
-                <a class="fbold" data-bs-dismiss="offcanvas" [routerLink]="m.seoTitle">{{m.title}}</a>
+                <a class="fbold" data-bs-dismiss="offcanvas" [routerLink]="'/' + m.seoTitle">{{m.title}}</a>
             </li>
         </ul>
     </div>

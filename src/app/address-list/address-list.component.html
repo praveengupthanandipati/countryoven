@@ -51,71 +51,68 @@
                 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group mb-3">
+                            <div class="form-floating">
                                 <input type="text" class="form-control" formControlName="recipientFirstName"
                                     placeholder="First Name *">
+                                    <label for="">First Name <span class="font-red font-bold">*</span></label>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group mb-3">
+                            <div class="form-floating">
                                 <input type="text" class="form-control" formControlName="recipientLastName"
                                     placeholder="Last Name *">
+                                    <label for="">Last Name <span class="font-red font-bold">*</span></label>
                             </div>
                         </div>
+                      
                         <div class="col-md-6">
-                            <div class="form-group mb-3">
-                                <input type="text" formControlName="email" class="form-control" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group mb-3">
+                            <div class="form-floating">
                                 <input type="text" formControlName="phone" class="form-control" placeholder="Phone *">
+                                <label for="">Phone <span class="font-red font-bold">*</span></label>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group mb-3">
+                            <div class="form-floating">
                                 <input type="text" formControlName="mobilePhone" class="form-control"
                                     placeholder="Mobile Phone *">
+                                    <label for="">Mobile<span class="font-red font-bold">*</span></label>
                             </div>
                         </div>
 
 
                         <div class="col-md-12">
-                            <div class="form-group mb-3">
+                            <div class="form-floating">
                                 <textarea class="form-control" formControlName="address1"
-                                    placeholder="Address 1 *"></textarea>
+                                    placeholder="Address*"></textarea>
+                                    <label for="">Address <span class="font-red font-bold">*</span></label>
                             </div>
                         </div>
+                       
                         <div class="col-md-12">
-                            <div class="form-group mb-3">
-                                <textarea class="form-control" formControlName="address2"
-                                    placeholder="Address 2 *"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group mb-3">
+                            <div class="form-floating">
                                 <input type="text" class="form-control" formControlName="landmark"
                                     placeholder="landmark *" />
+                                    <label for="">Landmark <span class="font-red font-bold">*</span></label>
                             </div>
                         </div>
                        
 
 
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <div class="form-floating mb-3">
 
-                                <!-- <input type="text" readonly  formControlName="countryId"  /> -->
-                                <!-- <select class="form-select" [attr.disabled]="true" (change)="onaddCountryChange($event)" formControlName="countryId">
+                                <input type="text" readonly  formControlName="countryId"  />
+                                <select class="form-select" [attr.disabled]="true" (change)="onaddCountryChange($event)" formControlName="countryId">
                                     <option [value]="c.countryId" *ngFor="let c of countryList">{{c.countryName}}
                                     </option>
 
                                 </select>
-                                <label>Country </label> -->
+                                <label>Country </label>
                             </div>
-                        </div>
+                        </div> -->
 
 
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <div class="form-floating mb-3">
                                 <select class="form-select" (change)="onstateChange($event)"  formControlName="stateId">
                                     <option [value]="c.stateId" *ngFor="let c of stateList">{{c.stateName}}</option>
@@ -123,26 +120,27 @@
                                 </select>
                                 <label>State </label>
                             </div>
-                        </div>
+                        </div> -->
 
 
                         <div class="col-md-6">
-                            <div class="form-floating mb-3">
+                            <div class="form-floating">
                                 <select class="form-select"  formControlName="cityName">
                                     <option [value]="cl.cityName" *ngFor="let cl of cityList">{{cl.cityName}}
                                     </option>
 
                                 </select>
-                                <label>City </label>
+                                <label for="">City <span class="font-red font-bold">*</span></label>
                             </div>
                         </div>
 
 
 
                         <div class="col-md-6">
-                            <div class="form-group mb-3">
+                            <div class="form-floating">
                                 <input type="text" formControlName="zipCode" class="form-control"
-                                    placeholder="Pincode *">
+                                    placeholder="Pin code *">
+                                    <label for="">Pin Code <span class="font-red font-bold">*</span></label>
                             </div>
                         </div>
 
@@ -173,51 +171,52 @@
                 <form [formGroup]="adduserForm" (ngSubmit)="onAddSubmit()">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group mb-3">
-                                <input type="text" class="form-control" formControlName="addRecipientFirstName"
+                            <div class="form-floating">
+                                <input [ngClass]="{'is-invalid' : adduserForm.get('addRecipientFirstName')!.invalid && adduserForm.get('addRecipientFirstName')!.touched}" type="text" class="form-control" formControlName="addRecipientFirstName"
                                     placeholder="First Name*">
+                                    <label for="">First Name <span class="font-red font-bold">*</span></label>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group mb-3">
-                                <input type="text" class="form-control" formControlName="addRecipientLastName"
+                            <div class="form-floating">
+                                <input type="text" class="form-control" formControlName="addRecipientLastName" [ngClass]="{'is-invalid' : adduserForm.get('addRecipientLastName')!.invalid && adduserForm.get('addRecipientLastName')!.touched}"
                                     placeholder="Last Name *">
+                                    <label for="">Last Name <span class="font-red font-bold">*</span></label>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group mb-3">
+                        <!-- <div class="col-md-6">
+                            <div class="form-floating">
                                 <input type="text" formControlName="addEmail" class="form-control" placeholder="Email">
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-6">
-                            <div class="form-group mb-3">
-                                <input type="text" formControlName="addPhone" class="form-control" placeholder="Phone *">
+                            <div class="form-floating">
+                                <input type="text" formControlName="addPhone" class="form-control" placeholder="Phone *" [ngClass]="{'is-invalid' : adduserForm.get('addPhone')!.invalid && adduserForm.get('addPhone')!.touched}">
+                                <label for="">Phone <span class="font-red font-bold">*</span></label>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group mb-3">
+                            <div class="form-floating">
                                 <input type="text" formControlName="addMobilePhone" class="form-control"
-                                    placeholder="Mobile Phone *">
+                                    placeholder="Mobile Phone *" [ngClass]="{'is-invalid' : adduserForm.get('addMobilePhone')!.invalid && adduserForm.get('addMobilePhone')!.touched}">
+                                    <label for="">Mobile <span class="font-red font-bold">*</span></label>
                             </div>
                         </div>
 
 
                         <div class="col-md-12">
-                            <div class="form-group mb-3">
-                                <textarea class="form-control" formControlName="addaddress1"
-                                    placeholder="Address 1 *"></textarea>
+                            <div class="form-floating">
+                                <textarea class="form-control" formControlName="addaddress1" [ngClass]="{'is-invalid' : adduserForm.get('addaddress1')!.invalid && adduserForm.get('addaddress1')!.touched}"
+                                    placeholder="Address *"></textarea>
+                                    <label for="">Address <span class="font-red font-bold">*</span></label>
                             </div>
                         </div>
+                     
                         <div class="col-md-12">
-                            <div class="form-group mb-3">
-                                <textarea class="form-control" formControlName="addaddress2"
-                                    placeholder="Address 2 *"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group mb-3">
+                            <div class="form-floating">
                                 <input type="text" class="form-control" formControlName="addlandmark"
-                                    placeholder="landmark *" />
+                                    placeholder="landmark *" [ngClass]="{'is-invalid' : adduserForm.get('addlandmark')!.invalid && adduserForm.get('addlandmark')!.touched}" />
+                                    <label for="">Land Mark <span class="font-red font-bold">*</span></label>
                             </div>
                         </div>
                        
@@ -236,7 +235,7 @@
                         </div> -->
 
 
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <div class="form-floating mb-3">
                                 <select class="form-select"  (change)="onstateChange($event)"  formControlName="addstateId">
                                     <option [value]="c.stateId" *ngFor="let c of stateList">{{c.stateName}}</option>
@@ -244,7 +243,7 @@
                                 </select>
                                 <label>State </label>
                             </div>
-                        </div>
+                        </div> -->
 
 
 
@@ -255,12 +254,12 @@
 
                         <div class="col-md-6">
                             <div class="form-floating mb-3">
-                                <select class="form-select"  formControlName="addcityName">
+                                <select class="form-select" [ngClass]="{'is-invalid' : adduserForm.get('addcityName')!.invalid && adduserForm.get('addcityName')!.touched}"  formControlName="addcityName">
                                     <option [value]="cl.cityName" *ngFor="let cl of cityList">{{cl.cityName}}
                                     </option>
 
                                 </select>
-                                <label>City </label>
+                                <label for="">City <span class="font-red font-bold">*</span></label>
                             </div>
                         </div>
 
@@ -273,16 +272,17 @@
 
 
                         <div class="col-md-6">
-                            <div class="form-group mb-3">
+                            <div class="form-floating">
                                 <input type="text" formControlName="addzipCode" class="form-control"
-                                    placeholder="Pincode *">
+                                    placeholder="Pincode *"  [ngClass]="{'is-invalid' : adduserForm.get('addzipCode')!.invalid && adduserForm.get('addzipCode')!.touched}">
+                                    <label for="">Pin Code <span class="font-red font-bold">*</span></label>
                             </div>
                         </div>
 
 
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" [disabled]="!adduserForm.valid" class="color-border-btn" >Save Address</button>
+                        <button type="submit" class="color-border-btn" >Save Address</button>
                     </div>
             </form>
         </div>

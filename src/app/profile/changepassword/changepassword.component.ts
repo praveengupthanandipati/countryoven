@@ -11,8 +11,18 @@ import { CurdService } from 'src/app/services/curd.service';
 })
 export class ChangepasswordComponent {
   userForm:any;
+  custName: any;
   constructor(private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private route:Router)
   {
+
+
+    if (localStorage.getItem('email')) {
+    
+      this.custName = localStorage.getItem('custName')
+    }
+
+
+
     this.userForm = this.fb.group({
    
       oldPassword: ['', Validators.required],

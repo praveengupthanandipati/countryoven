@@ -112,7 +112,7 @@ this.getCity(res.stateId)
     this.cityList=[];
 
    
-    this.getState(1);
+    this.getState(eve.target.value);
   }
 
 
@@ -168,7 +168,7 @@ getState(id:any)
           "MobilePhone": this.userForm.value['MobilePhone'],
           "phoneNo": this.userForm.value['phoneNo'],
           "Address1": this.userForm.value['Address1'],
-          "Address2":this.userForm.value['Address2'],
+          // "Address2":this.userForm.value['Address2'],
           "cityName":this.userForm.value['cityName'],
           "stateId": this.userForm.value['stateId'],
           "countryId": this.userForm.value['countryId'],

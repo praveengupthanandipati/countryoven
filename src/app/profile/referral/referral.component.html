@@ -1,19 +1,35 @@
-
+<!-- <app-header></app-header> -->
 <section class="userProfile py-3">
     <div class="container">
         <nav aria-label="breadcrumb" class="align-self-center">
             <ol class="breadcrumb pb-0 mb-0">
                 <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
                 <li class="breadcrumb-item"><a routerLink="/myaccount">My Account</a></li>
-                <li class="breadcrumb-item active" aria-current="page">My Address</li>
+                <li class="breadcrumb-item active" aria-current="page">Referal</li>
             </ol>
         </nav>
         <div class="profile-page-title px-3 d-flex justify-content-between background-lightprimary py-3 my-2">
-            <h5 class="h5 text-uppercase font-bold">My Address</h5>
+            <h5 class="h5 text-uppercase font-bold">Referal</h5>
             <h6 class="h6 tex-end">Hi, {{custName}}</h6>
         </div>
         <app-profile-nav></app-profile-nav>
-      <app-address-list></app-address-list>
+        <div class="userprofile-body">
+
+Referal Code {{referalData?.referralCode}}
+
+
+
+           
+
+
+
+        </div>
     </div>
 </section>
-<!-- Edit address modal-->
+<!-- <app-footer></app-footer> -->
+
+
+
+
+
+

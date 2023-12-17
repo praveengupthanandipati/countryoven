@@ -10,6 +10,9 @@ import { UserOrderDetailComponent } from './user-order-detail/user-order-detail.
 import { UserAddressComponent } from './user-address/user-address.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { UserVouchersComponent } from './user-vouchers/user-vouchers.component';
+import { MyaccountComponent } from './myaccount/myaccount.component';
+import { CowalletComponent } from './cowallet/cowallet.component';
+import { ReferralComponent } from './referral/referral.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { UserVouchersComponent } from './user-vouchers/user-vouchers.component';
     UserOrderDetailComponent,
     UserAddressComponent,
     ChangepasswordComponent,
-    UserVouchersComponent
+    UserVouchersComponent,
+    MyaccountComponent,
+    CowalletComponent,
+    ReferralComponent
   ],
   imports: [
     CommonModule,

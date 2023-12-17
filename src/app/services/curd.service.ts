@@ -305,6 +305,15 @@ postcustomize(obj:any):Observable<any>{
   
             return this.http.post(`${environment.apiUrl}/customer/GetTrackOrder`,obj)
             }
+            coWalletTracking(obj:any):Observable<any>{
+  
+              return this.http.post(`${environment.apiUrl}/CoWalletTracking`,obj)
+              }
+
+              getReferralCode(obj:any):Observable<any>{
+  
+                return this.http.post(`${environment.apiUrl}/customer/MyReferralCode`,obj)
+                }
         
-    
+            
   }

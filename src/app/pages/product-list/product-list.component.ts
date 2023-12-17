@@ -146,7 +146,7 @@ getnewurl(urlcity:any)
   
   this.getOldUrl= this.router.url;
   
-  let newurl=  this.getOldUrl.replace(urlcity, this.cityname);
+  let newurl=  this.getOldUrl.replace(urlcity, this.cityname.toLowerCase());
   
   this.location.replaceState(newurl);
 }
@@ -169,9 +169,9 @@ getnewurl(urlcity:any)
         if (urlparms.length > 1) {
           this.typeName = 'FLV';
           this.cityname = urlparms[1];
-          console.log(this.cityname)
+          
           this.cityname=this.originalcityname;
-          console.log(urlparms[0])
+          
           this.PageName = urlparms[0]
           this.getnewurl(urlparms[1])
         }
@@ -198,9 +198,7 @@ getnewurl(urlcity:any)
         
       }
       else if (params['cityname1']) {
-
         this.cityname = params['cityname1'];
-        
         this.typeName = 'CTY';
         this.PageName = params['PageName1'];
 
@@ -219,9 +217,10 @@ getnewurl(urlcity:any)
 
       if (this.typeName == 'online-delivery' || this.PageName == 'online-delivery') {
         this.type = 'C';
-        this.PageName=this.PageName;
+       // this.PageName=this.PageName;
         
-
+       
+        this.PageName = params['type'];
         
       } else if (this.typeName == 'order') {
         this.type = 'SC';
@@ -239,7 +238,7 @@ getnewurl(urlcity:any)
 
       else if (this.typeName == 'FLV') {
         this.type = 'FLV';
-        console.log('hai ')
+        
       }
       else if (this.typeName == 'search_result') {
         this.type = 'SE';
@@ -376,6 +375,8 @@ this.getProductDetails(this.filters, this.currentPage, this.sorder);
 }
   /* test code */
 
-  
+  capitalizeFirstLetter(word: string): string {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }
 
 }

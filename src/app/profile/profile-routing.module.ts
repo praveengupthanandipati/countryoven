@@ -7,15 +7,25 @@ import { UserOrderDetailComponent } from './user-order-detail/user-order-detail.
 import { UserAddressComponent } from './user-address/user-address.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { UserVouchersComponent } from './user-vouchers/user-vouchers.component';
+import { MyaccountComponent } from './myaccount/myaccount.component';
+import { CowalletComponent } from './cowallet/cowallet.component';
+import { ReferralComponent } from './referral/referral.component';
 
 const routes: Routes = [
-  {path:'', component:UserDashboardComponent},  
-  {path:'my_profile', component:UserProfileComponent},
+  { path: '', redirectTo: '/myaccount/dashboard', pathMatch: 'full' },
+  { path: '', component: MyaccountComponent, children: [
+    {path:'dashboard', component:UserDashboardComponent},
+    {path:'my_profile', component:UserProfileComponent},
   {path:'orders', component:UserOrdersComponent},
-  {path:'user-order-detail', component:UserOrderDetailComponent},
+  {path:'orderdetails/:id', component:UserOrderDetailComponent},
   {path: 'user-address', component:UserAddressComponent},
   {path: 'user-change-password', component:ChangepasswordComponent},
-  {path: 'user-vouchers', component:UserVouchersComponent}
+  {path: 'cowallet', component:CowalletComponent},
+  {path: 'referral', component:ReferralComponent}
+  ],
+},
+ 
+ 
 ];
 
 @NgModule({

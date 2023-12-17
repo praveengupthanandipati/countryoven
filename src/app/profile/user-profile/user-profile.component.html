@@ -1,10 +1,10 @@
-<app-header></app-header>
+
 <section class="userProfile py-3">
     <div class="container">
         <nav aria-label="breadcrumb" class="align-self-center">
             <ol class="breadcrumb pb-0 mb-0">
                 <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-                <li class="breadcrumb-item"><a routerLink="/profile">My Account</a></li>
+                <li class="breadcrumb-item"><a routerLink="/myaccount">My Account</a></li>
                 <li class="breadcrumb-item active" aria-current="page">My Account</li>
             </ol>
         </nav>
@@ -63,18 +63,18 @@
                     </div> -->
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="addressline01" placeholder="Address Line 01"
-                                formControlName="Address1">
-                            <label for="addressline01">Address Line 01</label>
+                            <textarea  class="form-control" id="addressline01" placeholder="Address"
+                                formControlName="Address1"></textarea>
+                            <label for="addressline01">Address </label>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="addressline02" placeholder="Address Line 02"
                                  formControlName="Address2">
                             <label for="addressline02">Address Line 02 </label>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
                             <input type="number" class="form-control" id="pinCode" placeholder="Pincode" value="" formControlName="zipCode">
@@ -107,9 +107,14 @@
                             <label for="country">State  </label>
                         </div>
                     </div>  
-
-
                     <div class="col-md-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="city" placeholder="City" formControlName="cityName">
+                            <label for="city">City </label>
+                        </div>
+                    </div> 
+
+                    <!-- <div class="col-md-4">
                         <div class="form-floating mb-3">
                             <select class="form-select"  formControlName="cityName">
                                 <option [value]="cl.cityName" *ngFor="let cl of cityList">{{cl.cityName}}
@@ -118,7 +123,7 @@
                             </select>
                             <label>City </label>
                         </div>
-                    </div>
+                    </div> -->
 
 
                     <div class="col-md-12">
@@ -132,4 +137,3 @@
         </div>
     </div>
 </section>
-<app-footer></app-footer>

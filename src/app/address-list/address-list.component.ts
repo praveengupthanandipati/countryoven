@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, TemplateRef, ViewChild } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { CurdService } from 'src/app/services/curd.service';
 
@@ -53,10 +53,10 @@ isCheckout:boolean=false;
       phone: ['', Validators.required],
       mobilePhone: ['', Validators.required],
       address1: ['', Validators.required],
-      address2: ['', Validators.required],
+      address2: [''],
       landmark: ['', Validators.required],
-      cityName: ['', Validators.required],
-      stateId: ['', Validators.required],
+      cityName: [''],
+      stateId: ['1479'],
     //  countryId: ['', Validators.required],
       zipCode: ['', Validators.required],
     });
@@ -69,10 +69,10 @@ isCheckout:boolean=false;
       addPhone: ['', Validators.required],
       addMobilePhone: ['', Validators.required],
       addaddress1: ['', Validators.required],
-      addaddress2: ['', Validators.required],
+      addaddress2: [''],
       addlandmark: ['', Validators.required],
       addcityName: ['', Validators.required],
-      addstateId: ['', Validators.required],
+      addstateId: ['1479'],
     //  addcountryId: ['', Validators.required],
       addzipCode: ['', Validators.required],
     });
@@ -129,11 +129,24 @@ this.sendAddId.emit(e)
         
        }
     )
-    this.getCity(selectedValue)
+   // this.getCity(selectedValue)
   }
 
-  onAddSubmit() {
+  validateAllFormFields(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach(field => {
+      const control = formGroup.get(field);
+      if (control instanceof FormGroup) {
+        this.validateAllFormFields(control);
+      } else {
+        control?.markAsTouched({ onlySelf: true });
+      }
+    });
+  }
 
+
+  onAddSubmit() {
+if(this.adduserForm.valid)
+{
     
     let data = {
 
@@ -168,6 +181,10 @@ this.sendAddId.emit(e)
         this.toastr.error(res.errorMessage)
       }
     });
+  } 
+  else{
+    this.validateAllFormFields(this.adduserForm);
+  }
 
   }
 
@@ -227,8 +244,9 @@ this.sendAddId.emit(e)
     this.stateList = [];
     this.countryList = [];
     this.cityList=[];
-    this.getCountry();
-    this.getState(1)
+   // this.getCountry();
+    //this.getState(1)
+    this.getCity();
   }
   editAddress(addId: any) {
 
@@ -265,10 +283,10 @@ this.sendAddId.emit(e)
       );
 
       
-      this.getCountry();
-      this.getState(1);
+    //  this.getCountry();
+    //  this.getState(1);
 
-this.getCity(res.stateId)
+this.getCity()
 
 
       //  this.deliverAddress=res;
@@ -294,11 +312,11 @@ this.getCity(res.stateId)
     });
   }
 
-  getCity(id: any) {
+  getCity() {
     let data = {
-      stateId: id
+      // stateId: id
     }
-    this._crud.getCity(data).subscribe(res => {
+    this._crud.getDeliveryCity(data).subscribe(res => {
       
       this.cityList = res;
     });

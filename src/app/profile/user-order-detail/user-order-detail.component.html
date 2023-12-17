@@ -4,14 +4,14 @@
         <nav aria-label="breadcrumb" class="align-self-center">
             <ol class="breadcrumb pb-0 mb-0">
                 <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-                <li class="breadcrumb-item"><a routerLink="/Profile">My Account</a></li>
-                <li class="breadcrumb-item"><a routerLink="/Orders">My Orders</a></li>
+                <li class="breadcrumb-item"><a routerLink="/myaccount">My Account</a></li>
+                <li class="breadcrumb-item"><a routerLink="/myaccount/orders">My Orders</a></li>
                 <li class="breadcrumb-item active" aria-current="page">OD428651524608933100</li>
             </ol>
         </nav>
         <div class="profile-page-title px-3 d-flex justify-content-between background-lightprimary py-3 my-2">
             <h5 class="h5 text-uppercase font-bold">My Orders</h5>
-            <h6 class="h6 tex-end">Hi, Praveen Kumar</h6>
+            <h6 class="h6 tex-end">{{custName}}</h6>
         </div>
         <app-profile-nav></app-profile-nav>
         <div class="userprofile-body">
@@ -19,12 +19,15 @@
                 <div class="col-md-8">
                     <div class="user-order-detail-box p-3 shadow-sm border">
                         <h6 class="font-bold pb-2">Delivery Address</h6>
-                        <p class="font-bold">Praveen Kumar</p>
-                        <p class="py-3">Flat No: G-4, Kondaveedu Enclave, Maa Villas Road, Kousalya Colony, Bachupally
-                            Bachupally,
-                            Opp: Maa Villas Hyderabad - 500090, Telangana</p>
-                        <p><span class="font-bold">Phone Number:</span><span>7995165789</span>,
-                            <span>9642123254</span>
+                        <p class="font-bold">{{order.recipientFirstName}} {{order.recipientLastName}}</p>
+                        <p class="py-3">{{order.recipientAddress1}} , {{order.recipientLandMark}}
+{{order.recipientCityName}} ,
+{{order.recipientState}}, {{order.countryName}} - 
+{{order.recipientZipCode}}
+
+                        </p>
+                        <p><span class="font-bold">Phone Number:</span><span>{{order.recipientPhone}}</span>, <span>{{order.recipientMobilePhone}}</span>
+                            
                         </p>
                     </div>
                 </div>
@@ -35,10 +38,10 @@
                             <span class="font-black">Download Invoice</span>
                             <span class="icon-download font-black icomoon"></span>
                         </a>
-                        <a href="javascript:void(0)" class="d-flex justify-content-between border-bottom py-3 w-100">
+                        <!-- <a href="javascript:void(0)" class="d-flex justify-content-between border-bottom py-3 w-100">
                             <span class="font-black">Rate & Review Product</span>
                             <span class="icon-star font-black icomoon"></span>
-                        </a>
+                        </a> -->
 
                     </div>
                 </div>
@@ -90,8 +93,12 @@
                     <div class="user-order-detail-box p-3 shadow-sm border">
                         <h6 class="font-bold pb-2">Delivery Status</h6>
                         <p class="d-flex justify-content-between border-bottom py-3">
-                            <span>Order Confirmed</span>
-                            <span class="font-bold font-green">Tue, 18th Jul</span>
+                            <span>Order Date</span>
+                            <span class="font-bold font-green">{{order?.orderDate | date}}</span>
+                        </p>
+                        <p class="d-flex justify-content-between border-bottom py-3">
+                            <span>Order Status</span>
+                            <span class="font-bold font-green">{{order?.orderStatus}}</span>
                         </p>
                         <p class="d-flex justify-content-between border-bottom py-3">
                             <span>Order Shipped</span>
@@ -99,7 +106,7 @@
                         </p>
                         <p class="d-flex justify-content-between border-bottom py-3">
                             <span>Delivered</span>
-                            <span class="font-bold font-green">Sat, 21st Jul</span>
+                            <span class="font-bold font-green">{{order?.deliveryDate | date}}</span>
                         </p>
                     </div>
                 </div>

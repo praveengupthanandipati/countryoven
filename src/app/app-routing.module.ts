@@ -6,7 +6,7 @@ import { ResetpasswordComponent } from './login/resetpassword/resetpassword.comp
 import { UserProfileComponent } from './profile/user-profile/user-profile.component';
 import { ChangepasswordComponent } from './profile/changepassword/changepassword.component';
 import { UserAddressComponent } from './profile/user-address/user-address.component';
-import { UserOrderDetailComponent } from './profile/user-order-detail/user-order-detail.component';
+
 import { UserOrdersComponent } from './profile/user-orders/user-orders.component';
 import { UserVouchersComponent } from './profile/user-vouchers/user-vouchers.component';
 import { AddressComponent } from './cart/address/address.component';
@@ -24,13 +24,13 @@ const routes: Routes = [
   {path:'Payment', component:PaymentComponent},
   {path:'checkout', component:CheckoutComponent},
   {path:'cart', loadChildren:()=>import('./cart/cart.module').then(m=>m.CartModule)},  
-  {path:'profile', loadChildren:()=>import('./profile/profile.module').then(m=>m.ProfileModule)},
-  {path:'my_profile', component:UserProfileComponent},
-  {path:'orders', component:UserOrdersComponent},
-  {path:'user-order-detail', component:UserOrderDetailComponent},
-  {path: 'user-address', component:UserAddressComponent},
-  {path: 'user-change-password', component:ChangepasswordComponent},
-  {path: 'user-vouchers', component:UserVouchersComponent},
+  {path:'myaccount', loadChildren:()=>import('./profile/profile.module').then(m=>m.ProfileModule)},
+  // {path:'my_profile', component:UserProfileComponent},
+  // {path:'orders', component:UserOrdersComponent},
+  
+  // {path: 'user-address', component:UserAddressComponent},
+  // {path: 'user-change-password', component:ChangepasswordComponent},
+  // {path: 'user-vouchers', component:UserVouchersComponent},
   {path:'', loadChildren:()=>import('./frontend/frontend.module').then(m=>m.FrontendModule)},
   {path:'', loadChildren:()=>import('./login/login.module').then(m=>m.LoginModule)},  
    

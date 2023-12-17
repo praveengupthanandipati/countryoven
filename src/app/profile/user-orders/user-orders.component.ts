@@ -75,7 +75,11 @@ export class UserOrdersComponent implements OnInit {
     this.servicehighlightedStars = Array(5).fill(false);
   }
 
-
+  gotoorders(oid:any)
+{
+  // /myaccount/orderdetails/7668
+  this.route.navigateByUrl('myaccount/orderdetails/' + oid)
+}
 
 
   getMyOrders()

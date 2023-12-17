@@ -1,10 +1,10 @@
-<app-header></app-header>
+<!-- <app-header></app-header> -->
 <section class="userProfile py-3">
     <div class="container">
         <nav aria-label="breadcrumb" class="align-self-center">
             <ol class="breadcrumb pb-0 mb-0">
                 <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-                <li class="breadcrumb-item"><a routerLink="/profile">My Account</a></li>
+                <li class="breadcrumb-item"><a routerLink="/myaccount">My Account</a></li>
                 <li class="breadcrumb-item active" aria-current="page">My Orders</li>
             </ol>
         </nav>
@@ -18,12 +18,10 @@
 
 
             <div class="user-order border p-2 mb-3" *ngFor="let order of orderDetails">
+
+
                 <div class="row">
-                    <div class="col-md-2">
-                        <a href="/User-Order-Detail">
-                            <img src="{{order.smallimageurl}}" alt="" class="img-fluid">
-                        </a>
-                    </div>
+                    <div class="col-md-2"></div>
                     <div class="col-md-10">
                         <div class="row">
                             <div class="col-md-6">
@@ -32,8 +30,7 @@
                             <div class="col-md-6">
                                 <!-- <button class="color-btn d-inline-block">Track</button> -->
 
-                                <a data-bs-toggle="modal" (click)="trackClick(order.orderId)"
-                                data-bs-target="#Trackmodal" class="color-btn d-inline-block"> Track</a>
+                                <a (click)="gotoorders(order.orderId)" class="color-btn d-inline-block"> Track</a>
 
                             </div>
                         </div>
@@ -43,7 +40,7 @@
                                 <div class="d-flex justify-content-between flex-column user-order-col">
                                     <div>
                                         <h5 class="h5">
-                                            <a href="/user-order-detail"
+                                            <a (click)="gotoorders(order.orderId)"
                                                 class="font-black font-semibold">{{order.productName}}</a>
                                         </h5>
                                         <p><small class="font-gray"><span class="icon-star"></span> Delivered on <span
@@ -73,6 +70,18 @@
                         </div>
                     </div>
                 </div>
+                <div class="row" *ngFor="let innerorder of order.myOrderProductsDtos">
+                    <div class="col-md-2">
+                        <a (click)="gotoorders(order.orderId)">
+                            <img src="{{innerorder.smallimageurl}}" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="col-md-10">
+                      
+
+                     
+                    </div>
+                </div>
             </div>
 
 
@@ -80,7 +89,7 @@
         </div>
     </div>
 </section>
-<app-footer></app-footer>
+<!-- <app-footer></app-footer> -->
 
 
 
