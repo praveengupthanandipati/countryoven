@@ -347,3 +347,9 @@ app-checkout {
     border-radius: 50px;
   }
 }
+
+header.fixed-top {
+  .topheader {
+    margin-top: -50px !important;
+  }
+}

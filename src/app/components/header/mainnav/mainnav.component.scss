@@ -31,6 +31,7 @@
   .dropdown-menu-full-width.dropdown-menu.show {
     left: inherit !important;
     margin-top: 0;
+    z-index: 9999;
 
     .main-div-links {
       padding: 5px 0;

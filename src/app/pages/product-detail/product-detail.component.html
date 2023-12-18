@@ -13,7 +13,7 @@
                 </nav>
             </div>
         </div>
-       
+
         <!-- {{timeLeft | date}} -->
         <!--/ bread crumb-->
         <!-- product detail -->
@@ -83,10 +83,11 @@
                         <div class="review-count font-bold align-self-center ps-2">150 Reviews</div>
                     </div> -->
                     <div class="price d-flex py-2">
-                        <div class="offer-price font-bold"><span
-                                class="icomoon font-bold" [class]="currencyClass"></span>{{productPrice}}</div>
+                        <div class="offer-price font-semi-bold"><span class="icomoon font-bold"
+                                [class]="currencyClass"></span>{{productPrice}}</div>
                         <div class="mrp font-semi-bold align-self-center px-2" *ngIf="productDetails?.discount">
-                            <span class=" icomoon font-bold" [class]="currencyClass"></span>{{productDetails?.productPrice}}
+                            <span class=" icomoon font-bold"
+                                [class]="currencyClass"></span>{{productDetails?.productPrice}}
                         </div>
                         <div class="offer-percentage align-self-center " *ngIf="productDetails?.discount"><small
                                 class="font-bold">({{productDetails?.discount}}% off)</small>
@@ -94,213 +95,264 @@
                         <p class="align-self-center ps-2 small">Inclusive of all taxes</p>
                     </div>
 
-                    <div *ngIf="isEggless" class="pb-2">
+                    <div *ngIf="isEggless" class="pb-2 eggless">
                         <input type="checkbox" (click)="egglesscheck($event)" [(ngModel)]="isegglessChecked" />
                         <label class="ps-2">EggLess</label>
-                        Rs:{{egglessPrice}}
+                        <span class="icomoon" [class]="currencyClass"></span>:{{egglessPrice}}
                     </div>
                     <ng-container *ngIf="stockQuantityStatus">
                         <p class="font-semibold clr-green">This Product is temporarily out of Stock</p>
                     </ng-container>
-                    
+
                     <ng-container *ngIf="!stockQuantityStatus && productDetails">
-                    <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
-                        <div class="basic-features row ">
+                        <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
+                            <div class="basic-features row ">
+                                <div class="row">
+                                    <div class="col-md-3" *ngIf="flavourOptionsDto_array?.length >0">
+                                        <div class="form-group pb-2">
+                                            <label class="align-self-center pe-2">Flavour:</label>
+                                            <select class="form-select" formControlName="flavourOptionsDto">
+
+                                                <option *ngFor="let o of flavourOptionsDto_array"
+                                                    [value]="o.optionValue">
+                                                    {{o.optionValue}}</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="invalid-feedback mt-0 d-block"
+                                            *ngIf="dynamicForm.get('flavourOptionsDto')!.invalid && dynamicForm.get('flavourOptionsDto')!.touched">
+                                            <p class="error-message">Select Flavour</p>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-3" *ngIf="weightOptionsDto_array?.length >0">
+                                        <div class="form-group pb-2">
+                                            <label class="align-self-center pe-2">Weight:</label>
+                                            <select (change)="onQtyChange($event)" class="form-select"
+                                                formControlName="weightOptionsDto" [(ngModel)]="selectedItem">
+                                                <ng-container
+                                                    *ngFor="let o of weightOptionsDto_array;let first = first">
+                                                    <option [id]="o.optionId" [ngValue]="o">{{o.optionValue}}</option>
+                                                </ng-container>
+                                            </select>
+                                        </div>
+
+                                        <div class="invalid-feedback mt-0 d-block"
+                                            *ngIf="dynamicForm.get('weightOptionsDto')!.invalid && dynamicForm.get('weightOptionsDto')!.touched">
+                                            <p class="error-message">Select Weight</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3" *ngIf="voucherOptionsDto_array?.length >0">
+                                        <div class="form-group pb-2">
+                                            <label class="align-self-center pe-2">Voucher:</label>
+                                            <select class="form-select" formControlName="voucherOptionsDto">
+                                                <option *ngFor="let o of voucherOptionsDto_array"
+                                                    [value]="o.optionValue">
+                                                    {{o.optionValue}}</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="invalid-feedback mt-0 d-block"
+                                            *ngIf="dynamicForm.get('voucherOptionsDto')!.invalid && dynamicForm.get('voucherOptionsDto')!.touched">
+                                            <p class="error-message">Select Voucher</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3" *ngIf="numberOptionsDto_array?.length >0">
+                                        <div class="form-group pb-2">
+                                            <label class="align-self-center pe-2">Number:</label>
+                                            <select class="form-select" formControlName="numberOptionsDto">
+                                                <option *ngFor="let o of numberOptionsDto_array"
+                                                    [value]="o.optionValue">
+                                                    {{o.optionValue}}</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="invalid-feedback mt-0 d-block"
+                                            *ngIf="dynamicForm.get('numberOptionsDto')!.invalid && dynamicForm.get('numberOptionsDto')!.touched">
+                                            <p class="error-message">Select Number</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="row">
-                                <div class="col-md-3" *ngIf="flavourOptionsDto_array?.length >0">
-                                    <div class="form-group pb-2">
-                                        <label class="align-self-center pe-2">Flavour:</label>
-                                        <select class="form-select" formControlName="flavourOptionsDto">
-                                            
-                                            <option *ngFor="let o of flavourOptionsDto_array" [value]="o.optionValue">
-                                                {{o.optionValue}}</option>
+
+                                <div class="col-md-4 pb-2" *ngIf="deliveryDates_array?.length">
+                                    <label>Select Delivery Date </label>
+                                    <div class="form-group d-flex p-2  background-lightprimary rounded"> <span
+                                            class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
+                                        <select class="form-select" (change)="getBindDeliveryTimes($event)"
+                                            formControlName="deliveryDates">
+                                            <option *ngFor="let o of deliveryDates_array" [value]="o.deliveryDateValue">
+                                                {{o.deliveryDateText}}</option>
                                         </select>
                                     </div>
 
-                                    <div class="invalid-feedback mt-0 d-block" *ngIf="dynamicForm.get('flavourOptionsDto')!.invalid && dynamicForm.get('flavourOptionsDto')!.touched">
-                                        <p class="error-message">Select Flavour</p>
-                                      </div>
-                                   
+
+                                    <div class="invalid-feedback mt-0 d-block"
+                                        *ngIf="dynamicForm.get('deliveryDates')!.invalid && dynamicForm.get('deliveryDates')!.touched">
+                                        <p class="error-message">Select Delivery Date</p>
+                                    </div>
                                 </div>
-                                <div class="col-md-3" *ngIf="weightOptionsDto_array?.length >0">
-                                    <div class="form-group pb-2">
-                                        <label class="align-self-center pe-2">Weight:</label>
-                                        <select (change)="onQtyChange($event)" class="form-select" formControlName="weightOptionsDto" [(ngModel)]="selectedItem">
-                                            <ng-container *ngFor="let o of weightOptionsDto_array;let first = first">
-                                                <option  [id]="o.optionId" [ngValue]="o">{{o.optionValue}}</option>
-                                            </ng-container>
+                                <div class="col-md-4 pb-2" *ngIf="deliveryDates_array?.length">
+                                    <label>Select Time</label>
+                                    <div class="form-group d-flex p-2  background-lightprimary rounded">
+                                        <span
+                                            class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
+                                        <select class="form-select" formControlName="deliveryTimes">
+                                            <option *ngFor="let o of deliveryTime" [value]="o.dtime">{{o.dtime}}
+                                            </option>
                                         </select>
                                     </div>
-                                 
-                                    <div class="invalid-feedback mt-0 d-block" *ngIf="dynamicForm.get('weightOptionsDto')!.invalid && dynamicForm.get('weightOptionsDto')!.touched">
-                                        <p class="error-message">Select Weight</p>
-                                      </div>
-                                </div>
-                                <div class="col-md-3" *ngIf="voucherOptionsDto_array?.length >0">
-                                    <div class="form-group pb-2">
-                                        <label class="align-self-center pe-2">Voucher:</label>
-                                        <select class="form-select"  formControlName="voucherOptionsDto">
-                                            <option *ngFor="let o of voucherOptionsDto_array" [value]="o.optionValue">
-                                                {{o.optionValue}}</option>
-                                        </select>
+
+                                    <div class="invalid-feedback mt-0 d-block"
+                                        *ngIf="dynamicForm.get('deliveryTimes')!.invalid && dynamicForm.get('deliveryTimes')!.touched">
+                                        <p class="error-message">Select Time</p>
                                     </div>
-                                  
-                                    <div class="invalid-feedback mt-0 d-block" *ngIf="dynamicForm.get('voucherOptionsDto')!.invalid && dynamicForm.get('voucherOptionsDto')!.touched">
-                                        <p class="error-message">Select Voucher</p>
-                                      </div>
                                 </div>
 
-                                <div class="col-md-3" *ngIf="numberOptionsDto_array?.length >0">
-                                    <div class="form-group pb-2">
-                                        <label class="align-self-center pe-2">Number:</label>
-                                        <select class="form-select" formControlName="numberOptionsDto">
-                                            <option *ngFor="let o of numberOptionsDto_array" [value]="o.optionValue">
-                                                {{o.optionValue}}</option>
-                                             </select>
+                                <div class="col-md-4" *ngIf="photoRequired">
+                                    <label>Browse a picture for photo cake</label>
+                                    <div class="form-group d-flex p-2  background-lightprimary rounded">
+                                        <span
+                                            class="icon-upload2 font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
+                                        <input type="file" formControlName="photo"
+                                            class="form-control border-0 bg-transparent"
+                                            placeholder="Browse a picture for photo cake">
                                     </div>
-                                  
-                                    <div class="invalid-feedback mt-0 d-block" *ngIf="dynamicForm.get('numberOptionsDto')!.invalid && dynamicForm.get('numberOptionsDto')!.touched">
-                                        <p class="error-message">Select Number</p>
-                                      </div>
                                 </div>
-                            </div>
-                        </div>
-                      
-                        <div class="row">
-                          
-                            <div class="col-md-4 pb-2" *ngIf="deliveryDates_array?.length">
-                                <label>Select Delivery Date </label>
-                                <div class="form-group d-flex p-2  background-lightprimary rounded"> <span
-                                        class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
-                                    <select class="form-select" (change)="getBindDeliveryTimes($event)"
-                                        formControlName="deliveryDates">
-                                        <option *ngFor="let o of deliveryDates_array" [value]="o.deliveryDateValue">
-                                            {{o.deliveryDateText}}</option>
-                                    </select>
-                                </div>
+                                <div class="col-md-12" *ngIf="messageRequired">
+                                    <div class="form-group d-flex p-2  background-lightprimary rounded mt-3">
+                                        <span
+                                            class="icon-writing font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
+                                        <input formControlName="message" [(ngModel)]="textAreaInput" type="text"
+                                            class="form-control border-0 bg-transparent"
+                                            placeholder="Message on Cake 25 Characters (Option)">
+                                    </div>
 
-                                
-                                <div class="invalid-feedback mt-0 d-block" *ngIf="dynamicForm.get('deliveryDates')!.invalid && dynamicForm.get('deliveryDates')!.touched">
-                                    <p class="error-message">Select Delivery Date</p>
-                                  </div>
-                            </div>
-                            <div class="col-md-4 pb-2" *ngIf="deliveryDates_array?.length">
-                                <label>Select Time</label>
-                                <div class="form-group d-flex p-2  background-lightprimary rounded">
+
+                                    <div
+                                        *ngIf="dynamicForm.get('message')?.hasError('maxLength') || isMaxLengthExceeded">
+                                        Maximum length is 25 characters.
+                                    </div>
+
+
+                                </div>
+                                <div class="mt-3 d-md-flex">
+                                    <!-- <a href="javascript:void(0)" class="color-btn">Add to Cart</a> -->
+                                    <button type="submit" class="color-btn border-0">Add to
+                                        Cart</button>
                                     <span
-                                        class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
-                                    <select class="form-select" formControlName="deliveryTimes">
-                                        <option *ngFor="let o of deliveryTime" [value]="o.dtime">{{o.dtime}}</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="invalid-feedback mt-0 d-block" *ngIf="dynamicForm.get('deliveryTimes')!.invalid && dynamicForm.get('deliveryTimes')!.touched">
-                                    <p class="error-message">Select Time</p>
-                                  </div>
-                            </div>
-
-                            <div class="col-md-4" *ngIf="photoRequired">
-                                <label>Browse a picture for photo cake</label>
-                                <div class="form-group d-flex p-2  background-lightprimary rounded">
-                                    <span
-                                        class="icon-upload2 font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
-                                    <input type="file" formControlName="photo"
-                                        class="form-control border-0 bg-transparent"
-                                        placeholder="Browse a picture for photo cake">
+                                        class="background-lightgreen font-black  ms-md-3 ms-1 px-2 py-2 badge rounded-pill align-self-center"><span
+                                            class="icon-circular-alarm-clock-tool d-inline-block me-1"></span>
+                                        {{displayTime}} {{sameDayBlockMessage}}</span>
                                 </div>
                             </div>
-                            <div class="col-md-12" *ngIf="messageRequired">
-                                <div class="form-group d-flex p-2  background-lightprimary rounded mt-3">
-                                    <span
-                                        class="icon-writing font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
-                                    <input formControlName="message" [(ngModel)]="textAreaInput"  type="text"
-                                        class="form-control border-0 bg-transparent" 
-                                        placeholder="Message on Cake 25 Characters (Option)">  </div>
-
-                               
-                                  <div *ngIf="dynamicForm.get('message')?.hasError('maxLength') || isMaxLengthExceeded">
-                                    Maximum length is 25 characters.
-                                  </div>
-
-
-                            </div>
-                            <div class="mt-3 d-md-flex">
-                                <!-- <a href="javascript:void(0)" class="color-btn">Add to Cart</a> -->
-                                <button  type="submit" class="color-btn border-0">Add to
-                                    Cart</button>
-                                <span
-                                    class="background-lightgreen font-black  ms-md-3 ms-1 px-2 py-2 badge rounded-pill align-self-center"><span
-                                        class="icon-circular-alarm-clock-tool d-inline-block me-1"></span> {{displayTime}} {{sameDayBlockMessage}}</span>
-                            </div>
-                        </div>
-
-
-                    </form>
-                </ng-container>
+                        </form>
+                    </ng-container>
 
                     <!-- poroduct info -->
                     <div class="product-info">
-                        <article class="pb-md-4 pb-2" *ngIf="productDetails?.description !=''">
-                            <h3 class="font-bold pb-3 mb-2">Description</h3>
-                            
-                           <span class="font-bold pb-3"> SKU :</span>{{productDetails?.productId}}  <span class="font-bold pb-3">Vendor Code : </span>{{productDetails?.venderCode}}
-                            <div class="py-2">
-                                <div [innerHtml]="productDetails?.description"></div>
+                        <!-- product info tab starts -->
+                        <div class="product-detail-tab rounded">
+                            <nav>
+                                <div class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                    <a class="nav-link active" id="nav-description-tab" data-bs-toggle="tab"
+                                        data-bs-target="#nav-description" type="button" role="tab"
+                                        aria-controls="nav-home" aria-selected="true">Description</a>
+                                    <a class="nav-link" id="nav-Information-tab" data-bs-toggle="tab"
+                                        data-bs-target="#nav-Information" type="button" role="tab"
+                                        aria-controls="nav-Information" aria-selected="false">Delivery Information</a>
+                                    <a class="nav-link" id="nav-Instructions-tab" data-bs-toggle="tab"
+                                        data-bs-target="#nav-Instructions" type="button" role="tab"
+                                        aria-controls="nav-Instructions" aria-selected="false">Care Instructions</a>
+                                </div>
+                            </nav>
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-description" role="tabpanel"
+                                    aria-labelledby="nav-description-tab">
+                                    <article class="pb-2" *ngIf="productDetails?.description !=''">
 
-                                <!-- <p class="pb-2 font-bold">Product Details</p>
-                                <ul class="list-style-desc">
-                                    <li>Cake Flavour- Truffle</li>
-                                    <li>Weight- Half Kg</li>
-                                    <li>Shape- Round</li>
-                                    <li>Serves- 4-6 People</li>
-                                    <li>Size- 6 inches in Diameter</li>
-                                </ul>
-                                <p class="py-2 font-bold">Please Note:</p>
-                                <ul class="list-style-desc">
-                                    <li>The cake stand, cutlery & accessories used in the image are only for
-                                        representation purposes. They are not delivered with the cake.</li>
-                                    <li>This cake is hand delivered in a good quality cardboard box.</li>
-                                    <li>Country of Origin: India</li>
-                                </ul> -->
-                            </div>
-                        </article>
+                                        <h5 class="font-bold pb-3 mb-2">Description</h5>
 
-                        <article class="pb-4" *ngIf="productDetails?.deliveryInformationRequired">
-                            <h3 class="font-bold pb-3 mb-2">Delivery Information</h3>
-                            <div class="py-2">
-                                <ul class="list-style-desc">
-                                    <li>Every cake we offer is handcrafted and since each chef has his/her own way of
-                                        baking and designing a cake, there might be slight variation in the product in
-                                        terms of design and shape.</li>
-                                    <li>The chosen delivery time is an estimate and depends on the availability of the
-                                        product and the destination to which you want the product to be delivered.</li>
-                                    <li>Since cakes are perishable in nature, we attempt delivery of your order only
-                                        once. The delivery cannot be redirected to any other address.</li>
-                                    <li>This product is hand delivered and will not be delivered along with courier
-                                        products.</li>
-                                    <li>Occasionally, substitutions of flavours/designs is necessary due to temporary
-                                        and/or regional unavailability issues.</li>
-                                </ul>
+                                        <span class="font-bold pb-3"> SKU :</span>{{productDetails?.productId}} <span
+                                            class="font-bold pb-3">Vendor Code : </span>{{productDetails?.venderCode}}
+                                        <div class="py-2">
+                                            <div [innerHtml]="productDetails?.description"></div>
+                                            <!-- <p class="pb-2 font-bold">Product Details</p>
+                                            <ul class="list-style-desc">
+                                                <li>Cake Flavour- Truffle</li>
+                                                <li>Weight- Half Kg</li>
+                                                <li>Shape- Round</li>
+                                                <li>Serves- 4-6 People</li>
+                                                <li>Size- 6 inches in Diameter</li>
+                                            </ul>
+                                            <p class="py-2 font-bold">Please Note:</p>
+                                            <ul class="list-style-desc">
+                                                <li>The cake stand, cutlery & accessories used in the image are only for
+                                                    representation purposes. They are not delivered with the cake.</li>
+                                                <li>This cake is hand delivered in a good quality cardboard box.</li>
+                                                <li>Country of Origin: India</li>
+                                            </ul> -->
+                                        </div>
+                                    </article>
+                                </div>
+                                <div class="tab-pane fade" id="nav-Information" role="tabpanel"
+                                    aria-labelledby="nav-Information-tab">
+                                    <article class="pb-2" *ngIf="productDetails?.deliveryInformationRequired">
+                                        <h5 class="font-bold pb-3 mb-2">Delivery Information</h5>
+                                        <div class="py-2">
+                                            <ul class="list-style-desc">
+                                                <li>Every cake we offer is handcrafted and since each chef has his/her
+                                                    own way of
+                                                    baking and designing a cake, there might be slight variation in the
+                                                    product in
+                                                    terms of design and shape.</li>
+                                                <li>The chosen delivery time is an estimate and depends on the
+                                                    availability of the
+                                                    product and the destination to which you want the product to be
+                                                    delivered.</li>
+                                                <li>Since cakes are perishable in nature, we attempt delivery of your
+                                                    order only
+                                                    once. The delivery cannot be redirected to any other address.</li>
+                                                <li>This product is hand delivered and will not be delivered along with
+                                                    courier
+                                                    products.</li>
+                                                <li>Occasionally, substitutions of flavours/designs is necessary due to
+                                                    temporary
+                                                    and/or regional unavailability issues.</li>
+                                            </ul>
+                                        </div>
+                                    </article>
+                                </div>
+                                <div class="tab-pane fade" id="nav-Instructions" role="tabpanel"
+                                    aria-labelledby="nav-Instructions-tab">
+                                    <article class="pb-2" *ngIf="productDetails?.careInstrunctionForCakeRequired">
+                                        <h5 class="font-bold pb-3 mb-2">Care Instructions</h5>
+                                        <div class="py-2">
+                                            <ul class="list-style-desc">
+                                                <li>Store cream cakes in a refrigerator. Fondant cakes should be stored
+                                                    in an air
+                                                    conditioned environment.</li>
+                                                <li>Slice and serve the cake at room temperature and make sure it is not
+                                                    exposed to
+                                                    heat.</li>
+                                                <li>Use a serrated knife to cut a fondant cake.</li>
+                                                <li>Sculptural elements and figurines may contain wire supports or
+                                                    toothpicks or
+                                                    wooden skewers for support.</li>
+                                                <li>Please check the placement of these items before serving to small
+                                                    children.</li>
+                                                <li>The cake should be consumed within 24 hours.</li>
+                                                <li>Enjoy your cake!</li>
+                                            </ul>
+                                        </div>
+                                    </article>
+                                </div>
                             </div>
-                        </article>
-
-                        <article class="pb-4" *ngIf="productDetails?.careInstrunctionForCakeRequired">
-                            <h3 class="font-bold pb-3 mb-2">Care Instructions</h3>
-                            <div class="py-2">
-                                <ul class="list-style-desc">
-                                    <li>Store cream cakes in a refrigerator. Fondant cakes should be stored in an air
-                                        conditioned environment.</li>
-                                    <li>Slice and serve the cake at room temperature and make sure it is not exposed to
-                                        heat.</li>
-                                    <li>Use a serrated knife to cut a fondant cake.</li>
-                                    <li>Sculptural elements and figurines may contain wire supports or toothpicks or
-                                        wooden skewers for support.</li>
-                                    <li>Please check the placement of these items before serving to small children.</li>
-                                    <li>The cake should be consumed within 24 hours.</li>
-                                    <li>Enjoy your cake!</li>
-                                </ul>
-                            </div>
-                        </article>
+                        </div>
+                        <!--/ product info tab ends-->
 
                         <article class="pb-4" *ngIf="productDetails?.careInstrunctionForFlowerRequired">
                             <h3 class="font-bold pb-3 mb-2">Care Instructions</h3>
@@ -323,7 +375,7 @@
                             </div> -->
                         </div>
                         <p class="font-bold small pb-3">Reviews</p>
-                   
+
                         <div class="reviews-users">
 
                             <ng-container *ngFor="let r of reviewData">
@@ -354,7 +406,7 @@
 
 
                         </div>
-                       
+
                     </div>
                     <!--/ product reviews-->
                 </div>

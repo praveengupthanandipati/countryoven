@@ -74,10 +74,19 @@
     color: map-get($colors, black);
     margin-right: 10px;
     font-size: $fsize - 2;
+    display: inline-block;
+    cursor: pointer;
 
     .icomoon {
       font-size: $fsize - 4;
       margin-right: 10px;
     }
+  }
+}
+
+.breadcrumb-item{
+  font-size:$fsize - 2;
+  a{
+    cursor: pointer;
   }
 }

@@ -3,6 +3,7 @@
 .topheader {
   background: map-get($colors, primary);
   color: map-get($colors, white);
+  @include transition(all, 0.3s ease);
 
   @include max(map-get($breakpoints, "lg")) {
     display: none;

@@ -61,10 +61,15 @@
   h1 {
     font-size: $fsize + 7;
   }
+  .price {
+    .offer-price {
+      font-size: $fsize * 3;
+    }
+  }
 }
 
 .product-info {
-  margin-top: 50px;
+  margin-top: 40px;
 
   article {
     h3 {
@@ -108,14 +113,46 @@
   }
 }
 
-
-.tagbadge{ position: absolute;
+.tagbadge {
+  position: absolute;
   top: 5px;
   left: 4px;
   font-size: 9px;
   color: #ffffff;
   padding: 3px;
-  text-transform: uppercase;}
-  .greencls{ background: green;}
-  .errorcls{ background: #ff0000;}
-  .clr-green{ color: green;}
+  text-transform: uppercase;
+}
+.greencls {
+  background: green;
+}
+.errorcls {
+  background: #ff0000;
+}
+.clr-green {
+  color: green;
+}
+
+.product-detail-tab {
+  padding: 25px;
+  background: map-get($colors, lightblue);
+
+  .nav-link {
+    text-transform: uppercase;
+    color: map-get($colors, black);
+  }
+  .nav-link.active {
+    background: map-get($colors, primary);
+    color: map-get($colors, white);
+  }
+
+  h5 {
+    border-bottom: 1px dashed map-get($colors, primary);
+  }
+}
+
+.eggless {
+  .icomoon {
+    font-size: $fsize - 3;
+    margin-left: 5px;
+  }
+}

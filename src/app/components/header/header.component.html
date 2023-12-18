@@ -1,8 +1,10 @@
-<app-topheader  *ngIf="scrollingMessage" [topList]="topList" [scrolling]="scrollingOn" [scrollingMessage]="scrollingMessage"></app-topheader>
-<app-midheader *ngIf="searchList" [searchList]="searchList" ></app-midheader>
-<app-mainnav *ngIf="categoryList && menuList" [menuList]="menuList" [categoryList]="categoryList"></app-mainnav>
+<header [ngClass]="{'fixed-top':isScrolled}">
+    <app-topheader *ngIf="scrollingMessage" [topList]="topList" [scrolling]="scrollingOn"
+        [scrollingMessage]="scrollingMessage"></app-topheader>
+    <app-midheader *ngIf="searchList" [searchList]="searchList"></app-midheader>
+    <app-mainnav *ngIf="categoryList && menuList" [menuList]="menuList" [categoryList]="categoryList"></app-mainnav>
 
+</header>
 <ng-container>
-
     <app-displylocpopup></app-displylocpopup>
 </ng-container>

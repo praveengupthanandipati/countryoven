@@ -10,9 +10,6 @@ export class ProductItemComponent implements OnInit {
   city:any;
   currency:any;
   currencyClass:any;
-
-
-
   stock:any; 
   isNewArriaval:any; 
   isEggless:any;
@@ -42,7 +39,7 @@ if(this.stock =='Out of Stock')
 }
 } else if( this.isNewArriaval)
 {
-  this.tagClass='greencls'
+  this.tagClass='bluecls'
   this.tagMsg=this.isNewArriaval
 }
 else if( this.isEggless)

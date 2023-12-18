@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CurdService } from 'src/app/services/curd.service';
+import {HostListener} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -14,19 +15,13 @@ export class HeaderComponent  implements OnInit {
   searchList:any;
   topList:any;
   constructor(private _crud:CurdService)
-  {
-  
+  {  
   }
     ngOnInit(): void {
       this.getData()
-    }
-  
-    
-    getData(): void {
-     
-      
-        this._crud.getTopHeader('').subscribe(res => {
-       
+    }     
+    getData(): void {          
+        this._crud.getTopHeader('').subscribe(res => {       
          this.scrollingMessage=res.scrollingMessage
          this.scrollingOn=res.scrollingOn
          this.categoryList=res.categoryList;
@@ -34,6 +29,12 @@ export class HeaderComponent  implements OnInit {
          this.searchList=res.searchList;
          this.topList=res.topList;
         })
+      }   
+
+      isScrolled:boolean = false;
+
+      @HostListener('window:scroll', [])
+      onWindowScroll(){
+        this.isScrolled = window.scrollY > 100;
       }
-    
   }

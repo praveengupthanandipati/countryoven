@@ -8,16 +8,16 @@ $colors: (
   lightprimary: #f9e6f0,
   lightgray: #e4e4e4,
   lightgradient: (
-    linear-gradient(270deg, #e9defa 0%, rgba(251, 252, 219, 0.5) 100%),
+    linear-gradient(270deg, #e9defa 0%, rgba(251, 252, 219, 1) 100%),
   ),
   darkgray: #594454,
-  lightblue:#ECF2FF,
-  green:green,
-  lightgreen:#D4ECDD,
-  yellow:#FFD66C,
-  darkyellow:#EFB153,
-  lightengray:#EEEEEE,
-  lightengrayborder:#C9C9C9
+  lightblue: #ecf2ff,
+  green: green,
+  lightgreen: #d4ecdd,
+  yellow: #ffd66c,
+  darkyellow: #efb153,
+  lightengray: #eeeeee,
+  lightengrayborder: #c9c9c9,
 );
 
 $fsize: 15px;
@@ -49,11 +49,11 @@ $font-weights: (
   }
 }
 
-@each $color-name, $color-value in $colors{
-  .font-#{$color-name}{
-    color:$color-value;
+@each $color-name, $color-value in $colors {
+  .font-#{$color-name} {
+    color: $color-value;
   }
-  .background-#{$color-name}{
-    background:$color-value;
+  .background-#{$color-name} {
+    background: $color-value;
   }
 }
