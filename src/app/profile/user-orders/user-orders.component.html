@@ -21,16 +21,18 @@
 
 
                 <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-10">
+
+                    <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-6">
-                                {{order.sNo}}
+
+                                <p><small class="font-gray"> Order SNo <span
+                                    class="font-green font-semibold"> {{order.sNo}} / {{order.orderId}}</span></small>
+                        </p>
+                          
                             </div>
                             <div class="col-md-6">
-                                <!-- <button class="color-btn d-inline-block">Track</button> -->
-
-                                <a (click)="gotoorders(order.orderId)" class="color-btn d-inline-block"> Track</a>
+                                <a (click)="gotoorders(order.orderId)" class="color-btn d-inline-block" style="float:right"> Track</a>
 
                             </div>
                         </div>
@@ -39,34 +41,22 @@
                             <div class="col-md-6">
                                 <div class="d-flex justify-content-between flex-column user-order-col">
                                     <div>
-                                        <h5 class="h5">
-                                            <a (click)="gotoorders(order.orderId)"
-                                                class="font-black font-semibold">{{order.productName}}</a>
-                                        </h5>
+
                                         <p><small class="font-gray"><span class="icon-star"></span> Delivered on <span
                                                     class="font-green font-semibold">{{order.deliveredDate}}</span></small>
                                         </p>
                                     </div>
+                                    <div>  <p><small class="font-gray"> Order Status <span
+                                        class="font-green font-semibold">{{order.orderStatus}}</span></small>
+                            </p></div>
                                     <div>
-                                        <p><small>{{order.orderStatus}}</small></p>
+                                       
+                                       
+                                      
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="d-flex justify-content-between flex-column user-order-col">
-                                    <div>
-                                        <div class="price py-2">
-                                            <div class="offer-price text-end font-bold"><span
-                                                    class="icon-inr icomoon"></span>{{order.subTotal}}</div>
-                                        </div>
-                                    </div>
-                                    <div class="text-end">
-                                        <a data-bs-toggle="modal" (click)="reviewClick(order.orderId)"
-                                            data-bs-target="#Reviews" class="font-blue font-semibold"><span
-                                                class="icon-star"></span> Rate & Review Product</a>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -77,9 +67,51 @@
                         </a>
                     </div>
                     <div class="col-md-10">
-                      
 
-                     
+                        <h5 class="h5">
+                            <a (click)="gotoorders(order.orderId)"
+                                class="font-black font-semibold">{{innerorder.productName}}</a>
+                        </h5>
+
+<p *ngIf="innerorder.additionalWeight"><small class="font-gray"> Weight <span
+    class="font-green font-semibold">{{innerorder.additionalWeight}}</span></small>
+</p>
+<p *ngIf="innerorder.eggless"><small class="font-gray"> Egg less <span
+    class="font-green font-semibold"> Yes</span></small>
+</p>
+
+<p *ngIf="innerorder.flavour"><small class="font-gray"> flavour <span
+    class="font-green font-semibold"> {{innerorder.flavour}}</span></small>
+</p>
+
+<p *ngIf="innerorder.photoCake"><small class="font-gray"> Photo Cake <span
+    class="font-green font-semibold"> Yes</span></small>
+</p>
+
+<p *ngIf="innerorder.message"><small class="font-gray"> Message <span
+    class="font-green font-semibold"> {{innerorder.message}}</span></small>
+</p>
+
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6">
+                        <div class="d-flex justify-content-between flex-column user-order-col">
+                            <div>
+                                <div class="price py-2">
+                                    <div class="offer-price text-end font-bold"><span
+                                            class="icon-inr icomoon"></span>{{order.totalAmount}}</div>
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <a data-bs-toggle="modal" (click)="reviewClick(order.orderId)"
+                                    data-bs-target="#Reviews" class="font-blue font-semibold"><span
+                                        class="icon-star"></span> Rate & Review Product</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -185,26 +217,26 @@
             </div>
             <div class="modal-body">
                 Track here
-               
-
-                    <div class="col-md-12">
-                     
 
 
-                     
-</div>
-
-                  
+                <div class="col-md-12">
 
 
 
 
-               
+                </div>
 
-                    <div class="modal-footer">
-                        <button data-bs-dismiss="modal" class="color-border-btn">Close</button>
-                    </div>
-                
+
+
+
+
+
+
+
+                <div class="modal-footer">
+                    <button data-bs-dismiss="modal" class="color-border-btn">Close</button>
+                </div>
+
             </div>
 
         </div>
