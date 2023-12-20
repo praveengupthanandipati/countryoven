@@ -12,6 +12,13 @@ custName: any;
   custID: any;
   orderId:any;
   order: any;
+  customerdetails:any;
+  receipentdetails:any;
+  orderdetails:any;
+  productdetails:any;
+  orderstatusdetails:any;
+  currency:any;
+  currencyClass:any;
 constructor(private route:ActivatedRoute,private _crud:CurdService, private router:Router)
 {
   const queryParams = this.route.snapshot.queryParams;
@@ -28,6 +35,17 @@ constructor(private route:ActivatedRoute,private _crud:CurdService, private rout
 }
   ngOnInit() {
    
+    this.currency=localStorage.getItem('currency');
+    if(this.currency=='INR')
+    {
+      this.currencyClass='icon-inr'
+    }
+     else if(this.currency =='USA')
+     {
+      this.currencyClass='icon-dollar-currency-symbol'
+     }
+
+
     this.route.paramMap.subscribe((params) => {
       this.orderId= params.get('id') ?? "";
    this.getTrackdetails();
@@ -47,16 +65,19 @@ getTrackdetails()
   this._crud.track(data).subscribe(res => {
 
     this.order=res
-    if (!res.isEroor) {
+    this.customerdetails=this.order.trackOrderCustomerDto;
+    this.receipentdetails=this.order.trackOrderRecipientDto;
+    this.orderdetails=this.order.trackOrderOrderDto;
+        this.productdetails=this.order.trackOrderProductDto;
+        this.orderstatusdetails=this.order.trackOrderStatusDto;
+    console.log(this.productdetails)
+   
+    // if (!res.isEroor) {
     
-      // const button: HTMLButtonElement = this.trackcloseButton.nativeElement;
-      // button.click();
-     
-
-    }
-    else {
+    // }
+    // else {
       
-    }
+    // }
    
   });
 }
