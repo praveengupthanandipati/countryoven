@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { ToastrService } from 'ngx-toastr';
 import { CurdService } from 'src/app/services/curd.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class CustomizedCakesComponent {
   selectedFile: any;
   binaryData: any;
   constructor(
+    private toastr: ToastrService,
     private meta: Meta, private title:Title,
     private _crud:CurdService, private route:ActivatedRoute, private fb: FormBuilder, private cookieService: CookieService, private router:Router)
   {
@@ -46,17 +48,8 @@ export class CustomizedCakesComponent {
     return new Blob([arrayBuffer], { type: mimeString });
   }
   onFileSelected(event: any): void {
-    this.selectedFile = event.target.files[0] as File;
-    
-    const reader = new FileReader();
-    reader.readAsDataURL(this.selectedFile);
-    reader.onload = (e) => {
-      const binaryString = e.target?.result as string;
-      this.binaryData = this.dataURItoBlob(binaryString);
-
-    };
-
-  }
+    this.selectedFile = event.target.files[0];
+      }
 
   submit(formVal:any)
   {
@@ -79,22 +72,50 @@ export class CustomizedCakesComponent {
         
     }
    
-    // let fd = formVal.value;
-
-    // let formData = new FormData();
-    // formData.append('name', fd.name);
-    // formData.append('CustomizedCakeDetails.mobile', fd.mobile);
-    // formData.append('CustomizedCakeDetails.email', fd.email);
-    // formData.append('CustomizedCakeDetails.comments', fd.comments); 
-    // formData.append('CustomizedCakeDetails.imagePath', fd.image);
-    // let obj1 = {
-    //   customizedCakeDetails: formData
-      
-    // }
+     
     this._crud.postcustomize(obj).subscribe(res => {
      
      console.log(res)
      
+
+
+let cuId=res.id;
+
+
+
+    
+   let fd = formVal.value;
+
+   let formData = new FormData();
+ formData.append('ImagePath', this.selectedFile); 
+   formData.append('Id', cuId);
+ 
+  this._crud.uploadCake(formData).subscribe(res => {
+   
+   console.log(res)
+
+   if(res.isEroor)
+   {
+     
+     this.toastr.error('Unable to proceed');
+   }
+   else
+   {
+     this.toastr.success('Your request submit sucessfuly. we will get back to you');
+     this.form.reset()
+   }
+   
+  })
+
+
+
+
+
+
+
+
+
+
     })
   }
 }

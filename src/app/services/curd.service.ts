@@ -281,6 +281,12 @@ postcustomize(obj:any):Observable<any>{
 
   
   }
+  uploadCake(obj:any):Observable<any>{
+  
+    return this.http.post(`${environment.apiUrl}/CustomizedCakes/UploadCustomizedCake`,obj)
+  
+    
+    }
 
   addReview(obj:any):Observable<any>{
   
