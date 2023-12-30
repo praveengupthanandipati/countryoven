@@ -104,7 +104,7 @@ if(localStorage.getItem('customerId'))
   {
   
   let c=localStorage.getItem('city') ;
-  
+  console.log(this.searchkeyword)
   this.route.navigateByUrl('/search_result'+  '/'+ this.searchkeyword + '/' + c)
   
    

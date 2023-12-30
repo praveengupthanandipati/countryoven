@@ -14,7 +14,7 @@
                             <div class="pe-2 w-100">
                                 <input type="text" placeholder="Search Cakes, Flowers, Gifts, etc..."
                                     [(ngModel)]="searchkeyword" class="searchinput no-border form-control-plaintext"
-                                    list="search-products">
+                                    list="search-products"  (keyup.enter)="gotoroute()">
                                 <datalist id="search-products">
                                     <option *ngFor="let i of searchList" [value]="i"></option>
                                 </datalist>

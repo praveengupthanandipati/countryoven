@@ -147,7 +147,6 @@ getnewurl(urlcity:any)
   this.getOldUrl= this.router.url;
   
   let newurl=  this.getOldUrl.replace(urlcity, this.cityname.toLowerCase());
-  
   this.location.replaceState(newurl);
 }
 
@@ -204,11 +203,27 @@ getnewurl(urlcity:any)
 
       }
       else if (params['type']) {
+console.log('enter here',  params['type'])
+
         this.cityname = params['cityname'];
         this.cityname=this.originalcityname;
         this.typeName = params['type'];
         this.PageName = params['PageName'];
-        this.getnewurl(params['cityname'])
+
+if(params['type']=='search_result')
+{
+  console.log(params['PageName'])  //Hyderabad
+  console.log(params['cityname']) //flowers
+  this.getnewurl(params['PageName'])
+}
+
+else
+{
+  this.getnewurl(params['cityname'])
+}
+
+
+        
       }
       else {
 
@@ -241,6 +256,9 @@ getnewurl(urlcity:any)
         
       }
       else if (this.typeName == 'search_result') {
+        console.log(this.typeName)
+        console.log(params['PageName'])  //Hyderabad
+        console.log(params['cityname']) //flowers
         this.type = 'SE';
         this.cityname = params['PageName'];
         this.cityname=this.originalcityname;
