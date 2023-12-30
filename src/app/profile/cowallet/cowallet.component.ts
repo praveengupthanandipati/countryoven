@@ -15,6 +15,7 @@ export class CowalletComponent implements OnInit {
   custID:any;
   cowalletdata:any;
   custName:any;
+  coWalletAmount:any;
   constructor(    private _crud:CurdService, private route:Router)
   {
 
@@ -41,7 +42,8 @@ getcowallet()
   }
   this._crud.coWalletTracking(data).subscribe(res => {
     console.log(res)
-    this.cowalletdata=res;
+    this.coWalletAmount=res.coWalletAmount;
+    this.cowalletdata=res.coWalletTrackingDetails;
    
    
   });

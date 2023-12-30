@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
@@ -22,8 +22,12 @@ userIp:any;
   addonproducts: any;
 firstlistItem:any;
 customerId:any=0;
+  viewedProducts: any;
+  cityName: string | null;
+  coutryName: string | null;
+  currencySelected: string | null;
 
-  constructor(private route:Router,  private toastr: ToastrService,private _crud:CurdService, private cookieService: CookieService){
+  constructor(private renderer: Renderer2,private route:Router,  private toastr: ToastrService,private _crud:CurdService, private cookieService: CookieService){
     this.sessionId= this.cookieService.get('sessionID')
     this.city=localStorage.getItem('city')
 this.countryname=localStorage.getItem('country');
@@ -33,7 +37,9 @@ if(localStorage.getItem('customerId'))
   this.customerId=localStorage.getItem('customerId')
 }
     this.getCarts();
-
+    this.cityName = localStorage.getItem('city')
+    this.coutryName = localStorage.getItem('country');
+    this.currencySelected = localStorage.getItem('currency');
 
     function increaseValue():void {
       const inputElement = document.getElementById('number') as HTMLInputElement;
@@ -57,6 +63,7 @@ if(localStorage.getItem('customerId'))
       this.userIp = data.ip;
        
      });
+     this.getViewedProducts();
   }
 
 
@@ -107,11 +114,20 @@ let data={
   "sno": sno,
   "Quantity":quntity
   }
-
+this.addLoader();
   this._crud.updateQuantity(data).subscribe(res => {
-  
+  this.removeLoader();
+    if(!res.isEroor)
+    {
+      
+      this.getCarts();
+
+    }
         });
 }
+
+
+
 
 
 DeleteCartItem(sno:any)
@@ -144,6 +160,14 @@ let data={
 
 
 
+addLoader()
+{
+  this.renderer.addClass(document.body, 'bodyloader');
+}
+removeLoader()
+{
+  this.renderer.removeClass(document.body, 'bodyloader');
+}
 
 addOnProducts()
 {
@@ -243,5 +267,28 @@ else
 }
 
 }
+
+
+
+
+  //getRelatedProducts
+  getViewedProducts(): void {
+    const data = {
+
+
+      "productId": "",
+      "cityName": this.cityName,
+      "countryName": this.coutryName,
+      "currencySelected": this.currencySelected,
+      "sessionId": this.sessionId
+
+    }
+    this._crud.getViewedProducts(data).subscribe(res => {
+
+      this.viewedProducts = res;
+    })
+  }
+
+
 
 }

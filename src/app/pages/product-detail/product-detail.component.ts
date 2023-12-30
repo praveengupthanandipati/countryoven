@@ -393,12 +393,7 @@ if(this.photoCakePrice >0)
     };
   }
   //getRelatedProducts
-  getViewedProducts(): void {
-
-    this._crud.getRelatedProducts('s').subscribe(res => {
-
-    })
-  }
+  
   egglesscheck(event: any) {
     const checkbox = event.target as HTMLInputElement;
 
@@ -415,7 +410,10 @@ this.isegglessChecked=true;
   }
   onQtyChange(e: any) {
     this.selectedQty = this.selectedItem.optionValue;
+    if(this.photoRequired)
+    {
 this.photoCakePrice=this.selectedItem.photoCakeAdditionalPrice;
+    }
 this.egglessPrice=this.selectedItem.egglessAddtionalPrice
 
 console.log(this.selectedItem)

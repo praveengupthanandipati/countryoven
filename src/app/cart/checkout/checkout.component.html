@@ -1,4 +1,4 @@
-<app-cartheader></app-cartheader>
+<app-header></app-header>
 <section class="cart-subpage">
     <div class="container">
      
@@ -101,10 +101,20 @@
                     </div>
                     
                     <div class="d-flex justify-content-between py-3 totalamount my-2">
-                        <h6 class="h6 font-semibold">Total Amount</h6>
-                        <p class="text-end font-semibold" *ngIf="firstlistItem && firstlistItem.grandTotal">₹ {{firstlistItem.grandTotal}}</p>
+                        <h6 class="h6 font-semibold">Amount</h6>
+                        <p class="text-end font-semibold" *ngIf="firstlistItem && firstlistItem.grandTotal">₹  {{firstlistItem.grandTotal}}</p>
                     </div>
                  
+
+                    <ng-container *ngIf="couponappled && couponData.couponType =='Instant'">
+                        <div class="d-flex justify-content-between py-2"><p>Discount Applicable Amount:</p><p class="text-end">  {{couponData.discountApplicableAmount}}</p></div>
+                        <div class="d-flex justify-content-between py-2"><p>Discount Amount:</p><p class="text-end">  {{couponData.maxDiscount}}</p></div>
+                        
+                        <div class="d-flex justify-content-between py-2"><p>Grand Amount:</p><p class="text-end">  {{totalAmount}}</p></div>
+                        
+                        
+                    </ng-container>
+
 
                 </div>
               

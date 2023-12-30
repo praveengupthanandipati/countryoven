@@ -15,6 +15,7 @@
         <app-profile-nav></app-profile-nav>
         <div class="userprofile-body">
 
+            <span class="icomoon icon-inr" ></span>{{coWalletAmount}}
 
 
 <table border="1"><thead><tr>
@@ -36,7 +37,7 @@
     <td>{{wallet.updatedDate | date}}</td>
     <td>{{wallet.orderID}}</td>
     <td>{{wallet.typeofDeposite}}</td>
-    <td>{{wallet.wallet}}</td>
+    <td><span class="icomoon icon-inr" ></span> {{wallet.wallet}}</td>
     </tr>
 </tbody>
 </table>

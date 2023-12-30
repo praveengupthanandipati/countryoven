@@ -349,6 +349,7 @@ app-checkout {
 }
 
 header.fixed-top {
+  position: static !important;
   .topheader {
     margin-top: -50px !important;
   }

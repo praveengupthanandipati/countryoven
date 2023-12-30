@@ -317,6 +317,7 @@ this.breadcatTitle=res.categoryNameCapital || res.specialPageCapital;
     this.currentPage=this.productData.pageNumber;
 this.totalPages=this.productData.totalPages
 this.totalCount=this.productData.totalCount;
+window.scrollTo(0, 0);
   })
   }
 
@@ -378,5 +379,48 @@ this.getProductDetails(this.filters, this.currentPage, this.sorder);
   capitalizeFirstLetter(word: string): string {
     return word.charAt(0).toUpperCase() + word.slice(1);
   }
+
+
+
+
+
+
+
+  getPages(): (number | null)[] {   const pagesToShow = 3; // Adjust as needed
+  const pages: (number | null)[] = [];
+
+    // Display pages around the current page
+    for (let i = Math.max(1, this.currentPage - pagesToShow); i <= Math.min(this.totalPages, this.currentPage + pagesToShow); i++) {
+      pages.push(i);
+    }
+
+    // Add ellipses if necessary
+    if (this.currentPage - pagesToShow > 2) {
+      pages.splice(1, 0, null);
+    }
+
+    if (this.currentPage + pagesToShow < this.totalPages - 1) {
+      pages.splice(pages.length - 1, 0, null);
+    }
+
+    // Add first and last pages
+    if (pages[1] !== 2) {
+      pages.unshift(1);
+    }
+
+    if (pages[pages.length - 2] !== this.totalPages - 1) {
+      pages.push(this.totalPages);
+    }
+
+  return pages;
+  }
+
+  onPageClick(page: number): void {
+   // this.pageChanged.emit(page);
+  }
+
+
+
+
 
 }

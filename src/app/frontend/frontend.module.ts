@@ -43,7 +43,7 @@ import { TrackComponent } from '../pages/track/track.component';
     // MainnavComponent,
     CategoriesComponent,
     CategoryBannersComponent,
-    ProductItemComponent,
+   // ProductItemComponent,
     CategoryItemComponent,
     ProductListComponent,
     ProductDetailComponent,

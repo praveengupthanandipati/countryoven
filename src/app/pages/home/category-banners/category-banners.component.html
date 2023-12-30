@@ -12,111 +12,19 @@
                         <figure>
                             <div class="figurediv position-relative">
                                 <img [src]="sb.imageName" class="img-fluid w-100">
-                                <!-- <img src="assets/images/categories/chocolate-cake-dessert-sweets-cake-chocolate.jpg" alt=""
-                                    class="img-fluid w-100"> -->
+                               
                             </div>
                         </figure>
                         <article class="position-absolute">
                             <h5 class="font-bold text-white pb-3">{{sb.imageText}}</h5>
                             <div class="d-none d-md-block">
-                                <a class="color-btn" href="javascript:void(0)">Shop Now</a>
+                                <a class="color-btn" href="javascript:void(0)" (click)="gotoroute(sb.type, sb.seoName)">Shop Now</a>
                             </div>
                         </article>
                     </div>
                 </div>
             </ng-container>
-            <!-- <div class="col-md-6">
-                <div class="category-banner-item position-relative">
-                    <figure>
-                        <div class="figurediv position-relative">
-                            <img src="assets/images/categories/chocolate-cake-dessert-sweets-cake-chocolate.jpg" alt=""
-                                class="img-fluid w-100">
-                        </div>
-                    </figure>
-                    <article class="position-absolute">
-                        <h5 class="font-bold text-white pb-3">Express Love Instantly with Premium Gift Cakes</h5>
-                        <div>
-                            <a class="color-btn" href="javascript:void(0)">Shop Now</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="category-banner-item position-relative">
-                    <figure>
-                        <div class="figurediv position-relative">
-                            <img src="assets/images/categories/premium-flowers.jpg" alt="" class="img-fluid w-100">
-                        </div>
-                    </figure>
-                    <article class="position-absolute">
-                        <h5 class="font-bold text-white pb-3">Premium Flowers</h5>
-                        <div>
-                            <a class="color-btn" href="javascript:void(0)">Shop Now</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="category-banner-item position-relative">
-                    <figure>
-                        <div class="figurediv position-relative">
-                            <img src="assets/images/categories/premium-lovedcakes.jpg" alt="" class="img-fluid w-100">
-                        </div>
-                    </figure>
-                    <article class="position-absolute">
-                        <h5 class="font-bold text-white pb-3">Premium Loved Gifts</h5>
-                        <div>
-                            <a class="color-btn" href="javascript:void(0)">Shop Now</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="category-banner-item position-relative">
-                    <figure>
-                        <div class="figurediv position-relative">
-                            <img src="assets/images/categories/birthdaycakes-img.jpg" alt="" class="img-fluid w-100">
-                        </div>
-                    </figure>
-                    <article class="position-absolute">
-                        <h5 class="font-bold text-white pb-3">Birthday Gifts</h5>
-                        <div>
-                            <a class="color-btn" href="javascript:void(0)">Shop Now</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="category-banner-item position-relative">
-                    <figure>
-                        <div class="figurediv position-relative">
-                            <img src="assets/images/categories/anniversary-gifts-img.jpg" alt=""
-                                class="img-fluid w-100">
-                        </div>
-                    </figure>
-                    <article class="position-absolute">
-                        <h5 class="font-bold text-white pb-3">Anniversary Gifts</h5>
-                        <div>
-                            <a class="color-btn" href="javascript:void(0)">Shop Now</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="category-banner-item position-relative">
-                    <figure>
-                        <div class="figurediv position-relative">
-                            <img src="assets/images/categories/best-sellers-img.jpg" alt="" class="img-fluid w-100">
-                        </div>
-                    </figure>
-                    <article class="position-absolute">
-                        <h5 class="font-bold text-white pb-3">Best Sellers for Most picked Gifts of All Seasons</h5>
-                        <div>
-                            <a class="color-btn" href="javascript:void(0)">Shop Now</a>
-                        </div>
-                    </article>
-                </div>
-            </div> -->
+          
         </div>
     </div>
 </section>

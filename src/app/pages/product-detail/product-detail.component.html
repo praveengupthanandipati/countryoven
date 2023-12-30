@@ -92,7 +92,7 @@
                         <div class="offer-percentage align-self-center " *ngIf="productDetails?.discount"><small
                                 class="font-bold">({{productDetails?.discount}}% off)</small>
                         </div>
-                        <p class="align-self-center ps-2 small">Inclusive of all taxes</p>
+                        <!-- <p class="align-self-center ps-2 small">Inclusive of all taxes</p> -->
                     </div>
 
                     <div *ngIf="isEggless" class="pb-2 eggless">
@@ -100,6 +100,14 @@
                         <label class="ps-2">EggLess</label>
                         <span class="icomoon" [class]="currencyClass"></span>:{{egglessPrice}}
                     </div>
+
+                    <div *ngIf="photoRequired" class="pb-2 eggless">
+                     
+                        <label class="ps-2">Photo price</label>
+                        <span class="icomoon" [class]="currencyClass"></span>:{{photoCakePrice}}
+                    </div>
+
+
                     <ng-container *ngIf="stockQuantityStatus">
                         <p class="font-semibold clr-green">This Product is temporarily out of Stock</p>
                     </ng-container>

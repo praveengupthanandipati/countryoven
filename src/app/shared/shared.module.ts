@@ -12,6 +12,7 @@ import { SetLocComponent } from '../components/set-loc/set-loc.component';
 import { DisplylocpopupComponent } from '../components/displylocpopup/displylocpopup.component';
 import { AddressListComponent } from '../address-list/address-list.component';
 import { Select2Module } from 'ng-select2-component';
+import { ProductItemComponent } from '../components/product-item/product-item.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { Select2Module } from 'ng-select2-component';
     SetLocComponent,
     DisplylocpopupComponent,
     AddressListComponent,
+    ProductItemComponent
     
 
   ],
@@ -53,6 +55,7 @@ import { Select2Module } from 'ng-select2-component';
     MainnavComponent,
     FooterComponent,
     AddressListComponent,
+    ProductItemComponent
     
    
   ],

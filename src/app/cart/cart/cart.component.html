@@ -65,7 +65,7 @@
                                     <div class="d-flex justify-content-between flex-column content-cart-col">
                                         <div class="price py-2">
                                             <div class="offer-price text-end font-bold"><span
-                                                    class="icon-inr icomoon"></span>{{CartItem.price}}
+                                                    class="icon-inr icomoon"></span>{{CartItem.subTotal}}
                                             </div>
                                             <!-- <div class="d-flex justify-content-end">
                                                 <div class="mrp font-semi-bold align-self-center px-2">
@@ -124,16 +124,23 @@
             <div class="container">
                 <div class="products-list-items">
                     <div class="row row-flex">
-                        <p>List of Product Items</p>
+                        <div class="col-md-3 col-6" *ngFor="let productitem of viewedProducts">
+                            <app-product-item [Productvalue]="productitem" class="app-product-col"></app-product-item>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
+       
+
+
         <!--/ explore products-->
     </div>
 </section>
 
-
+<app-footer></app-footer>
 <!-- addons product popup modal-->
 <div class="modal fade" id="AddonsProducts" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">

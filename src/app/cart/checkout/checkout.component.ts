@@ -30,6 +30,7 @@ addressShow:boolean=true;
 reviewShow:boolean=false;
 couponForm:any;
 totalAmount:any;
+originalTotalAmount:any;
   errorcode: boolean=false;
   errorcodemessage: any;
   couponappled: boolean=false;
@@ -91,8 +92,9 @@ this.reviewShow=true;
       this.cartItems = res;
       this.cartCount=res.length;
       this.firstlistItem = this.cartItems[0];
-
-      this.totalAmount=this.firstlistItem.grandTotal
+      this.originalTotalAmount=this.firstlistItem.grandTotal;
+      this.totalAmount=this.firstlistItem.grandTotal;
+      
     });
   }
   /* checkout */
@@ -119,7 +121,8 @@ this.reviewShow=true;
       {
         if(res.couponType =='Instant')
         {
-        this.totalAmount=this.totalAmount - res.maxDiscount
+        this.totalAmount=this.originalTotalAmount - res.maxDiscount;
+        
         }
         this.errorcode=false;
         this.couponappled=true

@@ -104,8 +104,7 @@ getViewedProducts(obj:any):Observable<any>{
   
   
 getRelatedProducts(obj:any):Observable<any>{
-  
-  return this.http.post(`${environment.apiUrl}/ProductDetails/RelatedProducts`,obj)
+    return this.http.post(`${environment.apiUrl}/ProductDetails/RelatedProducts`,obj)
   }
   
 

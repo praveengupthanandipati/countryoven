@@ -11,7 +11,6 @@ import { CookieService } from 'ngx-cookie-service';
 export class AppComponent implements OnInit{
   sessionId:any;
   ngOnInit(): void {
-    console.log('ttt')
     window.scrollTo(0, 0);
   this.router.events.subscribe((evt) => {
     if (evt instanceof NavigationEnd) {
