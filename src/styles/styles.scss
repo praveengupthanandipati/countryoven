@@ -44,11 +44,11 @@ body {
   border-radius: 5px;
 
   &:hover {
-    background: map-get($colors, lightprimary);
-    color: map-get($colors, black);
+    background: map-get($colors, primary);
+    
   }
 }
-
+.color-btn:disabled{ opacity: .3 !important;}
 .color-border-btn {
   background: map-get($colors, white);
   color: map-get($colors, primary);
@@ -354,3 +354,5 @@ header.fixed-top {
     margin-top: -50px !important;
   }
 }
+
+.msg-hint{ font-size: 12px; color: red;}

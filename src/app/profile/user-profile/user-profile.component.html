@@ -21,6 +21,19 @@
                     <input type="text" class="form-control"  [ngClass]="{'is-invalid': userForm.get('customerFirstName').invalid}" id="userName" placeholder="Write Name"
                             formControlName="customerFirstName" >
                             <label for="userName">Your Name <span class="font-red font-bold">*</span></label>
+
+                            <div class="msg-hint" *ngIf="userForm.get('customerFirstName').invalid"> Name is mandatory</div>
+                        </div>
+
+                        
+                    </div>
+                   
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control"  [ngClass]="{'is-invalid': userForm.get('phoneNo').invalid}"  id="phoneNumber" placeholder="Phone Number"
+                            formControlName="phoneNo">
+                            <label for="phoneNumber">Phone Number <span class="font-red font-bold">*</span></label>
+                            <div class="msg-hint" *ngIf="userForm.get('phoneNo').invalid"> Phone No is mandatory</div>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -30,37 +43,16 @@
                             <label for="mobileNumber">Mobile Number </label>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control"  [ngClass]="{'is-invalid': userForm.get('phoneNo').invalid}"  id="phoneNumber" placeholder="Phone Number"
-                            formControlName="phoneNo">
-                            <label for="phoneNumber">Phone Number <span class="font-red font-bold">*</span></label>
-                        </div>
-                    </div>
+                   
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
                             <input type="email" class="form-control" id="email" placeholder="Email"
                                 formControlName="email"  [ngClass]="{'is-invalid': userForm.get('email').invalid}" >
                             <label for="email">Email <span class="font-red font-bold">*</span></label>
+                            <div class="msg-hint" *ngIf="userForm.get('email').invalid"> Email is mandatory</div>
                         </div>
                     </div>
-                    <!-- <div class="col-md-4">
-                        <div class="form-floating mb-3">
-                            <input type="date" class="form-control" id="dob" placeholder="Date of Birth"
-                                value="04-08-1981">
-                            <label for="dob">Date of Birth <span class="font-red font-bold">*</span></label>
-                        </div>
-                    </div> -->
-                    <!-- <div class="col-md-4">
-                        <div class="form-floating mb-3">
-                            <select class="form-select" id="selectGender">
-                                <option selected>Male</option>
-                                <option>Female</option>
-                                <option>Others</option>
-                            </select>
-                            <label for="selectGender">Select Gender <span class="font-red font-bold">*</span> </label>
-                        </div>
-                    </div> -->
+                  
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
                             <textarea  class="form-control" id="addressline01" placeholder="Address"
@@ -68,25 +60,14 @@
                             <label for="addressline01">Address </label>
                         </div>
                     </div>
-                    <!-- <div class="col-md-4">
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="addressline02" placeholder="Address Line 02"
-                                 formControlName="Address2">
-                            <label for="addressline02">Address Line 02 </label>
-                        </div>
-                    </div> -->
+                   
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
                             <input type="number" class="form-control" id="pinCode" placeholder="Pincode" value="" formControlName="zipCode">
                             <label for="pinCode">Pincode </label>
                         </div>
                     </div>
-                    <!-- <div class="col-md-4">
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="city" placeholder="City" formControlName="cityName">
-                            <label for="city">City </label>
-                        </div>
-                    </div> -->
+                   
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
                             <select class="form-select" id="country" formControlName="countryId" (change)="onaddCountryChange($event)">
@@ -114,18 +95,7 @@
                         </div>
                     </div> 
 
-                    <!-- <div class="col-md-4">
-                        <div class="form-floating mb-3">
-                            <select class="form-select"  formControlName="cityName">
-                                <option [value]="cl.cityName" *ngFor="let cl of cityList">{{cl.cityName}}
-                                </option>
-
-                            </select>
-                            <label>City </label>
-                        </div>
-                    </div> -->
-
-
+                  
                     <div class="col-md-12">
                         <div class="pt-3">
                             <button class="text-uppercase color-border-btn">Cancel</button>

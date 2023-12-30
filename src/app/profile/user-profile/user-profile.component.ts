@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CurdService } from 'src/app/services/curd.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-profile',
@@ -18,6 +19,7 @@ export class UserProfileComponent implements OnInit{
   countryList:any;
   stateList: any;
   cityList:any;
+  msg: any;
   constructor(private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private route:Router)
   {
    if(localStorage.getItem('email'))
@@ -181,10 +183,21 @@ getState(id:any)
       {
         
         this.toastr.error(res.errorMessage);
+        this.msg=res.errorMessage;
       }
       else
       {
-        this.toastr.success(res.successMessage);
+        //this.toastr.success(res.successMessage);
+
+        this.msg=res.successMessage;
+        Swal.fire({
+          width:'350px',
+       // imageUrl: '../../assets/images/tick.png',
+        imageHeight: 80,
+        text: this.msg,  
+        showCancelButton: false,
+        confirmButtonText:'Okay'
+      })
         //this.route.navigateByUrl('/login')
       }
             });

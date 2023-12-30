@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit{
 
   ngOnInit(): void {
 this.addLoader();
-localStorage.setItem('country', 'India')
+
 //localStorage.setItem('currency', 'INR')
 
 

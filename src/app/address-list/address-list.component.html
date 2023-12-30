@@ -53,29 +53,33 @@
                         <div class="col-md-6">
                             <div class="form-floating">
                                 <input type="text" class="form-control" formControlName="recipientFirstName"
-                                    placeholder="First Name *">
+                                    placeholder="First Name *"  [ngClass]="{'is-invalid' : userForm.get('recipientFirstName')!.invalid && userForm.get('recipientFirstName')!.touched}">
                                     <label for="">First Name <span class="font-red font-bold">*</span></label>
+                                    <div class="msg-hint" *ngIf="userForm.get('recipientFirstName').invalid"> Name is mandatory</div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
                                 <input type="text" class="form-control" formControlName="recipientLastName"
-                                    placeholder="Last Name *">
+                                    placeholder="Last Name *"   [ngClass]="{'is-invalid' : userForm.get('recipientLastName')!.invalid && userForm.get('recipientLastName')!.touched}">
                                     <label for="">Last Name <span class="font-red font-bold">*</span></label>
+                                    <div class="msg-hint" *ngIf="userForm.get('recipientLastName').invalid"> Name is mandatory</div>
                             </div>
                         </div>
                       
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" formControlName="phone" class="form-control" placeholder="Phone *">
+                                <input type="text" formControlName="phone" class="form-control" placeholder="Phone *"  [ngClass]="{'is-invalid' : userForm.get('phone')!.invalid && userForm.get('phone')!.touched}">
                                 <label for="">Phone <span class="font-red font-bold">*</span></label>
+                                <div class="msg-hint" *ngIf="userForm.get('phone').invalid"> Phone is mandatory</div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
                                 <input type="text" formControlName="mobilePhone" class="form-control"
-                                    placeholder="Mobile Phone *">
+                                    placeholder="Mobile Phone *"  [ngClass]="{'is-invalid' : userForm.get('mobilePhone')!.invalid && userForm.get('mobilePhone')!.touched}">
                                     <label for="">Mobile<span class="font-red font-bold">*</span></label>
+                                    <div class="msg-hint" *ngIf="userForm.get('mobilePhone').invalid"> Mobile is mandatory</div>
                             </div>
                         </div>
 
@@ -83,16 +87,18 @@
                         <div class="col-md-12">
                             <div class="form-floating">
                                 <textarea class="form-control" formControlName="address1"
-                                    placeholder="Address*"></textarea>
+                                    placeholder="Address*"  [ngClass]="{'is-invalid' : userForm.get('address1')!.invalid && userForm.get('address1')!.touched}"></textarea>
                                     <label for="">Address <span class="font-red font-bold">*</span></label>
+                                    <div class="msg-hint" *ngIf="userForm.get('address1').invalid"> Address is mandatory</div>
                             </div>
                         </div>
                        
                         <div class="col-md-12">
                             <div class="form-floating">
                                 <input type="text" class="form-control" formControlName="landmark"
-                                    placeholder="landmark *" />
+                                    placeholder="landmark *"  [ngClass]="{'is-invalid' : userForm.get('landmark')!.invalid && userForm.get('landmark')!.touched}" />
                                     <label for="">Landmark <span class="font-red font-bold">*</span></label>
+                                    <div class="msg-hint" *ngIf="userForm.get('landmark').invalid"> Landmark is mandatory</div>
                             </div>
                         </div>
                        
@@ -125,12 +131,13 @@
 
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <select class="form-select"  formControlName="cityName">
+                                <select class="form-select"  formControlName="cityName"  [ngClass]="{'is-invalid' : userForm.get('cityName')!.invalid && userForm.get('cityName')!.touched}">
                                     <option [value]="cl.cityName" *ngFor="let cl of cityList">{{cl.cityName}}
                                     </option>
 
                                 </select>
                                 <label for="">City <span class="font-red font-bold">*</span></label>
+                                <div class="msg-hint" *ngIf="userForm.get('cityName').invalid"> City Name is mandatory</div>
                             </div>
                         </div>
 
@@ -139,8 +146,9 @@
                         <div class="col-md-6">
                             <div class="form-floating">
                                 <input type="text" formControlName="zipCode" class="form-control"
-                                    placeholder="Pin code *">
+                                    placeholder="Pin code *"   [ngClass]="{'is-invalid' : userForm.get('zipCode')!.invalid && userForm.get('zipCode')!.touched}">
                                     <label for="">Pin Code <span class="font-red font-bold">*</span></label>
+                                    <div class="msg-hint" *ngIf="userForm.get('zipCode').invalid"> Pincode is mandatory</div>
                             </div>
                         </div>
 
@@ -175,6 +183,7 @@
                                 <input [ngClass]="{'is-invalid' : adduserForm.get('addRecipientFirstName')!.invalid && adduserForm.get('addRecipientFirstName')!.touched}" type="text" class="form-control" formControlName="addRecipientFirstName"
                                     placeholder="First Name*">
                                     <label for="">First Name <span class="font-red font-bold">*</span></label>
+                                    <div class="msg-hint" *ngIf="adduserForm.get('addRecipientFirstName').invalid"> Name is mandatory</div>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -182,6 +191,7 @@
                                 <input type="text" class="form-control" formControlName="addRecipientLastName" [ngClass]="{'is-invalid' : adduserForm.get('addRecipientLastName')!.invalid && adduserForm.get('addRecipientLastName')!.touched}"
                                     placeholder="Last Name *">
                                     <label for="">Last Name <span class="font-red font-bold">*</span></label>
+                                    <div class="msg-hint" *ngIf="adduserForm.get('addRecipientLastName').invalid"> Name is mandatory</div>
                             </div>
                         </div>
                         <!-- <div class="col-md-6">
@@ -193,6 +203,7 @@
                             <div class="form-floating">
                                 <input type="text" formControlName="addPhone" class="form-control" placeholder="Phone *" [ngClass]="{'is-invalid' : adduserForm.get('addPhone')!.invalid && adduserForm.get('addPhone')!.touched}">
                                 <label for="">Phone <span class="font-red font-bold">*</span></label>
+                                <div class="msg-hint" *ngIf="adduserForm.get('addPhone').invalid"> Phone is mandatory</div>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -200,6 +211,7 @@
                                 <input type="text" formControlName="addMobilePhone" class="form-control"
                                     placeholder="Mobile Phone *" [ngClass]="{'is-invalid' : adduserForm.get('addMobilePhone')!.invalid && adduserForm.get('addMobilePhone')!.touched}">
                                     <label for="">Mobile <span class="font-red font-bold">*</span></label>
+                                    <div class="msg-hint" *ngIf="adduserForm.get('addMobilePhone').invalid"> Mobile is mandatory</div>
                             </div>
                         </div>
 
@@ -209,6 +221,7 @@
                                 <textarea class="form-control" formControlName="addaddress1" [ngClass]="{'is-invalid' : adduserForm.get('addaddress1')!.invalid && adduserForm.get('addaddress1')!.touched}"
                                     placeholder="Address *"></textarea>
                                     <label for="">Address <span class="font-red font-bold">*</span></label>
+                                    <div class="msg-hint" *ngIf="adduserForm.get('addaddress1').invalid"> Address is mandatory</div>
                             </div>
                         </div>
                      
@@ -217,6 +230,7 @@
                                 <input type="text" class="form-control" formControlName="addlandmark"
                                     placeholder="landmark *" [ngClass]="{'is-invalid' : adduserForm.get('addlandmark')!.invalid && adduserForm.get('addlandmark')!.touched}" />
                                     <label for="">Land Mark <span class="font-red font-bold">*</span></label>
+                                    <div class="msg-hint" *ngIf="adduserForm.get('addlandmark').invalid"> Landmark is mandatory</div>
                             </div>
                         </div>
                        
@@ -260,6 +274,7 @@
 
                                 </select>
                                 <label for="">City <span class="font-red font-bold">*</span></label>
+                                <div class="msg-hint" *ngIf="adduserForm.get('addcityName').invalid"> City is mandatory</div>
                             </div>
                         </div>
 
@@ -276,6 +291,7 @@
                                 <input type="text" formControlName="addzipCode" class="form-control"
                                     placeholder="Pincode *"  [ngClass]="{'is-invalid' : adduserForm.get('addzipCode')!.invalid && adduserForm.get('addzipCode')!.touched}">
                                     <label for="">Pin Code <span class="font-red font-bold">*</span></label>
+                                    <div class="msg-hint" *ngIf="adduserForm.get('addzipCode').invalid"> Pincode is mandatory</div>
                             </div>
                         </div>
 

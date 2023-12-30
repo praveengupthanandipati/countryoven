@@ -17,16 +17,16 @@ export class CartComponent implements OnInit{
  city:any;
 countryname:any;
 currency:any;
-cartItems:any;
+cartItems:any=[];
 userIp:any;
   addonproducts: any;
 firstlistItem:any;
 customerId:any=0;
-  viewedProducts: any;
+  viewedProducts: any=[];
   cityName: string | null;
   coutryName: string | null;
   currencySelected: string | null;
-
+outofdatemessage:boolean=false;
   constructor(private renderer: Renderer2,private route:Router,  private toastr: ToastrService,private _crud:CurdService, private cookieService: CookieService){
     this.sessionId= this.cookieService.get('sessionID')
     this.city=localStorage.getItem('city')
@@ -90,6 +90,14 @@ let data={
     this._crud.updateHeaderData(this.cartCount);
 
 this.firstlistItem=this.cartItems[0];
+
+this.outofdatemessage=this.cartItems.some((item: { outOfDateMessage: any; }) => item.outOfDateMessage);
+// this.cartItems.each(function(e:any)
+// {
+//   console.log(e.outOfDateMessage)
+// })
+
+
         });
 }
 
