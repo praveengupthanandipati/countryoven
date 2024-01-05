@@ -25,7 +25,8 @@ import { ProductItemComponent } from '../components/product-item/product-item.co
     SetLocComponent,
     DisplylocpopupComponent,
     AddressListComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    
     
 
   ],
@@ -55,7 +56,7 @@ import { ProductItemComponent } from '../components/product-item/product-item.co
     MainnavComponent,
     FooterComponent,
     AddressListComponent,
-    ProductItemComponent
+    ProductItemComponent 
     
    
   ],

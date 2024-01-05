@@ -45,10 +45,11 @@ body {
 
   &:hover {
     background: map-get($colors, primary);
-    
   }
 }
-.color-btn:disabled{ opacity: .3 !important;}
+.color-btn:disabled {
+  opacity: 0.3 !important;
+}
 .color-border-btn {
   background: map-get($colors, white);
   color: map-get($colors, primary);
@@ -318,23 +319,23 @@ ol {
   list-style-type: decimal !important;
 }
 
-app-checkout {
-  .address-cards {
-    border: 1px solid #ccc;
-    display: flex;
-    flex-wrap: wrap;
-
-    & .card {
-      border: 0 !important;
-      width: 33.33%;
-      padding: 10px;
-    }
-  }
-}
-
 .Noproducts {
   img {
     width: 250px;
+  }
+}
+
+.address-cards {
+  .card {
+    padding: 10px;
+    height: 100%;
+
+    .addresssection {
+      height: 60%;
+    }
+    p {
+      font-size: $fsize - 1;
+    }
   }
 }
 
@@ -355,4 +356,54 @@ header.fixed-top {
   }
 }
 
-.msg-hint{ font-size: 12px; color: red;}
+.msg-hint {
+  font-size: 12px;
+  color: red;
+}
+.stickyribbon {
+  position: fixed;
+  top: 40%;
+  right: 0;
+  z-index: 999;
+  @include box-shadow(0, 0, 10px, map-get($colors, gray));
+
+  .wapp {
+    background: #29a71a;
+  }
+
+  .call-customercare {
+    background: #0081fd;
+  }
+  .msg {
+    background: #f5c100;
+  }
+  .notifications {
+    background: #d966a4;
+  }
+
+  .sticky-ribbon-link {
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: map-get($colors, white);
+    font-size: $fsize + 10;
+    position: relative;
+
+    .number-count {
+      background: #c51a76;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      font-size: $fsize - 5;
+      text-align: center;
+      line-height: 17px;
+      border-radius: 50px;
+      font-weight: bold;
+      border: 1px solid map-get($colors, white);
+    }
+  }
+}

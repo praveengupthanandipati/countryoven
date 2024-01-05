@@ -5,6 +5,7 @@
   .top-footer {
     background: map-get($colors, primary);
     padding: 10px 0;
+    margin-top: 50px;
 
     .top-footer-col {
       color: map-get($colors, white);
@@ -50,7 +51,7 @@
 
     .parent-links {
       flex-wrap: no-wrap;
-      justify-content: space-between;      
+      justify-content: space-between;
 
       @include max(map-get($breakpoints, "md")) {
         flex-wrap: wrap;

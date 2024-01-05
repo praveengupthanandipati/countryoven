@@ -48,7 +48,36 @@
   }
 }
 
-.products-list{ display:flex; flex-wrap: wrap;}
-  .app-product-item{width: 33.33%;}
+.app-product-item {
+  .item-title {
+    p {
+      height: 50px;
+      a {
+        font-size: $fsize - 2;
+      }
+    }
+  }
+  .product-item-figure {
+    img {
+      height: 260px;
+    }
+  }
+}
 
-  .width100p{ width:100%}
+.width100p {
+  width: 100%;
+}
+
+.list-style-desc {
+  li {
+    font-size: $fsize - 1;
+    padding: 2px 0;
+  }
+}
+
+.AddonsProducts {
+  .modal-body {
+    height: 80vh;
+    overflow-y: auto;
+  }
+}

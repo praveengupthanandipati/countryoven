@@ -10,18 +10,18 @@
                         <span class="icon-route h1 font-primary"></span>
                         <div class="ps-3 align-self-center">
                             <h6 class="font-gray">Deliver to: <span
-                                class="font-black d-inline-block ps-3 font-semibold">{{city}}</span>
-                        </h6>
+                                    class="font-black d-inline-block ps-3 font-semibold">{{city}}</span>
+                            </h6>
                         </div>
                     </div>
-                  
+
                 </div>
-               
+
                 <div class="cart-product-item border p-2 mb-3" *ngFor="let CartItem of cartItems; let i = index">
                     <div class="row">
-<div class="col-12">
-    {{CartItem.outOfDateMessage}}
-</div>
+                        <div class="col-12">
+                            {{CartItem.outOfDateMessage}}
+                        </div>
 
                         <div class="col-md-3">
                             <a href="javascript:void(0)">
@@ -37,29 +37,36 @@
                                                     class="font-black">{{CartItem.productName}}</a>
                                             </h5>
                                             <div class="btnsec">
-                                                <div class="value-button" id="decrease" (click)="decrementQuantity(i)"
+                                                <div class="value-button " id="decrease" (click)="decrementQuantity(i)"
                                                     value="Decrease Value">-</div>
                                                 <input type="number" id="number" min="0"
                                                     [(ngModel)]="CartItem.quantity" />
                                                 <div class="value-button" id="increase" value="Increase Value"
                                                     (click)="incrementQuantity(i)">+</div>
-                                                <a (click)="updateCartItem(CartItem.sNo, CartItem.quantity)">Update</a>
+                                                <a (click)="updateCartItem(CartItem.sNo, CartItem.quantity)"
+                                                    class="btn small btn-primary btn-sm ms-2">Update</a>
                                             </div>
-                                            <ul class="list-style-desc">
-                                         
-                                            <li *ngIf="CartItem.additionalWeight">Weight	:	{{CartItem.additionalWeight}}</li>
-                                           <li *ngIf="CartItem.egglessPrice"> Eggless	:	{{CartItem.egglessPrice}}</li>
-                                            <li *ngIf="CartItem.productId">Product Id	:	{{CartItem.productId}}</li>
-                                            <li *ngIf="CartItem.flavour">Flavour : {{CartItem.flavour}}</li>
-                                            <li *ngIf="CartItem.additionalNumber">Number : {{CartItem.additionalNumber}}</li>
-                                            <li *ngIf="CartItem.message">Message: {{CartItem.message}}</li>
+                                            <ul class="list-style-desc mt-2">
+                                                <li *ngIf="CartItem.additionalWeight">Weight :
+                                                    <strong>{{CartItem.additionalWeight}}</strong>
+                                                </li>
+                                                <li *ngIf="CartItem.egglessPrice"> Eggless :
+                                                    <strong>{{CartItem.egglessPrice}}</strong>
+                                                </li>
+                                                <li *ngIf="CartItem.productId">Product Id :
+                                                    <strong>{{CartItem.productId}}</strong>
+                                                </li>
+                                                <li *ngIf="CartItem.flavour">Flavour :
+                                                    <strong>{{CartItem.flavour}}</strong>
+                                                </li>
+                                                <li *ngIf="CartItem.additionalNumber">Number :
+                                                    <strong>{{CartItem.additionalNumber}}</strong>
+                                                </li>
+                                                <li *ngIf="CartItem.message">Message:
+                                                    <strong>{{CartItem.message}}</strong>
+                                                </li>
                                             </ul>
-                                            
-
-
-
                                         </div>
-                                      
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -68,7 +75,7 @@
                                             <div class="offer-price text-end font-bold"><span
                                                     class="icon-inr icomoon"></span>{{CartItem.subTotal}}
                                             </div>
-                                         
+
                                         </div>
                                         <div class="text-end">
                                             <a href="javascript:void(0)" (click)="DeleteCartItem(CartItem.sNo)"><span
@@ -83,37 +90,41 @@
                 </div>
             </div>
             <div class="col-md-4">
-              
+
                 <div class="PriceDetails p-2 border my-3">
                     <h6 class="h6 font-black font-medium align-self-center pb-3">Price Details</h6>
                     <div class="d-flex justify-content-between py-2">
                         <p>MRP Details</p>
-                        <p class="text-end" *ngIf="firstlistItem">₹ {{firstlistItem?.totalAmount}}</p>
+                        <p class="text-end" *ngIf="firstlistItem"><strong>₹ {{firstlistItem?.totalAmount}}</strong></p>
                     </div>
 
                     <div class="d-flex justify-content-between py-2">
                         <p>Delivery Charges</p>
-                        <p class="text-end font-green"> <ng-container *ngIf="firstlistItem?.deliveryCharges ==0">FREE</ng-container><ng-container *ngIf="firstlistItem?.deliveryCharges >0">{{firstlistItem?.deliveryCharges}}</ng-container>  </p>
+                        <p class="text-end font-green"> <ng-container
+                                *ngIf="firstlistItem?.deliveryCharges ==0">FREE</ng-container><ng-container
+                                *ngIf="firstlistItem?.deliveryCharges >0">{{firstlistItem?.deliveryCharges}}</ng-container>
+                        </p>
                     </div>
-                    
+
                     <div class="d-flex justify-content-between py-3 totalamount my-2">
                         <h6 class="h6 font-semibold">Total Amount</h6>
                         <p class="text-end font-semibold">₹ {{firstlistItem?.grandTotal}}</p>
                     </div>
-                    <button [disabled]="outofdatemessage" class="color-btn d-block width100p" data-bs-toggle="modal"
-                        data-bs-target="#AddonsProducts" (click)="addOnProducts()">Continue to Checkout</button>
+                    <button [disabled]="outofdatemessage" class="color-btn d-block width100p border-0"
+                        data-bs-toggle="modal" data-bs-target="#AddonsProducts" (click)="addOnProducts()">Continue to
+                        Checkout</button>
 
                 </div>
                 <a routerLink="/" class="color-border-btn d-block ">Continue Shopping</a>
             </div>
         </div>
 
-        <div class="row"  *ngIf="cartItems.length == 0">
+        <div class="row" *ngIf="cartItems.length == 0">
             <div class="col-12"> No items found Please <a routerLink="/" class="">Continue Shopping</a>
-                
+
             </div>
         </div>
-        
+
         <div class="explore-products" *ngIf="viewedProducts.length">
             <h1 class="h5 font-medium pb-3">Explore Addons Along with your order</h1>
             <div class="container">
@@ -126,20 +137,15 @@
                 </div>
             </div>
         </div>
-
-
-       
-
-
         <!--/ explore products-->
     </div>
 </section>
 
 <app-footer></app-footer>
 <!-- addons product popup modal-->
-<div class="modal fade" id="AddonsProducts" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+<div class="modal fade AddonsProducts" id="AddonsProducts" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-fullscreen">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">Addons Products to Cart</h5>
@@ -149,7 +155,7 @@
                 <section class="products-list">
                     <div class="row">
                         <div class="col-lg-3" *ngFor="let Productvalue of addonproducts">
-                            <div class="app-product-item w-100">
+                            <div class="app-product-item">
                                 <figure class="product-item-figure">
                                     <a>
                                         <!-- hyderabad/send-online/ -->
@@ -157,16 +163,18 @@
                                     </a>
                                 </figure>
                                 <div class="item-title p-2 p-md-3 bg-white">
-                                    <h5>
+                                    <p>
                                         <a href="javascript:void(0)"
                                             class="font-semibold font-black">{{Productvalue.productName}}</a>
-                                    </h5>
+                                    </p>
                                     <div class="price d-flex py-2 border-bottom">
                                         <div class="offer-price font-bold"><span
                                                 class="icon-inr icomoon font-bold"></span>{{Productvalue.price}}</div>
                                     </div>
                                     <div class="d-flex justify-content-between pt-2 item-footer">
-                                        <button type="button" class="color-btn border-0" (click)="addOnProductsupdateCart(Productvalue.addOnProductId)">Add to Cart</button>
+                                        <button type="button" class="color-btn border-0"
+                                            (click)="addOnProductsupdateCart(Productvalue.addOnProductId)">Add to
+                                            Cart</button>
                                     </div>
                                 </div>
                             </div>
@@ -179,7 +187,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="color-btn border-0" data-bs-dismiss="modal">Go to Cart</button>
-                <button type="button" class="color-border-btn" data-bs-dismiss="modal" (click)="gotocheckout()">Proceed to Checkout</button>
+                <button type="button" class="color-border-btn" data-bs-dismiss="modal" (click)="gotocheckout()">Proceed
+                    to Checkout</button>
             </div>
         </div>
     </div>

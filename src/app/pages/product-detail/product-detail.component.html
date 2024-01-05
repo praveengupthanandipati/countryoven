@@ -1,5 +1,5 @@
 <section class="subpage">
-    <div class="custom-container">
+    <div class="container">
         <!-- bread crumb-->
         <div class="row">
             <div class="col-md-12">
@@ -19,7 +19,7 @@
         <!-- product detail -->
         <div class="row">
             <!-- left -->
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <div class="sticky-top">
                     <!-- carousel -->
                     <div *ngIf="isMultipleImages" id="carouselExampleDark"
@@ -74,7 +74,7 @@
             </div>
             <!--/ left -->
             <!-- right -->
-            <div class="col-md-8">
+            <div class="col-md-7">
                 <div class="product-detail-right">
                     <h1 class="font-semibold">{{productDetails?.productName}}</h1>
                     <!-- <div class="rating-title d-flex py-3">
@@ -102,7 +102,7 @@
                     </div>
 
                     <div *ngIf="photoRequired" class="pb-2 eggless">
-                     
+
                         <label class="ps-2">Photo price</label>
                         <span class="icomoon" [class]="currencyClass"></span>:{{photoCakePrice}}
                     </div>
@@ -266,15 +266,18 @@
                         <div class="product-detail-tab rounded">
                             <nav>
                                 <div class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                                    <a class="nav-link active" id="nav-description-tab" data-bs-toggle="tab"
+                                    <a class="nav-link active border me-2" id="nav-description-tab" data-bs-toggle="tab"
                                         data-bs-target="#nav-description" type="button" role="tab"
                                         aria-controls="nav-home" aria-selected="true">Description</a>
-                                    <a class="nav-link" id="nav-Information-tab" data-bs-toggle="tab"
+                                    <a class="nav-link border me-2" id="nav-Information-tab" data-bs-toggle="tab"
                                         data-bs-target="#nav-Information" type="button" role="tab"
                                         aria-controls="nav-Information" aria-selected="false">Delivery Information</a>
-                                    <a class="nav-link" id="nav-Instructions-tab" data-bs-toggle="tab"
+                                    <a class="nav-link border" id="nav-Instructions-tab" data-bs-toggle="tab"
                                         data-bs-target="#nav-Instructions" type="button" role="tab"
                                         aria-controls="nav-Instructions" aria-selected="false">Care Instructions</a>
+                                    <a class="nav-link border" id="nav-review-tab" data-bs-toggle="tab"
+                                        data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review"
+                                        aria-selected="false">Product Reviews</a>
                                 </div>
                             </nav>
                             <div class="tab-content" id="nav-tabContent">
@@ -358,6 +361,51 @@
                                         </div>
                                     </article>
                                 </div>
+                                <div class="tab-pane fade" id="nav-review" role="tabpanel"
+                                    aria-labelledby="nav-review-tab">
+
+                                    <!-- product reviews -->
+                                    <div class="product-reviews">
+                                        <div class="d-flex justify-content-between mb-3 heading py-3">
+                                            <h3 class="font-bold align-self-center">Product Reviews</h3>
+                                            <!-- <div class="text-end align-self-center">
+                                <a href="javascript:void(0)" class="text-blue font-bold small">View all Reviews</a>
+                                <a href="javascript:void(0)" class="color-btn d-inline-block ms-3">Write Review</a>
+                            </div> -->
+                                        </div>
+                                        <p class="font-bold small pb-3">Reviews</p>
+
+                                        <div class="reviews-users">
+
+                                            <ng-container *ngFor="let r of reviewData">
+
+                                                <div class="user-review-item p-3 border rounded mb-3">
+                                                    <div class="d-flex justify-content-between">
+                                                        <div class="rating-stars">
+
+                                                            <span *ngFor="let number of [0,1,2,3,4]; index as i"
+                                                                class="icon-star "
+                                                                [class.font-primary]="r.avgReviewRate > i"></span>
+
+
+                                                        </div>
+                                                        <span class="small">{{r.reviewDate}}</span>
+                                                    </div>
+                                                    <div class="py-2">
+                                                        <h6 class="font-bold h6 pb-2">{{r.title}}</h6>
+                                                        <p class="font-gray pb-2">{{r.review}}</p>
+                                                        <p><span class="font-bold">{{r.customerName}}</span><small
+                                                                class="small d-inline-block ps-2"><i
+                                                                    class="bi bi-check-lg"></i>
+                                                                Invoice
+                                                                No:{{r.orderId}}</small></p>
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                    <!--/ product reviews-->
+                                </div>
                             </div>
                         </div>
                         <!--/ product info tab ends-->
@@ -373,50 +421,7 @@
                     </div>
                     <!--/product info-->
 
-                    <!-- product reviews -->
-                    <div class="product-reviews">
-                        <div class="d-flex justify-content-between mb-3 heading py-3">
-                            <h3 class="font-bold align-self-center">Product Reviews</h3>
-                            <!-- <div class="text-end align-self-center">
-                                <a href="javascript:void(0)" class="text-blue font-bold small">View all Reviews</a>
-                                <a href="javascript:void(0)" class="color-btn d-inline-block ms-3">Write Review</a>
-                            </div> -->
-                        </div>
-                        <p class="font-bold small pb-3">Reviews</p>
 
-                        <div class="reviews-users">
-
-                            <ng-container *ngFor="let r of reviewData">
-
-                                <div class="user-review-item p-3 border rounded mb-3">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="rating-stars">
-
-                                            <span *ngFor="let number of [0,1,2,3,4]; index as i" class="icon-star "
-                                                [class.font-primary]="r.avgReviewRate > i"></span>
-
-
-                                        </div>
-                                        <span class="small">{{r.reviewDate}}</span>
-                                    </div>
-                                    <div class="py-2">
-                                        <h6 class="font-bold h6 pb-2">{{r.title}}</h6>
-                                        <p class="font-gray pb-2">{{r.review}}</p>
-                                        <p><span class="font-bold">{{r.customerName}}</span><small
-                                                class="small d-inline-block ps-2"><i class="bi bi-check-lg"></i>
-                                                Invoice
-                                                No:{{r.orderId}}</small></p>
-                                    </div>
-                                </div>
-
-                            </ng-container>
-
-
-
-                        </div>
-
-                    </div>
-                    <!--/ product reviews-->
                 </div>
             </div>
             <!--/ right -->
