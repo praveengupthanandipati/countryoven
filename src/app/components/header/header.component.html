@@ -1,4 +1,4 @@
-<header [ngClass]="{'fixed-top':isScrolled}">
+<header>
     <app-topheader *ngIf="scrollingMessage" [topList]="topList" [scrolling]="scrollingOn"
         [scrollingMessage]="scrollingMessage"></app-topheader>
     <app-midheader *ngIf="searchList" [searchList]="searchList"></app-midheader>

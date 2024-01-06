@@ -10,6 +10,7 @@ import { CurdService } from 'src/app/services/curd.service';
 })
 export class AddressListComponent implements OnInit {
   deliverAddress: any;
+  originalAddress:any;
   isLogend: boolean = false;
   email: any;
   custID: any;
@@ -20,7 +21,8 @@ export class AddressListComponent implements OnInit {
   stateList: any;
   selectedaddress:any;
   addressId: any;
-
+  submitted:boolean=false;
+  addsubmitted:boolean=false;
 
   @ViewChild('AddButton')
   AddButton!: ElementRef;
@@ -34,6 +36,7 @@ export class AddressListComponent implements OnInit {
   @Input('selectedAddressId') selectedAddressId:any;
   @Output() sendAddId:any= new EventEmitter<any>();
 isCheckout:boolean=false;
+addressidobj:any=[];
   constructor(private renderer: Renderer2, private _crud: CurdService, private fb: FormBuilder, private el: ElementRef, private toastr: ToastrService) {
 
 
@@ -47,7 +50,7 @@ isCheckout:boolean=false;
     }
 
     this.userForm = this.fb.group({
-      recipientFirstName: ['', Validators.required],
+      recipientFirstName: ['',  [Validators.required, Validators.minLength(3)]],
       recipientLastName: ['', Validators.required],
       email: [''],
       phone: ['', Validators.required],
@@ -58,12 +61,12 @@ isCheckout:boolean=false;
       cityName: [''],
       stateId: ['1479'],
     //  countryId: ['', Validators.required],
-      zipCode: ['', Validators.required],
+      zipCode: ['',  [Validators.required, Validators.minLength(6)]],
     });
 
 
     this.adduserForm = this.fb.group({
-      addRecipientFirstName: ['', Validators.required],
+      addRecipientFirstName: ['', [Validators.required, Validators.minLength(3)]],
       addRecipientLastName: ['', Validators.required],
       addEmail: [''],
       addPhone: ['', Validators.required],
@@ -74,7 +77,7 @@ isCheckout:boolean=false;
       addcityName: ['', Validators.required],
       addstateId: ['1479'],
     //  addcountryId: ['', Validators.required],
-      addzipCode: ['', Validators.required],
+      addzipCode: ['',  [Validators.required, Validators.minLength(6)]],
     });
 
   }
@@ -145,6 +148,7 @@ this.sendAddId.emit(e)
 
 
   onAddSubmit() {
+    this.addsubmitted=true;
 if(this.adduserForm.valid)
 {
     
@@ -191,7 +195,10 @@ if(this.adduserForm.valid)
 
 
   onSubmit() {
-    
+this.submitted=true;
+    if(this.userForm.valid)
+    {
+
     let data = {
       "addressId": this.addressId,
       "addressBookDetails": {
@@ -229,14 +236,24 @@ if(this.adduserForm.valid)
       }
     });
 
+  }
+  }
 
+  onOptionChange(e:any)
+  {
+console.log(e.target.value)
+this.deliverAddress= this.filterAddressesByAddressId(e.target.value);
+console.log(this.deliverAddress)
   }
 
   getAddressByCustomerId() {
     let data = { "customerId": this.custID }
     this._crud.getAddressByCustomerId(data).subscribe(res => {
-      
+      this.originalAddress=res;
       this.deliverAddress = res;
+
+
+
     });
   }
   addNewAddress() {
@@ -262,6 +279,8 @@ if(this.adduserForm.valid)
     let data = { "AddressId": id }
     this._crud.getAddressByAddressId(data).subscribe(res => {
       
+
+
 
 
       this.userForm.patchValue(
@@ -343,4 +362,34 @@ this.getCity()
       //  this.deliverAddress=res;
     });
   }
+
+
+  // filterAddressesByAddressId(addressIdToFilter: any) {
+  //   return this.originalAddress.filter((address: { addressId: any; }) =>
+  //    {
+    
+  //     address.addressId == addressIdToFilter
+  //    }
+     
+  //    );
+  // }
+
+  filterAddressesByAddressId(addressIdToFilter: any) {
+    
+    if(addressIdToFilter == 'all')
+    {
+      
+return this.originalAddress
+    }
+    else
+    {
+      
+    return this.originalAddress.filter((address: { addressId: any; }) => {
+      return address.addressId === parseInt(addressIdToFilter);
+    });
+  }
+  }
+
+
+
 }

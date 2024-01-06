@@ -9,26 +9,26 @@
                         <input  [ngClass]="{'is-invalid' : userForm.get('usrname')!.invalid && userForm.get('usrname')!.touched}" type="text" class="form-control" id="usrname" placeholder="Enter your Name" formControlName="usrname">
                         <label for="usrname">Enter your Name <span class="font-red font-bold">*</span></label>
                     </div>
-                    <div *ngIf="userForm.get('usrname')!.invalid && userForm.get('usrname')!.touched" class="invalid-feedback mt-0 d-block">
-                        Enter Name
+                    <div *ngIf="submitted && userForm.get('usrname')!.invalid" class="invalid-feedback mt-0 d-block">
+                        Name must be at least 3 characters long
                     </div>
                     <div class="form-floating mb-3">
                         <input  [ngClass]="{'is-invalid' : userForm.get('useremail')!.invalid && userForm.get('useremail')!.touched}" type="text" class="form-control" id="useremail" placeholder="Enter your Email" formControlName="useremail">
                         <label for="useremail">Email Address <span class="font-red font-bold">*</span></label>
                     </div>
-                    <div *ngIf="userForm.get('useremail')!.invalid && userForm.get('useremail')!.touched" class="invalid-feedback mt-0 d-block">
+                    <div *ngIf="submitted && userForm.get('useremail')!.invalid " class="invalid-feedback mt-0 d-block">
                         Enter User Email
                     </div>
                     <div class="form-floating mb-3">
                         <input  [ngClass]="{'is-invalid' : userForm.get('userphone')!.invalid && userForm.get('userphone')!.touched}" type="number" class="form-control" id="userphone" placeholder="Enter your Phone Number"  formControlName="userphone">
                         <label for="userphone">Mobile Number <span class="font-red font-bold">*</span></label>
                     </div>
-                    <div *ngIf="userForm.get('userphone')!.invalid && userForm.get('userphone')!.touched" class="invalid-feedback mt-0 d-block">
+                    <div *ngIf="submitted && userForm.get('userphone')!.invalid " class="invalid-feedback mt-0 d-block">
                         Enter Mobile Number
                     </div>  
-                    <button type="submit" [disabled]="!userForm.valid" class="btn color-btn w-100 text-center font-bold">Verify Phone Number</button>
+                    <button type="submit"  class="btn color-btn w-100 text-center font-bold">Continue</button>
                     <p class="py-3 text-center">Already have an account? <a routerLink="/login"
-                            class="font-primary font-bold">Sign in</a></p>
+                            class="font-primary font-bold">Sign In</a></p>
                 </form>
             </div>
         </div>

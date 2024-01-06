@@ -7,13 +7,13 @@
                 <form class="login-form pt-3" [formGroup]="userForm" (ngSubmit)="onSubmit()">
                     <div class="input-group mb-3">
                         <div class="form-floating">
-                            <input type="text" class="form-control" [ngClass]="{'is-invalid' : userForm.get('usrname')!.invalid && userForm.get('usrname')!.touched}" id="username" placeholder="Username"
+                            <input type="text" class="form-control" [ngClass]="{'is-invalid' : userForm.get('usrname')!.invalid && userForm.get('usrname')!.touched}" id="email" placeholder="Enter your Email Address"
                                 formControlName="usrname">
-                            <label for="username">Username <span class="font-red font-bold">*</span></label>
+                            <label for="email">Enter your Email Address <span class="font-red font-bold">*</span></label>
                         </div>
                        
-                        <div *ngIf="userForm.get('usrname')!.invalid && userForm.get('usrname')!.touched" class="invalid-feedback mt-0 d-block">
-                            Enter Valid User Name
+                        <div *ngIf="submitted &&  userForm.get('usrname')!.invalid" class="invalid-feedback mt-0 d-block">
+                            Enter Valid Email
                         </div>
                     </div>
                     <div class="input-group mb-3">
@@ -22,15 +22,17 @@
                                 formControlName="pwd"  [ngClass]="{'is-invalid' : userForm.get('pwd')!.invalid && userForm.get('pwd')!.touched}">
                             <label for="password">Password <span class="font-red font-bold">*</span></label>
                         </div>
-                        <div *ngIf="userForm.get('pwd')!.invalid && userForm.get('pwd')!.touched" class="invalid-feedback mt-0 d-block">
+                        <div *ngIf="submitted && userForm.get('pwd')!.invalid " class="invalid-feedback mt-0 d-block">
                             Enter Password
                         </div>
                     </div>
+                    <p class="invalid-feedback mt-0 d-block" *ngIf="errorMsgstatus">{{errorMsg}}</p>
+                   
                     <p class="py-3 text-center">Forgot Password? <a routerLink="/reset"
                             class="font-primary font-bold">Reset Now</a></p>
                     <button class="btn color-btn w-100 text-center font-bold" type="submit">Login</button>
                     <p class="py-3 text-center">Don’t have an account? <a routerLink="/signup"
-                            class="font-primary font-bold">Sign up</a></p>
+                            class="font-primary font-bold">Sign Up</a></p>
                 </form>
             </div>
         </div>

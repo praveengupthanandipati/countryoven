@@ -20,6 +20,7 @@ export class UserProfileComponent implements OnInit{
   stateList: any;
   cityList:any;
   msg: any;
+  submitted:boolean=false;
   constructor(private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private route:Router)
   {
    if(localStorage.getItem('email'))
@@ -51,8 +52,8 @@ export class UserProfileComponent implements OnInit{
 
    this.userForm = this.fb.group({
    
-    customerFirstName: ['', Validators.required],
-    customerIp:  ['', Validators.required],
+    customerFirstName: ['', [Validators.required,, Validators.minLength(3)]],
+    customerIp:  [''],
     email: [{ value: '', disabled: true }],
     MobilePhone:  [''],  
     phoneNo:  ['', Validators.required],
@@ -160,6 +161,8 @@ getState(id:any)
 
   onSubmit()
   { 
+this.submitted=true;
+
     if(this.userForm.valid)
     {
       let data={

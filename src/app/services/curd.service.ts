@@ -191,6 +191,10 @@ login(obj:any):Observable<any>{
     return this.http.post(`${environment.apiUrl}/customer/Login`,obj)
     }
   
+    logout(obj:any):Observable<any>{
+return this.http.post(`${environment.apiUrl}/customer/Logout`,obj)
+
+    }
   
 
 forgotpwd(obj:any):Observable<any>{

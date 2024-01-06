@@ -124,7 +124,34 @@ if(localStorage.getItem('customerId'))
     localStorage.removeItem('custName');
     localStorage.removeItem('customerId');
     localStorage.removeItem('email');
-    this.route.navigateByUrl('/')
-    window.location.reload();
+    
+    let data={
+   
+    
+    
+      "customerId": this.custID,
+      "SessionId":this.sessionId
+   
+   
+    }
+    this._curdService.logout(data).subscribe(res => {
+      window.location.reload();
+    });
+    
+    
+    
+    
+    // this.route.navigateByUrl('/')
+
+
+
+
+
+    // window.location.reload();
   }
+
+
+
+
+
 }

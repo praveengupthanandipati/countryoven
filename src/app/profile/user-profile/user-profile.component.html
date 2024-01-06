@@ -18,11 +18,11 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
-                    <input type="text" class="form-control"  [ngClass]="{'is-invalid': userForm.get('customerFirstName').invalid}" id="userName" placeholder="Write Name"
+                    <input type="text" class="form-control"  [ngClass]="{'is-invalid': userForm.get('customerFirstName').invalid  && userForm.get('customerFirstName')!.touched}" id="userName" placeholder="Write Name"
                             formControlName="customerFirstName" >
                             <label for="userName">Your Name <span class="font-red font-bold">*</span></label>
 
-                            <div class="msg-hint" *ngIf="userForm.get('customerFirstName').invalid"> Name is mandatory</div>
+                            <div class="msg-hint" *ngIf="submitted && userForm.get('customerFirstName').invalid"> Name must be at least 3 characters long</div>
                         </div>
 
                         
@@ -30,10 +30,10 @@
                    
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control"  [ngClass]="{'is-invalid': userForm.get('phoneNo').invalid}"  id="phoneNumber" placeholder="Phone Number"
+                            <input type="text" class="form-control"  [ngClass]="{'is-invalid': userForm.get('phoneNo').invalid  && userForm.get('phoneNo')!.touched}"  id="phoneNumber" placeholder="Phone Number"
                             formControlName="phoneNo">
                             <label for="phoneNumber">Phone Number <span class="font-red font-bold">*</span></label>
-                            <div class="msg-hint" *ngIf="userForm.get('phoneNo').invalid"> Phone No is mandatory</div>
+                            <div class="msg-hint" *ngIf="submitted && userForm.get('phoneNo').invalid"> Phone No is mandatory</div>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -47,9 +47,9 @@
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
                             <input type="email" class="form-control" id="email" placeholder="Email"
-                                formControlName="email"  [ngClass]="{'is-invalid': userForm.get('email').invalid}" >
+                                formControlName="email"  [ngClass]="{'is-invalid': userForm.get('email').invalid  && userForm.get('email')!.touched}" >
                             <label for="email">Email <span class="font-red font-bold">*</span></label>
-                            <div class="msg-hint" *ngIf="userForm.get('email').invalid"> Email is mandatory</div>
+                            <div class="msg-hint" *ngIf="submitted && userForm.get('email').invalid"> Email is mandatory</div>
                         </div>
                     </div>
                   
@@ -99,7 +99,7 @@
                     <div class="col-md-12">
                         <div class="pt-3">
                             <button class="text-uppercase color-border-btn">Cancel</button>
-                            <button type="submit" [disabled]="!userForm.valid" class="text-uppercase color-btn border-0 ms-3">Save</button>
+                            <button type="submit" class="text-uppercase color-btn border-0 ms-3">Save</button>
                         </div>
                     </div>
                 </div>

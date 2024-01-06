@@ -16,10 +16,13 @@ export class LoginFormComponent {
   sessionId:any;
   userForm: any;
   orderlogin:boolean=false;
+  submitted = false;
+  errorMsg:any;
+  errorMsgstatus:boolean=false;
   constructor(private route:ActivatedRoute,  private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private cookieService: CookieService, private router:Router){
     this.sessionId= this.cookieService.get('sessionID');
     this.userForm = this.fb.group({
-      usrname: ['', Validators.required],
+      usrname: ['', [Validators.required, Validators.email]],
       pwd: ['', [Validators.required]],
       
     });
@@ -41,6 +44,7 @@ export class LoginFormComponent {
 
   onSubmit()
   {
+    this.submitted=true;
     if(this.userForm.valid)
     {
       
@@ -66,12 +70,16 @@ let data={
     
   if(res.isEroor)
   {
-    
+    this.errorMsgstatus=true;
+    this.errorMsg=res.errorMessage;
+    setTimeout(() => {
+      this.errorMsgstatus=false;
+    }, 4000);
     this.toastr.error(res.errorMessage);
   }
   else
   {
-    this.toastr.success(res.successMessage);
+  //  this.toastr.success(res.successMessage);
     localStorage.setItem('email', this.userForm.get('usrname').value)
     localStorage.setItem('customerId', res.customerId);
     localStorage.setItem('custName', res.customerName);

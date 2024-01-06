@@ -14,10 +14,11 @@ export class RegistrationFormComponent {
   sessionId:any;
   userForm: any;
   userIp:any;
+  submitted:boolean=false;
   constructor(private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private cookieService: CookieService){
     this.sessionId= this.cookieService.get('sessionID');
     this.userForm = this.fb.group({
-      usrname: ['', Validators.required],
+      usrname: ['', [Validators.required, Validators.minLength(3)]],
       useremail: ['', [Validators.required, Validators.email]],
       userphone: ['', Validators.required],
     });
@@ -32,6 +33,7 @@ export class RegistrationFormComponent {
 
   onSubmit()
   {
+    this.submitted=true;
     if(this.userForm.valid)
     {
       
