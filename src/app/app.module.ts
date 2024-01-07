@@ -12,7 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CareersComponent } from './pages/careers/careers.component';
 import { StickyRibbonComponent } from './components/sticky-ribbon/sticky-ribbon.component';
 
-import { CorporateOrdersComponent } from './pages/corporate-orders/corporate-orders.component';
+
 import { CustomerServicesComponent } from './pages/customer-services/customer-services.component';
 import { HelpComponent } from './pages/help/help.component';
 import { FaqComponent } from './pages/faq/faq.component';
@@ -30,7 +30,7 @@ import { TermsandconditionsComponent } from './pages/termsandconditions/termsand
   declarations: [
     AppComponent,
     CareersComponent,    
-    CorporateOrdersComponent,
+    
     CustomerServicesComponent,
     HelpComponent,
     FaqComponent,

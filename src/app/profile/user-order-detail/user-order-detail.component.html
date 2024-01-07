@@ -33,11 +33,17 @@
                 </div>
                 <div class="col-md-4">
                     <div class="user-order-detail-box p-3 shadow-sm border">
-                        <h6 class="font-bold pb-2">More Actions</h6>
-                        <a href="javascript:void(0)" class="d-flex justify-content-between border-bottom py-3 w-100">
-                            <span class="font-black">Download Invoice</span>
-                            <span class="icon-download font-black icomoon"></span>
-                        </a>
+                       
+                        <h6 class="font-bold pb-2">Price details</h6>
+                       <ng-container>
+                      <p  class="d-flex justify-content-between border-bottom py-3 w-100"> <span class="font-black"> Delivery charges :</span> <span class="icon-download font-black"> {{orderdetails.shippingCost}}</span></p>
+                      <p  class="d-flex justify-content-between border-bottom py-3 w-100"><span class="font-black">Discount </span> <span class="icon-download font-black">   {{orderdetails.discountAmount}}</span></p>
+                       <p class="d-flex justify-content-between border-bottom py-3 w-100"><span class="font-black">Total </span> <span class="icon-download font-black">{{orderdetails.totalAmount}}</span></p>
+                       
+                       </ng-container>
+                       
+                        
+                        
                         <!-- <a href="javascript:void(0)" class="d-flex justify-content-between border-bottom py-3 w-100">
                             <span class="font-black">Rate & Review Product</span>
                             <span class="icon-star font-black icomoon"></span>

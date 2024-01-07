@@ -271,6 +271,10 @@ deleteAddress(obj:any): Observable<any> {
   return this.http.post(`${environment.apiUrl}/AddressBook/DeleteAddress`,obj)
 }
 
+corporateOrders(obj:any): Observable<any> {
+  return this.http.post(`${environment.apiUrl}/CorporateOrders`,obj)
+}
+
 
 postfranchises(obj:any):Observable<any>{
   

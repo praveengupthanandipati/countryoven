@@ -2,6 +2,7 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { CurdService } from 'src/app/services/curd.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-address-list',
@@ -343,24 +344,44 @@ this.getCity()
 
 
 
+
+
   deleteAddress(addId: any, custId: any) {
-    let data = {
-      "AddressId": addId,
-      "customerId": custId
+  
+    Swal.fire({
+      width:'350px',
+   // imageUrl: '../../assets/images/tick.png',
+    imageHeight: 80,
+    text: 'Do you want to delete the Address',  
+    showCancelButton: true,
+    confirmButtonText:'Okay'
+  }).then((result) => {
+    if (result.isConfirmed) {
+    
+  
+  
+      let data = {
+        "AddressId": addId,
+        "customerId": custId
+      }
+      this._crud.deleteAddress(data).subscribe(res => {
+        
+  
+        if (!res.isEroor) {
+          this.toastr.success(res.successMessage);
+          this.getAddressByCustomerId();
+        }
+        else {
+          this.toastr.error(res.errorMessage)
+        }
+  
+        //  this.deliverAddress=res;
+      });
+  
     }
-    this._crud.deleteAddress(data).subscribe(res => {
-      
+  });
 
-      if (!res.isEroor) {
-        this.toastr.success(res.successMessage);
-        this.getAddressByCustomerId();
-      }
-      else {
-        this.toastr.error(res.errorMessage)
-      }
 
-      //  this.deliverAddress=res;
-    });
   }
 
 

@@ -18,14 +18,15 @@
                     <h1 class="h3 font-bold font-primary pb-3">Corporate Orders</h1>
                     <img src="assets/images/corporate-orders.jpg" class="img-fluid w-100" alt="...">
                     <p><small>This option is available only for deliveries in Hyderabad</small></p>
-                    <form>
+                    <form [formGroup]="userForm"  (ngSubmit)="onSubmit()">
                         <div class="row">
                             <div class="col-sm-6 col-lg-6">
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" placeholder="Name "
-                                            formControlName="Name">
+                                        [ngClass]="{'is-invalid': userForm.get('name').invalid  && userForm.get('name')!.touched}"  formControlName="name">
                                         <label for="Name">Name <span class="font-red font-bold">*</span></label>
+                                        <div class="msg-hint" *ngIf="submitted && userForm.get('name').invalid"> Name must be at least 3 characters long</div>
                                     </div>
                                 </div>
                             </div>
@@ -33,9 +34,10 @@
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
                                         <input type="number" class="form-control" placeholder="Mobile Number"
-                                            formControlName="MobileNumber">
+                                        [ngClass]="{'is-invalid': userForm.get('mobileNo').invalid  && userForm.get('mobileNo')!.touched}"  formControlName="mobileNo">
                                         <label for="MobileNumber">Mobile Number<span
                                                 class="font-red font-bold">*</span></label>
+                                                <div class="msg-hint" *ngIf="submitted && userForm.get('mobileNo').invalid"> Mobile number required</div>
                                     </div>
                                 </div>
                             </div>
@@ -43,19 +45,19 @@
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" placeholder="Email"
-                                            formControlName="Email">
+                                        [ngClass]="{'is-invalid': userForm.get('emailId').invalid  && userForm.get('emailId')!.touched}"  formControlName="emailId">
                                         <label for="Email">Email <span class="font-red font-bold">*</span></label>
+                                        <div class="msg-hint" *ngIf="submitted && userForm.get('emailId').invalid"> Email Required</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-lg-6">
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
-                                        <input type="file" class="form-control"
-                                            placeholder="Upload Reference Cake Image "
-                                            formControlName="UploadReferenceCakeImage ">
-                                        <label for="Email">Upload Reference Cake Image <span
-                                                class="font-red font-bold">*</span></label>
+                                        <input type="text" class="form-control" placeholder="Company Name"
+                                        [ngClass]="{'is-invalid': userForm.get('companyName').invalid  && userForm.get('companyName')!.touched}"  formControlName="companyName">
+                                        <label for="cname">Company Name <span class="font-red font-bold">*</span></label>
+                                        <div class="msg-hint" *ngIf="submitted && userForm.get('companyName').invalid"> Company Name Required</div>
                                     </div>
                                 </div>
                             </div>
@@ -63,9 +65,9 @@
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
                                         <textarea class="form-control" placeholder="Your Comment" id="YourComment"
-                                            style="height: 100px"></textarea>
-                                        <label for="YourComment">Your Comment <span
-                                                class="font-red font-bold">*</span></label>
+                                            style="height: 100px"   formControlName="comments"></textarea>
+                                        <label for="YourComment">Your Comment</label>
+                                        <div class="msg-hint green" *ngIf="msgstatus" > {{this.msg}}</div>         
                                     </div>
                                 </div>
                             </div>

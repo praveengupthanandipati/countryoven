@@ -29,7 +29,8 @@ import { NoproductsFoundComponent } from '../pages/noproducts-found/noproducts-f
 import { TermsContentComponent } from '../pages/home/terms-content/terms-content.component';
 import { NotificationsComponent } from '../pages/home/notifications/notifications.component';
 import { TrackComponent } from '../pages/track/track.component';
-
+import { CorporateOrdersComponent } from '../pages/corporate-orders/corporate-orders.component';
+ 
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { TrackComponent } from '../pages/track/track.component';
     NoproductsFoundComponent,
     TermsContentComponent,
     NotificationsComponent,
-    TrackComponent
+    TrackComponent,
+    CorporateOrdersComponent
 
   ],
   imports: [

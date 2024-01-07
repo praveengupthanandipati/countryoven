@@ -53,7 +53,7 @@
                                 <h5 class="h5 text-uppercase font-extrabold">{{menu.headerTitle}}</h5>
                                 <div class="links">
                                     <ng-container *ngFor="let sm of menu.footerLinks">
-                                        <a href="javascript:void(0)" [routerLink]="sm.seoTitle">{{sm.title}}</a>
+                                        <a href="javascript:void(0)" [routerLink]="'/' +sm.seoTitle">{{sm.title}}</a>
                                     </ng-container>
                                 </div>
                             </div>

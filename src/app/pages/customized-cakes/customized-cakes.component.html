@@ -24,8 +24,9 @@
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" placeholder="Name "
-                                            formControlName="name">
+                                            formControlName="name"   [ngClass]="{'is-invalid': form.get('name').invalid  && form.get('name')!.touched}">
                                         <label for="Name">Name <span class="font-red font-bold">*</span></label>
+                                        <div class="msg-hint" *ngIf="submitted && form.get('name').invalid">Name Required</div>
                                     </div>
                                 </div>
                             </div>
@@ -33,9 +34,10 @@
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
                                         <input type="string" class="form-control" placeholder="Mobile Number"
-                                            formControlName="mobile">
+                                            formControlName="mobile"   [ngClass]="{'is-invalid': form.get('mobile').invalid  && form.get('mobile')!.touched}">
                                         <label for="MobileNumber">Mobile Number<span
                                                 class="font-red font-bold">*</span></label>
+                                                <div class="msg-hint" *ngIf="submitted && form.get('mobile').invalid">Mobile Required</div>
                                     </div>
                                 </div>
                             </div>
@@ -43,8 +45,9 @@
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" placeholder="Email"
-                                            formControlName="email">
+                                            formControlName="email"   [ngClass]="{'is-invalid': form.get('email').invalid  && form.get('email')!.touched}">
                                         <label for="Email">Email <span class="font-red font-bold">*</span></label>
+                                        <div class="msg-hint" *ngIf="submitted && form.get('email').invalid"> Email Required</div>
                                     </div>
                                 </div>
                             </div>
@@ -53,9 +56,10 @@
                                     <div class="form-floating">
                                         <input type="file" class="form-control"
                                             placeholder="Upload Reference Cake Image "
-                                            formControlName="image" (change)="onFileSelected($event)">
+                                            formControlName="image" (change)="onFileSelected($event)"   [ngClass]="{'is-invalid': form.get('image').invalid  && form.get('image')!.touched}">
                                         <label for="image">Upload Reference Cake Image <span
                                                 class="font-red font-bold">*</span></label>
+                                                <div class="msg-hint" *ngIf="submitted && form.get('image').invalid">Image Required</div>
                                     </div>
                                 </div>
                             </div>
@@ -63,13 +67,14 @@
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
                                         <textarea formControlName="comments" class="form-control" placeholder="Your Comment" id="YourComment"
-                                            style="height: 100px"></textarea>
+                                            style="height: 100px"   [ngClass]="{'is-invalid': form.get('comments').invalid  && form.get('comments')!.touched}"></textarea>
                                         <label for="YourComment">Your Comment <span
                                                 class="font-red font-bold">*</span></label>
+                                                <div class="msg-hint" *ngIf="submitted && form.get('comments').invalid"> Comment Required</div>
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn color-btn w-100 text-center font-bold" [disabled]="!form.valid" type="submit" >Submit</button>
+                            <button class="btn color-btn w-100 text-center font-bold"  type="submit" >Submit</button>
                         </div>
                     </form>
                 </div>

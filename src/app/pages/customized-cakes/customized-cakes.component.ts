@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,10 +12,14 @@ import { CurdService } from 'src/app/services/curd.service';
   styleUrls: ['./customized-cakes.component.scss']
 })
 export class CustomizedCakesComponent {
-  form!: FormGroup;
+  form: any;
   selectedFile: any;
   binaryData: any;
+  submitted:any;
+  msg:any;
+  msgStatus:boolean=false;
   constructor(
+    private renderer:Renderer2,
     private toastr: ToastrService,
     private meta: Meta, private title:Title,
     private _crud:CurdService, private route:ActivatedRoute, private fb: FormBuilder, private cookieService: CookieService, private router:Router)
@@ -24,10 +28,11 @@ export class CustomizedCakesComponent {
     
 
     this.form = this.fb.group({
-      
-      name: ['', Validators.required],
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.email]],
+    
       mobile: ['', Validators.required],
-      email: ['', Validators.required],
+      
       comments: ['', Validators.required],
       image: ['', Validators.required],
     });
@@ -53,7 +58,11 @@ export class CustomizedCakesComponent {
 
   submit(formVal:any)
   {
+    this.submitted=true;
     
+
+   if(this.form.valid)
+   {
 
    
 
@@ -76,6 +85,7 @@ export class CustomizedCakesComponent {
     this._crud.postcustomize(obj).subscribe(res => {
      
      console.log(res)
+     this.msgStatus=true;
      
 
 
@@ -107,15 +117,17 @@ let cuId=res.id;
    
   })
 
-
-
-
-
-
-
-
-
-
     })
   }
+  }
+
+  
+addLoader()
+{
+  this.renderer.addClass(document.body, 'bodyloader');
+}
+removeLoader()
+{
+  this.renderer.removeClass(document.body, 'bodyloader');
+}
 }
