@@ -8,52 +8,45 @@
                 <li class="breadcrumb-item active" aria-current="page">Co Wallet</li>
             </ol>
         </nav>
-        <div class="profile-page-title px-3 d-flex justify-content-between background-lightprimary py-3 my-2">
+        <!-- <div class="profile-page-title px-3 d-flex justify-content-between background-lightprimary py-3 my-2">
             <h5 class="h5 text-uppercase font-bold">CoWallet</h5>
             <h6 class="h6 tex-end">Hi, {{custName}}</h6>
-        </div>
+        </div> -->
         <app-profile-nav></app-profile-nav>
         <div class="userprofile-body">
-
-            <span class="icomoon icon-inr" ></span>{{coWalletAmount}}
-
-
-<table border="1"><thead><tr>
-    <th>
-        Transaction Date
-    </th>
-    <th>
-        Order Id
-    </th>
-    <th>
-        Description
-    </th>
-    <th>
-        Amount
-    </th>
-</tr></thead>
-<tbody>
-    <tr  *ngFor="let wallet of cowalletdata">
-    <td>{{wallet.updatedDate | date}}</td>
-    <td>{{wallet.orderID}}</td>
-    <td>{{wallet.typeofDeposite}}</td>
-    <td><span class="icomoon icon-inr" ></span> {{wallet.wallet}}</td>
-    </tr>
-</tbody>
-</table>
-
-
-           
-
-
-
+            <div class="p-2 bg-info">
+                <h5 class="font-white">Total Transaction Amount: <span
+                        class="icomoon icon-inr h6"></span>{{coWalletAmount}}</h5>
+            </div>
+            <div class="table-responsive pt-4">
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>
+                                Transaction Date
+                            </th>
+                            <th>
+                                Order Id
+                            </th>
+                            <th>
+                                Description
+                            </th>
+                            <th>
+                                Amount
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let wallet of cowalletdata">
+                            <td>{{wallet.updatedDate | date}}</td>
+                            <td>{{wallet.orderID}}</td>
+                            <td>{{wallet.typeofDeposite}}</td>
+                            <td><span class="icomoon icon-inr"></span> {{wallet.wallet}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </section>
 <!-- <app-footer></app-footer> -->
-
-
-
-
-
-

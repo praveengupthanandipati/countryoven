@@ -1,27 +1,32 @@
 @import "../../../styles/styles";
 
-.profile-db-card { 
+.profile-db-card {
+  &:hover{
+    .h6{
+      color:map-get($colors, primary);
+    }
+  }
   .icon {
-    width: 100px;
-    height: 100px;
-    background: map-get($colors, lightprimary);
+    width: 75px;
+    height: 75px;
+    background: map-get($colors, primary);
     display: flex;
     justify-content: center;
     align-items: center;
     @include transition(all, 0.3s ease);
 
-    .icomoon{
-        font-size:$fsize * 3;
-        color:map-get($colors, black);
+    .icomoon {
+      font-size: $fsize * 3;
+      color: map-get($colors, white);
     }
   }
 
-  &:hover{
-    .icon{
-      background:map-get($colors, primary);
+  &:hover {
+    .icon {
+      background: darken(map-get($colors, primary), 10%);
 
-      .icomoon{
-        color:map-get($colors, white);
+      .icomoon {
+        color: map-get($colors, white);
       }
     }
   }

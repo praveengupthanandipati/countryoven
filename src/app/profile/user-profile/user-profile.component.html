@@ -1,101 +1,110 @@
-
 <section class="userProfile py-3">
     <div class="container">
         <nav aria-label="breadcrumb" class="align-self-center">
             <ol class="breadcrumb pb-0 mb-0">
                 <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
                 <li class="breadcrumb-item"><a routerLink="/myaccount">My Account</a></li>
-                <li class="breadcrumb-item active" aria-current="page">My Account</li>
+                <li class="breadcrumb-item active" aria-current="page">{{custName}}</li>
             </ol>
         </nav>
-        <div class="profile-page-title px-3 d-flex justify-content-between background-lightprimary py-3 my-2">
+        <!-- <div class="profile-page-title px-3 d-flex justify-content-between background-lightprimary py-3 my-2">
             <h5 class="h5 text-uppercase font-bold">My Profile</h5>
             <h6 class="h6 tex-end">Hi, {{custName}}</h6>
-        </div>
+        </div> -->
         <app-profile-nav></app-profile-nav>
         <div class="userprofile-body">
-            <form [formGroup]="userForm"  (ngSubmit)="onSubmit()">
+            <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
-                    <input type="text" class="form-control"  [ngClass]="{'is-invalid': userForm.get('customerFirstName').invalid  && userForm.get('customerFirstName')!.touched}" id="userName" placeholder="Write Name"
-                            formControlName="customerFirstName" >
+                            <input type="text" class="form-control"
+                                [ngClass]="{'is-invalid': userForm.get('customerFirstName').invalid  && userForm.get('customerFirstName')!.touched}"
+                                id="userName" placeholder="Write Name" formControlName="customerFirstName">
                             <label for="userName">Your Name <span class="font-red font-bold">*</span></label>
 
-                            <div class="msg-hint" *ngIf="submitted && userForm.get('customerFirstName').invalid"> Name must be at least 3 characters long</div>
+                            <div class="msg-hint" *ngIf="submitted && userForm.get('customerFirstName').invalid"> Name
+                                must be at least 3 characters long</div>
                         </div>
 
-                        
+
                     </div>
-                   
+
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control"  [ngClass]="{'is-invalid': userForm.get('phoneNo').invalid  && userForm.get('phoneNo')!.touched}"  id="phoneNumber" placeholder="Phone Number"
-                            formControlName="phoneNo">
+                            <input type="text" class="form-control"
+                                [ngClass]="{'is-invalid': userForm.get('phoneNo').invalid  && userForm.get('phoneNo')!.touched}"
+                                id="phoneNumber" placeholder="Phone Number" formControlName="phoneNo">
                             <label for="phoneNumber">Phone Number <span class="font-red font-bold">*</span></label>
-                            <div class="msg-hint" *ngIf="submitted && userForm.get('phoneNo').invalid"> Phone No is mandatory</div>
+                            <div class="msg-hint" *ngIf="submitted && userForm.get('phoneNo').invalid"> Phone No is
+                                mandatory</div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="mobileNumber" placeholder="Mobile Number"
-                            formControlName="MobilePhone">
+                                formControlName="MobilePhone">
                             <label for="mobileNumber">Mobile Number </label>
                         </div>
                     </div>
-                   
+
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
                             <input type="email" class="form-control" id="email" placeholder="Email"
-                                formControlName="email"  [ngClass]="{'is-invalid': userForm.get('email').invalid  && userForm.get('email')!.touched}" >
+                                formControlName="email"
+                                [ngClass]="{'is-invalid': userForm.get('email').invalid  && userForm.get('email')!.touched}">
                             <label for="email">Email <span class="font-red font-bold">*</span></label>
-                            <div class="msg-hint" *ngIf="submitted && userForm.get('email').invalid"> Email is mandatory</div>
+                            <div class="msg-hint" *ngIf="submitted && userForm.get('email').invalid"> Email is mandatory
+                            </div>
                         </div>
                     </div>
-                  
+
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
-                            <textarea  class="form-control" id="addressline01" placeholder="Address"
+                            <textarea class="form-control" id="addressline01" placeholder="Address"
                                 formControlName="Address1"></textarea>
                             <label for="addressline01">Address </label>
                         </div>
                     </div>
-                   
+
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
-                            <input type="number" class="form-control" id="pinCode" placeholder="Pincode" value="" formControlName="zipCode">
+                            <input type="number" class="form-control" id="pinCode" placeholder="Pincode" value=""
+                                formControlName="zipCode">
                             <label for="pinCode">Pincode </label>
                         </div>
                     </div>
-                   
+
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
-                            <select class="form-select" id="country" formControlName="countryId" (change)="onaddCountryChange($event)">
+                            <select class="form-select" id="country" formControlName="countryId"
+                                (change)="onaddCountryChange($event)">
                                 <option [value]="c.countryId" *ngFor="let c of countryList">{{c.countryName}}</option>
-                              
+
                             </select>
-                            <label for="country">Country  </label>
+                            <label for="country">Country </label>
                         </div>
                     </div>
 
 
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
-                            <select class="form-select" (change)="onstateChange($event)"  id="" formControlName="stateId">
+                            <select class="form-select" (change)="onstateChange($event)" id=""
+                                formControlName="stateId">
                                 <option [value]="c.stateId" *ngFor="let c of stateList">{{c.stateName}}</option>
-                              
+
                             </select>
-                            <label for="country">State  </label>
+                            <label for="country">State </label>
                         </div>
-                    </div>  
+                    </div>
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="city" placeholder="City" formControlName="cityName">
+                            <input type="text" class="form-control" id="city" placeholder="City"
+                                formControlName="cityName">
                             <label for="city">City </label>
                         </div>
-                    </div> 
+                    </div>
 
-                  
+
                     <div class="col-md-12">
                         <div class="pt-3">
                             <button class="text-uppercase color-border-btn">Cancel</button>

@@ -1,1 +1,19 @@
 @import "../../../styles/styles";
+
+.navbar {
+  background: map-get($colors, lightgradient);
+  margin: 10px 0;
+  .nav-item {
+    .nav-link {
+      color: map-get($colors, black);
+      font-size: $fsize - 2;
+      text-transform: uppercase;
+      margin: 0 5px;
+    }
+    .select-nav {
+      background: map-get($colors, primary);
+      border-radius: 25px;
+      color: map-get($colors, white);
+    }
+  }
+}

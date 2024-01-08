@@ -4,32 +4,18 @@
         <nav aria-label="breadcrumb" class="align-self-center">
             <ol class="breadcrumb pb-0 mb-0">
                 <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-                <li class="breadcrumb-item"><a routerLink="/myaccount">My Account</a></li>
+                <li class="breadcrumb-item"><a routerLink="/myaccount">{{custName}}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Referal</li>
             </ol>
         </nav>
-        <div class="profile-page-title px-3 d-flex justify-content-between background-lightprimary py-3 my-2">
+        <!-- <div class="profile-page-title px-3 d-flex justify-content-between background-lightprimary py-3 my-2">
             <h5 class="h5 text-uppercase font-bold">Referal</h5>
             <h6 class="h6 tex-end">Hi, {{custName}}</h6>
-        </div>
+        </div> -->
         <app-profile-nav></app-profile-nav>
         <div class="userprofile-body">
-
-Referal Code {{referalData?.referralCode}}
-
-
-
-           
-
-
-
+            <span class="bg-primary p-3 font-white">Referal Code {{referalData?.referralCode}}</span>
         </div>
     </div>
 </section>
 <!-- <app-footer></app-footer> -->
-
-
-
-
-
-

@@ -4,120 +4,79 @@
         <nav aria-label="breadcrumb" class="align-self-center">
             <ol class="breadcrumb pb-0 mb-0">
                 <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-                <li class="breadcrumb-item"><a routerLink="/myaccount">My Account</a></li>
+                <li class="breadcrumb-item"><a routerLink="/myaccount">{{custName}}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">My Orders</li>
             </ol>
         </nav>
-        <div class="profile-page-title px-3 d-flex justify-content-between background-lightprimary py-3 my-2">
+        <!-- <div class="profile-page-title px-3 d-flex justify-content-between background-lightprimary py-3 my-2">
             <h5 class="h5 text-uppercase font-bold">My Orders</h5>
             <h6 class="h6 tex-end">Hi, {{custName}}</h6>
-        </div>
+        </div> -->
         <app-profile-nav></app-profile-nav>
         <div class="userprofile-body">
-
-
-
             <div class="user-order border p-2 mb-3" *ngFor="let order of orderDetails">
-
-
                 <div class="row">
-
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-6">
-
-                                <p><small class="font-gray"> Order SNo <span
-                                    class="font-green font-semibold"> {{order.sNo}} / {{order.orderId}}</span></small>
-                        </p>
-                          
-                            </div>
-                            <div class="col-md-6">
-                                <a (click)="gotoorders(order.orderId)" class="color-btn d-inline-block" style="float:right"> Track</a>
-
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="d-flex justify-content-between flex-column user-order-col">
-                                    <div>
-
-                                        <p><small class="font-gray"><span class="icon-star"></span> Delivered on <span
-                                                    class="font-green font-semibold">{{order.deliveredDate}}</span></small>
-                                        </p>
-                                    </div>
-                                    <div>  <p><small class="font-gray"> Order Status <span
-                                        class="font-green font-semibold">{{order.orderStatus}}</span></small>
-                            </p></div>
-                                    <div>
-                                       
-                                       
-                                      
-                                    </div>
+                                <p class="pb-2"><small class="font-gray"> Order SNo <span
+                                            class="font-green font-semibold"></span>
+                                        <span>{{order.sNo}} / {{order.orderId}}</span></small>
+                                </p>
+                                <div class="d-flex flex-row user-order-col">
+                                    <small class="font-gray"><span class="icon-star"></span> Delivered on <span
+                                            class="font-green font-semibold">{{order.deliveredDate}}</span></small>
+                                    <small class="font-gray d-inline-block ps-5"> Order Status <span
+                                            class="font-green font-semibold">{{order.orderStatus}}</span></small>
                                 </div>
                             </div>
-                            
+                            <div class="col-md-6">
+                                <div class="text-end d-flex justify-content-end">
+                                    <a data-bs-toggle="modal" (click)="reviewClick(order.orderId)"
+                                        data-bs-target="#Reviews" class="font-blue pe-3 align-self-center"
+                                        href="#"><span class="icon-star"></span> Rate & Review Product</a>
+                                    <a (click)="gotoorders(order.orderId)" class="color-btn d-inline-block" href="#">
+                                        Track</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="row" *ngFor="let innerorder of order.myOrderProductsDtos">
+                <div class="row pt-2" *ngFor="let innerorder of order.myOrderProductsDtos">
                     <div class="col-md-2">
-                        <a (click)="gotoorders(order.orderId)">
+                        <a (click)="gotoorders(order.orderId)" href="">
                             <img src="{{innerorder.smallimageurl}}" alt="" class="img-fluid">
                         </a>
                     </div>
                     <div class="col-md-10">
-
-                        <h5 class="h5">
-                            <a (click)="gotoorders(order.orderId)"
-                                class="font-black font-semibold">{{innerorder.productName}}</a>
-                        </h5>
-
-<p *ngIf="innerorder.additionalWeight"><small class="font-gray"> Weight <span
-    class="font-green font-semibold">{{innerorder.additionalWeight}}</span></small>
-</p>
-<p *ngIf="innerorder.eggless"><small class="font-gray"> Egg less <span
-    class="font-green font-semibold"> Yes</span></small>
-</p>
-
-<p *ngIf="innerorder.flavour"><small class="font-gray"> flavour <span
-    class="font-green font-semibold"> {{innerorder.flavour}}</span></small>
-</p>
-
-<p *ngIf="innerorder.photoCake"><small class="font-gray"> Photo Cake <span
-    class="font-green font-semibold"> Yes</span></small>
-</p>
-
-<p *ngIf="innerorder.message"><small class="font-gray"> Message <span
-    class="font-green font-semibold"> {{innerorder.message}}</span></small>
-</p>
-
-
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6"></div>
-                    <div class="col-md-6">
-                        <div class="d-flex justify-content-between flex-column user-order-col">
-                            <div>
-                                <div class="price py-2">
-                                    <div class="offer-price text-end font-bold"><span
-                                            class="icon-inr icomoon"></span>{{order.totalAmount}}</div>
-                                </div>
+                        <article class="pt-3">
+                            <h5 class="h5">
+                                <a (click)="gotoorders(order.orderId)" href=""
+                                    class="font-black font-semibold">{{innerorder.productName}}</a>
+                            </h5>
+                            <div class="price py-2">
+                                <div class="offer-price font-bold"><span
+                                        class="icon-inr icomoon"></span>{{order.totalAmount}}</div>
                             </div>
-                            <div class="text-end">
-                                <a data-bs-toggle="modal" (click)="reviewClick(order.orderId)"
-                                    data-bs-target="#Reviews" class="font-blue font-semibold"><span
-                                        class="icon-star"></span> Rate & Review Product</a>
-                            </div>
-                        </div>
+                            <p *ngIf="innerorder.additionalWeight"><small class="font-gray"> Weight: <span
+                                        class="font-green font-semibold">{{innerorder.additionalWeight}}</span></small>
+                            </p>
+                            <p *ngIf="innerorder.eggless"><small class="font-gray"> Egg less <span
+                                        class="font-green font-semibold"> Yes</span></small>
+                            </p>
+                            <p *ngIf="innerorder.flavour"><small class="font-gray"> flavour: <span
+                                        class="font-green font-semibold"> {{innerorder.flavour}}</span></small>
+                            </p>
+                            <p *ngIf="innerorder.photoCake"><small class="font-gray"> Photo Cake: <span
+                                        class="font-green font-semibold"> Yes</span></small>
+                            </p>
+                            <p *ngIf="innerorder.message"><small class="font-gray"> Message: <span
+                                        class="font-green font-semibold"> {{innerorder.message}}</span></small>
+                            </p>
+                        </article>
                     </div>
                 </div>
             </div>
-
-
-
         </div>
     </div>
 </section>
@@ -145,53 +104,44 @@
                             <input type="text" class="form-control" formControlName="title"
                                 placeholder="Enter Review Title*">
                         </div> -->
-
-
                         <div class="form-floating mb-3">
                             <input
                                 [ngClass]="{'is-invalid' : reviewForm.get('title')!.invalid && reviewForm.get('title')!.touched}"
                                 class="form-control" placeholder="Enter Review Title*" formControlName="title">
                             <label for="userphone">Enter Review Title <span class="font-red font-bold">*</span></label>
-                        </div>
-
-                        <div *ngIf="reviewForm.get('title')!.invalid && reviewForm.get('title')!.touched"
-                            class="invalid-feedback mt-0 d-block">
-                            Enter Review Title
+                            <div *ngIf="reviewForm.get('title')!.invalid && reviewForm.get('title')!.touched"
+                                class="invalid-feedback mt-0 d-block">
+                                Enter Review Title
+                            </div>
                         </div>
                     </div>
-
                     <div class="form-floating mb-3">
-                        <textarea class="form-control" placeholder="Enter Review Description*"
-                            formControlName="review"></textarea>
+                        <textarea class="form-control" placeholder="Enter Review Description*" formControlName="review"
+                            style="height:120px"></textarea>
                         <label>Enter Review Description </label>
                     </div>
 
-
-
-
-
-                    <label>Review</label>
-                    <div class="rating">
-                        <span *ngFor="let star of stars; let i = index" (click)="rate(star)"
-                            [class.active]="highlightedStars[i]">&#9733;</span>
+                    <div class="mb-3">
+                        <label>Review</label>
+                        <div class="rating">
+                            <span *ngFor="let star of stars; let i = index" (click)="rate(star)"
+                                [class.active]="highlightedStars[i]">&#9733;</span>
+                        </div>
                     </div>
-
-
-
-                    <label>Webiste review</label>
-
-                    <div class="rating">
-                        <span *ngFor="let star of webstars; let i = index" (click)="webRatingfn(star)"
-                            [class.active]="webhighlightedStars[i]">&#9733;</span>
+                    <div class="mb-3">
+                        <label>Webiste review</label>
+                        <div class="rating">
+                            <span *ngFor="let star of webstars; let i = index" (click)="webRatingfn(star)"
+                                [class.active]="webhighlightedStars[i]">&#9733;</span>
+                        </div>
                     </div>
-
-                    <label>Service review</label>
-
-                    <div class="rating">
-                        <span *ngFor="let star of servicestars; let i = index" (click)="serviceRatingfn(star)"
-                            [class.active]="servicehighlightedStars[i]">&#9733;</span>
+                    <div class="mb-3">
+                        <label>Service review</label>
+                        <div class="rating">
+                            <span *ngFor="let star of servicestars; let i = index" (click)="serviceRatingfn(star)"
+                                [class.active]="servicehighlightedStars[i]">&#9733;</span>
+                        </div>
                     </div>
-
                     <div class="modal-footer">
                         <button type="submit" [disabled]="!reviewForm.valid" class="color-border-btn">Submit
                             Review</button>

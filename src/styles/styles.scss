@@ -98,9 +98,28 @@ body {
   }
 }
 
+.form-floating {
+  .form-control {
+    &:focus {
+      box-shadow: none;
+      outline: none;
+    }
+    &::placeholder {
+      font-size: $fsize - 1;
+    }
+  }
+  .form-select {
+    &:focus {
+      box-shadow: none;
+      outline: none;
+    }
+    &::placeholder {
+      font-size: $fsize - 1;
+    }
+  }
+}
+
 .form-control {
-  border-radius: 0;
-  padding: 10px;
   &:focus {
     box-shadow: none;
     outline: none;
