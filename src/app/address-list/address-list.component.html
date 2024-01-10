@@ -1,7 +1,7 @@
 <div class="userprofile-body">
     <div class="row py-3">
         <div class="col-md-6">
-            <div class="row">
+            <div class="row" *ngIf="originalAddress.length > 3">
                 <div class="col-auto align-self-center">
                     <label>Filter By</label>
                 </div>
@@ -60,6 +60,19 @@
             </div>
         </div>
     </div>
+
+    <div class="static-page" *ngIf="deliverAddress.length ==0">
+
+        <div class="Noproducts">
+            <img src="/src/assets/images/noproducts.svg" alt="" class="img-fluid w-100">
+            <h3>No Address Found</h3>
+            <p>Please Add New Address</p>
+            <a href="" class="color-border-btn" (click)="addNewAddress()" data-bs-toggle="modal"
+            data-bs-target="#AddNewAddress">Add New Address</a>
+        </div>
+    </div>
+
+
 </div>
 
 <!-- Edit address modal-->
@@ -101,7 +114,7 @@
                                 <input type="text" formControlName="phone" class="form-control" placeholder="Phone *"
                                     [ngClass]="{'is-invalid' : userForm.get('phone')!.invalid && userForm.get('phone')!.touched}">
                                 <label for="">Phone <span class="font-red font-bold">*</span></label>
-                                <div class="msg-hint" *ngIf="submitted && userForm.get('phone').invalid"> Phone is mandatory</div>
+                                <div class="msg-hint" *ngIf="submitted && userForm.get('phone').invalid"> Enter Valid Mobile Number Atleast 10 Characters</div>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -110,7 +123,7 @@
                                     placeholder="Mobile Phone *"
                                     [ngClass]="{'is-invalid' : userForm.get('mobilePhone')!.invalid && userForm.get('mobilePhone')!.touched}">
                                 <label for="">Mobile<span class="font-red font-bold">*</span></label>
-                                <div class="msg-hint" *ngIf="submitted && userForm.get('mobilePhone').invalid"> Mobile is mandatory
+                                <div class="msg-hint" *ngIf="submitted && userForm.get('mobilePhone').invalid"> Enter Valid Mobile Number Atleast 10 Characters
                                 </div>
                             </div>
                         </div>
@@ -119,7 +132,11 @@
                                 <textarea class="form-control" formControlName="address1" placeholder="Address*"
                                     [ngClass]="{'is-invalid' : userForm.get('address1')!.invalid && userForm.get('address1')!.touched}"></textarea>
                                 <label for="">Address <span class="font-red font-bold">*</span></label>
-                                <div class="msg-hint" *ngIf="submitted && userForm.get('address1').invalid"> Address is mandatory
+                                <div class="addresscount">
+                                    {{ editupdateCharacterCount() }} / {{ maxAddressLength }}
+                                 </div>
+                                
+                                <div class="msg-hint" *ngIf="submitted && userForm.get('address1').invalid"> Address must be 100 characters or less.
                                 </div>
                             </div>
                         </div>
@@ -133,27 +150,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="col-md-6">
-                            <div class="form-floating mb-3">
-
-                                <input type="text" readonly  formControlName="countryId"  />
-                                <select class="form-select" [attr.disabled]="true" (change)="onaddCountryChange($event)" formControlName="countryId">
-                                    <option [value]="c.countryId" *ngFor="let c of countryList">{{c.countryName}}
-                                    </option>
-
-                                </select>
-                                <label>Country </label>
-                            </div>
-                        </div> -->
-                        <!-- <div class="col-md-6">
-                            <div class="form-floating mb-3">
-                                <select class="form-select" (change)="onstateChange($event)"  formControlName="stateId">
-                                    <option [value]="c.stateId" *ngFor="let c of stateList">{{c.stateName}}</option>
-
-                                </select>
-                                <label>State </label>
-                            </div>
-                        </div> -->
+                        
                         <div class="col-md-6">
                             <div class="form-floating">
                                 <select class="form-select" formControlName="cityName"
@@ -173,7 +170,7 @@
                                     placeholder="Pin code *"
                                     [ngClass]="{'is-invalid' : userForm.get('zipCode')!.invalid && userForm.get('zipCode')!.touched}">
                                 <label for="">Pin Code <span class="font-red font-bold">*</span></label>
-                                <div class="msg-hint" *ngIf="submitted &&  userForm.get('zipCode').invalid"> Pincode is mandatory
+                                <div class="msg-hint" *ngIf="submitted &&  userForm.get('zipCode').invalid">Enter Valid Pincode Number 6 Characters ony
                                 </div>
                             </div>
                         </div>
@@ -231,7 +228,7 @@
                                 <input type="text" formControlName="addPhone" class="form-control" placeholder="Phone *"
                                     [ngClass]="{'is-invalid' : adduserForm.get('addPhone')!.invalid && adduserForm.get('addPhone')!.touched}">
                                 <label for="">Phone <span class="font-red font-bold">*</span></label>
-                                <div class="msg-hint" *ngIf="addsubmitted && adduserForm.get('addPhone').invalid"> Phone is mandatory
+                                <div class="msg-hint" *ngIf="addsubmitted && adduserForm.get('addPhone').invalid"> Enter Valid Mobile Number Atleast 10 Characters
                                 </div>
                             </div>
                         </div>
@@ -241,8 +238,7 @@
                                     placeholder="Mobile Phone *"
                                     [ngClass]="{'is-invalid' : adduserForm.get('addMobilePhone')!.invalid && adduserForm.get('addMobilePhone')!.touched}">
                                 <label for="">Mobile <span class="font-red font-bold">*</span></label>
-                                <div class="msg-hint" *ngIf="addsubmitted && adduserForm.get('addMobilePhone').invalid"> Mobile is
-                                    mandatory</div>
+                                <div class="msg-hint" *ngIf="addsubmitted && adduserForm.get('addMobilePhone').invalid"> Enter Valid Mobile Number Atleast 10 Characters</div>
                             </div>
                         </div>
 
@@ -253,8 +249,11 @@
                                     [ngClass]="{'is-invalid' : adduserForm.get('addaddress1')!.invalid && adduserForm.get('addaddress1')!.touched}"
                                     placeholder="Address *"></textarea>
                                 <label for="">Address <span class="font-red font-bold">*</span></label>
-                                <div class="msg-hint" *ngIf="addsubmitted && adduserForm.get('addaddress1').invalid"> Address is
-                                    mandatory</div>
+                             
+                                <div class="addresscount">
+                                     {{ updateCharacterCount() }} / {{ maxAddressLength }}
+                                  </div>
+                                <div class="msg-hint" *ngIf="addsubmitted && adduserForm.get('addaddress1').invalid"> Address must be 100 characters or less.</div>
                             </div>
                         </div>
 
@@ -309,8 +308,7 @@
                                     placeholder="Pincode *"
                                     [ngClass]="{'is-invalid' : adduserForm.get('addzipCode')!.invalid && adduserForm.get('addzipCode')!.touched}">
                                 <label for="">Pin Code <span class="font-red font-bold">*</span></label>
-                                <div class="msg-hint" *ngIf="addsubmitted && adduserForm.get('addzipCode').invalid"> Pincode is
-                                    mandatory</div>
+                                <div class="msg-hint" *ngIf="addsubmitted && adduserForm.get('addzipCode').invalid"> Enter Valid Pincode Number 6 Characters ony</div>
                             </div>
                         </div>
                     </div>

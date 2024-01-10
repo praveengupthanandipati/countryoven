@@ -24,7 +24,7 @@ export class AddressListComponent implements OnInit {
   addressId: any;
   submitted:boolean=false;
   addsubmitted:boolean=false;
-
+  maxAddressLength = 100;
   @ViewChild('AddButton')
   AddButton!: ElementRef;
 
@@ -52,36 +52,49 @@ addressidobj:any=[];
 
     this.userForm = this.fb.group({
       recipientFirstName: ['',  [Validators.required, Validators.minLength(3)]],
-      recipientLastName: ['', Validators.required],
+      recipientLastName: ['', [Validators.required, Validators.minLength(3)]],
       email: [''],
       phone: ['', Validators.required],
       mobilePhone: ['', Validators.required],
-      address1: ['', Validators.required],
+      address1: ['', [Validators.required,Validators.maxLength(this.maxAddressLength)]],
       address2: [''],
       landmark: ['', Validators.required],
       cityName: [''],
       stateId: ['1479'],
     //  countryId: ['', Validators.required],
-      zipCode: ['',  [Validators.required, Validators.minLength(6)]],
+      zipCode: ['',  [Validators.required, Validators.pattern(/^\d{6}$/)]],
     });
 
 
     this.adduserForm = this.fb.group({
       addRecipientFirstName: ['', [Validators.required, Validators.minLength(3)]],
-      addRecipientLastName: ['', Validators.required],
+      addRecipientLastName: ['',[Validators.required, Validators.minLength(3)]],
       addEmail: [''],
       addPhone: ['', Validators.required],
       addMobilePhone: ['', Validators.required],
-      addaddress1: ['', Validators.required],
+      addaddress1: ['', [Validators.required,Validators.maxLength(this.maxAddressLength)]],
       addaddress2: [''],
       addlandmark: ['', Validators.required],
       addcityName: ['', Validators.required],
       addstateId: ['1479'],
     //  addcountryId: ['', Validators.required],
-      addzipCode: ['',  [Validators.required, Validators.minLength(6)]],
+      addzipCode: ['',  [Validators.required, Validators.pattern(/^\d{6}$/)]],
     });
 
   }
+
+  updateCharacterCount() {
+    const addressControl = this.adduserForm.get('addaddress1');
+    const currentLength = addressControl.value ? addressControl.value.length : 0;
+    return currentLength;
+  }
+  
+  editupdateCharacterCount() {
+    const addressControl = this.userForm.get('address1');
+    const currentLength = addressControl.value ? addressControl.value.length : 0;
+    return currentLength;
+  }
+
   ngOnInit(): void {
     if(this.checkoutaddress)
     {
@@ -150,9 +163,10 @@ this.sendAddId.emit(e)
 
   onAddSubmit() {
     this.addsubmitted=true;
+    
 if(this.adduserForm.valid)
 {
-    
+  this.addLoader();
     let data = {
 
       "addressBookDetails": {
@@ -169,13 +183,13 @@ if(this.adduserForm.valid)
         "cityName": this.adduserForm.value['addcityName'],
         "stateId": this.adduserForm.value['addstateId'],
         "countryId":1,
-        "zipCode": this.adduserForm.value['addzipCode'],
+        "zipCode":  this.adduserForm.value['addzipCode'].toString(),
         "relationshipId": 10,
         "status": true
       }
     }
     this._crud.addAddress(data).subscribe(res => {
-      
+      this.removeLoader();
       if (!res.isEroor) {
         this.toastr.success(res.successMessage);
         const button: HTMLButtonElement = this.AddButton.nativeElement;
@@ -197,9 +211,10 @@ if(this.adduserForm.valid)
 
   onSubmit() {
 this.submitted=true;
+
     if(this.userForm.valid)
     {
-
+      this.addLoader();
     let data = {
       "addressId": this.addressId,
       "addressBookDetails": {
@@ -211,11 +226,10 @@ this.submitted=true;
         "address1": this.userForm.value['address1'],
         "address2": this.userForm.value['address2'],
         "landmark": this.userForm.value['landmark'],
-
         "cityName": this.userForm.value['cityName'],
         "stateId": this.userForm.value['stateId'],
         "countryId": 1,
-        "zipCode": this.userForm.value['zipCode'],
+        "zipCode": this.userForm.value['zipCode'].toString(),
         "relationshipId": 10,
         "status": true
 
@@ -224,7 +238,7 @@ this.submitted=true;
 
 
     this._crud.updateAddress(data).subscribe(res => {
-      
+      this.removeLoader();
       if (!res.isEroor) {
         this.toastr.success(res.successMessage)
         const button: HTMLButtonElement = this.EditButton.nativeElement;
@@ -411,6 +425,13 @@ return this.originalAddress
   }
   }
 
-
+  addLoader()
+  {
+    this.renderer.addClass(document.body, 'bodyloader');
+  }
+  removeLoader()
+  {
+    this.renderer.removeClass(document.body, 'bodyloader');
+  }
 
 }

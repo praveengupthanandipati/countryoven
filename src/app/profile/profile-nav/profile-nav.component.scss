@@ -8,7 +8,7 @@
       color: map-get($colors, black);
       font-size: $fsize - 2;
       text-transform: uppercase;
-      margin: 0 5px;
+      margin: 0 5px; cursor: pointer;
     }
     .select-nav {
       background: map-get($colors, primary);

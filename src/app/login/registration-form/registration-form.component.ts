@@ -1,10 +1,11 @@
 
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 
 import { CurdService } from 'src/app/services/curd.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-registration-form',
   templateUrl: './registration-form.component.html',
@@ -15,12 +16,12 @@ export class RegistrationFormComponent {
   userForm: any;
   userIp:any;
   submitted:boolean=false;
-  constructor(private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private cookieService: CookieService){
+  constructor( private renderer:Renderer2,  private router:Router, private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private cookieService: CookieService){
     this.sessionId= this.cookieService.get('sessionID');
     this.userForm = this.fb.group({
       usrname: ['', [Validators.required, Validators.minLength(3)]],
       useremail: ['', [Validators.required, Validators.email]],
-      userphone: ['', Validators.required],
+      userphone: ['',  [Validators.required, Validators.pattern(/^\d{10}$/)]],
     });
   }
   ngOnInit() {
@@ -43,7 +44,7 @@ export class RegistrationFormComponent {
   }
 register()
 {
-  
+  this.addLoader();
 let data={
  
   customerDetails: {
@@ -61,13 +62,62 @@ let data={
     
   if(res.isEroor)
   {
-    
+    this.removeLoader()
     this.toastr.error(res.errorMessage);
   }
   else
   {
-    this.toastr.success(res.successMessage);
+   // this.toastr.success(res.successMessage);
+    this.login();
   }
         });
 }
+
+
+
+login()
+{
+  
+let data={
+ 
+  
+  
+    "customerEmail": this.userForm.get('useremail').value,
+    "password":"" +  this.userForm.get('userphone').value  + "",
+    "sessionId":this.sessionId
+ 
+ 
+  }
+
+  this._crud.login(data).subscribe(res => {
+    
+  if(res.isEroor)
+  {
+   this.removeLoader();
+    
+    
+  }
+  else
+  {
+  //  this.toastr.success(res.successMessage);
+    localStorage.setItem('email', this.userForm.get('usrname').value)
+    localStorage.setItem('customerId', res.customerId);
+    localStorage.setItem('custName', res.customerName);
+  
+    this.router.navigateByUrl('/')
+    this.removeLoader();
+  }
+        });
+}
+
+
+addLoader()
+{
+  this.renderer.addClass(document.body, 'bodyloader');
+}
+removeLoader()
+{
+  this.renderer.removeClass(document.body, 'bodyloader');
+}
+
 }

@@ -207,4 +207,10 @@ this.submitted=true;
     }
   
   }
+
+gotodashboard()
+{
+  this.route.navigateByUrl('/myaccount/dashboard')
+}
+
 }
