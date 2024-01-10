@@ -33,11 +33,11 @@
                             <div class="col-sm-6 col-lg-6">
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
-                                        <input type="string" class="form-control" placeholder="Mobile Number"
+                                        <input type="number" class="form-control" placeholder="Mobile Number"
                                             formControlName="mobile"   [ngClass]="{'is-invalid': form.get('mobile').invalid  && form.get('mobile')!.touched}">
                                         <label for="MobileNumber">Mobile Number<span
                                                 class="font-red font-bold">*</span></label>
-                                                <div class="msg-hint" *ngIf="submitted && form.get('mobile').invalid">Mobile Required</div>
+                                                <div class="msg-hint" *ngIf="submitted && form.get('mobile').invalid"> Enter valid Mobile Number. Its between  10 to 15  characters</div>
                                     </div>
                                 </div>
                             </div>

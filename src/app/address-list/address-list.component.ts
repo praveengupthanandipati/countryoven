@@ -52,10 +52,10 @@ addressidobj:any=[];
 
     this.userForm = this.fb.group({
       recipientFirstName: ['',  [Validators.required, Validators.minLength(3)]],
-      recipientLastName: ['', [Validators.required, Validators.minLength(3)]],
+      recipientLastName: ['', [Validators.required]],
       email: [''],
-      phone: ['', Validators.required],
-      mobilePhone: ['', Validators.required],
+      phone: ['',[Validators.required, Validators.pattern(/^\d{10,15}$/)]],
+      mobilePhone: ['', [Validators.required, Validators.pattern(/^\d{10,15}$/)]],
       address1: ['', [Validators.required,Validators.maxLength(this.maxAddressLength)]],
       address2: [''],
       landmark: ['', Validators.required],
@@ -68,10 +68,10 @@ addressidobj:any=[];
 
     this.adduserForm = this.fb.group({
       addRecipientFirstName: ['', [Validators.required, Validators.minLength(3)]],
-      addRecipientLastName: ['',[Validators.required, Validators.minLength(3)]],
+      addRecipientLastName: ['',[Validators.required]],
       addEmail: [''],
-      addPhone: ['', Validators.required],
-      addMobilePhone: ['', Validators.required],
+      addPhone: ['', [Validators.required, Validators.pattern(/^\d{10,15}$/)]],
+      addMobilePhone: ['', [Validators.required, Validators.pattern(/^\d{10,15}$/)]],
       addaddress1: ['', [Validators.required,Validators.maxLength(this.maxAddressLength)]],
       addaddress2: [''],
       addlandmark: ['', Validators.required],
@@ -175,8 +175,8 @@ if(this.adduserForm.valid)
         "RecipientFirstName": this.adduserForm.value['addRecipientFirstName'],
         "RecipientLastName": this.adduserForm.value['addRecipientLastName'],
         "email": this.adduserForm.value['addEmail'],
-        "Phone": this.adduserForm.value['addPhone'],
-        "MobilePhone": this.adduserForm.value['addMobilePhone'],
+        "Phone": this.adduserForm.value['addPhone'].toString(),
+        "MobilePhone": this.adduserForm.value['addMobilePhone'].toString(),
         "address1": this.adduserForm.value['addaddress1'],
         "address2": this.adduserForm.value['addaddress2'],
         "landmark": this.adduserForm.value['addlandmark'],
@@ -195,6 +195,8 @@ if(this.adduserForm.valid)
         const button: HTMLButtonElement = this.AddButton.nativeElement;
         button.click();
         this.getAddressByCustomerId();
+        this.adduserForm.reset();
+        this.addsubmitted=false;
       }
       else {
         this.toastr.error(res.errorMessage)
@@ -221,8 +223,8 @@ this.submitted=true;
         "recipientFirstName": this.userForm.value['recipientFirstName'],
         "recipientLastName": this.userForm.value['recipientLastName'],
         "email": this.userForm.value['email'],
-        "phone": this.userForm.value['phone'],
-        "mobilePhone": this.userForm.value['mobilePhone'],
+        "phone": this.userForm.value['phone'].toString(),
+        "mobilePhone": this.userForm.value['mobilePhone'].toString(),
         "address1": this.userForm.value['address1'],
         "address2": this.userForm.value['address2'],
         "landmark": this.userForm.value['landmark'],
@@ -244,10 +246,11 @@ this.submitted=true;
         const button: HTMLButtonElement = this.EditButton.nativeElement;
         button.click();
         this.getAddressByCustomerId();
-
+        this.submitted=false;
       }
       else {
         this.toastr.error(res.errorMessage)
+        
       }
     });
 

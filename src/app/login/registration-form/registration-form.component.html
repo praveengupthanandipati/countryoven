@@ -19,13 +19,16 @@
                         <div *ngIf="submitted && userForm.get('useremail')!.invalid " class="invalid-feedback mt-0 d-block">
                             Enter valid Email address 
                         </div>
+                        <div *ngIf="msgstatus"  class="invalid-feedback mt-0 d-block">
+                            {{msg}}
+                        </div>
                     </div>
                     
                     <div class="form-floating mb-3">
                         <input  [ngClass]="{'is-invalid' : userForm.get('userphone')!.invalid && userForm.get('userphone')!.touched}" type="number" class="form-control" id="userphone" placeholder="Enter your Phone Number"  formControlName="userphone">
                         <label for="userphone">Mobile Number <span class="font-red font-bold">*</span></label>
                         <div *ngIf="submitted && userForm.get('userphone')!.invalid " class="invalid-feedback mt-0 d-block">
-                            Enter valid Mobile Number. Atleast 10 characters
+                            Enter valid Mobile Number. Its between  10 to 15  characters
                         </div>
                     </div>
                      

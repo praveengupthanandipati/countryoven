@@ -1,7 +1,7 @@
 <div class="userprofile-body">
     <div class="row py-3">
         <div class="col-md-6">
-            <div class="row" *ngIf="originalAddress.length > 3">
+            <div class="row" *ngIf="originalAddress?.length > 3">
                 <div class="col-auto align-self-center">
                     <label>Filter By</label>
                 </div>
@@ -61,7 +61,7 @@
         </div>
     </div>
 
-    <div class="static-page" *ngIf="deliverAddress.length ==0">
+    <div class="static-page" *ngIf="deliverAddress?.length ==0">
 
         <div class="Noproducts">
             <img src="/src/assets/images/noproducts.svg" alt="" class="img-fluid w-100">
@@ -94,8 +94,8 @@
                                     placeholder="First Name *"
                                     [ngClass]="{'is-invalid' : userForm.get('recipientFirstName')!.invalid && userForm.get('recipientFirstName')!.touched}">
                                 <label for="">First Name <span class="font-red font-bold">*</span></label>
-                                <div class="msg-hint" *ngIf="submitted && userForm.get('recipientFirstName').invalid"> Name is
-                                    mandatory</div>
+                                <div class="msg-hint" *ngIf="submitted && userForm.get('recipientFirstName').invalid"> Name
+                                    must be at least 3 characters long</div>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -111,19 +111,19 @@
 
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" formControlName="phone" class="form-control" placeholder="Phone *"
+                                <input type="number" formControlName="phone" class="form-control" placeholder="Phone *"
                                     [ngClass]="{'is-invalid' : userForm.get('phone')!.invalid && userForm.get('phone')!.touched}">
                                 <label for="">Phone <span class="font-red font-bold">*</span></label>
-                                <div class="msg-hint" *ngIf="submitted && userForm.get('phone').invalid"> Enter Valid Mobile Number Atleast 10 Characters</div>
+                                <div class="msg-hint" *ngIf="submitted && userForm.get('phone').invalid">  Enter valid Mobile Number. Its between  10 to 15  characters</div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" formControlName="mobilePhone" class="form-control"
+                                <input type="number" formControlName="mobilePhone" class="form-control"
                                     placeholder="Mobile Phone *"
                                     [ngClass]="{'is-invalid' : userForm.get('mobilePhone')!.invalid && userForm.get('mobilePhone')!.touched}">
                                 <label for="">Mobile<span class="font-red font-bold">*</span></label>
-                                <div class="msg-hint" *ngIf="submitted && userForm.get('mobilePhone').invalid"> Enter Valid Mobile Number Atleast 10 Characters
+                                <div class="msg-hint" *ngIf="submitted && userForm.get('mobilePhone').invalid">  Enter valid Mobile Number. Its between  10 to 15  characters
                                 </div>
                             </div>
                         </div>
@@ -204,8 +204,8 @@
                                     type="text" class="form-control" formControlName="addRecipientFirstName"
                                     placeholder="First Name*">
                                 <label for="">First Name <span class="font-red font-bold">*</span></label>
-                                <div class="msg-hint" *ngIf="addsubmitted && adduserForm.get('addRecipientFirstName').invalid"> Name is
-                                    mandatory</div>
+                                <div class="msg-hint" *ngIf="addsubmitted && adduserForm.get('addRecipientFirstName').invalid"> Name
+                                    must be at least 3 characters long</div>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -225,20 +225,20 @@
                         </div> -->
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" formControlName="addPhone" class="form-control" placeholder="Phone *"
+                                <input type="number" formControlName="addPhone" class="form-control" placeholder="Phone *"
                                     [ngClass]="{'is-invalid' : adduserForm.get('addPhone')!.invalid && adduserForm.get('addPhone')!.touched}">
                                 <label for="">Phone <span class="font-red font-bold">*</span></label>
-                                <div class="msg-hint" *ngIf="addsubmitted && adduserForm.get('addPhone').invalid"> Enter Valid Mobile Number Atleast 10 Characters
+                                <div class="msg-hint" *ngIf="addsubmitted && adduserForm.get('addPhone').invalid">  Enter valid Mobile Number. Its between  10 to 15  characters
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" formControlName="addMobilePhone" class="form-control"
+                                <input type="number" formControlName="addMobilePhone" class="form-control"
                                     placeholder="Mobile Phone *"
                                     [ngClass]="{'is-invalid' : adduserForm.get('addMobilePhone')!.invalid && adduserForm.get('addMobilePhone')!.touched}">
                                 <label for="">Mobile <span class="font-red font-bold">*</span></label>
-                                <div class="msg-hint" *ngIf="addsubmitted && adduserForm.get('addMobilePhone').invalid"> Enter Valid Mobile Number Atleast 10 Characters</div>
+                                <div class="msg-hint" *ngIf="addsubmitted && adduserForm.get('addMobilePhone').invalid">  Enter valid Mobile Number. Its between  10 to 15  characters</div>
                             </div>
                         </div>
 

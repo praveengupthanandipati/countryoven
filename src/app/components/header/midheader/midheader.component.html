@@ -110,11 +110,11 @@
                                     </div>
                                 </div>
                             </a></li>
-                        <li *ngIf="email"><a class="dropdown-item" routerLink="/">
+                        <li *ngIf="email"><a class="dropdown-item" (click)="logout()">
                                 <div class="d-flex">
                                     <span class="icon-exit h4 align-self-center"></span>
                                     <div class="ps-3">
-                                        <h6 class="font-bold" (click)="logout()">Logout</h6>
+                                        <h6 class="font-bold">Logout</h6>
                                         <p class="font-bold"><span>Go to home</span></p>
                                     </div>
                                 </div>

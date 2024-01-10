@@ -31,19 +31,19 @@
 
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control"
+                            <input type="number" class="form-control"
                                 [ngClass]="{'is-invalid': userForm.get('phoneNo').invalid  && userForm.get('phoneNo')!.touched}"
                                 id="phoneNumber" placeholder="Phone Number" formControlName="phoneNo">
                             <label for="phoneNumber">Phone Number <span class="font-red font-bold">*</span></label>
-                            <div class="msg-hint" *ngIf="submitted && userForm.get('phoneNo').invalid"> Phone No is
-                                mandatory</div>
+                            <div class="msg-hint" *ngIf="submitted && userForm.get('phoneNo').invalid">  Enter valid Phone Number. Its between  10 to 15  characters</div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="mobileNumber" placeholder="Mobile Number"
-                                formControlName="MobilePhone">
+                                formControlName="MobilePhone"  [ngClass]="{'is-invalid': userForm.get('MobilePhone').invalid  && userForm.get('MobilePhone')!.touched}">
                             <label for="mobileNumber">Mobile Number </label>
+                            <div class="msg-hint" *ngIf="submitted && userForm.get('phoneNo').invalid">  Enter valid Mobile Number. Its between  10 to 15  characters</div>
                         </div>
                     </div>
 
@@ -61,8 +61,13 @@
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
                             <textarea class="form-control" id="addressline01" placeholder="Address"
-                                formControlName="Address1"></textarea>
+                                formControlName="Address1"  [ngClass]="{'is-invalid': userForm.get('Address1').invalid  && userForm.get('Address1')!.touched}"></textarea>
                             <label for="addressline01">Address </label>
+                            <div class="addresscount">
+                                {{ updateCharacterCount() }} / {{ maxAddressLength }}
+                             </div>
+                            <div class="msg-hint" *ngIf="submitted && userForm.get('Address1').invalid"> Address must be 100 characters or less.
+                            </div>
                         </div>
                     </div>
 

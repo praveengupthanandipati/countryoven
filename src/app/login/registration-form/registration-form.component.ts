@@ -16,12 +16,14 @@ export class RegistrationFormComponent {
   userForm: any;
   userIp:any;
   submitted:boolean=false;
+  msgstatus:boolean=false;
+  msg:any;
   constructor( private renderer:Renderer2,  private router:Router, private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private cookieService: CookieService){
     this.sessionId= this.cookieService.get('sessionID');
     this.userForm = this.fb.group({
       usrname: ['', [Validators.required, Validators.minLength(3)]],
       useremail: ['', [Validators.required, Validators.email]],
-      userphone: ['',  [Validators.required, Validators.pattern(/^\d{10}$/)]],
+      userphone: ['',  [Validators.required, Validators.pattern(/^\d{10,15}$/)]],
     });
   }
   ngOnInit() {
@@ -44,6 +46,7 @@ export class RegistrationFormComponent {
   }
 register()
 {
+  
   this.addLoader();
 let data={
  
@@ -63,7 +66,12 @@ let data={
   if(res.isEroor)
   {
     this.removeLoader()
-    this.toastr.error(res.errorMessage);
+  //  this.toastr.error(res.errorMessage);
+    this.msg=res.errorMessage;
+    this.msgstatus=true;
+    setTimeout(() => {
+      this.msgstatus=false;
+    }, 6000);
   }
   else
   {

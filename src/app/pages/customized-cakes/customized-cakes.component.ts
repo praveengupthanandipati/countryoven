@@ -31,7 +31,7 @@ export class CustomizedCakesComponent {
       name: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
     
-      mobile: ['', Validators.required],
+      mobile: ['', [Validators.required, Validators.pattern(/^\d{10,15}$/)]],
       
       comments: ['', Validators.required],
       image: ['', Validators.required],
@@ -71,7 +71,7 @@ export class CustomizedCakesComponent {
         customizedCakeDetails: 
         {
           "name": this.form.get('name')?.value,
-          "mobile":  this.form.get('mobile')?.value,
+          "mobile":  this.form.get('mobile')?.value.toString(),
           "email": this.form.get('email')?.value,
           "comments": this.form.get('comments')?.value,
           "date":new Date()
