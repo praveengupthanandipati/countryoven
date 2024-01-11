@@ -1,4 +1,4 @@
-<section class="topheader py-1">
+<section class="topheader">
     <div class="custom-container">
         <div class="row justify-content-between">
             <div class="col-lg-6">
@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <ul class="nav justify-content-md-end pt-1">
+                <ul class="nav justify-content-md-end">
                     <li class="nav-item" *ngFor="let menu of topList">
                         <a class="nav-link py-0" (click)="gotoroute(menu.type, menu.seoTitle)"
                             href="javascript:void(0)">{{menu.title}}</a>

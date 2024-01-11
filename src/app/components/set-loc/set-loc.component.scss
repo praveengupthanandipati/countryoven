@@ -157,10 +157,6 @@
   justify-content: center;
   align-items: center;
 
-  @include max(map-get($breakpoints, "sm")) {
-    display: block;
-  }
-
   &:hover,
   &.selected {
     background: map-get($colors, primary);
@@ -172,8 +168,12 @@
     }
   }
   .icomoon {
-    font-size: $fsize * 5;
+    font-size: 4.5rem;
     color: map-get($colors, darkgray);
+
+    @include max(map-get($breakpoints, "sm")){
+      font-size:3rem;
+    }
   }
   p {
     font-size: $fsize - 2;
@@ -189,4 +189,8 @@
   .icomoon {
     color: map-get($colors, primary);
   }
+}
+
+.modal-body {
+  min-height: 500px;
 }

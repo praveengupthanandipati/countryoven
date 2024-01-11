@@ -55,8 +55,7 @@
     }
   }
   .deliver {
-    padding: 14px 15px;
-    margin-left: 15px;
+    padding: 14px 15px; 
 
     .icon-pin {
       color: map-get($colors, primary);
@@ -86,7 +85,7 @@
       position: absolute;
       top: 4px;
       right: 0;
-      width: 50%;
+      width: 65%;
     }
     a {
       width: 45px;
@@ -131,8 +130,10 @@
   }
 }
 
-.selectcity-offcanvas {
-  height: 100vh;
+.selectcity-modal {
+  .modal-body {
+    min-height: 800px;
+  }
 }
 // .selectcity-offcanvas {
 //   height: auto;

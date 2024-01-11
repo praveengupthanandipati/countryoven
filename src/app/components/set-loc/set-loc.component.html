@@ -1,22 +1,58 @@
-<div class="offcanvas-header">
-    <article class="mx-auto">
-        <h4 class="offcanvas-title font-bold text-black text-center" id="offcanvasTopLabel">Select Delivery Location
-        </h4>
-        <p>Select a delivery location to see product availability</p>
-    </article>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-</div>
-<div class="offcanvas-body" style="overflow-y: visible;">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2 col-6 col" *ngFor="let s of desireCity">
-                <a class="citycol rounded text-center mx-auto" (click)="selectedCity(s.name)"
-                    [ngClass]="{'selected': city === s.name}" href="javascript:void(0)">
-                    <span class="icomoon" [ngClass]="s.icon"></span>
-                </a>
-                <p class="text-center font-bold pt-2">{{s.name}}</p>
+<div class="modal-content">
+    <div class="modal-header">
+        <article>
+            <h4 class="modal-title font-bold text-black">Select Delivery Location </h4>
+            <!-- <p>Select a delivery location to see product availability</p> -->
+        </article>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body" style="overflow-y: visible;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <article class="mx-auto pt-2">
+                        <h6 class="offcanvas-title font-bold text-black text-center" id="offcanvasTopLabel">Select
+                            More Cities We deliver
+                        </h6>
+                    </article>
+                    <div class="py-3">
+                        <a class="badge rounded-pill d-inline-block border morecity px-3 py-2 mb-2"
+                            *ngFor="let c of anotherCity" href="javascript:void(0)" (click)="selectedCity(c)"
+                            [ngClass]="{'selected': city === c}">{{c}}</a>
+
+                    </div>
+                </div>
             </div>
-            <!-- <div class="col-md-2 col-6 col">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="select-city-parent">
+                        <!-- <div
+                        class="search-header d-flex justify-content-between mt-4 px-4 py-1  position-relative">
+                        <div class="d-flex">
+                            <span class="icon-magnifying-glass icomoon align-self-center"></span>
+                            <input type="text" class="form-control ms-2 border-0" name=""
+                                placeholder="Enter your Delivery Location">
+                        </div>
+                        <span class="icon-pin icomoon align-self-center"></span>
+                    </div> -->
+                        <select2 [data]="data" (update)="update($event)" class="dropdown-list rounded border-0"
+                            placeholder="Enter Your Delivery Location">
+                        </select2>
+                    </div>
+                    <!-- <div class="text-center">
+                    <a href="javascript:void(0)" class="color-btn d-inline-block mt-4">Proceed to Shopping</a>
+                </div> -->
+                </div>
+            </div>
+            <div class="row pt-4">
+                <div class="col-md-2 col-6 col" *ngFor="let s of desireCity">
+                    <a class="citycol rounded text-center mx-auto" (click)="selectedCity(s.name)"
+                        [ngClass]="{'selected': city === s.name}" href="javascript:void(0)">
+                        <span class="icomoon" [ngClass]="s.icon"></span>
+                    </a>
+                    <p class="text-center pb-2">{{s.name}}</p>
+                </div>
+                <!-- <div class="col-md-2 col-6 col">
                 <a class="citycol rounded text-center mx-auto" href="javascript:void(0)" (click)="state='Delhi'" [ngClass]="{'selected': state === 'Delhi'}">
                     <span class="icon-redfort icomoon"></span>
                 </a>
@@ -46,44 +82,6 @@
                 </a>
                 <p class="text-center font-bold pt-2">Chennai</p>
             </div> -->
-        </div>
-        <div class="row pt-5">
-            <div class="col-md-12 text-center">
-                <article class="mx-auto py-3">
-                    <h4 class="offcanvas-title font-bold text-black text-center" id="offcanvasTopLabel">Select
-                        More Cities We deliver
-                    </h4>
-                </article>
-                <div class="py-3">
-                    <a class="badge rounded-pill d-inline-block border morecity px-3 py-2" *ngFor="let c of anotherCity"
-                        href="javascript:void(0)" (click)="selectedCity(c)"
-                        [ngClass]="{'selected': city === c}">{{c}}</a>
-
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="select-city-parent">
-                    <!-- <div
-                        class="search-header d-flex justify-content-between mt-4 px-4 py-1  position-relative">
-                        <div class="d-flex">
-                            <span class="icon-magnifying-glass icomoon align-self-center"></span>
-                            <input type="text" class="form-control ms-2 border-0" name=""
-                                placeholder="Enter your Delivery Location">
-                        </div>
-                        <span class="icon-pin icomoon align-self-center"></span>
-                    </div> -->
-                    <select2 [data]="data" (update)="update($event)" class="dropdown-list rounded border-0"
-                        placeholder="Enter Your Delivery Location">
-                    </select2>
-                </div>
-
-
-
-                <!-- <div class="text-center">
-                    <a href="javascript:void(0)" class="color-btn d-inline-block mt-4">Proceed to Shopping</a>
-                </div> -->
             </div>
         </div>
     </div>

@@ -11,19 +11,21 @@
 
   .offers {
     display: flex;
-
+    padding-top: 4px;
     // @include minMax(map-get($breakpoints, "xs"), map-get($breakpoints, "sm")){
     //   display: none;
     // }
 
     .h6 {
       font-size: $fsize + 1;
+      padding-top: 2px;
     }
     p {
       font-size: $fsize - 1;
     }
   }
   .nav {
+    padding-top: 7px;
     .nav-link {
       color: map-get($colors, white);
       text-transform: uppercase;

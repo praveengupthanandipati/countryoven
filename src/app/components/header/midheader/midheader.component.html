@@ -9,11 +9,11 @@
                         </a>
                     </div>
                     <div class="col-lg-4 align-self-center">
-                        <div class="align-self-center px-3 headerinput searchbox">                          
+                        <div class="align-self-center px-3 headerinput searchbox">
                             <div class="pe-2 w-100">
                                 <input type="text" placeholder="Search Cakes, Flowers, Gifts, etc..."
                                     [(ngModel)]="searchkeyword" class="searchinput no-border form-control-plaintext"
-                                    list="search-products"  (keyup.enter)="gotoroute()">
+                                    list="search-products" (keyup.enter)="gotoroute()">
                                 <datalist id="search-products">
                                     <option *ngFor="let i of searchList" [value]="i"></option>
                                 </datalist>
@@ -25,8 +25,7 @@
                         <div class="row">
                             <div class="col-lg-9 col-md-8 col-7">
                                 <a class="d-block align-self-center headerinput deliver" href="javascript:void(0)"
-                                    data-bs-toggle="offcanvas" data-bs-target="#selectcity" aria-controls="offcanvasTop"
-                                    aria-controls="staticBackdrop">
+                                    data-bs-toggle="modal" data-bs-target="#selectcity" aria-controls="staticBackdrop">
                                     <div class="d-flex align-self-center">
                                         <span class="icon-pin icomoon align-self-center"></span>
                                         <div class="d-flex justify-content-between w-100">
@@ -59,9 +58,11 @@
                         aria-expanded="false">
                         <div><span class="icon-user icomoon"></span></div>
                         <div *ngIf="custName">
-                            <small class="text-uppercase font-bold">{{custName}}</small></div>
-                            <div *ngIf="!custName">
-                                <small class="text-uppercase font-bold">Profile</small></div>
+                            <small class="text-uppercase font-bold">{{custName}}</small>
+                        </div>
+                        <div *ngIf="!custName">
+                            <small class="text-uppercase font-bold">Profile</small>
+                        </div>
                     </div>
                     <ul class="dropdown-menu">
                         <li *ngIf="!email"><a class="dropdown-item" routerLink="/login">
@@ -130,7 +131,9 @@
     </div>
 </section>
 
-<div class="offcanvas offcanvas-top selectcity-offcanvas" tabindex="-1" id="selectcity"
-    aria-labelledby="offcanvasTopLabel">
-    <app-set-loc (selectEvent)="selectLoc()"></app-set-loc>
+<div class="modal fade selectcity-modal" tabindex="-1" id="selectcity" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog  modal-xl">
+        <app-set-loc (selectEvent)="selectLoc()"></app-set-loc>
+    </div>
 </div>
