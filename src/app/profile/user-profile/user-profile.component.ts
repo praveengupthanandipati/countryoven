@@ -21,6 +21,7 @@ export class UserProfileComponent implements OnInit{
   cityList:any;
   msg: any;
   submitted:boolean=false;
+  maxAddressLength = 100;
   constructor(private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private route:Router)
   {
    if(localStorage.getItem('email'))
@@ -32,32 +33,15 @@ export class UserProfileComponent implements OnInit{
    }
 
 
-  //  "isEroor": false,
-  //  "errorMessage": null,
-  //  "successMessage": null,
-  //  "customerFirstName": "krishnareddy",
-  //  "primaryEmail": "krishnareddy668@gmail.com",
-  //  "password": "9490876535",
-  //  "customerIp": "183.82.96.166",
-  //  "phoneNo": "9490876535",
-  //  "mobilePhone": null,
-  //  "address1": null,
-  //  "address2": null,
-  //  "cityName": null,
-  //  "stateId": 0,
-  //  "countryId": 0,
-  //  "zipCode": null
-
-
 
    this.userForm = this.fb.group({
    
-    customerFirstName: ['', [Validators.required,, Validators.minLength(3)]],
+    customerFirstName: ['', [Validators.required, Validators.minLength(3)]],
     customerIp:  [''],
     email: [{ value: '', disabled: true }],
-    MobilePhone:  [''],  
-    phoneNo:  ['', Validators.required],
-    Address1:  [''],
+    MobilePhone:  ['',[Validators.pattern(/^\d{10,15}$/)]],  
+    phoneNo:  ['', [Validators.required, Validators.pattern(/^\d{10,15}$/)]],
+    Address1:  ['',[Validators.maxLength(this.maxAddressLength)]],
     Address2:  [''],
     cityName:  [''],
     stateId:  [''],
@@ -69,6 +53,13 @@ export class UserProfileComponent implements OnInit{
 
 
   } 
+
+  
+  updateCharacterCount() {
+    const addressControl = this.userForm.get('Address1');
+    const currentLength = addressControl.value ? addressControl.value.length : 0;
+    return currentLength;
+  }
   ngOnInit(): void {
     this.gettheData(this.custID);
     
@@ -170,8 +161,8 @@ this.submitted=true;
         "customerDetails": {
           "customerFirstName": this.custName,
           "customerIp": this.userForm.value['customerIp'],
-          "MobilePhone": this.userForm.value['MobilePhone'],
-          "phoneNo": this.userForm.value['phoneNo'],
+          "MobilePhone": this.userForm.value['MobilePhone'].toString(),
+          "phoneNo": this.userForm.value['phoneNo'].toString(),
           "Address1": this.userForm.value['Address1'],
           // "Address2":this.userForm.value['Address2'],
           "cityName":this.userForm.value['cityName'],
@@ -207,4 +198,10 @@ this.submitted=true;
     }
   
   }
+
+gotodashboard()
+{
+  this.route.navigateByUrl('/myaccount/dashboard')
+}
+
 }

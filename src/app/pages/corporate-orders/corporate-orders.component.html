@@ -37,7 +37,7 @@
                                         [ngClass]="{'is-invalid': userForm.get('mobileNo').invalid  && userForm.get('mobileNo')!.touched}"  formControlName="mobileNo">
                                         <label for="MobileNumber">Mobile Number<span
                                                 class="font-red font-bold">*</span></label>
-                                                <div class="msg-hint" *ngIf="submitted && userForm.get('mobileNo').invalid"> Mobile number required</div>
+                                                <div class="msg-hint" *ngIf="submitted && userForm.get('mobileNo').invalid"> Enter valid Mobile Number. Its between  10 to 15  characters</div>
                                     </div>
                                 </div>
                             </div>

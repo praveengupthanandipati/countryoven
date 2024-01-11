@@ -20,7 +20,7 @@ export class CorporateOrdersComponent implements OnInit {
     this.userForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       emailId:  ['', [Validators.required, Validators.email]],
-      mobileNo:  ['', Validators.required],  
+            mobileNo: ['', [Validators.required, Validators.pattern(/^\d{10,15}$/)]], 
       companyName:  ['', Validators.required],
       comments:  [''],
      

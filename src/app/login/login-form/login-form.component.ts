@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -19,7 +19,7 @@ export class LoginFormComponent {
   submitted = false;
   errorMsg:any;
   errorMsgstatus:boolean=false;
-  constructor(private route:ActivatedRoute,  private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private cookieService: CookieService, private router:Router){
+  constructor(private renderer:Renderer2,  private route:ActivatedRoute,  private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private cookieService: CookieService, private router:Router){
     this.sessionId= this.cookieService.get('sessionID');
     this.userForm = this.fb.group({
       usrname: ['', [Validators.required, Validators.email]],
@@ -54,11 +54,9 @@ export class LoginFormComponent {
   }
   login()
 {
-  
+  this.addLoader();
 let data={
  
-  
-  
     "customerEmail": this.userForm.get('usrname').value,
     "password":this.userForm.get('pwd').value,
     "sessionId":this.sessionId
@@ -67,7 +65,7 @@ let data={
   }
 
   this._crud.login(data).subscribe(res => {
-    
+    this.removeLoader();
   if(res.isEroor)
   {
     this.errorMsgstatus=true;
@@ -94,5 +92,15 @@ let data={
   }
         });
 }
+
+addLoader()
+{
+  this.renderer.addClass(document.body, 'bodyloader');
+}
+removeLoader()
+{
+  this.renderer.removeClass(document.body, 'bodyloader');
+}
+
 }
 

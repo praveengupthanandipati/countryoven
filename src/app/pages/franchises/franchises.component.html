@@ -29,8 +29,8 @@
                                         <label for="username">First Name <span
                                                 class="font-red font-bold">*</span></label>
                                     </div>
-                                    <div *ngIf="form.get('firstname')!.invalid && form.get('firstname')!.touched" class="invalid-feedback mt-0 d-block">
-                                        Required
+                                    <div *ngIf="submitted && form.get('firstname')!.invalid" class="invalid-feedback mt-0 d-block">
+                                        Name must be at least 3 characters long
                                     </div>
                                 </div>
                             </div>
@@ -42,8 +42,8 @@
                                         <label for="username">Last Name <span
                                                 class="font-red font-bold">*</span></label>
                                     </div>
-                                    <div *ngIf="form.get('lastname')!.invalid && form.get('lastname')!.touched" class="invalid-feedback mt-0 d-block">
-                                        Required
+                                    <div *ngIf="submitted && form.get('lastname')!.invalid" class="invalid-feedback mt-0 d-block">
+                                        Last name is Required
                                     </div>
                                 </div>
                             </div>
@@ -54,34 +54,34 @@
                                             formControlName="age">
                                         <label for="username">Age <span class="font-red font-bold">*</span></label>
                                     </div>
-                                    <div *ngIf="form.get('age')!.invalid && form.get('age')!.touched" class="invalid-feedback mt-0 d-block">
-                                        Required
+                                    <div *ngIf="submitted && form.get('age')!.invalid" class="invalid-feedback mt-0 d-block">
+                                      Age is Required
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-lg-4">
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
-                                        <input  [ngClass]="{'is-invalid' : form.get('mobile')!.invalid && form.get('mobile')!.touched}" type="text" class="form-control" placeholder="Mobile No"
+                                        <input  [ngClass]="{'is-invalid' : form.get('mobile')!.invalid && form.get('mobile')!.touched}" type="number" class="form-control" placeholder="Mobile No"
                                             formControlName="mobile">
                                         <label for="username">Mobile No: <span
                                                 class="font-red font-bold">*</span></label>
                                     </div>
-                                    <div *ngIf="form.get('mobile')!.invalid && form.get('mobile')!.touched" class="invalid-feedback mt-0 d-block">
-                                        Required
+                                    <div *ngIf="submitted && form.get('mobile')!.invalid " class="invalid-feedback mt-0 d-block">
+                                        Enter valid Mobile Number. Its between  10 to 15  characters
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-lg-4">
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
-                                        <input  [ngClass]="{'is-invalid' : form.get('emailId')!.invalid && form.get('emailId')!.touched}" type="text" class="form-control" placeholder="Email Address"
+                                        <input  [ngClass]="{'is-invalid' : form.get('emailId')!.invalid && form.get('emailId')!.touched}" type="email" class="form-control" placeholder="Email Address"
                                             formControlName="emailId">
                                         <label for="username">Email Address: <span
                                                 class="font-red font-bold">*</span></label>
                                     </div>
-                                    <div *ngIf="form.get('emailId')!.invalid && form.get('emailId')!.touched" class="invalid-feedback mt-0 d-block">
-                                        Required
+                                    <div *ngIf="submitted && form.get('emailId')!.invalid " class="invalid-feedback mt-0 d-block">
+                                       Email Address is Required
                                     </div>
                                 </div>
                             </div>
@@ -94,8 +94,8 @@
                                             formControlName="country">
                                         <label for="country">Country <span class="font-red font-bold">*</span></label>
                                     </div>
-                                    <div *ngIf="form.get('country')!.invalid && form.get('country')!.touched" class="invalid-feedback mt-0 d-block">
-                                        Required
+                                    <div *ngIf="submitted && form.get('country')!.invalid " class="invalid-feedback mt-0 d-block">
+                                       Country Required
                                     </div>
                                 </div>
                             </div>
@@ -107,8 +107,11 @@
                                         <label for="completeAddress">Complete Address <span
                                                 class="font-red font-bold">*</span></label>
                                     </div>
-                                    <div *ngIf="form.get('address')!.invalid && form.get('address')!.touched" class="invalid-feedback mt-0 d-block">
-                                        Required
+                                    <div class="addresscount">
+                                        {{ updateCharacterCount() }} / {{ maxAddressLength }}
+                                     </div>
+                                    <div *ngIf="submitted && form.get('address')!.invalid" class="invalid-feedback mt-0 d-block">
+                                        Address must be 100 characters or less.
                                     </div>
                                 </div>
                             </div>
@@ -119,8 +122,8 @@
                                             formControlName="state">
                                         <label for="State">State <span class="font-red font-bold">*</span></label>
                                     </div>
-                                    <div *ngIf="form.get('state')!.invalid && form.get('state')!.touched" class="invalid-feedback mt-0 d-block">
-                                        Required
+                                    <div *ngIf="submitted && form.get('state')!.invalid " class="invalid-feedback mt-0 d-block">
+                                       State Required
                                     </div>
                                 </div>
                             </div>
@@ -131,8 +134,8 @@
                                             formControlName="city">
                                         <label for="City">City <span class="font-red font-bold">*</span></label>
                                     </div>
-                                    <div *ngIf="form.get('city')!.invalid && form.get('city')!.touched" class="invalid-feedback mt-0 d-block">
-                                        Required
+                                    <div *ngIf="submitted && form.get('city')!.invalid" class="invalid-feedback mt-0 d-block">
+                                       City Required
                                     </div>
                                 </div>
                             </div>
@@ -144,8 +147,8 @@
                                         <label for="CurrentOccupation">Occupation <span
                                                 class="font-red font-bold">*</span></label>
                                     </div>
-                                    <div *ngIf="form.get('occupation')!.invalid && form.get('occupation')!.touched" class="invalid-feedback mt-0 d-block">
-                                        Required
+                                    <div *ngIf="submitted && form.get('occupation')!.invalid" class="invalid-feedback mt-0 d-block">
+                                      Occupation is Required
                                     </div>
                                 </div>
                             </div>
@@ -157,8 +160,8 @@
                                         <label for="Business/CareerHistory">Business/Career History <span
                                                 class="font-red font-bold">*</span></label>
                                     </div>
-                                    <div *ngIf="form.get('businessHistory')!.invalid && form.get('businessHistory')!.touched" class="invalid-feedback mt-0 d-block">
-                                        Required
+                                    <div *ngIf="submitted && form.get('businessHistory')!.invalid" class="invalid-feedback mt-0 d-block">
+                                       Business History is Required
                                     </div>
                                 </div>
                             </div>
@@ -171,8 +174,8 @@
                                         <label for="Proposedlocationtoopenthefranchise">Proposed location to open the
                                             franchise <span class="font-red font-bold">*</span></label>
                                     </div>
-                                    <div *ngIf="form.get('proposedLocation')!.invalid && form.get('proposedLocation')!.touched" class="invalid-feedback mt-0 d-block">
-                                        Required
+                                    <div *ngIf="submitted && form.get('proposedLocation')!.invalid" class="invalid-feedback mt-0 d-block">
+                                      Franchise location is Required
                                     </div>
                                 </div>
                             </div>
@@ -184,56 +187,14 @@
                                         <label for="EnterMessage">Enter Message <span
                                                 class="font-red font-bold">*</span></label>
                                     </div>
-                                    <div *ngIf="form.get('message')!.invalid && form.get('message')!.touched" class="invalid-feedback mt-0 d-block">
-                                        Required
+                                    <div *ngIf="submitted && form.get('message')!.invalid" class="invalid-feedback mt-0 d-block">
+                                      Message is  Required
                                     </div>
                                 </div>
                             </div>
 
 
-                            <!-- <div class="col-sm-6 col-lg-4">
-                                <div class="input-group mb-3">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control"
-                                            placeholder="franchiseFee"
-                                            formControlName="franchiseFee">
-                                        <label for="franchiseFee">franchiseFee<span class="font-red font-bold">*</span></label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-4">
-                                <div class="input-group mb-3">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control"
-                                            placeholder="GateWay"
-                                            formControlName="gateWay">
-                                        <label for="gateWay">gateWay <span class="font-red font-bold">*</span></label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-4">
-                                <div class="input-group mb-3">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control"
-                                            placeholder="transactionId"
-                                            formControlName="transactionId">
-                                        <label for="transactionId">transactionId <span class="font-red font-bold">*</span></label>
-                                    </div>
-                                </div>
-                            </div>  
-                            <div class="col-sm-6 col-lg-4">
-                                <div class="input-group mb-3">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control"
-                                            placeholder="createdDate"
-                                            formControlName="createdDate">
-                                        <label for="createdDate">Created Date <span class="font-red font-bold">*</span></label>
-                                    </div>
-                                </div>
-                            </div> -->
-
-
-                            <button class="btn color-btn w-100 text-center font-bold" type="submit" (click)="submit()"  [disabled]="!form.valid">Submit</button>
+                            <button class="btn color-btn w-100 text-center font-bold" type="submit" (click)="submit()">Submit</button>
                         </div>
                     </form>
                 </div>

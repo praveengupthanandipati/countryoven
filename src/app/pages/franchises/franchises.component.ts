@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EmailValidator, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -14,6 +14,8 @@ import { CurdService } from 'src/app/services/curd.service';
 export class FranchisesComponent {
   dynamicForm:any;
   form!: FormGroup;
+  maxAddressLength:any=100;
+  submitted:boolean=false;
   constructor(
     private toastr:ToastrService,
     private meta: Meta, private title:Title,
@@ -24,12 +26,12 @@ export class FranchisesComponent {
 
     this.form = this.fb.group({
       
-      firstname: ['', Validators.required],
+      firstname: ['', [Validators.required, Validators.minLength(3)]],
       lastname: ['', Validators.required],
       age: ['', Validators.required],
-      mobile: ['', Validators.required],
-      emailId: ['', Validators.required],
-      address: ['', Validators.required],
+      mobile: ['',  [Validators.required, Validators.pattern(/^\d{10,15}$/)]],
+      emailId: ['', [Validators.required,Validators.email]],
+      address: ['', [Validators.maxLength(this.maxAddressLength)]],
       country: ['', Validators.required],
       state: ['', Validators.required],
       city: ['', Validators.required],
@@ -44,7 +46,18 @@ export class FranchisesComponent {
     });
   }
 
+  
+  updateCharacterCount() {
+    const addressControl = this.form.get('address');
+    const currentLength = addressControl?.value ? addressControl.value.length : 0;
+    return currentLength;
+  }
   submit(): void {
+    this.submitted=true;
+    if(this.form.valid)
+    {
+  
+
     let obj = {
       // "UserID": this.userObj.UserID,
       // "pincode":  this.form.get('pincode')?.value
@@ -53,7 +66,7 @@ export class FranchisesComponent {
           "firstname": this.form.get('firstname')?.value,
           "lastname": this.form.get('lastname')?.value,
           "age": this.form.get('age')?.value,
-          "mobile": this.form.get('mobile')?.value,
+          "mobile": this.form.get('mobile')?.value.toString(),
           "emailId": this.form.get('emailId')?.value,
           "address": this.form.get('address')?.value,
           "country": this.form.get('country')?.value,
@@ -64,10 +77,7 @@ export class FranchisesComponent {
           "proposedLocation": this.form.get('proposedLocation')?.value,
          
           "message": this.form.get('message')?.value,
-          // "franchiseFee": this.form.get('franchiseFee')?.value,
-          // "gateWay": this.form.get('gateWay')?.value,
-          // "transactionId": this.form.get('transactionId')?.value,
-          // "createdDate": this.form.get('createdDate')?.value,
+         
           "franchiseFee": 0,
           "gateWay": "string",
           "transactionId": "TN02242023144",
@@ -86,10 +96,12 @@ export class FranchisesComponent {
   }
   else
   {
+    this.submitted=false;
     this.toastr.success(res.successMessage);
   }
      
     })
   }
+}
   
 }

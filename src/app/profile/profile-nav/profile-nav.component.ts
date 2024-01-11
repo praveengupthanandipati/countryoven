@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { CurdService } from 'src/app/services/curd.service';
 
 @Component({
   selector: 'app-profile-nav',
@@ -6,9 +9,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./profile-nav.component.scss']
 })
 export class ProfileNavComponent {
+  email: any;
+  custID: any;
+  custName: any;
+  sessionId:any;
+  constructor(private _curdService: CurdService, private cookieService: CookieService,private route:Router)
+  {
+    if(localStorage.getItem('email'))
+   {
+    this.email=localStorage.getItem('email');
+    this.custID=localStorage.getItem('customerId')
+    this.custName=localStorage.getItem('custName')
+   }
+   this.sessionId= this.cookieService.get('sessionID')
+  }
   userLinks:any[] =[
     {
-      navLink:'/myaccount',
+      navLink:'/myaccount/dashboard',
       navLabel:'Dashboard'
     },
     {
@@ -29,15 +46,39 @@ export class ProfileNavComponent {
     },
     {
       navLink:'/myaccount/cowallet',
-      navLabel:'CoWallet'
+      navLabel:'Co Wallet'
     },
     {
       navLink:'/myaccount/referral',
       navLabel:'Referral'
     },
-    {
-      navLink:'/',
-      navLabel:'Logout'
-    },
+   
   ]
+
+
+  logout()
+  {
+    console.log('ss')
+    localStorage.removeItem('email');
+    localStorage.removeItem('custName');
+    localStorage.removeItem('customerId');
+    localStorage.removeItem('email');
+    
+    let data={
+   
+    
+    
+      "customerId": this.custID,
+      "SessionId":this.sessionId
+   
+   
+    }
+    this._curdService.logout(data).subscribe(res => {
+      
+      this.route.navigateByUrl('/')
+    });
+    
+    
+  }
+
 }

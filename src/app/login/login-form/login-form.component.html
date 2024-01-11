@@ -13,7 +13,7 @@
                         </div>
                        
                         <div *ngIf="submitted &&  userForm.get('usrname')!.invalid" class="invalid-feedback mt-0 d-block">
-                            Enter Valid Email
+                            Enter valid Email address 
                         </div>
                     </div>
                     <div class="input-group mb-3">
@@ -23,7 +23,7 @@
                             <label for="password">Password <span class="font-red font-bold">*</span></label>
                         </div>
                         <div *ngIf="submitted && userForm.get('pwd')!.invalid " class="invalid-feedback mt-0 d-block">
-                            Enter Password
+                            Enter Valid Password
                         </div>
                     </div>
                     <p class="invalid-feedback mt-0 d-block" *ngIf="errorMsgstatus">{{errorMsg}}</p>

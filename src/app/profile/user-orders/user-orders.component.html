@@ -35,7 +35,7 @@
                                     <a data-bs-toggle="modal" (click)="reviewClick(order.orderId)"
                                         data-bs-target="#Reviews" class="font-blue pe-3 align-self-center"
                                         href="#"><span class="icon-star"></span> Rate & Review Product</a>
-                                    <a (click)="gotoorders(order.orderId)" class="color-btn d-inline-block" href="#">
+                                    <a (click)="gotoorders(order.orderId)" class="color-btn d-inline-block" href="javascript:;">
                                         Track</a>
                                 </div>
                             </div>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="row pt-2" *ngFor="let innerorder of order.myOrderProductsDtos">
                     <div class="col-md-2">
-                        <a (click)="gotoorders(order.orderId)" href="">
+                        <a (click)="gotoorders(order.orderId)" href="javascript:;">
                             <img src="{{innerorder.smallimageurl}}" alt="" class="img-fluid">
                         </a>
                     </div>
@@ -77,6 +77,19 @@
                     </div>
                 </div>
             </div>
+
+
+            <div class="static-page" *ngIf="orderDetails.length ==0">
+
+                <div class="Noproducts">
+                    <img src="/src/assets/images/noproducts.svg" alt="" class="img-fluid w-100">
+                    <h3>No Orders Found</h3>
+                    <p>Please Visit Again or Continue Shopping</p>
+                    <a class="color-btn" href="/">Continue Shopping</a>
+                </div>
+            </div>
+
+
         </div>
     </div>
 </section>
