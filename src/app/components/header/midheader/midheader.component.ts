@@ -23,7 +23,7 @@ export class MidheaderComponent  implements OnInit{
   customerId:any=0;
   private subscription!: Subscription;
   selectedCurrency:any;
-  currencydrop:any=['INR', 'USA'];
+  currencydrop:any=['INR', 'USD'];
   searchkeyword:any;
   constructor(private route:Router,  private _curdService:CurdService,private cookieService: CookieService)
   {

@@ -71,7 +71,7 @@ let data={
     this.msgstatus=true;
     setTimeout(() => {
       this.msgstatus=false;
-    }, 6000);
+    }, 5000);
   }
   else
   {

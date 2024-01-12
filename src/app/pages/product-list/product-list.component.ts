@@ -200,10 +200,11 @@ getnewurl(urlcity:any)
         this.cityname = params['cityname1'];
         this.typeName = 'CTY';
         this.PageName = params['PageName1'];
+localStorage.setItem('city',  this.cityname);
 
       }
       else if (params['type']) {
-console.log('enter here',  params['type'])
+
 
         this.cityname = params['cityname'];
         this.cityname=this.originalcityname;
@@ -220,6 +221,7 @@ if(params['type']=='search_result')
 else
 {
   this.getnewurl(params['cityname'])
+  
 }
 
 

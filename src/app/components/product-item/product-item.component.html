@@ -12,7 +12,7 @@
     </figure>
     <div class="item-title p-2 p-md-3 bg-white">
         <h5>
-            <a href="javascript:void(0)" class="font-semibold">{{Productvalue.productName}}</a>
+            <a  [routerLink]="'/'+city + '/send-online/' + Productvalue.seoProductName"  href="javascript:void(0)" class="font-semibold">{{Productvalue.productName}}</a>
         </h5>
         <div class="price d-flex py-2 border-bottom">
             <div class="offer-price font-bold"><span

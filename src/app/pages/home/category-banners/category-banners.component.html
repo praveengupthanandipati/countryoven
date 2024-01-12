@@ -8,7 +8,7 @@
 
             <ng-container *ngFor="let sb of smallBanners">
                 <div class="col-md-6" [ngClass]="{'col-md-6': !sb.isSmall, 'col-6 col-md-3' : sb.isSmall }">
-                    <div class="category-banner-item position-relative">
+                    <div class="category-banner-item position-relative"  (click)="gotoroute(sb.type, sb.seoName)">
                         <figure>
                             <div class="figurediv position-relative">
                                 <img [src]="sb.imageName" class="img-fluid w-100">
@@ -18,7 +18,7 @@
                         <article class="position-absolute">
                             <h5 class="font-bold text-white pb-3">{{sb.imageText}}</h5>
                             <div class="d-none d-md-block">
-                                <a class="color-btn" href="javascript:void(0)" (click)="gotoroute(sb.type, sb.seoName)">Shop Now</a>
+                                <a class="color-btn" href="javascript:void(0)">Shop Now</a>
                             </div>
                         </article>
                     </div>
