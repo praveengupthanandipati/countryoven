@@ -55,7 +55,7 @@ selectedCity(c:any)
   }
   else
   {
-    localStorage.setItem('currency', 'USA')
+    localStorage.setItem('currency', 'USD')
   }
   
   this.selectEvent.emit();
