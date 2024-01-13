@@ -15,6 +15,16 @@ export class CurdService {
   updateHeaderData(data: any) {
     this.headerDataSubject.next(data);
   }
+
+
+
+private countryDataSubject = new Subject<string>();
+countryData$=this.countryDataSubject.asObservable();
+updateCountry(data:any)
+{
+  this.countryDataSubject.next(data);
+}
+
   private headers = new HttpHeaders({
     'Content-Type': 'application/json'
   });

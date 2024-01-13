@@ -22,6 +22,7 @@ export class MidheaderComponent  implements OnInit{
   currency:any;
   customerId:any=0;
   private subscription!: Subscription;
+  private datasubscription !:Subscription;
   selectedCurrency:any;
   currencydrop:any=['INR', 'USD'];
   searchkeyword:any;
@@ -59,6 +60,13 @@ if(localStorage.getItem('customerId'))
       
       this.count=data;
     });
+
+this.datasubscription=this._curdService.countryData$.subscribe((data)=>{
+  console.log(data)
+
+  this.city=data
+})
+
     this.getCarts();
     
 
@@ -75,6 +83,7 @@ if(localStorage.getItem('customerId'))
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.datasubscription.unsubscribe();
   }
 
 

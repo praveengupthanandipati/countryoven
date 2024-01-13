@@ -54,7 +54,7 @@ else if( this.isEggless)
     {
       this.currencyClass='icon-inr'
     }
-     else if(this.currency =='USA')
+     else if(this.currency =='USD')
      {
       this.currencyClass='icon-dollar-currency-symbol'
      }

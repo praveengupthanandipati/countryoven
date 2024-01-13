@@ -201,7 +201,7 @@ getnewurl(urlcity:any)
         this.typeName = 'CTY';
         this.PageName = params['PageName1'];
 localStorage.setItem('city',  this.cityname);
-
+ this._crud.updateCountry(this.cityname)
       }
       else if (params['type']) {
 
