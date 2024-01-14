@@ -10,18 +10,19 @@ import { UserVouchersComponent } from './user-vouchers/user-vouchers.component';
 import { MyaccountComponent } from './myaccount/myaccount.component';
 import { CowalletComponent } from './cowallet/cowallet.component';
 import { ReferralComponent } from './referral/referral.component';
+import { AuthGuard } from '../services/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/myaccount/dashboard', pathMatch: 'full' },
   { path: '', component: MyaccountComponent, children: [
-    {path:'dashboard', component:UserDashboardComponent},
-    {path:'my_profile', component:UserProfileComponent},
-  {path:'orders', component:UserOrdersComponent},
-  {path:'orderdetails/:id', component:UserOrderDetailComponent},
-  {path: 'user-address', component:UserAddressComponent},
-  {path: 'user-change-password', component:ChangepasswordComponent},
+    {path:'dashboard', component:UserDashboardComponent, canActivate: [AuthGuard]},
+    {path:'my_profile', component:UserProfileComponent, canActivate: [AuthGuard]},
+  {path:'orders', component:UserOrdersComponent, canActivate: [AuthGuard]},
+  {path:'orderdetails/:id', component:UserOrderDetailComponent,canActivate: [AuthGuard]},
+  {path: 'user-address', component:UserAddressComponent, canActivate: [AuthGuard]},
+  {path: 'user-change-password', component:ChangepasswordComponent, canActivate: [AuthGuard]},
   {path: 'cowallet', component:CowalletComponent},
-  {path: 'referral', component:ReferralComponent}
+  {path: 'referral', component:ReferralComponent, canActivate: [AuthGuard]}
   ],
 },
  

@@ -27,11 +27,24 @@ customerId:any=0;
   coutryName: string | null;
   currencySelected: string | null;
 outofdatemessage:boolean=false;
+currencyClass:any;
   constructor(private renderer: Renderer2,private route:Router,  private toastr: ToastrService,private _crud:CurdService, private cookieService: CookieService){
     this.sessionId= this.cookieService.get('sessionID')
     this.city=localStorage.getItem('city')
 this.countryname=localStorage.getItem('country');
 this.currency=localStorage.getItem('currency');
+
+this.currency = localStorage.getItem('currency');
+console.log(this.currency)
+if (this.currency == 'INR') {
+  this.currencyClass = 'icon-inr'
+}
+else if (this.currency == 'USD') {
+  this.currencyClass = 'icon-dollar-currency-symbol'
+}
+
+
+
 if(localStorage.getItem('customerId'))
 {
   this.customerId=localStorage.getItem('customerId')

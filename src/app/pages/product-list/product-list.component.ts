@@ -16,8 +16,9 @@ export class ProductListComponent implements OnInit ,OnDestroy {
   originalcityname:any;
   type:any;
   PageName:any;
+  psize:number=40;
   productData:any;
-  products:any
+  products:any=[];
 filters:any=[]
 filterswrapper:any;
 
@@ -38,6 +39,7 @@ currentPage: number=0;
   totalCount: any;
   currency:any;
   country:any;
+  isload:boolean=false;
   private paramMapSubscription: Subscription = new Subscription;
   private paramMapSubscription1: Subscription = new Subscription;
   routeCity(e:any)
@@ -65,7 +67,7 @@ if (filterGroup) {
     }
   }
   
-  
+  console.log(selectedValuesByFilterType);
  this.isfilters=Object.keys(selectedValuesByFilterType).length ? true : false;
 
 
@@ -124,10 +126,11 @@ ngOnDestroy() {
 }
   ngOnInit(): void {
 
+console.log('init ')
     this.addLoader();
 
   this.paramMapSubscription=this.route.paramMap.subscribe((params: ParamMap) => {
-         
+    this.isfilters=false      
   this.getPageRoutes();
   this.getMeta();
 this.getProductDetails(this.filters, 1, this.sorder);
@@ -313,7 +316,7 @@ this.breadcatTitle=res.categoryNameCapital || res.specialPageCapital;
   }
 
 
-  getProductDetails(filters:any, pagenumber?:any, sortOrder?:any): void {
+  getProductDetails(filters:any, pagenumber?:any, sortOrder?:any, load?:boolean): void {
     this.addLoader();
     this.loading=true;
     const data={
@@ -323,7 +326,7 @@ this.breadcatTitle=res.categoryNameCapital || res.specialPageCapital;
       PageName:this.PageName,
       currencySelected:this.currency,
       PageNumber:pagenumber,
-      PageSize:40,
+      PageSize:this.psize,
       productFilters:filters,
       sortOrder:sortOrder
     }
@@ -331,13 +334,28 @@ this.breadcatTitle=res.categoryNameCapital || res.specialPageCapital;
     this._crud.getProductDetails(data).subscribe(res => {
       this.removeLoader();
      this.loading=false;
-    this.productData=res;
-    
-    this.products=this.productData.items
+     console.log(res)
+     this.productData=res;
+  //  this.products=this.productData.items
+  console.log(this.products)
+  console.log(this.productData.items)  
+ this.products= this.products.concat(this.productData.items)
+    console.log(this.products)
     this.currentPage=this.productData.pageNumber;
 this.totalPages=this.productData.totalPages
 this.totalCount=this.productData.totalCount;
-window.scrollTo(0, 0);
+if(this.totalCount > this.products.length)
+{
+this.isload=true
+}
+else
+{
+  this.isload=false
+}
+if(!load)
+{
+  window.scrollTo(0, 0);
+}
   })
   }
 
@@ -356,6 +374,17 @@ window.scrollTo(0, 0);
    this.filterswrapper=res;
 
   })
+  }
+
+
+  loadmore()
+  {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.getProductDetails(this.filters, this.currentPage,this.sorder, true);
+    }
+// this.psize=this.psize + 40;
+// this.getProductDetails(this.filters,1, this.sorder);
   }
 
   get pages(): number[] {

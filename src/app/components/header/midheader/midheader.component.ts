@@ -145,6 +145,7 @@ this.datasubscription=this._curdService.countryData$.subscribe((data)=>{
     }
     this._curdService.logout(data).subscribe(res => {
       window.location.reload();
+      window.location.href = '/';
     });
     
     

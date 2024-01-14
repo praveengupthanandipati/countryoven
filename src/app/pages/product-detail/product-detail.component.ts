@@ -127,7 +127,7 @@ export class ProductDetailComponent implements OnInit {
     if (this.currency == 'INR') {
       this.currencyClass = 'icon-inr'
     }
-    else if (this.currency == 'USA') {
+    else if (this.currency == 'USD') {
       this.currencyClass = 'icon-dollar-currency-symbol'
     }
 

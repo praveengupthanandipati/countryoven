@@ -37,11 +37,11 @@
                                                     class="font-black">{{CartItem.productName}}</a>
                                             </h5>
                                             <div class="btnsec">
-                                                <div class="value-button " id="decrease" (click)="decrementQuantity(i)"
-                                                    value="Decrease Value">-</div>
+                                                <div class="value-button "  (click)="decrementQuantity(i)"
+                                                    value="Decrease Value" *ngIf="CartItem.quantity >0">-</div>
                                                 <input type="number" id="number" min="0"
                                                     [(ngModel)]="CartItem.quantity" />
-                                                <div class="value-button" id="increase" value="Increase Value"
+                                                <div class="value-button"  value="Increase Value"
                                                     (click)="incrementQuantity(i)">+</div>
                                                 <a (click)="updateCartItem(CartItem.sNo, CartItem.quantity)"
                                                     class="btn small btn-primary btn-sm ms-2">Update</a>
@@ -73,7 +73,7 @@
                                     <div class="d-flex justify-content-between flex-column content-cart-col">
                                         <div class="price py-2">
                                             <div class="offer-price text-end font-bold"><span
-                                                    class="icon-inr icomoon"></span>{{CartItem.subTotal}}
+                                                    class=" icomoon"  [class]="currencyClass"></span>{{CartItem.subTotal}}
                                             </div>
 
                                         </div>
@@ -95,7 +95,8 @@
                     <h6 class="h6 font-black font-medium align-self-center pb-3">Price Details</h6>
                     <div class="d-flex justify-content-between py-2">
                         <p>MRP Details</p>
-                        <p class="text-end" *ngIf="firstlistItem"><strong>₹ {{firstlistItem?.totalAmount}}</strong></p>
+                        <p class="text-end" *ngIf="firstlistItem"><strong><span
+                            class="icomoon font-bold"  [class]="currencyClass"></span> {{firstlistItem?.totalAmount}}</strong></p>
                     </div>
 
                     <div class="d-flex justify-content-between py-2">
@@ -108,7 +109,8 @@
 
                     <div class="d-flex justify-content-between py-3 totalamount my-2">
                         <h6 class="h6 font-semibold">Total Amount</h6>
-                        <p class="text-end font-semibold">₹ {{firstlistItem?.grandTotal}}</p>
+                        <p class="text-end font-semibold"><span
+                            class="icomoon font-bold"  [class]="currencyClass"></span> {{firstlistItem?.grandTotal}}</p>
                     </div>
                     <button [disabled]="outofdatemessage" class="color-btn d-block width100p border-0"
                         data-bs-toggle="modal" data-bs-target="#AddonsProducts" (click)="addOnProducts()">Continue to
@@ -169,7 +171,7 @@
                                     </p>
                                     <div class="price d-flex py-2 border-bottom">
                                         <div class="offer-price font-bold"><span
-                                                class="icon-inr icomoon font-bold"></span>{{Productvalue.price}}</div>
+                                                class="icomoon font-bold"  [class]="currencyClass"></span>{{Productvalue.price}}</div>
                                     </div>
                                     <div class="d-flex justify-content-between pt-2 item-footer">
                                         <button type="button" class="color-btn border-0"

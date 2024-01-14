@@ -1,5 +1,5 @@
 import { Component, Renderer2 } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -53,7 +53,21 @@ export class CustomizedCakesComponent {
     return new Blob([arrayBuffer], { type: mimeString });
   }
   onFileSelected(event: any): void {
-    this.selectedFile = event.target.files[0];
+
+    const allowedTypes = ['image/jpeg', 'image/png'];
+    const file = event.target.files[0];
+
+    if (file && allowedTypes.includes(file.type)) {
+      // File is valid, you can update the form control value
+      this.selectedFile = event.target.files[0];
+    } else {
+      // Reset the form control and show an error message
+    
+      console.log('Invalid file type. Please select a JPG or PNG image.');
+    }
+
+
+   
       }
 
   submit(formVal:any)
@@ -64,7 +78,7 @@ export class CustomizedCakesComponent {
    if(this.form.valid)
    {
 
-   
+   this.addLoader();
 
 
     let obj = {
@@ -101,7 +115,7 @@ let cuId=res.id;
    formData.append('Id', cuId);
  
   this._crud.uploadCake(formData).subscribe(res => {
-   
+   this.removeLoader();
    console.log(res)
 
    if(res.isEroor)
@@ -112,7 +126,8 @@ let cuId=res.id;
    else
    {
      this.toastr.success('Your request submit sucessfuly. we will get back to you');
-     this.form.reset()
+     this.form.reset();
+     this.submitted=false;
    }
    
   })

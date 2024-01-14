@@ -70,11 +70,12 @@ let data={
     this.msg=res.errorMessage;
     this.msgstatus=true;
     setTimeout(() => {
-      this.msgstatus=false;
+    //  this.msgstatus=false;
     }, 5000);
   }
   else
   {
+    this.msgstatus=true;
    // this.toastr.success(res.successMessage);
     this.login();
   }

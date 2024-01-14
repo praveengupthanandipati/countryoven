@@ -24,6 +24,7 @@
         }
       }
       .dropdown-item {
+        cursor: pointer;
         font-size: $fsize - 1;
 
         &:active {
@@ -90,3 +91,8 @@
     cursor: pointer;
   }
 }
+
+.loadmore{     font-size: 20px;
+  color: #bf0067;
+  font-weight: 600;
+  cursor: pointer;}

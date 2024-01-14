@@ -55,11 +55,12 @@
                                 <div class="input-group mb-3">
                                     <div class="form-floating">
                                         <input type="file" class="form-control"
-                                            placeholder="Upload Reference Cake Image "
+                                            placeholder="Upload Reference Cake Image " accept="image/jpeg, image/png" 
                                             formControlName="image" (change)="onFileSelected($event)"   [ngClass]="{'is-invalid': form.get('image').invalid  && form.get('image')!.touched}">
                                         <label for="image">Upload Reference Cake Image <span
                                                 class="font-red font-bold">*</span></label>
                                                 <div class="msg-hint" *ngIf="submitted && form.get('image').invalid">Image Required</div>
+                                            
                                     </div>
                                 </div>
                             </div>

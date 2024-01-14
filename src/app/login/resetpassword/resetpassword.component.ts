@@ -57,7 +57,7 @@ onSubmit()
       this.msg=res.successMessage;
       this.sucessmsgstatus=true;
       setTimeout(() => {
-        this.sucessmsgstatus=false
+       // this.sucessmsgstatus=false
       }, 5000);
    //   this.toastr.success(res.successMessage);
    //   this.route.navigateByUrl('/login')
