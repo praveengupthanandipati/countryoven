@@ -13,6 +13,42 @@
                                     class="font-black d-inline-block ps-3 font-semibold">{{city}}</span>
                             </h6>
                         </div>
+
+
+                        <!-- (change)="getBindDeliveryTimes($event)" -->
+                        <div class="col-md-4 pb-2" *ngIf="deliveryDates_array?.length">
+                            <label>Select Delivery Date </label>
+                            <div class="form-group d-flex p-2  background-lightprimary rounded"> <span
+                                    class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
+                                <select class="form-select"
+                                    >
+                                    <option *ngFor="let o of deliveryDates_array" [value]="o.deliveryDateValue">
+                                        {{o.deliveryDateText}}</option>
+                                </select>
+                            </div>
+
+
+                         
+                        </div>
+                        <!-- <div class="col-md-4 pb-2" *ngIf="deliveryDates_array?.length">
+                            <label>Select Time</label>
+                            <div class="form-group d-flex p-2  background-lightprimary rounded">
+                                <span
+                                    class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
+                                <select class="form-select" formControlName="deliveryTimes">
+                                    <option *ngFor="let o of deliveryTime" [value]="o.dtime">{{o.dtime}}
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="invalid-feedback mt-0 d-block"
+                                *ngIf="dynamicForm.get('deliveryTimes')!.invalid && dynamicForm.get('deliveryTimes')!.touched">
+                                <p class="error-message">Select Time</p>
+                            </div>
+                        </div> -->
+
+
+
                     </div>
 
                 </div>

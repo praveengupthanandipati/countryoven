@@ -341,4 +341,11 @@ postcustomize(obj:any):Observable<any>{
                 }
         
             
+                getBindDeliveryDates(obj:any):Observable<any>{
+  
+                  return this.http.post(`${environment.apiUrl}/ProductDetails/BindDeliveryDates`,obj)
+                  }
+
+
+
   }

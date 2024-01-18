@@ -28,6 +28,7 @@ customerId:any=0;
   currencySelected: string | null;
 outofdatemessage:boolean=false;
 currencyClass:any;
+deliveryDates_array:any;
   constructor(private renderer: Renderer2,private route:Router,  private toastr: ToastrService,private _crud:CurdService, private cookieService: CookieService){
     this.sessionId= this.cookieService.get('sessionID')
     this.city=localStorage.getItem('city')
@@ -77,11 +78,28 @@ if(localStorage.getItem('customerId'))
        
      });
      this.getViewedProducts();
+     this.getbindDate()
   }
 
 
 
+getbindDate()
 
+
+  {
+    let data={
+      "cityName": this.city,
+      "maxLeadTime": 0
+      }
+    
+      this._crud.getBindDeliveryDates(data).subscribe(res => {
+        
+        console.log(res);
+       this.deliveryDates_array=res
+    
+    
+            });
+}
 
 
 
