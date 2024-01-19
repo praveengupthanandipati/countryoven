@@ -118,9 +118,9 @@
                                 <div class="row">
                                     <div class="col-md-3" *ngIf="flavourOptionsDto_array?.length >0">
                                         <div class="form-group pb-2">
-                                            <label class="align-self-center pe-2">Flavour:</label>
+                                            <label class="align-self-center pe-2">Select Flavour:</label>
                                             <select class="form-select" formControlName="flavourOptionsDto">
-
+                                                <option [value]="null" disabled selected>Choose</option>
                                                 <option *ngFor="let o of flavourOptionsDto_array"
                                                     [value]="o.optionValue">
                                                     {{o.optionValue}}</option>
@@ -135,7 +135,7 @@
                                     </div>
                                     <div class="col-md-3" *ngIf="weightOptionsDto_array?.length >0">
                                         <div class="form-group pb-2">
-                                            <label class="align-self-center pe-2">Weight:</label>
+                                            <label class="align-self-center pe-2">Select Weight:</label>
                                             <select (change)="onQtyChange($event)" class="form-select"
                                                 formControlName="weightOptionsDto" [(ngModel)]="selectedItem">
                                                 <ng-container
@@ -225,7 +225,7 @@
                                     <div class="form-group d-flex p-2  background-lightprimary rounded">
                                         <span
                                             class="icon-upload2 font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
-                                        <input type="file" formControlName="photo"
+                                        <input type="file" formControlName="photo"  accept="image/jpeg, image/png" 
                                             class="form-control border-0 bg-transparent"
                                             placeholder="Browse a picture for photo cake">
                                     </div>
@@ -234,16 +234,18 @@
                                     <div class="form-group d-flex p-2  background-lightprimary rounded mt-3">
                                         <span
                                             class="icon-writing font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
-                                        <input formControlName="message" [(ngModel)]="textAreaInput" type="text"
-                                            class="form-control border-0 bg-transparent"
-                                            placeholder="Message on Cake 25 Characters (Option)">
+                                        <input formControlName="message" [(ngModel)]="textAreaInput" 
+                                            class="form-control border-0 bg-transparent" (input)="onMessageInputChange()"
+                                            placeholder="Incase of no message, leave it blank" maxlength="40" type="text">
                                     </div>
+                                    <div>
+                                    {{maxLength}} characters allowed.
+                                </div>
 
-
-                                    <div
+                                    <!-- <div
                                         *ngIf="dynamicForm.get('message')?.hasError('maxLength') || isMaxLengthExceeded">
-                                        Maximum length is 25 characters.
-                                    </div>
+                                        Maximum length is 25 characters allowed.
+                                    </div> -->
 
 
                                 </div>
@@ -271,10 +273,10 @@
                                         aria-controls="nav-home" aria-selected="true">Description</a>
                                     <a class="nav-link border me-2" id="nav-Information-tab" data-bs-toggle="tab"
                                         data-bs-target="#nav-Information" type="button" role="tab"
-                                        aria-controls="nav-Information" aria-selected="false">Delivery Information</a>
+                                        aria-controls="nav-Information" aria-selected="false"  *ngIf="productDetails?.deliveryInformationRequired"  >Delivery Information</a>
                                     <a class="nav-link border" id="nav-Instructions-tab" data-bs-toggle="tab"
                                         data-bs-target="#nav-Instructions" type="button" role="tab"
-                                        aria-controls="nav-Instructions" aria-selected="false">Care Instructions</a>
+                                        aria-controls="nav-Instructions" aria-selected="false" *ngIf="productDetails?.careInstrunctionForCakeRequired || productDetails?.careInstrunctionForFlowerRequired">Care Instructions</a>
                                     <a class="nav-link border" id="nav-review-tab" data-bs-toggle="tab"
                                         data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review"
                                         aria-selected="false">Product Reviews</a>
@@ -414,7 +416,11 @@
                             <h3 class="font-bold pb-3 mb-2">Care Instructions</h3>
                             <div class="py-2">
                                 <ul class="list-style-desc">
-                                    <li>FLower cares </li>
+                                    <li>Trim the stems and place the flowers in a clean vase/bowl with clean water.</li>
+
+                                     <li>   Remove the leaves from stem to extend the life of the bouquet.</li>
+                                        
+                                      <li>Daily replace the water in the vase/bowl with fresh and clean water.s </li>
                                 </ul>
                             </div>
                         </article>

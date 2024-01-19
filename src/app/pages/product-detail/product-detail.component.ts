@@ -56,6 +56,8 @@ export class ProductDetailComponent implements OnInit {
   displayTime: any;
   textAreaInput = '';
   isMaxLengthExceeded = false;
+  maxLength:any=40;
+  message: string = '';
   sameDayBlockMessage: any;
   selectedItem: any;
   selectedQty: any;
@@ -339,8 +341,8 @@ if(this.photoCakePrice >0)
       if (this.flavourOptionsDto_array.length > 0) {
         this.addFormControl('flavourOptionsDto');
         setTimeout(() => {
-          this.dynamicForm.get('flavourOptionsDto')?.setValue(this.flavourOptionsDto_array[0].optionValue);
-
+        //  this.dynamicForm.get('flavourOptionsDto')?.setValue(this.flavourOptionsDto_array[0].optionValue);
+        this.dynamicForm.get('flavourOptionsDto')?.setValue(null);
         }, 1000);
       }
       if (this.voucherOptionsDto_array.length > 0) {
@@ -374,12 +376,26 @@ if(this.photoCakePrice >0)
 
       if (this.messageRequired) {
         this.addFormControl('message');
-        this.dynamicForm?.get('message')?.setValidators([this.maxLengthValidator(25)]);
+        this.dynamicForm?.get('message')?.setValidators([this.maxLengthValidator(40)]);
 
       }
 
     })
   }
+
+  onMessageInputChange() {
+    
+    this.maxLength=40 - this.textAreaInput.length;
+    if (this.textAreaInput.length > 40) {
+      
+      this.textAreaInput = this.textAreaInput.substring(0, 40);
+      this.isMaxLengthExceeded = true;
+    } else {
+      this.isMaxLengthExceeded = false;
+    }
+  }
+
+
 
   maxLengthValidator(maxLength: number) {
     return (control: { value: any; }) => {
