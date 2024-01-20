@@ -89,6 +89,7 @@
   font-size:$fsize - 2;
   a{
     cursor: pointer;
+    &:hover{ color: #bf0067 !important;}
   }
 }
 

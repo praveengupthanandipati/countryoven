@@ -133,7 +133,7 @@
                                         </div>
 
                                     </div>
-                                    <div class="col-md-3" *ngIf="weightOptionsDto_array?.length >0">
+                                    <div class="col-md-4" *ngIf="weightOptionsDto_array?.length >0">
                                         <div class="form-group pb-2">
                                             <label class="align-self-center pe-2">Select Weight:</label>
                                             <select (change)="onQtyChange($event)" class="form-select"
@@ -150,12 +150,12 @@
                                             <p class="error-message">Select Weight</p>
                                         </div>
                                     </div>
-                                    <div class="col-md-3" *ngIf="voucherOptionsDto_array?.length >0">
+                                    <div class="col-md-6" *ngIf="voucherOptionsDto_array?.length >0">
                                         <div class="form-group pb-2">
-                                            <label class="align-self-center pe-2">Voucher:</label>
-                                            <select class="form-select" formControlName="voucherOptionsDto">
+                                            <label class="align-self-center pe-2">Select Voucher:</label>
+                                            <select class="form-select" [(ngModel)]="selectedVoucher" formControlName="voucherOptionsDto"  (change)="onVoucherChange($event)">
                                                 <option *ngFor="let o of voucherOptionsDto_array"
-                                                    [value]="o.optionValue">
+                                                    [id]="o.optionId" [ngValue]="o">
                                                     {{o.optionValue}}</option>
                                             </select>
                                         </div>

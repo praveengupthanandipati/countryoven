@@ -60,11 +60,13 @@ export class ProductDetailComponent implements OnInit {
   message: string = '';
   sameDayBlockMessage: any;
   selectedItem: any;
+  selectedVoucher:any;
   selectedQty: any;
   egglessAddtionalPrice:number=0;
   photoCakeAdditionalPrice:number=0;
   pName:any;
   selectedFile: any;
+  selectedVocucher: any;
   constructor(
     private renderer: Renderer2,
     private meta: Meta, private title: Title,
@@ -193,7 +195,7 @@ this.addLoader();
         "additionalWeight": this.selectedQty ? this.selectedQty : null,
         "flavour": formData.flavourOptionsDto ? formData.flavourOptionsDto : null,
         "additionalNumber": formData.numberOptionsDto ? formData.numberOptionsDto : null,
-        "additionalVoucher": formData.voucherOptionsDto ? formData.voucherOptionsDto : null,
+        "additionalVoucher": this.selectedVocucher ? this.selectedVocucher : null,
         "message": formData.message ? formData.message : null,
         "quantity": formData.quantity ? formData.quantity : 0,
         "surpriseGift": null,
@@ -361,8 +363,9 @@ if(this.photoCakePrice >0)
       if (this.voucherOptionsDto_array.length > 0) {
         this.addFormControl('voucherOptionsDto');
         setTimeout(() => {
-          this.dynamicForm.get('voucherOptionsDto')?.setValue(this.voucherOptionsDto_array[0].optionValue);
-
+          
+          this.dynamicForm.get('voucherOptionsDto')?.setValue(this.voucherOptionsDto_array[0]);
+          this.selectedVocucher = this.voucherOptionsDto_array[0].optionValue
         }, 1000);
       }
 
@@ -437,6 +440,31 @@ this.isegglessChecked=true;
 
     }
   }
+
+
+  onVoucherChange (e: any) {
+
+    console.log(e)
+    console.log(this.selectedVoucher.optionId)
+    this.productPrice=this.selectedVoucher.optionId
+    this.selectedVocucher=this.selectedVoucher.optionValue
+//     this.selectedQty = this.selectedItem.optionValue;
+//     if(this.photoRequired)
+//     {
+// this.photoCakePrice=this.selectedItem.photoCakeAdditionalPrice;
+//     }
+// this.egglessPrice=this.selectedItem.egglessAddtionalPrice
+
+// console.log(this.selectedItem)
+//     if (this.isegglessChecked) {
+//       this.productPrice = parseFloat(this.selectedItem.optionId) + this.egglessPrice + this.photoCakePrice
+//     } else {
+//       this.productPrice = parseFloat(this.selectedItem.optionId) + this.photoCakePrice
+//     }
+
+  }
+
+
   onQtyChange(e: any) {
     this.selectedQty = this.selectedItem.optionValue;
     if(this.photoRequired)
