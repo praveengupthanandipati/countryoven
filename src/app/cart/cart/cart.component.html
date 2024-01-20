@@ -9,8 +9,9 @@
                     <div class="d-flex">
                         <span class="icon-route h1 font-primary"></span>
                         <div class="ps-3 align-self-center">
-                            <h6 class="font-gray">Deliver to: <span
-                                    class="font-black d-inline-block ps-3 font-semibold">{{city}}</span>
+                            <h6 class="font-gray">Deliver to: 
+                                <!-- <span
+                                    class="font-black d-inline-block ps-3 font-semibold">{{city}}</span> -->
 <span>{{displaydeliveryDate}}</span>
 <span>{{displaydeliveryTime}}</span>
 <button class=""
@@ -258,7 +259,12 @@ data-bs-toggle="modal" data-bs-target="#DeliveryModal">Edit</button>
                         <span
                             class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
                         <select class="form-select" formControlName="deliveryTime">
-                            <option *ngFor="let o of deliveryTime" [value]="o.dtime">{{o.dtime}}
+                            <option *ngFor="let o of deliveryTime" [value]="o.dtime">
+                                <ng-container *ngIf="currencySelected == 'INR'">{{o.dtime}}</ng-container>
+                                <ng-container *ngIf="currencySelected =='USD'">{{o.dtimeCurrency}}</ng-container>
+                                
+                                
+                                
                             </option>
                         </select>
                     </div>

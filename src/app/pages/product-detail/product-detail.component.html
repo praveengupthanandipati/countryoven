@@ -209,7 +209,11 @@
                                         <span
                                             class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
                                         <select class="form-select" formControlName="deliveryTimes">
-                                            <option *ngFor="let o of deliveryTime" [value]="o.dtime">{{o.dtime}}
+                                            <option *ngFor="let o of deliveryTime" [value]="o.dtime">
+                                                
+                                                <ng-container *ngIf="currencySelected == 'INR'">{{o.dtime}}</ng-container>
+                                                <ng-container *ngIf="currencySelected =='USD'">{{o.dtimeCurrency}}</ng-container>
+                                                
                                             </option>
                                         </select>
                                     </div>
@@ -222,13 +226,14 @@
 
                                 <div class="col-md-12" *ngIf="photoRequired">
                                     <label>Browse a picture for photo cake</label>
-                                    <div class="form-group d-flex p-2  background-lightprimary rounded">
+                                    <div class="form-group d-flex p-2  background-lightprimary rounded"  [ngClass]="{'is-invalid': dynamicForm.get('photo')?.invalid  && dynamicForm.get('photo')!.touched}">
                                         <span
                                             class="icon-upload2 font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
                                         <input type="file"  (change)="onFileSelected($event)" formControlName="photo"  accept="image/jpeg, image/png" 
-                                            class="form-control border-0 bg-transparent"  [ngClass]="{'is-invalid': dynamicForm.get('image')?.invalid  && dynamicForm.get('image')!.touched}"
+                                            class="form-control border-0 bg-transparent" 
                                             placeholder="Browse a picture for photo cake">
                                     </div>
+                                    <div class="msg-hint" *ngIf="dynamicForm.get('photo')?.invalid && dynamicForm.get('photo')!.touched">Image Required</div>
                                 </div>
                                 <div class="col-md-12" *ngIf="messageRequired">
                                     <div class="form-group d-flex p-2  background-lightprimary rounded mt-3">
