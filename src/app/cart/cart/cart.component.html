@@ -67,14 +67,14 @@ data-bs-toggle="modal" data-bs-target="#DeliveryModal">Edit</button>
                                                     class="font-black">{{CartItem.productName}}</a>
                                             </h5>
                                             <div class="btnsec">
-                                                <div class="value-button "  (click)="decrementQuantity(i)"
+                                                <div class="value-button "  (click)="decrementQuantity(i,CartItem.sNo)"
                                                     value="Decrease Value" *ngIf="CartItem.quantity >1">-</div>
-                                                <input type="number" id="number" min="0"
+                                                <input type="number" readonly id="number" min="0"
                                                     [(ngModel)]="CartItem.quantity" />
                                                 <div class="value-button"  value="Increase Value"
-                                                    (click)="incrementQuantity(i)">+</div>
-                                                <a (click)="updateCartItem(CartItem.sNo, CartItem.quantity)"
-                                                    class="btn small btn-primary btn-sm ms-2">Update</a>
+                                                    (click)="incrementQuantity(i, CartItem.sNo)">+</div>
+                                                <!-- <a (click)="updateCartItem(CartItem.sNo, CartItem.quantity)"
+                                                    class="btn small btn-primary btn-sm ms-2">Update</a> -->
                                             </div>
                                             <ul class="list-style-desc mt-2">
                                                 <li *ngIf="CartItem.additionalWeight">Weight :
@@ -230,7 +230,7 @@ data-bs-toggle="modal" data-bs-target="#DeliveryModal">Edit</button>
 <!-- Update delivery date -->
 <div class="modal fade " id="DeliveryModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Update Delivery Date and Time</h5>
@@ -239,7 +239,7 @@ data-bs-toggle="modal" data-bs-target="#DeliveryModal">Edit</button>
             <form [formGroup]="userForm" >
             <div class="modal-body">
               
-                <div class="col-md-4 pb-2" *ngIf="deliveryDates_array?.length">
+                <div class="col-md-12 pb-2" *ngIf="deliveryDates_array?.length">
                     <label>Select Delivery Date </label>
                     <div class="form-group d-flex p-2  background-lightprimary rounded"> <span
                             class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
@@ -254,7 +254,7 @@ data-bs-toggle="modal" data-bs-target="#DeliveryModal">Edit</button>
                  
                 </div>
 
-                <div class="col-md-4 pb-2" *ngIf="deliveryDates_array?.length">
+                <div class="col-md-12 pb-2" *ngIf="deliveryDates_array?.length">
                     <label>Select Time</label>
                     <div class="form-group d-flex p-2  background-lightprimary rounded">
                         <span

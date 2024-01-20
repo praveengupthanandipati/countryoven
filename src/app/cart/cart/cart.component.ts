@@ -186,13 +186,18 @@ export class CartComponent implements OnInit {
   }
 
 
-  incrementQuantity(index: number) {
+  incrementQuantity(index: number, sno: any) {
     this.cartItems[index].quantity++;
+    let quntity= this.cartItems[index].quantity
+    this.updateCartItem(sno,quntity)
   }
 
-  decrementQuantity(index: number) {
+  decrementQuantity(index: number,sno: any) {
     if (this.cartItems[index].quantity > 0) {
       this.cartItems[index].quantity--;
+      let quntity= this.cartItems[index].quantity
+this.updateCartItem(sno,quntity)
+
     }
   }
 

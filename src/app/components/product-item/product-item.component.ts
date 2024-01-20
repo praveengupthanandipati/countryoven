@@ -37,6 +37,12 @@ export class ProductItemComponent implements OnInit {
       else  if (this.stock == 'Avaliable') {
         this.tagClass = ''
         this.tagMsg = '';
+if(this.isEggless)
+{
+  this.tagClass = 'greencls'
+      this.tagMsg = this.isEggless
+}
+
       } 
       else {
         this.tagClass = 'greencls'
