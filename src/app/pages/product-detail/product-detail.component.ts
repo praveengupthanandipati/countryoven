@@ -527,7 +527,10 @@ console.log(this.selectedItem)
     
   }
   
-
+  routeCity(e:any)
+  {
+    this.router.navigateByUrl(e + '/gift-online');
+  }
 
 
 

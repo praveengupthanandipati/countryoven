@@ -130,7 +130,8 @@ console.log('init ')
     this.addLoader();
 
   this.paramMapSubscription=this.route.paramMap.subscribe((params: ParamMap) => {
-    this.isfilters=false      
+    this.isfilters=false;
+    this.products=[]      
   this.getPageRoutes();
   this.getMeta();
 this.getProductDetails(this.filters, 1, this.sorder);
@@ -318,6 +319,7 @@ this.breadcatTitle=res.categoryNameCapital || res.specialPageCapital;
 
   getProductDetails(filters:any, pagenumber?:any, sortOrder?:any, load?:boolean): void {
     this.addLoader();
+    
     this.loading=true;
     const data={
       cityname:this.cityname,
