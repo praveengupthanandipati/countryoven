@@ -318,6 +318,7 @@ this.breadcatTitle=res.categoryNameCapital || res.specialPageCapital;
 
   getProductDetails(filters:any, pagenumber?:any, sortOrder?:any, load?:boolean): void {
     this.addLoader();
+    
     this.loading=true;
     const data={
       cityname:this.cityname,

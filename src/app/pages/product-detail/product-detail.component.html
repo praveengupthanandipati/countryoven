@@ -4,11 +4,11 @@
         <div class="row">
             <div class="col-md-12">
                 <nav aria-label="breadcrumb" class="align-self-center py-3">
-                    <ol class="breadcrumb pb-0 mb-0">
+                    <ol class="breadcrumb pb-0 mb-0" *ngIf="productDetails">
                         <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-                        <li class="breadcrumb-item"><a>{{cityName}}</a></li>
-                        <li class="breadcrumb-item"><a>{{breadcatTitle}}</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{breadTitle}}</li>
+                        <li class="breadcrumb-item"><a (click)="routeCity(cityName)">{{cityName}}</a></li>
+                        <li class="breadcrumb-item"><a [routerLink]="productDetails?.seoCategoryURL">{{breadcatTitle}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page" [routerLink]="productDetails?.seoSubCategoryURL">{{breadTitle}}</li>
                     </ol>
                 </nav>
             </div>
@@ -74,7 +74,7 @@
             </div>
             <!--/ left -->
             <!-- right -->
-            <div class="col-md-7">
+            <div class="col-md-7" *ngIf="productDetails">
                 <div class="product-detail-right">
                     <h1 class="font-semibold">{{productDetails?.productName}}</h1>
                     <!-- <div class="rating-title d-flex py-3">
@@ -220,13 +220,13 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-4" *ngIf="photoRequired">
+                                <div class="col-md-12" *ngIf="photoRequired">
                                     <label>Browse a picture for photo cake</label>
                                     <div class="form-group d-flex p-2  background-lightprimary rounded">
                                         <span
                                             class="icon-upload2 font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
                                         <input type="file"  (change)="onFileSelected($event)" formControlName="photo"  accept="image/jpeg, image/png" 
-                                            class="form-control border-0 bg-transparent"
+                                            class="form-control border-0 bg-transparent"  [ngClass]="{'is-invalid': dynamicForm.get('image')?.invalid  && dynamicForm.get('image')!.touched}"
                                             placeholder="Browse a picture for photo cake">
                                     </div>
                                 </div>
@@ -283,9 +283,9 @@
                                 </div>
                             </nav>
                             <div class="tab-content" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="nav-description" role="tabpanel"
+                                <div class="tab-pane fade show active" *ngIf="productDetails?.description !=''" id="nav-description" role="tabpanel"
                                     aria-labelledby="nav-description-tab">
-                                    <article class="pb-2" *ngIf="productDetails?.description !=''">
+                                    <article class="pb-2" >
 
                                         <h5 class="font-bold pb-3 mb-2">Description</h5>
 
@@ -293,27 +293,15 @@
                                             class="font-bold pb-3">Vendor Code : </span>{{productDetails?.venderCode}}
                                         <div class="py-2">
                                             <div [innerHtml]="productDetails?.description"></div>
-                                            <!-- <p class="pb-2 font-bold">Product Details</p>
-                                            <ul class="list-style-desc">
-                                                <li>Cake Flavour- Truffle</li>
-                                                <li>Weight- Half Kg</li>
-                                                <li>Shape- Round</li>
-                                                <li>Serves- 4-6 People</li>
-                                                <li>Size- 6 inches in Diameter</li>
-                                            </ul>
-                                            <p class="py-2 font-bold">Please Note:</p>
-                                            <ul class="list-style-desc">
-                                                <li>The cake stand, cutlery & accessories used in the image are only for
-                                                    representation purposes. They are not delivered with the cake.</li>
-                                                <li>This cake is hand delivered in a good quality cardboard box.</li>
-                                                <li>Country of Origin: India</li>
-                                            </ul> -->
+
+<div *ngIf="productDetails?.careInstrunctionForCakeRequired"> <strong>Note:</strong> Every cake that we offer is handcrafted and since each chef has his/her own way of baking and designing the cake, there might be a slight variation in the product in terms of design when compared to the image displayed on the website. The color of the cake could vary based on the flavor selected. Having said that, we at Countryoven.com always make sure that all cakes are very similar to the corresponding images displayed on the website.</div>
+
+<div *ngIf="productDetails?.careInstrunctionForFlowerRequired"> <strong>Note:</strong> Flowers may vary slightly from the image depending upon the local availability. countryoven.com holds the right to replace any flower and/or the color of flowers, vase, and basket based on availability. The replacement may be of equivalent or higher denomination than the representation on the website. Having said that, we at countryoven.com always make sure that all flowers are very similar to the corresponding images displayed on the website.</div>
                                         </div>
                                     </article>
                                 </div>
-                                <div class="tab-pane fade" id="nav-Information" role="tabpanel"
-                                    aria-labelledby="nav-Information-tab">
-                                    <article class="pb-2" *ngIf="productDetails?.deliveryInformationRequired">
+                                <div class="tab-pane fade" id="nav-Information" role="tabpanel" *ngIf="productDetails?.deliveryInformationRequired">
+                                    <article class="pb-2" >
                                         <h5 class="font-bold pb-3 mb-2">Delivery Information</h5>
                                         <div class="py-2">
                                             <ul class="list-style-desc">
@@ -339,8 +327,7 @@
                                         </div>
                                     </article>
                                 </div>
-                                <div class="tab-pane fade" id="nav-Instructions" role="tabpanel"
-                                    aria-labelledby="nav-Instructions-tab">
+                                <div class="tab-pane fade" id="nav-Instructions" role="tabpanel" *ngIf="productDetails?.careInstrunctionForCakeRequired || productDetails?.careInstrunctionForFlowerRequired">
                                     <article class="pb-2" *ngIf="productDetails?.careInstrunctionForCakeRequired">
                                         <h5 class="font-bold pb-3 mb-2">Care Instructions</h5>
                                         <div class="py-2">
@@ -362,6 +349,22 @@
                                             </ul>
                                         </div>
                                     </article>
+
+
+                                    <article class="pb-4" *ngIf="productDetails?.careInstrunctionForFlowerRequired">
+                                        <h3 class="font-bold pb-3 mb-2">Care Instructions</h3>
+                                        <div class="py-2">
+                                            <ul class="list-style-desc">
+                                                <li>Trim the stems and place the flowers in a clean vase/bowl with clean water.</li>
+            
+                                                 <li>   Remove the leaves from stem to extend the life of the bouquet.</li>
+                                                    
+                                                  <li>Daily replace the water in the vase/bowl with fresh and clean water.s </li>
+                                            </ul>
+                                        </div>
+                                    </article>
+
+
                                 </div>
                                 <div class="tab-pane fade" id="nav-review" role="tabpanel"
                                     aria-labelledby="nav-review-tab">
@@ -412,18 +415,7 @@
                         </div>
                         <!--/ product info tab ends-->
 
-                        <article class="pb-4" *ngIf="productDetails?.careInstrunctionForFlowerRequired">
-                            <h3 class="font-bold pb-3 mb-2">Care Instructions</h3>
-                            <div class="py-2">
-                                <ul class="list-style-desc">
-                                    <li>Trim the stems and place the flowers in a clean vase/bowl with clean water.</li>
-
-                                     <li>   Remove the leaves from stem to extend the life of the bouquet.</li>
-                                        
-                                      <li>Daily replace the water in the vase/bowl with fresh and clean water.s </li>
-                                </ul>
-                            </div>
-                        </article>
+                      
                     </div>
                     <!--/product info-->
 
