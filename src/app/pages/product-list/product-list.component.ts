@@ -73,7 +73,7 @@ if (filterGroup) {
 
 
 
-const fliterV="[" + selectedValuesByFilterType + "]"
+ this.filters=[selectedValuesByFilterType]
 this.currentPage=1;
   this.getProductDetails([selectedValuesByFilterType], this.currentPage, this.sorder);
 
@@ -422,7 +422,8 @@ sodervalue(sorder:any, type:any)
 {
 this.sortValue=type;
 this.sorder=sorder;
-
+this.products=[]
+console.log(this.filters)
 this.getProductDetails(this.filters, this.currentPage, this.sorder);
 }
   /* test code */
