@@ -15,24 +15,23 @@ export class CustomizedCakesComponent {
   form: any;
   selectedFile: any;
   binaryData: any;
-  submitted:any;
-  msg:any;
-  msgStatus:boolean=false;
+  submitted: any;
+  msg: any;
+  msgStatus: boolean = false;
   constructor(
-    private renderer:Renderer2,
+    private renderer: Renderer2,
     private toastr: ToastrService,
-    private meta: Meta, private title:Title,
-    private _crud:CurdService, private route:ActivatedRoute, private fb: FormBuilder, private cookieService: CookieService, private router:Router)
-  {
-    
-    
+    private meta: Meta, private title: Title,
+    private _crud: CurdService, private route: ActivatedRoute, private fb: FormBuilder, private cookieService: CookieService, private router: Router) {
+
+
 
     this.form = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
-    
+
       mobile: ['', [Validators.required, Validators.pattern(/^\d{10,15}$/)]],
-      
+
       comments: ['', Validators.required],
       image: ['', Validators.required],
     });
@@ -62,87 +61,69 @@ export class CustomizedCakesComponent {
       this.selectedFile = event.target.files[0];
     } else {
       // Reset the form control and show an error message
-    
+
       console.log('Invalid file type. Please select a JPG or PNG image.');
     }
 
 
-   
-      }
 
-  submit(formVal:any)
-  {
-    this.submitted=true;
-    
+  }
 
-   if(this.form.valid)
-   {
-
-   this.addLoader();
+  submit(formVal: any) {
+    this.submitted = true;
 
 
-    let obj = {
-        customizedCakeDetails: 
+    if (this.form.valid) {
+
+      this.addLoader();
+
+
+      let obj = {
+        customizedCakeDetails:
         {
           "name": this.form.get('name')?.value,
-          "mobile":  this.form.get('mobile')?.value.toString(),
+          "mobile": this.form.get('mobile')?.value.toString(),
           "email": this.form.get('email')?.value,
           "comments": this.form.get('comments')?.value,
-          "date":new Date()
-        //  "CustomizedCakeDetails.imagePath": this.binaryData
-         
+          "date": new Date()
+          //  "CustomizedCakeDetails.imagePath": this.binaryData
+
         }
-        
+
+      }
+
+
+      this._crud.postcustomize(obj).subscribe(res => {
+
+        console.log(res)
+        this.msgStatus = true;
+        let cuId = res.id;
+        let fd = formVal.value;
+        let formData = new FormData();
+        formData.append('ImagePath', this.selectedFile);
+        formData.append('Id', cuId);
+        this._crud.uploadCake(formData).subscribe(res => {
+          this.removeLoader();
+          if (res.isEroor) {
+            this.toastr.error('Unable to proceed');
+          }
+          else {
+            this.toastr.success('Your request submit sucessfuly. we will get back to you');
+            this.form.reset();
+            this.submitted = false;
+          }
+
+        })
+
+      })
     }
-   
-     
-    this._crud.postcustomize(obj).subscribe(res => {
-     
-     console.log(res)
-     this.msgStatus=true;
-     
-
-
-let cuId=res.id;
-
-
-
-    
-   let fd = formVal.value;
-
-   let formData = new FormData();
- formData.append('ImagePath', this.selectedFile); 
-   formData.append('Id', cuId);
- 
-  this._crud.uploadCake(formData).subscribe(res => {
-   this.removeLoader();
-   console.log(res)
-
-   if(res.isEroor)
-   {
-     
-     this.toastr.error('Unable to proceed');
-   }
-   else
-   {
-     this.toastr.success('Your request submit sucessfuly. we will get back to you');
-     this.form.reset();
-     this.submitted=false;
-   }
-   
-  })
-
-    })
-  }
   }
 
-  
-addLoader()
-{
-  this.renderer.addClass(document.body, 'bodyloader');
-}
-removeLoader()
-{
-  this.renderer.removeClass(document.body, 'bodyloader');
-}
+
+  addLoader() {
+    this.renderer.addClass(document.body, 'bodyloader');
+  }
+  removeLoader() {
+    this.renderer.removeClass(document.body, 'bodyloader');
+  }
 }

@@ -225,7 +225,7 @@
                                     <div class="form-group d-flex p-2  background-lightprimary rounded">
                                         <span
                                             class="icon-upload2 font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
-                                        <input type="file" formControlName="photo"  accept="image/jpeg, image/png" 
+                                        <input type="file"  (change)="onFileSelected($event)" formControlName="photo"  accept="image/jpeg, image/png" 
                                             class="form-control border-0 bg-transparent"
                                             placeholder="Browse a picture for photo cake">
                                     </div>

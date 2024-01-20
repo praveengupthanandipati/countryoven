@@ -304,6 +304,14 @@ postcustomize(obj:any):Observable<any>{
   
     
     }
+    
+    AddPhotoCake(obj:any):Observable<any>{
+  
+    return this.http.post(`${environment.apiUrl}/ProductDetails/AddPhotoCake`,obj)
+  
+    
+    }
+
 
   addReview(obj:any):Observable<any>{
   
@@ -346,6 +354,10 @@ postcustomize(obj:any):Observable<any>{
                   return this.http.post(`${environment.apiUrl}/ProductDetails/BindDeliveryDates`,obj)
                   }
 
-
+                  updateDeliveryDateTime(obj:any):Observable<any>{
+  
+                    return this.http.post(`${environment.apiUrl}/Cart/UpdateDeliveryDateTime`,obj)
+                    }
+  
 
   }

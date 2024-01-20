@@ -64,6 +64,7 @@ export class ProductDetailComponent implements OnInit {
   egglessAddtionalPrice:number=0;
   photoCakeAdditionalPrice:number=0;
   pName:any;
+  selectedFile: any;
   constructor(
     private renderer: Renderer2,
     private meta: Meta, private title: Title,
@@ -177,7 +178,7 @@ export class ProductDetailComponent implements OnInit {
 
   saveallProductDeatils(formData: any) {
 
-
+this.addLoader();
 
     const data = {
       "productDetailsData": {
@@ -197,7 +198,7 @@ export class ProductDetailComponent implements OnInit {
         "quantity": formData.quantity ? formData.quantity : 0,
         "surpriseGift": null,
         "messageInsideBottle": null,
-        "customPhoto": null,
+        // "customPhoto": null,
         "surpriseGiftPrice": 0,
         "photoCakePrice": this.photoCakePrice,
         "egglessPrice": this.egglessPrice,
@@ -210,7 +211,19 @@ export class ProductDetailComponent implements OnInit {
 
       if (res.sNo) {
         this.sNo = res.sNo;
-        this.router.navigateByUrl('/cart')
+
+if(this.photoRequired)
+{
+this.photoUpload(this.sNo)
+}
+
+else{
+  this.removeLoader();
+  this.router.navigateByUrl('/cart')
+}
+
+
+      
         // alert(res.successMessage)
       }
     });
@@ -251,7 +264,7 @@ export class ProductDetailComponent implements OnInit {
       "currencySelected": this.currencySelected
     }
     this._crud.getProductDetailsById(data).subscribe(res => {
-
+console.log(res)
       this.removeLoader();
 
       this.breadTitle = res.subCategoryName;
@@ -468,6 +481,52 @@ console.log(this.selectedItem)
 
     })
   }
+
+
+
+
+
+  onFileSelected(event: any): void {
+
+    const allowedTypes = ['image/jpeg', 'image/png'];
+    const file = event.target.files[0];
+  
+    if (file && allowedTypes.includes(file.type)) {
+      // File is valid, you can update the form control value
+      this.selectedFile = event.target.files[0];
+    } else {
+      // Reset the form control and show an error message
+  
+      console.log('Invalid file type. Please select a JPG or PNG image.');
+    }
+  
+  
+  
+  }
+  
+  
+  
+  photoUpload(no:any)
+  {
+   
+      let sNo = no;
+      let formData = new FormData();
+      formData.append('ImagePath', this.selectedFile);
+      formData.append('SNo', sNo);
+      this._crud.AddPhotoCake(formData).subscribe(res => {
+        this.removeLoader();
+        if (res.isEroor) {
+         // this.toastr.error('Unable to proceed');
+        }
+        else {   
+          this.router.navigateByUrl('/cart')  
+        }
+  
+      })
+  
+    
+  }
+  
 
 
 

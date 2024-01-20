@@ -11,25 +11,17 @@
                         <div class="ps-3 align-self-center">
                             <h6 class="font-gray">Deliver to: <span
                                     class="font-black d-inline-block ps-3 font-semibold">{{city}}</span>
+<span>{{displaydeliveryDate}}</span>
+<span>{{displaydeliveryTime}}</span>
+<button class=""
+data-bs-toggle="modal" data-bs-target="#DeliveryModal">Edit</button>
+
                             </h6>
                         </div>
 
 
                         <!-- (change)="getBindDeliveryTimes($event)" -->
-                        <div class="col-md-4 pb-2" *ngIf="deliveryDates_array?.length">
-                            <label>Select Delivery Date </label>
-                            <div class="form-group d-flex p-2  background-lightprimary rounded"> <span
-                                    class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
-                                <select class="form-select"
-                                    >
-                                    <option *ngFor="let o of deliveryDates_array" [value]="o.deliveryDateValue">
-                                        {{o.deliveryDateText}}</option>
-                                </select>
-                            </div>
-
-
-                         
-                        </div>
+                       
                         <!-- <div class="col-md-4 pb-2" *ngIf="deliveryDates_array?.length">
                             <label>Select Time</label>
                             <div class="form-group d-flex p-2  background-lightprimary rounded">
@@ -74,7 +66,7 @@
                                             </h5>
                                             <div class="btnsec">
                                                 <div class="value-button "  (click)="decrementQuantity(i)"
-                                                    value="Decrease Value" *ngIf="CartItem.quantity >0">-</div>
+                                                    value="Decrease Value" *ngIf="CartItem.quantity >1">-</div>
                                                 <input type="number" id="number" min="0"
                                                     [(ngModel)]="CartItem.quantity" />
                                                 <div class="value-button"  value="Increase Value"
@@ -87,7 +79,7 @@
                                                     <strong>{{CartItem.additionalWeight}}</strong>
                                                 </li>
                                                 <li *ngIf="CartItem.egglessPrice"> Eggless Price:
-                                                    <strong>{{CartItem.egglessPrice}}</strong>
+                                                    <strong><span [class]="currencyClass"></span>{{CartItem.egglessPrice}}</strong>
                                                 </li>
                                                 <li *ngIf="CartItem.productId">Product Id :
                                                     <strong>{{CartItem.productId}}</strong>
@@ -132,21 +124,21 @@
                     <div class="d-flex justify-content-between py-2">
                         <p>MRP Details</p>
                         <p class="text-end" *ngIf="firstlistItem"><strong><span
-                            class="icomoon font-bold"  [class]="currencyClass"></span> {{firstlistItem?.totalAmount}}</strong></p>
+                            class="icomoon font-bold"  [class]="currencyClass"></span>{{firstlistItem?.totalAmount}}</strong></p>
                     </div>
 
                     <div class="d-flex justify-content-between py-2">
                         <p>Delivery Charges</p>
                         <p class="text-end font-green"> <ng-container
                                 *ngIf="firstlistItem?.deliveryCharges ==0">FREE</ng-container><ng-container
-                                *ngIf="firstlistItem?.deliveryCharges >0">{{firstlistItem?.deliveryCharges}}</ng-container>
+                                *ngIf="firstlistItem?.deliveryCharges >0"><span [class]="currencyClass"></span>{{firstlistItem?.deliveryCharges}}</ng-container>
                         </p>
                     </div>
 
                     <div class="d-flex justify-content-between py-3 totalamount my-2">
                         <h6 class="h6 font-semibold">Total Amount</h6>
                         <p class="text-end font-semibold"><span
-                            class="icomoon font-bold"  [class]="currencyClass"></span> {{firstlistItem?.grandTotal}}</p>
+                            class="icomoon font-bold"  [class]="currencyClass"></span>{{firstlistItem?.grandTotal}}</p>
                     </div>
                     <button [disabled]="outofdatemessage" class="color-btn d-block width100p border-0"
                         data-bs-toggle="modal" data-bs-target="#AddonsProducts" (click)="addOnProducts()">Continue to
@@ -228,6 +220,63 @@
                 <button type="button" class="color-border-btn" data-bs-dismiss="modal" (click)="gotocheckout()">Proceed
                     to Checkout</button>
             </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Update delivery date -->
+<div class="modal fade " id="DeliveryModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Update Delivery Date and Time</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" #closeButton></button>
+            </div>
+            <form [formGroup]="userForm" >
+            <div class="modal-body">
+              
+                <div class="col-md-4 pb-2" *ngIf="deliveryDates_array?.length">
+                    <label>Select Delivery Date </label>
+                    <div class="form-group d-flex p-2  background-lightprimary rounded"> <span
+                            class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
+                        <select class="form-select" formControlName="deliveryDate" (change)="getBindDeliveryTimes($event)"
+                            >
+                            <option *ngFor="let o of deliveryDates_array" [value]="o.deliveryDateValue">
+                                {{o.deliveryDateText}}</option>
+                        </select>
+                    </div>
+
+
+                 
+                </div>
+
+                <div class="col-md-4 pb-2" *ngIf="deliveryDates_array?.length">
+                    <label>Select Time</label>
+                    <div class="form-group d-flex p-2  background-lightprimary rounded">
+                        <span
+                            class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
+                        <select class="form-select" formControlName="deliveryTime">
+                            <option *ngFor="let o of deliveryTime" [value]="o.dtime">{{o.dtime}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <!-- <div class="invalid-feedback mt-0 d-block"
+                        *ngIf="dynamicForm.get('deliveryTimes')!.invalid && dynamicForm.get('deliveryTimes')!.touched">
+                        <p class="error-message">Select Time</p>
+                    </div> -->
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="color-btn border-0" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="color-border-btn"(click)="updateDateandtime()">Update 
+                    </button>
+            </div>
+            </form>
         </div>
     </div>
 </div>

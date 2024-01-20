@@ -1,4 +1,5 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
@@ -29,7 +30,18 @@ customerId:any=0;
 outofdatemessage:boolean=false;
 currencyClass:any;
 deliveryDates_array:any;
-  constructor(private renderer: Renderer2,private route:Router,  private toastr: ToastrService,private _crud:CurdService, private cookieService: CookieService){
+displaydeliveryDate:any;
+displaydeliveryTime:any;
+deliveryTime:any;
+userForm:any;
+selectedFile: any;
+@ViewChild('closeButton')
+closeButton!: ElementRef;
+  constructor(private fb: FormBuilder,private renderer: Renderer2,private route:Router,  private toastr: ToastrService,private _crud:CurdService, private cookieService: CookieService){
+  
+  
+  
+  
     this.sessionId= this.cookieService.get('sessionID')
     this.city=localStorage.getItem('city')
 this.countryname=localStorage.getItem('country');
@@ -70,6 +82,16 @@ if(localStorage.getItem('customerId'))
       value--;
       inputElement.value = value.toString();
     }
+
+    this.userForm = this.fb.group({
+    
+      deliveryDate: ['', Validators.required],
+      deliveryTime:  ['',Validators.required],
+     
+  
+    });
+
+
   }  
   ngOnInit(): void {
     
@@ -78,7 +100,9 @@ if(localStorage.getItem('customerId'))
        
      });
      this.getViewedProducts();
-     this.getbindDate()
+     
+
+     
   }
 
 
@@ -93,15 +117,46 @@ getbindDate()
       }
     
       this._crud.getBindDeliveryDates(data).subscribe(res => {
-        
-        console.log(res);
+       console.log(res);
        this.deliveryDates_array=res
+
+      setTimeout(() => {
+        console.log(this.displaydeliveryTime)
+        this.userForm.get('deliveryDate')?.setValue(this.displaydeliveryDate);
+
+      
+       const data = {
+        "DeliveryDate": this.deliveryDates_array[0].deliveryDateValue,
+        "Leadtime": 0,
+        "ZipCode": 1235,
+        "InstantDelivery": false,
+        "cityName": this.cityName
+      }
+      this._crud.getBindDeliveryTimes(data).subscribe(res => {
     
-    
+        this.deliveryTime = res.deliveryTimingsDtos;
+        this.userForm.get('deliveryTime')?.setValue(this.displaydeliveryTime)
+      })
+    }, 100);
             });
 }
 
+getBindDeliveryTimes(e: any) {
+  const selectedValue = (e.target as HTMLSelectElement).value;
 
+  const data = {
+    "DeliveryDate": selectedValue,
+    "Leadtime": 0,
+    "ZipCode": 1235,
+    "InstantDelivery": false,
+    "cityName": this.cityName
+  }
+  this._crud.getBindDeliveryTimes(data).subscribe(res => {
+
+    this.deliveryTime = res.deliveryTimingsDtos;
+
+  })
+}
 
 getCarts()
 {
@@ -121,13 +176,16 @@ let data={
     this._crud.updateHeaderData(this.cartCount);
 
 this.firstlistItem=this.cartItems[0];
-
+console.log(res[0])
+this.displaydeliveryDate=this.firstlistItem.deliveryDate
+this.displaydeliveryTime=this.firstlistItem.deliveryTiming
+console.log(this.displaydeliveryTime)
 this.outofdatemessage=this.cartItems.some((item: { outOfDateMessage: any; }) => item.outOfDateMessage);
 // this.cartItems.each(function(e:any)
 // {
 //   console.log(e.outOfDateMessage)
 // })
-
+this.getbindDate();
 
         });
 }
@@ -325,9 +383,35 @@ else
     this._crud.getViewedProducts(data).subscribe(res => {
 
       this.viewedProducts = res;
+      
+     
     })
   }
 
+updateDateandtime()
+{
+  
+  console.log(this.userForm.get('deliveryDate').value)
+  console.log(this.userForm.get('deliveryTime').value.toString())
+  let data={
+    
+      "sessionId": this.sessionId,
+      "deliveryDate": this.userForm.get('deliveryDate').value,
+      "deliveryTime": this.userForm.get('deliveryTime').value.toString(),
+    }
 
+    this._crud.updateDeliveryDateTime(data).subscribe(res => {
+if(!res.isEroor)
+{
+  
+  this.getCarts()
+  const button: HTMLButtonElement = this.closeButton.nativeElement;
+  button.click();
+}
+    console.log(res)
+     
+    })
+
+}
 
 }
