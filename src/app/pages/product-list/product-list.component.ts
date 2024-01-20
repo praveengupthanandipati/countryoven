@@ -52,7 +52,7 @@ currentPage: number=0;
   }
 
     filterChanged(filterOption: any): void {
-
+this.products=[];
 const filterGroup = this.filterswrapper.find((group:any) => group.filterOptions.includes(filterOption));
 
 if (filterGroup) {
