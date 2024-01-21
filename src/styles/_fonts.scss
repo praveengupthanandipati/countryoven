@@ -1,11 +1,11 @@
 @font-face {
   font-family: "icomoon";
-  src: url("../assets/fonts/icomoon.eot?xtlc2l");
-  src: url("../assets/fonts/icomoon.eot?xtlc2l#iefix")
+  src: url("../assets/fonts/icomoon.eot?xt81sg");
+  src: url("../assets/fonts/icomoon.eot?xt81sg#iefix")
       format("embedded-opentype"),
-    url("../assets/fonts/icomoon.ttf?xtlc2l") format("truetype"),
-    url("../assets/fonts/icomoon.woff?xtlc2l") format("woff"),
-    url("../assets/fonts/icomoon.svg?xtlc2l#icomoon") format("svg");
+    url("../assets/fonts/icomoon.ttf?xt81sg") format("truetype"),
+    url("../assets/fonts/icomoon.woff?xt81sg") format("woff"),
+    url("../assets/fonts/icomoon.svg?xt81sg#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -27,6 +27,33 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-top:before {
+  content: "\e939";
+}
+.icon-arrow-up-1:before {
+  content: "\e93a";
+}
+.icon-arrow-up:before {
+  content: "\e93b";
+}
+.icon-newspaper-folded:before {
+  content: "\e93c";
+}
+.icon-blogger:before {
+  content: "\e93d";
+}
+.icon-insta:before {
+  content: "\e93e";
+}
+.icon-business-and-finance:before {
+  content: "\e93f";
+}
+.icon-reference:before {
+  content: "\e940";
+}
+.icon-wallet:before {
+  content: "\e941";
+}
 .icon-calendar:before {
   content: "\e900";
 }
@@ -182,26 +209,19 @@
 }
 .icon-bengaluru:before {
   content: "\e933";
-  color: #594454;
 }
 .icon-charminar:before {
   content: "\e934";
-  color: #594454;
 }
 .icon-chennai:before {
   content: "\e935";
-  color: #594555;
 }
 .icon-kolkatta:before {
   content: "\e936";
-  color: #594454;
 }
 .icon-mumbai:before {
   content: "\e937";
-  color: #594454;
 }
 .icon-redfort:before {
   content: "\e938";
-  color: #594454;
 }
-.bodyloader{  & .loader-overlay {display:flex !important}}
