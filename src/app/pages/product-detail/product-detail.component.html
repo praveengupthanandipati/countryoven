@@ -101,7 +101,7 @@
                         <span class="icomoon" [class]="currencyClass"></span>:{{egglessPrice}}
                     </div>
 
-                    <div *ngIf="photoRequired" class="pb-2 eggless">
+                    <div *ngIf="photoRequired || photoCake" class="pb-2 eggless">
 
                         <label class="ps-2">Photo price</label>
                         <span class="icomoon" [class]="currencyClass"></span>:{{photoCakePrice}}

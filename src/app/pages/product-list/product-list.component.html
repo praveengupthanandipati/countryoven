@@ -24,7 +24,7 @@
                             <li class="breadcrumb-item"><a href="/">Home</a></li>
                             <li class="breadcrumb-item"><a (click)="routeCity(cityname)">{{cityname}}</a></li>
                             <li class="breadcrumb-item" *ngIf="breadcatTitle"><a (click)="routeCategory(breadcatTitle)">{{breadcatTitle}}</a></li>
-                            <li class="breadcrumb-item active" aria-current="page" *ngIf="breadTitle">{{breadTitle}}</li>
+                            <li class="breadcrumb-item active" *ngIf="breadTitle">{{breadTitle}}</li>
                         </ol>
                     </nav>
                     <div class="filter-dropdowns d-flex ps-md-5 align-self-center flex-wrap">                     

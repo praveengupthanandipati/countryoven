@@ -77,7 +77,14 @@ data-bs-toggle="modal" data-bs-target="#DeliveryModal">Edit</button>
                                                 <!-- <a (click)="updateCartItem(CartItem.sNo, CartItem.quantity)"
                                                     class="btn small btn-primary btn-sm ms-2">Update</a> -->
                                             </div>
-                                            <ul class="list-style-desc mt-2">
+
+
+<img *ngIf="CartItem.customPhoto" [src]="CartItem.customPhoto" />
+
+                                            <ul class="list-style-desc mt-2" >
+                                              
+                                              <li *ngIf="CartItem.additionalVoucher">Voucher : <strong>{{CartItem.additionalVoucher}}</strong></li>
+                                              
                                                 <li *ngIf="CartItem.additionalWeight">Weight :
                                                     <strong>{{CartItem.additionalWeight}}</strong>
                                                 </li>

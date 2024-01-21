@@ -32,6 +32,7 @@ export class ProductDetailComponent implements OnInit {
   pincodeOptionsDto_array: any=[];
   messageRequired: boolean = false;
   photoRequired: boolean = false;
+  photoCake:boolean=false;
   deliveryDates_array: any;
   leadTime: any;
   deliveryTime: any;
@@ -207,7 +208,8 @@ this.addLoader();
         "egglessPrice": this.egglessPrice,
         "sessionID": this.cookieService.get('sessionID'),
         "currencySelected": this.currencySelected,
-        "countryName": this.coutryName
+        "countryName": this.coutryName,
+        "PinCode":formData.pincodeOptionsDto ? formData.pincodeOptionsDto : null,
       }
     }
     this._crud.getSaveProductDetails(data).subscribe(res => {
@@ -279,6 +281,11 @@ console.log(res)
       this.isMultipleImages = res.isMultipleImages;
       this.productIamges = res.productIamges;
       this.photoRequired = this.productDetails.photoRequired
+      if(this.productDetails.categoryId == '1020')
+      {
+        this.photoCake=true
+      }
+
       this.leadTime = this.productDetails.leadTime;
       this.isEggless = this.productDetails.isEggless;
       this.egglessPrice = this.isEggless ? this.productDetails.egglessPrice : 0;
@@ -456,11 +463,36 @@ if (this.pincodeOptionsDto_array.length > 0) {
     if (checkbox.checked) {
       // this.productPrice =parseInt(this.productDetails.dicountPrice) + this.egglessPrice
     
-      this.productPrice = parseFloat(this.productPrice) + this.egglessPrice
+      let result = parseFloat(this.productPrice) + this.egglessPrice
+      if(this.currencySelected =='USD')
+      {
+      this.productPrice =  result.toFixed(2)
+      }
+      else
+      {
+        this.productPrice =  result
+      }
+
+
+
+
+
 this.isegglessChecked=true;
     } else {
       this.isegglessChecked=false;
-      this.productPrice = parseFloat(this.productPrice) -  this.egglessPrice
+      let result = parseFloat(this.productPrice) -  this.egglessPrice
+
+
+      if(this.currencySelected =='USD')
+      {
+      this.productPrice =  result.toFixed(2)
+      }
+      else
+      {
+        this.productPrice =  result
+      }
+
+
 
     }
   }
@@ -491,7 +523,7 @@ this.isegglessChecked=true;
 
   onQtyChange(e: any) {
     this.selectedQty = this.selectedItem.optionValue;
-    if(this.photoRequired)
+    if(this.photoRequired || this.photoCake)
     {
 this.photoCakePrice=this.selectedItem.photoCakeAdditionalPrice;
     }
@@ -499,10 +531,29 @@ this.egglessPrice=this.selectedItem.egglessAddtionalPrice
 
 console.log(this.selectedItem)
     if (this.isegglessChecked) {
-      this.productPrice = parseFloat(this.selectedItem.optionId) + this.egglessPrice + this.photoCakePrice
+      let result=parseFloat(this.selectedItem.optionId) + this.egglessPrice + this.photoCakePrice
+      if(this.currencySelected =='USD')
+      {
+      this.productPrice =  result.toFixed(2)
+      }
+else
+{
+  this.productPrice =  result
+}
+
     } else {
-      this.productPrice = parseFloat(this.selectedItem.optionId) + this.photoCakePrice
+      let result = parseFloat(this.selectedItem.optionId) + this.photoCakePrice
+      if(this.currencySelected =='USD')
+      {
+      this.productPrice =  result.toFixed(2)
+      }
+else
+{
+  this.productPrice =  result
+}
+
     }
+
 
   }
   getBindDeliveryTimes(e: any) {
