@@ -2,9 +2,84 @@
 
 .user-order-detail-box {
   font-size: $fsize - 1;
-  min-height: 200px;
+  min-height: 180px;
+}
 
-  .user-order-col {
-    height: 190px;
+.ordertracking {
+  .order-tracking {
+    text-align: center;
+    width: 33.33%;
+    position: relative;
+    display: block;
+  }
+  .order-tracking .is-complete {
+    display: block;
+    position: relative;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    border: 0px solid map-get($colors, lightblue);
+    background-color: map-get($colors, yellow);
+    margin: 0 auto;
+    transition: background 0.25s linear;
+    -webkit-transition: background 0.25s linear;
+    z-index: 2;
+  }
+  .order-tracking .is-complete:after {
+    display: block;
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 7px;
+    top: -2px;
+    bottom: 0;
+    left: 5px;
+    margin: auto 0;
+    border: 0px solid #afafaf;
+    border-width: 0px 2px 2px 0;
+    transform: rotate(45deg);
+    opacity: 0;
+  }
+  .order-tracking.completed .is-complete {
+    border-color: map-get($colors, green);
+    border-width: 0px;
+    background-color: map-get($colors, green);
+  }
+  .order-tracking.completed .is-complete:after {
+    border-color: map-get($colors, white);
+    border-width: 0px 3px 3px 0;
+    width: 7px;
+    left: 11px;
+    opacity: 1;
+  }
+  .order-tracking p {
+    color: map-get($colors, gray);
+    font-size: 16px;
+    margin-top: 8px;
+    margin-bottom: 0;
+    line-height: 20px;
+  }
+  .order-tracking p span {
+    font-size: 14px;
+  }
+  .order-tracking.completed p {
+    color: #000;
+  }
+  .order-tracking::before {
+    content: "";
+    display: block;
+    height: 3px;
+    width: calc(100% - 40px);
+    background-color: map-get($colors, yellow);
+    top: 13px;
+    position: absolute;
+    left: calc(-50% + 20px);
+    z-index: 0;
+  }
+  .order-tracking:first-child:before {
+    display: none;
+  }
+  .order-tracking.completed:before {
+    background-color: map-get($colors, green);
   }
 }

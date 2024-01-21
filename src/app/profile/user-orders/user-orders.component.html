@@ -18,9 +18,15 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-md-6 align-self-center">
-                            <small class="font-gray"> Order No:
-                                <span class="font-green font-semibold">{{order.sNo}} / {{order.orderId}}</span>
-                            </small>
+                            <div class="d-flex">
+                                <small class="font-gray"> Invoice No:
+                                    <span class="font-green font-semibold">{{order.sNo}}</span>
+                                </small>
+
+                                <small class="font-gray d-inline-block ms-3"> Ordered On:
+                                    <span class="font-green font-semibold">{{order.orderedDate}}</span>
+                                </small>
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <div class="text-end d-flex justify-content-end">
