@@ -8,7 +8,7 @@
                         <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
                         <li class="breadcrumb-item"><a (click)="routeCity(cityName)">{{cityName}}</a></li>
                         <li class="breadcrumb-item"><a [routerLink]="productDetails?.seoCategoryURL">{{breadcatTitle}}</a></li>
-                        <li class="breadcrumb-item active" aria-current="page" [routerLink]="productDetails?.seoSubCategoryURL">{{breadTitle}}</li>
+                        <li class="breadcrumb-item" aria-current="page"><a [routerLink]="productDetails?.seoSubCategoryURL">{{breadTitle}}</a></li>
                     </ol>
                 </nav>
             </div>
