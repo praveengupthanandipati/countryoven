@@ -52,9 +52,10 @@ data-bs-toggle="modal" data-bs-target="#DeliveryModal">Edit</button>
                         <div class="col-12">
                             {{CartItem.outOfDateMessage}}
                         </div>
+                        
 
                         <div class="col-md-3">
-                            <a href="javascript:void(0)">
+                            <a  [routerLink]="'/' + cityName + '/send-online/' + CartItem.seoProductName">
                                 <img src="{{CartItem.produtImage}}" alt="" class="img-fluid">
                             </a>
                         </div>
@@ -63,7 +64,7 @@ data-bs-toggle="modal" data-bs-target="#DeliveryModal">Edit</button>
                                 <div class="col-md-6">
                                     <div class="d-flex justify-content-between flex-column content-cart-col">
                                         <div>
-                                            <h5 class="h5 pb-3"><a href="javascript:void(0)"
+                                            <h5 class="h5 pb-3"><a href="javascript:void(0)" [routerLink]="'/' + cityName + '/send-online/' + CartItem.seoProductName"
                                                     class="font-black">{{CartItem.productName}}</a>
                                             </h5>
                                             <div class="btnsec">
