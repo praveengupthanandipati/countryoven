@@ -8,7 +8,7 @@
                         <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
                         <li class="breadcrumb-item"><a (click)="routeCity(cityName)">{{cityName}}</a></li>
                         <li class="breadcrumb-item"><a [routerLink]="productDetails?.seoCategoryURL">{{breadcatTitle}}</a></li>
-                        <li class="breadcrumb-item active" aria-current="page" [routerLink]="productDetails?.seoSubCategoryURL">{{breadTitle}}</li>
+                        <li class="breadcrumb-item" aria-current="page"><a [routerLink]="productDetails?.seoSubCategoryURL">{{breadTitle}}</a></li>
                     </ol>
                 </nav>
             </div>
@@ -101,7 +101,7 @@
                         <span class="icomoon" [class]="currencyClass"></span>:{{egglessPrice}}
                     </div>
 
-                    <div *ngIf="photoRequired" class="pb-2 eggless">
+                    <div *ngIf="photoRequired || photoCake" class="pb-2 eggless">
 
                         <label class="ps-2">Photo price</label>
                         <span class="icomoon" [class]="currencyClass"></span>:{{photoCakePrice}}
@@ -165,6 +165,23 @@
                                             <p class="error-message">Select Voucher</p>
                                         </div>
                                     </div>
+
+                                    <div class="col-md-6" *ngIf="pincodeOptionsDto_array?.length >0">
+                                        <div class="form-group pb-2">
+                                            <label class="align-self-center pe-2">Select Pincode:</label>
+                                            <select class="form-select" formControlName="pincodeOptionsDto">
+                                                <option *ngFor="let o of pincodeOptionsDto_array"
+                                                   [ngValue]="o">
+                                                    {{o}}</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- <div class="invalid-feedback mt-0 d-block"
+                                            *ngIf="dynamicForm.get('pincodeOptionsDto')!.invalid && dynamicForm.get('pincodeOptionsDto')!.touched">
+                                            <p class="error-message">Select Pincode</p>
+                                        </div> -->
+                                    </div>
+
 
                                     <div class="col-md-3" *ngIf="numberOptionsDto_array?.length >0">
                                         <div class="form-group pb-2">
