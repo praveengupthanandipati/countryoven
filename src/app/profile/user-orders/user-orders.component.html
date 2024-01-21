@@ -15,7 +15,7 @@
         <app-profile-nav></app-profile-nav>
         <div class="userprofile-body">
             <div class="card mb-3" *ngFor="let order of orderDetails">
-                <div class="card-header">
+                <div class="card-header py-1">
                     <div class="row">
                         <div class="col-md-6 align-self-center">
                             <div class="d-flex">
@@ -30,28 +30,24 @@
                         </div>
                         <div class="col-md-6">
                             <div class="text-end d-flex justify-content-end">
-                                <a (click)="gotoorders(order.orderId)" class="color-btn d-inline-block"
-                                    href="javascript:;">
-                                    Track</a>
+                                <a (click)="gotoorders(order.orderId)" class="btn btn-primary btn-sm"
+                                    href="javascript:;">Track</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="row" *ngFor="let innerorder of order.myOrderProductsDtos">
-                        <div class="col-md-2">
+                        <div class="col-md-1">
                             <a (click)="gotoorders(order.orderId)" href="javascript:;">
                                 <img src="{{innerorder.smallimageurl}}" alt="" class="img-fluid">
                             </a>
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-11">
                             <article>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h5 class="h5 pb-1">
-                                            <a (click)="gotoorders(order.orderId)" href=""
-                                                class="font-black font-semibold">{{innerorder.productName}}</a>
-                                        </h5>
+                                        <a (click)="gotoorders(order.orderId)" href="" class="font-black font-semibold">{{innerorder.productName}}</a>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="price">
@@ -91,15 +87,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-footer">
+                <div class="card-footer py-1">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="price">
                                 <div class="offer-price">
                                     <div>
                                         <small class="font-gray">Total:</small>
-                                        <span class="font-semibold"><span
-                                                class="icon-inr icomoon"></span>{{order.totalAmount}}</span>
+                                        <span class="font-semibold">
+                                            <span class="icon-inr icomoon small"></span>{{order.totalAmount}}
+                                        </span>
                                     </div>
                                 </div>
                             </div>
