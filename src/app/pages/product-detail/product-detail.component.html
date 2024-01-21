@@ -166,6 +166,23 @@
                                         </div>
                                     </div>
 
+                                    <div class="col-md-6" *ngIf="pincodeOptionsDto_array?.length >0">
+                                        <div class="form-group pb-2">
+                                            <label class="align-self-center pe-2">Select Pincode:</label>
+                                            <select class="form-select" formControlName="pincodeOptionsDto">
+                                                <option *ngFor="let o of pincodeOptionsDto_array"
+                                                   [ngValue]="o">
+                                                    {{o}}</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- <div class="invalid-feedback mt-0 d-block"
+                                            *ngIf="dynamicForm.get('pincodeOptionsDto')!.invalid && dynamicForm.get('pincodeOptionsDto')!.touched">
+                                            <p class="error-message">Select Pincode</p>
+                                        </div> -->
+                                    </div>
+
+
                                     <div class="col-md-3" *ngIf="numberOptionsDto_array?.length >0">
                                         <div class="form-group pb-2">
                                             <label class="align-self-center pe-2">Number:</label>

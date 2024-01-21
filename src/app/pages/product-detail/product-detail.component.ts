@@ -29,6 +29,7 @@ export class ProductDetailComponent implements OnInit {
   voucherOptionsDto_array: any;
   weightOptionsDto_array: any;
   numberOptionsDto_array: any;
+  pincodeOptionsDto_array: any=[];
   messageRequired: boolean = false;
   photoRequired: boolean = false;
   deliveryDates_array: any;
@@ -344,7 +345,26 @@ if(this.photoCakePrice >0)
           this._crud.getBindDeliveryTimes(data).subscribe(res => {
 
             this.deliveryTime = res.deliveryTimingsDtos;
+
             this.dynamicForm.get('deliveryTimes')?.setValue(this.deliveryTime[0].dtime);
+
+/* pincode */
+
+this.pincodeOptionsDto_array = res.deliveryPinCodes;
+console.log(this.pincodeOptionsDto_array)
+
+if (this.pincodeOptionsDto_array.length > 0) {
+  this.addFormControl('pincodeOptionsDto');
+  setTimeout(() => {
+    this.dynamicForm.get('pincodeOptionsDto')?.setValue(this.pincodeOptionsDto_array[0]);
+ 
+  }, 1000);
+
+}
+/* pincode */
+
+
+            
           })
 
 
@@ -377,6 +397,10 @@ if(this.photoCakePrice >0)
         }, 1000);
 
       }
+
+
+
+
       if (this.numberOptionsDto_array.length > 0) {
         this.addFormControl('numberOptionsDto');
         setTimeout(() => {
