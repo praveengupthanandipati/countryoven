@@ -53,13 +53,13 @@ export class UserDashboardComponent {
     },
     {
       Link:'/myaccount/cowallet',
-      Icon:'icon-coupon',
+      Icon:'icon-wallet',
       Title:'Co Wallet',
       LinkName:'Used / Unused Gift Vouchers'
     },
     {
       Link:'/myaccount/referral',
-      Icon:'icon-coupon',
+      Icon:'icon-reference',
       Title:'Referral',
       LinkName:'User Referral Program'
     },

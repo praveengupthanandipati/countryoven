@@ -2,14 +2,33 @@
     <a href="https://api.whatsapp.com/send?phone=+919848155830&text=Hi" class="sticky-ribbon-link wapp">
         <span class="icon-whatsapp icomoon"></span>
     </a>
-    <a href="" class="sticky-ribbon-link call-customercare">
+    <a href="#contactpop" class="sticky-ribbon-link call-customercare" data-bs-toggle="modal">
         <span class="icon-call icomoon"></span>
     </a>
-    <a routerLink="/content/contactus" class="sticky-ribbon-link msg">
+    <a href="mailto:contact@countryoven.com" class="sticky-ribbon-link msg">
         <span class="icon-email icomoon"></span>
     </a>
-    <a  routerLink="/notifications" class="sticky-ribbon-link notifications">
+    <a routerLink="/notifications" class="sticky-ribbon-link notifications">
         <span class="icon-notification icomoon"></span>
         <div class="number-count">12</div>
     </a>
+</div>
+
+
+<div class="modal fade" id="contactpop" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Contact</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h6 class="h6 pb-4 text-center">Call to Customer Care</h6>
+                <div class="text-center">
+                    <a href="callto:(+91)9848155830" class="color-btn">(+91)9848155830</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>

@@ -17,20 +17,20 @@
 
             <!-- card -->
             <div class="card border review-card mb-2" *ngFor="let i of allNotifications">
-                
                 <div class="card-body">
-
-                    <img [src]="i.imageURL"/>
-
-                    <article class="pb-2">
-                        <h5 class="h6 font-semibold">{{i.message}}</h5>
-                        <p class="pb-0"><a [attr.href]="i.linkURL">Click here for more details</a></p>
-                    </article>
-                   
+                    <div class="row">
+                        <div class="col-md-1">
+                            <img [src]="i.imageURL" class="img-fluid" />
+                        </div>
+                        <div class="col-md-11">
+                            <article class="pb-2">
+                                <p>{{i.message}}</p>
+                                <p class="pb-0"><a [attr.href]="i.linkURL">Click here for more details</a></p>
+                            </article>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!--/ card-->
-          
             <!--/ card-->
         </div>
     </div>
