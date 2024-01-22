@@ -24,6 +24,7 @@ export class CartComponent implements OnInit {
   firstlistItem: any;
   customerId: any = 0;
   viewedProducts: any = [];
+  loader:boolean=true;
   cityName: string | null;
   coutryName: string | null;
   currencySelected: string | null;
@@ -94,7 +95,7 @@ export class CartComponent implements OnInit {
 
   }
   ngOnInit(): void {
-
+    this.addLoader();
     this._crud.getIpAddress().subscribe((data: any) => {
       this.userIp = data.ip;
 
@@ -163,7 +164,9 @@ export class CartComponent implements OnInit {
     }
 
     this._crud.postShopingCart(data).subscribe(res => {
-
+      this.loader=false;
+      this.removeLoader();
+      console.log(this.loader)
       this.cartItems = res;
       this.cartCount = res.length;
 
@@ -370,13 +373,13 @@ this.updateCartItem(sno,quntity)
     this._crud.getViewedProducts(data).subscribe(res => {
 
       this.viewedProducts = res;
-
+console.log(this.viewedProducts)
 
     })
   }
 
   updateDateandtime() {
-
+console.log(this.userForm.valid)
     console.log(this.userForm.get('deliveryDate').value)
     console.log(this.userForm.get('deliveryTime').value.toString())
     let data = {

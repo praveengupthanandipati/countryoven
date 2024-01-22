@@ -29,18 +29,18 @@ export class ProductDetailComponent implements OnInit {
   voucherOptionsDto_array: any;
   weightOptionsDto_array: any;
   numberOptionsDto_array: any;
-  pincodeOptionsDto_array: any=[];
+  pincodeOptionsDto_array: any = [];
   messageRequired: boolean = false;
   photoRequired: boolean = false;
-  photoCake:boolean=false;
+  photoCake: boolean = false;
   deliveryDates_array: any;
   leadTime: any;
   deliveryTime: any;
   isEggless: any;
   egglessPrice: number = 0;
-  photoCakePrice:number=0;
+  photoCakePrice: number = 0;
   productPrice: any;
-  originalproductPrice:any;
+  originalproductPrice: any;
   isegglessChecked: boolean = false;
   sNo: any;
   breadTitle: any;
@@ -58,15 +58,15 @@ export class ProductDetailComponent implements OnInit {
   displayTime: any;
   textAreaInput = '';
   isMaxLengthExceeded = false;
-  maxLength:any=40;
+  maxLength: any = 40;
   message: string = '';
   sameDayBlockMessage: any;
   selectedItem: any;
-  selectedVoucher:any;
+  selectedVoucher: any;
   selectedQty: any;
-  egglessAddtionalPrice:number=0;
-  photoCakeAdditionalPrice:number=0;
-  pName:any;
+  egglessAddtionalPrice: number = 0;
+  photoCakeAdditionalPrice: number = 0;
+  pName: any;
   selectedFile: any;
   selectedVocucher: any;
   constructor(
@@ -182,7 +182,7 @@ export class ProductDetailComponent implements OnInit {
 
   saveallProductDeatils(formData: any) {
 
-this.addLoader();
+    this.addLoader();
 
     const data = {
       "productDetailsData": {
@@ -209,7 +209,7 @@ this.addLoader();
         "sessionID": this.cookieService.get('sessionID'),
         "currencySelected": this.currencySelected,
         "countryName": this.coutryName,
-        "PinCode":formData.pincodeOptionsDto ? formData.pincodeOptionsDto : null,
+        "PinCode": formData.pincodeOptionsDto ? formData.pincodeOptionsDto : null,
       }
     }
     this._crud.getSaveProductDetails(data).subscribe(res => {
@@ -217,18 +217,17 @@ this.addLoader();
       if (res.sNo) {
         this.sNo = res.sNo;
 
-if(this.photoRequired)
-{
-this.photoUpload(this.sNo)
-}
+        if (this.photoRequired) {
+          this.photoUpload(this.sNo)
+        }
 
-else{
-  this.removeLoader();
-  this.router.navigateByUrl('/cart')
-}
+        else {
+          this.removeLoader();
+          this.router.navigateByUrl('/cart')
+        }
 
 
-      
+
         // alert(res.successMessage)
       }
     });
@@ -269,7 +268,7 @@ else{
       "currencySelected": this.currencySelected
     }
     this._crud.getProductDetailsById(data).subscribe(res => {
-console.log(res)
+      console.log(res)
       this.removeLoader();
 
       this.breadTitle = res.subCategoryName;
@@ -281,28 +280,26 @@ console.log(res)
       this.isMultipleImages = res.isMultipleImages;
       this.productIamges = res.productIamges;
       this.photoRequired = this.productDetails.photoRequired
-      if(this.productDetails.categoryId == '1020')
-      {
-        this.photoCake=true
+      if (this.productDetails.categoryId == '1020') {
+        this.photoCake = true
       }
 
       this.leadTime = this.productDetails.leadTime;
       this.isEggless = this.productDetails.isEggless;
       this.egglessPrice = this.isEggless ? this.productDetails.egglessPrice : 0;
-      this.photoCakePrice=this.productDetails.photoCakePrice ? this.productDetails.photoCakePrice :0;
+      this.photoCakePrice = this.productDetails.photoCakePrice ? this.productDetails.photoCakePrice : 0;
       this.productPrice = this.productDetails.dicountPrice;
-      this.pName=this.productDetails.productName;
-this.originalproductPrice=this.productDetails.dicountPrice;
+      this.pName = this.productDetails.productName;
+      this.originalproductPrice = this.productDetails.dicountPrice;
       this.stockQuantityStatus = this.productDetails?.stockQuantity == 0 ? true : false;
       this.isNewArriavalstatus = this.productDetails?.isNewArriaval;
       this.egglessstatus = this.productDetails?.egglessTagMessage;
       this.duration = this.productDetails?.sameDayBlockTime ? this.productDetails?.sameDayBlockTime : 0
       this.sameDayBlockMessage = this.productDetails.sameDayBlockMessage;
-console.log(this.productPrice)
-if(this.photoCakePrice >0)
-{
-  this.productPrice= parseFloat(this.productPrice) + this.photoCakePrice
-}
+      console.log(this.productPrice)
+      if (this.photoCakePrice > 0) {
+        this.productPrice = parseFloat(this.productPrice) + this.photoCakePrice
+      }
 
 
       if (this.productDetails?.sameDayBlockTime) {
@@ -355,23 +352,23 @@ if(this.photoCakePrice >0)
 
             this.dynamicForm.get('deliveryTimes')?.setValue(this.deliveryTime[0].dtime);
 
-/* pincode */
+            /* pincode */
 
-this.pincodeOptionsDto_array = res.deliveryPinCodes;
-console.log(this.pincodeOptionsDto_array)
+            this.pincodeOptionsDto_array = res.deliveryPinCodes;
+            console.log(this.pincodeOptionsDto_array)
 
-if (this.pincodeOptionsDto_array.length > 0) {
-  this.addFormControl('pincodeOptionsDto');
-  setTimeout(() => {
-    this.dynamicForm.get('pincodeOptionsDto')?.setValue(this.pincodeOptionsDto_array[0]);
- 
-  }, 1000);
+            if (this.pincodeOptionsDto_array.length > 0) {
+              this.addFormControl('pincodeOptionsDto');
+              setTimeout(() => {
+                this.dynamicForm.get('pincodeOptionsDto')?.setValue(this.pincodeOptionsDto_array[0]);
 
-}
-/* pincode */
+              }, 1000);
+
+            }
+            /* pincode */
 
 
-            
+
           })
 
 
@@ -383,14 +380,14 @@ if (this.pincodeOptionsDto_array.length > 0) {
       if (this.flavourOptionsDto_array.length > 0) {
         this.addFormControl('flavourOptionsDto');
         setTimeout(() => {
-        //  this.dynamicForm.get('flavourOptionsDto')?.setValue(this.flavourOptionsDto_array[0].optionValue);
-        this.dynamicForm.get('flavourOptionsDto')?.setValue(null);
+          //  this.dynamicForm.get('flavourOptionsDto')?.setValue(this.flavourOptionsDto_array[0].optionValue);
+          this.dynamicForm.get('flavourOptionsDto')?.setValue(null);
         }, 1000);
       }
       if (this.voucherOptionsDto_array.length > 0) {
         this.addFormControl('voucherOptionsDto');
         setTimeout(() => {
-          
+
           this.dynamicForm.get('voucherOptionsDto')?.setValue(this.voucherOptionsDto_array[0]);
           this.selectedVocucher = this.voucherOptionsDto_array[0].optionValue
         }, 1000);
@@ -431,10 +428,10 @@ if (this.pincodeOptionsDto_array.length > 0) {
   }
 
   onMessageInputChange() {
-    
-    this.maxLength=40 - this.textAreaInput.length;
+
+    this.maxLength = 40 - this.textAreaInput.length;
     if (this.textAreaInput.length > 40) {
-      
+
       this.textAreaInput = this.textAreaInput.substring(0, 40);
       this.isMaxLengthExceeded = true;
     } else {
@@ -456,40 +453,36 @@ if (this.pincodeOptionsDto_array.length > 0) {
     };
   }
   //getRelatedProducts
-  
+
   egglesscheck(event: any) {
     const checkbox = event.target as HTMLInputElement;
 
     if (checkbox.checked) {
       // this.productPrice =parseInt(this.productDetails.dicountPrice) + this.egglessPrice
-    
+
       let result = parseFloat(this.productPrice) + this.egglessPrice
-      if(this.currencySelected =='USD')
-      {
-      this.productPrice =  result.toFixed(2)
+      if (this.currencySelected == 'USD') {
+        this.productPrice = result.toFixed(2)
       }
-      else
-      {
-        this.productPrice =  result
+      else {
+        this.productPrice = result
       }
 
 
 
 
 
-this.isegglessChecked=true;
+      this.isegglessChecked = true;
     } else {
-      this.isegglessChecked=false;
-      let result = parseFloat(this.productPrice) -  this.egglessPrice
+      this.isegglessChecked = false;
+      let result = parseFloat(this.productPrice) - this.egglessPrice
 
 
-      if(this.currencySelected =='USD')
-      {
-      this.productPrice =  result.toFixed(2)
+      if (this.currencySelected == 'USD') {
+        this.productPrice = result.toFixed(2)
       }
-      else
-      {
-        this.productPrice =  result
+      else {
+        this.productPrice = result
       }
 
 
@@ -498,59 +491,54 @@ this.isegglessChecked=true;
   }
 
 
-  onVoucherChange (e: any) {
+  onVoucherChange(e: any) {
 
     console.log(e)
     console.log(this.selectedVoucher.optionId)
-    this.productPrice=this.selectedVoucher.optionId
-    this.selectedVocucher=this.selectedVoucher.optionValue
-//     this.selectedQty = this.selectedItem.optionValue;
-//     if(this.photoRequired)
-//     {
-// this.photoCakePrice=this.selectedItem.photoCakeAdditionalPrice;
-//     }
-// this.egglessPrice=this.selectedItem.egglessAddtionalPrice
+    this.productPrice = this.selectedVoucher.optionId
+    this.selectedVocucher = this.selectedVoucher.optionValue
+    //     this.selectedQty = this.selectedItem.optionValue;
+    //     if(this.photoRequired)
+    //     {
+    // this.photoCakePrice=this.selectedItem.photoCakeAdditionalPrice;
+    //     }
+    // this.egglessPrice=this.selectedItem.egglessAddtionalPrice
 
-// console.log(this.selectedItem)
-//     if (this.isegglessChecked) {
-//       this.productPrice = parseFloat(this.selectedItem.optionId) + this.egglessPrice + this.photoCakePrice
-//     } else {
-//       this.productPrice = parseFloat(this.selectedItem.optionId) + this.photoCakePrice
-//     }
+    // console.log(this.selectedItem)
+    //     if (this.isegglessChecked) {
+    //       this.productPrice = parseFloat(this.selectedItem.optionId) + this.egglessPrice + this.photoCakePrice
+    //     } else {
+    //       this.productPrice = parseFloat(this.selectedItem.optionId) + this.photoCakePrice
+    //     }
 
   }
 
 
   onQtyChange(e: any) {
     this.selectedQty = this.selectedItem.optionValue;
-    if(this.photoRequired || this.photoCake)
-    {
-this.photoCakePrice=this.selectedItem.photoCakeAdditionalPrice;
+    if (this.photoRequired || this.photoCake) {
+      this.photoCakePrice = this.selectedItem.photoCakeAdditionalPrice;
     }
-this.egglessPrice=this.selectedItem.egglessAddtionalPrice
+    this.egglessPrice = this.selectedItem.egglessAddtionalPrice
 
-console.log(this.selectedItem)
+    console.log(this.selectedItem)
     if (this.isegglessChecked) {
-      let result=parseFloat(this.selectedItem.optionId) + this.egglessPrice + this.photoCakePrice
-      if(this.currencySelected =='USD')
-      {
-      this.productPrice =  result.toFixed(2)
+      let result = parseFloat(this.selectedItem.optionId) + this.egglessPrice + this.photoCakePrice
+      if (this.currencySelected == 'USD') {
+        this.productPrice = result.toFixed(2)
       }
-else
-{
-  this.productPrice =  result
-}
+      else {
+        this.productPrice = result
+      }
 
     } else {
       let result = parseFloat(this.selectedItem.optionId) + this.photoCakePrice
-      if(this.currencySelected =='USD')
-      {
-      this.productPrice =  result.toFixed(2)
+      if (this.currencySelected == 'USD') {
+        this.productPrice = result.toFixed(2)
       }
-else
-{
-  this.productPrice =  result
-}
+      else {
+        this.productPrice = result
+      }
 
     }
 
@@ -593,45 +581,43 @@ else
 
     const allowedTypes = ['image/jpeg', 'image/png'];
     const file = event.target.files[0];
-  
+
     if (file && allowedTypes.includes(file.type)) {
       // File is valid, you can update the form control value
       this.selectedFile = event.target.files[0];
     } else {
       // Reset the form control and show an error message
-  
+
       console.log('Invalid file type. Please select a JPG or PNG image.');
     }
-  
-  
-  
+
+
+
   }
-  
-  
-  
-  photoUpload(no:any)
-  {
-   
-      let sNo = no;
-      let formData = new FormData();
-      formData.append('ImagePath', this.selectedFile);
-      formData.append('SNo', sNo);
-      this._crud.AddPhotoCake(formData).subscribe(res => {
-        this.removeLoader();
-        if (res.isEroor) {
-         // this.toastr.error('Unable to proceed');
-        }
-        else {   
-          this.router.navigateByUrl('/cart')  
-        }
-  
-      })
-  
-    
+
+
+
+  photoUpload(no: any) {
+
+    let sNo = no;
+    let formData = new FormData();
+    formData.append('ImagePath', this.selectedFile);
+    formData.append('SNo', sNo);
+    this._crud.AddPhotoCake(formData).subscribe(res => {
+      this.removeLoader();
+      if (res.isEroor) {
+        // this.toastr.error('Unable to proceed');
+      }
+      else {
+        this.router.navigateByUrl('/cart')
+      }
+
+    })
+
+
   }
-  
-  routeCity(e:any)
-  {
+
+  routeCity(e: any) {
     this.router.navigateByUrl(e + '/gift-online');
   }
 

@@ -6,9 +6,12 @@
                 <nav aria-label="breadcrumb" class="align-self-center py-3">
                     <ol class="breadcrumb pb-0 mb-0" *ngIf="productDetails">
                         <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-                        <li class="breadcrumb-item"><a (click)="routeCity(cityName)">{{cityName}}</a></li>
-                        <li class="breadcrumb-item"><a [routerLink]="productDetails?.seoCategoryURL">{{breadcatTitle}}</a></li>
-                        <li class="breadcrumb-item" aria-current="page"><a [routerLink]="productDetails?.seoSubCategoryURL">{{breadTitle}}</a></li>
+                        <li class="breadcrumb-item" *ngIf="cityName"><a (click)="routeCity(cityName)">{{cityName}}</a>
+                        </li>
+                        <li class="breadcrumb-item" *ngIf="breadcatTitle"><a
+                                [routerLink]="productDetails?.seoCategoryURL">{{breadcatTitle}}</a></li>
+                        <li class="breadcrumb-item" aria-current="page" *ngIf="breadTitle"><a
+                                [routerLink]="productDetails?.seoSubCategoryURL">{{breadTitle}}</a></li>
                     </ol>
                 </nav>
             </div>
@@ -17,7 +20,7 @@
         <!-- {{timeLeft | date}} -->
         <!--/ bread crumb-->
         <!-- product detail -->
-        <div class="row">
+        <div class="row" *ngIf="productDetails">
             <!-- left -->
             <div class="col-md-5">
                 <div class="sticky-top">
@@ -74,14 +77,10 @@
             </div>
             <!--/ left -->
             <!-- right -->
-            <div class="col-md-7" *ngIf="productDetails">
+            <div class="col-md-7">
                 <div class="product-detail-right">
                     <h1 class="font-semibold">{{productDetails?.productName}}</h1>
-                    <!-- <div class="rating-title d-flex py-3">
-                        <div class="rating-label d-inline-block text-white py-1 px-2 rounded"><span
-                                class="d-inline-block pe-1">4.7</span> <span class="icon-star"></span></div>
-                        <div class="review-count font-bold align-self-center ps-2">150 Reviews</div>
-                    </div> -->
+
                     <div class="price d-flex py-2">
                         <div class="offer-price font-semi-bold"><span class="icomoon font-bold"
                                 [class]="currencyClass"></span>{{productPrice}}</div>
@@ -153,9 +152,10 @@
                                     <div class="col-md-6" *ngIf="voucherOptionsDto_array?.length >0">
                                         <div class="form-group pb-2">
                                             <label class="align-self-center pe-2">Select Voucher:</label>
-                                            <select class="form-select" [(ngModel)]="selectedVoucher" formControlName="voucherOptionsDto"  (change)="onVoucherChange($event)">
-                                                <option *ngFor="let o of voucherOptionsDto_array"
-                                                    [id]="o.optionId" [ngValue]="o">
+                                            <select class="form-select" [(ngModel)]="selectedVoucher"
+                                                formControlName="voucherOptionsDto" (change)="onVoucherChange($event)">
+                                                <option *ngFor="let o of voucherOptionsDto_array" [id]="o.optionId"
+                                                    [ngValue]="o">
                                                     {{o.optionValue}}</option>
                                             </select>
                                         </div>
@@ -170,8 +170,7 @@
                                         <div class="form-group pb-2">
                                             <label class="align-self-center pe-2">Select Pincode:</label>
                                             <select class="form-select" formControlName="pincodeOptionsDto">
-                                                <option *ngFor="let o of pincodeOptionsDto_array"
-                                                   [ngValue]="o">
+                                                <option *ngFor="let o of pincodeOptionsDto_array" [ngValue]="o">
                                                     {{o}}</option>
                                             </select>
                                         </div>
@@ -227,10 +226,12 @@
                                             class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
                                         <select class="form-select" formControlName="deliveryTimes">
                                             <option *ngFor="let o of deliveryTime" [value]="o.dtime">
-                                                
-                                                <ng-container *ngIf="currencySelected == 'INR'">{{o.dtime}}</ng-container>
-                                                <ng-container *ngIf="currencySelected =='USD'">{{o.dtimeCurrency}}</ng-container>
-                                                
+
+                                                <ng-container
+                                                    *ngIf="currencySelected == 'INR'">{{o.dtime}}</ng-container>
+                                                <ng-container
+                                                    *ngIf="currencySelected =='USD'">{{o.dtimeCurrency}}</ng-container>
+
                                             </option>
                                         </select>
                                     </div>
@@ -243,26 +244,31 @@
 
                                 <div class="col-md-12" *ngIf="photoRequired">
                                     <label>Browse a picture for photo cake</label>
-                                    <div class="form-group d-flex p-2  background-lightprimary rounded"  [ngClass]="{'is-invalid': dynamicForm.get('photo')?.invalid  && dynamicForm.get('photo')!.touched}">
+                                    <div class="form-group d-flex p-2  background-lightprimary rounded"
+                                        [ngClass]="{'is-invalid': dynamicForm.get('photo')?.invalid  && dynamicForm.get('photo')!.touched}">
                                         <span
                                             class="icon-upload2 font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
-                                        <input type="file"  (change)="onFileSelected($event)" formControlName="photo"  accept="image/jpeg, image/png" 
-                                            class="form-control border-0 bg-transparent" 
+                                        <input type="file" (change)="onFileSelected($event)" formControlName="photo"
+                                            accept="image/jpeg, image/png" class="form-control border-0 bg-transparent"
                                             placeholder="Browse a picture for photo cake">
                                     </div>
-                                    <div class="msg-hint" *ngIf="dynamicForm.get('photo')?.invalid && dynamicForm.get('photo')!.touched">Image Required</div>
+                                    <div class="msg-hint"
+                                        *ngIf="dynamicForm.get('photo')?.invalid && dynamicForm.get('photo')!.touched">
+                                        Image Required</div>
                                 </div>
                                 <div class="col-md-12" *ngIf="messageRequired">
                                     <div class="form-group d-flex p-2  background-lightprimary rounded mt-3">
                                         <span
                                             class="icon-writing font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
-                                        <input formControlName="message" [(ngModel)]="textAreaInput" 
-                                            class="form-control border-0 bg-transparent" (input)="onMessageInputChange()"
-                                            placeholder="Incase of no message, leave it blank" maxlength="40" type="text">
+                                        <input formControlName="message" [(ngModel)]="textAreaInput"
+                                            class="form-control border-0 bg-transparent"
+                                            (input)="onMessageInputChange()"
+                                            placeholder="Incase of no message, leave it blank" maxlength="40"
+                                            type="text">
                                     </div>
                                     <div>
-                                    {{maxLength}} characters allowed.
-                                </div>
+                                        {{maxLength}} characters allowed.
+                                    </div>
 
                                     <!-- <div
                                         *ngIf="dynamicForm.get('message')?.hasError('maxLength') || isMaxLengthExceeded">
@@ -295,19 +301,22 @@
                                         aria-controls="nav-home" aria-selected="true">Description</a>
                                     <a class="nav-link border me-2" id="nav-Information-tab" data-bs-toggle="tab"
                                         data-bs-target="#nav-Information" type="button" role="tab"
-                                        aria-controls="nav-Information" aria-selected="false"  *ngIf="productDetails?.deliveryInformationRequired"  >Delivery Information</a>
+                                        aria-controls="nav-Information" aria-selected="false"
+                                        *ngIf="productDetails?.deliveryInformationRequired">Delivery Information</a>
                                     <a class="nav-link border" id="nav-Instructions-tab" data-bs-toggle="tab"
                                         data-bs-target="#nav-Instructions" type="button" role="tab"
-                                        aria-controls="nav-Instructions" aria-selected="false" *ngIf="productDetails?.careInstrunctionForCakeRequired || productDetails?.careInstrunctionForFlowerRequired">Care Instructions</a>
+                                        aria-controls="nav-Instructions" aria-selected="false"
+                                        *ngIf="productDetails?.careInstrunctionForCakeRequired || productDetails?.careInstrunctionForFlowerRequired">Care
+                                        Instructions</a>
                                     <a class="nav-link border" id="nav-review-tab" data-bs-toggle="tab"
                                         data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review"
                                         aria-selected="false">Product Reviews</a>
                                 </div>
                             </nav>
                             <div class="tab-content" id="nav-tabContent">
-                                <div class="tab-pane fade show active" *ngIf="productDetails?.description !=''" id="nav-description" role="tabpanel"
-                                    aria-labelledby="nav-description-tab">
-                                    <article class="pb-2" >
+                                <div class="tab-pane fade show active" *ngIf="productDetails?.description !=''"
+                                    id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
+                                    <article class="pb-2">
 
                                         <h5 class="font-bold pb-3 mb-2">Description</h5>
 
@@ -316,14 +325,29 @@
                                         <div class="py-2">
                                             <div [innerHtml]="productDetails?.description"></div>
 
-<div *ngIf="productDetails?.careInstrunctionForCakeRequired"> <strong>Note:</strong> Every cake that we offer is handcrafted and since each chef has his/her own way of baking and designing the cake, there might be a slight variation in the product in terms of design when compared to the image displayed on the website. The color of the cake could vary based on the flavor selected. Having said that, we at Countryoven.com always make sure that all cakes are very similar to the corresponding images displayed on the website.</div>
+                                            <div *ngIf="productDetails?.careInstrunctionForCakeRequired">
+                                                <strong>Note:</strong> Every cake that we offer is handcrafted and since
+                                                each chef has his/her own way of baking and designing the cake, there
+                                                might be a slight variation in the product in terms of design when
+                                                compared to the image displayed on the website. The color of the cake
+                                                could vary based on the flavor selected. Having said that, we at
+                                                Countryoven.com always make sure that all cakes are very similar to the
+                                                corresponding images displayed on the website.</div>
 
-<div *ngIf="productDetails?.careInstrunctionForFlowerRequired"> <strong>Note:</strong> Flowers may vary slightly from the image depending upon the local availability. countryoven.com holds the right to replace any flower and/or the color of flowers, vase, and basket based on availability. The replacement may be of equivalent or higher denomination than the representation on the website. Having said that, we at countryoven.com always make sure that all flowers are very similar to the corresponding images displayed on the website.</div>
+                                            <div *ngIf="productDetails?.careInstrunctionForFlowerRequired">
+                                                <strong>Note:</strong> Flowers may vary slightly from the image
+                                                depending upon the local availability. countryoven.com holds the right
+                                                to replace any flower and/or the color of flowers, vase, and basket
+                                                based on availability. The replacement may be of equivalent or higher
+                                                denomination than the representation on the website. Having said that,
+                                                we at countryoven.com always make sure that all flowers are very similar
+                                                to the corresponding images displayed on the website.</div>
                                         </div>
                                     </article>
                                 </div>
-                                <div class="tab-pane fade" id="nav-Information" role="tabpanel" *ngIf="productDetails?.deliveryInformationRequired">
-                                    <article class="pb-2" >
+                                <div class="tab-pane fade" id="nav-Information" role="tabpanel"
+                                    *ngIf="productDetails?.deliveryInformationRequired">
+                                    <article class="pb-2">
                                         <h5 class="font-bold pb-3 mb-2">Delivery Information</h5>
                                         <div class="py-2">
                                             <ul class="list-style-desc">
@@ -349,7 +373,8 @@
                                         </div>
                                     </article>
                                 </div>
-                                <div class="tab-pane fade" id="nav-Instructions" role="tabpanel" *ngIf="productDetails?.careInstrunctionForCakeRequired || productDetails?.careInstrunctionForFlowerRequired">
+                                <div class="tab-pane fade" id="nav-Instructions" role="tabpanel"
+                                    *ngIf="productDetails?.careInstrunctionForCakeRequired || productDetails?.careInstrunctionForFlowerRequired">
                                     <article class="pb-2" *ngIf="productDetails?.careInstrunctionForCakeRequired">
                                         <h5 class="font-bold pb-3 mb-2">Care Instructions</h5>
                                         <div class="py-2">
@@ -377,11 +402,13 @@
                                         <h3 class="font-bold pb-3 mb-2">Care Instructions</h3>
                                         <div class="py-2">
                                             <ul class="list-style-desc">
-                                                <li>Trim the stems and place the flowers in a clean vase/bowl with clean water.</li>
-            
-                                                 <li>   Remove the leaves from stem to extend the life of the bouquet.</li>
-                                                    
-                                                  <li>Daily replace the water in the vase/bowl with fresh and clean water.s </li>
+                                                <li>Trim the stems and place the flowers in a clean vase/bowl with clean
+                                                    water.</li>
+
+                                                <li> Remove the leaves from stem to extend the life of the bouquet.</li>
+
+                                                <li>Daily replace the water in the vase/bowl with fresh and clean
+                                                    water.s </li>
                                             </ul>
                                         </div>
                                     </article>
@@ -437,7 +464,7 @@
                         </div>
                         <!--/ product info tab ends-->
 
-                      
+
                     </div>
                     <!--/product info-->
 
@@ -448,7 +475,7 @@
         </div>
         <!--/ product detail-->
         <!-- you may also like -->
-        <section class="you-may-also-like my-5">
+        <section class="you-may-also-like my-5" *ngIf="allProducts.length > 0">
             <h5 class="font-bold pb-3 mb-2 h5 border-bottom ">You may also like</h5>
             <div class="products-list my-3">
                 <div class="row row-flex">
