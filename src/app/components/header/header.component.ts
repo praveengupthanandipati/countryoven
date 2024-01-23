@@ -14,6 +14,8 @@ export class HeaderComponent  implements OnInit {
   scrollingOn:any;
   searchList:any;
   topList:any;
+  notificationsCount:any;
+  showribbon:boolean=false;
   constructor(private _crud:CurdService)
   {  
   }
@@ -28,6 +30,8 @@ export class HeaderComponent  implements OnInit {
          this.menuList=res.menuList;
          this.searchList=res.searchList;
          this.topList=res.topList;
+         this.notificationsCount=res.notificationsCount;
+         this.showribbon=true;
         })
       }   
 

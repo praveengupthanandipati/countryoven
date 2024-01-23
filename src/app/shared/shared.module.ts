@@ -13,12 +13,14 @@ import { DisplylocpopupComponent } from '../components/displylocpopup/displylocp
 import { AddressListComponent } from '../address-list/address-list.component';
 import { Select2Module } from 'ng-select2-component';
 import { ProductItemComponent } from '../components/product-item/product-item.component';
+import { StickyRibbonComponent } from '../components/sticky-ribbon/sticky-ribbon.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent ,
     TopheaderComponent,
+    StickyRibbonComponent,
     MidheaderComponent,
     MainnavComponent,
     FooterComponent ,
@@ -49,6 +51,7 @@ import { ProductItemComponent } from '../components/product-item/product-item.co
     ReactiveFormsModule,
     Select2Module,
     HeaderComponent,
+    StickyRibbonComponent,
     TopheaderComponent,
     MidheaderComponent,
     SetLocComponent,

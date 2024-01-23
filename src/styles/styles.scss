@@ -381,7 +381,7 @@ header.fixed-top {
 }
 .stickyribbon {
   position: fixed;
-  top: 40%;
+  top: calc(50% - 90px);
   right: 0;
   z-index: 999;
   @include box-shadow(0, 0, 10px, map-get($colors, gray));
