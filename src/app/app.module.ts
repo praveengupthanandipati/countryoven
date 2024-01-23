@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 // import { ProductsComponent } from './pages/products/products.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CareersComponent } from './pages/careers/careers.component';
-import { StickyRibbonComponent } from './components/sticky-ribbon/sticky-ribbon.component';
+
 
 
 import { CustomerServicesComponent } from './pages/customer-services/customer-services.component';
@@ -39,7 +39,7 @@ import { TermsandconditionsComponent } from './pages/termsandconditions/termsand
     ReturnpolicyComponent,
     PrivacypolicyComponent,
     TermsandconditionsComponent,
-    StickyRibbonComponent
+    
     
     
   //  NoproductsFoundComponent,
