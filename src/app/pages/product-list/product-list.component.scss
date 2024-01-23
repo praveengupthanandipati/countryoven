@@ -93,8 +93,8 @@
   }
 }
 
-.loadmore{     font-size: 20px;
-  color: #bf0067;
+.loadmore{     
+  color: map-get($colors, white);
   font-weight: 600;
   cursor: pointer;}
   

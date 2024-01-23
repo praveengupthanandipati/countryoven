@@ -52,6 +52,7 @@
   .item-title {
     p {
       height: 50px;
+      line-height: 16px;
       a {
         font-size: $fsize - 2;
       }
@@ -59,7 +60,7 @@
   }
   .product-item-figure {
     img {
-      height: 260px;
+      height: auto;
     }
   }
 }

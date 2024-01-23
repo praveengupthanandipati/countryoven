@@ -135,6 +135,7 @@
 .product-detail-tab {
   padding: 25px;
   background: map-get($colors, lightblue);
+  min-height: 420px;
 
   .nav-link {
     text-transform: uppercase;

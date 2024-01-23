@@ -8,22 +8,22 @@
                 <div class="deliver-location d-flex justify-content-between p-2 border">
                     <div class="d-flex">
                         <span class="icon-route h1 font-primary"></span>
-                        <div class="ps-3 align-self-center">
-                            <h6 class="font-gray">Deliver Date: 
-                                <!-- <span
+                        <div class="ps-3 align-self-center d-flex">
+                            <div class="align-self-center">
+                                <span>Deliver Date: </span>
+                                <span class="font-primary">{{displaydeliveryDate}}</span>
+                            </div>
+                            <!-- <span
                                     class="font-black d-inline-block ps-3 font-semibold">{{city}}</span> -->
-<span>{{displaydeliveryDate}}</span>
-Deliver Time:
-<span>{{displaydeliveryTime}}</span>
-<button class=""
-data-bs-toggle="modal" data-bs-target="#DeliveryModal">Edit</button>
 
-                            </h6>
+                            <div class="px-3 align-self-center">
+                                <span>Deliver Time: </span>
+                                <span class="font-primary">{{displaydeliveryTime}}</span>
+                            </div>
+                            <button class="color-btn border-0" data-bs-toggle="modal"
+                                data-bs-target="#DeliveryModal"><span class="icon-edit icomoon"></span></button>
                         </div>
-
-
                         <!-- (change)="getBindDeliveryTimes($event)" -->
-                       
                         <!-- <div class="col-md-4 pb-2" *ngIf="deliveryDates_array?.length">
                             <label>Select Time</label>
                             <div class="form-group d-flex p-2  background-lightprimary rounded">
@@ -40,9 +40,6 @@ data-bs-toggle="modal" data-bs-target="#DeliveryModal">Edit</button>
                                 <p class="error-message">Select Time</p>
                             </div>
                         </div> -->
-
-
-
                     </div>
 
                 </div>
@@ -52,10 +49,8 @@ data-bs-toggle="modal" data-bs-target="#DeliveryModal">Edit</button>
                         <div class="col-12">
                             {{CartItem.outOfDateMessage}}
                         </div>
-                        
-
                         <div class="col-md-3">
-                            <a  [routerLink]="'/' + cityName + '/send-online/' + CartItem.seoProductName">
+                            <a [routerLink]="'/' + cityName + '/send-online/' + CartItem.seoProductName">
                                 <img src="{{CartItem.produtImage}}" alt="" class="img-fluid">
                             </a>
                         </div>
@@ -64,32 +59,34 @@ data-bs-toggle="modal" data-bs-target="#DeliveryModal">Edit</button>
                                 <div class="col-md-6">
                                     <div class="d-flex justify-content-between flex-column content-cart-col">
                                         <div>
-                                            <h5 class="h5 pb-3"><a href="javascript:void(0)" [routerLink]="'/' + cityName + '/send-online/' + CartItem.seoProductName"
+                                            <h5 class="h5 pb-3"><a href="javascript:void(0)"
+                                                    [routerLink]="'/' + cityName + '/send-online/' + CartItem.seoProductName"
                                                     class="font-black">{{CartItem.productName}}</a>
                                             </h5>
                                             <div class="btnsec">
-                                                <div class="value-button "  (click)="decrementQuantity(i,CartItem.sNo)"
+                                                <div class="value-button " (click)="decrementQuantity(i,CartItem.sNo)"
                                                     value="Decrease Value" *ngIf="CartItem.quantity >1">-</div>
                                                 <input type="number" readonly id="number" min="0"
                                                     [(ngModel)]="CartItem.quantity" />
-                                                <div class="value-button"  value="Increase Value"
+                                                <div class="value-button" value="Increase Value"
                                                     (click)="incrementQuantity(i, CartItem.sNo)">+</div>
                                                 <!-- <a (click)="updateCartItem(CartItem.sNo, CartItem.quantity)"
                                                     class="btn small btn-primary btn-sm ms-2">Update</a> -->
                                             </div>
+                                            <img *ngIf="CartItem.customPhoto" [src]="CartItem.customPhoto" />
 
+                                            <ul class="list-style-desc mt-2">
 
-<img *ngIf="CartItem.customPhoto" [src]="CartItem.customPhoto" />
+                                                <li *ngIf="CartItem.additionalVoucher">Voucher :
+                                                    <strong>{{CartItem.additionalVoucher}}</strong>
+                                                </li>
 
-                                            <ul class="list-style-desc mt-2" >
-                                              
-                                              <li *ngIf="CartItem.additionalVoucher">Voucher : <strong>{{CartItem.additionalVoucher}}</strong></li>
-                                              
                                                 <li *ngIf="CartItem.additionalWeight">Weight :
                                                     <strong>{{CartItem.additionalWeight}}</strong>
                                                 </li>
                                                 <li *ngIf="CartItem.egglessPrice"> Eggless Price:
-                                                    <strong><span [class]="currencyClass"></span>{{CartItem.egglessPrice}}</strong>
+                                                    <strong><span
+                                                            [class]="currencyClass"></span>{{CartItem.egglessPrice}}</strong>
                                                 </li>
                                                 <li *ngIf="CartItem.productId">Product Id :
                                                     <strong>{{CartItem.productId}}</strong>
@@ -110,15 +107,15 @@ data-bs-toggle="modal" data-bs-target="#DeliveryModal">Edit</button>
                                 <div class="col-md-6">
                                     <div class="d-flex justify-content-between flex-column content-cart-col">
                                         <div class="price py-2">
-                                            <div class="offer-price text-end font-bold"><span
-                                                    class=" icomoon"  [class]="currencyClass"></span>{{CartItem.subTotal}}
+                                            <div class="offer-price text-end font-bold"><span class=" icomoon"
+                                                    [class]="currencyClass"></span>{{CartItem.subTotal}}
                                             </div>
 
                                         </div>
                                         <div class="text-end">
                                             <a href="javascript:void(0)" (click)="DeleteCartItem(CartItem.sNo)"><span
-                                                    class="icon-delete font-black"></span>
-                                                <span class="font-red font-medium">Delete</span></a>
+                                                    class="icon-delete font-bold font-red h5"></span>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -128,27 +125,26 @@ data-bs-toggle="modal" data-bs-target="#DeliveryModal">Edit</button>
                 </div>
             </div>
             <div class="col-md-4">
-
                 <div class="PriceDetails p-2 border my-3">
                     <h6 class="h6 font-black font-medium align-self-center pb-3">Price Details</h6>
                     <div class="d-flex justify-content-between py-2">
                         <p>MRP Details</p>
-                        <p class="text-end" *ngIf="firstlistItem"><strong><span
-                            class="icomoon font-bold"  [class]="currencyClass"></span>{{firstlistItem?.totalAmount}}</strong></p>
+                        <h6 class="text-end" *ngIf="firstlistItem"><strong><span class="icomoon font-bold small"
+                                    [class]="currencyClass"></span>{{firstlistItem?.totalAmount}}</strong></h6>
                     </div>
 
                     <div class="d-flex justify-content-between py-2">
                         <p>Delivery Charges</p>
-                        <p class="text-end font-green"> <ng-container
+                        <h6 class="text-end font-green"> <ng-container
                                 *ngIf="firstlistItem?.deliveryCharges ==0">FREE</ng-container><ng-container
-                                *ngIf="firstlistItem?.deliveryCharges >0"><span [class]="currencyClass"></span>{{firstlistItem?.deliveryCharges}}</ng-container>
-                        </p>
+                                *ngIf="firstlistItem?.deliveryCharges >0"><span class="small" [class]="currencyClass"></span>{{firstlistItem?.deliveryCharges}}</ng-container>
+                        </h6>
                     </div>
 
                     <div class="d-flex justify-content-between py-3 totalamount my-2">
                         <h6 class="h6 font-semibold">Total Amount</h6>
-                        <p class="text-end font-semibold"><span
-                            class="icomoon font-bold"  [class]="currencyClass"></span>{{firstlistItem?.grandTotal}}</p>
+                        <h6 class="text-end font-semibold"><span class="icomoon font-bold small"
+                                [class]="currencyClass"></span>{{firstlistItem?.grandTotal}}</h6>
                     </div>
                     <button [disabled]="outofdatemessage" class="color-btn d-block width100p border-0"
                         data-bs-toggle="modal" data-bs-target="#AddonsProducts" (click)="addOnProducts()">Continue to
@@ -165,7 +161,7 @@ data-bs-toggle="modal" data-bs-target="#DeliveryModal">Edit</button>
 
             </div>
         </div>
-        
+
 
         <div class="explore-products" *ngIf="viewedProducts.length">
             <h1 class="h5 font-medium pb-3">Explore Addons Along with your order</h1>
@@ -185,8 +181,8 @@ data-bs-toggle="modal" data-bs-target="#DeliveryModal">Edit</button>
 
 <app-footer></app-footer>
 <!-- addons product popup modal-->
-<div class="modal fade AddonsProducts" id="AddonsProducts" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade AddonsProducts" id="AddonsProducts" data-bs-backdrop="static" data-bs-keyboard="false"
+    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
@@ -196,8 +192,8 @@ data-bs-toggle="modal" data-bs-target="#DeliveryModal">Edit</button>
             <div class="modal-body">
                 <section class="products-list">
                     <div class="row">
-                        <div class="col-lg-3" *ngFor="let Productvalue of addonproducts">
-                            <div class="app-product-item">
+                        <div class="col-lg-2" *ngFor="let Productvalue of addonproducts">
+                            <div class="app-product-item border mb-2">
                                 <figure class="product-item-figure">
                                     <a>
                                         <!-- hyderabad/send-online/ -->
@@ -206,12 +202,13 @@ data-bs-toggle="modal" data-bs-target="#DeliveryModal">Edit</button>
                                 </figure>
                                 <div class="item-title p-2 p-md-3 bg-white">
                                     <p>
-                                        <a href="javascript:void(0)"
-                                            class="font-semibold font-black">{{Productvalue.productName}}</a>
+                                        <a href="javascript:void(0)" class="font-semibold font-black">
+                                            {{Productvalue.productName}}
+                                        </a>
                                     </p>
                                     <div class="price d-flex py-2 border-bottom">
-                                        <div class="offer-price font-bold"><span
-                                                class="icomoon font-bold"  [class]="currencyClass"></span>{{Productvalue.price}}</div>
+                                        <div class="offer-price font-bold"><span class="icomoon font-bold"
+                                                [class]="currencyClass"></span>{{Productvalue.price}}</div>
                                     </div>
                                     <div class="d-flex justify-content-between pt-2 item-footer">
                                         <button type="button" class="color-btn border-0"
@@ -222,10 +219,7 @@ data-bs-toggle="modal" data-bs-target="#DeliveryModal">Edit</button>
                             </div>
                         </div>
                     </div>
-
                 </section>
-
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="color-btn border-0" data-bs-dismiss="modal">Go to Cart</button>
@@ -240,59 +234,56 @@ data-bs-toggle="modal" data-bs-target="#DeliveryModal">Edit</button>
 <!-- Update delivery date -->
 <div class="modal fade " id="DeliveryModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Update Delivery Date and Time</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" #closeButton></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    #closeButton></button>
             </div>
-            <form [formGroup]="userForm" >
-            <div class="modal-body">
-              
-                <div class="col-md-12 pb-2" *ngIf="deliveryDates_array?.length">
-                    <label>Select Delivery Date </label>
-                    <div class="form-group d-flex p-2  background-lightprimary rounded"> <span
-                            class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
-                        <select class="form-select" formControlName="deliveryDate" (change)="getBindDeliveryTimes($event)"
-                            >
-                            <option *ngFor="let o of deliveryDates_array" [value]="o.deliveryDateValue">
-                                {{o.deliveryDateText}}</option>
-                        </select>
+            <form [formGroup]="userForm">
+                <div class="modal-body">
+                    <div class="col-md-12 pb-2" *ngIf="deliveryDates_array?.length">
+                        <label>Select Delivery Date </label>
+                        <div class="form-group d-flex p-2  background-lightprimary rounded mb-2"> <span
+                                class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
+                            <select class="form-select" formControlName="deliveryDate"
+                                (change)="getBindDeliveryTimes($event)">
+                                <option *ngFor="let o of deliveryDates_array" [value]="o.deliveryDateValue">
+                                    {{o.deliveryDateText}}</option>
+                            </select>
+                        </div>
                     </div>
 
+                    <div class="col-md-12 pb-2" *ngIf="deliveryDates_array?.length">
+                        <label>Select Time</label>
+                        <div class="form-group d-flex p-2  background-lightprimary rounded">
+                            <span
+                                class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
+                            <select class="form-select" formControlName="deliveryTime">
+                                <option *ngFor="let o of deliveryTime" [value]="o.dtime">
+                                    <ng-container *ngIf="currencySelected == 'INR'">{{o.dtime}}</ng-container>
+                                    <ng-container *ngIf="currencySelected =='USD'">{{o.dtimeCurrency}}</ng-container>
 
-                 
-                </div>
 
-                <div class="col-md-12 pb-2" *ngIf="deliveryDates_array?.length">
-                    <label>Select Time</label>
-                    <div class="form-group d-flex p-2  background-lightprimary rounded">
-                        <span
-                            class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
-                        <select class="form-select" formControlName="deliveryTime">
-                            <option *ngFor="let o of deliveryTime" [value]="o.dtime">
-                                <ng-container *ngIf="currencySelected == 'INR'">{{o.dtime}}</ng-container>
-                                <ng-container *ngIf="currencySelected =='USD'">{{o.dtimeCurrency}}</ng-container>
-                                
-                                
-                                
-                            </option>
-                        </select>
-                    </div>
 
-                    <!-- <div class="invalid-feedback mt-0 d-block"
+                                </option>
+                            </select>
+                        </div>
+
+                        <!-- <div class="invalid-feedback mt-0 d-block"
                         *ngIf="dynamicForm.get('deliveryTimes')!.invalid && dynamicForm.get('deliveryTimes')!.touched">
                         <p class="error-message">Select Time</p>
                     </div> -->
+                    </div>
+
+
                 </div>
-
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="color-btn border-0" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="color-border-btn"(click)="updateDateandtime()">Update 
+                <div class="modal-footer">
+                    <button type="button" class="color-btn border-0" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="color-border-btn" (click)="updateDateandtime()">Update
                     </button>
-            </div>
+                </div>
             </form>
         </div>
     </div>

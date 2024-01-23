@@ -67,7 +67,6 @@
         img {
           border-radius: 20px;
           position: relative;
-          height: 386px;
 
           @include minMax(
             map-get($breakpoints, "xs"),
