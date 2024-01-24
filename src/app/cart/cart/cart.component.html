@@ -45,10 +45,9 @@
                 </div>
 
                 <div class="cart-product-item border p-2 mb-3" *ngFor="let CartItem of cartItems; let i = index">
-                    <div class="row">
-                        <div class="col-12">
-                            {{CartItem.outOfDateMessage}}
-                        </div>
+                    <div class="row">                        
+                        <p class="py-1 px-2 background-primary mb-2 font-white small">{{CartItem.outOfDateMessage}}</p>
+                       
                         <div class="col-md-3">
                             <a [routerLink]="'/' + cityName + '/send-online/' + CartItem.seoProductName">
                                 <img src="{{CartItem.produtImage}}" alt="" class="img-fluid">
@@ -59,10 +58,10 @@
                                 <div class="col-md-6">
                                     <div class="d-flex justify-content-between flex-column content-cart-col">
                                         <div>
-                                            <h5 class="h5 pb-3"><a href="javascript:void(0)"
+                                            <h6 class="h6 pb-3"><a href="javascript:void(0)"
                                                     [routerLink]="'/' + cityName + '/send-online/' + CartItem.seoProductName"
                                                     class="font-black">{{CartItem.productName}}</a>
-                                            </h5>
+                                            </h6>
                                             <div class="btnsec">
                                                 <div class="value-button " (click)="decrementQuantity(i,CartItem.sNo)"
                                                     value="Decrease Value" *ngIf="CartItem.quantity >1">-</div>
@@ -110,7 +109,6 @@
                                             <div class="offer-price text-end font-bold"><span class=" icomoon"
                                                     [class]="currencyClass"></span>{{CartItem.subTotal}}
                                             </div>
-
                                         </div>
                                         <div class="text-end">
                                             <a href="javascript:void(0)" (click)="DeleteCartItem(CartItem.sNo)"><span

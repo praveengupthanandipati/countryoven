@@ -16,7 +16,7 @@
         </div>
         <div class="col-md-6 align-self-center">
             <div class="text-end ">
-                <a href="" class="color-border-btn" (click)="addNewAddress()" data-bs-toggle="modal"
+                <a href="" class="color-btn" (click)="addNewAddress()" data-bs-toggle="modal"
                     data-bs-target="#AddNewAddress">Add New Address</a>
             </div>
         </div>
@@ -43,13 +43,13 @@
                     <div class="d-flex justify-content-between pt-3 border-top">
                         <!--  -->
                         <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#editAddress"
-                            (click)="editAddress(da.addressId)" class="text-primary">
+                            (click)="editAddress(da.addressId)" class="font-primary">
                             <small>
                                 <span class="icon-draw"></span> Edit Address
                             </small>
                         </a>
                         <a href="javascript:;" (click)="deleteAddress(da.addressId, da.customerId)"
-                            class="text-primary">
+                            class="font-primary">
                             <small><span class="icon-delete"></span> Delete</small>
                         </a>
                     </div>

@@ -30,24 +30,25 @@
                         </div>
                         <div class="col-md-6">
                             <div class="text-end d-flex justify-content-end">
-                                <a (click)="gotoorders(order.orderId)" class="btn btn-primary btn-sm"
+                                <a (click)="gotoorders(order.orderId)" class="btn color-btn btn-sm py-1 px-2 small"
                                     href="javascript:;">Track</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div class="row" *ngFor="let innerorder of order.myOrderProductsDtos">
+                <div class="card-body pb-0 pt-2">
+                    <div class="row pb-2 border-bottom" *ngFor="let innerorder of order.myOrderProductsDtos">
                         <div class="col-md-1">
                             <a (click)="gotoorders(order.orderId)" href="javascript:;">
                                 <img src="{{innerorder.smallimageurl}}" alt="" class="img-fluid">
                             </a>
                         </div>
                         <div class="col-md-11">
-                            <article>
+                            <article class="py-2">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <a (click)="gotoorders(order.orderId)" href="" class="font-black font-semibold">{{innerorder.productName}}</a>
+                                        <a (click)="gotoorders(order.orderId)" href=""
+                                            class="font-black font-semibold">{{innerorder.productName}}</a>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="price">
@@ -65,29 +66,30 @@
                                             <small class="font-gray d-inline-block"> Order Status: <span
                                                     class="font-green font-semibold">{{order.orderStatus}}</span></small>
                                         </div>
-
                                     </div>
                                 </div>
-                                <p *ngIf="innerorder.additionalWeight"><small class="font-gray"> Weight: <span
-                                            class="font-green font-semibold">{{innerorder.additionalWeight}}</span></small>
-                                </p>
-                                <p *ngIf="innerorder.eggless"><small class="font-gray"> Egg less <span
-                                            class="font-green font-semibold"> Yes</span></small>
-                                </p>
-                                <p *ngIf="innerorder.flavour"><small class="font-gray"> flavour: <span
-                                            class="font-green font-semibold"> {{innerorder.flavour}}</span></small>
-                                </p>
-                                <p *ngIf="innerorder.photoCake"><small class="font-gray"> Photo Cake: <span
-                                            class="font-green font-semibold"> Yes</span></small>
-                                </p>
-                                <p *ngIf="innerorder.message"><small class="font-gray"> Message: <span
-                                            class="font-green font-semibold"> {{innerorder.message}}</span></small>
-                                </p>
+                                <div>
+                                    <p *ngIf="innerorder.additionalWeight"><small class="font-gray"> Weight: <span
+                                                class="font-green font-semibold">{{innerorder.additionalWeight}}</span></small>
+                                    </p>
+                                    <p *ngIf="innerorder.eggless"><small class="font-gray"> Egg less <span
+                                                class="font-green font-semibold"> Yes</span></small>
+                                    </p>
+                                    <p *ngIf="innerorder.flavour"><small class="font-gray"> flavour: <span
+                                                class="font-green font-semibold"> {{innerorder.flavour}}</span></small>
+                                    </p>
+                                    <p *ngIf="innerorder.photoCake"><small class="font-gray"> Photo Cake: <span
+                                                class="font-green font-semibold"> Yes</span></small>
+                                    </p>
+                                    <p *ngIf="innerorder.message"><small class="font-gray"> Message: <span
+                                                class="font-green font-semibold"> {{innerorder.message}}</span></small>
+                                    </p>
+                                </div>
                             </article>
                         </div>
                     </div>
                 </div>
-                <div class="card-footer py-1">
+                <div class="card-footer py-1 border-top-0">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="price">
@@ -104,7 +106,7 @@
                         <div class="col-md-6">
                             <p class="text-end">
                                 <a data-bs-toggle="modal" (click)="reviewClick(order.orderId)" data-bs-target="#Reviews"
-                                    class="font-blue pe-3 align-self-center" href="#"><span class="icon-star"></span>
+                                    class="font-primary pe-3 align-self-center" href="#"><span class="icon-star"></span>
                                     Rate & Review Product</a>
                             </p>
                         </div>
