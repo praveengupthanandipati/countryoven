@@ -21,7 +21,7 @@
                         </div>
                         <div class="card-body">
                             <div class="d-flex flex-wrap cities-list">
-                                <a href="javascript:void(0)" class="btn small rounded-pill me-2 mb-2" *ngFor="let cityitem of deliveryCities">{{cityitem}}</a>
+                                <a href="javascript:void(0)" [routerLink]="'/' + cityitem +'/gifts-online'" class="btn small rounded-pill me-2 mb-2" *ngFor="let cityitem of deliveryCities">{{cityitem}}</a>
                             </div>
                         </div>
                     </div>
