@@ -1,4 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { CurdService } from 'src/app/services/curd.service';
 
@@ -22,7 +23,7 @@ export class HomeComponent implements OnInit{
   showMore() {
     this.showLines += 3; // Increase by desired number of lines
   }
-  constructor(private _crud:CurdService, private route:Router,  private renderer: Renderer2)
+  constructor(private _crud:CurdService, private route:Router,  private renderer: Renderer2,  private meta:Meta, private titleService:Title)
   {
   
   }
@@ -37,6 +38,11 @@ export class HomeComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Order Cake Online | Send Cake Online to India - Country Oven');
+    this.meta.updateTag({ name: 'description',  content: 'Online cake delivery - Through Country Oven, order a cake online to surprise your beloved ones. Send a cake to India with same-day delivery from anywhere with just one click. Order now!' });
+    this.meta.updateTag({ name: 'keywords',  content: 'keywords" content="Order Birthday Cake Online ,order cake online ,birthday cakes delivered ,send cake to India ,online cake delivery in india ,send birthday cake online' });
+    this.meta.updateTag({ name: 'classification',  content: 'Order Birthday Cake Online ,order cake online ,birthday cakes delivered ,send cake to India ,online cake delivery in india ,send birthday cake online' });
+
 this.addLoader();
 
 //localStorage.setItem('currency', 'INR')

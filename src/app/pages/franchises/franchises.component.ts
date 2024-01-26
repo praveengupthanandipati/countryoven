@@ -17,10 +17,17 @@ export class FranchisesComponent {
   maxAddressLength:any=100;
   submitted:boolean=false;
   constructor(
+    private titleService:Title, 
     private toastr:ToastrService,
     private meta: Meta, private title:Title,
     private _crud:CurdService, private route:ActivatedRoute, private fb: FormBuilder, private cookieService: CookieService, private router:Router)
   {
+    
+    
+      this.titleService.setTitle('Cakes, Florist Shop Franchise Business Opportunities | country oven');
+      this.meta.updateTag({ name: 'description',  content: 'Country Oven offer cakes, florist, combos, confectionery and gift shop Franchise Business opportunities in India - Inquire for low-cost.' });
+      this.meta.updateTag({ name: 'keywords',  content: 'Country Oven-CouponPartnerscakes, florist, combos, gifts, confectionery' });
+      this.meta.updateTag({ name: 'classification',  content: 'Country Oven offer cakes, florist, combos, confectionery and gift shop Franchise Business opportunities in India - Inquire for low-cost.' });
     
     
 

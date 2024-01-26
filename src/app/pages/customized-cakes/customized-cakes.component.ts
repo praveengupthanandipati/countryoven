@@ -24,7 +24,13 @@ export class CustomizedCakesComponent {
     private meta: Meta, private title: Title,
     private _crud: CurdService, private route: ActivatedRoute, private fb: FormBuilder, private cookieService: CookieService, private router: Router) {
 
-
+      
+        this.title.setTitle('Customize a Cake | Country Oven');
+        this.meta.updateTag({ name: 'description',  content: 'Country Oven offers customized cakes in Hyderabad! We prepare cakes as per your requirement. Order cartoon cakes and Chota Bheem cake in india now!' });
+        this.meta.updateTag({ name: 'keywords',  content: 'cakes in Hyderabad, cakes in India, customize cakes, customized cakes, customize a cake' });
+        this.meta.updateTag({ name: 'classification',  content: 'Country Oven - Country Oven offers customized cakes in Hyderabad! We prepare cakes as per your requirement. Order cartoon cakes and Chota Bheem cake in india now!' });
+      
+      
 
     this.form = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
