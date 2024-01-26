@@ -48,9 +48,34 @@
                                         <p *ngIf="items.productId">
                                             <small>Product Id: <strong>{{items.productId}}</strong></small>
                                         </p>
+
+                                        <ul class="list-style-desc mt-2">
+
+                                            <li *ngIf="items.additionalVoucher">Voucher :
+                                                <strong>{{items.additionalVoucher}}</strong>
+                                            </li>
+
+                                          
+                                            <li *ngIf="items.egglessPrice"> Eggless Price:
+                                                <strong><span
+                                                        [class]="currencyClass"></span>{{items.egglessPrice}}</strong>
+                                            </li>
+                                           
+                                            <li *ngIf="items.flavour">Flavour :
+                                                <strong>{{items.flavour}}</strong>
+                                            </li>
+                                            <li *ngIf="items.additionalNumber">Number :
+                                                <strong>{{items.additionalNumber}}</strong>
+                                            </li>
+                                            <li *ngIf="items.message">Message:
+                                                <strong>{{items.message}}</strong>
+                                            </li>
+                                        </ul>
+
+
                                     </div>
                                     <div class="col-md-6 text-end">
-                                        <p><span class="icon-inr icomoon small"></span>{{items.price}}</p>
+                                        <p><span class="small"  [class]="currencyClass"></span>{{items.price}}</p>
                                         <p>Qty: {{items.quantity}}</p>
                                     </div>
                                 </div>
@@ -61,8 +86,8 @@
                         <div class="col-md-6">
                             <p>Delivery City:<strong>{{city}}</strong></p>
                             <ng-container *ngIf="couponappled && couponData.couponType =='Instant'">
-                                <div> Discount Applicable Amount: {{couponData.discountApplicableAmount}}</div>
-                                <div>Discount Amount : {{couponData.maxDiscount}}</div>
+                                <div> Discount Applicable Amount: <span  [class]="currencyClass"></span> {{couponData.discountApplicableAmount}}</div>
+                                <div>Discount Amount : <span  [class]="currencyClass"></span> {{couponData.maxDiscount}}</div>
                             </ng-container>
                             <div>
                                 <p><label>Coupon Code</label></p>
@@ -90,7 +115,7 @@
                         <div class="col-md-6 text-end">
                             <p>DeliveryDate : <strong>{{firstlistItem.deliveryDate }}</strong></p>
                             <div class="totalAmountwrap pb-2">                       
-                                <div class="totalAmount">Total Amount : <strong>Rs: {{totalAmount}}</strong></div>
+                                <div class="totalAmount">Total Amount : <strong><span  [class]="currencyClass"></span> {{totalAmount}}</strong></div>
                             </div>
                             <button (click)="SaveOrderDetails()" class="color-btn border-0">Continue payment</button>
                         </div>
@@ -107,7 +132,7 @@
                     <h6 class="h6 font-black font-medium align-self-center pb-3">Price Details</h6>
                     <div class="d-flex justify-content-between py-2">
                         <p>MRP Details</p>
-                        <p class="text-end" *ngIf="firstlistItem && firstlistItem.totalAmount">₹
+                        <p class="text-end" *ngIf="firstlistItem && firstlistItem.totalAmount"><span  [class]="currencyClass"></span>
                             {{firstlistItem.totalAmount}}</p>
                     </div>
                     <div class="d-flex justify-content-between py-2">
@@ -119,21 +144,21 @@
                     </div>
                     <div class="d-flex justify-content-between py-3 totalamount my-2">
                         <h6 class="h6 font-semibold">Amount</h6>
-                        <p class="text-end font-semibold" *ngIf="firstlistItem && firstlistItem.grandTotal">₹
+                        <p class="text-end font-semibold" *ngIf="firstlistItem && firstlistItem.grandTotal"><span  [class]="currencyClass"></span>
                             {{firstlistItem.grandTotal}}</p>
                     </div>
                     <ng-container *ngIf="couponappled && couponData.couponType =='Instant'">
                         <div class="d-flex justify-content-between py-2">
                             <p>Discount Applicable Amount:</p>
-                            <p class="text-end"> {{couponData.discountApplicableAmount}}</p>
+                            <p class="text-end"><span  [class]="currencyClass"></span> {{couponData.discountApplicableAmount}}</p>
                         </div>
                         <div class="d-flex justify-content-between py-2">
                             <p>Discount Amount:</p>
-                            <p class="text-end"> {{couponData.maxDiscount}}</p>
+                            <p class="text-end"><span  [class]="currencyClass"></span> {{couponData.maxDiscount}}</p>
                         </div>
                         <div class="d-flex justify-content-between py-2">
                             <p>Grand Amount:</p>
-                            <p class="text-end"> {{totalAmount}}</p>
+                            <p class="text-end"><span  [class]="currencyClass"></span> {{totalAmount}}</p>
                         </div>
                     </ng-container>                    
                 </div>

@@ -1,5 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title, Meta } from '@angular/platform-browser';
 import { ToastrService } from 'ngx-toastr';
 import { CurdService } from 'src/app/services/curd.service';
 import Swal from 'sweetalert2';
@@ -38,9 +39,13 @@ export class AddressListComponent implements OnInit {
   @Output() sendAddId:any= new EventEmitter<any>();
 isCheckout:boolean=false;
 addressidobj:any=[];
-  constructor(private renderer: Renderer2, private _crud: CurdService, private fb: FormBuilder, private el: ElementRef, private toastr: ToastrService) {
+  constructor(private titleService:Title, private meta:Meta,private renderer: Renderer2, private _crud: CurdService, private fb: FormBuilder, private el: ElementRef, private toastr: ToastrService) {
 
-
+    this.titleService.setTitle("Countryoven's - Address Book");
+    this.meta.updateTag({ name: 'description',  content: "Countryoven's - Address Book" });
+    this.meta.updateTag({ name: 'keywords',  content: "Countryoven's - Address Book" });
+    this.meta.updateTag({ name: 'classification',  content:"Countryoven's - Address Book" });
+  
 
 
     if (localStorage.getItem('email')) {

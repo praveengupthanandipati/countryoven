@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -11,8 +12,14 @@ export class UserDashboardComponent {
   custID:any;
   custName:any;
 
-  constructor()
+  constructor(private titleService:Title, private meta:Meta)
   {
+
+    this.titleService.setTitle("Countryoven's - My Account");
+    this.meta.updateTag({ name: 'description',  content: "Countryoven's - My Account" });
+    this.meta.updateTag({ name: 'keywords',  content: "Countryoven's - My Account" });
+    this.meta.updateTag({ name: 'classification',  content:"Countryoven's - My Account" });
+  
    if(localStorage.getItem('email'))
    {
     this.isLogend=true;

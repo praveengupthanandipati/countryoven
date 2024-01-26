@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CurdService } from 'src/app/services/curd.service';
@@ -12,10 +13,15 @@ import { CurdService } from 'src/app/services/curd.service';
 export class ChangepasswordComponent {
   userForm:any;
   custName: any;
-  constructor(private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private route:Router)
+  constructor(  private meta: Meta, private title: Title,private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private route:Router)
   {
 
-
+    this.title.setTitle("Countryoven's - Change Password");
+    this.meta.updateTag({ name: 'description',  content: "Countryoven's - Change Password" });
+    this.meta.updateTag({ name: 'keywords',  content:"Countryoven's - Change Password"  });
+    this.meta.updateTag({ name: 'classification',  content: "Countryoven's - Change Password"});
+  
+  
     if (localStorage.getItem('email')) {
     
       this.custName = localStorage.getItem('custName')
