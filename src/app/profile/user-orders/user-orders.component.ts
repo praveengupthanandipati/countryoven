@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Title, Meta } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CurdService } from 'src/app/services/curd.service';
@@ -39,8 +40,12 @@ export class UserOrdersComponent implements OnInit {
   trackcloseButton!: ElementRef;
 
   
-  constructor(   private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private route:Router)
+  constructor( private titleService:Title, private meta:Meta,    private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private route:Router)
   {
+    this.titleService.setTitle("Countryoven's - My Orders");
+    this.meta.updateTag({ name: 'description',  content: "Countryoven's - My Orders" });
+    this.meta.updateTag({ name: 'keywords',  content: "Countryoven's - My Orders" });
+    this.meta.updateTag({ name: 'classification',  content:"Countryoven's - My Orders" });
 
     this.reviewForm = this.fb.group({
       title: ['', Validators.required],

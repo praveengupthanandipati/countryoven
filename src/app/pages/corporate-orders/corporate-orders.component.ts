@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { CurdService } from 'src/app/services/curd.service';
 
@@ -13,9 +14,17 @@ export class CorporateOrdersComponent implements OnInit {
   submitted:boolean=false;
   msg:any;
   msgstatus:boolean=false;
-  constructor(private renderer:Renderer2, private fb: FormBuilder, private _crud:CurdService, private route:Router)
+  constructor(
+    private meta: Meta, private title: Title,
+    private renderer:Renderer2, private fb: FormBuilder, private _crud:CurdService, private route:Router)
   {
 
+    this.title.setTitle('Corporate Orders | Business Promotional Cakes In India CountryOven');
+    this.meta.updateTag({ name: 'description',  content: 'Looking for Best Business Promotional Cakes In India CountryOven ? Here at Ferns N Petals, We offer the best Promotional Combos, Confectionery, and Snacks.' });
+    this.meta.updateTag({ name: 'keywords',  content: 'cakes in Hyderabad, cakes in India, customize cakes, customized cakes, customize a cake' });
+    this.meta.updateTag({ name: 'classification',  content: 'Country Oven - CorporateOrders' });
+  
+  
 
     this.userForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],

@@ -1,4 +1,5 @@
 import { Component,  OnInit } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
 
 import { Router } from '@angular/router';
 
@@ -16,8 +17,13 @@ export class CowalletComponent implements OnInit {
   cowalletdata:any;
   custName:any;
   coWalletAmount:any;
-  constructor(    private _crud:CurdService, private route:Router)
+  constructor( private titleService:Title, private meta:Meta,   private _crud:CurdService, private route:Router)
   {
+    this.titleService.setTitle("Countryoven's - Wallet");
+    this.meta.updateTag({ name: 'description',  content: "Countryoven's - Wallet" });
+    this.meta.updateTag({ name: 'keywords',  content: "Countryoven's - Wallet" });
+    this.meta.updateTag({ name: 'classification',  content:"Countryoven's - Wallet" });
+  
 
    if(localStorage.getItem('email'))
    {

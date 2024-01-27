@@ -379,11 +379,7 @@ console.log(this.viewedProducts)
   }
 
   updateDateandtime() {
-console.log(this.userForm.valid)
-    console.log(this.userForm.get('deliveryDate').value)
-    console.log(this.userForm.get('deliveryTime').value.toString())
     let data = {
-
       "sessionId": this.sessionId,
       "deliveryDate": this.userForm.get('deliveryDate').value,
       "deliveryTime": this.userForm.get('deliveryTime').value.toString(),

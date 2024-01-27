@@ -38,6 +38,7 @@ originalTotalAmount:any;
   
 couponcode: any;
 couponData:any;
+  currencyClass: string='';
 
 
   constructor(private fb: FormBuilder,private route: Router, private toastr: ToastrService, private _crud: CurdService, private cookieService: CookieService) {
@@ -50,6 +51,19 @@ couponData:any;
     if (localStorage.getItem('customerId')) {
       this.customerId = localStorage.getItem('customerId')
     }
+
+
+    
+    console.log(this.currency)
+    if (this.currency == 'INR') {
+      this.currencyClass = 'icon-inr'
+    }
+    else if (this.currency == 'USD') {
+      this.currencyClass = 'icon-dollar-currency-symbol'
+    }
+
+
+
     this.getCarts();
 
 
@@ -88,7 +102,7 @@ this.reviewShow=true;
     }
 
     this._crud.postShopingCart(data).subscribe(res => {
-      
+      console.log(res)
       this.cartItems = res;
       this.cartCount=res.length;
       this.firstlistItem = this.cartItems[0];

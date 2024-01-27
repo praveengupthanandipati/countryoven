@@ -1,5 +1,6 @@
 import { Component, Renderer2 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Title, Meta } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
@@ -19,7 +20,15 @@ export class LoginFormComponent {
   submitted = false;
   errorMsg:any;
   errorMsgstatus:boolean=false;
-  constructor(private renderer:Renderer2,  private route:ActivatedRoute,  private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private cookieService: CookieService, private router:Router){
+  constructor(private titleService:Title, private meta:Meta,private renderer:Renderer2,  private route:ActivatedRoute,  private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private cookieService: CookieService, private router:Router){
+ 
+    this.titleService.setTitle("Countryoven's - Sign in or Sign up");
+    this.meta.updateTag({ name: 'description',  content: "Birthday Cakes to Hyderabad,midnight cake delivery in hyderabad, Cakes to vizag,Designer cakes to Hyderabad,Birthday Cakes to India same day delivery,Flowers to Hyderabad, Sweets to Hyderabad, Gifts to Hyderabad,Cakes to Delhi,Cakes to Bangalore, Cakes to Chennai." });
+    this.meta.updateTag({ name: 'keywords',  content: "Gifts to Hyderabad, Gifts to Vizag, Cakes to Hyderabad, Chocolates to Hyderabad, Flowers to Hyderabad,  Flowers to Vizag, Cakes to Vizag, Sweets to Hyderabad.." });
+    this.meta.updateTag({ name: 'classification',  content: "Gifts to Hyderabad, Flowers, Flowers to Hyderabad,Send Flowers to Hyderabad, Gifts, Gifts to Hyderabad, Send Gifts to Hyderabad, Flowers delivery in Hyderabad, Gifts delivery in Hyderabad,to send gifts to india,Flower Bouquet in Hyderabad, Online Florists, Online Florists in Hyderabad, Hyderabad Online Florists, Cakes, Cake , Cakes to Hyderabad, Sweets, Sweets to Hyderabad, Chocolates,Chocolates to Hyderabad, Watches, Watches to Hyderabad, Leather Bags to Hyderabad, Leather Items to Hyderabad." });
+  
+ 
+ 
     this.sessionId= this.cookieService.get('sessionID');
     this.userForm = this.fb.group({
       usrname: ['', [Validators.required, Validators.email]],

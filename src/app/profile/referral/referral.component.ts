@@ -1,5 +1,6 @@
 
 import { Component,  OnInit } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 
 import { Router } from '@angular/router';
 
@@ -16,8 +17,17 @@ export class ReferralComponent implements OnInit {
   custID:any;
   referalData:any;
   custName:any;
-  constructor(    private _crud:CurdService, private route:Router)
+  constructor( 
+    private meta: Meta, private title: Title,
+    private _crud:CurdService, private route:Router)
   {
+
+    this.title.setTitle("Countryoven's - Referral Program");
+    this.meta.updateTag({ name: 'description',  content: "Countryoven's - Referral Program" });
+    this.meta.updateTag({ name: 'keywords',  content:"Countryoven's - Referral Program"  });
+    this.meta.updateTag({ name: 'classification',  content: "Countryoven's - Referral Program"});
+  
+  
 
    if(localStorage.getItem('email'))
    {
