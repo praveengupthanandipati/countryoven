@@ -8,9 +8,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
   {path:'', component:CartComponent},
-  {path:'Address', component:AddressComponent},
-  {path:'Personalize', component:PersonalizeComponent},
-  {path:'Payment', component:PaymentComponent},
+  {path:'personalize', component:PersonalizeComponent},
+  {path:'payment', component:PaymentComponent},
   {path:'checkout', component:CheckoutComponent},
   
 ];

@@ -426,3 +426,11 @@ header.fixed-top {
     }
   }
 }
+
+.fixedpopup {
+.modal-content
+{
+  overflow: auto;
+  height: calc(100vh - 100px); background: #fff;
+}
+}
