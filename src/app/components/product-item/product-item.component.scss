@@ -13,9 +13,11 @@
   .product-item-figure {
     position: relative;
     width: 100%;
+    overflow: hidden;
     img {
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
+      @include transition(all, 0.2s ease);
 
       @include minMax(
         map-get($breakpoints, "xs"),
@@ -39,20 +41,21 @@
   .item-title {
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    position: relative;
+    @include transition(all, 0.2s ease);
     @include max(map-get($breakpoints, "sm")) {
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;
     }
 
     h5 {
-      font-size: $fsize + 1;
+      font-size: $fsize;
       line-height: 1.5rem;
       height: 45px;
       @include minMax(
         map-get($breakpoints, "xs"),
         map-get($breakpoints, "sm")
-      ) {
-        font-size: $fsize - 2;
+      ) {        
         line-height: 1.1rem;
       }
       a {
@@ -68,7 +71,7 @@
       }
       .deliver-date {
         p {
-          color: map-get($colors, lighten(black, 50%));
+          color: map-get($colors, black);
           font-size: $fsize - 2;
 
           @include max(map-get($breakpoints, "sm")) {
@@ -84,6 +87,16 @@
   }
   &:hover {
     @include box-shadow(0, 3px, 8px, lighten(map-get($colors, gray), 20%));
+
+    .item-title{
+      margin-top:-15px;
+    }
+
+    .product-item-figure{
+      img{
+        transform: scale(1.06, 1.06);
+      }
+    }
   }
 }
 

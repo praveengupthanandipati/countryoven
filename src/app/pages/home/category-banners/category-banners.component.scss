@@ -7,9 +7,10 @@
     cursor: pointer;
     margin-bottom: 20px;
     article {
-      top: 30px;
-      left: 30px;
+      top: 15px;
+      left: 15px;
       z-index: 999;
+      padding: 10px;
       @include minMax(
         map-get($breakpoints, "xs"),
         map-get($breakpoints, "sm")
@@ -17,9 +18,11 @@
         top: 10px;
         left: 10px;
       }
-      h5 {
-        font-size: $fsize + 10;
-
+      .h5 {
+        background: map-get($colors, white);
+        padding: 0 10px;
+        margin: 0;
+        // @include box-shadow(0, 3px, 3px, map-get($colors, gray));
         @include minMax(
           map-get($breakpoints, "xs"),
           map-get($breakpoints, "sm")
@@ -29,43 +32,22 @@
       }
     }
     figure {
-      padding: 10px;
+      padding: 5px;
       @include minMax(
         map-get($breakpoints, "xs"),
         map-get($breakpoints, "sm")
       ) {
         padding: 2px;
-        border-radius: 10px;
       }
       background: map-get($colors, white);
       @include box-shadow(0, 3px, 3px, map-get($colors, lightgray));
-      border-radius: 20px;
+
       .figurediv {
         &:before {
-          content: "";
-          border-radius: 20px;
-          background: linear-gradient(
-            90deg,
-            #080402 0%,
-            rgba(252, 193, 86, 0) 60%
-          );
-          position: absolute;
-          top: 0;
-          left: 0;
-          z-index: 99;
-          right: 0;
-          bottom: 0;
-
-          @include minMax(
-            map-get($breakpoints, "xs"),
-            map-get($breakpoints, "sm")
-          ) {
-            border-radius: 10px;
-          }
+          border-radius: 10px;
         }
 
         img {
-          border-radius: 20px;
           position: relative;
 
           @include minMax(

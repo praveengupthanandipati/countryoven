@@ -16,7 +16,6 @@
                 </nav>
             </div>
         </div>
-
         <!-- {{timeLeft | date}} -->
         <!--/ bread crumb-->
         <!-- product detail -->
@@ -34,7 +33,6 @@
                                     class="active" aria-current="true" aria-label="Slide 1">
                                     <img [src]="th.imageName" class="img-fluid w-100" alt="..."></button>
                             </ng-container>
-
                         </div>
                         <div class="carousel-inner">
                             <ng-container *ngFor="let th of productIamges; index as i">
@@ -49,7 +47,6 @@
                         <img [src]="productDetails?.imageName" class="img-fluid w-100" alt="...">
                         <span class="tagbadge" *ngIf="tagMsg" [class]="tagClass">{{tagMsg}}</span>
                     </div>
-
                     <!--/ carousel -->
                     <article *ngIf="productDetails?.deliveryInformationRequired">
                         <p class="text-center py-3">
@@ -116,7 +113,7 @@
                             <div class="basic-features row ">
                                 <div class="row">
                                     <div class="col-md-4" *ngIf="flavourOptionsDto_array?.length >0">
-                                        <div class="form-group pb-2">
+                                        <div class="form-group mb-2">
                                             <label class="align-self-center pe-2">Select Flavour:</label>
                                             <select class="form-select" formControlName="flavourOptionsDto">
                                                 <option [value]="null" disabled selected>Choose</option>
@@ -124,16 +121,14 @@
                                                     [value]="o.optionValue">
                                                     {{o.optionValue}}</option>
                                             </select>
+                                            <div class="invalid-feedback mt-0 d-block"
+                                                *ngIf="dynamicForm.get('flavourOptionsDto')!.invalid && dynamicForm.get('flavourOptionsDto')!.touched">
+                                                <p class="error-message font-bold">Select Flavour</p>
+                                            </div>
                                         </div>
-
-                                        <div class="invalid-feedback mt-0 d-block"
-                                            *ngIf="dynamicForm.get('flavourOptionsDto')!.invalid && dynamicForm.get('flavourOptionsDto')!.touched">
-                                            <p class="error-message">Select Flavour</p>
-                                        </div>
-
                                     </div>
                                     <div class="col-md-4" *ngIf="weightOptionsDto_array?.length >0">
-                                        <div class="form-group pb-2">
+                                        <div class="form-group mb-2">
                                             <label class="align-self-center pe-2">Select Weight:</label>
                                             <select (change)="onQtyChange($event)" class="form-select"
                                                 formControlName="weightOptionsDto" [(ngModel)]="selectedItem">
@@ -142,12 +137,13 @@
                                                     <option [id]="o.optionId" [ngValue]="o">{{o.optionValue}}</option>
                                                 </ng-container>
                                             </select>
+                                            <div class="invalid-feedback mt-0 d-block"
+                                                *ngIf="dynamicForm.get('weightOptionsDto')!.invalid && dynamicForm.get('weightOptionsDto')!.touched">
+                                                <p class="error-message font-bold">Select Weight</p>
+                                            </div>
                                         </div>
 
-                                        <div class="invalid-feedback mt-0 d-block"
-                                            *ngIf="dynamicForm.get('weightOptionsDto')!.invalid && dynamicForm.get('weightOptionsDto')!.touched">
-                                            <p class="error-message">Select Weight</p>
-                                        </div>
+
                                     </div>
                                     <div class="col-md-4" *ngIf="voucherOptionsDto_array?.length >0">
                                         <div class="form-group pb-2">
@@ -226,12 +222,10 @@
                                             class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
                                         <select class="form-select" formControlName="deliveryTimes">
                                             <option *ngFor="let o of deliveryTime" [value]="o.dtime">
-
                                                 <ng-container
                                                     *ngIf="currencySelected == 'INR'">{{o.dtime}}</ng-container>
                                                 <ng-container
                                                     *ngIf="currencySelected =='USD'">{{o.dtimeCurrency}}</ng-container>
-
                                             </option>
                                         </select>
                                     </div>
@@ -282,7 +276,7 @@
                                     <button type="submit" class="color-btn border-0">Add to
                                         Cart</button>
                                     <span
-                                        class="background-lightgreen font-black  ms-md-3 ms-1 px-2 py-2 badge rounded-pill align-self-center"><span
+                                        class="bg-primary font-white font-bold  ms-md-3 ms-1 px-2 py-2 small rounded-pill align-self-center h6"><span
                                             class="icon-circular-alarm-clock-tool d-inline-block me-1"></span>
                                         {{displayTime}} {{sameDayBlockMessage}}</span>
                                 </div>
@@ -332,7 +326,8 @@
                                                 compared to the image displayed on the website. The color of the cake
                                                 could vary based on the flavor selected. Having said that, we at
                                                 Countryoven.com always make sure that all cakes are very similar to the
-                                                corresponding images displayed on the website.</div>
+                                                corresponding images displayed on the website.
+                                            </div>
 
                                             <div *ngIf="productDetails?.careInstrunctionForFlowerRequired">
                                                 <strong>Note:</strong> Flowers may vary slightly from the image
@@ -341,7 +336,8 @@
                                                 based on availability. The replacement may be of equivalent or higher
                                                 denomination than the representation on the website. Having said that,
                                                 we at countryoven.com always make sure that all flowers are very similar
-                                                to the corresponding images displayed on the website.</div>
+                                                to the corresponding images displayed on the website.
+                                            </div>
                                         </div>
                                     </article>
                                 </div>

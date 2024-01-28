@@ -7,8 +7,13 @@
   .nav-item {
     &:first-child {
       .nav-link {
-        color: map-get($colors, primary);
+        color: map-get($colors, white);
         border-radius: 3px;
+        background: map-get($colors, primary);
+
+        &:hover {
+          color: map-get($colors, white);
+        }
       }
     }
     .nav-link {
@@ -34,21 +39,36 @@
     z-index: 9999;
 
     .main-div-links {
-      padding: 5px 0;
       a {
         color: map-get($colors, black);
         display: block;
-        padding-bottom: 10px;
+        padding: 10px 15px;
         font-size: $fsize - 1;
 
+        .new{
+          font-size:$fsize - 5;
+          background:map-get($colors, primary);
+          color:map-get($colors, white);
+          padding:1px 5px;
+          display: inline-block;
+          border-radius:5px;
+        }
+
         &:hover {
-          color: map-get($colors, primary);
+          color: map-get($colors, white);
+          background: map-get($colors, primary);
+
+          .new{
+            background:map-get($colors, white);
+            color:map-get($colors, primary);
+          }
         }
       }
     }
     .main-div-links > div {
       border-right: 1px solid map-get($colors, lightgray);
-      padding: 0 20px;
+      min-width: 225px;
+      min-height: 400px;
 
       @include max(map-get($breakpoints, "lg")) {
         padding-right: 0;

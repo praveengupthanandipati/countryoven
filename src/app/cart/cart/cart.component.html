@@ -21,7 +21,7 @@
                                 <span class="font-primary">{{displaydeliveryTime}}</span>
                             </div>
                             <button class="color-btn border-0" data-bs-toggle="modal"
-                                data-bs-target="#DeliveryModal"><span class="icon-edit icomoon"></span></button>
+                                data-bs-target="#DeliveryModal"><span class="icon-edit icomoon"></span> Edit</button>
                         </div>
                         <!-- (change)="getBindDeliveryTimes($event)" -->
                         <!-- <div class="col-md-4 pb-2" *ngIf="deliveryDates_array?.length">
@@ -46,7 +46,7 @@
 
                 <div class="cart-product-item border p-2 mb-3" *ngFor="let CartItem of cartItems; let i = index">
                     <div class="row">                        
-                        <p class="py-1 px-2 background-primary mb-2 font-white small">{{CartItem.outOfDateMessage}}</p>
+                        
                        
                         <div class="col-md-3">
                             <a [routerLink]="'/' + cityName + '/send-online/' + CartItem.seoProductName">
@@ -73,6 +73,7 @@
                                                     class="btn small btn-primary btn-sm ms-2">Update</a> -->
                                             </div>
                                             <img *ngIf="CartItem.customPhoto" [src]="CartItem.customPhoto" />
+                                            <!-- <img *ngIf="CartItem.customPhoto" style="width:50px; margin-top:5px" src="https://r6x6m2y8.stackpathcdn.com/productimages/small/tingling-pineapple-punch-cake.jpg" /> -->
 
                                             <ul class="list-style-desc mt-2">
 
@@ -119,6 +120,7 @@
                                 </div>
                             </div>
                         </div>
+                        <p class="py-2 px-4 background-white mb-2 text-danger small font-bold">{{CartItem.outOfDateMessage}}</p>
                     </div>
                 </div>
             </div>
@@ -149,7 +151,10 @@
                         Checkout</button>
 
                 </div>
-                <a routerLink="/" class="color-border-btn d-block ">Continue Shopping</a>
+                <div class="d-flex justify-content-between">
+                    <a routerLink="/" class="color-border-btn d-block ">Continue Shopping</a>
+                    <a class="color-btn d-block" (click)="addOnProducts()">Addons to Product</a>
+                </div>
             </div>
         </div>
 

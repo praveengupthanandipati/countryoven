@@ -9,6 +9,10 @@ import { CurdService } from 'src/app/services/curd.service';
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent implements OnInit{
+  scrollToTop(){
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  
   footerlinks:any;
   form:any;
 constructor(private _crud:CurdService, private toastr: ToastrService, private fb:FormBuilder)
@@ -54,7 +58,7 @@ subscribe()
    
   });
 }
-
 }
+
 
 

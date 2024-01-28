@@ -14,17 +14,17 @@
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 {{menu.title}}
                             </a>
-                            <div class="dropdown-menu dropdown-menu-full-width shadow border-0"
+                            <div class="dropdown-menu dropdown-menu-full-width shadow border-0 rounded-0 p-0"
                                 *ngIf="menu.subCategoryList.length">
                                 <div class="main-div-links d-sm-flex">
                                     <ng-container *ngIf="menu.subCategoryList.length ">
-                                        <div> <a href="javascript:;" (click)="gotoroute(item.type, item.seoTitle)"
+                                        <div class="background-lightblue"> <a href="javascript:;" (click)="gotoroute(item.type, item.seoTitle)"
                                                 *ngFor="let item of menu.subCategoryList.slice(0, menu.subCategoryList.length / 2)">{{
-                                                item.title }}</a>
+                                                item.title }} <span class="new">New</span></a>
                                         </div>
-                                        <div> <a href="javascript:;" (click)="gotoroute(item.type, item.seoTitle)"
+                                        <div class="background-white"> <a href="javascript:;" (click)="gotoroute(item.type, item.seoTitle)"
                                                 *ngFor="let item of menu.subCategoryList.slice(menu.subCategoryList.length / 2)">{{
-                                                item.title }}</a>
+                                                item.title }} <span class="new">New</span></a>
                                         </div>
                                     </ng-container>
                                 </div>

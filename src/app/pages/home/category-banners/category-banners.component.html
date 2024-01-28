@@ -5,7 +5,6 @@
     </div>
     <div class="custom-container">
         <div class="row pt-4">
-
             <ng-container *ngFor="let sb of smallBanners">
                 <div class="col-md-6" [ngClass]="{'col-md-6': !sb.isSmall, 'col-6 col-md-3' : sb.isSmall }">
                     <div class="category-banner-item position-relative"  (click)="gotoroute(sb.type, sb.seoName)">
@@ -16,15 +15,14 @@
                             </div>
                         </figure>
                         <article class="position-absolute">
-                            <h5 class="font-bold text-white pb-3">{{sb.imageText}}</h5>
+                            <h6 class="h5 font-bold d-inline-block p-2 mb-3 rounded-2">{{sb.imageText}}</h6>
                             <div class="d-none d-md-block">
                                 <a class="color-btn" href="javascript:void(0)">Shop Now</a>
                             </div>
                         </article>
                     </div>
                 </div>
-            </ng-container>
-          
+            </ng-container>          
         </div>
     </div>
 </section>

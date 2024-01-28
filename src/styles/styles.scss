@@ -34,17 +34,35 @@ body {
   margin: 0 auto;
 }
 
+.default-btn {
+  font-size: $fsize + 1;
+  text-align: center;
+  padding: 7px 20px 7px 15px;
+  @include transition(all, 0.3s ease);
+  border-radius: 5px;
+  position: relative;
+
+  &:after {
+    content: "\e927";
+    font-family: "icomoon" !important;
+    font-size: $fsize - 3;
+    position: relative;
+    left: 5px;
+    @include transition(all, 0.3s ease);
+  }
+}
+
 .color-btn {
   background: map-get($colors, primary);
   color: map-get($colors, white);
-  font-size: $fsize + 1;
-  text-align: center;
-  padding: 8px 15px;
-  @include transition(all, 0.3s ease);
-  border-radius: 5px;
+  @extend .default-btn;
 
   &:hover {
-    background: map-get($colors, primary);
+    background: darken(map-get($colors, primary), 10%);
+
+    &:after {
+      left: 8px;
+    }
   }
 }
 .color-btn:disabled {
@@ -53,12 +71,8 @@ body {
 .color-border-btn {
   background: map-get($colors, white);
   color: map-get($colors, primary);
-  font-size: $fsize + 1;
-  text-align: center;
-  padding: 8px 15px;
-  @include transition(all, 0.3s ease);
-  border-radius: 5px;
   border: 1px solid map-get($colors, primary);
+  @extend .default-btn;
 
   &:hover {
     background: map-get($colors, primary);
@@ -146,6 +160,21 @@ body {
 .breadcrumb {
   li {
     font-size: $fsize - 2;
+
+    &:first-child {
+      &:before {
+        content: "";
+        display: none;
+      }
+    }
+
+    &:before {
+      content: "\e927";
+      font-family: "icomoon" !important;
+      font-size: $fsize - 5;
+      position: relative;
+      top: 3px;
+    }
     a {
       color: map-get($colors, black);
     }
@@ -346,11 +375,10 @@ ol {
 
 .address-cards {
   .card {
-    padding: 10px;
     height: 100%;
 
     .addresssection {
-      height: 60%;
+      min-height: 75%;
     }
     p {
       font-size: $fsize - 1;
@@ -428,9 +456,9 @@ header.fixed-top {
 }
 
 .fixedpopup {
-.modal-content
-{
-  overflow: auto;
-  height: calc(100vh - 100px); background: #fff;
-}
+  .modal-content {
+    overflow: auto;
+    height: calc(100vh - 100px);
+    background: #fff;
+  }
 }
