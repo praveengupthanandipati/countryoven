@@ -171,8 +171,8 @@ this.reviewShow=true;
     }
 
     this._crud.SaveOrderDetails(data).subscribe(res => {
-      
-this.route.navigateByUrl('/orders')
+      console.log(res)
+// this.route.navigateByUrl('/orders')
     });
   }
 
