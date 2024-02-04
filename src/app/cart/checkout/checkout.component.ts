@@ -28,6 +28,7 @@ addressCity:any;
 addressId:any;
 addressShow:boolean=true;
 reviewShow:boolean=false;
+paymentstrip:boolean=false;
 couponForm:any;
 totalAmount:any;
 originalTotalAmount:any;
@@ -39,6 +40,7 @@ originalTotalAmount:any;
 couponcode: any;
 couponData:any;
   currencyClass: string='';
+  savedorderdetails: any;
 
 
   constructor(private fb: FormBuilder,private route: Router, private toastr: ToastrService, private _crud: CurdService, private cookieService: CookieService) {
@@ -146,7 +148,7 @@ this.reviewShow=true;
   }
 
   SaveOrderDetails() {
-
+this.reviewShow=false;
     let data = {
 
       "orderDetailsDto": {
@@ -156,7 +158,7 @@ this.reviewShow=true;
         "customerId": this.customerId,
         "addressId": this.addressId,
         "totalAmount": this.totalAmount,
-        "deliveryDate": new Date(this.firstlistItem.deliveryDate),
+        "deliveryDate": this.firstlistItem.deliveryDate,
         "couponCode": this.couponcode,
         "discountAmount": 0,
         "country": this.countryname,
@@ -165,13 +167,26 @@ this.reviewShow=true;
         "customerComments": "Please deliver before 4PM",
         "giftingCard": "",
         "sessionId": this.sessionId,
-        "customerIPAddress": this.userIp
+        "customerIPAddress": this.userIp,
+        "Currencyselected":this.currency
       }
 
     }
 
     this._crud.SaveOrderDetails(data).subscribe(res => {
       console.log(res)
+this.paymentstrip=true;
+      this.savedorderdetails=res
+      // "orderId": "CG01282024205158596",
+      // "invoiceId": 974471,
+      // "walletAmount": 754,
+      // "walletAmountUSD": 10.05,
+      // "isEroor": false,
+      // "errorMessage": null,
+      // "successMessage": "Success"
+
+
+
 // this.route.navigateByUrl('/orders')
     });
   }

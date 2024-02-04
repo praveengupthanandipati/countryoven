@@ -29,7 +29,7 @@
                         [checkoutaddress]="true"></app-address-list>
                 </section>
                 <div class="tabheading" (click)="reviewShow =!reviewShow">Review Order</div>
-                <section *ngIf="reviewShow">
+                <section *ngIf="reviewShow && addressId">
                     <div class="cart-product-item border rounded p-2 mb-3" *ngFor="let items of cartItems">
                         <div class="row py-2">
                             <div class="col-md-2">
@@ -122,8 +122,8 @@
                     </div>      
                 </section>
 
-<div class="tabheading">Payment</div>
-<section><app-payment></app-payment></section>
+<div class="tabheading" (click)="paymentstrip =!paymentstrip">Payment</div>
+<section *ngIf="paymentstrip && addressId"> <app-payment></app-payment></section>
 
                 <!-- <app-user-address></app-user-address> -->
             </div>
