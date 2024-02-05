@@ -1,5 +1,5 @@
 @import "../../../styles/styles";
-.listheading { padding: 0 20px;
+.listheading { padding: 0 20px;     border-color: #ccc !important;
   border-radius: 8px; & h1{ margin: 0 !important;}}
 .btnsec {
   .value-button {
@@ -74,7 +74,7 @@
   }
 }
 .box-list{ border: 1px solid #ccc;
-  border-radius: 8px; margin-top: 20px;
+  border-radius: 8px; margin-top: 8px;
 & .tabcontentwrap{padding: 10px; }
 }
 
