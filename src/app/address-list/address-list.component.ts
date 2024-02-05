@@ -22,10 +22,13 @@ export class AddressListComponent implements OnInit {
   countryList: any;
   stateList: any;
   selectedaddress:any;
+  selectedAddressData:any;
   addressId: any;
   submitted:boolean=false;
   addsubmitted:boolean=false;
   maxAddressLength = 100;
+  cityname:any;
+  notmatch:boolean=false;
   @ViewChild('AddButton')
   AddButton!: ElementRef;
 
@@ -53,6 +56,7 @@ addressidobj:any=[];
       this.email = localStorage.getItem('email');
       this.custID = localStorage.getItem('customerId')
       this.custName = localStorage.getItem('custName')
+      this.cityname=localStorage.getItem('city')
     }
 
     this.userForm = this.fb.group({
@@ -112,10 +116,26 @@ addressidobj:any=[];
   }
   selectAdd(e:any)
   {
-
+    
+console.log(e)
 this.selectedaddress=e.addressId;
+console.log(this.cityname.toLowerCase())
+console.log(e.cityName.toLowerCase())
 
-this.sendAddId.emit(e)
+if(this.cityname.toLowerCase() == e.cityName.toLowerCase() )
+{
+  let s:boolean=true
+  this.sendAddId.emit({ e, s})  
+  console.log('true')
+} 
+else
+{
+this.notmatch=true;
+let s:boolean=false
+this.sendAddId.emit({e, s})  
+console.log('false')
+}
+
   }
 
   onaddCountryChange(eve: any) {
@@ -264,6 +284,8 @@ this.submitted=true;
 
   onOptionChange(e:any)
   {
+    this.notmatch=false;
+    this.selectedAddressData=e.target.value;
 console.log(e.target.value)
 this.deliverAddress= this.filterAddressesByAddressId(e.target.value);
 console.log(this.deliverAddress)
@@ -273,7 +295,14 @@ console.log(this.deliverAddress)
     let data = { "customerId": this.custID }
     this._crud.getAddressByCustomerId(data).subscribe(res => {
       this.originalAddress=res;
+      if(this.originalAddress.length < 4)
+      {
       this.deliverAddress = res;
+      }
+      else
+      {
+      this.deliverAddress=[]
+      }
 
 
 

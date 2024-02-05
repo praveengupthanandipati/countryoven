@@ -35,7 +35,7 @@ originalTotalAmount:any;
   errorcode: boolean=false;
   errorcodemessage: any;
   couponappled: boolean=false;
-  
+  finalamount:any;
   
 couponcode: any;
 couponData:any;
@@ -84,14 +84,23 @@ couponData:any;
       
     });
   }
-  getaddressId(e:any)
+  getaddressId(event: any)
   {
+    if(event.s)
+    {
+      this.addressShow=false
+      this.addressCity=event.e.cityName;
+      this.addressName=event.e.recipientFirstName + event.e.recipientLastName;
+      this.addressId=event.e.addressId;
+      this.reviewShow=true;
+    }
+else
+{
+  this.reviewShow=false;
+  this.paymentstrip=false;
+  this.addressId=''
+}
 
-this.addressShow=false
-this.addressCity=e.cityName;
-this.addressName=e.recipientFirstName + e.recipientLastName;
-this.addressId=e.addressId;
-this.reviewShow=true;
   }
 
   getCarts() {
@@ -108,21 +117,24 @@ this.reviewShow=true;
       this.cartItems = res;
       this.cartCount=res.length;
       this.firstlistItem = this.cartItems[0];
+      console.log(this.firstlistItem)
       this.originalTotalAmount=this.firstlistItem.grandTotal;
       this.totalAmount=this.firstlistItem.grandTotal;
-      
+      this.finalamount=this.firstlistItem.grandTotal
     });
   }
   /* checkout */
 
 
   onSubmit() {
+    this.paymentstrip=false;
     this.couponcode=this.couponForm.value['couponcode'];
     let data = {
       couponCode:  this.couponForm.value['couponcode'],
       customerId: this.customerId,
       sessionId: this.sessionId,
-      totalAmount:this.firstlistItem.grandTotal
+      totalAmount:this.firstlistItem.grandTotal,
+      Currencyselected:this.currency
     }
     this._crud.applyCoupon(data).subscribe(res => {
       
@@ -138,7 +150,7 @@ this.reviewShow=true;
         if(res.couponType =='Instant')
         {
         this.totalAmount=this.originalTotalAmount - res.maxDiscount;
-        
+        this.finalamount=this.totalAmount;
         }
         this.errorcode=false;
         this.couponappled=true

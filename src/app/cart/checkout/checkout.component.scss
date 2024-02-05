@@ -1,5 +1,6 @@
 @import "../../../styles/styles";
-
+.listheading { padding: 0 20px;
+  border-radius: 8px; & h1{ margin: 0 !important;}}
 .btnsec {
   .value-button {
     display: inline-block;
@@ -72,13 +73,17 @@
     }
   }
 }
+.box-list{ border: 1px solid #ccc;
+  border-radius: 8px; margin-top: 20px;
+& .tabcontentwrap{padding: 10px; }
+}
 
 .tabheading {
-  border: 1px solid #ccc;
-  padding: 10px;
+  
+  padding:5px 10px;
   width: 100%;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 0px;
 }
 .totalAmountwrap {
   text-align: right;
