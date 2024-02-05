@@ -45,9 +45,7 @@
                 </div>
 
                 <div class="cart-product-item border p-2 mb-3" *ngFor="let CartItem of cartItems; let i = index">
-                    <div class="row">                        
-                        
-                       
+                    <div class="row">  
                         <div class="col-md-3">
                             <a [routerLink]="'/' + cityName + '/send-online/' + CartItem.seoProductName">
                                 <img src="{{CartItem.produtImage}}" alt="" class="img-fluid">
@@ -72,7 +70,7 @@
                                                 <!-- <a (click)="updateCartItem(CartItem.sNo, CartItem.quantity)"
                                                     class="btn small btn-primary btn-sm ms-2">Update</a> -->
                                             </div>
-                                            <img *ngIf="CartItem.customPhoto" [src]="CartItem.customPhoto" />
+                                            <img *ngIf="CartItem.customPhoto" [src]="CartItem.customPhoto" style="width:50px;" />
                                             <!-- <img *ngIf="CartItem.customPhoto" style="width:50px; margin-top:5px" src="https://r6x6m2y8.stackpathcdn.com/productimages/small/tingling-pineapple-punch-cake.jpg" /> -->
 
                                             <ul class="list-style-desc mt-2">
@@ -149,6 +147,7 @@
                     <button [disabled]="outofdatemessage" class="color-btn d-block width100p border-0"
                         data-bs-toggle="modal" data-bs-target="#AddonsProducts" (click)="addOnProducts()">Continue to
                         Checkout</button>
+                        <a href="/payment-success">paymentsuccess</a>
 
                 </div>
                 <div class="d-flex justify-content-between">
