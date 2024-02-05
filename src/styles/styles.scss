@@ -462,3 +462,17 @@ header.fixed-top {
     background: #fff;
   }
 }
+
+.icon-payment {  
+  width: 84px;
+  height: 84px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .icomoon {
+    font-size: $fsize * 3;
+    color: map-get($colors, white);
+  }
+}

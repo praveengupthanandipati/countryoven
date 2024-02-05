@@ -58,12 +58,12 @@
                                                 <strong>{{items.additionalVoucher}}</strong>
                                             </li>
 
-                                          
+
                                             <li *ngIf="items.egglessPrice"> Eggless Price:
                                                 <strong><span
                                                         [class]="currencyClass"></span>{{items.egglessPrice}}</strong>
                                             </li>
-                                           
+
                                             <li *ngIf="items.flavour">Flavour :
                                                 <strong>{{items.flavour}}</strong>
                                             </li>
@@ -78,7 +78,7 @@
 
                                     </div>
                                     <div class="col-md-6 text-end">
-                                        <p><span class="small"  [class]="currencyClass"></span>{{items.price}}</p>
+                                        <p><span class="small" [class]="currencyClass"></span>{{items.price}}</p>
                                         <p>Qty: {{items.quantity}}</p>
                                     </div>
                                 </div>
@@ -89,8 +89,10 @@
                         <div class="col-md-6">
                             <p>Delivery City:<strong>{{city}}</strong></p>
                             <ng-container *ngIf="couponappled && couponData.couponType =='Instant'">
-                                <div> Discount Applicable Amount: <span  [class]="currencyClass"></span> {{couponData.discountApplicableAmount}}</div>
-                                <div>Discount Amount : <span  [class]="currencyClass"></span> {{couponData.maxDiscount}}</div>
+                                <div> Discount Applicable Amount: <span [class]="currencyClass"></span>
+                                    {{couponData.discountApplicableAmount}}</div>
+                                <div>Discount Amount : <span [class]="currencyClass"></span> {{couponData.maxDiscount}}
+                                </div>
                             </ng-container>
                             <div>
                                 <p><label>Coupon Code</label></p>
@@ -99,8 +101,8 @@
                                         <div class="col-auto">
                                             <div class="form-group">
                                                 <input type="text" class="form-control"
-                                                    [ngClass]="{'is-invalid' :errorcode }"
-                                                    formControlName="couponcode" placeholder="Coupon*">
+                                                    [ngClass]="{'is-invalid' :errorcode }" formControlName="couponcode"
+                                                    placeholder="Coupon*">
                                                 <div class="invalid-feedback mt-0 d-block" *ngIf="errorcode">
                                                     <small>{{errorcodemessage}}</small>
                                                 </div>
@@ -117,12 +119,13 @@
                         </div>
                         <div class="col-md-6 text-end">
                             <p>DeliveryDate : <strong>{{firstlistItem.deliveryDate }}</strong></p>
-                            <div class="totalAmountwrap pb-2">                       
-                                <div class="totalAmount">Total Amount : <strong><span  [class]="currencyClass"></span> {{totalAmount}}</strong></div>
+                            <div class="totalAmountwrap pb-2">
+                                <div class="totalAmount">Total Amount : <strong><span [class]="currencyClass"></span>
+                                        {{totalAmount}}</strong></div>
                             </div>
                             <button (click)="SaveOrderDetails()" class="color-btn border-0">Continue payment</button>
                         </div>
-                    </div>      
+                    </div>
                 </section>
                 </div>
                 <div class="box-list card">
@@ -141,7 +144,8 @@
                     <h6 class="h6 font-black font-medium align-self-center pb-3">Price Details</h6>
                     <div class="d-flex justify-content-between py-2">
                         <p>MRP Details</p>
-                        <p class="text-end" *ngIf="firstlistItem && firstlistItem.totalAmount"><span  [class]="currencyClass"></span>
+                        <p class="text-end" *ngIf="firstlistItem && firstlistItem.totalAmount"><span
+                                [class]="currencyClass"></span>
                             {{firstlistItem.totalAmount}}</p>
                     </div>
                     <div class="d-flex justify-content-between py-2">
@@ -153,27 +157,63 @@
                     </div>
                     <div class="d-flex justify-content-between py-3 totalamount my-2">
                         <h6 class="h6 font-semibold">Amount</h6>
-                        <p class="text-end font-semibold" *ngIf="firstlistItem && firstlistItem.grandTotal"><span  [class]="currencyClass"></span>
+                        <p class="text-end font-semibold" *ngIf="firstlistItem && firstlistItem.grandTotal"><span
+                                [class]="currencyClass"></span>
                             {{firstlistItem.grandTotal}}</p>
                     </div>
                     <ng-container *ngIf="couponappled && couponData.couponType =='Instant'">
                         <div class="d-flex justify-content-between py-2">
                             <p>Discount Applicable Amount:</p>
-                            <p class="text-end"><span  [class]="currencyClass"></span> {{couponData.discountApplicableAmount}}</p>
+                            <p class="text-end"><span [class]="currencyClass"></span>
+                                {{couponData.discountApplicableAmount}}</p>
                         </div>
                         <div class="d-flex justify-content-between py-2">
                             <p>Discount Amount:</p>
-                            <p class="text-end"><span  [class]="currencyClass"></span> {{couponData.maxDiscount}}</p>
+                            <p class="text-end"><span [class]="currencyClass"></span> {{couponData.maxDiscount}}</p>
                         </div>
                         <div class="d-flex justify-content-between py-2">
                             <p>Grand Amount:</p>
-                            <p class="text-end"><span  [class]="currencyClass"></span> {{totalAmount}}</p>
+                            <p class="text-end"><span [class]="currencyClass"></span> {{totalAmount}}</p>
                         </div>
-                    </ng-container>                    
+                    </ng-container>
                 </div>
             </div>
         </div>
         <!--/ explore products-->
+
+        <!-- payment success -->
+        <section class="payment-success py-2">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center">
+                    <div class="icon-payment mx-auto background-green">
+                        <span class="icon-payment-success icomoon"></span>
+                    </div>
+                    <h4 class="font-green pt-3 pb-2 font-semibold">Payment successfully completed</h4>
+                    <p class="pb-2">Payment Reference No: <strong>12354668963</strong></p>
+                    <p>Congratulations! Your payment has been successfully processed. Thank you for your purchase! If
+                        you have any questions or need further assistance, please don't hesitate to contact our customer
+                        support team. Happy shopping!</p>
+                    <div class="pt-3">
+                        <a href="" class="d-inline-block color-border-btn me-2">Go to my Orders</a>
+                        <a href="" class="d-inline-block color-btn">Continue Shopping</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center pt-4">
+                <div class="col-md-6 text-center">
+                    <div class="icon-payment mx-auto background-red">
+                        <span class="icon-credit-card-failed icomoon"></span>
+                    </div>
+                    <h4 class="font-red py-3 font-semibold"> Payment failed </h4>
+                    <p>Not enough money on the card</p>
+                    <div class="pt-3">
+                        <a href="" class="d-inline-block color-border-btn me-2">Try Again Or Pay with Another method</a>                       
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--/ payment success-->
     </div>
 </section>
 <app-footer></app-footer>

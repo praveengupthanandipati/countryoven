@@ -8,6 +8,7 @@ import { AddressComponent } from './address/address.component';
 import { PersonalizeComponent } from './personalize/personalize.component';
 import { PaymentComponent } from './payment/payment.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { PaymentSuccessComponent } from './payment-success/payment-success.component';
 
 
 
@@ -19,7 +20,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
     AddressComponent,
     PersonalizeComponent,
     PaymentComponent,
-    CheckoutComponent ,
+    CheckoutComponent,
+    PaymentSuccessComponent ,
      
   ],
   imports: [
