@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -35,15 +35,15 @@ originalTotalAmount:any;
   errorcode: boolean=false;
   errorcodemessage: any;
   couponappled: boolean=false;
-  
+  finalamount:any;
   
 couponcode: any;
 couponData:any;
   currencyClass: string='';
   savedorderdetails: any;
+  appliedDiscount:any=0;
 
-
-  constructor(private fb: FormBuilder,private route: Router, private toastr: ToastrService, private _crud: CurdService, private cookieService: CookieService) {
+  constructor(private renderer: Renderer2, private fb: FormBuilder,private route: Router, private toastr: ToastrService, private _crud: CurdService, private cookieService: CookieService) {
     this.sessionId = this.cookieService.get('sessionID')
     this.city = localStorage.getItem('city')
     this.countryname = localStorage.getItem('country');
@@ -84,14 +84,23 @@ couponData:any;
       
     });
   }
-  getaddressId(e:any)
+  getaddressId(event: any)
   {
+    if(event.s)
+    {
+      this.addressShow=false
+      this.addressCity=event.e.cityName;
+      this.addressName=event.e.recipientFirstName + event.e.recipientLastName;
+      this.addressId=event.e.addressId;
+      this.reviewShow=true;
+    }
+else
+{
+  this.reviewShow=false;
+  this.paymentstrip=false;
+  this.addressId=''
+}
 
-this.addressShow=false
-this.addressCity=e.cityName;
-this.addressName=e.recipientFirstName + e.recipientLastName;
-this.addressId=e.addressId;
-this.reviewShow=true;
   }
 
   getCarts() {
@@ -108,21 +117,24 @@ this.reviewShow=true;
       this.cartItems = res;
       this.cartCount=res.length;
       this.firstlistItem = this.cartItems[0];
+      console.log(this.firstlistItem)
       this.originalTotalAmount=this.firstlistItem.grandTotal;
       this.totalAmount=this.firstlistItem.grandTotal;
-      
+      this.finalamount=this.firstlistItem.grandTotal
     });
   }
   /* checkout */
 
 
   onSubmit() {
+    this.paymentstrip=false;
     this.couponcode=this.couponForm.value['couponcode'];
     let data = {
       couponCode:  this.couponForm.value['couponcode'],
       customerId: this.customerId,
       sessionId: this.sessionId,
-      totalAmount:this.firstlistItem.grandTotal
+      totalAmount:this.firstlistItem.grandTotal,
+      Currencyselected:this.currency
     }
     this._crud.applyCoupon(data).subscribe(res => {
       
@@ -138,7 +150,8 @@ this.reviewShow=true;
         if(res.couponType =='Instant')
         {
         this.totalAmount=this.originalTotalAmount - res.maxDiscount;
-        
+        this.finalamount=this.totalAmount;
+        this.appliedDiscount=res.maxDiscount
         }
         this.errorcode=false;
         this.couponappled=true
@@ -148,22 +161,23 @@ this.reviewShow=true;
   }
 
   SaveOrderDetails() {
+    this.addLoader();
 this.reviewShow=false;
     let data = {
 
       "orderDetailsDto": {
         "walletAmount": 0,
-        "isCustomGift": true,
+        "isCustomGift": false,
         "cityName": this.city,
         "customerId": this.customerId,
         "addressId": this.addressId,
         "totalAmount": this.totalAmount,
         "deliveryDate": this.firstlistItem.deliveryDate,
         "couponCode": this.couponcode,
-        "discountAmount": 0,
+        "discountAmount": this.appliedDiscount,
         "country": this.countryname,
         "deliveryTime": this.firstlistItem.deliveryTiming,
-        "deliveryCharges": 0,
+        "deliveryCharges": this.firstlistItem.deliveryCharges,
         "customerComments": "Please deliver before 4PM",
         "giftingCard": "",
         "sessionId": this.sessionId,
@@ -175,6 +189,7 @@ this.reviewShow=false;
 
     this._crud.SaveOrderDetails(data).subscribe(res => {
       console.log(res)
+      this.removeLoader();
 this.paymentstrip=true;
       this.savedorderdetails=res
       // "orderId": "CG01282024205158596",
@@ -192,4 +207,12 @@ this.paymentstrip=true;
   }
 
 
+  addLoader()
+  {
+    this.renderer.addClass(document.body, 'bodyloader');
+  }
+  removeLoader()
+  {
+    this.renderer.removeClass(document.body, 'bodyloader');
+  }
 }

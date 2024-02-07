@@ -1,10 +1,23 @@
-<section class="cart-subpage">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                
+<app-header></app-header>
+<section class="payment-success py-2">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <div class="icon-payment mx-auto background-green">
+                <span class="icon-payment-success icomoon"></span>
+            </div>
+            <h4 class="font-green pt-3 pb-2 font-semibold">Payment successfully completed</h4>
+            <p class="pb-2">Payment orderId: <strong>{{orderId}}</strong></p>
+            <p class="pb-2">Payment Transaction No: <strong>{{transId}}</strong></p>
+            <p>Congratulations! Your payment has been successfully processed. Thank you for your purchase! If
+                you have any questions or need further assistance, please don't hesitate to contact our customer
+                support team. Happy shopping!</p>
+            <div class="pt-3">
+                <a  (click)="gotoorders()" class="d-inline-block color-border-btn me-2">Track your Order</a>
+                <a  [routerLink]="'/'" class="d-inline-block color-btn">Continue Shopping</a>
             </div>
         </div>
     </div>
-    <p>Payment success</p>
+
+
 </section>
+<app-footer></app-footer>

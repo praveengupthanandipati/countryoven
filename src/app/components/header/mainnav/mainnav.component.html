@@ -20,11 +20,11 @@
                                     <ng-container *ngIf="menu.subCategoryList.length ">
                                         <div class="background-lightblue"> <a href="javascript:;" (click)="gotoroute(item.type, item.seoTitle)"
                                                 *ngFor="let item of menu.subCategoryList.slice(0, menu.subCategoryList.length / 2)">{{
-                                                item.title }} <span class="new">New</span></a>
+                                                item.title }} <span class="new" *ngIf="item.isHighligted">New</span></a>
                                         </div>
                                         <div class="background-white"> <a href="javascript:;" (click)="gotoroute(item.type, item.seoTitle)"
                                                 *ngFor="let item of menu.subCategoryList.slice(menu.subCategoryList.length / 2)">{{
-                                                item.title }} <span class="new">New</span></a>
+                                                item.title }} <span class="new" *ngIf="item.isHighligted">New</span></a>
                                         </div>
                                     </ng-container>
                                 </div>

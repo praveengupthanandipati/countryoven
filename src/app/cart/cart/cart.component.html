@@ -70,10 +70,18 @@
                                                 <!-- <a (click)="updateCartItem(CartItem.sNo, CartItem.quantity)"
                                                     class="btn small btn-primary btn-sm ms-2">Update</a> -->
                                             </div>
-                                            <img *ngIf="CartItem.customPhoto" [src]="CartItem.customPhoto" style="width:50px;" />
+                                          
+
+                                          
                                             <!-- <img *ngIf="CartItem.customPhoto" style="width:50px; margin-top:5px" src="https://r6x6m2y8.stackpathcdn.com/productimages/small/tingling-pineapple-punch-cake.jpg" /> -->
 
                                             <ul class="list-style-desc mt-2">
+                                                <li *ngIf="CartItem.productId">Product Id :
+                                                    <strong>{{CartItem.productId}}</strong>
+                                                </li>
+                                                <li *ngIf="CartItem.customPhoto">Photo :
+                                                    <img style="height: 40px; width:auto" [src]="CartItem.customPhoto" />
+                                                </li>
 
                                                 <li *ngIf="CartItem.additionalVoucher">Voucher :
                                                     <strong>{{CartItem.additionalVoucher}}</strong>
@@ -86,9 +94,7 @@
                                                     <strong><span
                                                             [class]="currencyClass"></span>{{CartItem.egglessPrice}}</strong>
                                                 </li>
-                                                <li *ngIf="CartItem.productId">Product Id :
-                                                    <strong>{{CartItem.productId}}</strong>
-                                                </li>
+                                               
                                                 <li *ngIf="CartItem.flavour">Flavour :
                                                     <strong>{{CartItem.flavour}}</strong>
                                                 </li>
@@ -144,15 +150,18 @@
                         <h6 class="text-end font-semibold"><span class="icomoon font-bold small"
                                 [class]="currencyClass"></span>{{firstlistItem?.grandTotal}}</h6>
                     </div>
-                    <button [disabled]="outofdatemessage" class="color-btn d-block width100p border-0"
-                        data-bs-toggle="modal" data-bs-target="#AddonsProducts" (click)="addOnProducts()">Continue to
+                    <button *ngIf="!showcheckoutbtn" [disabled]="outofdatemessage" class="color-btn d-block width100p border-0"
+                        data-bs-toggle="modal" data-bs-target="#AddonsProducts" (click)="addOnProducts('0')">Continue to
                         Checkout</button>
-                        <a href="/payment-success">paymentsuccess</a>
+                        <button *ngIf="showcheckoutbtn" [disabled]="outofdatemessage" class="color-btn d-block width100p border-0"
+                         (click)="gotocheckout()">Continue to
+                        Checkout</button>
+                     
 
                 </div>
                 <div class="d-flex justify-content-between">
                     <a routerLink="/" class="color-border-btn d-block ">Continue Shopping</a>
-                    <a class="color-btn d-block" (click)="addOnProducts()">Addons to Product</a>
+                    <a class="color-btn d-block"  data-bs-toggle="modal" data-bs-target="#AddonsProducts" (click)="addOnProducts('1')">Addons to Product</a>
                 </div>
             </div>
         </div>

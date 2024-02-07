@@ -31,6 +31,7 @@ currentPage: number=0;
   typeName:any;
   breadTitle:any;
   breadcatTitle: any;
+  breadcatTitleLink:any;
   getOldUrl:any;
   sorder:any=1;
   sortValue:any='Recommended';
@@ -48,7 +49,8 @@ currentPage: number=0;
   }
   routeCategory(e:any)
   {
-
+    this.router.navigateByUrl(e + '/'+ this.originalcityname +'/online-delivery');
+    
   }
 
     filterChanged(filterOption: any): void {
@@ -307,8 +309,9 @@ else
      this.metaData=res;
      
       this.titleService.setTitle(res.title);
-this.breadTitle=res.subCategoryNameCapital || res.seoSpecialPageName || res.occasionNameCapital;
-this.breadcatTitle=res.categoryNameCapital || res.specialPageCapital;
+this.breadTitle=res.subCategoryNameCapital || res.specialPageCapital || res.occasionNameCapital || res.flavourNameCapital;
+this.breadcatTitle=res.categoryNameCapital;
+this.breadcatTitleLink=res.seoCategoryName;
 // this.breadcatTitle=res.seoCategoryName;
       this.meta.updateTag({ name: 'description',  content: res.metaDescription });
       this.meta.updateTag({ name: 'keywords',  content: res.metaKeywords });
@@ -368,7 +371,7 @@ if(!load)
     
       Type:this.type,
       PageName:this.PageName,
-     
+      currencySelected:this.currency
     }
 
     this._crud.getFilters(data).subscribe(res => {

@@ -476,3 +476,5 @@ header.fixed-top {
     color: map-get($colors, white);
   }
 }
+
+.bodyloader .loader-overlay{ display: flex !important;}

@@ -37,6 +37,7 @@ export class CartComponent implements OnInit {
   userForm: any;
   selectedFile: any;
   maxLeadTime:any;
+  showcheckoutbtn:boolean=false;
   @ViewChild('closeButton')
   closeButton!: ElementRef;
   constructor(private fb: FormBuilder, private renderer: Renderer2, private route: Router, private toastr: ToastrService, private _crud: CurdService, private cookieService: CookieService) {
@@ -264,8 +265,11 @@ this.updateCartItem(sno,quntity)
     this.renderer.removeClass(document.body, 'bodyloader');
   }
 
-  addOnProducts() {
-
+  addOnProducts(flag:any) {
+if(flag=='0')
+{
+  this.showcheckoutbtn=true;
+}
     let data = {
       customerId: this.customerId,
       sessionId: this.sessionId,

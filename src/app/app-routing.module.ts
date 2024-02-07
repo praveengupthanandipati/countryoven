@@ -13,6 +13,8 @@ import { AddressComponent } from './cart/address/address.component';
 import { PersonalizeComponent } from './cart/personalize/personalize.component';
 import { PaymentComponent } from './cart/payment/payment.component';
 import { CheckoutComponent } from './cart/checkout/checkout.component';
+import { PaymentSuccessComponent } from './cart/payment-success/payment-success.component';
+import { PaymentErrorComponent } from './cart/payment-error/payment-error.component';
 
 
 const routes: Routes = [
@@ -23,6 +25,8 @@ const routes: Routes = [
   {path:'Personalize', component:PersonalizeComponent},
   {path:'Payment', component:PaymentComponent},
   {path:'checkout', component:CheckoutComponent},
+  {path:'payment-success', component:PaymentSuccessComponent},
+  {path:'failure', component:PaymentErrorComponent},
   {path:'cart', loadChildren:()=>import('./cart/cart.module').then(m=>m.CartModule)},  
   {path:'myaccount', loadChildren:()=>import('./profile/profile.module').then(m=>m.ProfileModule)},
   // {path:'my_profile', component:UserProfileComponent},
