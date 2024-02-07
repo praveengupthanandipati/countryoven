@@ -141,6 +141,10 @@
   color: map-get($colors, darkgray);
   margin-right: 10px;
 
+  @include max(map-get($breakpoints, "md")) {
+    font-size: $fsize - 2;
+  }
+
   &:hover,
   &.selected {
     background: map-get($colors, primary);
@@ -157,6 +161,10 @@
   justify-content: center;
   align-items: center;
 
+  @include max(map-get($breakpoints, "md")) {
+    height: 75px;
+  }
+
   &:hover,
   &.selected {
     background: map-get($colors, primary);
@@ -168,15 +176,19 @@
     }
   }
   .icomoon {
-    font-size: 4.5rem;
+    font-size: clamp(3rem, 4.5vw, 4.5rem);
     color: map-get($colors, darkgray);
 
-    @include max(map-get($breakpoints, "sm")){
-      font-size:3rem;
+    @include max(map-get($breakpoints, "sm")) {
+      font-size: 3rem;
     }
   }
-  p {
-    font-size: $fsize - 2;
+}
+p {
+  font-size: $fsize - 1;
+
+  @include max(map-get($breakpoints, "sm")) {
+    font-size: $fsize -3;
   }
 }
 

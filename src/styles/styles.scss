@@ -456,6 +456,9 @@ header.fixed-top {
 }
 
 .fixedpopup {
+  @include max(map-get($breakpoints, "sm")){
+    padding:10px;
+  }
   .modal-content {
     overflow: auto;
     height: calc(100vh - 100px);

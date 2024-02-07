@@ -1,21 +1,23 @@
+@import "../../../styles/styles";
+
 .fixedpopup {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: #fff; 
+  background: #fff;
   z-index: 9999;
-  
-  box-shadow: 0 0 10px #333; 
+  box-shadow: 0 0 10px #333;
   padding: 50px;
-  background:rgba(0,0,0,.5);
-& .modal-content
-{
+  background: rgba(0, 0, 0, 0.5);
+  @include minMax(
+    map-get($breakpoints, "xs"),
+    map-get($breakpoints, "md")    
+    ) {
+    padding: 10px;
+  }
 
- 
-
-
-}
-
+  & .modal-content {
+  }
 }
