@@ -150,15 +150,18 @@
                         <h6 class="text-end font-semibold"><span class="icomoon font-bold small"
                                 [class]="currencyClass"></span>{{firstlistItem?.grandTotal}}</h6>
                     </div>
-                    <button [disabled]="outofdatemessage" class="color-btn d-block width100p border-0"
-                        data-bs-toggle="modal" data-bs-target="#AddonsProducts" (click)="addOnProducts()">Continue to
+                    <button *ngIf="!showcheckoutbtn" [disabled]="outofdatemessage" class="color-btn d-block width100p border-0"
+                        data-bs-toggle="modal" data-bs-target="#AddonsProducts" (click)="addOnProducts('0')">Continue to
                         Checkout</button>
-                        <a href="/payment-success">paymentsuccess</a>
+                        <button *ngIf="showcheckoutbtn" [disabled]="outofdatemessage" class="color-btn d-block width100p border-0"
+                         (click)="gotocheckout()">Continue to
+                        Checkout</button>
+                     
 
                 </div>
                 <div class="d-flex justify-content-between">
                     <a routerLink="/" class="color-border-btn d-block ">Continue Shopping</a>
-                    <a class="color-btn d-block" (click)="addOnProducts()">Addons to Product</a>
+                    <a class="color-btn d-block"  data-bs-toggle="modal" data-bs-target="#AddonsProducts" (click)="addOnProducts('1')">Addons to Product</a>
                 </div>
             </div>
         </div>

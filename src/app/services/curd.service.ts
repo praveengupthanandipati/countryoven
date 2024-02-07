@@ -366,6 +366,8 @@ postcustomize(obj:any):Observable<any>{
                       return this.http.post(`${environment.apiUrl}/payment/wallet`,obj)
                       }
 
-
+                      PaymentConfirmation(obj:any): Observable<any> {
+                        return this.http.post(`${environment.apiUrl}/PaymentConfirmation/Success`,obj)
+                      }
 
   }

@@ -105,10 +105,17 @@ addressidobj:any=[];
   }
 
   ngOnInit(): void {
+
+    console.log('hi')
     if(this.checkoutaddress)
     {
       this.isCheckout=true;
       this.selectedaddress=this.selectedAddressId
+      console.log(this.selectedaddress)
+
+      setTimeout(() => {
+        this.addressselected(this.selectedaddress)
+      }, 1000);
     }
     this.getAddressByCustomerId();
     
@@ -289,6 +296,15 @@ this.submitted=true;
 console.log(e.target.value)
 this.deliverAddress= this.filterAddressesByAddressId(e.target.value);
 console.log(this.deliverAddress)
+  }
+
+  addressselected(e:any)
+  {
+    this.notmatch=false;
+    this.selectedAddressData=e;
+
+this.deliverAddress= this.filterAddressesByAddressId(e);
+
   }
 
   getAddressByCustomerId() {

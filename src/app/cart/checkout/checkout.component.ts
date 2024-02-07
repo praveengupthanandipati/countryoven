@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -41,9 +41,9 @@ couponcode: any;
 couponData:any;
   currencyClass: string='';
   savedorderdetails: any;
+  appliedDiscount:any=0;
 
-
-  constructor(private fb: FormBuilder,private route: Router, private toastr: ToastrService, private _crud: CurdService, private cookieService: CookieService) {
+  constructor(private renderer: Renderer2, private fb: FormBuilder,private route: Router, private toastr: ToastrService, private _crud: CurdService, private cookieService: CookieService) {
     this.sessionId = this.cookieService.get('sessionID')
     this.city = localStorage.getItem('city')
     this.countryname = localStorage.getItem('country');
@@ -151,6 +151,7 @@ else
         {
         this.totalAmount=this.originalTotalAmount - res.maxDiscount;
         this.finalamount=this.totalAmount;
+        this.appliedDiscount=res.maxDiscount
         }
         this.errorcode=false;
         this.couponappled=true
@@ -160,22 +161,23 @@ else
   }
 
   SaveOrderDetails() {
+    this.addLoader();
 this.reviewShow=false;
     let data = {
 
       "orderDetailsDto": {
         "walletAmount": 0,
-        "isCustomGift": true,
+        "isCustomGift": false,
         "cityName": this.city,
         "customerId": this.customerId,
         "addressId": this.addressId,
         "totalAmount": this.totalAmount,
         "deliveryDate": this.firstlistItem.deliveryDate,
         "couponCode": this.couponcode,
-        "discountAmount": 0,
+        "discountAmount": this.appliedDiscount,
         "country": this.countryname,
         "deliveryTime": this.firstlistItem.deliveryTiming,
-        "deliveryCharges": 0,
+        "deliveryCharges": this.firstlistItem.deliveryCharges,
         "customerComments": "Please deliver before 4PM",
         "giftingCard": "",
         "sessionId": this.sessionId,
@@ -187,6 +189,7 @@ this.reviewShow=false;
 
     this._crud.SaveOrderDetails(data).subscribe(res => {
       console.log(res)
+      this.removeLoader();
 this.paymentstrip=true;
       this.savedorderdetails=res
       // "orderId": "CG01282024205158596",
@@ -204,4 +207,12 @@ this.paymentstrip=true;
   }
 
 
+  addLoader()
+  {
+    this.renderer.addClass(document.body, 'bodyloader');
+  }
+  removeLoader()
+  {
+    this.renderer.removeClass(document.body, 'bodyloader');
+  }
 }

@@ -6,7 +6,7 @@
                     <label>Select Address</label>
                 </div>
                 <div class="col-auto">
-                    <select class="form-select"  (change)="onOptionChange($event)">
+                    <select class="form-select" [(ngModel)]="selectedaddress"  (change)="onOptionChange($event)">
                         <ng-container *ngIf="!selectedAddressData">
                             <option value="select" disabled selected>Select Delivery Address</option>
                           </ng-container>

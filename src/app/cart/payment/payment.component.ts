@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CurdService } from 'src/app/services/curd.service';
 
 @Component({
@@ -18,7 +19,7 @@ totalAmount:any;
 showwalletbtn:boolean=false;
 paidwalletamount:any;
 displayamount:any;
-constructor(private _crud:CurdService)
+constructor(private _crud:CurdService, private route: Router)
 {
   console.log(this.amount);
   console.log(this.saveorderDetails)
@@ -82,14 +83,25 @@ constructor(private _crud:CurdService)
             "isWalletChecked": true,
             "payableAmount": this.amount,
             "walletAmount": this.walletamount,
-           
+            "Currencyselected":this.currency
           }
     
         }
     
         this._crud.postWallet(data).subscribe(res => {
           console.log(res)
-    
+    if(res.isEroor)
+    {
+this.route.navigateByUrl('failure')
+
+//error page
+    } else
+    {
+      localStorage.setItem('orderId', res.invoiceId);
+      localStorage.setItem('transcationId', res.transcationId);
+      this.route.navigateByUrl('payment-success')
+//success page
+    }
 
          
         });
@@ -100,10 +112,9 @@ constructor(private _crud:CurdService)
 
 }
 
-// "orderId": "CG02042024130959760",
-//     "invoiceId": 974484,
-//     "walletAmount": 50754,
-//     "walletAmountUSD": 676.72,
+// "invoiceId": 974514,
+//     "transcationId": "COWallet0207202420194428",
+//     "analyticsCode": null,
 //     "isEroor": false,
 //     "errorMessage": null,
-//     "successMessage": "Success"
+//     "successMessage": null

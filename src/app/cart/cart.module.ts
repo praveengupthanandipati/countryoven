@@ -9,6 +9,9 @@ import { PersonalizeComponent } from './personalize/personalize.component';
 import { PaymentComponent } from './payment/payment.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { PaymentSuccessComponent } from './payment-success/payment-success.component';
+import { PaymentErrorComponent } from './payment-error/payment-error.component';
+
+
 
 
 
@@ -21,7 +24,9 @@ import { PaymentSuccessComponent } from './payment-success/payment-success.compo
     PersonalizeComponent,
     PaymentComponent,
     CheckoutComponent,
-    PaymentSuccessComponent ,
+    PaymentSuccessComponent,
+    PaymentErrorComponent
+    
      
   ],
   imports: [
