@@ -21,6 +21,10 @@ constructor( private _crud: CurdService, private route:Router)
   localStorage.removeItem('orderId')
   localStorage.removeItem('transcationId')
  }
+ else
+ {
+  this.route.navigateByUrl('/')
+ }
 }
 
 PaymentConfirmation()

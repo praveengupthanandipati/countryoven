@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class AddressListComponent implements OnInit {
   deliverAddress: any;
-  originalAddress:any;
+  originalAddress: any;
   isLogend: boolean = false;
   email: any;
   custID: any;
@@ -21,14 +21,14 @@ export class AddressListComponent implements OnInit {
   adduserForm: any;
   countryList: any;
   stateList: any;
-  selectedaddress:any;
-  selectedAddressData:any;
+  selectedaddress: any = 'select';
+  selectedAddressData: any;
   addressId: any;
-  submitted:boolean=false;
-  addsubmitted:boolean=false;
+  submitted: boolean = false;
+  addsubmitted: boolean = false;
   maxAddressLength = 100;
-  cityname:any;
-  notmatch:boolean=false;
+  cityname: any;
+  notmatch: boolean = false;
   @ViewChild('AddButton')
   AddButton!: ElementRef;
 
@@ -37,18 +37,18 @@ export class AddressListComponent implements OnInit {
   EditButton!: ElementRef;
   cityList: any;
 
-  @Input('checkoutaddress') checkoutaddress:boolean=false;
-  @Input('selectedAddressId') selectedAddressId:any;
-  @Output() sendAddId:any= new EventEmitter<any>();
-isCheckout:boolean=false;
-addressidobj:any=[];
-  constructor(private titleService:Title, private meta:Meta,private renderer: Renderer2, private _crud: CurdService, private fb: FormBuilder, private el: ElementRef, private toastr: ToastrService) {
+  @Input('checkoutaddress') checkoutaddress: boolean = false;
+  @Input('selectedAddressId') selectedAddressId: any;
+  @Output() sendAddId: any = new EventEmitter<any>();
+  isCheckout: boolean = false;
+  addressidobj: any = [];
+  constructor(private titleService: Title, private meta: Meta, private renderer: Renderer2, private _crud: CurdService, private fb: FormBuilder, private el: ElementRef, private toastr: ToastrService) {
 
     this.titleService.setTitle("Countryoven's - Address Book");
-    this.meta.updateTag({ name: 'description',  content: "Countryoven's - Address Book" });
-    this.meta.updateTag({ name: 'keywords',  content: "Countryoven's - Address Book" });
-    this.meta.updateTag({ name: 'classification',  content:"Countryoven's - Address Book" });
-  
+    this.meta.updateTag({ name: 'description', content: "Countryoven's - Address Book" });
+    this.meta.updateTag({ name: 'keywords', content: "Countryoven's - Address Book" });
+    this.meta.updateTag({ name: 'classification', content: "Countryoven's - Address Book" });
+
 
 
     if (localStorage.getItem('email')) {
@@ -56,38 +56,38 @@ addressidobj:any=[];
       this.email = localStorage.getItem('email');
       this.custID = localStorage.getItem('customerId')
       this.custName = localStorage.getItem('custName')
-      this.cityname=localStorage.getItem('city')
+      this.cityname = localStorage.getItem('city')
     }
 
     this.userForm = this.fb.group({
-      recipientFirstName: ['',  [Validators.required, Validators.minLength(3)]],
+      recipientFirstName: ['', [Validators.required, Validators.minLength(3)]],
       recipientLastName: ['', [Validators.required]],
       email: [''],
-      phone: ['',[Validators.required, Validators.pattern(/^\d{10,15}$/)]],
+      phone: ['', [Validators.required, Validators.pattern(/^\d{10,15}$/)]],
       mobilePhone: ['', [Validators.required, Validators.pattern(/^\d{10,15}$/)]],
-      address1: ['', [Validators.required,Validators.maxLength(this.maxAddressLength)]],
+      address1: ['', [Validators.required, Validators.maxLength(this.maxAddressLength)]],
       address2: [''],
       landmark: ['', Validators.required],
       cityName: [''],
       stateId: ['1479'],
-    //  countryId: ['', Validators.required],
-      zipCode: ['',  [Validators.required, Validators.pattern(/^\d{6}$/)]],
+      //  countryId: ['', Validators.required],
+      zipCode: ['', [Validators.required, Validators.pattern(/^\d{6}$/)]],
     });
 
 
     this.adduserForm = this.fb.group({
       addRecipientFirstName: ['', [Validators.required, Validators.minLength(3)]],
-      addRecipientLastName: ['',[Validators.required]],
+      addRecipientLastName: ['', [Validators.required]],
       addEmail: [''],
       addPhone: ['', [Validators.required, Validators.pattern(/^\d{10,15}$/)]],
       addMobilePhone: ['', [Validators.required, Validators.pattern(/^\d{10,15}$/)]],
-      addaddress1: ['', [Validators.required,Validators.maxLength(this.maxAddressLength)]],
+      addaddress1: ['', [Validators.required, Validators.maxLength(this.maxAddressLength)]],
       addaddress2: [''],
       addlandmark: ['', Validators.required],
       addcityName: ['', Validators.required],
       addstateId: ['1479'],
-    //  addcountryId: ['', Validators.required],
-      addzipCode: ['',  [Validators.required, Validators.pattern(/^\d{6}$/)]],
+      //  addcountryId: ['', Validators.required],
+      addzipCode: ['', [Validators.required, Validators.pattern(/^\d{6}$/)]],
     });
 
   }
@@ -97,7 +97,7 @@ addressidobj:any=[];
     const currentLength = addressControl.value ? addressControl.value.length : 0;
     return currentLength;
   }
-  
+
   editupdateCharacterCount() {
     const addressControl = this.userForm.get('address1');
     const currentLength = addressControl.value ? addressControl.value.length : 0;
@@ -105,80 +105,76 @@ addressidobj:any=[];
   }
 
   ngOnInit(): void {
+    this.selectedaddress = 'select'
+    if (this.checkoutaddress) {
+      this.isCheckout = true;
+      this.selectedaddress = this.selectedAddressId ? this.selectedAddressId : 'select'
 
-    console.log('hi')
-    if(this.checkoutaddress)
-    {
-      this.isCheckout=true;
-      this.selectedaddress=this.selectedAddressId
-      console.log(this.selectedaddress)
 
       setTimeout(() => {
         this.addressselected(this.selectedaddress)
       }, 1000);
     }
     this.getAddressByCustomerId();
-    
+
 
   }
-  selectAdd(e:any)
-  {
-    
-console.log(e)
-this.selectedaddress=e.addressId;
-console.log(this.cityname.toLowerCase())
-console.log(e.cityName.toLowerCase())
+  selectAdd(e: any) {
 
-if(this.cityname.toLowerCase() == e.cityName.toLowerCase() )
-{
-  let s:boolean=true
-  this.sendAddId.emit({ e, s})  
-  console.log('true')
-} 
-else
-{
-this.notmatch=true;
-let s:boolean=false
-this.sendAddId.emit({e, s})  
-console.log('false')
-}
+
+    this.selectedaddress = e.addressId;
+    if (this.cityname.toLowerCase() == e.cityName.toLowerCase()) {
+      let s: boolean = true
+      this.sendAddId.emit({ e, s })
+
+    }
+    else {
+      this.notmatch = true;
+      let s: boolean = false
+      this.sendAddId.emit({ e, s })
+
+    }
 
   }
 
   onaddCountryChange(eve: any) {
     const selectedValue = eve.target.value;
-    console.log(eve.target.value)
-    this.stateList=[];
-    this.cityList=[];
+
+    this.stateList = [];
+    this.cityList = [];
 
     this.userForm.patchValue(
-      { cityName: '',
+      {
+        cityName: '',
         stateId: ''
-       }
+      }
     );
     this.adduserForm.patchValue(
-      { cityName: '',
+      {
+        cityName: '',
         stateId: ''
-       }
+      }
     )
 
     this.getState(1);
   }
   onstateChange(eve: any) {
     const selectedValue = eve.target.value;
-    
-    this.cityList=[];
+
+    this.cityList = [];
     this.userForm.patchValue(
-      { cityName: '',
-        
-       }
+      {
+        cityName: '',
+
+      }
     )
     this.adduserForm.patchValue(
-      { cityName: '',
-        
-       }
+      {
+        cityName: '',
+
+      }
     )
-   // this.getCity(selectedValue)
+    // this.getCity(selectedValue)
   }
 
   validateAllFormFields(formGroup: FormGroup) {
@@ -194,130 +190,124 @@ console.log('false')
 
 
   onAddSubmit() {
-    this.addsubmitted=true;
-    
-if(this.adduserForm.valid)
-{
-  this.addLoader();
-    let data = {
+    this.addsubmitted = true;
 
-      "addressBookDetails": {
-        "customerId": this.custID,
-        "addressId": 0,
-        "RecipientFirstName": this.adduserForm.value['addRecipientFirstName'],
-        "RecipientLastName": this.adduserForm.value['addRecipientLastName'],
-        "email": this.adduserForm.value['addEmail'],
-        "Phone": this.adduserForm.value['addPhone'].toString(),
-        "MobilePhone": this.adduserForm.value['addMobilePhone'].toString(),
-        "address1": this.adduserForm.value['addaddress1'],
-        "address2": this.adduserForm.value['addaddress2'],
-        "landmark": this.adduserForm.value['addlandmark'],
-        "cityName": this.adduserForm.value['addcityName'],
-        "stateId": this.adduserForm.value['addstateId'],
-        "countryId":1,
-        "zipCode":  this.adduserForm.value['addzipCode'].toString(),
-        "relationshipId": 10,
-        "status": true
+    if (this.adduserForm.valid) {
+      this.addLoader();
+      let data = {
+
+        "addressBookDetails": {
+          "customerId": this.custID,
+          "addressId": 0,
+          "RecipientFirstName": this.adduserForm.value['addRecipientFirstName'],
+          "RecipientLastName": this.adduserForm.value['addRecipientLastName'],
+          "email": this.adduserForm.value['addEmail'],
+          "Phone": this.adduserForm.value['addPhone'].toString(),
+          "MobilePhone": this.adduserForm.value['addMobilePhone'].toString(),
+          "address1": this.adduserForm.value['addaddress1'],
+          "address2": this.adduserForm.value['addaddress2'],
+          "landmark": this.adduserForm.value['addlandmark'],
+          "cityName": this.adduserForm.value['addcityName'],
+          "stateId": this.adduserForm.value['addstateId'],
+          "countryId": 1,
+          "zipCode": this.adduserForm.value['addzipCode'].toString(),
+          "relationshipId": 10,
+          "status": true
+        }
       }
+      this._crud.addAddress(data).subscribe(res => {
+        this.removeLoader();
+        if (!res.isEroor) {
+          this.toastr.success(res.successMessage);
+          const button: HTMLButtonElement = this.AddButton.nativeElement;
+          button.click();
+          this.getAddressByCustomerId();
+          this.adduserForm.reset();
+          this.addsubmitted = false;
+        }
+        else {
+          this.toastr.error(res.errorMessage)
+        }
+      });
     }
-    this._crud.addAddress(data).subscribe(res => {
-      this.removeLoader();
-      if (!res.isEroor) {
-        this.toastr.success(res.successMessage);
-        const button: HTMLButtonElement = this.AddButton.nativeElement;
-        button.click();
-        this.getAddressByCustomerId();
-        this.adduserForm.reset();
-        this.addsubmitted=false;
-      }
-      else {
-        this.toastr.error(res.errorMessage)
-      }
-    });
-  } 
-  else{
-    this.validateAllFormFields(this.adduserForm);
-  }
+    else {
+      this.validateAllFormFields(this.adduserForm);
+    }
 
   }
 
 
 
   onSubmit() {
-this.submitted=true;
+    this.submitted = true;
 
-    if(this.userForm.valid)
-    {
+    if (this.userForm.valid) {
       this.addLoader();
-    let data = {
-      "addressId": this.addressId,
-      "addressBookDetails": {
-        "recipientFirstName": this.userForm.value['recipientFirstName'],
-        "recipientLastName": this.userForm.value['recipientLastName'],
-        "email": this.userForm.value['email'],
-        "phone": this.userForm.value['phone'].toString(),
-        "mobilePhone": this.userForm.value['mobilePhone'].toString(),
-        "address1": this.userForm.value['address1'],
-        "address2": this.userForm.value['address2'],
-        "landmark": this.userForm.value['landmark'],
-        "cityName": this.userForm.value['cityName'],
-        "stateId": this.userForm.value['stateId'],
-        "countryId": 1,
-        "zipCode": this.userForm.value['zipCode'].toString(),
-        "relationshipId": 10,
-        "status": true
+      let data = {
+        "addressId": this.addressId,
+        "addressBookDetails": {
+          "recipientFirstName": this.userForm.value['recipientFirstName'],
+          "recipientLastName": this.userForm.value['recipientLastName'],
+          "email": this.userForm.value['email'],
+          "phone": this.userForm.value['phone'].toString(),
+          "mobilePhone": this.userForm.value['mobilePhone'].toString(),
+          "address1": this.userForm.value['address1'],
+          "address2": this.userForm.value['address2'],
+          "landmark": this.userForm.value['landmark'],
+          "cityName": this.userForm.value['cityName'],
+          "stateId": this.userForm.value['stateId'],
+          "countryId": 1,
+          "zipCode": this.userForm.value['zipCode'].toString(),
+          "relationshipId": 10,
+          "status": true
 
+        }
       }
+
+
+      this._crud.updateAddress(data).subscribe(res => {
+        this.removeLoader();
+        if (!res.isEroor) {
+          this.toastr.success(res.successMessage)
+          const button: HTMLButtonElement = this.EditButton.nativeElement;
+          button.click();
+          this.getAddressByCustomerId();
+          this.submitted = false;
+        }
+        else {
+          this.toastr.error(res.errorMessage)
+
+        }
+      });
+
     }
-
-
-    this._crud.updateAddress(data).subscribe(res => {
-      this.removeLoader();
-      if (!res.isEroor) {
-        this.toastr.success(res.successMessage)
-        const button: HTMLButtonElement = this.EditButton.nativeElement;
-        button.click();
-        this.getAddressByCustomerId();
-        this.submitted=false;
-      }
-      else {
-        this.toastr.error(res.errorMessage)
-        
-      }
-    });
-
-  }
   }
 
-  onOptionChange(e:any)
-  {
-    this.notmatch=false;
-    this.selectedAddressData=e.target.value;
-console.log(e.target.value)
-this.deliverAddress= this.filterAddressesByAddressId(e.target.value);
-console.log(this.deliverAddress)
+  onOptionChange(e: any) {
+    this.notmatch = false;
+    this.selectedAddressData = e.target.value;
+
+    this.deliverAddress = this.filterAddressesByAddressId(e.target.value);
+
   }
 
-  addressselected(e:any)
-  {
-    this.notmatch=false;
-    this.selectedAddressData=e;
+  addressselected(e: any) {
+    this.notmatch = false;
+    this.selectedAddressData = e;
 
-this.deliverAddress= this.filterAddressesByAddressId(e);
+    this.deliverAddress = this.filterAddressesByAddressId(e);
 
   }
 
   getAddressByCustomerId() {
     let data = { "customerId": this.custID }
     this._crud.getAddressByCustomerId(data).subscribe(res => {
-      this.originalAddress=res;
-      if(this.originalAddress.length < 4)
-      {
-      this.deliverAddress = res;
+      this.originalAddress = res;
+      if (this.originalAddress.length < 4) {
+        this.deliverAddress = res;
       }
-      else
-      {
-      this.deliverAddress=[]
+      else {
+        this.deliverAddress = []
       }
 
 
@@ -328,8 +318,8 @@ this.deliverAddress= this.filterAddressesByAddressId(e);
 
     this.stateList = [];
     this.countryList = [];
-    this.cityList=[];
-   // this.getCountry();
+    this.cityList = [];
+    // this.getCountry();
     //this.getState(1)
     this.getCity();
   }
@@ -337,7 +327,7 @@ this.deliverAddress= this.filterAddressesByAddressId(e);
 
     this.stateList = [];
     this.countryList = [];
-    this.cityList=[];
+    this.cityList = [];
     this.userForm.reset();
     let data = { "AddressId": addId }
     this.getAddressByAddressId(addId)
@@ -346,7 +336,7 @@ this.deliverAddress= this.filterAddressesByAddressId(e);
   getAddressByAddressId(id: any) {
     let data = { "AddressId": id }
     this._crud.getAddressByAddressId(data).subscribe(res => {
-      
+
 
 
 
@@ -369,11 +359,11 @@ this.deliverAddress= this.filterAddressesByAddressId(e);
         }
       );
 
-      
-    //  this.getCountry();
-    //  this.getState(1);
 
-this.getCity()
+      //  this.getCountry();
+      //  this.getState(1);
+
+      this.getCity()
 
 
       //  this.deliverAddress=res;
@@ -384,7 +374,7 @@ this.getCity()
   getCountry() {
     let data = {}
     this._crud.getCountry(data).subscribe(res => {
-      
+
       this.countryList = res;
     });
   }
@@ -394,7 +384,7 @@ this.getCity()
       countryId: id
     }
     this._crud.getState(data).subscribe(res => {
-      
+
       this.stateList = res;
     });
   }
@@ -404,7 +394,7 @@ this.getCity()
       // stateId: id
     }
     this._crud.getDeliveryCity(data).subscribe(res => {
-      
+
       this.cityList = res;
     });
   }
@@ -414,39 +404,39 @@ this.getCity()
 
 
   deleteAddress(addId: any, custId: any) {
-  
+
     Swal.fire({
-      width:'350px',
-   // imageUrl: '../../assets/images/tick.png',
-    imageHeight: 80,
-    text: 'Do you want to delete the Address',  
-    showCancelButton: true,
-    confirmButtonText:'Okay'
-  }).then((result) => {
-    if (result.isConfirmed) {
-    
-  
-  
-      let data = {
-        "AddressId": addId,
-        "customerId": custId
+      width: '350px',
+      // imageUrl: '../../assets/images/tick.png',
+      imageHeight: 80,
+      text: 'Do you want to delete the Address',
+      showCancelButton: true,
+      confirmButtonText: 'Okay'
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+
+
+        let data = {
+          "AddressId": addId,
+          "customerId": custId
+        }
+        this._crud.deleteAddress(data).subscribe(res => {
+
+
+          if (!res.isEroor) {
+            this.toastr.success(res.successMessage);
+            this.getAddressByCustomerId();
+          }
+          else {
+            this.toastr.error(res.errorMessage)
+          }
+
+          //  this.deliverAddress=res;
+        });
+
       }
-      this._crud.deleteAddress(data).subscribe(res => {
-        
-  
-        if (!res.isEroor) {
-          this.toastr.success(res.successMessage);
-          this.getAddressByCustomerId();
-        }
-        else {
-          this.toastr.error(res.errorMessage)
-        }
-  
-        //  this.deliverAddress=res;
-      });
-  
-    }
-  });
+    });
 
 
   }
@@ -455,35 +445,31 @@ this.getCity()
   // filterAddressesByAddressId(addressIdToFilter: any) {
   //   return this.originalAddress.filter((address: { addressId: any; }) =>
   //    {
-    
+
   //     address.addressId == addressIdToFilter
   //    }
-     
+
   //    );
   // }
 
   filterAddressesByAddressId(addressIdToFilter: any) {
-    
-    if(addressIdToFilter == 'all')
-    {
-      
-return this.originalAddress
+
+    if (addressIdToFilter == 'all') {
+
+      return this.originalAddress
     }
-    else
-    {
-      
-    return this.originalAddress.filter((address: { addressId: any; }) => {
-      return address.addressId === parseInt(addressIdToFilter);
-    });
-  }
+    else {
+
+      return this.originalAddress.filter((address: { addressId: any; }) => {
+        return address.addressId === parseInt(addressIdToFilter);
+      });
+    }
   }
 
-  addLoader()
-  {
+  addLoader() {
     this.renderer.addClass(document.body, 'bodyloader');
   }
-  removeLoader()
-  {
+  removeLoader() {
     this.renderer.removeClass(document.body, 'bodyloader');
   }
 

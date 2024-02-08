@@ -6,10 +6,11 @@
                     <label>Select Address</label>
                 </div>
                 <div class="col-auto">
-                    <select class="form-select" [(ngModel)]="selectedaddress"  (change)="onOptionChange($event)">
-                        <ng-container *ngIf="!selectedAddressData">
-                            <option value="select" disabled selected>Select Delivery Address</option>
+                       <select class="form-select" [(ngModel)]="selectedaddress"  (change)="onOptionChange($event)">
+                        <ng-container *ngIf="selectedaddress == 'select'">
+                            <option value="select" selected>Select Delivery Address</option>
                           </ng-container>
+                          
                         <option [value]="'all'">All</option>
                         <option *ngFor="let a of originalAddress" [value]="a.addressId">{{a.recipientFirstName}},{{a.cityName}}
                         </option>
