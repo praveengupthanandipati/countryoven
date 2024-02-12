@@ -370,4 +370,8 @@ postcustomize(obj:any):Observable<any>{
                         return this.http.post(`${environment.apiUrl}/PaymentConfirmation/Success`,obj)
                       }
 
+
+                      PaymentPaypal(obj:any): Observable<any> {
+                        return this.http.post(`${environment.apiUrl}/payment/paypal`,obj)
+                      }
   }

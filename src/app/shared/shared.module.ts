@@ -14,6 +14,7 @@ import { AddressListComponent } from '../address-list/address-list.component';
 import { Select2Module } from 'ng-select2-component';
 import { ProductItemComponent } from '../components/product-item/product-item.component';
 import { StickyRibbonComponent } from '../components/sticky-ribbon/sticky-ribbon.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { StickyRibbonComponent } from '../components/sticky-ribbon/sticky-ribbon
     RouterModule,
     Select2Module,
     ReactiveFormsModule,
+    NgxPayPalModule,
     ToastrModule.forRoot({
       timeOut: 3000,
      positionClass: 'toast-bottom-center',
@@ -59,7 +61,8 @@ import { StickyRibbonComponent } from '../components/sticky-ribbon/sticky-ribbon
     MainnavComponent,
     FooterComponent,
     AddressListComponent,
-    ProductItemComponent 
+    ProductItemComponent ,
+    NgxPayPalModule
     
    
   ],

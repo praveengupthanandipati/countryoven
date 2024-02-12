@@ -31,12 +31,7 @@
                      <ng-container *ngIf="!showwalletbtn">
                         <div class="card-block background-whitedark py-3 my-2 border-bottom">
                             <div class="d-flex">
-                                <div class="px-3">
-                                    <div>
-                                        <input class="form-check-input" type="radio" name="radioNoLabel"
-                                             value="" aria-label="...">
-                                    </div>
-                                </div>
+                                
                                 <div>
                                     <p><strong>Pay in $ (USD)</strong></p>
                                     <p class="font-gray pt-2">Accepts all Credit Cards,Debit Cards and Net Banking Click
@@ -54,12 +49,7 @@
 
                         <div class="card-block background-whitedark py-3 my-2 border-bottom">
                             <div class="d-flex">
-                                <div class="px-3">
-                                    <div>
-                                        <input class="form-check-input" type="radio" name="radioNoLabel"
-                                           value="" aria-label="...">
-                                    </div>
-                                </div>
+                               
                                 <div>
                                     <p><strong>Pay Through Paypal in $ (USD)</strong></p>
                                     <p class="font-gray pt-2">Click on below button to pay through PayPal</p>
@@ -68,7 +58,16 @@
                                         <li>Note: The amount will be deducted in USD Dollars</li>
                                     </ul>
                                     <div class="pt-1">
-                                        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-2V841322LP751933M"
+                                        <!-- <button (click)="makePayment()">Pay with PayPal</button> -->
+                                        <!-- <ngx-paypal [config]="payPalConfig"></ngx-paypal> -->
+                                    
+                                        <!-- <div id="paypal-button-container" *ngIf="paypalConfig"></div> -->
+                                        <!-- ngx-paypal button -->
+                                        <ngx-paypal #ngxPayPal [config]="payPalConfig" *ngIf="paypalClick"></ngx-paypal>
+                                        <!-- <ngx-paypal [config]="payPalConfig"></ngx-paypal> -->
+                                        <!-- href="https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-2V841322LP751933M" -->
+                                        <a (click)="PaymentPaypal()" 
+                                        
                                             target="_blank" class="btn px-3" style="background:#ffc43a">
                                             <img src="https://www.paypalobjects.com/images/shared/paypal-logo-129x32.svg"
                                                 alt="" style="width:90px;">
@@ -80,12 +79,7 @@
 
                         <div class="card-block background-whitedark py-3 my-2 border-bottom">
                             <div class="d-flex">
-                                <div class="px-3">
-                                    <div>
-                                        <input class="form-check-input" type="radio" name="radioNoLabel"
-                                             value="" aria-label="...">
-                                    </div>
-                                </div>
+                               
                                 <div>
                                     <p><strong>Pay in <span
                                                 class="icon-inr icomoon font-semibold small"></span>INR</strong></p>
@@ -112,7 +106,7 @@
 </section>
 
 <!-- Modal -->
-<div class="modal fade" id="payment-card" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" *ngIf="false" id="payment-card" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
