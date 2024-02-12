@@ -12,7 +12,7 @@ export class AppComponent implements OnInit{
   
   sessionId:any;
   ngOnInit(): void {
-    console.log(window.paypal)
+    
     window.scrollTo(0, 0);
     localStorage.setItem('country', 'USA')
   this.router.events.subscribe((evt) => {
