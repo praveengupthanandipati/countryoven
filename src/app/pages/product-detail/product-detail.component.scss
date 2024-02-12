@@ -60,10 +60,26 @@
   font-size: $fsize - 1;
   h1 {
     font-size: $fsize + 7;
+
+    @include max(map-get($breakpoints, "sm")) {
+      font-size: $fsize + 3;
+    }
   }
   .price {
     .offer-price {
       font-size: $fsize * 3;
+
+      @include max(map-get($breakpoints, "sm")) {
+        font-size: $fsize * 2;
+      }
+    }
+  }
+  .basic-features,
+  .form-select {
+    font-size: $fsize - 1;
+
+    @include max(map-get($breakpoints, "sm")) {
+      font-size: $fsize - 2;
     }
   }
 }
@@ -137,9 +153,21 @@
   background: map-get($colors, lightblue);
   min-height: 420px;
 
+  @include max(map-get($breakpoints, "sm")) {
+    padding: 10px;
+  }
+
   .nav-link {
     text-transform: uppercase;
     color: map-get($colors, black);
+    background: map-get($colors, white);
+
+    @include max(map-get($breakpoints, "md")) {
+      width: 46%;
+      margin: 1%;
+      font-size: $fsize - 3;
+      padding: 5px 10px;
+    }
   }
   .nav-link.active {
     background: map-get($colors, primary);
@@ -162,5 +190,31 @@
   }
 }
 
-.breadcrumb a{ cursor: pointer;}
-.is-invalid{ border:1px solid red}
+.breadcrumb a {
+  cursor: pointer;
+}
+.is-invalid {
+  border: 1px solid red;
+}
+
+.addtocart-btn {
+  .color-btn {
+    @include max(map-get($breakpoints, "sm")) {
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      z-index: 99;
+      margin: 0;
+      padding: 10px;
+      left: 0;
+      right: 0;
+    }
+  }
+  .displaytime {
+    @include max(map-get($breakpoints, "sm")) {
+      width: 100%;
+      text-align: center;
+      display: block;
+    }
+  }
+}

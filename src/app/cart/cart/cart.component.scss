@@ -85,3 +85,11 @@
 
 .noproduct{     text-align: center;
   font-size: 23px; & div{ display: block; text-align: center; margin: 20px 0 0 0;}}
+
+  .smallimg{
+    height: 40px;
+
+    @include max(map-get($breakpoints, "sm")){
+      height: 25px;
+    }
+  }

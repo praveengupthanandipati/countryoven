@@ -47,21 +47,34 @@
     border: 1px solid map-get($colors, lightgray);
     color: map-get($colors, black);
     text-decoration: none;
+
+    @include max(map-get($breakpoints, "sm")) {
+      width: 100%;
+    }
   }
 
   .select-currency {
     .form-select {
       width: 100%;
+      font-size: $fsize;
+
+      @include max(map-get($breakpoints, "sm")) {
+        font-size: $fsize - 2;
+      }
     }
   }
   .deliver {
-    padding: 14px 15px; 
+    padding: 14px 15px;
 
     .icon-pin {
       color: map-get($colors, primary);
     }
     .h6 {
       font-size: $fsize;
+
+      @include max(map-get($breakpoints, "sm")) {
+        font-size: $fsize - 3;
+      }
 
       span.pincode {
         color: map-get($colors, primary);

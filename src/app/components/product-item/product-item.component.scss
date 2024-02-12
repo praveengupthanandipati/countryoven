@@ -54,29 +54,34 @@
       height: 45px;
       @include minMax(
         map-get($breakpoints, "xs"),
-        map-get($breakpoints, "sm")
-      ) {        
+        map-get($breakpoints, "md")
+      ) {
         line-height: 1.1rem;
+        font-size: $fsize - 3;
+        height: auto;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+        white-space: nowrap;
+
       }
       a {
         color: map-get($colors, black);
       }
     }
 
-    .item-footer {
-      font-size: $fsize - 2;
+    .item-footer {    
+      font-size: $fsize - 2;  
+      @include max(map-get($breakpoints, "md")) {
+        font-size: $fsize - 4;
+      }
       .icomoon {
         color: map-get($colors, primary);
         margin-right: 5px;
       }
       .deliver-date {
         p {
-          color: map-get($colors, black);
-          font-size: $fsize - 2;
-
-          @include max(map-get($breakpoints, "sm")) {
-            font-size: $fsize - 4;
-          }
+          color: map-get($colors, black);  
 
           span {
             color: map-get($colors, primary);
@@ -88,19 +93,19 @@
   &:hover {
     @include box-shadow(0, 3px, 8px, lighten(map-get($colors, gray), 20%));
 
-    .item-title{
-      margin-top:-15px;
+    .item-title {
+      margin-top: -15px;
     }
 
-    .product-item-figure{
-      img{
+    .product-item-figure {
+      img {
         transform: scale(1.06, 1.06);
       }
     }
   }
 }
 
-.tagbadge{ 
+.tagbadge {
   position: absolute;
   top: 0;
   left: 0;
@@ -108,8 +113,14 @@
   color: #ffffff;
   padding: 5px;
   text-transform: uppercase;
-  border-top-left-radius:10px;
+  border-top-left-radius: 10px;
 }
-  .greencls{ background: green;}
-  .errorcls{ background: #ff0000;}
-  .bluecls{background:#005BC2}
+.greencls {
+  background: green;
+}
+.errorcls {
+  background: #ff0000;
+}
+.bluecls {
+  background: #005bc2;
+}
