@@ -2,13 +2,13 @@
 <app-header></app-header>
 <section class="cart-subpage">
     <div class="container" *ngIf="!loader">
-        <h1 class="h5 font-medium pb-3">Shopping Cart ({{cartCount}})</h1>
+        <h1 class="h5 font-medium pb-3 sub-page-title">Shopping Cart ({{cartCount}})</h1>
         <div class="row" *ngIf="cartItems.length > 0">
             <div class="col-md-8">
                 <div class="deliver-location d-flex justify-content-between p-2 border">
                     <div class="d-flex">
                         <span class="icon-route h1 font-primary"></span>
-                        <div class="ps-3 align-self-center d-flex">
+                        <div class="ps-3 align-self-center d-sm-flex">
                             <div class="align-self-center">
                                 <span>Deliver Date: </span>
                                 <span class="font-primary">{{displaydeliveryDate}}</span>
@@ -16,7 +16,7 @@
                             <!-- <span
                                     class="font-black d-inline-block ps-3 font-semibold">{{city}}</span> -->
 
-                            <div class="px-3 align-self-center">
+                            <div class="px-md-3 align-self-center">
                                 <span>Deliver Time: </span>
                                 <span class="font-primary">{{displaydeliveryTime}}</span>
                             </div>
@@ -45,13 +45,13 @@
                 </div>
 
                 <div class="cart-product-item border p-2 mb-3" *ngFor="let CartItem of cartItems; let i = index">
-                    <div class="row">  
-                        <div class="col-md-3">
+                    <div class="row">
+                        <div class="col-md-2 col-3">
                             <a [routerLink]="'/' + cityName + '/send-online/' + CartItem.seoProductName">
                                 <img src="{{CartItem.produtImage}}" alt="" class="img-fluid">
                             </a>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-10 col-9">
                             <div class="row justify-content-between">
                                 <div class="col-md-6">
                                     <div class="d-flex justify-content-between flex-column content-cart-col">
@@ -70,9 +70,9 @@
                                                 <!-- <a (click)="updateCartItem(CartItem.sNo, CartItem.quantity)"
                                                     class="btn small btn-primary btn-sm ms-2">Update</a> -->
                                             </div>
-                                          
 
-                                          
+
+
                                             <!-- <img *ngIf="CartItem.customPhoto" style="width:50px; margin-top:5px" src="https://r6x6m2y8.stackpathcdn.com/productimages/small/tingling-pineapple-punch-cake.jpg" /> -->
 
                                             <ul class="list-style-desc mt-2">
@@ -80,7 +80,7 @@
                                                     <strong>{{CartItem.productId}}</strong>
                                                 </li>
                                                 <li *ngIf="CartItem.customPhoto">Photo :
-                                                    <img style="height: 40px; width:auto" [src]="CartItem.customPhoto" />
+                                                    <img class="smallimg" [src]="CartItem.customPhoto" />
                                                 </li>
 
                                                 <li *ngIf="CartItem.additionalVoucher">Voucher :
@@ -94,7 +94,7 @@
                                                     <strong><span
                                                             [class]="currencyClass"></span>{{CartItem.egglessPrice}}</strong>
                                                 </li>
-                                               
+
                                                 <li *ngIf="CartItem.flavour">Flavour :
                                                     <strong>{{CartItem.flavour}}</strong>
                                                 </li>
@@ -109,7 +109,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="d-flex justify-content-between flex-column content-cart-col">
+                                    <div class="d-md-flex justify-content-between flex-column content-cart-col">
                                         <div class="price py-2">
                                             <div class="offer-price text-end font-bold"><span class=" icomoon"
                                                     [class]="currencyClass"></span>{{CartItem.subTotal}}
@@ -124,7 +124,8 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="py-2 px-4 background-white mb-2 text-danger small font-bold">{{CartItem.outOfDateMessage}}</p>
+                        <p class="py-2 px-4 background-white mb-2 text-danger small font-bold">
+                            {{CartItem.outOfDateMessage}}</p>
                     </div>
                 </div>
             </div>
@@ -141,7 +142,8 @@
                         <p>Delivery Charges</p>
                         <h6 class="text-end font-green"> <ng-container
                                 *ngIf="firstlistItem?.deliveryCharges ==0">FREE</ng-container><ng-container
-                                *ngIf="firstlistItem?.deliveryCharges >0"><span class="small" [class]="currencyClass"></span>{{firstlistItem?.deliveryCharges}}</ng-container>
+                                *ngIf="firstlistItem?.deliveryCharges >0"><span class="small"
+                                    [class]="currencyClass"></span>{{firstlistItem?.deliveryCharges}}</ng-container>
                         </h6>
                     </div>
 
@@ -150,18 +152,20 @@
                         <h6 class="text-end font-semibold"><span class="icomoon font-bold small"
                                 [class]="currencyClass"></span>{{firstlistItem?.grandTotal}}</h6>
                     </div>
-                    <button *ngIf="!showcheckoutbtn" [disabled]="outofdatemessage" class="color-btn d-block width100p border-0"
-                        data-bs-toggle="modal" data-bs-target="#AddonsProducts" (click)="addOnProducts('0')">Continue to
+                    <button *ngIf="!showcheckoutbtn" [disabled]="outofdatemessage"
+                        class="color-btn d-block width100p border-0" data-bs-toggle="modal"
+                        data-bs-target="#AddonsProducts" (click)="addOnProducts('0')">Continue to
                         Checkout</button>
-                        <button *ngIf="showcheckoutbtn" [disabled]="outofdatemessage" class="color-btn d-block width100p border-0"
-                         (click)="gotocheckout()">Continue to
+                    <button *ngIf="showcheckoutbtn" [disabled]="outofdatemessage"
+                        class="color-btn d-block width100p border-0" (click)="gotocheckout()">Continue to
                         Checkout</button>
-                     
+
 
                 </div>
-                <div class="d-flex justify-content-between">
-                    <a routerLink="/" class="color-border-btn d-block ">Continue Shopping</a>
-                    <a class="color-btn d-block"  data-bs-toggle="modal" data-bs-target="#AddonsProducts" (click)="addOnProducts('1')">Addons to Product</a>
+                <div class="d-md-flex justify-content-between">
+                    <a routerLink="/" class="color-border-btn d-block mb-2 ">Continue Shopping</a>
+                    <a class="color-btn d-block" data-bs-toggle="modal" data-bs-target="#AddonsProducts"
+                        (click)="addOnProducts('1')">Addons to Product</a>
                 </div>
             </div>
         </div>
@@ -169,7 +173,6 @@
         <div class="row" *ngIf="cartItems.length == 0">
             <div class="col-12 noproduct"> No Products found.
                 <div> <a routerLink="/" class="">Continue Shopping</a></div>
-
             </div>
         </div>
 

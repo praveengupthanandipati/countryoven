@@ -42,6 +42,10 @@ body {
   border-radius: 5px;
   position: relative;
 
+  @include max(map-get($breakpoints, "sm")) {
+    padding: 5px 10ox 5px 10px;
+  }
+
   &:after {
     content: "\e927";
     font-family: "icomoon" !important;
@@ -236,6 +240,11 @@ body {
 
 .content-cart-col {
   height: 190px;
+
+  @include max(map-get($breakpoints, "sm")){
+    height: auto;
+    font-size: $fsize - 2;
+  }
 }
 .applycoupons {
   border: 1px dotted map-get($colors, black);
@@ -259,7 +268,7 @@ body {
 
   @include max(map-get($breakpoints, "sm")) {
     font-size: $fsize - 2;
-    padding: 15px 0;
+    padding: 10px 0;
   }
 
   h1 {
@@ -269,7 +278,7 @@ body {
     color: map-get($colors, black);
 
     @include max(map-get($breakpoints, "sm")) {
-      font-size: $fsize + 3;
+      font-size: $fsize;
     }
 
     span {
@@ -309,8 +318,9 @@ body {
   .h6 {
     padding-bottom: 15px;
   }
+
   p {
-    padding-bottom: 15px;
+    padding-bottom: 12px;
     color: darken(map-get($colors, gray), 25%);
     font-size: $fsize - 1;
 
@@ -320,6 +330,15 @@ body {
 
     &:last-child {
       padding-bottom: 0;
+    }
+  }
+  ul > li {
+    margin: 0;
+    padding: 0;
+    font-size: $fsize - 1;
+
+    @include max(map-get($breakpoints, "sm")) {
+      font-size: $fsize - 2;
     }
   }
 
@@ -411,7 +430,7 @@ header.fixed-top {
   position: fixed;
   top: calc(50% - 90px);
   right: 0;
-  z-index: 999;
+  z-index: 9999;
   @include box-shadow(0, 0, 10px, map-get($colors, gray));
 
   .wapp {
@@ -456,8 +475,8 @@ header.fixed-top {
 }
 
 .fixedpopup {
-  @include max(map-get($breakpoints, "sm")){
-    padding:10px;
+  @include max(map-get($breakpoints, "sm")) {
+    padding: 10px;
   }
   .modal-content {
     overflow: auto;
@@ -466,7 +485,7 @@ header.fixed-top {
   }
 }
 
-.icon-payment {  
+.icon-payment {
   width: 84px;
   height: 84px;
   border-radius: 50px;
@@ -480,4 +499,6 @@ header.fixed-top {
   }
 }
 
-.bodyloader .loader-overlay{ display: flex !important;}
+.bodyloader .loader-overlay {
+  display: flex !important;
+}

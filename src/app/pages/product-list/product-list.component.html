@@ -18,8 +18,8 @@
         <div class="custom-container">
             <!-- filters-->
             <div class="products-filters d-md-flex justify-content-md-between">
-                <div class="d-md-flex">
-                    <nav aria-label="breadcrumb" class="align-self-center">
+                <div class="d-md-flex ">
+                    <nav aria-label="breadcrumb" class="align-self-center d-none d-md-block">
                         <ol class="breadcrumb pb-0 mb-0">
                             <li class="breadcrumb-item"><a href="/">Home</a></li>
                             <li class="breadcrumb-item"><a (click)="routeCity(cityname)">{{cityname}}</a></li>
@@ -97,10 +97,10 @@
             <ng-container *ngIf="products && products.length >0">
 
                 <div class="products-list-items">
-                    <h6 class="font-retular py-2"> Total Products found:<span class="font-bold"> {{totalCount}}</span>
+                    <h6 class="font-regular py-2"> Total Products found:<span class="font-bold"> {{totalCount}}</span>
                     </h6>
                     <div class="row row-flex">
-                        <div class="col-md-3 col-6 mb-4" *ngFor="let productitem of products">
+                        <div class="col-md-3 col-6 mb-lg-4" *ngFor="let productitem of products">
                             <app-product-item [Productvalue]="productitem" class="app-product-col"></app-product-item>
                         </div>
                     </div>

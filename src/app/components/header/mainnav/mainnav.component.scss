@@ -45,22 +45,22 @@
         padding: 10px 15px;
         font-size: $fsize - 1;
 
-        .new{
-          font-size:$fsize - 5;
-          background:map-get($colors, primary);
-          color:map-get($colors, white);
-          padding:1px 5px;
+        .new {
+          font-size: $fsize - 5;
+          background: map-get($colors, primary);
+          color: map-get($colors, white);
+          padding: 1px 5px;
           display: inline-block;
-          border-radius:5px;
+          border-radius: 5px;
         }
 
         &:hover {
           color: map-get($colors, white);
           background: map-get($colors, primary);
 
-          .new{
-            background:map-get($colors, white);
-            color:map-get($colors, primary);
+          .new {
+            background: map-get($colors, white);
+            color: map-get($colors, primary);
           }
         }
       }
@@ -70,7 +70,14 @@
       min-width: 225px;
       min-height: 400px;
 
-      @include max(map-get($breakpoints, "lg")) {
+      @include max(map-get($breakpoints, "lg")){
+        min-height: auto;
+      }
+
+      @include minMax(
+        map-get($breakpoints, "md"),
+        map-get($breakpoints, "lg")
+      ) {
         padding-right: 0;
         margin-right: 0;
         border-right: none;

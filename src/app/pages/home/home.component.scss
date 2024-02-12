@@ -35,6 +35,10 @@
 
 .product-row {
   padding: 0 0 30px 0;
+
+  @include max(map-get($breakpoints, "sm")) {
+    padding-bottom: 10px;
+  }
 }
 
 .row-flex {
@@ -50,10 +54,23 @@
   }
 }
 
-.home-banner-swiper{
-  .carousel-item{
-    img{
+.home-banner-swiper {
+  .carousel-item {
+    img {
       cursor: pointer;
+    }
+  }
+}
+
+.section-heading {
+  .h4 {
+    @include max(map-get($breakpoints, "md")) {
+      font-size: $fsize;
+    }
+  }
+  .color-btn {
+    @include max(map-get($breakpoints, "sm")) {
+      font-size: $fsize - 3;
     }
   }
 }

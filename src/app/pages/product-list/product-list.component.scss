@@ -8,19 +8,20 @@
     .filter-dropdowns {
       button.dropdown-toggle {
         background: none;
-        padding: 7px;
+        padding: 3px 7px;
         border-radius: 5px;
         border: 1px solid map-get($colors, gray);
         font-size: $fsize - 1;
 
         @include max(map-get($breakpoints, "sm")) {
-          padding: 5px;
-          width: 95%;
+          padding: 2px 5px;
+          width: 100%;
         }
       }
       .item-filter-dropdown {
         @include max(map-get($breakpoints, "sm")) {
-          width: 33%;
+          width: 22%;
+          margin-right: 10px;
         }
       }
       .dropdown-item {
@@ -85,16 +86,18 @@
   }
 }
 
-.breadcrumb-item{
-  font-size:$fsize - 2;
-  a{
+.breadcrumb-item {
+  font-size: $fsize - 2;
+  a {
     cursor: pointer;
-    &:hover{ color: #bf0067 !important;}
+    &:hover {
+      color: #bf0067 !important;
+    }
   }
 }
 
-.loadmore{     
+.loadmore {
   color: map-get($colors, white);
   font-weight: 600;
-  cursor: pointer;}
-  
+  cursor: pointer;
+}
