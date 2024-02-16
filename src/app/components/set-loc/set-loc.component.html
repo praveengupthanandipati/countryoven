@@ -1,4 +1,4 @@
-<div class="modal-content">
+<div class="modal-content select-delivery-location">
     <div class="modal-header p-3 background-lightgray">
         <article>
             <h4 class="modal-title font-bold text-black">Select Delivery Location </h4>
@@ -9,12 +9,7 @@
     <div class="modal-body" style="overflow-y: visible;">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 text-center">
-                    <article class="mx-auto pt-2">
-                        <h5 class="offcanvas-title font-bold text-black text-center" id="offcanvasTopLabel">Select
-                            More Cities We deliver
-                        </h5>
-                    </article>
+                <div class="col-md-12 text-center">                   
                     <div class="py-3">
                         <a class="badge rounded-pill d-inline-block border morecity px-3 py-2 mb-2"
                             *ngFor="let c of anotherCity" href="javascript:void(0)" (click)="selectedCity(c)"
@@ -45,7 +40,7 @@
                 </div>
             </div>
             <div class="row pt-4">
-                <div class="col-md-2 col-6 col" *ngFor="let s of desireCity">
+                <div class="col-lg-2 col-md-4 col-6 col" *ngFor="let s of desireCity">
                     <a class="citycol rounded text-center mx-auto" (click)="selectedCity(s.name)"
                         [ngClass]="{'selected': city === s.name}" href="javascript:void(0)">
                         <span class="icomoon" [ngClass]="s.icon"></span>

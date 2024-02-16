@@ -20,25 +20,26 @@
       display: inline-block;
       text-align: center;
       line-height: 53px;
-      background: map-get($colors, white);
+      background: map-get($colors, primary);
       z-index: 999;
-      @include transition;
+      @include transition(all, 0.3s ease);
+      cursor: pointer;
 
       @include max(map-get($breakpoints, "sm")) {
         bottom: 45px;
       }
 
       &:hover {
-        background: map-get($colors, primary);
+        background: map-get($colors, white);
 
         .icomoon {
-          color: map-get($colors, white);
+          color: map-get($colors, primary);
         }
       }
 
       .icomoon {
         font-size: $fsize + 6;
-        color: map-get($colors, primary);
+        color: map-get($colors, white);
       }
     }
 
