@@ -29,7 +29,7 @@
 </ng-container>
 
                      <ng-container *ngIf="!showwalletbtn">
-                        <div class="card-block background-whitedark py-3 my-2 border-bottom">
+                        <!-- <div class="card-block background-whitedark py-3 my-2 border-bottom">
                             <div class="d-flex">
                                 
                                 <div>
@@ -45,7 +45,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="card-block background-whitedark py-3 my-2 border-bottom">
                             <div class="d-flex">
@@ -66,12 +66,12 @@
                                         <ngx-paypal #ngxPayPal [config]="payPalConfig" *ngIf="paypalClick"></ngx-paypal>
                                         <!-- <ngx-paypal [config]="payPalConfig"></ngx-paypal> -->
                                         <!-- href="https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-2V841322LP751933M" -->
-                                        <a (click)="PaymentPaypal()" 
+                                        <!-- <a (click)="PaymentPaypal()" 
                                         
                                             target="_blank" class="btn px-3" style="background:#ffc43a">
                                             <img src="https://www.paypalobjects.com/images/shared/paypal-logo-129x32.svg"
                                                 alt="" style="width:90px;">
-                                        </a>
+                                        </a> -->
                                     </div>
                                 </div>
                             </div>

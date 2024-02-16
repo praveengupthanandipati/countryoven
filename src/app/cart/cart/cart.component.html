@@ -163,9 +163,9 @@
 
                 </div>
                 <div class="d-md-flex justify-content-between">
-                    <a routerLink="/" class="color-border-btn d-block mb-2 ">Continue Shopping</a>
-                    <a class="color-btn d-block" data-bs-toggle="modal" data-bs-target="#AddonsProducts"
-                        (click)="addOnProducts('1')">Addons to Product</a>
+                    <a routerLink="/" class="color-border-btn d-block mb-2 cbtn ">Continue Shopping</a>
+                    <button class="color-btn d-block cbtn mb-2"  [disabled]="outofdatemessage" data-bs-toggle="modal" data-bs-target="#AddonsProducts"
+                        (click)="addOnProducts('1')">Addons to Product</button>
                 </div>
             </div>
         </div>

@@ -149,7 +149,7 @@ else
       {
         if(res.couponType =='Instant')
         {
-        this.totalAmount=this.originalTotalAmount - res.maxDiscount;
+        this.totalAmount=(this.originalTotalAmount - res.maxDiscount).toFixed(2);
         this.finalamount=this.totalAmount;
         this.appliedDiscount=res.maxDiscount
         }
