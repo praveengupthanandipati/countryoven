@@ -1,7 +1,7 @@
 <div class="app-product-item">
     <figure class="product-item-figure">
         <!-- <a [routerLink]="'/product-detail/' + Productvalue.seoProductName" > -->
-            <a [routerLink]="'/'+city + '/send-online/' + Productvalue.seoProductName" >
+        <a [routerLink]="'/'+city + '/send-online/' + Productvalue.seoProductName">
 
 
             <!-- hyderabad/send-online/ -->
@@ -12,28 +12,30 @@
     </figure>
     <div class="item-title p-2 p-md-3 bg-white">
         <h5>
-            <a  [routerLink]="'/'+city + '/send-online/' + Productvalue.seoProductName"  href="javascript:void(0)" class="font-semibold">{{Productvalue.productName}}</a>
+            <a [routerLink]="'/'+city + '/send-online/' + Productvalue.seoProductName" href="javascript:void(0)"
+                class="font-semibold">{{Productvalue.productName}}</a>
         </h5>
         <div class="price d-flex py-md-2 border-bottom">
-            <div class="offer-price font-bold"><span
-                    class="icomoon font-bold" [class]="currencyClass"></span>{{Productvalue.dicountPrice}}</div>
+            <div class="offer-price font-bold"><span class="icomoon font-bold"
+                    [class]="currencyClass"></span>{{Productvalue.dicountPrice}}</div>
             <ng-container *ngIf="Productvalue.discount > 0">
                 <div class="mrp font-semi-bold align-self-center px-2">
-                    <span class="icon-issr icomoon font-bold" [class]="currencyClass"></span>{{Productvalue.productPrice}}
+                    <span class="icon-issr icomoon font-bold"
+                        [class]="currencyClass"></span>{{Productvalue.productPrice}}
                 </div>
                 <div class="offer-percentage align-self-center "><small
                         class="font-bold">{{Productvalue.discount}}%</small></div>
             </ng-container>
         </div>
-        <div class="d-md-flex justify-content-between pt-2 item-footer">
-            <div >
-                <p *ngIf="Productvalue.weightText">Weight: <span class="font-bold">{{Productvalue.weightText}}</span></p>
-                
+        <div class="d-flex justify-content-between pt-2 item-footer">
+            <div>
+                <p *ngIf="Productvalue.weightText"><span class="font-bold">{{Productvalue.weightText}}</span></p>
+
                 <!-- <span class="icon-star icomoon"></span>
                 <span>{{Productvalue.Rating}}</span> -->
             </div>
             <div class="deliver-date">
-                <p class="font-semibold">Delivery: <span>{{Productvalue.leadTimeDays}}</span></p>
+                <p class="font-semibold"><span class="me-0 icon-calendar icomoon"></span> &nbsp; <span>{{Productvalue.leadTimeDays}}</span></p>
             </div>
         </div>
     </div>

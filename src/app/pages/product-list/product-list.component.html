@@ -1,5 +1,5 @@
 <section class="subpage">
-    <div class="list-products-header">
+    <div class="list-products-header d-none d-md-block">
         <div class="custom-container" [innerHtml]="metaData?.richSnippetContent">
             <!-- <h1 class="font-extrabold text-uppercase">Send Cakes to Hyderabad <span class="font-regular">25 of 497
                     Cakes</span></h1>
@@ -19,7 +19,7 @@
             <!-- filters-->
             <div class="products-filters d-md-flex justify-content-md-between">
                 <div class="d-md-flex ">
-                    <nav aria-label="breadcrumb" class="align-self-center d-none d-md-block">
+                    <nav aria-label="breadcrumb" class="align-self-center d-none d-md-block pe-3">
                         <ol class="breadcrumb pb-0 mb-0">
                             <li class="breadcrumb-item"><a href="/">Home</a></li>
                             <li class="breadcrumb-item"><a (click)="routeCity(cityname)">{{cityname}}</a></li>
@@ -28,6 +28,8 @@
                             <li class="breadcrumb-item active" *ngIf="breadTitle">{{breadTitle}}</li>
                         </ol>
                     </nav>
+                    <h6 class="font-regular p-2 font-primary"> Total Products found:<span class="font-bold"> 40 of {{totalCount}}</span>
+                    </h6>
                     <div class="filter-dropdowns d-flex ps-md-5 align-self-center flex-wrap">
 
                         <div class="d-md-flex ms-md-2 mb-2 mb-md-0 item-filter-dropdown"
@@ -97,8 +99,7 @@
             <ng-container *ngIf="products && products.length >0">
 
                 <div class="products-list-items">
-                    <h6 class="font-regular py-2"> Total Products found:<span class="font-bold"> {{totalCount}}</span>
-                    </h6>
+                  
                     <div class="row row-flex">
                         <div class="col-md-3 col-6 mb-lg-4" *ngFor="let productitem of products">
                             <app-product-item [Productvalue]="productitem" class="app-product-col"></app-product-item>
@@ -108,14 +109,10 @@
             </ng-container>
             <ng-container *ngIf="!(products && products.length >0) && !loading">
                 <app-noproducts-found></app-noproducts-found></ng-container>
-
-
-            <div class="row justify-content-center pb-4">
-                <div class="col-md-6 ">
-                    <a *ngIf="isload" (click)="loadmore()" class="loadmore color-btn w-100 d-block">Load More</a>
-                </div>
-
-            </div>
+                
+                    <div class="p-4 mx-auto text-center">
+                        <a *ngIf="isload" (click)="loadmore()" class="loadmore color-btn d-inline-block rounded-btn">Load More</a>
+                    </div>
 
             <!-- page nav -->
             <!-- <div class="row pagenavrow border-top border-bottom mb-4"

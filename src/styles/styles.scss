@@ -34,16 +34,20 @@ body {
   margin: 0 auto;
 }
 
+.rounded-btn {
+  border-radius: 50px!important;
+}
+
 .default-btn {
   font-size: $fsize + 1;
   text-align: center;
-  padding: 7px 20px 7px 15px;
+  padding: 10px 25px 10px 25px;
   @include transition(all, 0.3s ease);
-  border-radius: 5px;
+  border-radius: 2px;
   position: relative;
 
   @include max(map-get($breakpoints, "sm")) {
-    padding: 5px 10ox 5px 10px;
+    padding: 5px 10px 5px 10px;
   }
 
   &:after {
@@ -241,7 +245,7 @@ body {
 .content-cart-col {
   height: 190px;
 
-  @include max(map-get($breakpoints, "sm")){
+  @include max(map-get($breakpoints, "sm")) {
     height: auto;
     font-size: $fsize - 2;
   }
@@ -262,7 +266,7 @@ body {
 //product list header styles
 .list-products-header {
   background: map-get($colors, lightblue);
-  padding: 30px 0;
+  padding: 15px 0;
   font-size: $fsize - 1;
   color: map-get($colors, gray);
 
@@ -289,13 +293,13 @@ body {
   .filter-links {
     a {
       color: map-get($colors, primary);
-      padding: 8px 20px;
+      padding: 6px 15px;
       border: 1px solid;
       font-size: $fsize;
       border-radius: 5px;
       @include transition(all 0.2s ease);
       display: inline-block;
-      margin: 15px 15px 0 0;
+      margin: 10px 10px 0 0;
 
       @include max(map-get($breakpoints, "sm")) {
         padding: 3px;
@@ -479,9 +483,14 @@ header.fixed-top {
     padding: 10px;
   }
   .modal-content {
-    overflow: auto;
-    height: calc(100vh - 100px);
+    height: calc(60vh - 100px);
     background: #fff;
+    margin: 0 auto;
+
+    @include max(map-get($breakpoints, "lg")) {
+      width: 100%;
+      height: calc(100vh - 100px);
+    }
   }
 }
 

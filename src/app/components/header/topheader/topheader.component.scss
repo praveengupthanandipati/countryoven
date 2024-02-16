@@ -4,9 +4,13 @@
   background: map-get($colors, primary);
   color: map-get($colors, white);
   @include transition(all, 0.3s ease);
+  padding: 5px 0;
 
   @include max(map-get($breakpoints, "lg")) {
     display: none;
+  }
+  p {
+    font-size: $fsize - 1;
   }
 
   .offers {
@@ -25,7 +29,6 @@
     }
   }
   .nav {
-    padding-top: 7px;
     .nav-link {
       color: map-get($colors, white);
       text-transform: uppercase;

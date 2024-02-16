@@ -25,13 +25,13 @@
         width: 25%;
       }
       img {
-        width: 95px;
-        height: 95px;
+        width: 70px;
+        height: auto;
         @include minMax(
           map-get($breakpoints, "xs"),
           map-get($breakpoints, "sm")
         ) {
-          width: 65px;
+          width: 40px;
           min-width: auto;
         }
 
@@ -39,7 +39,7 @@
           map-get($breakpoints, "sm"),
           map-get($breakpoints, "lg")
         ) {
-          width: 65px;
+          width: 60px;
           min-width: auto;
         }
       }
@@ -51,7 +51,7 @@
           map-get($breakpoints, "xs"),
           map-get($breakpoints, "sm")
         ) {
-          font-size: 13px;
+          font-size: 11px;
           text-transform: capitalize;
         }
         @include minMax(
