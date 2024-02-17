@@ -240,6 +240,75 @@ this.route.navigateByUrl('failure')
         };
     }
 
+/* payu code */
+payupayment()
+{
+  let data = {
+    
+    "payUPaymentDto": {
+      "invoiceId": this.saveorderDetails.invoiceId,
+      "isWalletChecked": this.iswalletCheck,
+      "payableAmount": this.amount,
+      "walletAmount": this.walletamount,
+      "Currencyselected":this.currency
+    }
 
+  }
+  
+  this._crud.payUBuy(data)
+  .subscribe(arg => {
+    console.log(arg)
+    const product = arg;
+    // <input type="hidden" name="service_provider" value="${paymentDetails.service_provider}"/>
+    const paymentDetails = {
+      payu_url: "https://secure.payu.in/_payment",
+      first_name: product.firstname, 
+      email: product.email,
+      mobile: product.phone, 
+      callback_url: product.surl, 
+      payu_cancel_url: product.furl, 
+      payu_fail_url:product.furl, 
+      payu_merchant_key: product.key, 
+      payu_sha_token: product.hash, 
+      txnid: product.txnid, 
+      plan_name: product.productinfo, 
+      amount: product.amount, 
+      service_provider: product.service_provide
+  };
+  
+  let paymentString = `
+      <html>
+        <body>
+          <form action="${paymentDetails.payu_url}" method="post" id="payu_form">
+            <input type="hidden" name="firstname" value="${paymentDetails.first_name}"/>
+            <input type="hidden" name="email" value="${paymentDetails.email}"/>
+            <input type="hidden" name="phone" value="${paymentDetails.mobile}"/>
+            <input type="hidden" name="surl" value="${paymentDetails.callback_url}"/>
+            <input type="hidden" name="curl" value="${paymentDetails.payu_cancel_url}"/>
+            <input type="hidden" name="furl" value="${paymentDetails.payu_fail_url}"/>
+            <input type="hidden" name="key" value="${paymentDetails.payu_merchant_key}"/>
+            <input type="hidden" name="hash" value="${paymentDetails.payu_sha_token}"/>
+            <input type="hidden" name="txnid" value="${paymentDetails.txnid}"/>
+            <input type="hidden" name="productinfo" value="${paymentDetails.plan_name}"/>
+            <input type="hidden" name="amount" value="${paymentDetails.amount}"/>
+            <input type="hidden" name="service_provider" value="${paymentDetails.service_provider}"/>
+            <button type="submit" value="submit" #submitBtn></button>
+          </form>
+          <script type="text/javascript">document.getElementById("payu_form").submit();</script>
+        </body>
+      </html>`;
+  
+  const winUrl = URL.createObjectURL(
+      new Blob([paymentString], { type: "text/html" })
+  );
+//  console.log(winUrl)
+window.location.href = winUrl; 
+
+
+  });
+
+
+
+}
    
 }

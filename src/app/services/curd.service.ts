@@ -374,4 +374,19 @@ postcustomize(obj:any):Observable<any>{
                       PaymentPaypal(obj:any): Observable<any> {
                         return this.http.post(`${environment.apiUrl}/payment/paypal`,obj)
                       }
-  }
+  
+                      payUBuy(obj:any) {
+                        // let obj={
+                        //   "payUPaymentDto": {
+                        //     "invoiceId": 974599,
+                        //     "isWalletChecked": false,
+                        //     "payableAmount": 100,
+                        //     "walletAmount": 0,
+                        //     "currencySelected": "INR"
+                        //   }
+                        // }
+                       // return this.http.get<any>(`${this.configUrl}payu-payment`);
+                        return this.http.post<any>(`http://test.countryoven.com/api/payment/PayUPayment`, obj)
+                      }
+  
+                    }

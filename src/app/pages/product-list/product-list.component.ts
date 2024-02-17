@@ -361,7 +361,10 @@ if(!load)
 {
   window.scrollTo(0, 0);
 }
-  })
+
+  }, (error)=>{
+this.removeLoader()
+  } )
   }
 
   getFiltersDetails(): void {
