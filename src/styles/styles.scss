@@ -2,7 +2,8 @@
 @import "./mixins";
 @import "./fonts";
 @import "~bootstrap-icons/font/bootstrap-icons.css";
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 body {
   @include siteMain;
 
@@ -35,28 +36,19 @@ body {
 }
 
 .rounded-btn {
-  border-radius: 50px!important;
+  border-radius: 50px !important;
 }
 
 .default-btn {
-  font-size: $fsize + 1;
+  font-size: $fsize;
   text-align: center;
-  padding: 10px 25px 10px 25px;
+  padding: 10px 15px 10px 15px;
   @include transition(all, 0.3s ease);
-  border-radius: 2px;
+  border-radius: 5px;
   position: relative;
 
   @include max(map-get($breakpoints, "sm")) {
     padding: 5px 10px 5px 10px;
-  }
-
-  &:after {
-    content: "\e927";
-    font-family: "icomoon" !important;
-    font-size: $fsize - 3;
-    position: relative;
-    left: 5px;
-    @include transition(all, 0.3s ease);
   }
 }
 
@@ -67,10 +59,6 @@ body {
 
   &:hover {
     background: darken(map-get($colors, primary), 10%);
-
-    &:after {
-      left: 8px;
-    }
   }
 }
 .color-btn:disabled {
@@ -211,7 +199,7 @@ body {
     color: map-get($colors, black);
 
     @include max(map-get($breakpoints, "sm")) {
-      font-size: $fsize - 3;
+      font-size: $fsize - 1;
       align-self: center;
     }
   }
@@ -401,7 +389,7 @@ ol {
     height: 100%;
 
     .addresssection {
-      min-height: 75%;
+      min-height: 110px;
     }
     p {
       font-size: $fsize - 1;

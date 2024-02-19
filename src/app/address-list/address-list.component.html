@@ -1,5 +1,5 @@
 <div class="userprofile-body">
-    <div class="row py-3">
+    <div class="row">
         <div class="col-md-6">
             <div class="row" *ngIf="originalAddress?.length > 3">
                 <div class="col-auto align-self-center">
@@ -30,7 +30,7 @@
     </div>
 
     <div class="address-cards row align-items-stretch" >
-        <div class="col-md-4 mb-3" [ngClass]="{'selected':selectedaddress== da.addressId}"
+        <div class="col-md-4 my-3" [ngClass]="{'selected':selectedaddress== da.addressId}"
             *ngFor="let da of deliverAddress">
             <div class="card">
                 <div class="card-header">
@@ -40,14 +40,14 @@
                         <!-- <span class="badge bg-light text-dark d-inline-block border">{{da.zipCode}}</span> -->
                     </p>
                 </div>
-                <div class="card-body">
+                <div class="card-body pb-1">
                     <div class="addresssection">
                         <p>{{da.address1}} {{da.address2}} <br />
                             {{da.landmark}} {{da.cityName}}
                             {{da.zipCode}}
                         </p>
                     </div>
-                    <div class="d-flex justify-content-between pt-3 border-top">
+                    <div class="d-flex justify-content-between py-2 border-top">
                         <!--  -->
                         <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#editAddress"
                             (click)="editAddress(da.addressId)" class="font-primary">

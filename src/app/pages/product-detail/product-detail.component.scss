@@ -102,16 +102,6 @@
   }
 }
 
-.product-reviews {
-  h3 {
-    font-size: $fsize + 7;
-  }
-
-  .heading {
-    border-bottom: 1px dashed map-get($colors, primary);
-  }
-}
-
 .ranger-col {
   width: 428px;
   height: 10px;
@@ -131,12 +121,13 @@
 
 .tagbadge {
   position: absolute;
-  top: 5px;
-  left: 4px;
-  font-size: 9px;
+  top: 0;
+  left: 0;
+  font-size: 10px;
   color: #ffffff;
-  padding: 3px;
+  padding: 3px 5px 2px 5px;
   text-transform: uppercase;
+  border-radius:2px;
 }
 .greencls {
   background: green;
@@ -161,6 +152,8 @@
     text-transform: uppercase;
     color: map-get($colors, black);
     background: map-get($colors, white);
+    font-weight: map-get($font-weights, "medium");
+    border:none!important;
 
     @include max(map-get($breakpoints, "md")) {
       width: 46%;
@@ -170,8 +163,10 @@
     }
   }
   .nav-link.active {
-    background: map-get($colors, primary);
-    color: map-get($colors, white);
+    background: map-get($colors, darkyellow);
+    color: map-get($colors, black);
+    font-weight: map-get($font-weights, "medium");
+    border:none!important;
   }
 
   h5 {
@@ -215,6 +210,14 @@
       width: 100%;
       text-align: center;
       display: block;
+    }
+  }
+}
+
+.form-group{
+  .form-select{
+    &:focus{
+      box-shadow: none;
     }
   }
 }

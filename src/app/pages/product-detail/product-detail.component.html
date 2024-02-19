@@ -112,7 +112,7 @@
                         <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
                             <div class="basic-features row ">
                                 <div class="row">
-                                    <div class="col-md-4 col-6" *ngIf="flavourOptionsDto_array?.length >0">
+                                    <div class="col-md-6 col-6 pe-md-0" *ngIf="flavourOptionsDto_array?.length >0">
                                         <div class="form-group mb-2">
                                             <label class="align-self-center pe-2">Select Flavour:</label>
                                             <select class="form-select" formControlName="flavourOptionsDto">
@@ -127,8 +127,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-6" *ngIf="weightOptionsDto_array?.length >0">
-                                        <div class="form-group mb-2">
+                                    <div class="col-md-6 col-6 pe-md-0 ps-md-3" *ngIf="weightOptionsDto_array?.length >0">
+                                        <div class="form-group mb-2 ps-2">
                                             <label class="align-self-center pe-2">Select Weight:</label>
                                             <select (change)="onQtyChange($event)" class="form-select"
                                                 formControlName="weightOptionsDto" [(ngModel)]="selectedItem">
@@ -315,16 +315,13 @@
                             <div class="tab-content" id="nav-tabContent">
                                 <div class="tab-pane fade show active" *ngIf="productDetails?.description !=''"
                                     id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
-                                    <article class="pb-2">
-
-                                        <h5 class="font-bold pb-3 mb-2">Description</h5>
-
+                                    <article class="pb-2"> 
                                         <span class="font-bold pb-3"> SKU :</span>{{productDetails?.productId}} <span
                                             class="font-bold pb-3">Vendor Code : </span>{{productDetails?.venderCode}}
                                         <div class="py-2">
                                             <div [innerHtml]="productDetails?.description"></div>
 
-                                            <div *ngIf="productDetails?.careInstrunctionForCakeRequired">
+                                            <div *ngIf="productDetails?.careInstrunctionForCakeRequired" class="pt-2">
                                                 <strong>Note:</strong> Every cake that we offer is handcrafted and since
                                                 each chef has his/her own way of baking and designing the cake, there
                                                 might be a slight variation in the product in terms of design when
@@ -348,8 +345,7 @@
                                 </div>
                                 <div class="tab-pane fade" id="nav-Information" role="tabpanel"
                                     *ngIf="productDetails?.deliveryInformationRequired">
-                                    <article class="pb-2">
-                                        <h5 class="font-bold pb-3 mb-2">Delivery Information</h5>
+                                    <article class="pb-2">                                       
                                         <div class="py-2">
                                             <ul class="list-style-desc">
                                                 <li>Every cake we offer is handcrafted and since each chef has his/her
@@ -376,8 +372,7 @@
                                 </div>
                                 <div class="tab-pane fade" id="nav-Instructions" role="tabpanel"
                                     *ngIf="productDetails?.careInstrunctionForCakeRequired || productDetails?.careInstrunctionForFlowerRequired">
-                                    <article class="pb-2" *ngIf="productDetails?.careInstrunctionForCakeRequired">
-                                        <h5 class="font-bold pb-3 mb-2">Care Instructions</h5>
+                                    <article class="pb-2" *ngIf="productDetails?.careInstrunctionForCakeRequired">                                       
                                         <div class="py-2">
                                             <ul class="list-style-desc">
                                                 <li>Store cream cakes in a refrigerator. Fondant cakes should be stored
@@ -399,8 +394,7 @@
                                     </article>
 
 
-                                    <article class="pb-4" *ngIf="productDetails?.careInstrunctionForFlowerRequired">
-                                        <h3 class="font-bold pb-3 mb-2">Care Instructions</h3>
+                                    <article class="pb-4" *ngIf="productDetails?.careInstrunctionForFlowerRequired">                                       
                                         <div class="py-2">
                                             <ul class="list-style-desc">
                                                 <li>Trim the stems and place the flowers in a clean vase/bowl with clean
@@ -421,8 +415,7 @@
 
                                     <!-- product reviews -->
                                     <div class="product-reviews">
-                                        <div class="d-flex justify-content-between mb-3 heading py-3">
-                                            <h3 class="font-bold align-self-center">Product Reviews</h3>
+                                        <div class="d-flex justify-content-between">                                          
                                             <!-- <div class="text-end align-self-center">
                                 <a href="javascript:void(0)" class="text-blue font-bold small">View all Reviews</a>
                                 <a href="javascript:void(0)" class="color-btn d-inline-block ms-3">Write Review</a>
@@ -434,7 +427,7 @@
 
                                             <ng-container *ngFor="let r of reviewData">
 
-                                                <div class="user-review-item p-3 border rounded mb-3">
+                                                <div class="user-review-item p-3 border rounded mb-2 background-white">
                                                     <div class="d-flex justify-content-between">
                                                         <div class="rating-stars">
 

@@ -28,7 +28,8 @@
                             <li class="breadcrumb-item active" *ngIf="breadTitle">{{breadTitle}}</li>
                         </ol>
                     </nav>
-                    <h6 class="font-regular p-2 font-primary"> Total Products found:<span class="font-bold"> 40 of {{totalCount}}</span>
+                    <h6 class="p-2 font-primary"> Total Products found:<span class="font-bold"> 40 of
+                            {{totalCount}}</span>
                     </h6>
                     <div class="filter-dropdowns d-flex ps-md-5 align-self-center flex-wrap">
 
@@ -99,7 +100,7 @@
             <ng-container *ngIf="products && products.length >0">
 
                 <div class="products-list-items">
-                  
+
                     <div class="row row-flex">
                         <div class="col-md-3 col-6 mb-lg-4" *ngFor="let productitem of products">
                             <app-product-item [Productvalue]="productitem" class="app-product-col"></app-product-item>
@@ -109,10 +110,11 @@
             </ng-container>
             <ng-container *ngIf="!(products && products.length >0) && !loading">
                 <app-noproducts-found></app-noproducts-found></ng-container>
-                
-                    <div class="p-4 mx-auto text-center">
-                        <a *ngIf="isload" (click)="loadmore()" class="loadmore color-btn d-inline-block rounded-btn">Load More</a>
-                    </div>
+
+            <div class="p-4 mx-auto text-center">
+                <a *ngIf="isload" (click)="loadmore()" class="loadmore color-btn d-inline-block rounded-btn">Load
+                    More</a>
+            </div>
 
             <!-- page nav -->
             <!-- <div class="row pagenavrow border-top border-bottom mb-4"

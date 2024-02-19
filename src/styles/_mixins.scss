@@ -13,7 +13,9 @@
   -moz-font-smoothing: antialiased;
   margin: 0;
   padding: 0;
-  font-family: "Roboto Flex", sans-serif;
+  // font-family: "Roboto Flex", sans-serif;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.1px;
 }
 
 //box shadow
@@ -24,8 +26,8 @@
   -ms-box-shadow: $x-axis $y-axis $blur $color;
 }
 
- //mixins for devices responsive
- @mixin minMax($min, $max) {
+//mixins for devices responsive
+@mixin minMax($min, $max) {
   @media (min-width: #{$min}) and (max-width: #{$max}) {
     @content;
   }

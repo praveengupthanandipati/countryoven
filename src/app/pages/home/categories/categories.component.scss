@@ -44,8 +44,7 @@
         }
       }
       h6 {
-        color: map-get($colors, black);
-        text-transform: uppercase;
+        color: map-get($colors, black);       
 
         @include minMax(
           map-get($breakpoints, "xs"),
