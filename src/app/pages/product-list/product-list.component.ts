@@ -49,6 +49,7 @@ currentPage: number=0;
   }
   routeCategory(e:any)
   {
+    
     this.router.navigateByUrl(e + '/'+ this.originalcityname +'/online-delivery');
     
   }
@@ -381,7 +382,9 @@ this.removeLoader()
      
    this.filterswrapper=res;
 
-  })
+  }, (error)=>{
+    this.removeLoader()
+      } )
   }
 
 

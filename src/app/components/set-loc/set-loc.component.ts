@@ -12,7 +12,8 @@ export class SetLocComponent  implements OnInit{
 data:any;
   @Input() env?:any;
   @Output() selectEvent:any= new EventEmitter();
- 
+  @Output() selectClose:any= new EventEmitter();
+ noclose:boolean=false;
 constructor(private _crud:CurdService, private location: Location)
 {
   
@@ -28,7 +29,7 @@ ngOnInit(): void {
 
   if(this.env =='noloc')
   {
-
+this.noclose=true
   }
 
 this.getDeliveryCity();
@@ -63,7 +64,10 @@ selectedCity(c:any)
   window.location.reload();
 }
 
-
+close()
+{
+  this.selectClose.emit();
+}
 
 getDeliveryCity()
 {

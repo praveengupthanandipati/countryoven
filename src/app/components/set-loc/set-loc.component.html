@@ -4,7 +4,8 @@
             <h4 class="modal-title font-bold text-black">Select Delivery Location </h4>
             <!-- <p>Select a delivery location to see product availability</p> -->
         </article>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button *ngIf="!noclose" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button *ngIf="noclose" type="button" class="btn-close" (click)="close()" aria-label="Close"></button>
     </div>
     <div class="modal-body" style="overflow-y: visible;">
         <div class="container">

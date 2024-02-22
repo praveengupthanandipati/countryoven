@@ -16,6 +16,10 @@ export class DisplylocpopupComponent {
 }
 
   }
+  closepopup()
+  {
+    this.showpopup=false
+  }
   selectLoc()
   {
     if(localStorage.getItem('city'))
