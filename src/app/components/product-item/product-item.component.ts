@@ -26,7 +26,6 @@ export class ProductItemComponent implements OnInit {
     this.isEggless = this.Productvalue.egglessTagMessage;
 
     if (this.stock != '') {
-      //few stock  // out of stock
       this.tagMsg = this.stock;
       if (this.stock == 'Out of Stock') {
         this.tagClass = 'errorcls'

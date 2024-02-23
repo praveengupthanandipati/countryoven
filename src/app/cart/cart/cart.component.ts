@@ -38,6 +38,7 @@ export class CartComponent implements OnInit {
   selectedFile: any;
   maxLeadTime:any;
   showcheckoutbtn:boolean=false;
+  customimg:any;
   @ViewChild('closeButton')
   closeButton!: ElementRef;
   constructor(private fb: FormBuilder, private renderer: Renderer2, private route: Router, private toastr: ToastrService, private _crud: CurdService, private cookieService: CookieService) {
@@ -99,7 +100,6 @@ export class CartComponent implements OnInit {
     this.addLoader();
     this._crud.getIpAddress().subscribe((data: any) => {
       this.userIp = data.ip;
-
     });
     this.getViewedProducts();
 
@@ -401,5 +401,9 @@ console.log(this.viewedProducts)
     })
 
   }
-
+  capturephoto(src:any)
+  {
+    this.customimg=src;
+    console.log(src)
+  }
 }

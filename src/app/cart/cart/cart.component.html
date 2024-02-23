@@ -87,7 +87,8 @@
                                             </li>
                                             <li *ngIf="CartItem.customPhoto">Custom Photo :
                                                 <img class="smallimg" [src]="CartItem.customPhoto" />
-                                                <a href="javascript:void(0)" class="d-inline-block ps-2"
+                                                <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                data-bs-target="#imgModal" (click)="capturephoto(CartItem.customPhoto)" class="d-inline-block ps-2"
                                                     style="text-decoration: underline;">View</a>
                                             </li>
 
@@ -131,7 +132,7 @@
                 <div class="PriceDetails p-2 border my-3">
                     <h6 class="h6 font-black font-medium align-self-center pb-3">Price Details</h6>
                     <div class="d-flex justify-content-between py-2">
-                        <p>MRP Details</p>
+                        <p>Price ({{cartCount}}  item(s))</p>
                         <h6 class="text-end" *ngIf="firstlistItem"><strong><span class="icomoon font-bold small"
                                     [class]="currencyClass"></span>{{firstlistItem?.totalAmount}}</strong></h6>
                     </div>
@@ -302,6 +303,34 @@
                     </button>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- Update delivery date -->
+<div class="modal fade " id="imgModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Custom Image</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    #closeButton></button>
+            </div>
+           
+                <div class="modal-body">
+                    <div class="col-md-12 pb-2 modalimgwrap" >
+                        <img class="modalimg" [src]="customimg" />
+                    </div>
+
+
+                </div>
+              
+            
         </div>
     </div>
 </div>

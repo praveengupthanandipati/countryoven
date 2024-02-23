@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { CurdService } from './services/curd.service';
 
 
 @Component({
@@ -11,11 +12,29 @@ import { CookieService } from 'ngx-cookie-service';
 export class AppComponent implements OnInit{
   
   sessionId:any;
+  country:any;
   ngOnInit(): void {
-    
     window.scrollTo(0, 0);
-    localStorage.setItem('country', 'USA')
-  this.router.events.subscribe((evt) => {
+
+    this._crud.getCountryusingIp().subscribe((data: any) => {
+      
+      console.log(data.country)
+this.country=data.country;
+
+if(!localStorage.getItem('country'))
+{
+  localStorage.setItem('country', this.country)
+}
+if(localStorage.getItem('country') == 'India' && !localStorage.getItem('currency'))
+{
+  localStorage.setItem('currency', 'INR')
+}
+
+
+   
+    });
+ 
+    this.router.events.subscribe((evt) => {
     if (evt instanceof NavigationEnd) {
     
         window.scrollTo(0, 0);
@@ -36,7 +55,7 @@ else
   }
 
 
-constructor(private cookieService: CookieService, private router: Router)
+constructor(private _crud:CurdService, private cookieService: CookieService, private router: Router)
 {
 
 }

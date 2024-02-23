@@ -21,7 +21,7 @@ export class ProductListComponent implements OnInit ,OnDestroy {
   products:any=[];
 filters:any=[]
 filterswrapper:any;
-
+displayproducts:any;
 currentPage: number=0;
   totalPages: number=0;
   pagesBeforeCurrent: number[] = [];
@@ -350,6 +350,14 @@ this.breadcatTitleLink=res.seoCategoryName;
     this.currentPage=this.productData.pageNumber;
 this.totalPages=this.productData.totalPages
 this.totalCount=this.productData.totalCount;
+if( 40 * this.currentPage  <= this.totalCount)
+{
+this.displayproducts=  40 * this.currentPage
+}
+else
+{
+  this.displayproducts=this.totalCount
+}
 if(this.totalCount > this.products.length)
 {
 this.isload=true

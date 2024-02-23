@@ -21,9 +21,11 @@ export class MidheaderComponent  implements OnInit{
   countryname:any;
   currency:any;
   customerId:any=0;
+  searcherror:boolean=false;
   private subscription!: Subscription;
   private datasubscription !:Subscription;
   selectedCurrency:any;
+  
   currencydrop:any=['INR', 'USD'];
   searchkeyword:any;
   constructor(private route:Router,  private _curdService:CurdService,private cookieService: CookieService)
@@ -73,6 +75,7 @@ this.datasubscription=this._curdService.countryData$.subscribe((data)=>{
     if(localStorage.getItem('currency'))
     {
       this.selectedCurrency=localStorage.getItem('currency')
+      console.log(this.selectedCurrency)
     }
     else
     {
@@ -99,10 +102,10 @@ this.datasubscription=this._curdService.countryData$.subscribe((data)=>{
       currencySelected: this.currency
     }
   
-    this._curdService.postShopingCart(data).subscribe(res => {
+    this._curdService.headerShopingCart(data).subscribe(res => {
       
      
-      this.count=res.length;
+      this.count=res.cartItemsCount;
   
           });
   }
@@ -111,10 +114,19 @@ this.datasubscription=this._curdService.countryData$.subscribe((data)=>{
 
   gotoroute()
   {
-  
-  let c=localStorage.getItem('city') ;
-  console.log(this.searchkeyword)
-  this.route.navigateByUrl('/search_result'+  '/'+ this.searchkeyword + '/' + c)
+  if(this.searchkeyword)
+  {
+    this.searcherror=false;
+    let c=localStorage.getItem('city') ;
+    console.log(this.searchkeyword)
+    this.route.navigateByUrl('/search_result'+  '/'+ this.searchkeyword + '/' + c)
+  }
+  else
+  {
+    this.searcherror=true;
+    
+  }
+ 
   
    
   }

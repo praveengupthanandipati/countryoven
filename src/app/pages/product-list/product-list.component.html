@@ -17,21 +17,24 @@
     <div class="list-products-body">
         <div class="custom-container">
             <!-- filters-->
+            <div class="d-md-flex ">
+                <nav aria-label="breadcrumb" class="align-self-center d-none d-md-block pe-3">
+                    <ol class="breadcrumb pb-0 mb-0">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a (click)="routeCity(cityname)">{{cityname}}</a></li>
+                        <li class="breadcrumb-item" *ngIf="breadcatTitle"><a
+                                (click)="routeCategory(breadcatTitleLink)">{{breadcatTitle}}</a></li>
+                        <li class="breadcrumb-item active" *ngIf="breadTitle">{{breadTitle}}</li>
+                    </ol>
+                </nav>
+                <h6 class="p-2 font-primary"> Total Products found:<span class="font-bold"> {{displayproducts}} of
+                        {{totalCount}}</span>
+                </h6>
+                </div>
             <div class="products-filters d-md-flex justify-content-md-between">
-                <div class="d-md-flex ">
-                    <nav aria-label="breadcrumb" class="align-self-center d-none d-md-block pe-3">
-                        <ol class="breadcrumb pb-0 mb-0">
-                            <li class="breadcrumb-item"><a href="/">Home</a></li>
-                            <li class="breadcrumb-item"><a (click)="routeCity(cityname)">{{cityname}}</a></li>
-                            <li class="breadcrumb-item" *ngIf="breadcatTitle"><a
-                                    (click)="routeCategory(breadcatTitleLink)">{{breadcatTitle}}</a></li>
-                            <li class="breadcrumb-item active" *ngIf="breadTitle">{{breadTitle}}</li>
-                        </ol>
-                    </nav>
-                    <h6 class="p-2 font-primary"> Total Products found:<span class="font-bold"> 40 of
-                            {{totalCount}}</span>
-                    </h6>
-                    <div class="filter-dropdowns d-flex ps-md-5 align-self-center flex-wrap">
+              
+                    <div class="d-md-flex ">
+                    <div class="filter-dropdowns d-flex  align-self-center flex-wrap">
 
                         <div class="d-md-flex ms-md-2 mb-2 mb-md-0 item-filter-dropdown"
                             *ngFor="let filter of filterswrapper">

@@ -139,6 +139,11 @@ getSaveProductDetails(obj:any):Observable<any>{
   }
   
 
+  headerShopingCart(obj:any):Observable<any>{
+  
+    return this.http.post(`${environment.apiUrl}/Cart/headercart`,obj)
+    }
+
   /* cart */
 /*Get Shopping Cart */
 postShopingCart(obj:any):Observable<any>{
@@ -244,8 +249,13 @@ forgotpwd(obj:any):Observable<any>{
     }
  
     getIpAddress(): Observable<any> {
-      return this.http.get('https://api.ipify.org?format=json');
+   return this.http.get('https://api.ipify.org?format=json');
     }
+
+    getCountryusingIp(): Observable<any> {
+      
+      return this.http.get('http://ip-api.com/json/');
+      }
 
     getCountry(obj:any): Observable<any> {
       return this.http.post(`${environment.apiUrl}/home/Country`,obj)

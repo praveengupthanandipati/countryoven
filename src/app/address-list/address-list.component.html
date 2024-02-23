@@ -2,9 +2,9 @@
     <div class="row">
         <div class="col-md-6">
             <div class="row" *ngIf="originalAddress?.length > 3">
-                <div class="col-auto align-self-center">
+                <!-- <div class="col-auto align-self-center">
                     <label>Select Address</label>
-                </div>
+                </div> -->
                 <div class="col-auto">
                        <select class="form-select" [(ngModel)]="selectedaddress"  (change)="onOptionChange($event)">
                         <ng-container *ngIf="selectedaddress == 'select'">
@@ -24,7 +24,7 @@
         <div class="col-md-6 align-self-center">
             <div class="text-end ">
                 <a href="" class="color-btn" (click)="addNewAddress()" data-bs-toggle="modal"
-                    data-bs-target="#AddNewAddress">Add New Address</a>
+                    data-bs-target="#AddNewAddress">Add Delivery Address</a>
             </div>
         </div>
     </div>

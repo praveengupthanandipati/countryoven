@@ -305,19 +305,80 @@ export class ProductDetailComponent implements OnInit {
       if (this.productDetails?.sameDayBlockTime) {
         this.displayTimer();
       }
-      if (this.stockQuantityStatus) {
+
+
+      /* new code */
+
+  //     if (this.stock != '') {
+  //       this.tagMsg = this.stock;
+  //       if (this.stock == 'Out of Stock') {
+  //         this.tagClass = 'errorcls'
+  //       } 
+  //       else  if (this.stock == 'Few Stock') {
+  //         this.tagClass = 'bluecls'
+  //       } 
+  //       else  if (this.stock == 'Avaliable') {
+  //         this.tagClass = ''
+  //         this.tagMsg = '';
+  // if(this.isEggless)
+  // {
+  //   this.tagClass = 'greencls'
+  //       this.tagMsg = this.isEggless
+  // }
+  
+  //       } 
+  //       else {
+  //         this.tagClass = 'greencls'
+  //       }
+  
+  //     } else if (this.isNewArriaval) {
+  //       this.tagClass = 'bluecls'
+  //       this.tagMsg = this.isNewArriaval
+  //     }
+  //     else if (this.isEggless) {
+  //       this.tagClass = 'greencls'
+  //       this.tagMsg = this.isEggless
+  //     }
+  
+      /* new code */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+      if (this.stockQuantityStatus || this.productDetails?.stockQuantityMessage) {
         //few stock  // out of stock
         this.tagMsg = this.productDetails?.stockQuantityMessage;
 
         this.tagClass = 'errorcls'
 
-      } else if (this.isNewArriavalstatus) {
-        this.tagClass = 'greencls'
-        this.tagMsg = 'Newly Added'
+
+        if (this.tagMsg == 'Few Stock') {
+                  this.tagClass = 'bluecls'
+                } 
+
+
+      }  else if (this.isNewArriavalstatus) {
+        this.tagClass = 'bluecls'
+        this.tagMsg = this.productDetails?.newTagMessage
       }
       else if (this.egglessstatus) {
         this.tagClass = 'greencls'
-        this.tagMsg = this.isEggless
+        this.tagMsg = 'EGGLESS ALSO'
       }
 
 
@@ -357,10 +418,10 @@ export class ProductDetailComponent implements OnInit {
             this.pincodeOptionsDto_array = res.deliveryPinCodes;
             console.log(this.pincodeOptionsDto_array)
 
-            if (this.pincodeOptionsDto_array.length > 0) {
+            if (this.pincodeOptionsDto_array?.length > 0) {
               this.addFormControl('pincodeOptionsDto');
               setTimeout(() => {
-                this.dynamicForm.get('pincodeOptionsDto')?.setValue(this.pincodeOptionsDto_array[0]);
+                this.dynamicForm.get('pincodeOptionsDto')?.setValue(null);
 
               }, 1000);
 
@@ -408,9 +469,15 @@ export class ProductDetailComponent implements OnInit {
       if (this.numberOptionsDto_array.length > 0) {
         this.addFormControl('numberOptionsDto');
         setTimeout(() => {
-          this.dynamicForm.get('numberOptionsDto')?.setValue(this.numberOptionsDto_array[0].optionValue);
-
+          // this.dynamicForm.get('numberOptionsDto')?.setValue(this.numberOptionsDto_array[0].optionValue);
+          this.dynamicForm.get('numberOptionsDto')?.setValue(null);
         }, 1000);
+
+
+      
+
+
+
       }
 
       if (this.photoRequired) {
