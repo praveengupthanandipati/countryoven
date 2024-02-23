@@ -265,7 +265,8 @@ export class ProductDetailComponent implements OnInit {
       "SEOName": this.productName,
       "cityName": this.cityName,
       "countryName": this.coutryName,
-      "currencySelected": this.currencySelected
+      "currencySelected": this.currencySelected,
+      "sessionId":  this.cookieService.get('sessionID')
     }
     this._crud.getProductDetailsById(data).subscribe(res => {
       console.log(res)
