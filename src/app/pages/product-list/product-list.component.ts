@@ -96,7 +96,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
 
   }
-
+ 
 
   addLoader() {
     this.renderer.addClass(document.body, 'bodyloader');
@@ -126,7 +126,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
       this.getPageRoutes();
       this.getMeta();
       this.getProductDetails(this.filters, 1, this.sorder);
-      this.getFiltersDetails()
+      this.getFiltersDetails();
+
+      // /this.addCanonicalLink();
     });
   }
 
@@ -136,14 +138,14 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
     let newurl = this.getOldUrl.replace(urlcity, this.cityname.toLowerCase());
     this.location.replaceState(newurl);
+    this.addCanonicalLink(newurl)
   }
 
 
   getPageRoutes() {
 
     this.route.params.subscribe((params) => {
-      console.log(params)
-      if (params['cityname'] == 'send-online') {
+       if (params['cityname'] == 'send-online') {
 
       }
       else {
@@ -153,7 +155,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
             this.typeName = 'FLV';
             this.cityname = urlparms[1];
             this.setCity(urlparms[1]);
-            this.cityname = this.originalcityname ? this.originalcityname : this.cityname;
+            this.cityname = this.originalcityname;
             this.PageName = urlparms[0]
 
             this.getnewurl(urlparms[1])
@@ -163,7 +165,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
             this.cityname = urlparms1[urlparms1.length - 1];
             this.setCity(this.cityname);
             this.getnewurl(urlparms1[urlparms1.length - 1])
-            this.cityname = this.originalcityname ? this.originalcityname : this.cityname;
+            this.cityname = this.originalcityname;
 
             this.typeName = 'SPL';
             let resultArray: any = '';
@@ -192,13 +194,13 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
           this.cityname = params['cityname'];
           this.setCity(this.cityname);
-          this.cityname = this.originalcityname ? this.originalcityname : this.cityname
+          this.cityname = this.originalcityname;
           this.typeName = params['type'];
           this.PageName = params['PageName'];
 
           if (params['type'] == 'search_result') {
-            console.log(params['PageName'])  //Hyderabad
-            console.log(params['cityname']) //flowers
+            // console.log(params['PageName'])  //Hyderabad
+            // console.log(params['cityname']) //flowers
             this.setCity(params['PageName'])
 
             this.getnewurl(params['PageName'])
@@ -244,8 +246,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
         }
         else if (this.typeName == 'search_result') {
-          console.log(params['PageName'])  //Hyderabad
-          console.log(params['cityname']) //flowers
+          // console.log(params['PageName'])  //Hyderabad
+          // console.log(params['cityname']) //flowers
           this.type = 'SE';
           this.cityname = params['PageName'];
           this.cityname = this.originalcityname;
@@ -467,7 +469,26 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
 
+  private addCanonicalLink(v:any) {
 
+
+    const canonicalLink: HTMLLinkElement | null = document.querySelector('link[rel="canonical"]');
+    if (canonicalLink) {
+      canonicalLink.href = 'https://www.countryoven.com' + v;
+    }
+    else
+    {
+
+      const link: HTMLLinkElement = this.renderer.createElement('link');
+      link.rel = 'canonical';
+      
+    
+      link.href = 'https://www.countryoven.com' + v; // Replace with your canonical URL
+      this.renderer.appendChild(document.head, link);
+    }
+
+
+  }
 
 
 }

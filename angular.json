@@ -34,6 +34,76 @@
                 "output": "/"
               },
               {
+                "glob": "categorysitemap.xml",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "citysitemap.xml",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "flavoursitemap.xml",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "GiftByoccasionsitemap.xml",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "KukatpallyPincodes.xml",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "MadhapurPincodes.xml",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "Midnightpagecontent.xml",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "Occasionsitemap.xml",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "productsitemap.xml",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "ProductsPLA.xml",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "ror.xml",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "sitemap_0.xml",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "SitemapXML.xml",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "subcategorysitemap.xml",
+                "input": "src",
+                "output": "/"
+              },
+              {
                 "glob": "robots.txt",
                 "input": "src", 
                 "output": "/"

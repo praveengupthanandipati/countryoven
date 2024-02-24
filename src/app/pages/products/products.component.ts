@@ -137,7 +137,7 @@ setcounntry()
 
         }
 
-        
+
         if (this.typeName == 'online-delivery') {
           this.type = 'C';
           this.showproductDetails = false;
