@@ -156,7 +156,7 @@ body {
 .breadcrumb {
   li {
     font-size: $fsize - 2;
-
+text-transform: capitalize;
     &:first-child {
       &:before {
         content: "";
