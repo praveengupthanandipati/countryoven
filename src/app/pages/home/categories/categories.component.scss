@@ -2,28 +2,15 @@
 
 .home-categories {
   .flex-categories {
-    @include max(map-get($breakpoints, "sm")){
+    @include max(map-get($breakpoints, "md")){
       overflow-x: auto;
     }
     .category-col {
       text-align: center;
       display: inline-block;
       @include transition(all, 0.3s ease);
-
-      @include minMax(
-        map-get($breakpoints, "xs"),
-        map-get($breakpoints, "sm")
-      ) {
-        width: 33.3%;
-        margin-bottom: 5px;
-        margin:0 3%;
-      }
-      @include minMax(
-        map-get($breakpoints, "sm"),
-        map-get($breakpoints, "lg")
-      ) {
-        width: 25%;
-      }
+      margin:10px 15px;     
+      
       img {
         width: 70px;
         height: auto;
@@ -52,6 +39,7 @@
         ) {
           font-size: 11px;
           text-transform: capitalize;
+          text-wrap: nowrap;
         }
         @include minMax(
           map-get($breakpoints, "sm"),

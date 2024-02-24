@@ -8,25 +8,33 @@
     .filter-dropdowns {
       button.dropdown-toggle {
         background: none;
-        padding: 3px 7px;
+        padding: 5px 7px;
         border-radius: 5px;
         border: 1px solid map-get($colors, gray);
         font-size: $fsize - 1;
 
-        @include max(map-get($breakpoints, "sm")) {
-          padding: 2px 5px;
+        @include max(map-get($breakpoints, "md")) {
+          padding: 5px;
           width: 100%;
+          margin-top: 3px;
         }
       }
       .item-filter-dropdown {
-        @include max(map-get($breakpoints, "sm")) {
-          width: 22%;
-          margin-right: 10px;
+        @include max(map-get($breakpoints, "md")) {
+          width: 100%;
+          margin-bottom: 10px;
+
+          button {
+            text-align: left;
+          }
         }
       }
       .dropdown-item {
         cursor: pointer;
-        font-size: $fsize - 1;
+
+        span {
+          font-size: $fsize - 2;
+        }
 
         &:active {
           background: none;
@@ -102,4 +110,40 @@
   cursor: pointer;
   padding-left: 35px;
   padding-right: 35px;
+}
+
+.filter-btn {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 0;
+  text-align: center;
+  z-index: 999;
+}
+
+.filter-mobile {
+  @include transition(all, 0.3s ease);
+  @include max(map-get($breakpoints, "md")) {
+    background: white;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    height: 75vh;
+    z-index: 99;
+    left: 0;
+    right: 0;
+    @include box-shadow(0, 0, 10px, map-get($colors, gray));
+    width: 100%;
+    padding-top: 50px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+}
+
+.dropdown-menu {
+  li.dropdown-item-filter {
+    height: 240px;
+    overflow-y: auto;
+  }
 }

@@ -43,6 +43,15 @@ currentPage: number=0;
   isload:boolean=false;
   private paramMapSubscription: Subscription = new Subscription;
   private paramMapSubscription1: Subscription = new Subscription;
+
+  //hide in mobile
+  isVisible:boolean=false;
+
+  toggleVisibility(){
+    this.isVisible=!this.isVisible;
+  }
+
+
   routeCity(e:any)
   {
     this.router.navigateByUrl(e + '/gift-online');

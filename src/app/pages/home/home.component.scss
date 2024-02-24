@@ -33,13 +33,6 @@
   }
 }
 
-.product-row {
-  padding: 0 0 30px 0;
-
-  @include max(map-get($breakpoints, "sm")) {
-    padding-bottom: 10px;
-  }
-}
 
 .row-flex {
   display: flex;
@@ -64,9 +57,7 @@
 
 .section-heading {
   .h4 {
-    @include max(map-get($breakpoints, "md")) {
-      font-size: $fsize;
-    }
+    font-size:clamp(1.2rem, 1.5vw, 1.5rem);
   }
   .color-btn {
     @include max(map-get($breakpoints, "sm")) {

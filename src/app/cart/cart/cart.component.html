@@ -6,13 +6,13 @@
         <div class="row" *ngIf="cartItems.length > 0">
             <div class="col-md-8">
                 <div class="deliver-location d-flex justify-content-between p-2 border">
-                    <div class="d-flex">
+                    <div class="d-flex location-date-time">
                         <span class="icon-route h1 font-primary"></span>
                         <div class="ps-3 align-self-center d-sm-flex">
                             <div class="align-self-center">
                                 <p>
                                     <span>Deliver Date: </span>
-                                    <span class="font-primary font-semibold">{{displaydeliveryDate}}</span>
+                                    <span class="font-primary d-inline-block">{{displaydeliveryDate}}</span>
                                 </p>
                             </div>
                             <!-- <span
@@ -20,7 +20,7 @@
 
                             <div class="px-md-3 align-self-center">
                                 <span>Deliver Time: </span>
-                                <span class="font-primary font-semibold">{{displaydeliveryTime}}</span>
+                                <span class="font-primary d-inline-block">{{displaydeliveryTime}}</span>
                             </div>
                             <button class="color-btn border-0 px-2 py-1 small" data-bs-toggle="modal"
                                 data-bs-target="#DeliveryModal"><span class="icon-edit icomoon"></span> Edit</button>
@@ -129,7 +129,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="PriceDetails p-2 border my-3">
+                <div class="PriceDetails p-2 border">
                     <h6 class="h6 font-black font-medium align-self-center pb-3">Price Details</h6>
                     <div class="d-flex justify-content-between py-2">
                         <p>Price ({{cartCount}}  item(s))</p>
@@ -160,11 +160,11 @@
                         Checkout</button>
 
                 </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <a routerLink="/" class="color-border-btn d-block cbtn w-100 ">Continue Shopping</a>
+                <div class="row mt-2">
+                    <div class="col-lg-6">
+                        <a routerLink="/" class="color-border-btn d-block cbtn w-100 mb-2">Continue Shopping</a>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-lg-6">
                         <button class="color-btn w-100 d-block cbtn mb-2" [disabled]="outofdatemessage" data-bs-toggle="modal"
                             data-bs-target="#AddonsProducts" (click)="addOnProducts('1')">Addons to Product</button>
                     </div>
@@ -182,10 +182,10 @@
 
 
         <div class="explore-products" *ngIf="viewedProducts.length">
-            <h1 class="h5 font-medium pb-3">Explore Addons Along with your order</h1>
+            <h1 class="h5 font-medium pb-3 sub-page-title">Explore Addons Along with your order</h1>
             <div class="container">
                 <div class="products-list-items">
-                    <div class="row row-flex">
+                    <div class="row g-2">
                         <div class="col-md-3 col-6" *ngFor="let productitem of viewedProducts">
                             <app-product-item [Productvalue]="productitem" class="app-product-col"></app-product-item>
                         </div>
@@ -209,8 +209,8 @@
             </div>
             <div class="modal-body">
                 <section class="products-list">
-                    <div class="row">
-                        <div class="col-lg-3" *ngFor="let Productvalue of addonproducts">
+                    <div class="row g-2">
+                        <div class="col-lg-3 col-6" *ngFor="let Productvalue of addonproducts">
                             <div class="app-product-item border mb-2">
                                 <figure class="product-item-figure">
                                     <a>

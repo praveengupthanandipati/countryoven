@@ -83,7 +83,7 @@
 
 <ng-container *ngFor="let cat of productSecions">
 
-    <section class="product-row">
+    <section class="product-row py-2 py-md-4">
         <div class="section-heading">
             <div class="custom-container">
                 <div class="row justify-content-between border-bottom pb-3">
@@ -99,8 +99,8 @@
 
         <section class="custom-container">
             <div class="products-list mt-3">
-                <div class="row row-flex">
-                    <div class="col-lg-4 col-6 col-xl-3" *ngFor="let productitem of cat.productList  | slice:0:4">
+                <div class="row g-2">
+                    <div class="col-md-3 col-6" *ngFor="let productitem of cat.productList  | slice:0:4">
                         <app-product-item [Productvalue]="productitem" class="app-product-col"></app-product-item>
                     </div>
                 </div>
