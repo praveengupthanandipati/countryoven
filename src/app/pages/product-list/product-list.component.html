@@ -27,7 +27,7 @@
                         <li class="breadcrumb-item active" *ngIf="breadTitle">{{breadTitle}}</li>
                     </ol>
                 </nav>
-                <h6 class="p-2 font-primary"> Total Products found:<span class="font-bold"> {{displayproducts}} of
+                <h6 class="p-2 font-primary"><span class="font-bold"> Showing {{displayproducts}} of
                         {{totalCount}}</span>
                 </h6>
                 </div>
@@ -68,10 +68,11 @@
                                 {{sortValue}}
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <li><button (click)="sodervalue(2,'New Arrival')" class="dropdown-item"
+                                    type="button"><span class="ps-1 d-inline-block">New Arrival</span></button></li>
                                 <li><button (click)="sodervalue(1,'Recommended' )" class="dropdown-item"
                                         type="button"><span class="ps-1 d-inline-block">Recommended</span></button></li>
-                                <li><button (click)="sodervalue(2,'New Arrival')" class="dropdown-item"
-                                        type="button"><span class="ps-1 d-inline-block">New Arrival</span></button></li>
+                               
                                 <li><button (click)="sodervalue(3,'Low to High')" class="dropdown-item"
                                         type="button"><span class="ps-1 d-inline-block">Price
                                             Low to High</span></button></li>

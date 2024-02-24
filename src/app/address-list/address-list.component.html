@@ -266,9 +266,9 @@
 
                         <div class="col-md-12">
                             <div class="form-floating">
-                                <textarea class="form-control" formControlName="addaddress1"
+                                <textarea class="form-control"   [(ngModel)]="textAreaInput" formControlName="addaddress1"
                                     [ngClass]="{'is-invalid' : adduserForm.get('addaddress1')!.invalid && adduserForm.get('addaddress1')!.touched}"
-                                    placeholder="Address *"></textarea>
+                                    placeholder="Address *"  (input)="onMessageInputChange()" maxlength="100"></textarea>
                                 <label for="">Address <span class="font-red font-bold">*</span></label>
 
                                 <div class="addresscount">

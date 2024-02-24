@@ -29,6 +29,7 @@ export class AddressListComponent implements OnInit {
   maxAddressLength = 100;
   cityname: any;
   notmatch: boolean = false;
+  textAreaInput = '';
   @ViewChild('AddButton')
   AddButton!: ElementRef;
 
@@ -513,5 +514,22 @@ console.log(this.deliverAddress)
   removeLoader() {
     this.renderer.removeClass(document.body, 'bodyloader');
   }
+
+
+  
+  onMessageInputChange() {
+
+    // this.maxLength = 40 - this.textAreaInput.length;
+    if (this.textAreaInput.length > 100) {
+
+      this.textAreaInput = this.textAreaInput.substring(0, 100);
+      
+     // this.isMaxLengthExceeded = true;
+    } else {
+      
+    //  this.isMaxLengthExceeded = false;
+    }
+  }
+
 
 }

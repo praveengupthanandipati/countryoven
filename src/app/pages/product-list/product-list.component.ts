@@ -33,8 +33,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
   breadcatTitle: any;
   breadcatTitleLink: any;
   getOldUrl: any;
-  sorder: any = 1;
-  sortValue: any = 'Recommended';
+  sorder: any = 2;
+  sortValue: any = 'New Arrival';
   loading: boolean = true;
   isfilters: boolean = false;
   totalCount: any;

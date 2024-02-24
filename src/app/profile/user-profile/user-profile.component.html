@@ -40,10 +40,10 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="mobileNumber" placeholder="Mobile Number"
+                            <input type="number" class="form-control" id="mobileNumber" placeholder="Mobile Number"
                                 formControlName="MobilePhone"  [ngClass]="{'is-invalid': userForm.get('MobilePhone').invalid  && userForm.get('MobilePhone')!.touched}">
-                            <label for="mobileNumber">Mobile Number </label>
-                            <div class="msg-hint" *ngIf="submitted && userForm.get('phoneNo').invalid">  Enter valid Mobile Number. Its between  10 to 15  characters</div>
+                            <label for="mobileNumber">Mobile Number</label>
+                            <div class="msg-hint" *ngIf="submitted && userForm.get('MobilePhone').invalid">  Enter valid Mobile Number. Its between  10 to 15  characters</div>
                         </div>
                     </div>
 

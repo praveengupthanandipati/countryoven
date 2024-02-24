@@ -45,7 +45,7 @@ export class UserProfileComponent implements OnInit{
     customerFirstName: ['', [Validators.required, Validators.minLength(3)]],
     customerIp:  [''],
     email: [{ value: '', disabled: true }],
-    MobilePhone:  ['',[Validators.pattern(/^\d{10,15}$/)]],  
+    MobilePhone:  [''],  
     phoneNo:  ['', [Validators.required, Validators.pattern(/^\d{10,15}$/)]],
     Address1:  ['',[Validators.maxLength(this.maxAddressLength)]],
     Address2:  [''],
@@ -167,7 +167,7 @@ this.submitted=true;
         "customerDetails": {
           "customerFirstName": this.custName,
           "customerIp": this.userForm.value['customerIp'],
-          "MobilePhone": this.userForm.value['MobilePhone'].toString(),
+          "MobilePhone":"" + this.userForm.value['MobilePhone'] + "",
           "phoneNo": this.userForm.value['phoneNo'].toString(),
           "Address1": this.userForm.value['Address1'],
           // "Address2":this.userForm.value['Address2'],
