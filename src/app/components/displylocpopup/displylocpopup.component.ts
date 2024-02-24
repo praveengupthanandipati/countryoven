@@ -15,6 +15,13 @@ export class DisplylocpopupComponent {
  this.showpopup=false
 }
 
+setTimeout(() => {
+  if(localStorage.getItem('city'))
+{
+ this.showpopup=false
+} 
+}, 1000);
+
   }
   closepopup()
   {

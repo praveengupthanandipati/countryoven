@@ -19,7 +19,7 @@
         <!-- {{timeLeft | date}} -->
         <!--/ bread crumb-->
         <!-- product detail -->
-        <div class="row" *ngIf="productDetails">
+        <div class="row" *ngIf="productDetails && productId">
             <!-- left -->
             <div class="col-md-5">
                 <div class="sticky-top">
@@ -474,6 +474,12 @@
             </div>
             <!--/ right -->
         </div>
+
+        <ng-container *ngIf="!(productId && productDetails)">
+            <app-noproducts-found></app-noproducts-found></ng-container>
+
+
+
         <!--/ product detail-->
         <!-- you may also like -->
         <section class="you-may-also-like my-5" *ngIf="allProducts?.length > 0">

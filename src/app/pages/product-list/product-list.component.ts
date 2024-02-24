@@ -11,277 +11,255 @@ import { Subscription } from 'rxjs';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent implements OnInit ,OnDestroy {
-  cityname:any;
-  originalcityname:any;
-  type:any;
-  PageName:any;
-  psize:number=40;
-  productData:any;
-  products:any=[];
-filters:any=[]
-filterswrapper:any;
-displayproducts:any;
-currentPage: number=0;
-  totalPages: number=0;
+export class ProductListComponent implements OnInit, OnDestroy {
+  cityname: any;
+  originalcityname: any;
+  type: any;
+  PageName: any;
+  psize: number = 40;
+  productData: any;
+  products: any = [];
+  filters: any = []
+  filterswrapper: any;
+  displayproducts: any;
+  currentPage: number = 0;
+  totalPages: number = 0;
   pagesBeforeCurrent: number[] = [];
   pagesAfterCurrent: number[] = [];
-  isHiddensearchFilter=false;
+  isHiddensearchFilter = false;
   metaData: any;
-  typeName:any;
-  breadTitle:any;
+  typeName: any;
+  breadTitle: any;
   breadcatTitle: any;
-  breadcatTitleLink:any;
-  getOldUrl:any;
-  sorder:any=1;
-  sortValue:any='Recommended';
-  loading:boolean=true;
-  isfilters:boolean=false;
+  breadcatTitleLink: any;
+  getOldUrl: any;
+  sorder: any = 1;
+  sortValue: any = 'Recommended';
+  loading: boolean = true;
+  isfilters: boolean = false;
   totalCount: any;
-  currency:any;
-  country:any;
-  isload:boolean=false;
+  currency: any;
+  country: any;
+  isload: boolean = false;
   private paramMapSubscription: Subscription = new Subscription;
   private paramMapSubscription1: Subscription = new Subscription;
-  routeCity(e:any)
-  {
-    this.router.navigateByUrl(e + '/gift-online');
+  routeCity(e: any) {
+    this.router.navigateByUrl(e.toLowerCase() + '/gift-online');
   }
-  routeCategory(e:any)
-  {
-    
-    this.router.navigateByUrl(e + '/'+ this.originalcityname +'/online-delivery');
-    
+  routeCategory(e: any) {
+
+    this.router.navigateByUrl(e + '/' + this.originalcityname.toLowerCase() + '/online-delivery');
+
   }
 
-    filterChanged(filterOption: any): void {
-this.products=[];
-const filterGroup = this.filterswrapper.find((group:any) => group.filterOptions.includes(filterOption));
+  filterChanged(filterOption: any): void {
+    this.products = [];
+    const filterGroup = this.filterswrapper.find((group: any) => group.filterOptions.includes(filterOption));
 
-if (filterGroup) {
-  const selectedValuesByFilterType:any = {};
-  for (const filterGroup of this.filterswrapper) {
-    const selectedValues = filterGroup.filterOptions
-      .filter((option:any) => option.selected)
-      .map((selectedOption:any) => selectedOption.value);
-  
-    if (selectedValues.length > 0) {
-      selectedValuesByFilterType[filterGroup.filterType] = selectedValues;
+    if (filterGroup) {
+      const selectedValuesByFilterType: any = {};
+      for (const filterGroup of this.filterswrapper) {
+        const selectedValues = filterGroup.filterOptions
+          .filter((option: any) => option.selected)
+          .map((selectedOption: any) => selectedOption.value);
+
+        if (selectedValues.length > 0) {
+          selectedValuesByFilterType[filterGroup.filterType] = selectedValues;
+        }
+      }
+
+
+      this.isfilters = Object.keys(selectedValuesByFilterType).length ? true : false;
+
+
+
+
+      this.filters = [selectedValuesByFilterType]
+      this.currentPage = 1;
+      this.getProductDetails([selectedValuesByFilterType], this.currentPage, this.sorder);
+
+
+
+
     }
   }
-  
-  console.log(selectedValuesByFilterType);
- this.isfilters=Object.keys(selectedValuesByFilterType).length ? true : false;
 
 
 
-
- this.filters=[selectedValuesByFilterType]
-this.currentPage=1;
-  this.getProductDetails([selectedValuesByFilterType], this.currentPage, this.sorder);
-
-
-
-
-} }
- 
-
-
-constructor ( private renderer: Renderer2,  private titleService: Title, private location: Location, private locationStrategy: LocationStrategy,
-  private meta: Meta,private _crud:CurdService, private route:ActivatedRoute, private formBuilder: FormBuilder, private router: Router)
-{
-  this.originalcityname=localStorage.getItem('city')
-  this.currency=localStorage.getItem('currency')
-  this.country=localStorage.getItem('country');
-   this.router.events.subscribe(() => {
-    
- 
-    
-    //http://localhost:4200/order/Mumbai/christmas-cakes-online
-  });
-
-
-}
-
-
-addLoader()
-  {
-    this.renderer.addClass(document.body, 'bodyloader');
-  }
-  removeLoader()
-  {
-    this.renderer.removeClass(document.body, 'bodyloader');
-  }
-filterclear()
-{
-  window.location.reload();
-}
-
-ngOnDestroy() {
-  
-  // Unsubscribe when the component is destroyed
-  if (this.paramMapSubscription) {
-    this.paramMapSubscription.unsubscribe();
-  }
-  if (this.paramMapSubscription1) {
-    this.paramMapSubscription1.unsubscribe();
-  }
-}
-  ngOnInit(): void {
-
-console.log('init ')
-    this.addLoader();
-
-  this.paramMapSubscription=this.route.paramMap.subscribe((params: ParamMap) => {
-    this.isfilters=false;
-    this.products=[]      
-  this.getPageRoutes();
-  this.getMeta();
-this.getProductDetails(this.filters, 1, this.sorder);
-this.getFiltersDetails()
- 
+  constructor(private renderer: Renderer2, private titleService: Title, private location: Location, private locationStrategy: LocationStrategy,
+    private meta: Meta, private _crud: CurdService, private route: ActivatedRoute, private formBuilder: FormBuilder, private router: Router) {
+    this.originalcityname = localStorage.getItem('city')
+    this.currency = localStorage.getItem('currency')
+    this.country = localStorage.getItem('country');
+    this.router.events.subscribe(() => {
     });
 
 
-
-
-
   }
 
-getnewurl(urlcity:any)
-{
-  
-  this.getOldUrl= this.router.url;
-  
-  let newurl=  this.getOldUrl.replace(urlcity, this.cityname.toLowerCase());
-  this.location.replaceState(newurl);
-}
+
+  addLoader() {
+    this.renderer.addClass(document.body, 'bodyloader');
+  }
+  removeLoader() {
+    this.renderer.removeClass(document.body, 'bodyloader');
+  }
+  filterclear() {
+    window.location.reload();
+  }
+
+  ngOnDestroy() {
+
+    // Unsubscribe when the component is destroyed
+    if (this.paramMapSubscription) {
+      this.paramMapSubscription.unsubscribe();
+    }
+    if (this.paramMapSubscription1) {
+      this.paramMapSubscription1.unsubscribe();
+    }
+  }
+  ngOnInit(): void {
+    this.addLoader();
+    this.paramMapSubscription = this.route.paramMap.subscribe((params: ParamMap) => {
+      this.isfilters = false;
+      this.products = []
+      this.getPageRoutes();
+      this.getMeta();
+      this.getProductDetails(this.filters, 1, this.sorder);
+      this.getFiltersDetails()
+    });
+  }
+
+  getnewurl(urlcity: any) {
+
+    this.getOldUrl = this.router.url;
+
+    let newurl = this.getOldUrl.replace(urlcity, this.cityname.toLowerCase());
+    this.location.replaceState(newurl);
+  }
 
 
   getPageRoutes() {
-    
+
     this.route.params.subscribe((params) => {
 
-      if(params['cityname'] =='send-online')
-      {
-        
+      if (params['cityname'] == 'send-online') {
+
       }
-      else
-      {
+      else {
+        if (params['favspl']) {
+          let urlparms = params['favspl'].split('-to-');
+          if (urlparms.length > 1) {
+            this.typeName = 'FLV';
+            this.cityname = urlparms[1];
+            this.setCity(urlparms[1]);
+            this.cityname = this.originalcityname ? this.originalcityname : this.cityname;
+            this.PageName = urlparms[0]
+
+            this.getnewurl(urlparms[1])
+          }
+          else {
+            let urlparms1 = params['favspl'].split('-');
+            this.cityname = urlparms1[urlparms1.length - 1];
+            this.setCity(this.cityname);
+            this.getnewurl(urlparms1[urlparms1.length - 1])
+            this.cityname = this.originalcityname ? this.originalcityname : this.cityname;
+
+            this.typeName = 'SPL';
+            let resultArray: any = '';
+            for (let i = 0; i < urlparms1.length - 1; i++) {
+              if (resultArray == '') {
+                resultArray = urlparms1[i];
+              }
+              else {
+                resultArray = resultArray + '-' + urlparms1[i];
+              }
+
+            }
+            this.PageName = resultArray
+          }
+
+        }
+        else if (params['cityname1']) {
+          this.cityname = params['cityname1'];
+          this.typeName = 'CTY';
+          this.PageName = params['PageName1'];
+          localStorage.setItem('city', this.cityname);
+          this._crud.updateCountry(this.cityname)
+        }
+        else if (params['type']) {
 
 
-      if (params['favspl']) {
-        let urlparms = params['favspl'].split('-to-');
-        if (urlparms.length > 1) {
-          this.typeName = 'FLV';
-          this.cityname = urlparms[1];
-          
-          this.cityname=this.originalcityname;
-          
-          this.PageName = urlparms[0]
-          this.getnewurl(urlparms[1])
+          this.cityname = params['cityname'];
+          this.setCity(this.cityname);
+          this.cityname = this.originalcityname ? this.originalcityname : this.cityname
+          this.typeName = params['type'];
+          this.PageName = params['PageName'];
+
+          if (params['type'] == 'search_result') {
+            console.log(params['PageName'])  //Hyderabad
+            console.log(params['cityname']) //flowers
+            this.setCity(params['PageName'])
+
+            this.getnewurl(params['PageName'])
+          }
+
+          else {
+            this.setCity(params['cityname'])
+            this.getnewurl(params['cityname'])
+
+          }
+
+
+
         }
         else {
-          let urlparms1 = params['favspl'].split('-');
-          this.cityname = urlparms1[urlparms1.length - 1];
-          this.getnewurl(urlparms1[urlparms1.length - 1])
-          this.cityname=this.originalcityname;
-          this.typeName = 'SPL';
-          let resultArray:any='';
-          for (let i = 0; i < urlparms1.length -1; i++) {
-            if(resultArray == '')
-            {
-              resultArray = urlparms1[i];
-            }
-            else
-            {
-              resultArray = resultArray + '-' + urlparms1[i];
-            }
-            
-          }
-          this.PageName = resultArray
+
         }
-        
+
+
+        if (this.typeName == 'online-delivery' || this.PageName == 'online-delivery') {
+          this.type = 'C';
+          // this.PageName=this.PageName;
+
+
+          this.PageName = params['type'];
+
+        } else if (this.typeName == 'order') {
+          this.type = 'SC';
+
+        }
+        else if (this.typeName == 'send') {
+          this.type = 'OCC';
+
+        }
+
+        else if (this.typeName == 'SPL') {
+          this.type = 'SPL';
+
+        }
+
+        else if (this.typeName == 'FLV') {
+          this.type = 'FLV';
+
+        }
+        else if (this.typeName == 'search_result') {
+          console.log(params['PageName'])  //Hyderabad
+          console.log(params['cityname']) //flowers
+          this.type = 'SE';
+          this.cityname = params['PageName'];
+          this.cityname = this.originalcityname;
+          this.PageName = params['cityname'];
+        }
+
+
+
+
+        else {
+          this.type = this.typeName;
+
+        }
       }
-      else if (params['cityname1']) {
-        this.cityname = params['cityname1'];
-        this.typeName = 'CTY';
-        this.PageName = params['PageName1'];
-localStorage.setItem('city',  this.cityname);
- this._crud.updateCountry(this.cityname)
-      }
-      else if (params['type']) {
-
-
-        this.cityname = params['cityname'];
-        this.cityname=this.originalcityname;
-        this.typeName = params['type'];
-        this.PageName = params['PageName'];
-
-if(params['type']=='search_result')
-{
-  console.log(params['PageName'])  //Hyderabad
-  console.log(params['cityname']) //flowers
-  this.getnewurl(params['PageName'])
-}
-
-else
-{
-  this.getnewurl(params['cityname'])
-  
-}
-
-
-        
-      }
-      else {
-
-      }
-
-
-      if (this.typeName == 'online-delivery' || this.PageName == 'online-delivery') {
-        this.type = 'C';
-       // this.PageName=this.PageName;
-        
-       
-        this.PageName = params['type'];
-        
-      } else if (this.typeName == 'order') {
-        this.type = 'SC';
-        
-      }
-      else if (this.typeName == 'send') {
-        this.type = 'OCC';
-        
-      }
-
-      else if (this.typeName == 'SPL') {
-        this.type = 'SPL';
-        
-      }
-
-      else if (this.typeName == 'FLV') {
-        this.type = 'FLV';
-        
-      }
-      else if (this.typeName == 'search_result') {
-        console.log(this.typeName)
-        console.log(params['PageName'])  //Hyderabad
-        console.log(params['cityname']) //flowers
-        this.type = 'SE';
-        this.cityname = params['PageName'];
-        this.cityname=this.originalcityname;
-        this.PageName = params['cityname'];
-      }
-
-
-
-
-      else {
-        this.type = this.typeName;
-        
-      }
-    }
 
       // this.PageName = params['PageName'];
     });
@@ -294,116 +272,115 @@ else
   }
 
   selectedItems: any[] = [];
-  
+
 
 
 
   getMeta(): void {
-    
-    const data={
-      cityname:this.cityname,
-      Type:this.type,
-      PageName:this.PageName
+
+    const data = {
+      cityname: this.cityname,
+      Type: this.type,
+      PageName: this.PageName
     }
 
     this._crud.getMeta(data).subscribe(res => {
-     this.metaData=res;
-     
+      this.metaData = res;
+
       this.titleService.setTitle(res.title);
-this.breadTitle=res.subCategoryNameCapital || res.specialPageCapital || res.occasionNameCapital || res.flavourNameCapital;
-this.breadcatTitle=res.categoryNameCapital;
-this.breadcatTitleLink=res.seoCategoryName;
-// this.breadcatTitle=res.seoCategoryName;
-      this.meta.updateTag({ name: 'description',  content: res.metaDescription });
-      this.meta.updateTag({ name: 'keywords',  content: res.metaKeywords });
+      this.breadTitle = res.subCategoryNameCapital || res.specialPageCapital || res.occasionNameCapital || res.flavourNameCapital;
+      this.breadcatTitle = res.categoryNameCapital;
+      this.breadcatTitleLink = res.seoCategoryName;
+      // this.breadcatTitle=res.seoCategoryName;
+      this.meta.updateTag({ name: 'description', content: res.metaDescription });
+      this.meta.updateTag({ name: 'keywords', content: res.metaKeywords });
 
     })
   }
 
 
-  getProductDetails(filters:any, pagenumber?:any, sortOrder?:any, load?:boolean): void {
+  setCity(value: any) {
+    if (!localStorage.getItem('city')) {
+      localStorage.setItem('city', value)
+      this.cityname = localStorage.getItem('city')
+    }
+  }
+
+  getProductDetails(filters: any, pagenumber?: any, sortOrder?: any, load?: boolean): void {
     this.addLoader();
-    
-    this.loading=true;
-    const data={
-      cityname:this.cityname,
-      country:this.country,
-      Type:this.type,
-      PageName:this.PageName,
-      currencySelected:this.currency,
-      PageNumber:pagenumber,
-      PageSize:this.psize,
-      productFilters:filters,
-      sortOrder:sortOrder
+
+    this.loading = true;
+    const data = {
+      cityname: this.cityname,
+      country: this.country,
+      Type: this.type,
+      PageName: this.PageName,
+      currencySelected: this.currency,
+      PageNumber: pagenumber,
+      PageSize: this.psize,
+      productFilters: filters,
+      sortOrder: sortOrder
     }
 
     this._crud.getProductDetails(data).subscribe(res => {
       this.removeLoader();
-     this.loading=false;
-     console.log(res)
-     this.productData=res;
-  //  this.products=this.productData.items
-  console.log(this.products)
-  console.log(this.productData.items)  
- this.products= this.products.concat(this.productData.items)
-    console.log(this.products)
-    this.currentPage=this.productData.pageNumber;
-this.totalPages=this.productData.totalPages
-this.totalCount=this.productData.totalCount;
-if( 40 * this.currentPage  <= this.totalCount)
-{
-this.displayproducts=  40 * this.currentPage
-}
-else
-{
-  this.displayproducts=this.totalCount
-}
-if(this.totalCount > this.products.length)
-{
-this.isload=true
-}
-else
-{
-  this.isload=false
-}
-if(!load)
-{
-  window.scrollTo(0, 0);
-}
+      this.loading = false;
 
-  }, (error)=>{
-this.removeLoader()
-  } )
+      this.productData = res;
+      //  this.products=this.productData.items
+
+      this.products = this.products.concat(this.productData.items)
+      this.currentPage = this.productData.pageNumber;
+      this.totalPages = this.productData.totalPages
+      this.totalCount = this.productData.totalCount;
+      if (40 * this.currentPage <= this.totalCount) {
+        this.displayproducts = 40 * this.currentPage
+      }
+      else {
+        this.displayproducts = this.totalCount
+      }
+      if (this.totalCount > this.products.length) {
+        this.isload = true
+      }
+      else {
+        this.isload = false
+      }
+      if (!load) {
+        window.scrollTo(0, 0);
+      }
+
+    }, (error) => {
+      this.removeLoader()
+    })
   }
 
   getFiltersDetails(): void {
-    
-    const data={
-      cityname:this.cityname,
-    
-      Type:this.type,
-      PageName:this.PageName,
-      currencySelected:this.currency
+
+    const data = {
+      cityname: this.cityname,
+
+      Type: this.type,
+      PageName: this.PageName,
+      currencySelected: this.currency
     }
 
     this._crud.getFilters(data).subscribe(res => {
-     
-   this.filterswrapper=res;
 
-  }, (error)=>{
-    this.removeLoader()
-      } )
+      this.filterswrapper = res;
+
+    }, (error) => {
+      this.removeLoader()
+    })
   }
 
 
-  loadmore()
-  {
+  loadmore() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
-      this.getProductDetails(this.filters, this.currentPage,this.sorder, true);
+      this.getProductDetails(this.filters, this.currentPage, this.sorder, true);
     }
-// this.psize=this.psize + 40;
-// this.getProductDetails(this.filters,1, this.sorder);
+    // this.psize=this.psize + 40;
+    // this.getProductDetails(this.filters,1, this.sorder);
   }
 
   get pages(): number[] {
@@ -419,30 +396,27 @@ this.removeLoader()
   nextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
-      this.getProductDetails(this.filters, this.currentPage,this.sorder);
+      this.getProductDetails(this.filters, this.currentPage, this.sorder);
     }
   }
 
   goToPage(page: number) {
     if (page >= 1 && page <= this.totalPages && page !== this.currentPage) {
       this.currentPage = page;
-      this.getProductDetails(this.filters, this.currentPage,this.sorder);
+      this.getProductDetails(this.filters, this.currentPage, this.sorder);
     }
   }
 
-sortproducts()
-{
-  this.getProductDetails(this.filters, this.currentPage,this.sorder);
-}
+  sortproducts() {
+    this.getProductDetails(this.filters, this.currentPage, this.sorder);
+  }
 
-sodervalue(sorder:any, type:any)
-{
-this.sortValue=type;
-this.sorder=sorder;
-this.products=[]
-console.log(this.filters)
-this.getProductDetails(this.filters, this.currentPage, this.sorder);
-}
+  sodervalue(sorder: any, type: any) {
+    this.sortValue = type;
+    this.sorder = sorder;
+    this.products = []
+    this.getProductDetails(this.filters, this.currentPage, this.sorder);
+  }
   /* test code */
 
   capitalizeFirstLetter(word: string): string {
@@ -455,8 +429,9 @@ this.getProductDetails(this.filters, this.currentPage, this.sorder);
 
 
 
-  getPages(): (number | null)[] {   const pagesToShow = 3; // Adjust as needed
-  const pages: (number | null)[] = [];
+  getPages(): (number | null)[] {
+    const pagesToShow = 3; // Adjust as needed
+    const pages: (number | null)[] = [];
 
     // Display pages around the current page
     for (let i = Math.max(1, this.currentPage - pagesToShow); i <= Math.min(this.totalPages, this.currentPage + pagesToShow); i++) {
@@ -481,11 +456,11 @@ this.getProductDetails(this.filters, this.currentPage, this.sorder);
       pages.push(this.totalPages);
     }
 
-  return pages;
+    return pages;
   }
 
   onPageClick(page: number): void {
-   // this.pageChanged.emit(page);
+    // this.pageChanged.emit(page);
   }
 
 

@@ -86,6 +86,7 @@ couponData:any;
   }
   getaddressId(event: any)
   {
+    console.log(event)
     if(event.s)
     {
       this.addressShow=false

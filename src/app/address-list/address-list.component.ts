@@ -106,16 +106,27 @@ export class AddressListComponent implements OnInit {
 
   ngOnInit(): void {
     this.selectedaddress = 'select'
-    if (this.checkoutaddress) {
-      this.isCheckout = true;
-      this.selectedaddress = this.selectedAddressId ? this.selectedAddressId : 'select'
+//     if (this.checkoutaddress) {
+//       this.isCheckout = true;
+//       this.getAddressByCustomerId();
+//       console.log(this.selectedAddressId)
+//       this.selectedaddress = this.selectedAddressId ? this.selectedAddressId : 'select'
+// console.log(this.selectedaddress)
 
-
-      setTimeout(() => {
-        this.addressselected(this.selectedaddress)
-      }, 1000);
-    }
+//       setTimeout(() => {
+//         this.addressselected(this.selectedaddress)
+//       }, 500);
+//     } else
+//     {
     this.getAddressByCustomerId();
+    // }
+
+
+
+
+
+
+
 
 
   }
@@ -288,7 +299,7 @@ export class AddressListComponent implements OnInit {
     this.selectedAddressData = e.target.value;
 
     this.deliverAddress = this.filterAddressesByAddressId(e.target.value);
-
+    console.log('2')
   }
 
   addressselected(e: any) {
@@ -296,21 +307,51 @@ export class AddressListComponent implements OnInit {
     this.selectedAddressData = e;
 
     this.deliverAddress = this.filterAddressesByAddressId(e);
-
+    console.log(this.deliverAddress)
+console.log('1')
   }
 
   getAddressByCustomerId() {
     let data = { "customerId": this.custID }
     this._crud.getAddressByCustomerId(data).subscribe(res => {
       this.originalAddress = res;
+      console.log(res)
+
+      if (this.checkoutaddress) {
+        this.isCheckout = true;
+        this.selectedaddress = this.selectedAddressId
+      } 
+
+
+
+
+
       if (this.originalAddress.length < 4) {
         this.deliverAddress = res;
       }
       else {
         this.deliverAddress = []
+        if (this.checkoutaddress) {
+         
+          this.selectedaddress = this.selectedAddressId ? this.selectedAddressId : 'select'
+          setTimeout(() => {
+            this.addressselected(this.selectedaddress)
+          }, 100);
+        } 
       }
 
 
+
+     
+
+
+
+
+
+
+
+
+console.log(this.deliverAddress)
 
     });
   }
@@ -460,7 +501,7 @@ export class AddressListComponent implements OnInit {
     }
     else {
 
-      return this.originalAddress.filter((address: { addressId: any; }) => {
+      return this.originalAddress?.filter((address: { addressId: any; }) => {
         return address.addressId === parseInt(addressIdToFilter);
       });
     }

@@ -65,7 +65,8 @@ if(this.isEggless)
       this.currencyClass = 'icon-dollar-currency-symbol'
     }
 
-    this.city = localStorage.getItem('city')
+    this.city = localStorage.getItem('city')?.toLowerCase();
+    console.log(this.city)
   }
 
 }

@@ -128,20 +128,71 @@ export class ProductDetailComponent implements OnInit {
   formatNumber(value: number): string {
     return value < 10 ? `0${value}` : `${value}`;
   }
+setcounntry()
+{
+  this.currency = localStorage.getItem('currency');
+  if (this.currency == 'INR') {
+    this.currencyClass = 'icon-inr'
+  }
+  else if (this.currency == 'USD') {
+    this.currencyClass = 'icon-dollar-currency-symbol'
+  }
+
+
+
+  this.coutryName = localStorage.getItem('country');
+  this.currencySelected = localStorage.getItem('currency');
+
+
+
+}
+
   ngOnInit(): void {
     this.addLoader();
-    this.currency = localStorage.getItem('currency');
-    if (this.currency == 'INR') {
-      this.currencyClass = 'icon-inr'
-    }
-    else if (this.currency == 'USD') {
-      this.currencyClass = 'icon-dollar-currency-symbol'
-    }
-
+ this.setcounntry();
     this.route.params.subscribe((params) => {
       this.productName = params['PageName'];
-      //  this.getProductReviews(this.productName)
-      this.getProductDetailsById()
+      if(!localStorage.getItem('country') || !localStorage.getItem('currency'))
+      {
+        this._crud.getCountryusingIp().subscribe((data: any) => {
+    if(!localStorage.getItem('country'))
+    {
+      localStorage.setItem('country', data.country)
+    }
+  //   if(localStorage.getItem('country') == 'India' && !localStorage.getItem('currency'))
+  //   {
+  //     localStorage.setItem('currency', 'INR')
+  //   }
+  // else
+  // {
+  //   localStorage.setItem('currency', 'USD')
+  // }
+  if(localStorage.getItem('country') == 'India')
+  {
+    if(!localStorage.getItem('currency'))
+    {      
+    localStorage.setItem('currency', 'INR')
+    }
+  }
+  else
+  {
+    if(!localStorage.getItem('currency'))
+    {      
+    localStorage.setItem('currency', 'USD')
+    }
+  }
+  this.setcounntry()
+setTimeout(() => {
+  this.getProductDetailsById();
+}, 500);
+  
+
+  });
+
+      }  else{
+        this.getProductDetailsById();
+      }
+         
     });
   }
 
@@ -306,61 +357,6 @@ export class ProductDetailComponent implements OnInit {
       if (this.productDetails?.sameDayBlockTime) {
         this.displayTimer();
       }
-
-
-      /* new code */
-
-  //     if (this.stock != '') {
-  //       this.tagMsg = this.stock;
-  //       if (this.stock == 'Out of Stock') {
-  //         this.tagClass = 'errorcls'
-  //       } 
-  //       else  if (this.stock == 'Few Stock') {
-  //         this.tagClass = 'bluecls'
-  //       } 
-  //       else  if (this.stock == 'Avaliable') {
-  //         this.tagClass = ''
-  //         this.tagMsg = '';
-  // if(this.isEggless)
-  // {
-  //   this.tagClass = 'greencls'
-  //       this.tagMsg = this.isEggless
-  // }
-  
-  //       } 
-  //       else {
-  //         this.tagClass = 'greencls'
-  //       }
-  
-  //     } else if (this.isNewArriaval) {
-  //       this.tagClass = 'bluecls'
-  //       this.tagMsg = this.isNewArriaval
-  //     }
-  //     else if (this.isEggless) {
-  //       this.tagClass = 'greencls'
-  //       this.tagMsg = this.isEggless
-  //     }
-  
-      /* new code */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
       if (this.stockQuantityStatus || this.productDetails?.stockQuantityMessage) {
         //few stock  // out of stock
         this.tagMsg = this.productDetails?.stockQuantityMessage;
@@ -385,10 +381,11 @@ export class ProductDetailComponent implements OnInit {
 
 
 
-
+if(this.productId)
+{
       this.getProductReviews(this.productId)
       this.getRelatedProducts();
-
+}
       this.flavourOptionsDto_array = this.productDetails.flavourOptionsDto;
       this.voucherOptionsDto_array = this.productDetails.voucherOptionsDto;
       this.weightOptionsDto_array = this.productDetails.weightOptionsDto;
@@ -492,8 +489,10 @@ export class ProductDetailComponent implements OnInit {
 
       }
 
-    })
-  }
+    }, (error)=>{
+      this.removeLoader()
+        } )
+  } 
 
   onMessageInputChange() {
 
@@ -686,7 +685,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   routeCity(e: any) {
-    this.router.navigateByUrl(e + '/gift-online');
+    this.router.navigateByUrl(e.toLowerCase() + '/gift-online');
   }
 
 
