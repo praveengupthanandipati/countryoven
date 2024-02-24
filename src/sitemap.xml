@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://www.countryoven.com/sitemap_0.xml</loc>
+    <lastmod>2019-07-23</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.countryoven.com/categorysitemap.xml</loc>
+    <lastmod>2019-07-23</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.countryoven.com/subcategorysitemap.xml</loc>
+    <lastmod>2019-07-23</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.countryoven.com/occasionsitemap.xml</loc>
+    <lastmod>2019-07-23</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.countryoven.com/productsitemap.xml</loc>
+    <lastmod>2019-07-23</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.countryoven.com/flavoursitemap.xml</loc>
+    <lastmod>2019-07-23</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.countryoven.com/GiftByoccasionsitemap.xml</loc>
+    <lastmod>2019-07-23</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.countryoven.com/citysitemap.xml</loc>
+    <lastmod>2019-07-23</lastmod>
+  </sitemap>
+</sitemapindex>

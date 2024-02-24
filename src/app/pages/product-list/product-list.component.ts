@@ -142,7 +142,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   getPageRoutes() {
 
     this.route.params.subscribe((params) => {
-
+      console.log(params)
       if (params['cityname'] == 'send-online') {
 
       }
@@ -300,10 +300,13 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
 
   setCity(value: any) {
-    if (!localStorage.getItem('city')) {
-      localStorage.setItem('city', value)
-      this.cityname = localStorage.getItem('city')
-    }
+    // console.log(localStorage.getItem('city'))
+    // if (!localStorage.getItem('city')) {
+    //   localStorage.setItem('city', value)
+    //   this.cityname = localStorage.getItem('city')
+    //   console.log(localStorage.getItem('city'))
+    // }
+    // console.log(localStorage.getItem('city'))
   }
 
   getProductDetails(filters: any, pagenumber?: any, sortOrder?: any, load?: boolean): void {

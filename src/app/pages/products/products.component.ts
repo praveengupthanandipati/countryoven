@@ -48,7 +48,7 @@ setcounntry()
       localStorage.setItem('currency', 'USD')
       }
     }
-  
+    this.getCountryStatus= localStorage.getItem('country') ? true : false;
   
   });
       } 
@@ -60,6 +60,7 @@ setcounntry()
 
   getPageRoutes() {
     this.route.params.subscribe((params) => {
+      console.log(params)
       if (params['cityname'] == 'send-online') {
         this.showproductDetails = true
         let getOldUrl = this.router.url;
@@ -71,6 +72,7 @@ setcounntry()
         let newurl = getOldUrl.replace(params['type'], city.toLowerCase());
         this.location.replaceState(newurl);
       }
+      /* start else */
       else {
         this.showproductDetails = false;
         if (params['favspl']) {
@@ -78,15 +80,24 @@ setcounntry()
           if (urlparms.length > 1) {
             this.typeName = 'FLV';
             this.cityname = urlparms[1];
+            if (!localStorage.getItem('city')) {
+              localStorage.setItem('city', this.cityname)
+            }
           }
           else {
             let urlparms1 = params['favspl'].split('-');
             this.cityname = urlparms1[urlparms1.length - 1]
             this.typeName = 'SPL';
+            if (!localStorage.getItem('city')) {
+              localStorage.setItem('city', this.cityname)
+            }
           }
           this.showproductDetails = false;
         }
         else if (params['cityname1']) {
+          if (!localStorage.getItem('city')) {
+            localStorage.setItem('city', params['cityname1'])
+          }
           this.showproductDetails = false;
           this.typeName = 'CTY';
         }
@@ -94,10 +105,30 @@ setcounntry()
           if (params['PageName'] == 'online-delivery') {
             this.cityname = params['cityname'];
             this.typeName = params['PageName']
+            if (!localStorage.getItem('city')) {
+              localStorage.setItem('city', params['cityname'])
+            }
           }
           else {
-            this.cityname = params['cityname'];
-            this.typeName = params['type']
+            if(params['type'] =='search_result')
+            {
+              this.cityname = params['PageName'];
+              this.typeName = params['type']
+              if (!localStorage.getItem('city')) {
+                localStorage.setItem('city', params['PageName'])
+              }
+            } 
+            else
+            {
+              this.cityname = params['cityname'];
+              this.typeName = params['type'];
+              if (!localStorage.getItem('city')) {
+                localStorage.setItem('city', params['cityname'])
+              }
+            }
+            
+           
+            
           }
 
 
@@ -105,6 +136,8 @@ setcounntry()
         else {
 
         }
+
+        
         if (this.typeName == 'online-delivery') {
           this.type = 'C';
           this.showproductDetails = false;
@@ -145,6 +178,8 @@ setcounntry()
         }
          this.PageName = params['PageName'];
       }
+
+      /* end else */
     });
   }
 
