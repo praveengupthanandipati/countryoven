@@ -2,7 +2,7 @@
     <div class="custom-container">
         <div class="row">
             <div class="col-lg-9">
-                <div class="row">
+                <div class="row g-2">
                     <div class="col-lg-2">
                         <a routerLink="/" class="top-header-logo">
                             <img src="assets/images/logo.png" alt="Country Oven" class="brand-logo">
@@ -23,7 +23,7 @@
                         <span *ngIf="searcherror" class="errorsearch"> Please enter atleast one character</span>
                     </div>
                     <div class="col-lg-6 align-self-center">
-                        <div class="row">
+                        <div class="row g-2">
                             <div class="col-lg-8 col-md-8 col-7">
                                 <a class="d-block align-self-center headerinput deliver" href="javascript:void(0)"
                                     data-bs-toggle="modal" data-bs-target="#selectcity" aria-controls="staticBackdrop">
@@ -40,19 +40,17 @@
                                 </a>
                             </div>
                             <div class="col-lg-4 col-md-4 col-5">
-                                <div class="d-flex">
-                                    <span class="align-self-center d-none d-md-inline-block pe-2">Currency</span>
-                                    <div class="headerinput align-self-center select-currency">
-                                        <select class="form-select border-0 select-currency"
-                                            (change)="onCurrecnySelected()"  [(ngModel)]="selectedCurrency"
-                                            aria-label="">
-                                            <option *ngFor="let c of currencydrop" [value]="c"><span
-                                                    class="d-inline-block pe-2"></span> {{ c }}</option>
-                                            <!-- <option value="INR">INR - ₹</option>
+                                <!-- <span class="align-self-center d-none d-md-inline-block pe-2">Currency</span> -->
+                                <div class="headerinput align-self-center select-currency">
+                                    <select class="form-select border-0 select-currency" (change)="onCurrecnySelected()"
+                                        [(ngModel)]="selectedCurrency" aria-label="">
+                                        <option *ngFor="let c of currencydrop" [value]="c"><span
+                                                class="d-inline-block pe-2"></span> {{ c }}</option>
+                                        <!-- <option value="INR">INR - ₹</option>
                                             <option value="usa">USA - $</option> -->
-                                        </select>
-                                    </div>
+                                    </select>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -130,7 +128,7 @@
                 <a routerLink="/cart" class="d-inline-block text-center text-black">
                     <div><span class="icon-cart icomoon"></span></div>
                     <div><small class="text-uppercase font-bold">Cart</small></div>
-                    <span  class="badge badge-light position-absolute">{{count}}</span>
+                    <span class="badge badge-light position-absolute">{{count}}</span>
                 </a>
             </div>
         </div>

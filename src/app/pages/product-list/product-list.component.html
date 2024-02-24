@@ -28,26 +28,28 @@
                         <li class="breadcrumb-item active" *ngIf="breadTitle">{{breadTitle}}</li>
                     </ol>
                 </nav>
-                <h6 class="p-2 font-primary"><span class="font-bold"> Showing {{displayproducts}} of
-                        {{totalCount}}</span>
-                </h6>
+                <div class="d-flex justify-content-between mt-2 mt-md-0">
+                    <h6 class="p-2 "> Showing:
+                        <span class="font-bold font-primary">{{displayproducts}} of {{totalCount}}</span>
+                    </h6>
+                    <button (click)="toggleVisibility()" class="color-btn d-block d-md-none border-0 filter-btn "><span class="icon-filter icomoon h6 me-2 d-inline-block"></span>Filter </button>
                 </div>
+                
+            </div>
             <div class="products-filters d-md-flex justify-content-md-between">
               
-                    <div class="d-md-flex ">
+                <div [ngClass]="{'hide-mobile':!isVisible}" class="filter-mobile">                   
                     <div class="filter-dropdowns d-flex  align-self-center flex-wrap">
-
-                        <div class="d-md-flex ms-md-2 mb-2 mb-md-0 item-filter-dropdown"
+                        <div class="d-md-flex ms-md-2 mb-md-2 mb-1 mb-md-0 item-filter-dropdown"
                             *ngFor="let filter of filterswrapper">
                             <span class="align-self-center pe-2">{{ filter.filterType }}</span>
-
-                            <div class="dropdown ms-md-1">
+                            <div class="dropdown ms-lg-1">
                                 <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     Select
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="multiselectDropdown">
-                                    <li><label class="dropdown-item" *ngFor="let option of filter.filterOptions">
+                                    <li class="dropdown-item-filter"><label class="dropdown-item" *ngFor="let option of filter.filterOptions">
                                             <!-- <input type="checkbox" [ngModel]="selectedItems.includes(option)"
                                                 (ngModelChange)="toggleSelection(option)"> -->
                                             <input type="checkbox" [(ngModel)]="option.selected"
@@ -61,7 +63,7 @@
                     </div>
                 </div>
                 <div class="filter-dropdowns">
-                    <div class="d-flex mt-2 mt-md-0">
+                    <div class="d-md-flex mt-2 mt-md-0">
                         <span class="align-self-center">Sort By</span>
                         <div class="dropdown ms-2">
                             <button class="dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
@@ -105,9 +107,8 @@
             <ng-container *ngIf="products && products.length >0">
 
                 <div class="products-list-items">
-
-                    <div class="row row-flex">
-                        <div class="col-md-3 col-6 mb-lg-4" *ngFor="let productitem of products">
+                    <div class="row g-2">
+                        <div class="col-md-3 col-6" *ngFor="let productitem of products">
                             <app-product-item [Productvalue]="productitem" class="app-product-col"></app-product-item>
                         </div>
                     </div>

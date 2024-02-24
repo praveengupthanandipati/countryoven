@@ -4,9 +4,8 @@
   height: 100%;
   @include transition(all, 0.2s ease);
   border-radius: 10px;
-  @include minMax(map-get($breakpoints, "xs"), map-get($breakpoints, "sm")) {
-    border-radius: 10px;
-    margin-bottom: 10px;
+  @include max (map-get($breakpoints, "md")) {
+    border-radius: 10px;   
     height: auto;
   }
   border: 1px solid map-get($colors, lightgray);
@@ -49,29 +48,28 @@
     }
 
     h5 {
-      font-size: $fsize;
+      font-size: $fsize - 1;
       line-height: 1.5rem;
-      height: 45px;
-      @include minMax(
-        map-get($breakpoints, "xs"),
-        map-get($breakpoints, "md")
-      ) {
+      height: 30px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      @include max(map-get($breakpoints, "md")) {
         line-height: 1.1rem;
         font-size: $fsize - 3;
-        height: auto;
+        height: 30px;
         overflow: hidden;
         text-overflow: ellipsis;
         display: block;
         white-space: nowrap;
-
       }
       a {
-        color: map-get($colors, black);
+        color: map-get($colors, darkgray);
       }
     }
 
-    .item-footer {    
-      font-size: $fsize - 2;  
+    .item-footer {
+      font-size: $fsize - 2;
       @include max(map-get($breakpoints, "md")) {
         font-size: $fsize - 4;
       }
@@ -81,7 +79,7 @@
       }
       .deliver-date {
         p {
-          color: map-get($colors, black);  
+          color: map-get($colors, black);
 
           span {
             color: map-get($colors, primary);

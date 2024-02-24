@@ -11,10 +11,7 @@
       left: 15px;
       z-index: 999;
       padding: 10px;
-      @include minMax(
-        map-get($breakpoints, "xs"),
-        map-get($breakpoints, "sm")
-      ) {
+      @include max(map-get($breakpoints, "sm")) {
         top: 10px;
         left: 10px;
       }
@@ -33,10 +30,7 @@
     }
     figure {
       padding: 5px;
-      @include minMax(
-        map-get($breakpoints, "xs"),
-        map-get($breakpoints, "sm")
-      ) {
+      @include max(map-get($breakpoints, "sm")) {
         padding: 2px;
       }
       background: map-get($colors, white);
@@ -49,14 +43,7 @@
 
         img {
           position: relative;
-
-          @include minMax(
-            map-get($breakpoints, "xs"),
-            map-get($breakpoints, "lg")
-          ) {
-            height: auto;
-            border-radius: 10px;
-          }
+         
         }
       }
     }

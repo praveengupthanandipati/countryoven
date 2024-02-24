@@ -33,6 +33,10 @@ body {
 .custom-container {
   width: 95%;
   margin: 0 auto;
+
+  @include max(map-get($breakpoints, "sm")) {
+    width: 93%;
+  }
 }
 
 .rounded-btn {
@@ -499,3 +503,16 @@ header.fixed-top {
 .bodyloader .loader-overlay {
   display: flex !important;
 }
+
+.hide-mobile {
+  display: none;
+
+  @include min(map-get($breakpoints, "md")){
+    display: block;
+  }
+}
+
+.sub-page-title{
+  font-size:clamp(1rem, 1.3vw, 1.3rem);
+}
+

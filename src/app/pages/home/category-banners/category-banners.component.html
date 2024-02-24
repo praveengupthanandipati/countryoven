@@ -1,10 +1,10 @@
-<section class="category-banners d-none d-lg-block">
+<section class="category-banners d-none d-md-block">
     <div class="section-title">
         <h5 class="h5 font-bold">Find Gifts For your Loved Ones</h5>
         <P>Celebrate with Surprise Your Loved Ones</P>
     </div>
     <div class="custom-container">
-        <div class="row pt-4">
+        <div class="row pt-4 g-2">
             <ng-container *ngFor="let sb of smallBanners">
                 <div class="col-md-6" [ngClass]="{'col-md-6': !sb.isSmall, 'col-6 col-md-3' : sb.isSmall }">
                     <div class="category-banner-item position-relative"  (click)="gotoroute(sb.type, sb.seoName)">

@@ -50,7 +50,7 @@
                     <!--/ carousel -->
                     <article *ngIf="productDetails?.deliveryInformationRequired">
                         <p class="text-center py-md-3">
-                            <small>NOTE: Design and icing of cake may vary from the image shown here since each chef
+                            <small class="small">NOTE: Design and icing of cake may vary from the image shown here since each chef
                                 has his/her own way of baking and designing a cake.
                             </small>
                         </p>
@@ -302,14 +302,14 @@
                         <div class="product-detail-tab rounded">
                             <nav>
                                 <div class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                                    <a class="nav-link active border me-md-2" id="nav-description-tab"
+                                    <a class="nav-link active border" id="nav-description-tab"
                                         data-bs-toggle="tab" data-bs-target="#nav-description" type="button" role="tab"
                                         aria-controls="nav-home" aria-selected="true">Description</a>
-                                    <a class="nav-link border me-md-2" id="nav-Information-tab" data-bs-toggle="tab"
+                                    <a class="nav-link border" id="nav-Information-tab" data-bs-toggle="tab"
                                         data-bs-target="#nav-Information" type="button" role="tab"
                                         aria-controls="nav-Information" aria-selected="false"
                                         *ngIf="productDetails?.deliveryInformationRequired">Delivery Information</a>
-                                    <a class="nav-link border me-md-2" id="nav-Instructions-tab" data-bs-toggle="tab"
+                                    <a class="nav-link border" id="nav-Instructions-tab" data-bs-toggle="tab"
                                         data-bs-target="#nav-Instructions" type="button" role="tab"
                                         aria-controls="nav-Instructions" aria-selected="false"
                                         *ngIf="productDetails?.careInstrunctionForCakeRequired || productDetails?.careInstrunctionForFlowerRequired">Care
@@ -319,7 +319,7 @@
                                         aria-selected="false">Product Reviews</a>
                                 </div>
                             </nav>
-                            <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-content p-2 p-md-3" id="nav-tabContent">
                                 <div class="tab-pane fade show active" *ngIf="productDetails?.description !=''"
                                     id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
                                     <article class="pb-2"> 
@@ -485,7 +485,7 @@
         <section class="you-may-also-like my-5" *ngIf="allProducts?.length > 0">
             <h5 class="font-bold pb-3 mb-2 h5 border-bottom ">You may also like</h5>
             <div class="products-list my-3">
-                <div class="row row-flex">
+                <div class="row g-2">
                     <div class="col-md-3 col-6" *ngFor="let productitem of allProducts">
                         <app-product-item [Productvalue]="productitem" class="app-product-col"></app-product-item>
                     </div>

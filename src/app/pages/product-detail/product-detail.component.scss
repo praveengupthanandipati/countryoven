@@ -142,27 +142,24 @@
   background: #005bc2;
 }
 
-.product-detail-tab {
-  padding: 25px;
+.product-detail-tab { 
   background: map-get($colors, lightblue);
   min-height: 420px;
 
-  @include max(map-get($breakpoints, "sm")) {
-    padding: 10px;
-  }
-
-  .nav-link {
+   .nav-link {
     text-transform: uppercase;
     color: map-get($colors, black);
     background: map-get($colors, white);
     font-weight: map-get($font-weights, "medium");
     border:none!important;
+    border-radius: 0;
 
-    @include max(map-get($breakpoints, "md")) {
-      width: 46%;
-      margin: 1%;
-      font-size: $fsize - 3;
-      padding: 5px 10px;
+    @include max(map-get($breakpoints, "sm")) {
+      width: 50%;      
+      font-size: $fsize - 4;
+      padding: 10px;
+      border-radius:0;
+      
     }
   }
   .nav-link.active {

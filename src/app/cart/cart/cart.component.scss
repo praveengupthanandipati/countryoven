@@ -1,5 +1,15 @@
 @import "../../../styles/styles";
 
+.location-date-time {
+  p {
+    font-size: $fsize;
+
+    @include max(map-get($breakpoints, "sm")) {
+      font-size: $fsize - 2;
+    }
+  }
+}
+
 .btnsec {
   .value-button {
     display: inline-block;
@@ -50,9 +60,12 @@
 
 .app-product-item {
   .item-title {
-    p {
-      height: 50px;
-      line-height: 125%;
+    p {          
+      height: 30px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: block;
+      white-space: nowrap;
       a {
         font-size: $fsize - 2;
       }
@@ -83,17 +96,30 @@
   }
 }
 
-.noproduct{     text-align: center;
-  font-size: 23px; & div{ display: block; text-align: center; margin: 20px 0 0 0;}}
-
-  .smallimg{
-    height: 30px;
-
-    @include max(map-get($breakpoints, "sm")){
-      height: 25px;
-    }
+.noproduct {
+  text-align: center;
+  font-size: 23px;
+  & div {
+    display: block;
+    text-align: center;
+    margin: 20px 0 0 0;
   }
+}
 
-  .cbtn{ border: 1px solid #bf0067 !important;}
-  .modalimgwrap{ text-align: center;}
-  .modalimg{ max-width: 100%;}
+.smallimg {
+  height: 30px;
+
+  @include max(map-get($breakpoints, "sm")) {
+    height: 25px;
+  }
+}
+
+.cbtn {
+  border: 1px solid #bf0067 !important;
+}
+.modalimgwrap {
+  text-align: center;
+}
+.modalimg {
+  max-width: 100%;
+}

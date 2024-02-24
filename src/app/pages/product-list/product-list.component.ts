@@ -43,6 +43,12 @@ export class ProductListComponent implements OnInit, OnDestroy {
   isload: boolean = false;
   private paramMapSubscription: Subscription = new Subscription;
   private paramMapSubscription1: Subscription = new Subscription;
+  isVisible:boolean=false;
+
+  toggleVisibility(){
+    this.isVisible=!this.isVisible;
+  }
+
   routeCity(e: any) {
     this.router.navigateByUrl(e.toLowerCase() + '/gift-online');
   }
