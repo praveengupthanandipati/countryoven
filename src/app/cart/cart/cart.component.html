@@ -287,7 +287,9 @@
 
                                 </option>
                             </select>
+                           
                         </div>
+                        <div class="error" *ngIf="timeerror"> Please select Time</div>
 
                         <!-- <div class="invalid-feedback mt-0 d-block"
                         *ngIf="dynamicForm.get('deliveryTimes')!.invalid && dynamicForm.get('deliveryTimes')!.touched">

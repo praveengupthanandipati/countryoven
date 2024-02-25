@@ -107,18 +107,18 @@ export class AddressListComponent implements OnInit {
 
   ngOnInit(): void {
     this.selectedaddress = 'select'
-//     if (this.checkoutaddress) {
-//       this.isCheckout = true;
-//       this.getAddressByCustomerId();
-//       console.log(this.selectedAddressId)
-//       this.selectedaddress = this.selectedAddressId ? this.selectedAddressId : 'select'
-// console.log(this.selectedaddress)
+    //     if (this.checkoutaddress) {
+    //       this.isCheckout = true;
+    //       this.getAddressByCustomerId();
+    //       console.log(this.selectedAddressId)
+    //       this.selectedaddress = this.selectedAddressId ? this.selectedAddressId : 'select'
+    // console.log(this.selectedaddress)
 
-//       setTimeout(() => {
-//         this.addressselected(this.selectedaddress)
-//       }, 500);
-//     } else
-//     {
+    //       setTimeout(() => {
+    //         this.addressselected(this.selectedaddress)
+    //       }, 500);
+    //     } else
+    //     {
     this.getAddressByCustomerId();
     // }
 
@@ -309,7 +309,7 @@ export class AddressListComponent implements OnInit {
 
     this.deliverAddress = this.filterAddressesByAddressId(e);
     console.log(this.deliverAddress)
-console.log('1')
+    console.log('1')
   }
 
   getAddressByCustomerId() {
@@ -321,29 +321,25 @@ console.log('1')
       if (this.checkoutaddress) {
         this.isCheckout = true;
         this.selectedaddress = this.selectedAddressId
-      } 
-
-
-
-
-
-      if (this.originalAddress.length < 4) {
+      }
+      if (!this.checkoutaddress) {
+        this.deliverAddress = res;
+      }
+      else if (this.originalAddress.length < 4) {
         this.deliverAddress = res;
       }
       else {
         this.deliverAddress = []
         if (this.checkoutaddress) {
-         
           this.selectedaddress = this.selectedAddressId ? this.selectedAddressId : 'select'
           setTimeout(() => {
             this.addressselected(this.selectedaddress)
           }, 100);
-        } 
+        }
       }
 
 
 
-     
 
 
 
@@ -352,7 +348,8 @@ console.log('1')
 
 
 
-console.log(this.deliverAddress)
+
+      console.log(this.deliverAddress)
 
     });
   }
@@ -484,15 +481,6 @@ console.log(this.deliverAddress)
   }
 
 
-  // filterAddressesByAddressId(addressIdToFilter: any) {
-  //   return this.originalAddress.filter((address: { addressId: any; }) =>
-  //    {
-
-  //     address.addressId == addressIdToFilter
-  //    }
-
-  //    );
-  // }
 
   filterAddressesByAddressId(addressIdToFilter: any) {
 
@@ -516,18 +504,18 @@ console.log(this.deliverAddress)
   }
 
 
-  
+
   onMessageInputChange() {
 
     // this.maxLength = 40 - this.textAreaInput.length;
     if (this.textAreaInput.length > 100) {
 
       this.textAreaInput = this.textAreaInput.substring(0, 100);
-      
-     // this.isMaxLengthExceeded = true;
+
+      // this.isMaxLengthExceeded = true;
     } else {
-      
-    //  this.isMaxLengthExceeded = false;
+
+      //  this.isMaxLengthExceeded = false;
     }
   }
 

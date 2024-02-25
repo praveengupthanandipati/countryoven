@@ -1,10 +1,7 @@
 <div class="userprofile-body">
     <div class="row">
         <div class="col-md-6">
-            <div class="row" *ngIf="originalAddress?.length > 3">
-                <!-- <div class="col-auto align-self-center">
-                    <label>Select Address</label>
-                </div> -->
+            <div class="row" *ngIf="originalAddress?.length > 3 && checkoutaddress">
                 <div class="col-auto">
                        <select class="form-select" [(ngModel)]="selectedaddress"  (change)="onOptionChange($event)">
                         <ng-container *ngIf="selectedaddress == 'select'">
@@ -17,8 +14,6 @@
 
                     </select>
                 </div>
-
-            
             </div>
             <div *ngIf="notmatch" class="errormatch">   Deliver City Not Matched</div>
         </div>
@@ -38,7 +33,7 @@
                     <p class="card-title font-gray align-self-center pb-0 mb-0"><span class="d-block small">Deliver to:</span> 
                         <span class="text-black font-semibold">{{da.recipientFirstName}} {{da.recipientLastName}}
                         </span>
-                        <!-- <span class="badge bg-light text-dark d-inline-block border">{{da.zipCode}}</span> -->
+                       
                     </p>
                 </div>
                 <div class="card-body pb-1">
@@ -70,18 +65,6 @@
             </div>
         </div>
     </div>
-
-    <div class="static-page" *ngIf="deliverAddress?.length ==0">
-
-        <!-- <div class="Noproducts">
-            <img src="/src/assets/images/noproducts.svg" alt="" class="img-fluid w-100">
-          
-            <a href="" class="color-border-btn" (click)="addNewAddress()" data-bs-toggle="modal"
-                data-bs-target="#AddNewAddress">Add New Address</a>
-        </div> -->
-    </div>
-
-
 </div>
 
 <!-- Edit address modal-->
@@ -192,8 +175,9 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="color-border-btn">Save
-                            Address</button>
+                        <button type="submit" class="color-border-btn"> <ng-container *ngIf="checkoutaddress">Save and Continue</ng-container>
+                            <ng-container *ngIf="!checkoutaddress">Save Address</ng-container></button>
+                           
                     </div>
                 </form>
             </div>
@@ -290,27 +274,7 @@
                                     mandatory</div>
                             </div>
                         </div>
-                        <!-- <div class="col-md-6">
-                            <div class="form-floating mb-3"> -->
-                        <!-- (change)="onaddCountryChange($event)" -->
-
-                        <!-- <select class="form-select"   id="country" formControlName="addcountryId">
-                                    <option [value]="c.countryId" *ngFor="let c of countryList">{{c.countryName}}
-                                    </option>
-
-                                </select>
-                                <label for="country">Country </label>
-                            </div>
-                        </div> -->
-                        <!-- <div class="col-md-6">
-                            <div class="form-floating mb-3">
-                                <select class="form-select"  (change)="onstateChange($event)"  formControlName="addstateId">
-                                    <option [value]="c.stateId" *ngFor="let c of stateList">{{c.stateName}}</option>
-
-                                </select>
-                                <label>State </label>
-                            </div>
-                        </div> -->
+                      
                         <div class="col-md-6">
                             <div class="form-floating mb-3">
                                 <select class="form-select"
@@ -338,7 +302,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="color-border-btn">Save Address</button>
+                        <button type="submit" class="color-border-btn">
+                            <ng-container *ngIf="checkoutaddress">Save and Continue</ng-container>
+                            <ng-container *ngIf="!checkoutaddress">Save Address</ng-container>
+                            </button>
                     </div>
                 </form>
             </div>

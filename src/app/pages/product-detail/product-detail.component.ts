@@ -410,7 +410,7 @@ if(this.productId)
             this.deliveryTime = res.deliveryTimingsDtos;
 
             this.dynamicForm.get('deliveryTimes')?.setValue(this.deliveryTime[0].dtime);
-
+console.log(this.deliveryTime[0].dtime)
             /* pincode */
 
             this.pincodeOptionsDto_array = res.deliveryPinCodes;
@@ -624,6 +624,10 @@ if(this.productId)
     this._crud.getBindDeliveryTimes(data).subscribe(res => {
 
       this.deliveryTime = res.deliveryTimingsDtos;
+
+
+      this.dynamicForm.get('deliveryTimes')?.setValue(this.deliveryTime[0].dtime);
+      console.log(this.deliveryTime[0].dtime)
 
     })
   }

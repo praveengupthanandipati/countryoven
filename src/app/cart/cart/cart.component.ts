@@ -41,6 +41,8 @@ export class CartComponent implements OnInit {
   customimg:any;
   @ViewChild('closeButton')
   closeButton!: ElementRef;
+  timeerror:boolean=false;
+  dateerror:boolean=false;
   constructor(private fb: FormBuilder, private renderer: Renderer2, private route: Router, private toastr: ToastrService, private _crud: CurdService, private cookieService: CookieService) {
 
 
@@ -132,7 +134,7 @@ export class CartComponent implements OnInit {
         this._crud.getBindDeliveryTimes(data).subscribe(res => {
 
           this.deliveryTime = res.deliveryTimingsDtos;
-          this.userForm.get('deliveryTime')?.setValue(this.displaydeliveryTime)
+         // this.userForm.get('deliveryTime')?.setValue(this.displaydeliveryTime)
         })
       }, 100);
     });
@@ -383,22 +385,34 @@ console.log(this.viewedProducts)
   }
 
   updateDateandtime() {
-    let data = {
-      "sessionId": this.sessionId,
-      "deliveryDate": this.userForm.get('deliveryDate').value,
-      "deliveryTime": this.userForm.get('deliveryTime').value.toString(),
+console.log(this.userForm.get('deliveryTime').value)
+    if(this.userForm.get('deliveryTime').value.toString() !="")
+    {
+      this.timeerror=false;
+      
+      let data = {
+        "sessionId": this.sessionId,
+        "deliveryDate": this.userForm.get('deliveryDate').value,
+        "deliveryTime": this.userForm.get('deliveryTime').value.toString(),
+      }
+  
+      this._crud.updateDeliveryDateTime(data).subscribe(res => {
+        if (!res.isEroor) {
+  
+          this.getCarts()
+          const button: HTMLButtonElement = this.closeButton.nativeElement;
+          button.click();
+        }
+        console.log(res)
+  
+      })
     }
 
-    this._crud.updateDeliveryDateTime(data).subscribe(res => {
-      if (!res.isEroor) {
-
-        this.getCarts()
-        const button: HTMLButtonElement = this.closeButton.nativeElement;
-        button.click();
-      }
-      console.log(res)
-
-    })
+    else
+    {
+      this.timeerror=true;
+    }
+    
 
   }
   capturephoto(src:any)

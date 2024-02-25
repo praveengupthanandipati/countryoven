@@ -59,7 +59,7 @@
                                     </div>
                                     <div class="col-md-3 text-end">
                                         <div>
-                                            <small class="font-gray">Delivered on: <span
+                                            <small class="font-gray">Delivery Date: <span
                                                     class="font-green font-semibold">{{order.deliveredDate}}</span></small>
                                         </div>
                                         <div class="user-order-col">
@@ -95,6 +95,17 @@
                             <div class="price">
                                 <div class="offer-price">
                                     <div>
+                                        <small class="font-gray">Delivery Charges:</small>
+                                        <span class="font-semibold">
+                                            <span class="icon-inr icomoon small"></span>{{order.deliveryTimingRate}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="price">
+                                <div class="offer-price">
+                                    <div>
                                         <small class="font-gray">Total:</small>
                                         <span class="font-semibold">
                                             <span class="icon-inr icomoon small"></span>{{order.totalAmount}}
@@ -102,6 +113,8 @@
                                     </div>
                                 </div>
                             </div>
+
+
                         </div>
                         <div class="col-md-6">
                             <p class="text-end">

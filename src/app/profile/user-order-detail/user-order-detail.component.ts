@@ -19,6 +19,7 @@ custName: any;
   orderstatusdetails:any;
   currency:any;
   currencyClass:any;
+  orderstatus:any;
 constructor(private route:ActivatedRoute,private _crud:CurdService, private router:Router)
 {
   const queryParams = this.route.snapshot.queryParams;
@@ -71,7 +72,11 @@ getTrackdetails()
         this.productdetails=this.order.trackOrderProductDto;
         this.orderstatusdetails=this.order.trackOrderStatusDto;
     console.log(this.productdetails)
-   
+   this.orderstatus=this.orderdetails.orderStatus;
+
+
+
+
     // if (!res.isEroor) {
     
     // }

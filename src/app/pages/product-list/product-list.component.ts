@@ -127,6 +127,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.addLoader();
     this.paramMapSubscription = this.route.paramMap.subscribe((params: ParamMap) => {
+      console.log(this.filters)
+      this.filters=[];
       this.isfilters = false;
       this.products = []
       this.getPageRoutes();

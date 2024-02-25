@@ -25,8 +25,7 @@
 
                 <div class="box-list card">
                     <div class="tabheading card-header border-bottom-0 bg-white" (click)="addressShow =!addressShow"
-                        *ngIf="addressId">Delivery
-                        to:
+                        *ngIf="addressId">Delivery to:
                         <strong>{{addressName}} </strong>
                     </div>
                     <section class="tabcontentwrap" *ngIf="addressShow">
@@ -110,9 +109,10 @@
                                             <label><small>Coupon Code</small></label>
                                             <div class="col-auto">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control rounded-0"
+                                                    <input [readonly]="couponappled" type="text" class="form-control rounded-0"
                                                         [ngClass]="{'is-invalid' :errorcode }"
                                                         formControlName="couponcode" placeholder="Coupon*">
+                                                        <a *ngIf="couponappled" class="icon-close icomoon" (click)="removeApplycode()"></a>
                                                     <div class="invalid-feedback mt-0 d-block" *ngIf="errorcode">
                                                         <small>{{errorcodemessage}}</small>
                                                     </div>
@@ -120,16 +120,18 @@
 
                                             </div>
                                             <div class="col-auto">
-                                                <button type="submit" [disabled]="!couponForm.valid"
+                                                <button type="submit" [disabled]="!couponForm.valid || couponappled"
                                                     class="color-border-btn py-1 btn">Apply</button>
                                             </div>
+
+                                            
                                         </div>
                                     </form>
                                 </div>
                             </div>
                             <div class="col-md-6 text-end">
                                 <div class="totalAmountwrap pb-2">
-                                    <div class="totalAmount">Total Amount : <strong><span
+                                    <div class="totalAmount">Payable Amount : <strong><span
                                                 [class]="currencyClass"></span>
                                             {{totalAmount}}</strong></div>
                                 </div>

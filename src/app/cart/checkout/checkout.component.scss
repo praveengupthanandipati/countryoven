@@ -101,3 +101,9 @@
     width: 100%;
   }
 }
+
+.form-group{ position: relative;}
+
+.form-group a.icon-close{position: absolute;
+  top: 11px; cursor: pointer;
+  right: 6px;}

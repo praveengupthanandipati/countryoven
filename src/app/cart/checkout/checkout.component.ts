@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
 import { CurdService } from 'src/app/services/curd.service';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-checkout',
@@ -91,7 +91,7 @@ couponData:any;
     {
       this.addressShow=false
       this.addressCity=event.e.cityName;
-      this.addressName=event.e.recipientFirstName + event.e.recipientLastName;
+      this.addressName=event.e.recipientFirstName + " " + event.e.recipientLastName;
       this.addressId=event.e.addressId;
       this.reviewShow=true;
     }
@@ -150,7 +150,15 @@ else
       {
         if(res.couponType =='Instant')
         {
-        this.totalAmount=(this.originalTotalAmount - res.maxDiscount).toFixed(2);
+          if (this.currency == 'USD')
+          {
+            this.totalAmount=(this.originalTotalAmount - res.maxDiscount).toFixed(2);
+          }
+          else
+          {
+            this.totalAmount=(this.originalTotalAmount - res.maxDiscount);
+          }
+        
         this.finalamount=this.totalAmount;
         this.appliedDiscount=res.maxDiscount
         }
@@ -160,7 +168,37 @@ else
       
     });
   }
+removeApplycode()
+{
 
+
+  Swal.fire({
+    width: '350px',
+    // imageUrl: '../../assets/images/tick.png',
+    imageHeight: 80,
+    text: 'Do you want to delete the Coupon',
+    showCancelButton: true,
+    confirmButtonText: 'Okay'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      
+      this.couponForm.get('couponcode').setValue('');
+console.log(this.originalTotalAmount)
+      this.totalAmount=this.originalTotalAmount
+      this.finalamount=this.totalAmount;
+      this.appliedDiscount=0
+      this.couponappled=false
+
+
+    }
+  });
+
+
+
+
+
+
+}
   SaveOrderDetails() {
     this.addLoader();
 this.reviewShow=false;
