@@ -44,9 +44,14 @@ export class ProductListComponent implements OnInit, OnDestroy {
   private paramMapSubscription: Subscription = new Subscription;
   private paramMapSubscription1: Subscription = new Subscription;
   isVisible:boolean=false;
+  isVisibleSort:boolean=false;
 
   toggleVisibility(){
     this.isVisible=!this.isVisible;
+  }
+
+  toggleVisibilitysort(){
+    this.isVisibleSort=!this.isVisibleSort;
   }
 
   routeCity(e: any) {

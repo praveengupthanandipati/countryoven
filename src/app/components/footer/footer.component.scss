@@ -21,7 +21,7 @@
       text-align: center;
       line-height: 53px;
       background: map-get($colors, primary);
-      z-index: 999;
+      z-index: 9999;
       @include transition(all, 0.3s ease);
       cursor: pointer;
 

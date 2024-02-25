@@ -18,17 +18,17 @@
             <div *ngIf="notmatch" class="errormatch">   Deliver City Not Matched</div>
         </div>
         <div class="col-md-6 align-self-center">
-            <div class="text-end ">
+            <div class="text-md-end mt-3 mt-md-0 ">
                 <a href="" class="color-btn" (click)="addNewAddress()" data-bs-toggle="modal"
                     data-bs-target="#AddNewAddress">Add Delivery Address</a>
             </div>
         </div>
     </div>
 
-    <div class="address-cards row align-items-stretch" >
-        <div class="col-md-4 my-3" [ngClass]="{'selected':selectedaddress== da.addressId}"
+    <div class="address-cards row g-2 align-items-stretch" >
+        <div class="col-md-4" [ngClass]="{'selected':selectedaddress== da.addressId}"
             *ngFor="let da of deliverAddress">
-            <div class="card">
+            <div class="card mt-2 mb-1">
                 <div class="card-header">
                     <p class="card-title font-gray align-self-center pb-0 mb-0"><span class="d-block small">Deliver to:</span> 
                         <span class="text-black font-semibold">{{da.recipientFirstName}} {{da.recipientLastName}}
@@ -196,8 +196,8 @@
             </div>
             <div class="modal-body">
                 <form [formGroup]="adduserForm" (ngSubmit)="onAddSubmit()">
-                    <div class="row">
-                        <div class="col-md-6">
+                    <div class="row g-2">
+                        <div class="col-sm-6">
                             <div class="form-floating">
                                 <input
                                     [ngClass]="{'is-invalid' : adduserForm.get('addRecipientFirstName')!.invalid && adduserForm.get('addRecipientFirstName')!.touched}"
@@ -209,7 +209,7 @@
                                     must be at least 3 characters long</div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <div class="form-floating">
                                 <input type="text" class="form-control" formControlName="addRecipientLastName"
                                     [ngClass]="{'is-invalid' : adduserForm.get('addRecipientLastName')!.invalid && adduserForm.get('addRecipientLastName')!.touched}"
@@ -225,7 +225,7 @@
                                 <input type="text" formControlName="addEmail" class="form-control" placeholder="Email">
                             </div>
                         </div> -->
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <div class="form-floating">
                                 <input type="number" formControlName="addPhone" class="form-control"
                                     placeholder="Phone *"
@@ -236,7 +236,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <div class="form-floating">
                                 <input type="number" formControlName="addMobilePhone" class="form-control"
                                     placeholder="Mobile Phone *"
@@ -248,7 +248,7 @@
                         </div>
 
 
-                        <div class="col-md-12">
+                        <div class="col-sm-12">
                             <div class="form-floating">
                                 <textarea class="form-control"   [(ngModel)]="textAreaInput" formControlName="addaddress1"
                                     [ngClass]="{'is-invalid' : adduserForm.get('addaddress1')!.invalid && adduserForm.get('addaddress1')!.touched}"
@@ -263,7 +263,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-12">
+                        <div class="col-sm-12">
                             <div class="form-floating">
                                 <input type="text" class="form-control" formControlName="addlandmark"
                                     placeholder="landmark *"
@@ -275,7 +275,7 @@
                             </div>
                         </div>
                       
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <div class="form-floating mb-3">
                                 <select class="form-select"
                                     [ngClass]="{'is-invalid' : adduserForm.get('addcityName')!.invalid && adduserForm.get('addcityName')!.touched}"
@@ -290,7 +290,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <div class="form-floating">
                                 <input type="number" formControlName="addzipCode" class="form-control"
                                     placeholder="Pincode *"
@@ -301,7 +301,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer border-0">
                         <button type="submit" class="color-border-btn">
                             <ng-container *ngIf="checkoutaddress">Save and Continue</ng-container>
                             <ng-container *ngIf="!checkoutaddress">Save Address</ng-container>

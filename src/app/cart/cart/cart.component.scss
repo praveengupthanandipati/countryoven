@@ -58,23 +58,29 @@
   }
 }
 
-.app-product-item {
-  .item-title {
-    p {          
-      height: 30px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: block;
-      white-space: nowrap;
-      a {
-        font-size: $fsize - 2;
-      }
+.title-ofproduct {
+  font-size: $fsize;
+
+  @include max(map-get($breakpoints, "md")) {
+    font-size: $fsize - 2;
+  }
+}
+
+.item-title {
+  p {
+    height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    white-space: nowrap;
+    a {
+      font-size: $fsize - 2;
     }
   }
-  .product-item-figure {
-    img {
-      height: auto;
-    }
+}
+.product-item-figure {
+  img {
+    height: auto;
   }
 }
 
@@ -122,4 +128,17 @@
 }
 .modalimg {
   max-width: 100%;
+}
+
+.btn-checkout {
+  @include max(map-get($breakpoints, "md")) {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 10px 0;
+    text-align: center;
+    z-index: 999;
+    width: 100%;
+    border-radius: 0;
+  }
 }

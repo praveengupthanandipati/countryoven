@@ -83,12 +83,16 @@
 
   margin-top: 8px;
   & .tabcontentwrap {
+    padding: 0;
+  }
+
+  @include max(map-get($breakpoints, "md")) {
     padding: 10px;
   }
 }
 
 .tabheading {
-  padding: 5px 10px;
+  padding: 0;
   width: 100%;
   cursor: pointer;
   margin-top: 0px;
@@ -101,9 +105,16 @@
     width: 100%;
   }
 }
-
 .form-group{ position: relative;}
 
 .form-group a.icon-close{position: absolute;
   top: 11px; cursor: pointer;
   right: 6px;}
+.cart-product-item {
+  .productname-checkout {
+    font-size: $fsize - 1;
+  }
+  & p {
+    font-size: $fsize - 1;
+  }
+}

@@ -15,7 +15,7 @@
         <div class="userprofile-body">
             <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-lg-4 col-sm-6">
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control"
                                 [ngClass]="{'is-invalid': userForm.get('customerFirstName').invalid  && userForm.get('customerFirstName')!.touched}"
@@ -25,11 +25,9 @@
                             <div class="msg-hint" *ngIf="submitted && userForm.get('customerFirstName').invalid"> Name
                                 must be at least 3 characters long</div>
                         </div>
-
-
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-lg-4 col-sm-6">
                         <div class="form-floating mb-3">
                             <input type="number" class="form-control"
                                 [ngClass]="{'is-invalid': userForm.get('phoneNo').invalid  && userForm.get('phoneNo')!.touched}"
@@ -38,7 +36,7 @@
                             <div class="msg-hint" *ngIf="submitted && userForm.get('phoneNo').invalid">  Enter valid Phone Number. Its between  10 to 15  characters</div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-lg-4 col-sm-6">
                         <div class="form-floating mb-3">
                             <input type="number" class="form-control" id="mobileNumber" placeholder="Mobile Number"
                                 formControlName="MobilePhone"  [ngClass]="{'is-invalid': userForm.get('MobilePhone').invalid  && userForm.get('MobilePhone')!.touched}">
@@ -47,7 +45,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-lg-4 col-sm-6">
                         <div class="form-floating mb-3">
                             <input type="email" class="form-control" id="email" placeholder="Email"
                                 formControlName="email"
@@ -58,7 +56,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-lg-4 col-sm-6">
                         <div class="form-floating mb-3">
                             <textarea class="form-control" id="addressline01" placeholder="Address"
                                 formControlName="Address1"  [ngClass]="{'is-invalid': userForm.get('Address1').invalid  && userForm.get('Address1')!.touched}"></textarea>
@@ -71,7 +69,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-lg-4 col-sm-6">
                         <div class="form-floating mb-3">
                             <input type="number" class="form-control" id="pinCode" placeholder="Pincode" value=""
                                 formControlName="zipCode">
@@ -79,7 +77,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-lg-4 col-sm-6">
                         <div class="form-floating mb-3">
                             <select class="form-select" id="country" formControlName="countryId"
                                 (change)="onaddCountryChange($event)">
@@ -90,8 +88,7 @@
                         </div>
                     </div>
 
-
-                    <div class="col-md-4">
+                    <div class="col-lg-4 col-sm-6">
                         <div class="form-floating mb-3">
                             <select class="form-select" (change)="onstateChange($event)" id=""
                                 formControlName="stateId">
@@ -101,14 +98,13 @@
                             <label for="country">State </label>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-lg-4 col-sm-6">
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="city" placeholder="City"
                                 formControlName="cityName">
                             <label for="city">City </label>
                         </div>
                     </div>
-
 
                     <div class="col-md-12">
                         <div class="pt-3">

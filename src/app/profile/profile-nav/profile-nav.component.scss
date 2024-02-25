@@ -6,9 +6,16 @@
   .nav-item {
     .nav-link {
       color: map-get($colors, black);
-      font-size: $fsize - 2;
+      font-size: $fsize - 1;
       text-transform: uppercase;
-      margin: 0 5px; cursor: pointer;
+      margin: 0 6px;
+      cursor: pointer;
+      padding: 5px 10px;
+
+      @include max(map-get($breakpoints, "lg")) {
+        font-size: $fsize - 3;
+        margin: 0 3px;
+      }
     }
     .select-nav {
       background: map-get($colors, primary);
