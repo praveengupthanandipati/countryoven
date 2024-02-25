@@ -1,12 +1,24 @@
-.selected .card{ background: #f8f8f8; border-color: green}
-
-.form-floating{ margin-bottom: 30px;}
-
-textarea{ min-height: 100px !important;}
-.addresscount{     text-align: right;
-    font-size: 12px;
+.selected .card {
+  background: #f8f8f8;
+  border-color: green;
 }
-.static-page{ text-align: center;}
-.errormatch{     font-size: 13px;
-    color: #aa0400;
-    font-weight: 600;}
+
+.form-floating {
+  margin-bottom: 15px;
+}
+
+textarea {
+  min-height: 100px !important;
+}
+.addresscount {
+  text-align: right;
+  font-size: 12px;
+}
+.static-page {
+  text-align: center;
+}
+.errormatch {
+  font-size: 13px;
+  color: #aa0400;
+  font-weight: 600;
+}

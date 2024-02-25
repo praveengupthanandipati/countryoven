@@ -5,6 +5,10 @@
     padding: 15px 0;
     font-size: $fsize - 2;
 
+    @include max(map-get($breakpoints, "md")) {
+      padding: 10px 0 15px 0;
+    }
+
     .filter-dropdowns {
       button.dropdown-toggle {
         background: none;
@@ -111,16 +115,21 @@
   padding-left: 35px;
   padding-right: 35px;
 }
-app-noproducts-found{ text-align: center;}
+app-noproducts-found {
+  text-align: center;
+}
 .filter-btn {
   position: fixed;
   bottom: 0;
   left: 0;
-  right: 0;
   padding: 10px 0;
   text-align: center;
   z-index: 999;
+  width: 100%;
+  border-radius: 0;
 }
+
+
 
 .filter-mobile {
   @include transition(all, 0.3s ease);

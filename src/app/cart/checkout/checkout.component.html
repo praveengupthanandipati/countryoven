@@ -40,15 +40,16 @@
                     <section class="tabcontentwrap" *ngIf="reviewShow && addressId">
                         <div class="cart-product-item  p-1 mb-1" *ngFor="let items of cartItems">
                             <div class="row border py-1">
-                                <div class="col-md-2">
+                                <div class="col-3">
                                     <img [src]="items.produtImage" class="img-fluid" />
                                 </div>
-                                <div class="col-md-10 align-self-center">
+                                <div class="col-9 align-self-center">
                                     <div class="row justify-content-between">
                                         <div class="col-md-6">
-                                            <h5 class="h6 pb-2" *ngIf="items.productName"><a href="javascript:void(0)"
+                                            <p class="pb-2 productname-checkout" *ngIf="items.productName">
+                                                <a href="javascript:void(0)"
                                                     class="font-black">{{items.productName}}</a>
-                                            </h5>
+                                            </p>
 
                                             <p *ngIf="items.additionalWeight">
                                                 <small>Weight: <strong>{{items.additionalWeight}}</strong></small>
@@ -78,7 +79,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="col-md-6 text-end">
+                                        <div class="col-md-6 text-md-end">
                                             <p><span class="small" [class]="currencyClass"></span>{{items.price}}</p>
                                             <p>Qty: {{items.quantity}}</p>
                                         </div>
@@ -88,7 +89,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 pb-2">
-                                <p>Delivery Schedule : <strong>{{firstlistItem.deliveryDate }} at 12 PM</strong>
+                                <p>Delivery Schedule : <strong>{{firstlistItem.deliveryDate }}</strong>
                                     <button class="color-btn border-0 px-2 py-1 small ms-2" data-bs-toggle="modal"
                                         data-bs-target="#DeliveryModal"><span class="icon-edit icomoon"></span>
                                     </button>
@@ -108,7 +109,7 @@
                                     <form [formGroup]="couponForm" (ngSubmit)="onSubmit()">
                                         <div class="row">
                                             <label><small>Coupon Code</small></label>
-                                            <div class="col-auto">
+                                            <div class="col-8">
                                                 <div class="form-group">
                                                     <input type="text" class="form-control rounded-0"
                                                         [ngClass]="{'is-invalid' :errorcode }"
@@ -117,9 +118,8 @@
                                                         <small>{{errorcodemessage}}</small>
                                                     </div>
                                                 </div>
-
                                             </div>
-                                            <div class="col-auto">
+                                            <div class="col-4">
                                                 <button type="submit" [disabled]="!couponForm.valid"
                                                     class="color-border-btn py-1 btn">Apply</button>
                                             </div>
@@ -128,7 +128,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6 text-end">
-                                <div class="totalAmountwrap pb-2">
+                                <div class="totalAmountwrap pb-2 pt-2 pt-md-0">
                                     <div class="totalAmount">Total Amount : <strong><span
                                                 [class]="currencyClass"></span>
                                             {{totalAmount}}</strong></div>

@@ -14,14 +14,14 @@
         </div> -->
         <app-profile-nav></app-profile-nav>
         <div class="userprofile-body">
-            <div class="row mb-3">
+            <div class="row mb-3 g-2">
                 <div class="col-md-4">
                     <div class="user-order-detail-box card">
                         <div class="card-header">
-                            <h6 class="font-bold">Delivery Address</h6>
+                            <h6 class="font-semibold h6 font-primary">Delivery Address</h6>
                         </div>
                         <div class="card-body">
-                            <p class="font-bold">{{receipentdetails?.recipientFirstName}}
+                            <p class="font-semibold">{{receipentdetails?.recipientFirstName}}
                                 {{receipentdetails?.recipientLastName}}</p>
                             <p class="py-2">{{receipentdetails?.recipientAddress1}} ,
                                 {{receipentdetails?.recipientLandMark}}
@@ -29,8 +29,8 @@
                                 {{receipentdetails?.recipientState}}, {{receipentdetails?.countryName}} -
                                 {{receipentdetails?.recipientZipCode}}
                             </p>
-                            <p><span class="font-bold">Phone
-                                    Number:</span><span>{{receipentdetails?.recipientPhone}}</span>,
+                            <p><span class="font-semibold">Phone Number:
+                                </span><span>{{receipentdetails?.recipientPhone}}</span>,
                                 <span>{{receipentdetails?.recipientMobilePhone}}</span>
                             </p>
                         </div>
@@ -39,7 +39,7 @@
                 <div class="col-md-4">
                     <div class="user-order-detail-box card">
                         <div class="card-header">
-                            <h6 class="font-bold">Price details</h6>
+                            <h6 class="font-semibold h6 font-primary">Price details</h6>
                         </div>
                         <div class="card-body">
                             <ng-container>
@@ -47,14 +47,14 @@
                                     <span class="font-black"> Delivery charges :</span>
                                     <div>
                                         <span class="icon-inr small"></span>
-                                        <span class="font-bold">{{orderdetails.shippingCost}}</span>
+                                        <span class="font-semibold">{{orderdetails.shippingCost}}</span>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-between border-bottom py-2 w-100">
                                     <span class="font-black">Discount </span>
                                     <div>
                                         <span class="icon-inr small"></span>
-                                        <span class="font-bold">{{orderdetails.discountAmount}}</span>
+                                        <span class="font-semibold">{{orderdetails.discountAmount}}</span>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-between pt-2 w-100">
@@ -75,20 +75,20 @@
                 <div class="col-md-4">
                     <div class="user-order-detail-box card">
                         <div class="card-header">
-                            <h6 class="font-bold">Delivery Status</h6>
+                            <h6 class="font-semibold h6 font-primary">Delivery Status</h6>
                         </div>
                         <div class="card-body">
                             <p class="d-flex justify-content-between border-bottom py-2">
                                 <span>Order Date</span>
-                                <span class="font-bold font-green">{{orderdetails?.orderDate | date}}</span>
+                                <span class="font-semibold font-green">{{orderdetails?.orderDate | date}}</span>
                             </p>
                             <p class="d-flex justify-content-between border-bottom py-2">
                                 <span>Order Status</span>
-                                <span class="font-bold font-green">{{orderdetails?.orderStatus}}</span>
+                                <span class="font-semibold font-green">{{orderdetails?.orderStatus}}</span>
                             </p>
                             <p class="d-flex justify-content-between pt-2">
                                 <span>Order Shipped</span>
-                                <span class="font-bold font-green">{{orderdetails?.deliveryDate | date}}</span>
+                                <span class="font-semibold font-green">{{orderdetails?.deliveryDate | date}}</span>
                             </p>
                         </div>
 
@@ -102,22 +102,22 @@
             <!-- Order tracking steps -->
             <div class="card mb-2 bg-light.bg-gradient">
                 <div class="card-body ordertracking">
-                    <div class="row justify-content-center">
-                        <div class="col-md-10">
-                            <div class="row justify-content-between">
-                                <div class="order-tracking completed">
-                                    <span class="is-complete"></span>
-                                    <p>Order Confirmed<br><span>Mon, June 24</span></p>
-                                </div>
-                                <div class="order-tracking completed">
-                                    <span class="is-complete"></span>
-                                    <p>Shipped<br><span>Tue, June 25</span></p>
-                                </div>
-                                <div class="order-tracking">
-                                    <span class="is-complete"></span>
-                                    <p>Delivered<br><span>Fri, June 28</span></p>
-                                </div>
-                            </div>
+                    <div class="row justify-content-between">
+                        <div class="order-tracking completed">
+                            <span class="is-complete"></span>
+                            <p><small>Order Booked</small></p>
+                        </div>
+                        <div class="order-tracking completed">
+                            <span class="is-complete"></span>
+                            <p><small>Order Confirmed</small></p>
+                        </div>
+                        <div class="order-tracking completed">
+                            <span class="is-complete"></span>
+                            <p><small>Shipped</small></p>
+                        </div>
+                        <div class="order-tracking">
+                            <span class="is-complete"></span>
+                            <p><small>Delivered</small></p>
                         </div>
                     </div>
                 </div>
@@ -126,24 +126,24 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h6 class="font-bold">Products in Order</h6>
+                    <h6 class="font-semibold">Products in Order</h6>
                 </div>
                 <div class="card-body">
                     <div class="row mb-2 border-bottom pb-2" *ngFor="let o of productdetails">
-                        <div class="col-md-1">
+                        <div class="col-md-1 col-3">
                             <a>
                                 <img [src]="o.productimage1" alt="" class="img-fluid">
                             </a>
                         </div>
-                        <div class="col-md-11">
+                        <div class="col-md-11 col-9">
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="d-flex justify-content-between flex-column user-order-col">
                                         <div>
-                                            <h6 class="h6">
-                                                <a class="font-black font-semibold">{{o.productname}}</a>
-                                            </h6>
-                                            <p><small class="font-gray"><span class="icon-star"></span> Order on
+                                            <p class="small">
+                                                <a class="font-black">{{o.productname}}</a>
+                                            </p>
+                                            <p><small class="font-gray small"><span class="icon-star"></span> Order on
                                                     <span class="font-green font-semibold">{{o.orderDate |
                                                         date}}</span></small>
                                             </p>
@@ -157,8 +157,8 @@
                                     <div class="d-flex justify-content-between flex-column user-order-col">
                                         <div>
                                             <div class="price py-2">
-                                                <div class="offer-price text-end font-bold">
-                                                    <span class="icomoon font-bold small"
+                                                <div class="offer-price text-md-end font-semibold">
+                                                    <span class="icomoon font-semibold small"
                                                         [class]="currencyClass"></span>{{o.price}}
                                                 </div>
                                             </div>

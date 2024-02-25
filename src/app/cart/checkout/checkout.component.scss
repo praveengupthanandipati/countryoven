@@ -83,12 +83,16 @@
 
   margin-top: 8px;
   & .tabcontentwrap {
+    padding: 0;
+  }
+
+  @include max(map-get($breakpoints, "md")) {
     padding: 10px;
   }
 }
 
 .tabheading {
-  padding: 5px 10px;
+  padding: 0;
   width: 100%;
   cursor: pointer;
   margin-top: 0px;
@@ -99,5 +103,14 @@
   & div {
     text-align: right;
     width: 100%;
+  }
+}
+
+.cart-product-item {
+  .productname-checkout {
+    font-size: $fsize - 1;
+  }
+  & p {
+    font-size: $fsize - 1;
   }
 }

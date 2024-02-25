@@ -24,13 +24,14 @@
                                 </small>
 
                                 <small class="font-gray d-inline-block ms-3"> Ordered On:
-                                    <span class="font-green font-semibold">{{order.orderedDate}}</span>
+                                    <span class="font-green font-semibold d-inline-block">{{order.orderedDate}}</span>
                                 </small>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="text-end d-flex justify-content-end">
-                                <a (click)="gotoorders(order.orderId)" class="btn color-btn btn-sm py-1 px-2 small"
+                            <div class="text-end d-flex justify-content-md-end">
+                                <a (click)="gotoorders(order.orderId)"
+                                    class="btn color-btn btn-sm py-1 px-2 small mt-2 mt-md-0"
                                     href="javascript:;">Track</a>
                             </div>
                         </div>
@@ -38,17 +39,17 @@
                 </div>
                 <div class="card-body pb-0 pt-2">
                     <div class="row pb-2 border-bottom" *ngFor="let innerorder of order.myOrderProductsDtos">
-                        <div class="col-md-1">
+                        <div class="col-md-2 col-lg-1  col-3">
                             <a (click)="gotoorders(order.orderId)" href="javascript:;">
                                 <img src="{{innerorder.smallimageurl}}" alt="" class="img-fluid">
                             </a>
                         </div>
-                        <div class="col-md-11">
-                            <article class="py-2">
+                        <div class="col-md-10 col-lg-11 col-9">
+                            <article>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <a (click)="gotoorders(order.orderId)" href=""
-                                            class="font-black font-semibold">{{innerorder.productName}}</a>
+                                        <p class="productname"><a (click)="gotoorders(order.orderId)" href=""
+                                                class="font-black">{{innerorder.productName}}</a></p>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="price">
@@ -57,7 +58,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 text-end">
+                                    <div class="col-md-3 text-md-end py-2 py-md-0">
                                         <div>
                                             <small class="font-gray">Delivered on: <span
                                                     class="font-green font-semibold">{{order.deliveredDate}}</span></small>
@@ -96,7 +97,7 @@
                                 <div class="offer-price">
                                     <div>
                                         <small class="font-gray">Total:</small>
-                                        <span class="font-semibold">
+                                        <span class="font-semibold small">
                                             <span class="icon-inr icomoon small"></span>{{order.totalAmount}}
                                         </span>
                                     </div>
@@ -104,7 +105,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <p class="text-end">
+                            <p class="text-md-end">
                                 <a data-bs-toggle="modal" (click)="reviewClick(order.orderId)" data-bs-target="#Reviews"
                                     class="font-primary pe-3 align-self-center" href="#"><span class="icon-star"></span>
                                     Rate & Review Product</a>

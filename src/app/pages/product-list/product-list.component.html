@@ -1,4 +1,3 @@
-
 <section class="subpage">
     <div class="list-products-header d-none d-md-block">
         <div class="custom-container" [innerHtml]="metaData?.richSnippetContent">
@@ -32,13 +31,15 @@
                     <h6 class="p-2 "> Showing:
                         <span class="font-bold font-primary">{{displayproducts}} of {{totalCount}}</span>
                     </h6>
-                    <button (click)="toggleVisibility()" class="color-btn d-block d-md-none border-0 filter-btn "><span class="icon-filter icomoon h6 me-2 d-inline-block"></span>Filter </button>
+                    <button (click)="toggleVisibility()" class="color-btn d-block d-md-none border-0 filter-btn "><span
+                            class="icon-filter icomoon h6 me-2 d-inline-block"></span>Filter </button>
+
                 </div>
-                
+
             </div>
             <div class="products-filters d-md-flex justify-content-md-between">
-              
-                <div [ngClass]="{'hide-mobile':!isVisible}" class="filter-mobile">                   
+
+                <div [ngClass]="{'hide-mobile':!isVisible}" class="filter-mobile">
                     <div class="filter-dropdowns d-flex  align-self-center flex-wrap">
                         <div class="d-md-flex ms-md-2 mb-md-2 mb-1 mb-md-0 item-filter-dropdown"
                             *ngFor="let filter of filterswrapper">
@@ -49,7 +50,8 @@
                                     Select
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="multiselectDropdown">
-                                    <li class="dropdown-item-filter"><label class="dropdown-item" *ngFor="let option of filter.filterOptions">
+                                    <li class="dropdown-item-filter"><label class="dropdown-item"
+                                            *ngFor="let option of filter.filterOptions">
                                             <!-- <input type="checkbox" [ngModel]="selectedItems.includes(option)"
                                                 (ngModelChange)="toggleSelection(option)"> -->
                                             <input type="checkbox" [(ngModel)]="option.selected"
@@ -63,7 +65,7 @@
                     </div>
                 </div>
                 <div class="filter-dropdowns">
-                    <div class="d-md-flex mt-2 mt-md-0">
+                    <div class="d-flex mt-2 mt-md-0">
                         <span class="align-self-center">Sort By</span>
                         <div class="dropdown ms-2">
                             <button class="dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
@@ -72,10 +74,10 @@
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                 <li><button (click)="sodervalue(2,'New Arrival')" class="dropdown-item"
-                                    type="button"><span class="ps-1 d-inline-block">New Arrival</span></button></li>
+                                        type="button"><span class="ps-1 d-inline-block">New Arrival</span></button></li>
                                 <li><button (click)="sodervalue(1,'Recommended' )" class="dropdown-item"
                                         type="button"><span class="ps-1 d-inline-block">Recommended</span></button></li>
-                               
+
                                 <li><button (click)="sodervalue(3,'Low to High')" class="dropdown-item"
                                         type="button"><span class="ps-1 d-inline-block">Price
                                             Low to High</span></button></li>

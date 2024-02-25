@@ -2,13 +2,13 @@
 
 .user-order-detail-box {
   font-size: $fsize - 1;
-  min-height: 180px;
+  height: 100%;
 }
 
 .ordertracking {
   .order-tracking {
     text-align: center;
-    width: 33.33%;
+    width: 25%;
     position: relative;
     display: block;
   }
@@ -58,6 +58,10 @@
     margin-top: 8px;
     margin-bottom: 0;
     line-height: 20px;
+
+    @include max(map-get($breakpoints, "md")) {
+      font-size: $fsize - 3;
+    }
   }
   .order-tracking p span {
     font-size: 14px;

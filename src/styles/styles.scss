@@ -160,7 +160,7 @@ body {
 .breadcrumb {
   li {
     font-size: $fsize - 2;
-text-transform: capitalize;
+    text-transform: capitalize;
     &:first-child {
       &:before {
         content: "";
@@ -390,8 +390,6 @@ ol {
 
 .address-cards {
   .card {
-    height: 100%;
-
     .addresssection {
       min-height: 110px;
     }
@@ -507,12 +505,21 @@ header.fixed-top {
 .hide-mobile {
   display: none;
 
-  @include min(map-get($breakpoints, "md")){
+  @include min(map-get($breakpoints, "md")) {
     display: block;
   }
 }
 
-.sub-page-title{
-  font-size:clamp(1rem, 1.3vw, 1.3rem);
+.sub-page-title {
+  font-size: clamp(1rem, 1.3vw, 1.3rem);
 }
 
+.profile-subpage {
+  padding-top: 25px;
+}
+
+.navbar-toggler {
+  &:focus {
+    box-shadow: none;
+  }
+}
