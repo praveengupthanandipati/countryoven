@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
@@ -43,9 +44,16 @@ export class CartComponent implements OnInit {
   closeButton!: ElementRef;
   timeerror:boolean=false;
   dateerror:boolean=false;
-  constructor(private fb: FormBuilder, private renderer: Renderer2, private route: Router, private toastr: ToastrService, private _crud: CurdService, private cookieService: CookieService) {
 
 
+
+  constructor(private titleService:Title, private meta:Meta,private fb: FormBuilder, private renderer: Renderer2, private route: Router, private toastr: ToastrService, private _crud: CurdService, private cookieService: CookieService) {
+
+    this.titleService.setTitle("Country Oven Cart | countryoven.com");
+    this.meta.updateTag({ name: 'description',  content: 'Find best cakes, gifts, flowers. Florist shop in Faq with same day delivery Online and experss delivery.Shop Now!' });
+    this.meta.updateTag({ name: 'keywords',  content: 'best cakes, gifts, flowers,gifts Online, flowers online,Cakes Online,cookies,Cookies Online' });
+    this.meta.updateTag({ name: 'classification',  content: 'Country Oven' });
+  
 
 
     this.sessionId = this.cookieService.get('sessionID')
