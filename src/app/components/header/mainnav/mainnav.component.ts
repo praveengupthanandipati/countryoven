@@ -15,7 +15,9 @@ export class MainnavComponent {
 
 }
   ngOnInit(): void {
-this.city=localStorage.getItem('city')
+this.city=localStorage.getItem('city');
+
+
   }
 
 gotoroute( t:any, pname:any)
