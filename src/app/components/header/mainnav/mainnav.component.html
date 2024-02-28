@@ -1,14 +1,20 @@
 <div class="mainmenu">
     <div class="custom-container">
-        <nav class="navbar navbar-expand-xl">
+        <!--
+        <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <div class="collapse navbar-collapse mobilenav" id="navbarSupportedContent">
+                    <button class="bg-transparent border-0 p-3 rounded d-block d-lg-none" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-cancel"></span>
+                    </button>                   
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 mt-3 mt-md-0">
                         <li *ngFor="let menu of categoryList" class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle font-semibold" href="javascript:;" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -16,13 +22,15 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-full-width shadow border-0 rounded-0 p-0"
                                 *ngIf="menu.subCategoryList.length">
-                                <div class="main-div-links d-sm-flex">
+                                <div class="main-div-links d-lg-flex">
                                     <ng-container *ngIf="menu.subCategoryList.length ">
-                                        <div class="background-lightblue"> <a href="javascript:;" (click)="gotoroute(item.type, item.seoTitle)"
+                                        <div class="background-lightblue"> <a href="javascript:;"
+                                                (click)="gotoroute(item.type, item.seoTitle)"
                                                 *ngFor="let item of menu.subCategoryList.slice(0, menu.subCategoryList.length / 2)">{{
                                                 item.title }} <span class="new" *ngIf="item.isHighligted">New</span></a>
                                         </div>
-                                        <div class="background-white"> <a href="javascript:;" (click)="gotoroute(item.type, item.seoTitle)"
+                                        <div class="background-white"> <a href="javascript:;"
+                                                (click)="gotoroute(item.type, item.seoTitle)"
                                                 *ngFor="let item of menu.subCategoryList.slice(menu.subCategoryList.length / 2)">{{
                                                 item.title }} <span class="new" *ngIf="item.isHighligted">New</span></a>
                                         </div>
@@ -42,6 +50,66 @@
                                     class="align-self-center font-bold">More</span> </a>
                         </li>
                     </ul>
+                </div>
+            </div>
+        </nav>
+        -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                            <img src="assets/images/logo.png" alt="Country Oven" class="brand-logo">
+                        </h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li *ngFor="let menu of categoryList" class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle font-semibold" href="javascript:;" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{menu.title}}
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-full-width shadow border-0 rounded-0 p-0"
+                                    *ngIf="menu.subCategoryList.length">
+                                    <div class="main-div-links d-lg-flex">
+                                        <ng-container *ngIf="menu.subCategoryList.length ">
+                                            <div class="background-lightblue"> <a href="javascript:;"
+                                                    (click)="gotoroute(item.type, item.seoTitle)"
+                                                    *ngFor="let item of menu.subCategoryList.slice(0, menu.subCategoryList.length / 2)">{{
+                                                    item.title }} <span class="new"
+                                                        *ngIf="item.isHighligted">New</span></a>
+                                            </div>
+                                            <div class="background-white"> <a href="javascript:;"
+                                                    (click)="gotoroute(item.type, item.seoTitle)"
+                                                    *ngFor="let item of menu.subCategoryList.slice(menu.subCategoryList.length / 2)">{{
+                                                    item.title }} <span class="new"
+                                                        *ngIf="item.isHighligted">New</span></a>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+
+                                    <div class="col-md-4 px-0 text-end d-none">
+                                        <img [src]="menu.categoryImagePath" alt="" class="img-fluid menu-cat-img">
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link d-flex" href="#" data-bs-toggle="offcanvas"
+                                    data-bs-target="#moremenu" aria-controls="offcanvasRight"><span
+                                        class="icon-menu h5 pe-2"></span><span
+                                        class="align-self-center font-bold">More</span> </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>
