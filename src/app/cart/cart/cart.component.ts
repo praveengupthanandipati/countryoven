@@ -133,7 +133,8 @@ export class CartComponent implements OnInit {
 
 
         const data = {
-          "DeliveryDate": this.deliveryDates_array[0].deliveryDateValue,
+          // "DeliveryDate": this.deliveryDates_array[0].deliveryDateValue,
+          "DeliveryDate":this.displaydeliveryDate,
           "Leadtime": 0,
           "ZipCode": 1235,
           "InstantDelivery": false,
@@ -142,7 +143,11 @@ export class CartComponent implements OnInit {
         this._crud.getBindDeliveryTimes(data).subscribe(res => {
 
           this.deliveryTime = res.deliveryTimingsDtos;
-         // this.userForm.get('deliveryTime')?.setValue(this.displaydeliveryTime)
+          setTimeout(() => {
+            console.log(this.displaydeliveryTime)
+            // this.userForm.get('deliveryTime')?.setValue(this.displaydeliveryTime)
+          }, 100);
+        
         })
       }, 100);
     });
@@ -165,6 +170,46 @@ export class CartComponent implements OnInit {
     })
   }
 
+
+  updateDateandtime() {
+    console.log(this.userForm.get('deliveryTime').value)
+        if(this.userForm.get('deliveryTime').value.toString() !="")
+        {
+          this.timeerror=false;
+          
+          let data = {
+            "sessionId": this.sessionId,
+            "deliveryDate": this.userForm.get('deliveryDate').value,
+            "deliveryTime": this.userForm.get('deliveryTime').value.toString(),
+          }
+      
+          this._crud.updateDeliveryDateTime(data).subscribe(res => {
+            if (!res.isEroor) {
+              this.userForm.get('deliveryTime')?.setValue(this.displaydeliveryTime)
+            //  this.userForm.get('deliveryTime')?.setValue(this.displaydeliveryTime)
+              this.getCarts()
+              const button: HTMLButtonElement = this.closeButton.nativeElement;
+              button.click();
+            }
+            console.log(res)
+      
+          })
+        }
+    
+        else
+        {
+          this.timeerror=true;
+        }
+        
+    
+      }
+
+      openDatetime()
+      {
+        this.userForm.get('deliveryTime')?.setValue('')
+        this.getbindDate();
+
+      }
   getCarts() {
     let data = {
       customerId: this.customerId,
@@ -392,37 +437,7 @@ console.log(this.viewedProducts)
     })
   }
 
-  updateDateandtime() {
-console.log(this.userForm.get('deliveryTime').value)
-    if(this.userForm.get('deliveryTime').value.toString() !="")
-    {
-      this.timeerror=false;
-      
-      let data = {
-        "sessionId": this.sessionId,
-        "deliveryDate": this.userForm.get('deliveryDate').value,
-        "deliveryTime": this.userForm.get('deliveryTime').value.toString(),
-      }
-  
-      this._crud.updateDeliveryDateTime(data).subscribe(res => {
-        if (!res.isEroor) {
-  
-          this.getCarts()
-          const button: HTMLButtonElement = this.closeButton.nativeElement;
-          button.click();
-        }
-        console.log(res)
-  
-      })
-    }
-
-    else
-    {
-      this.timeerror=true;
-    }
-    
-
-  }
+ 
   capturephoto(src:any)
   {
     this.customimg=src;

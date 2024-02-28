@@ -26,7 +26,7 @@
                                 </p>
                             </div>
                             <button class="color-btn border-0 px-2 py-1 small" data-bs-toggle="modal"
-                                data-bs-target="#DeliveryModal"><span class="icon-edit icomoon"></span> Edit</button>
+                                data-bs-target="#DeliveryModal" (click)="openDatetime()"><span class="icon-edit icomoon"></span> Edit</button>
                         </div>
                         <!-- (change)="getBindDeliveryTimes($event)" -->
                         <!-- <div class="col-md-4 pb-2" *ngIf="deliveryDates_array?.length">
@@ -287,6 +287,7 @@
                             <span
                                 class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
                             <select class="form-select" formControlName="deliveryTime">
+                               <option>Select Time</option>
                                 <option *ngFor="let o of deliveryTime" [value]="o.dtime">
                                     <ng-container *ngIf="currencySelected == 'INR'">{{o.dtime}}</ng-container>
                                     <ng-container *ngIf="currencySelected =='USD'">{{o.dtimeCurrency}}</ng-container>
