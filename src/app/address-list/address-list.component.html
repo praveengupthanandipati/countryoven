@@ -275,7 +275,7 @@
                             </div>
                         </div>
                       
-                        <div class="col-sm-6">
+                        <div class="col-sm-6" *ngIf="!checkoutaddress">
                             <div class="form-floating mb-3">
                                 <select class="form-select"
                                     [ngClass]="{'is-invalid' : adduserForm.get('addcityName')!.invalid && adduserForm.get('addcityName')!.touched}"

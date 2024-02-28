@@ -106,39 +106,20 @@ export class AddressListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.checkoutaddress)
+if(this.checkoutaddress)
+    {
+    this.adduserForm.get('addcityName')?.setValue(this.cityname);
+    
+    }
     this.selectedaddress = 'select'
-    //     if (this.checkoutaddress) {
-    //       this.isCheckout = true;
-    //       this.getAddressByCustomerId();
-    //       console.log(this.selectedAddressId)
-    //       this.selectedaddress = this.selectedAddressId ? this.selectedAddressId : 'select'
-    // console.log(this.selectedaddress)
-
-    //       setTimeout(() => {
-    //         this.addressselected(this.selectedaddress)
-    //       }, 500);
-    //     } else
-    //     {
     this.getAddressByCustomerId();
-    // }
-
-
-
-
-
-
-
-
-
   }
   selectAdd(e: any) {
-
-
     this.selectedaddress = e.addressId;
     if (this.cityname.toLowerCase() == e.cityName.toLowerCase()) {
       let s: boolean = true
       this.sendAddId.emit({ e, s })
-
     }
     else {
       this.notmatch = true;
@@ -234,7 +215,7 @@ export class AddressListComponent implements OnInit {
           const button: HTMLButtonElement = this.AddButton.nativeElement;
           button.click();
           this.getAddressByCustomerId();
-          this.adduserForm.reset();
+          this.adduserForm.reset(); 
           this.addsubmitted = false;
         }
         else {
