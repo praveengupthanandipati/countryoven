@@ -4,9 +4,9 @@
   @include box-shadow(0, 3px, 3px, map-get($colors, lightgray));
   background: map-get($colors, white);
 
-  .brand-logo{
-    @include max(map-get($breakpoints, "lg")){
-      width:100px;
+  .brand-logo {
+    @include max(map-get($breakpoints, "lg")) {
+      width: 120px;
     }
   }
 
@@ -28,8 +28,8 @@
       font-size: $fsize - 1;
       text-transform: uppercase;
 
-      @include max(map-get($breakpoints, "lg")){
-        padding-left:15px;
+      @include max(map-get($breakpoints, "lg")) {
+        padding-left: 15px;
       }
 
       &:hover {
@@ -80,7 +80,7 @@
       min-width: 225px;
       min-height: 400px;
 
-      @include max(map-get($breakpoints, "lg")){
+      @include max(map-get($breakpoints, "lg")) {
         min-height: auto;
       }
 
@@ -157,29 +157,29 @@
   width: 250px;
 }
 
-.mobilenav{
-  @include max(map-get($breakpoints, "lg")){
+.mobilenav {
+  @include max(map-get($breakpoints, "lg")) {
     position: fixed;
-    left:-300px;
-    top:0;
-    bottom:0;
-    background:map-get($colors, white);
-    padding:15px;
+    left: -300px;
+    top: 0;
+    bottom: 0;
+    background: map-get($colors, white);
+    padding: 15px;
     z-index: 999;
-    width:300px;
+    width: 300px;
     height: 100vh;
-    @include transition(all, 0.3s ease);   
+    @include transition(all, 0.3s ease);
     // transform: translateX(-300px);
     overflow-y: scroll;
   }
-  .navbar-toggler{
-    position: inherit!important;
-    top:10px;
+  .navbar-toggler {
+    position: inherit !important;
+    top: 10px;
   }
 }
 
-.mobilenav.show{
-  @include max(map-get($breakpoints, "lg")){
+.mobilenav.show {
+  @include max(map-get($breakpoints, "lg")) {
     left: 0;
     width: 300px;
   }
