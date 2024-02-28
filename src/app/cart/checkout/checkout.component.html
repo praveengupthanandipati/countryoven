@@ -26,7 +26,7 @@
                 <div class="box-list card">
                     <div class="tabheading card-header border-bottom-0 bg-white" (click)="addressShow =!addressShow"
                         *ngIf="addressId">Delivery to:
-                        <strong>{{addressName}} </strong>
+                        <strong>{{addressName}} </strong> <strong>,  &nbsp;{{city}}</strong>
                     </div>
                     <section class="tabcontentwrap" *ngIf="addressShow">
                         <app-address-list [selectedAddressId]="addressId" (sendAddId)="getaddressId($event)"
@@ -35,7 +35,9 @@
                 </div>
                 <div class="box-list card">
                     <div class="tabheading card-header border-bottom-0 bg-white" (click)="reviewShow =!reviewShow">
-                        Review Order</div>
+                        <!-- <strong>{{addressName}} </strong> <strong>,  &nbsp;{{city}}</strong> -->
+                     <ng-container *ngIf="clickpayment && !reviewShow "> Delivery Date : <strong>{{displaydeliveryDate }}</strong> Delivery Time: <strong>{{displaydeliveryTime}}</strong></ng-container>
+                     <ng-container *ngIf="!clickpayment || reviewShow "> Review Order</ng-container></div>
                     <section class="tabcontentwrap" *ngIf="reviewShow && addressId">
                         <div class="cart-product-item  p-1 mb-1" *ngFor="let items of cartItems">
                             <div class="row border py-1">
@@ -88,9 +90,9 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 pb-2">
-                                <p>Delivery Schedule : <strong>{{firstlistItem.deliveryDate }}</strong>
+                                <p>Delivery Schedule : <strong>{{displaydeliveryDate }} {{displaydeliveryTime}}</strong>
                                     <button class="color-btn border-0 px-2 py-1 small ms-2" data-bs-toggle="modal"
-                                        data-bs-target="#DeliveryModal"><span class="icon-edit icomoon"></span>
+                                        data-bs-target="#DeliveryModal" (click)="openDatetime()"><span class="icon-edit icomoon"></span>
                                     </button>
                                 </p>
                             </div>
@@ -199,3 +201,72 @@
     </div>
 </section>
 <app-footer></app-footer>
+
+
+
+<!-- Update delivery date -->
+<div class="modal fade " id="DeliveryModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Update Delivery Date and Time</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    #closeButton></button>
+            </div>
+            <form [formGroup]="userForm">
+                <div class="modal-body">
+                    <div class="col-md-12 pb-2" *ngIf="deliveryDates_array?.length">
+                        <label>Select Delivery Date </label>
+                        <div class="form-group d-flex p-2  background-lightprimary rounded mb-2"> <span
+                                class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
+                            <select class="form-select" formControlName="deliveryDate"
+                                (change)="getBindDeliveryTimes($event)">
+                                <option *ngFor="let o of deliveryDates_array" [value]="o.deliveryDateValue">
+                                    {{o.deliveryDateText}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 pb-2" *ngIf="deliveryDates_array?.length">
+                        <label>Select Time</label>
+                        <div class="form-group d-flex p-2  background-lightprimary rounded">
+                            <span
+                                class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
+                            <select class="form-select" formControlName="deliveryTime">
+                               <option >Select Time</option>
+                                <option *ngFor="let o of deliveryTime" [value]="o.dtime">
+                                    <ng-container *ngIf="currencySelected == 'INR'">{{o.dtime}}</ng-container>
+                                    <ng-container *ngIf="currencySelected =='USD'">{{o.dtimeCurrency}}</ng-container>
+
+
+
+                                </option>
+                            </select>
+                           
+                        </div>
+                        <div class="error" *ngIf="timeerror"> Please select Time</div>
+
+                        <!-- <div class="invalid-feedback mt-0 d-block"
+                        *ngIf="dynamicForm.get('deliveryTimes')!.invalid && dynamicForm.get('deliveryTimes')!.touched">
+                        <p class="error-message">Select Time</p>
+                    </div> -->
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="color-btn border-0" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="color-border-btn" (click)="updateDateandtime()">Update
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- Update delivery date -->

@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -42,19 +42,35 @@ couponData:any;
   currencyClass: string='';
   savedorderdetails: any;
   appliedDiscount:any=0;
-
+  deliveryDates_array: any;
+  displaydeliveryDate: any;
+  displaydeliveryTime: any;
+  deliveryTime: any;
+  userForm:any;
+  timeerror:boolean=false;
+  currencySelected:any;
+  @ViewChild('closeButton')
+  closeButton!: ElementRef;
+  clickpayment:boolean=false;
   constructor(private renderer: Renderer2, private fb: FormBuilder,private route: Router, private toastr: ToastrService, private _crud: CurdService, private cookieService: CookieService) {
     this.sessionId = this.cookieService.get('sessionID')
     this.city = localStorage.getItem('city')
     this.countryname = localStorage.getItem('country');
     this.currency = localStorage.getItem('currency');
+    this.currencySelected=localStorage.getItem('currency');
     this.custName = localStorage.getItem('custName');
     
     if (localStorage.getItem('customerId')) {
       this.customerId = localStorage.getItem('customerId')
     }
 
+    this.userForm = this.fb.group({
 
+      deliveryDate: ['', Validators.required],
+      deliveryTime: ['', Validators.required],
+
+
+    });
     
     console.log(this.currency)
     if (this.currency == 'INR') {
@@ -119,6 +135,8 @@ else
       this.cartCount=res.length;
       this.firstlistItem = this.cartItems[0];
       console.log(this.firstlistItem)
+      this.displaydeliveryDate = this.firstlistItem.deliveryDate;
+      this.displaydeliveryTime = this.firstlistItem.deliveryTiming;
       this.originalTotalAmount=this.firstlistItem.grandTotal;
       this.totalAmount=this.firstlistItem.grandTotal;
       this.finalamount=this.firstlistItem.grandTotal
@@ -227,7 +245,8 @@ this.reviewShow=false;
     }
 
     this._crud.SaveOrderDetails(data).subscribe(res => {
-      console.log(res)
+      console.log(res);
+      this.clickpayment=true;
       this.removeLoader();
 this.paymentstrip=true;
       this.savedorderdetails=res
@@ -254,4 +273,102 @@ this.paymentstrip=true;
   {
     this.renderer.removeClass(document.body, 'bodyloader');
   }
+
+
+
+
+  getbindDate() {
+    let data = {
+      "cityName": this.city,
+      "maxLeadTime": this.firstlistItem.maxLeadTime
+    }
+
+    this._crud.getBindDeliveryDates(data).subscribe(res => {
+      console.log(res);
+      this.deliveryDates_array = res
+
+      setTimeout(() => {
+        console.log(this.displaydeliveryTime)
+       this.userForm.get('deliveryDate')?.setValue(this.displaydeliveryDate);
+
+
+        const data = {
+          // "DeliveryDate": this.deliveryDates_array[0].deliveryDateValue,
+          "DeliveryDate":this.displaydeliveryDate,
+          "Leadtime": 0,
+          "ZipCode": 1235,
+          "InstantDelivery": false,
+          "cityName": this.city
+        }
+        this._crud.getBindDeliveryTimes(data).subscribe(res => {
+
+          this.deliveryTime = res.deliveryTimingsDtos;
+          setTimeout(() => {
+            console.log(this.displaydeliveryTime)
+          // this.userForm.get('deliveryTime')?.setValue(this.displaydeliveryTime)
+          }, 100);
+        
+        })
+      }, 100);
+    });
+  }
+
+  getBindDeliveryTimes(e: any) {
+    const selectedValue = (e.target as HTMLSelectElement).value;
+
+    const data = {
+      "DeliveryDate": selectedValue,
+      "Leadtime": 0,
+      "ZipCode": 1235,
+      "InstantDelivery": false,
+      "cityName": this.city
+    }
+    this._crud.getBindDeliveryTimes(data).subscribe(res => {
+
+      this.deliveryTime = res.deliveryTimingsDtos;
+
+    })
+  }
+
+
+  updateDateandtime() {
+    console.log(this.userForm.get('deliveryTime').value)
+        if(this.userForm.get('deliveryTime').value.toString() !="" && this.userForm.get('deliveryTime').value.toString() !='Select Time')
+        {
+          this.timeerror=false;
+          let data = {
+            "sessionId": this.sessionId,
+            "deliveryDate": this.userForm.get('deliveryDate').value,
+            "deliveryTime": this.userForm.get('deliveryTime').value.toString(),
+          }
+      
+          this._crud.updateDeliveryDateTime(data).subscribe(res => {
+            if (!res.isEroor) {
+              this.userForm.get('deliveryTime')?.setValue(this.displaydeliveryTime)
+       
+              this.getCarts()
+              const button: HTMLButtonElement = this.closeButton.nativeElement;
+              button.click();
+            }
+            console.log(res)
+      
+          })
+        }
+    
+        else
+        {
+          this.timeerror=true;
+        }
+        
+    
+      }
+
+      openDatetime()
+      {
+         this.userForm.get('deliveryTime')?.setValue('')
+        this.getbindDate();
+
+      }
+
+
 }

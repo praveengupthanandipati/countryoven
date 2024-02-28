@@ -60,7 +60,14 @@ setcounntry()
 
   getPageRoutes() {
     this.route.params.subscribe((params) => {
-      console.log(params)
+      console.log(params);
+
+      if(params['favspl'] == 'sitemap.xml')
+      {
+        console.log('hi')
+        window.location.reload();
+      }
+
       if (params['cityname'] == 'send-online') {
         this.showproductDetails = true
         let getOldUrl = this.router.url;

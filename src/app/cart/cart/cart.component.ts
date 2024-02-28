@@ -173,7 +173,7 @@ export class CartComponent implements OnInit {
 
   updateDateandtime() {
     console.log(this.userForm.get('deliveryTime').value)
-        if(this.userForm.get('deliveryTime').value.toString() !="")
+        if(this.userForm.get('deliveryTime').value.toString() !=""  && this.userForm.get('deliveryTime').value.toString() !='Select Time')
         {
           this.timeerror=false;
           

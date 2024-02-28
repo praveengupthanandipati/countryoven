@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { CurdService } from './services/curd.service';
 
@@ -55,9 +55,17 @@ else
   }
 
 
-constructor(private _crud:CurdService, private cookieService: CookieService, private router: Router)
+constructor(private route: ActivatedRoute,private _crud:CurdService, private cookieService: CookieService, private router: Router)
 {
-
+  this.route.params.subscribe((params) => {
+    console.log(params)
+    console.log(params['favspl'])
+    if(params['favspl'] == 'sitemap.xml')
+    {
+      console.log('hi')
+      window.location.reload();
+    }
+  })
 }
 
 
