@@ -321,6 +321,13 @@ setTimeout(() => {
     }
     this._crud.getProductDetailsById(data).subscribe(res => {
       console.log(res)
+
+if(res.isError)
+{
+  this.router.navigateByUrl('/')
+
+}
+
       this.removeLoader();
 
       this.breadTitle = res.subCategoryName;

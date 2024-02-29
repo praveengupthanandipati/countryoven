@@ -131,6 +131,8 @@ else
 
     this._crud.postShopingCart(data).subscribe(res => {
       console.log(res)
+      if(res.length > 0)
+      {
       this.cartItems = res;
       this.cartCount=res.length;
       this.firstlistItem = this.cartItems[0];
@@ -140,6 +142,11 @@ else
       this.originalTotalAmount=this.firstlistItem.grandTotal;
       this.totalAmount=this.firstlistItem.grandTotal;
       this.finalamount=this.firstlistItem.grandTotal
+      }
+      else
+      {
+        this.route.navigateByUrl('/')
+      }
     });
   }
   /* checkout */

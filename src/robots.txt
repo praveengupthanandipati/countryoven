@@ -1,1 +1,9 @@
-sdfsdjhfdsjhj
+User-agent: *
+sitemap:https://www.countryoven.com/sitemap.xml
+
+Disallow: /admin/
+Disallow: /Dashboard/
+Disallow: *&aspxerrorpath=*
+Disallow: *404.html*
+Disallow: *{{*
+Disallow: *}}*
