@@ -64,7 +64,6 @@ setcounntry()
 
       if(params['favspl'] == 'sitemap.xml')
       {
-        console.log('hi')
         window.location.reload();
       }
 
@@ -72,9 +71,9 @@ setcounntry()
         this.showproductDetails = true
         let getOldUrl = this.router.url;
         let city: any;
-        if (!localStorage.getItem('city')) {
+        // if (!localStorage.getItem('city')) {
           localStorage.setItem('city', params['type'])
-        }
+        // }
         city = localStorage.getItem('city');
         let newurl = getOldUrl.replace(params['type'], city.toLowerCase());
         this.location.replaceState(newurl);

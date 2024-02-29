@@ -81,71 +81,7 @@ export class ProductDetailComponent implements OnInit {
 
   }
 
-  addLoader() {
-    this.renderer.addClass(document.body, 'bodyloader');
-  }
-  removeLoader() {
-    this.renderer.removeClass(document.body, 'bodyloader');
-  }
 
-
-  onInput(event: Event): void {
-    console.log(event)
-    const target = event.target as HTMLTextAreaElement;
-    const currentLength = target.value.length;
-
-    if (currentLength > 25) {
-      target.value = target.value.substring(0, 25);
-      this.textAreaInput = target.value; // Update ngModel binding
-      this.isMaxLengthExceeded = true;
-    } else {
-      this.isMaxLengthExceeded = false;
-    }
-  }
-
-  displayTimer() {
-    this.timeLeftInSeconds = this.parseDuration(this.duration);
-    this.timerSubscription = timer(0, 1000).subscribe(() => {
-      if (this.timeLeftInSeconds > 0) {
-        this.timeLeftInSeconds--;
-        this.updateDisplayTime();
-      }
-    });
-  }
-  parseDuration(duration: string): number {
-    const [hours, minutes, seconds] = duration.split(':').map(Number);
-    return hours * 3600 + minutes * 60 + seconds;
-  }
-
-  updateDisplayTime() {
-    const hours = Math.floor(this.timeLeftInSeconds / 3600);
-    const minutes = Math.floor((this.timeLeftInSeconds % 3600) / 60);
-    const seconds = this.timeLeftInSeconds % 60;
-
-    this.displayTime = `${this.formatNumber(hours)}:${this.formatNumber(minutes)}:${this.formatNumber(seconds)}`;
-  }
-
-  formatNumber(value: number): string {
-    return value < 10 ? `0${value}` : `${value}`;
-  }
-setcounntry()
-{
-  this.currency = localStorage.getItem('currency');
-  if (this.currency == 'INR') {
-    this.currencyClass = 'icon-inr'
-  }
-  else if (this.currency == 'USD') {
-    this.currencyClass = 'icon-dollar-currency-symbol'
-  }
-
-
-
-  this.coutryName = localStorage.getItem('country');
-  this.currencySelected = localStorage.getItem('currency');
-
-
-
-}
 
   ngOnInit(): void {
     this.addLoader();
@@ -196,6 +132,69 @@ setTimeout(() => {
     });
   }
 
+  
+setcounntry()
+{
+  this.currency = localStorage.getItem('currency');
+  if (this.currency == 'INR') {
+    this.currencyClass = 'icon-inr'
+  }
+  else if (this.currency == 'USD') {
+    this.currencyClass = 'icon-dollar-currency-symbol'
+  }
+  this.coutryName = localStorage.getItem('country');
+  this.currencySelected = localStorage.getItem('currency');
+}
+
+
+
+  addLoader() {
+    this.renderer.addClass(document.body, 'bodyloader');
+  }
+  removeLoader() {
+    this.renderer.removeClass(document.body, 'bodyloader');
+  }
+
+
+  onInput(event: Event): void {
+    console.log(event)
+    const target = event.target as HTMLTextAreaElement;
+    const currentLength = target.value.length;
+
+    if (currentLength > 25) {
+      target.value = target.value.substring(0, 25);
+      this.textAreaInput = target.value; // Update ngModel binding
+      this.isMaxLengthExceeded = true;
+    } else {
+      this.isMaxLengthExceeded = false;
+    }
+  }
+
+  displayTimer() {
+    this.timeLeftInSeconds = this.parseDuration(this.duration);
+    this.timerSubscription = timer(0, 1000).subscribe(() => {
+      if (this.timeLeftInSeconds > 0) {
+        this.timeLeftInSeconds--;
+        this.updateDisplayTime();
+      }
+    });
+  }
+  parseDuration(duration: string): number {
+    const [hours, minutes, seconds] = duration.split(':').map(Number);
+    return hours * 3600 + minutes * 60 + seconds;
+  }
+
+  updateDisplayTime() {
+    const hours = Math.floor(this.timeLeftInSeconds / 3600);
+    const minutes = Math.floor((this.timeLeftInSeconds % 3600) / 60);
+    const seconds = this.timeLeftInSeconds % 60;
+
+    this.displayTime = `${this.formatNumber(hours)}:${this.formatNumber(minutes)}:${this.formatNumber(seconds)}`;
+  }
+
+  formatNumber(value: number): string {
+    return value < 10 ? `0${value}` : `${value}`;
+  }
   addFormControl(elementId: string) {
     this.dynamicForm.addControl(
       elementId,
