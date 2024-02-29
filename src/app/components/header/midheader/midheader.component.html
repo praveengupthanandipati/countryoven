@@ -1,4 +1,4 @@
-<section class="mid-header py-2">
+<section class="mid-header">
     <div class="custom-container">
         <div class="row">
             <div class="col-lg-9">
@@ -8,19 +8,24 @@
                             <img src="assets/images/logo.png" alt="Country Oven" class="brand-logo">
                         </a>
                     </div>
-                    <div class="col-lg-4 align-self-center">
-                        <div class="align-self-center px-3 headerinput searchbox">
-                            <div class="pe-2 w-100">
-                                <input type="text" placeholder="Search Cakes, Flowers, Gifts, etc..."
-                                    [(ngModel)]="searchkeyword" class="searchinput no-border form-control-plaintext"
-                                    list="search-products" (keyup.enter)="gotoroute()" (change)="gotoroute()">
-                                <datalist id="search-products">
-                                    <option *ngFor="let i of searchList" [value]="i"></option>
-                                </datalist>
+                    <div class="col-lg-4 align-self-center search-box-master"
+                        [ngClass]="{'hide-mobile-search':!isVisible}">
+                        <div>
+                            <div class="align-self-center px-3 headerinput searchbox">
+                                <div class="pe-2 w-100">
+                                    <input type="text" placeholder="Search Cakes, Flowers, Gifts, etc..."
+                                        [(ngModel)]="searchkeyword" class="searchinput no-border form-control-plaintext"
+                                        list="search-products" (keyup.enter)="gotoroute()" (change)="gotoroute()">
+                                    <datalist id="search-products">
+                                        <option *ngFor="let i of searchList" [value]="i"></option>
+                                    </datalist>
+                                </div>
+                                <span class="icon-magnifying-glass icomoon align-self-center"
+                                    (click)="gotoroute()"></span>
                             </div>
-                            <span class="icon-magnifying-glass icomoon align-self-center" (click)="gotoroute()"></span>
+                            <span *ngIf="searcherror" class="errorsearch"> Please enter atleast one character</span>
                         </div>
-                        <span *ngIf="searcherror" class="errorsearch"> Please enter atleast one character</span>
+                        <a href="javascript:void(0)" class="color-btn w-100 d-block d-lg-none" (click)="toggleVisibilitySearch()">Cancel</a>
                     </div>
                     <div class="col-lg-6 align-self-center">
                         <div class="row g-2">
@@ -31,7 +36,7 @@
                                         <span class="icon-pin icomoon align-self-center"></span>
                                         <div class="d-flex justify-content-between w-100">
                                             <div class="h6 px-2 d-flex"><span
-                                                    class="font-black d-none d-md-block px-md-2">Deliver
+                                                    class="font-black d-none d-xl-block px-md-2">Deliver
                                                     to </span> <span class="font-bold pincode">{{this.city}}</span>
                                             </div>
                                             <span class="icon-right-chevron icomoon align-self-center"></span>
@@ -57,15 +62,19 @@
                 </div>
             </div>
             <div class="col-lg-3 justify-content-end align-self-center text-end navrt">
+                <a class="d-inline-block d-lg-none text-center text-black" (click)="toggleVisibilitySearch()">
+                    <div><span class="icon-magnifying-glass icomoon"></span></div>
+                    <div><small class="text-uppercase font-semibold">Search</small></div>
+                </a>
                 <a class="dropdown user-dropdown" href="javascript:void(0)">
                     <div class="d-inline-block text-center text-black dropdown-toggle" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <div><span class="icon-user icomoon"></span></div>
                         <div *ngIf="custName">
-                            <small class="text-uppercase font-bold">{{custName}}</small>
+                            <small class="text-uppercase font-semibold">{{custName}}</small>
                         </div>
                         <div *ngIf="!custName">
-                            <small class="text-uppercase font-bold">Hi Guest</small>
+                            <small class="text-uppercase font-semibold">Hi Guest</small>
                         </div>
                     </div>
                     <ul class="dropdown-menu">
@@ -73,8 +82,9 @@
                                 <div class="d-flex">
                                     <span class="icon-login h4 align-self-center"></span>
                                     <div class="ps-3">
-                                        <h6 class="font-bold">Login / Register</h6>
-                                        <p class="font-bold"><span>View your Profile / Mange your Products</span></p>
+                                        <h6 class="font-semibold">Login / Register</h6>
+                                        <p class="font-semibold"><span>View your Profile / Mange your Products</span>
+                                        </p>
                                     </div>
                                 </div>
                             </a></li>
@@ -82,8 +92,9 @@
                                 <div class="d-flex">
                                     <span class="icon-setting h4 align-self-center"></span>
                                     <div class="ps-3">
-                                        <h6 class="font-bold">My Account</h6>
-                                        <p class="font-bold"><span>Edit Your Profile / Manage Your Profile</span></p>
+                                        <h6 class="font-semibold">My Account</h6>
+                                        <p class="font-semibold"><span>Edit Your Profile / Manage Your Profile</span>
+                                        </p>
                                     </div>
                                 </div>
                             </a></li>
@@ -91,8 +102,8 @@
                                 <div class="d-flex">
                                     <span class="icon-gift-box h4 align-self-center"></span>
                                     <div class="ps-3">
-                                        <h6 class="font-bold">My Orders</h6>
-                                        <p class="font-bold"><span>Track Your Orders status</span></p>
+                                        <h6 class="font-semibold">My Orders</h6>
+                                        <p class="font-semibold"><span>Track Your Orders status</span></p>
                                     </div>
                                 </div>
                             </a></li>
@@ -100,8 +111,8 @@
                                 <div class="d-flex">
                                     <span class="icon-call h4 align-self-center"></span>
                                     <div class="ps-3">
-                                        <h6 class="font-bold">Contact us</h6>
-                                        <p class="font-bold"><span>Reach us / Send mail ur queries</span></p>
+                                        <h6 class="font-semibold">Contact us</h6>
+                                        <p class="font-semibold"><span>Reach us / Send mail ur queries</span></p>
                                     </div>
                                 </div>
                             </a></li>
@@ -109,8 +120,8 @@
                                 <div class="d-flex">
                                     <span class="icon-question h4 align-self-center"></span>
                                     <div class="ps-3">
-                                        <h6 class="font-bold">FAQ’s</h6>
-                                        <p class="font-bold"><span>Frequently Asked Questions</span></p>
+                                        <h6 class="font-semibold">FAQ’s</h6>
+                                        <p class="font-semibold"><span>Frequently Asked Questions</span></p>
                                     </div>
                                 </div>
                             </a></li>
@@ -118,8 +129,8 @@
                                 <div class="d-flex">
                                     <span class="icon-exit h4 align-self-center"></span>
                                     <div class="ps-3">
-                                        <h6 class="font-bold">Logout</h6>
-                                        <p class="font-bold"><span>Go to home</span></p>
+                                        <h6 class="font-semibold">Logout</h6>
+                                        <p class="font-semibold"><span>Go to home</span></p>
                                     </div>
                                 </div>
                             </a></li>
@@ -127,8 +138,8 @@
                 </a>
                 <a routerLink="/cart" class="d-inline-block text-center text-black">
                     <div><span class="icon-cart icomoon"></span></div>
-                    <div><small class="text-uppercase font-bold">Cart</small></div>
-                    <span class="badge badge-light position-absolute">{{count}}</span>
+                    <div><small class="text-uppercase font-semibold">Cart</small></div>
+                    <span class="badge badge-light position-absolute semibold">{{count}}</span>
                 </a>
             </div>
         </div>

@@ -146,6 +146,7 @@
   font-size: $fsize - 2;
   color: map-get($colors, darkgray);
   margin-right: 10px;
+  font-weight: map-get($font-weights, "regular");
 
   @include max(map-get($breakpoints, "md")) {
     font-size: $fsize - 3;

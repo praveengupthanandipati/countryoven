@@ -15,6 +15,13 @@ export class FooterComponent implements OnInit{
   
   footerlinks:any;
   form:any;
+
+  showLinks: boolean = false;
+  toggleLinks() {
+    this.showLinks = !this.showLinks;
+  }
+
+
 constructor(private _crud:CurdService, private toastr: ToastrService, private fb:FormBuilder)
 {
   this.form = this.fb.group({

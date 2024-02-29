@@ -172,6 +172,11 @@ this.datasubscription=this._curdService.countryData$.subscribe((data)=>{
     // window.location.reload();
   }
 
+  isVisible:boolean=false;
+  toggleVisibilitySearch(){
+    this.isVisible=!this.isVisible;
+  }
+
 
 
 

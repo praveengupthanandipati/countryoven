@@ -6,6 +6,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Subscription, timer } from 'rxjs';
 import { CurdService } from 'src/app/services/curd.service';
 
+
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',

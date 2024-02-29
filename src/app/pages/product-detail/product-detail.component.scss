@@ -98,6 +98,11 @@
       list-style-type: disc;
       margin-left: 22px;
       margin-bottom: 5px;
+      font-size:$fsize - 2;
+
+      @include max(map-get($breakpoints, "sm")){
+        font-size:$fsize - 3;
+      }
     }
   }
 }

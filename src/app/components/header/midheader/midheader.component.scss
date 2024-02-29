@@ -2,27 +2,26 @@
 
 .mid-header {
   background: map-get($colors, lightgradient);
-
-  @include max(map-get($breakpoints, "lg")) {
-    background: none;
-  }
+  @include transition(all, 0.2s ease);
+  padding:10px 0;
+   
   .top-header-logo {
     @include max(map-get($breakpoints, "lg")) {
       position: relative;
-      left: 50px;
+      left: 40px;
     }
     .brand-logo {
       max-width: 130px;
 
       @include max(map-get($breakpoints, "lg")) {
-        width: 90px;
+        width: 75px;
       }
     }
   }
 
   .searchbox {
     position: relative;
-    display: flex;
+    display: flex;    
 
     @include max(map-get($breakpoints, "lg")) {
       margin: 3px 0;
@@ -107,7 +106,7 @@
 
       @include max(map-get($breakpoints, "lg")) {
         width: auto;
-        margin: 0 10px;
+        margin: 0;
       }
 
       .badge {
@@ -121,6 +120,13 @@
         line-height: 22px;
         display: inline-block;
         padding: 0;
+
+        @include max(map-get($breakpoints, "lg")) {
+          width: 18px;
+          height: 18px;
+          line-height: 19px;
+          font-size: $fsize - 4;
+        }
       }
     }
     .icomoon {
@@ -129,7 +135,8 @@
       top: 6px;
 
       @include max(map-get($breakpoints, "lg")) {
-        font-size: $fsize * 2;
+        font-size: $fsize * 2 - 5;
+        top:10px;
       }
     }
     small {
@@ -137,7 +144,7 @@
       font-size: $fsize - 3;
 
       @include max(map-get($breakpoints, "lg")) {
-        font-size: $fsize - 5;
+        font-size: $fsize - 6;
       }
     }
   }
@@ -221,6 +228,9 @@
   .dropdown-menu {
     width: 315px;
     z-index: 10000;
+    @include max(map-get($breakpoints, "lg")){
+      right:0;
+    }
     .dropdown-item {
       margin: 10px 0;
       display: block;
@@ -246,7 +256,25 @@
   }
 }
 
+.errorsearch {
+  font-size: 12px;
+  color: red;
+  position: absolute;
+}
+.font-bold.pincode {
+  text-transform: capitalize;
+}
 
-
-.errorsearch{ font-size: 12px; color: red; position: absolute;}
-.font-bold.pincode{ text-transform: capitalize;}
+.search-box-master{
+  @include max(map-get($breakpoints, "lg")){
+    position: fixed;
+    top:-5px;
+    left:0;
+    right:0;
+    background:map-get($colors, white);
+    padding:10px;
+    width:100%;
+    height: 100vh;
+    z-index: 99999;
+  }
+}

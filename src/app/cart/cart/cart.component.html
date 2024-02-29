@@ -182,14 +182,18 @@
             </div>
         </div>
 
-        <div class="row" *ngIf="cartItems.length == 0">
-            <div class="col-12 noproduct"> No Products found.
-                <div> <a routerLink="/" class="">Continue Shopping</a></div>
+        <div class="row justify-content-center" *ngIf="cartItems.length == 0">
+            <div class="col-md-4 noproduct text-center">
+                <div>
+                    <img src="..//src/assets/images/noproduts-found.svg" alt="" class="img-fluid w-100">
+                    <h4 class="h4 text-center">No Products Found</h4>
+                </div> 
+                <div> <a routerLink="/" class="color-btn">Continue Shopping</a></div>
             </div>
         </div>
 
 
-        <div class="explore-products" *ngIf="viewedProducts.length">
+        <div class="explore-products mt-3" *ngIf="viewedProducts.length">
             <h1 class="h5 font-medium pb-3 sub-page-title">Recently Viewed Products</h1>
             <div class="container">
                 <div class="products-list-items">

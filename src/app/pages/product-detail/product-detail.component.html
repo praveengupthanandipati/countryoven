@@ -44,13 +44,15 @@
                         </div>
                     </div>
                     <div *ngIf="!isMultipleImages">
-                        <img [src]="productDetails?.imageName" class="img-fluid w-100" alt="...">
+                        <img [src]="productDetails?.imageName" class="img-fluid w-100"
+                            alt="...">
                         <span class="tagbadge" *ngIf="tagMsg" [class]="tagClass">{{tagMsg}}</span>
                     </div>
                     <!--/ carousel -->
                     <article *ngIf="productDetails?.deliveryInformationRequired">
                         <p class="text-center py-md-3">
-                            <small class="small">NOTE: Design and icing of cake may vary from the image shown here since each chef
+                            <small class="small">NOTE: Design and icing of cake may vary from the image shown here since
+                                each chef
                                 has his/her own way of baking and designing a cake.
                             </small>
                         </p>
@@ -127,7 +129,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-6 pe-md-0 ps-md-3" *ngIf="weightOptionsDto_array?.length >0">
+                                    <div class="col-md-6 col-6 pe-md-0 ps-md-3"
+                                        *ngIf="weightOptionsDto_array?.length >0">
                                         <div class="form-group mb-2 ps-2">
                                             <label class="align-self-center pe-2">Select Weight:</label>
                                             <select (change)="onQtyChange($event)" class="form-select"
@@ -171,9 +174,9 @@
                                                     {{o}}</option>
                                             </select>
                                             <div class="invalid-feedback mt-0 d-block"
-                                            *ngIf="dynamicForm.get('pincodeOptionsDto')!.invalid && dynamicForm.get('pincodeOptionsDto')!.touched">
-                                            <p class="error-message">Select Pincode</p>
-                                        </div>
+                                                *ngIf="dynamicForm.get('pincodeOptionsDto')!.invalid && dynamicForm.get('pincodeOptionsDto')!.touched">
+                                                <p class="error-message">Select Pincode</p>
+                                            </div>
                                         </div>
 
                                         <!-- <div class="invalid-feedback mt-0 d-block"
@@ -193,12 +196,12 @@
                                                     {{o.optionValue}}</option>
                                             </select>
                                             <div class="invalid-feedback mt-0 d-block"
-                                            *ngIf="dynamicForm.get('numberOptionsDto')!.invalid && dynamicForm.get('numberOptionsDto')!.touched">
-                                            <p class="error-message font-bold">Select Number</p>
-                                        </div>
+                                                *ngIf="dynamicForm.get('numberOptionsDto')!.invalid && dynamicForm.get('numberOptionsDto')!.touched">
+                                                <p class="error-message font-bold">Select Number</p>
+                                            </div>
                                         </div>
 
-                                       
+
                                     </div>
                                 </div>
                             </div>
@@ -302,8 +305,8 @@
                         <div class="product-detail-tab rounded">
                             <nav>
                                 <div class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                                    <a class="nav-link active border" id="nav-description-tab"
-                                        data-bs-toggle="tab" data-bs-target="#nav-description" type="button" role="tab"
+                                    <a class="nav-link active border" id="nav-description-tab" data-bs-toggle="tab"
+                                        data-bs-target="#nav-description" type="button" role="tab"
                                         aria-controls="nav-home" aria-selected="true">Description</a>
                                     <a class="nav-link border" id="nav-Information-tab" data-bs-toggle="tab"
                                         data-bs-target="#nav-Information" type="button" role="tab"
@@ -322,7 +325,7 @@
                             <div class="tab-content p-2 p-md-3" id="nav-tabContent">
                                 <div class="tab-pane fade show active" *ngIf="productDetails?.description !=''"
                                     id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
-                                    <article class="pb-2"> 
+                                    <article class="pb-2">
                                         <span class="font-bold pb-3"> SKU :</span>{{productDetails?.productId}} <span
                                             class="font-bold pb-3">Vendor Code : </span>{{productDetails?.venderCode}}
                                         <div class="py-2">
@@ -352,7 +355,7 @@
                                 </div>
                                 <div class="tab-pane fade" id="nav-Information" role="tabpanel"
                                     *ngIf="productDetails?.deliveryInformationRequired">
-                                    <article class="pb-2">                                       
+                                    <article class="pb-2">
                                         <div class="py-2">
                                             <ul class="list-style-desc">
                                                 <li>Every cake we offer is handcrafted and since each chef has his/her
@@ -379,7 +382,7 @@
                                 </div>
                                 <div class="tab-pane fade" id="nav-Instructions" role="tabpanel"
                                     *ngIf="productDetails?.careInstrunctionForCakeRequired || productDetails?.careInstrunctionForFlowerRequired">
-                                    <article class="pb-2" *ngIf="productDetails?.careInstrunctionForCakeRequired">                                       
+                                    <article class="pb-2" *ngIf="productDetails?.careInstrunctionForCakeRequired">
                                         <div class="py-2">
                                             <ul class="list-style-desc">
                                                 <li>Store cream cakes in a refrigerator. Fondant cakes should be stored
@@ -401,7 +404,7 @@
                                     </article>
 
 
-                                    <article class="pb-4" *ngIf="productDetails?.careInstrunctionForFlowerRequired">                                       
+                                    <article class="pb-4" *ngIf="productDetails?.careInstrunctionForFlowerRequired">
                                         <div class="py-2">
                                             <ul class="list-style-desc">
                                                 <li>Trim the stems and place the flowers in a clean vase/bowl with clean
@@ -422,7 +425,7 @@
 
                                     <!-- product reviews -->
                                     <div class="product-reviews">
-                                        <div class="d-flex justify-content-between">                                          
+                                        <div class="d-flex justify-content-between">
                                             <!-- <div class="text-end align-self-center">
                                 <a href="javascript:void(0)" class="text-blue font-bold small">View all Reviews</a>
                                 <a href="javascript:void(0)" class="color-btn d-inline-block ms-3">Write Review</a>

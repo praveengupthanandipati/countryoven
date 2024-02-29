@@ -35,10 +35,11 @@ export class HeaderComponent  implements OnInit {
         })
       }   
 
-      isScrolled:boolean = false;
+      isScrolled: boolean = false;
 
       @HostListener('window:scroll', [])
-      onWindowScroll(){
-        this.isScrolled = window.scrollY > 100;
-      }
+    onWindowScroll() {
+    const scrollOffset = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    this.isScrolled = scrollOffset > 100; // Adjust the scroll threshold as needed
+  }
   }

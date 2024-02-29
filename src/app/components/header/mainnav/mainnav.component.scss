@@ -4,9 +4,14 @@
   @include box-shadow(0, 3px, 3px, map-get($colors, lightgray));
   background: map-get($colors, white);
 
+  @include max(map-get($breakpoints, "lg")){
+    height: 0;
+  }
+
   .brand-logo {
     @include max(map-get($breakpoints, "lg")) {
       width: 120px;
+      @include transition(all, 0.2s ease);
     }
   }
 
@@ -130,6 +135,7 @@
         display: block;
         padding: 10px 15px;
         @include transition(all 0.2s ease);
+        font-size: $fsize - 1;
 
         &:hover {
           background: map-get($colors, primary);
@@ -143,14 +149,15 @@
 .navbar-toggler {
   @include max(map-get($breakpoints, "lg")) {
     position: absolute;
-    top: -156px;
+    top: -95px;
     left: 0;
     border: none;
+    padding: 0;
 
     &:focus {
       box-shadow: none;
     }
-  }
+  } 
 }
 
 .menu-cat-img {
@@ -183,4 +190,8 @@
     left: 0;
     width: 300px;
   }
+}
+
+.navbar-expand-lg .offcanvas .offcanvas-body{
+  overflow-x:auto;
 }
