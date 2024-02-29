@@ -111,5 +111,17 @@ removeLoader()
   this.renderer.removeClass(document.body, 'bodyloader');
 }
 
+gotosignup()
+{
+ if(this.orderlogin)
+ {
+  this.router.navigateByUrl('/signup?arg=ck')
+ }
+ else{
+ 
+  this.router.navigateByUrl('/signup')
+ }
+}
+
 }
 

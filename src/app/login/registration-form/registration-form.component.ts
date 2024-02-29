@@ -5,7 +5,7 @@ import { CookieService } from 'ngx-cookie-service';
 
 import { CurdService } from 'src/app/services/curd.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-registration-form',
   templateUrl: './registration-form.component.html',
@@ -18,7 +18,8 @@ export class RegistrationFormComponent {
   submitted:boolean=false;
   msgstatus:boolean=false;
   msg:any;
-  constructor( private renderer:Renderer2,  private router:Router, private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private cookieService: CookieService){
+  orderlogin:boolean=false;
+  constructor( private renderer:Renderer2,  private router:Router, private route:ActivatedRoute, private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private cookieService: CookieService){
     this.sessionId= this.cookieService.get('sessionID');
     this.userForm = this.fb.group({
       usrname: ['', [Validators.required, Validators.minLength(3)]],
@@ -27,6 +28,16 @@ export class RegistrationFormComponent {
     });
   }
   ngOnInit() {
+    
+  const queryParams = this.route.snapshot.queryParams;
+  if(queryParams['arg'] =='ck')
+  {
+    this.orderlogin=true;
+  }
+  else
+  {
+    this.orderlogin=false;
+  }
     this._crud.getIpAddress().subscribe((data: any) => {
      this.userIp = data.ip;
       
@@ -113,7 +124,15 @@ let data={
     localStorage.setItem('customerId', res.customerId);
     localStorage.setItem('custName', res.customerName);
   
+    if(this.orderlogin)
+    {
+      this.router.navigateByUrl('/checkout')
+    }
+   else
+   {
     this.router.navigateByUrl('/')
+   }
+   // this.router.navigateByUrl('/')
     this.removeLoader();
   }
         });
