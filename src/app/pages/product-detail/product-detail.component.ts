@@ -131,6 +131,12 @@ setTimeout(() => {
       }
          
     });
+
+
+
+    this.addCanonicalLink(this.router.url)
+
+
   }
 
   
@@ -700,5 +706,27 @@ console.log(this.deliveryTime[0].dtime)
   }
 
 
+
+
+  private addCanonicalLink(v:any) {
+
+
+    const canonicalLink: HTMLLinkElement | null = document.querySelector('link[rel="canonical"]');
+    if (canonicalLink) {
+      canonicalLink.href = 'https://www.countryoven.com' + v;
+    }
+    else
+    {
+
+      const link: HTMLLinkElement = this.renderer.createElement('link');
+      link.rel = 'canonical';
+      
+    
+      link.href = 'https://www.countryoven.com' + v; // Replace with your canonical URL
+      this.renderer.appendChild(document.head, link);
+    }
+
+
+  }
 
 }
