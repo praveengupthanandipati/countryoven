@@ -30,6 +30,7 @@ export class AddressListComponent implements OnInit {
   cityname: any;
   notmatch: boolean = false;
   textAreaInput = '';
+  customaddressObj:any;
   @ViewChild('AddButton')
   AddButton!: ElementRef;
 
@@ -110,7 +111,6 @@ export class AddressListComponent implements OnInit {
 if(this.checkoutaddress)
     {
     this.adduserForm.get('addcityName')?.setValue(this.cityname);
-    
     }
     this.selectedaddress = 'select'
     this.getAddressByCustomerId();
@@ -211,10 +211,24 @@ if(this.checkoutaddress)
       this._crud.addAddress(data).subscribe(res => {
         this.removeLoader();
         if (!res.isEroor) {
+
+          console.log(this.checkoutaddress)
+           if(this.checkoutaddress)
+           {
+         let e = { recipientFirstName: this.adduserForm.value['addRecipientFirstName'], recipientLastName: this.adduserForm.value['addRecipientLastName'], cityName:this.adduserForm.value['addcityName'], addressId: res.addressId  };
+console.log(e)
+        let s:boolean=true
+          this.sendAddId.emit({ e, s})  
+           }
+
+
           this.toastr.success(res.successMessage);
           const button: HTMLButtonElement = this.AddButton.nativeElement;
           button.click();
+          if(!this.checkoutaddress)
+          {
           this.getAddressByCustomerId();
+          }
           this.adduserForm.reset(); 
           this.addsubmitted = false;
         }
@@ -261,6 +275,8 @@ if(this.checkoutaddress)
       this._crud.updateAddress(data).subscribe(res => {
         this.removeLoader();
         if (!res.isEroor) {
+         
+
           this.toastr.success(res.successMessage)
           const button: HTMLButtonElement = this.EditButton.nativeElement;
           button.click();
