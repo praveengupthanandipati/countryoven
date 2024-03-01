@@ -71,13 +71,13 @@
                     </div>
                     <div class="offcanvas-body">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li *ngFor="let menu of categoryList" class="nav-item dropdown">
+                            <li *ngFor="let menu of categoryList; let i = index" class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle font-semibold" href="javascript:;" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     {{menu.title}}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-full-width shadow border-0 rounded-0 p-0"
-                                    *ngIf="menu.subCategoryList.length">
+                                    *ngIf="menu.subCategoryList.length" [ngClass]="{'rightsidenav': i >= 4}">
                                     <div class="main-div-links d-lg-flex">
                                         <ng-container *ngIf="menu.subCategoryList.length ">
                                             <div class="background-lightblue"> <a href="javascript:;"

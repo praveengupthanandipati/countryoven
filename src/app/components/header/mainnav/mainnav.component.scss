@@ -46,13 +46,13 @@
     }
   }
   .nav-item.dropdown {
-    position: inherit;
+    // position: inherit;
   }
   .dropdown-menu-full-width.dropdown-menu.show {
     left: inherit !important;
     margin-top: 0;
     z-index: 9999;
-
+&.rightsidenav{ right:0 !important }
     .main-div-links {
       a {
         color: map-get($colors, black);
@@ -192,6 +192,11 @@
   }
 }
 
-.navbar-expand-lg .offcanvas .offcanvas-body{
-  overflow-x:auto;
+
+@media screen and (min-width: 480px) and (max-width:1300px) {
+.navbar-expand-lg .offcanvas .offcanvas-body a{
+  font-size: 13px !important;
+  
+}
+
 }
