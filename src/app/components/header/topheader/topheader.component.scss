@@ -15,7 +15,7 @@
 
   .offers {
     display: flex;
-    padding-top: 4px;
+    padding-top: 0px;
     // @include minMax(map-get($breakpoints, "xs"), map-get($breakpoints, "sm")){
     //   display: none;
     // }
@@ -36,3 +36,5 @@
     }
   }
 }
+
+.offers *{ line-height: 1;}

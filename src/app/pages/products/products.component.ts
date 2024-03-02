@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { CurdService } from 'src/app/services/curd.service';
@@ -7,20 +7,25 @@ import { CurdService } from 'src/app/services/curd.service';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit {
   cityname: any;
   type: any;
   PageName: any;
   showproductDetails: boolean = true;
+showlist:boolean=false;
+
   typeName: any;
   getCountryStatus:boolean=false
   constructor( private _crud:CurdService, private route: ActivatedRoute, private router: Router, private location: Location) {
-
+    this.showlist=false;
   this.getPageRoutes();
    this.setcounntry();
 this.getCountryStatus= localStorage.getItem('country') ? true : false;
-console.log(this.getCountryStatus)
 
+  }
+  ngOnInit(): void {
+  
+    
   }
 
 setcounntry()
@@ -61,14 +66,16 @@ setcounntry()
   getPageRoutes() {
     this.route.params.subscribe((params) => {
       console.log(params);
-
+      this.showlist=false;
       if(params['favspl'] == 'sitemap.xml')
       {
         window.location.reload();
       }
 
       if (params['cityname'] == 'send-online') {
+        
         this.showproductDetails = true
+        this.showlist=true;
         let getOldUrl = this.router.url;
         let city: any;
         if (!localStorage.getItem('city')) {
@@ -80,7 +87,9 @@ setcounntry()
       }
       /* start else */
       else {
+        
         this.showproductDetails = false;
+        this.showlist=true;
         if (params['favspl']) {
           let urlparms = params['favspl'].split('-to-');
           if (urlparms.length > 1) {
@@ -99,12 +108,14 @@ setcounntry()
             }
           }
           this.showproductDetails = false;
+          this.showlist=true;
         }
         else if (params['cityname1']) {
           if (!localStorage.getItem('city')) {
             localStorage.setItem('city', params['cityname1'])
           }
           this.showproductDetails = false;
+          this.showlist=true;
           this.typeName = 'CTY';
         }
         else if (params['type']) {
@@ -147,39 +158,48 @@ setcounntry()
         if (this.typeName == 'online-delivery') {
           this.type = 'C';
           this.showproductDetails = false;
+          this.showlist=true;
         } else if (this.typeName == 'order') {
           this.type = 'SC';
           this.showproductDetails = false;
+          this.showlist=true;
         }
         else if (this.typeName == 'send') {
           this.type = 'OCC';
           this.showproductDetails = false;
+          this.showlist=true;
         }
 
         else if (this.typeName == 'SPL') {
           this.type = 'SPL';
           this.showproductDetails = false;
+          this.showlist=true;
         }
 
         else if (this.typeName == 'FLV') {
           this.type = 'FLV';
           this.showproductDetails = false;
+          this.showlist=true;
         }
         else if (this.typeName == 'CTY') {
           this.type = 'CTY';
           this.showproductDetails = false;
+          this.showlist=true;
         }
         else if (this.typeName == 'send-online') {
           this.type = 'send-online';
           this.showproductDetails = true;
+          this.showlist=true;
         }
         else {
           this.type = this.typeName;
           if (this.cityname == 'send-online') {
             this.showproductDetails = true
+            this.showlist=true;
           }
           else {
              this.showproductDetails = false;
+             this.showlist=true;
           }
         }
          this.PageName = params['PageName'];

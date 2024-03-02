@@ -88,6 +88,7 @@ export class ProductDetailComponent implements OnInit {
     this.addLoader();
  this.setcounntry();
     this.route.params.subscribe((params) => {
+      
       this.productName = params['PageName'];
       if(!localStorage.getItem('country') || !localStorage.getItem('currency'))
       {
@@ -96,14 +97,7 @@ export class ProductDetailComponent implements OnInit {
     {
       localStorage.setItem('country', data.country)
     }
-  //   if(localStorage.getItem('country') == 'India' && !localStorage.getItem('currency'))
-  //   {
-  //     localStorage.setItem('currency', 'INR')
-  //   }
-  // else
-  // {
-  //   localStorage.setItem('currency', 'USD')
-  // }
+ 
   if(localStorage.getItem('country') == 'India')
   {
     if(!localStorage.getItem('currency'))
@@ -119,15 +113,23 @@ export class ProductDetailComponent implements OnInit {
     }
   }
   this.setcounntry()
+  
 setTimeout(() => {
+
+if(params['cityname'] == 'send-online')
+{
   this.getProductDetailsById();
+}
 }, 500);
   
 
   });
 
       }  else{
+        if(params['cityname'] == 'send-online')
+{
         this.getProductDetailsById();
+}
       }
          
     });
@@ -164,7 +166,7 @@ setcounntry()
 
 
   onInput(event: Event): void {
-    console.log(event)
+    
     const target = event.target as HTMLTextAreaElement;
     const currentLength = target.value.length;
 
@@ -318,6 +320,9 @@ setcounntry()
 
   //getProductDetailsById
   getProductDetailsById(): void {
+
+
+
     const data = {
       "SEOName": this.productName,
       "cityName": this.cityName,
@@ -326,7 +331,7 @@ setcounntry()
       "sessionId":  this.cookieService.get('sessionID')
     }
     this._crud.getProductDetailsById(data).subscribe(res => {
-      console.log(res)
+      
 
 if(res.isError)
 {
@@ -361,7 +366,7 @@ if(res.isError)
       this.egglessstatus = this.productDetails?.egglessTagMessage;
       this.duration = this.productDetails?.sameDayBlockTime ? this.productDetails?.sameDayBlockTime : 0
       this.sameDayBlockMessage = this.productDetails.sameDayBlockMessage;
-      console.log(this.productPrice)
+      
       if (this.photoCakePrice > 0) {
         this.productPrice = parseFloat(this.productPrice) + this.photoCakePrice
       }
@@ -423,11 +428,11 @@ if(this.productId)
             this.deliveryTime = res.deliveryTimingsDtos;
 
             this.dynamicForm.get('deliveryTimes')?.setValue(this.deliveryTime[0].dtime);
-console.log(this.deliveryTime[0].dtime)
+
             /* pincode */
 
             this.pincodeOptionsDto_array = res.deliveryPinCodes;
-            console.log(this.pincodeOptionsDto_array)
+            
 
             if (this.pincodeOptionsDto_array?.length > 0) {
               this.addFormControl('pincodeOptionsDto');
@@ -573,8 +578,7 @@ console.log(this.deliveryTime[0].dtime)
 
   onVoucherChange(e: any) {
 
-    console.log(e)
-    console.log(this.selectedVoucher.optionId)
+    
     this.productPrice = this.selectedVoucher.optionId
     this.selectedVocucher = this.selectedVoucher.optionValue
     //     this.selectedQty = this.selectedItem.optionValue;
@@ -584,7 +588,7 @@ console.log(this.deliveryTime[0].dtime)
     //     }
     // this.egglessPrice=this.selectedItem.egglessAddtionalPrice
 
-    // console.log(this.selectedItem)
+    
     //     if (this.isegglessChecked) {
     //       this.productPrice = parseFloat(this.selectedItem.optionId) + this.egglessPrice + this.photoCakePrice
     //     } else {
@@ -601,7 +605,7 @@ console.log(this.deliveryTime[0].dtime)
     }
     this.egglessPrice = this.selectedItem.egglessAddtionalPrice
 
-    console.log(this.selectedItem)
+    
     if (this.isegglessChecked) {
       let result = parseFloat(this.selectedItem.optionId) + this.egglessPrice + this.photoCakePrice
       if (this.currencySelected == 'USD') {
@@ -640,7 +644,7 @@ console.log(this.deliveryTime[0].dtime)
 
 
       this.dynamicForm.get('deliveryTimes')?.setValue(this.deliveryTime[0].dtime);
-      console.log(this.deliveryTime[0].dtime)
+      
 
     })
   }
@@ -672,7 +676,7 @@ console.log(this.deliveryTime[0].dtime)
     } else {
       // Reset the form control and show an error message
 
-      console.log('Invalid file type. Please select a JPG or PNG image.');
+      
     }
 
 

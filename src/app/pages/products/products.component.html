@@ -1,2 +1,3 @@
-<app-product-list *ngIf="!showproductDetails && getCountryStatus"></app-product-list>
-<app-product-detail *ngIf="showproductDetails"></app-product-detail>
+
+<app-product-list *ngIf="!showproductDetails && getCountryStatus && showlist"></app-product-list>
+<app-product-detail *ngIf="showproductDetails && showlist"></app-product-detail>

@@ -133,7 +133,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
       this.filters=[];
       this.isfilters = false;
       this.products = []
-      this.getPageRoutes();
+      this.getPageRoutes(params);
       this.getMeta();
       this.getProductDetails(this.filters, 1, this.sorder);
       this.getFiltersDetails();
@@ -145,14 +145,16 @@ export class ProductListComponent implements OnInit, OnDestroy {
   getnewurl(urlcity: any) {
 
     this.getOldUrl = this.router.url;
-
+console.log('enter here', this.getOldUrl)
+console.log(urlcity)
+console.log(this.cityname.toLowerCase())
     let newurl = this.getOldUrl.replace(urlcity, this.cityname.toLowerCase());
     this.location.replaceState(newurl);
     this.addCanonicalLink(newurl)
   }
 
 
-  getPageRoutes() {
+  getPageRoutes(params1:any) {
 
     this.route.params.subscribe((params) => {
        if (params['cityname'] == 'send-online') {
@@ -196,7 +198,10 @@ export class ProductListComponent implements OnInit, OnDestroy {
           this.cityname = params['cityname1'];
           this.typeName = 'CTY';
           this.PageName = params['PageName1'];
-          localStorage.setItem('city', this.cityname);
+          this.cityname = this.originalcityname;
+          this.getnewurl(params['cityname1'])
+          
+          // localStorage.setItem('city', this.cityname);
           this._crud.updateCountry(this.cityname)
         }
         else if (params['type']) {

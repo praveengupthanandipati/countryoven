@@ -7,19 +7,25 @@ import { Component } from '@angular/core';
 })
 export class DisplylocpopupComponent {
 
-  showpopup:boolean=true;
+  showpopup:boolean=false;
   constructor()
   {
-    if(localStorage.getItem('city'))
-{
- this.showpopup=false
-}
-
+//     if(localStorage.getItem('city'))
+// {
+//  this.showpopup=false;
+// }
+// else
+// {
+//   this.showpopup=true;
+// }
 setTimeout(() => {
   if(localStorage.getItem('city'))
 {
  this.showpopup=false
-} 
+} else
+{
+  this.showpopup=true
+}
 }, 1000);
 
   }

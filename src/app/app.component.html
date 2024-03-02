@@ -3,4 +3,14 @@
 <app-footer></app-footer>
  -->
 <router-outlet></router-outlet>
+<div class="poplayer" [ngClass]="{'popupshow' : showpopup  }">
 
+    <div class="centerpopup">
+      <button class="popclose" (click)="closepopup()"><span class="icon-close icomoon"></span></button>
+
+<img *ngIf="onLoadNotifications?.isImage" [src]="onLoadNotifications?.imagePath" />
+<div class="popmsgcontent" *ngIf="onLoadNotifications?.message && !onLoadNotifications?.isImage">{{onLoadNotifications.message}}</div>
+
+    </div>
+    
+    </div>
