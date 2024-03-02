@@ -58,7 +58,10 @@ export class AppComponent implements OnInit {
       }
     
     setTimeout(() => {
+     if( localStorage.getItem('city'))
+     {
       this.showpopupfn(this.onLoadNotifications)
+     }
     }, 2000);
 
 
