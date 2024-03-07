@@ -4,7 +4,7 @@
   @include box-shadow(0, 3px, 3px, map-get($colors, lightgray));
   background: map-get($colors, white);
 
-  @include max(map-get($breakpoints, "lg")){
+  @include max(map-get($breakpoints, "lg")) {
     height: 0;
   }
 
@@ -33,6 +33,13 @@
       font-size: $fsize - 1;
       text-transform: uppercase;
 
+      @include minMax(
+        map-get($breakpoints, "lg"),
+        map-get($breakpoints, "xxl")
+      ) {
+        font-size: $fsize - 3;
+      }
+
       @include max(map-get($breakpoints, "lg")) {
         padding-left: 15px;
       }
@@ -45,20 +52,27 @@
       color: map-get($colors, primary);
     }
   }
-  .nav-item.dropdown {
-    // position: inherit;
-  }
+
   .dropdown-menu-full-width.dropdown-menu.show {
     left: inherit !important;
     margin-top: 0;
     z-index: 9999;
-&.rightsidenav{ right:0 !important }
+    &.rightsidenav {
+      right: 0 !important;
+    }
     .main-div-links {
       a {
         color: map-get($colors, black);
         display: block;
         padding: 10px 15px;
         font-size: $fsize - 1;
+
+        @include minMax(
+          map-get($breakpoints, "lg"),
+          map-get($breakpoints, "xl")
+        ) {
+          font-size: $fsize - 3;
+        }
 
         .new {
           font-size: $fsize - 5;
@@ -157,7 +171,7 @@
     &:focus {
       box-shadow: none;
     }
-  } 
+  }
 }
 
 .menu-cat-img {
@@ -192,11 +206,9 @@
   }
 }
 
-
-@media screen and (min-width: 480px) and (max-width:1300px) {
-.navbar-expand-lg .offcanvas .offcanvas-body a{
-  font-size: 13px !important;
-  
-}
-
+.navbar-expand-lg .offcanvas .offcanvas-body a {
+  @include minMax(map-get($breakpoints, "lg"), map-get($breakpoints, "xl")) {
+    font-size: $fsize - 3;
+    padding: 0.3rem 0.15rem;
+  }
 }

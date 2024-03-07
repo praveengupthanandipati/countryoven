@@ -81,13 +81,15 @@
                                     <div class="main-div-links d-lg-flex">
                                         <ng-container *ngIf="menu.subCategoryList.length ">
                                             <div class="background-lightblue"> <a href="javascript:;"
-                                                    (click)="gotoroute(item.type, item.seoTitle)" data-bs-dismiss="offcanvas"
+                                                    (click)="gotoroute(item.type, item.seoTitle)"
+                                                    data-bs-dismiss="offcanvas"
                                                     *ngFor="let item of menu.subCategoryList.slice(0, menu.subCategoryList.length / 2)">{{
                                                     item.title }} <span class="new"
                                                         *ngIf="item.isHighligted">New</span></a>
                                             </div>
                                             <div class="background-white"> <a href="javascript:;"
-                                                    (click)="gotoroute(item.type, item.seoTitle)" data-bs-dismiss="offcanvas"
+                                                    (click)="gotoroute(item.type, item.seoTitle)"
+                                                    data-bs-dismiss="offcanvas"
                                                     *ngFor="let item of menu.subCategoryList.slice(menu.subCategoryList.length / 2)">{{
                                                     item.title }} <span class="new"
                                                         *ngIf="item.isHighligted">New</span></a>
@@ -104,9 +106,10 @@
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item">
                                 <a class="nav-link d-flex" href="#" data-bs-toggle="offcanvas"
-                                    data-bs-target="#moremenu" aria-controls="offcanvasRight"><span
-                                        class="icon-menu h5 pe-2"></span><span
-                                        class="align-self-center font-bold">More</span> </a>
+                                    data-bs-target="#moremenu" aria-controls="offcanvasRight">
+                                    <span class="icon-menu h5 pe-2"></span>
+                                    <span class="align-self-center font-bold d-block d-md-none">More</span> 
+                                </a>
                             </li>
                         </ul>
                     </div>
