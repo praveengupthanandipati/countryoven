@@ -13,9 +13,34 @@ export class AppComponent implements OnInit {
 
   sessionId: any;
   country: any;
-  showpopup:boolean=false;
-  onLoadNotifications:any;
+  showpopup: boolean = false;
+  email: any;
+
+  custName: any;
+  count: any;
+  customerId: any = 0;
+  onLoadNotifications: any;
+  city: any;
+  countryname: any;
+  currency: any;
   ngOnInit(): void {
+    if (localStorage.getItem('email')) {
+      this.email = localStorage.getItem('email');
+      this.customerId = localStorage.getItem('customerId')
+      this.custName = localStorage.getItem('custName')
+     
+    }
+    this.city = localStorage.getItem('city')
+    this.countryname = localStorage.getItem('country');
+    this.currency = localStorage.getItem('currency');
+    if (this.cookieService.check('sessionID')) {
+      this.sessionId= this.cookieService.get('sessionID')
+    }
+    else {
+
+      this.sessionId = this.generateSessionId(24);
+      this.cookieService.set('sessionID', this.sessionId)
+    }
 
     // this.router.events.pipe(
     //   filter(event => event instanceof NavigationEnd)
@@ -47,36 +72,34 @@ export class AppComponent implements OnInit {
 
     this.router.events.subscribe((evt) => {
       if (evt instanceof NavigationEnd) {
+setTimeout(() => {
+  if (localStorage.getItem('city')) {
+  this.getCarts();
+  }
+}, 5000);
 
+        // this.onLoadNotifications = {
+        //   "id": 1,
+        //   "message": "",
+        //   "isImage": true,
+        //   "imagePath": "https://r6x6m2y8.stackpathcdn.com/img/C-image.jpg",
+        //   "duration": 5
+        // }
 
-        this.onLoadNotifications=   {
-          "id": 1,
-          "message": "",
-          "isImage": true,
-          "imagePath": "https://r6x6m2y8.stackpathcdn.com/img/C-image.jpg",
-          "duration": 5
-      }
-    
-    setTimeout(() => {
-     if( localStorage.getItem('city'))
-     {
-      this.showpopupfn(this.onLoadNotifications)
-     }
-    }, 2000);
+        // setTimeout(() => {
+        //   if (localStorage.getItem('city')) {
+        //     this.showpopupfn(this.onLoadNotifications)
+        //   }
+        // }, 2000);
 
 
         window.scrollTo(0, 0);
 
       }
     });
-    if (this.cookieService.check('sessionID')) {
+  
 
-    }
-    else {
-
-      this.sessionId = this.generateSessionId(24);
-      this.cookieService.set('sessionID', this.sessionId)
-    }
+   
 
   }
 
@@ -91,6 +114,7 @@ export class AppComponent implements OnInit {
       }
     })
 
+   
 
   }
 
@@ -115,29 +139,51 @@ export class AppComponent implements OnInit {
 
 
 
-  showpopupfn(res:any)
-  {
-    if(this.cookieService.check('popupid') && this.cookieService.get('popupid') == res.id)
-    {
-      
-    
-    }  else
-    {
+  showpopupfn(res: any) {
+    if (this.cookieService.check('popupid') && this.cookieService.get('popupid') == res.id) {
+
+
+    } else {
       this.cookieService.set('popupid', res.id);
       setTimeout(() => {
-        this.showpopup=true;
-      }, 5000);
-  
+        this.showpopup = true;
+      }, 1000);
+
     }
-  
-  
-  
+
+
+
   }
-  
-closepopup()
-{
-  this.showpopup=false;
-}
+
+  closepopup() {
+    this.showpopup = false;
+  }
+
+
+
+
+
+  getCarts() {
+    let data = {
+      customerId: this.customerId,
+      sessionId: this.sessionId,
+      cityName: this.city,
+      countryName: this.countryname,
+      currencySelected: this.currency
+    }
+
+    this._crud.headerShopingCart(data).subscribe(res => {
+      this.onLoadNotifications=res.onLoadNotifications;
+      this.showpopupfn(res.onLoadNotifications)
+      
+
+      this.count = res.cartItemsCount;
+this._crud.updateHeaderData(this.count);
+    });
+  }
+
+
+
 
 }
 

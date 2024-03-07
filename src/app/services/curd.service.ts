@@ -399,11 +399,11 @@ postcustomize(obj:any):Observable<any>{
                         return this.http.post<any>(`http://test.countryoven.com/api/payment/PayUPayment`, obj)
                       }
   
-
-                      // getBindDeliveryTimes(obj:any):Observable<any>{
+                     
+                      checkDeliveryTimes(obj:any):Observable<any>{
   
-                      //   return this.http.post(`${environment.apiUrl}/ProductDetails/BindDeliveryTimes`,obj)
-                      //   }
+                        return this.http.post(`${environment.apiUrl}/ProductDetails/VerifyDeliveryTime`,obj)
+                        }
 
 
                     }

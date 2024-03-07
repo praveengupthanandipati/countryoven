@@ -70,13 +70,14 @@ export class ProductDetailComponent implements OnInit {
   pName: any;
   selectedFile: any;
   selectedVocucher: any;
+  customerId: any = 0;
   constructor(
     private renderer: Renderer2,
     private meta: Meta, private title: Title,
     private _crud: CurdService, private route: ActivatedRoute, private fb: FormBuilder, private cookieService: CookieService, private router: Router) {
     this.dynamicForm = this.fb.group({});
     this.cityName = localStorage.getItem('city')
-
+    this.customerId = localStorage.getItem('customerId') ? localStorage.getItem('customerId') : 0
     this.coutryName = localStorage.getItem('country');
     this.currencySelected = localStorage.getItem('currency');
 
@@ -245,7 +246,7 @@ setcounntry()
 
     const data = {
       "productDetailsData": {
-        "customerId": 0,
+        "customerId": this.customerId,
         "productId": this.productId,
         "productName": this.pName,
         "price": parseFloat(this.productPrice),

@@ -215,7 +215,7 @@ if(this.checkoutaddress)
           console.log(this.checkoutaddress)
            if(this.checkoutaddress)
            {
-         let e = { recipientFirstName: this.adduserForm.value['addRecipientFirstName'], recipientLastName: this.adduserForm.value['addRecipientLastName'], cityName:this.adduserForm.value['addcityName'], addressId: res.addressId  };
+         let e = { recipientFirstName: this.adduserForm.value['addRecipientFirstName'], recipientLastName: this.adduserForm.value['addRecipientLastName'], cityName:this.adduserForm.value['addcityName'], addressId: res.addressId, zipCode:this.adduserForm.value['addzipCode']  };
 console.log(e)
         let s:boolean=true
           this.sendAddId.emit({ e, s})  

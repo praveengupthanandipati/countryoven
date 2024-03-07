@@ -110,6 +110,7 @@ couponData:any;
       this.addressName=event.e.recipientFirstName + " " + event.e.recipientLastName;
       this.addressId=event.e.addressId;
       this.reviewShow=true;
+      this.checkDeliveryTimes(event.s.zipCode)
     }
 else
 {
@@ -141,7 +142,9 @@ else
       this.displaydeliveryTime = this.firstlistItem.deliveryTiming;
       this.originalTotalAmount=this.firstlistItem.grandTotal;
       this.totalAmount=this.firstlistItem.grandTotal;
-      this.finalamount=this.firstlistItem.grandTotal
+      this.finalamount=this.firstlistItem.grandTotal;
+
+
       }
       else
       {
@@ -150,7 +153,20 @@ else
     });
   }
   /* checkout */
-
+  checkDeliveryTimes(zipcode:any)
+{
+  let data = {
+    "sessionId": this.sessionId,
+    "cityName":this.city,
+    "ZipCode":zipcode
+   
+   
+  }
+  this._crud.checkDeliveryTimes(data).subscribe(res => {
+console.log(res)
+  })
+  
+}
 
   onSubmit() {
     this.paymentstrip=false;
