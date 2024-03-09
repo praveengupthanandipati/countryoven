@@ -97,9 +97,14 @@ export class ProductListComponent implements OnInit, OnDestroy {
   constructor(private renderer: Renderer2, private titleService: Title, private location: Location, private locationStrategy: LocationStrategy,
     private meta: Meta, private _crud: CurdService, private route: ActivatedRoute, private formBuilder: FormBuilder, private router: Router) {
     this.originalcityname = localStorage.getItem('city')
+    console.log('krishna reddy', this.originalcityname)
     this.currency = localStorage.getItem('currency')
     this.country = localStorage.getItem('country');
     this.router.events.subscribe(() => {
+      this.originalcityname = localStorage.getItem('city')
+      
+      this.currency = localStorage.getItem('currency')
+      this.country = localStorage.getItem('country');
     });
 
 
@@ -129,6 +134,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.addLoader();
     this.paramMapSubscription = this.route.paramMap.subscribe((params: ParamMap) => {
+    console.log('every time calling')
+    setTimeout(() => {
       console.log(this.filters)
       this.filters=[];
       this.isfilters = false;
@@ -137,8 +144,10 @@ export class ProductListComponent implements OnInit, OnDestroy {
       this.getMeta();
       this.getProductDetails(this.filters, 1, this.sorder);
       this.getFiltersDetails();
+    }, 1000);
+     
 
-      // /this.addCanonicalLink();
+      
     });
   }
 
@@ -199,10 +208,20 @@ console.log(this.cityname.toLowerCase())
           this.typeName = 'CTY';
           this.PageName = params['PageName1'];
           this.cityname = this.originalcityname;
-          this.getnewurl(params['cityname1'])
-          
+          if(params['PageName1']== 'gifts-online')
+          {
+          this.getnewurl(this.originalcityname);
+          console.log(this.originalcityname)
+          this._crud.updateCity(localStorage.getItem('city'));
+         
+          }
+          else
+          {
+            this.getnewurl(params['cityname1']);
+            this._crud.updateCountry(this.cityname)
+          }
           // localStorage.setItem('city', this.cityname);
-          this._crud.updateCountry(this.cityname)
+         
         }
         else if (params['type']) {
 

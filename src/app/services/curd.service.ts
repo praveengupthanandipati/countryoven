@@ -25,6 +25,18 @@ updateCountry(data:any)
   this.countryDataSubject.next(data);
 }
 
+
+
+private cityDataSubject = new Subject<string>();
+cityData$=this.cityDataSubject.asObservable();
+updateCity(data:any)
+{
+  this.cityDataSubject.next(data);
+}
+
+
+
+
   private headers = new HttpHeaders({
     'Content-Type': 'application/json'
   });

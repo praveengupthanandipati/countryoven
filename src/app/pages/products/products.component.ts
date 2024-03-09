@@ -114,6 +114,11 @@ setcounntry()
           if (!localStorage.getItem('city')) {
             localStorage.setItem('city', params['cityname1'])
           }
+          if(params['PageName1']== 'gifts-online')
+          {
+            localStorage.setItem('city', params['cityname1'])
+            console.log('product',params['cityname1'] )
+          }
           this.showproductDetails = false;
           this.showlist=true;
           this.typeName = 'CTY';

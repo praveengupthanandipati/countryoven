@@ -49,9 +49,13 @@ couponData:any;
   userForm:any;
   timeerror:boolean=false;
   currencySelected:any;
+  zipCode:any=0;
   @ViewChild('closeButton')
   closeButton!: ElementRef;
   clickpayment:boolean=false;
+  isReqired: boolean=true;
+  isChanged:boolean=false;
+  msg:string='';
   constructor(private renderer: Renderer2, private fb: FormBuilder,private route: Router, private toastr: ToastrService, private _crud: CurdService, private cookieService: CookieService) {
     this.sessionId = this.cookieService.get('sessionID')
     this.city = localStorage.getItem('city')
@@ -110,7 +114,8 @@ couponData:any;
       this.addressName=event.e.recipientFirstName + " " + event.e.recipientLastName;
       this.addressId=event.e.addressId;
       this.reviewShow=true;
-      this.checkDeliveryTimes(event.s.zipCode)
+    this.zipCode=event.e.zipCode;
+      this.checkDeliveryTimes(this.zipCode)
     }
 else
 {
@@ -155,6 +160,7 @@ else
   /* checkout */
   checkDeliveryTimes(zipcode:any)
 {
+  console.log(zipcode)
   let data = {
     "sessionId": this.sessionId,
     "cityName":this.city,
@@ -164,6 +170,9 @@ else
   }
   this._crud.checkDeliveryTimes(data).subscribe(res => {
 console.log(res)
+this.isReqired=res.isReqired;
+this.isChanged=res.isChanged;
+this.msg=res.message
   })
   
 }
@@ -319,7 +328,7 @@ this.paymentstrip=true;
           // "DeliveryDate": this.deliveryDates_array[0].deliveryDateValue,
           "DeliveryDate":this.displaydeliveryDate,
           "Leadtime": 0,
-          "ZipCode": 1235,
+          "ZipCode": this.zipCode,
           "InstantDelivery": false,
           "cityName": this.city
         }
@@ -342,7 +351,7 @@ this.paymentstrip=true;
     const data = {
       "DeliveryDate": selectedValue,
       "Leadtime": 0,
-      "ZipCode": 1235,
+      "ZipCode": this.zipCode,
       "InstantDelivery": false,
       "cityName": this.city
     }
@@ -368,7 +377,7 @@ this.paymentstrip=true;
           this._crud.updateDeliveryDateTime(data).subscribe(res => {
             if (!res.isEroor) {
               this.userForm.get('deliveryTime')?.setValue(this.displaydeliveryTime)
-       
+       this.isReqired=false
               this.getCarts()
               const button: HTMLButtonElement = this.closeButton.nativeElement;
               button.click();

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, ParamMap, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { CurdService } from './services/curd.service';
 
@@ -42,16 +42,6 @@ export class AppComponent implements OnInit {
       this.cookieService.set('sessionID', this.sessionId)
     }
 
-    // this.router.events.pipe(
-    //   filter(event => event instanceof NavigationEnd)
-    // ).subscribe((event: NavigationEnd) => {
-    //   // Your code here, this will be called every time the route changes
-    //   console.log("Route changed");
-    // });
-
-
-
-
     window.scrollTo(0, 0);
 
     this._crud.getCountryusingIp().subscribe((data: any) => {
@@ -70,13 +60,20 @@ export class AppComponent implements OnInit {
 
     });
 
+ 
+
+
     this.router.events.subscribe((evt) => {
+
+console.log(evt)
+
       if (evt instanceof NavigationEnd) {
 setTimeout(() => {
   if (localStorage.getItem('city')) {
+    this.city=localStorage.getItem('city')
   this.getCarts();
   }
-}, 5000);
+}, 1000);
 
         // this.onLoadNotifications = {
         //   "id": 1,
@@ -109,7 +106,7 @@ setTimeout(() => {
       console.log(params)
       console.log(params['favspl'])
       if (params['favspl'] == 'sitemap.xml') {
-        console.log('hi')
+        
         window.location.reload();
       }
     })
@@ -140,6 +137,7 @@ setTimeout(() => {
 
 
   showpopupfn(res: any) {
+    console.log(res)
     if (this.cookieService.check('popupid') && this.cookieService.get('popupid') == res.id) {
 
 

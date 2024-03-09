@@ -24,6 +24,7 @@ export class MidheaderComponent  implements OnInit{
   searcherror:boolean=false;
   private subscription!: Subscription;
   private datasubscription !:Subscription;
+  private citysubscription!: Subscription;
   selectedCurrency:any;
   
   currencydrop:any=['INR', 'USD'];
@@ -64,12 +65,18 @@ if(localStorage.getItem('customerId'))
     });
 
 this.datasubscription=this._curdService.countryData$.subscribe((data)=>{
-  console.log(data)
-
+  
+console.log(data)
   this.city=data
 })
 
-    this.getCarts();
+this.citysubscription=this._curdService.cityData$.subscribe((data) =>{
+console.log('reddy', data)
+this.city=localStorage.getItem('city')
+console.log(this.city)
+});
+
+   // this.getCarts();
     
 
     if(localStorage.getItem('currency'))
@@ -120,6 +127,9 @@ this.datasubscription=this._curdService.countryData$.subscribe((data)=>{
     let c=localStorage.getItem('city') ;
     console.log(this.searchkeyword)
     this.route.navigateByUrl('/search_result'+  '/'+ this.searchkeyword + '/' + c)
+    setTimeout(() => {
+      this.searchkeyword=''
+    }, 1000);
   }
   else
   {
