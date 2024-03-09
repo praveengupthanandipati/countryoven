@@ -80,11 +80,11 @@ export class UserProfileComponent implements OnInit{
       "customerId": custId
     }
     this._crud.getByCustomerId(data).subscribe(res => {
-      
+    console.log(res)  
       this.userForm.patchValue(
         {
-          customerFirstName: this.custName,
-          email:this.email,
+          customerFirstName: res.customerFirstName,
+          email:res.primaryEmail,
           customerIp: res.customerIp,
           MobilePhone: res.mobilePhone,
           phoneNo:  res.phoneNo,
@@ -117,7 +117,7 @@ this.getCity(res.stateId)
 
 
   onstateChange(eve: any) {
-    console.log('hai')
+    
     const selectedValue = eve.target.value;
     
     this.cityList=[];
@@ -165,7 +165,7 @@ this.submitted=true;
       let data={
         "id": this.custID,
         "customerDetails": {
-          "customerFirstName": this.custName,
+          "customerFirstName": this.userForm.value['customerFirstName'],
           "customerIp": this.userForm.value['customerIp'],
           "MobilePhone":"" + this.userForm.value['MobilePhone'] + "",
           "phoneNo": this.userForm.value['phoneNo'].toString(),
@@ -190,6 +190,7 @@ this.submitted=true;
         //this.toastr.success(res.successMessage);
 
         this.msg=res.successMessage;
+        localStorage.setItem('custName', this.userForm.value['customerFirstName']);
         Swal.fire({
           width:'350px',
        // imageUrl: '../../assets/images/tick.png',
@@ -197,7 +198,15 @@ this.submitted=true;
         text: this.msg,  
         showCancelButton: false,
         confirmButtonText:'Okay'
-      })
+      }).then((result) => {
+        if (result.isConfirmed) {
+          
+         window.location.reload();
+    
+    
+        }
+      });
+    
         //this.route.navigateByUrl('/login')
       }
             });
