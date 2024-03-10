@@ -1,6 +1,6 @@
-<section class="footer">   
-    <a (click)="scrollToTop()"  class="movetop"><span class="icon-top icomoon"></span></a>
-    <div class="top-footer d-none d-lg-block">        
+<section class="footer">
+    <a (click)="scrollToTop()" class="movetop"><span class="icon-top icomoon"></span></a>
+    <div class="top-footer d-none d-lg-block">
         <div class="custom-container">
             <div class="row">
                 <div class="col-md-3 col-6">
@@ -50,7 +50,8 @@
                     <div class="d-flex parent-links" *ngIf="footerlinks">
                         <ng-container *ngFor="let menu of footerlinks.slice(1,footerlinks.length)">
                             <div class="links-col">
-                                <h5 class="h5 text-uppercase font-semibold d-flex d-lg-block justify-content-between justify-content-md-start" (click)="toggleLinks()">
+                                <h5 class="h5 text-uppercase font-semibold d-flex d-lg-block justify-content-between justify-content-md-start"
+                                    (click)="toggleLinks()">
                                     <span>{{menu.headerTitle}}</span>
                                     <span class="d-block d-lg-none">+</span>
                                 </h5>
