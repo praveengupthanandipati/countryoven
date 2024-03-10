@@ -14,7 +14,9 @@ orderId: any;
 transId:any;
 reload:boolean=false;
 scriptElement: any;
-analyticsCode: any = "<!-- Your analytics code here -->";
+scriptElement1: any;
+analyticsCode: any;
+analyticsCode1: any;
 constructor(private renderer: Renderer2, private _crud: CurdService, private route: ActivatedRoute, private router: Router, private meta: Meta)
 {
 //  if(localStorage.getItem('orderId'))
@@ -35,9 +37,7 @@ ngOnInit() {
   this.route.queryParams.subscribe(params => {
     console.log(params['InvoiceId'])
 
-    // this.analyticsCode="<script type=\"text/javascript\">  var gaJsHost = ((\"https:\" == document.location.protocol ) ? \"https://ssl.\" : \"http://www.\"); document.write(unescape(\"%3Cscript src='\" + gaJsHost + \"google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E\")); </script><script type='text/javascript'>try{  var pageTracker = _gat._getTracker('UA-61530761-1');  pageTracker._trackPageview();  pageTracker._addTrans('CO03102024174729216','Country Oven.in','499.00','0.00','0.00','','3954','1'); pageTracker._addItem('CO03102024174729216','COCHO479','Assorted Macaron Hamper(6pcs)','Olive Medium','499.00','1');pageTracker._trackTrans(); } catch(err) {}</script>";
-    // this.addAnalyticsCodeToHead();
-
+   
 if(localStorage.getItem('orderId') || params['InvoiceId'] !=undefined )
 {
 
@@ -89,6 +89,7 @@ PaymentConfirmation()
   
    console.log(res);
    this.analyticsCode=res.analyticsCode;
+   this.analyticsCode1=res.analyticsCode1;
    this.addAnalyticsCodeToHead();
   });
 }
@@ -101,13 +102,19 @@ gotoorders()
 }
 
 addAnalyticsCodeToHead() {
-  // const script = this.renderer.createElement('script');
-  // script.type = 'text/javascript';
-  // script.text = this.analyticsCode;
+
   this.scriptElement = this.renderer.createElement('script');
     this.scriptElement.type = 'text/javascript';
     this.scriptElement.innerHTML = this.analyticsCode;
     this.renderer.appendChild(document.head, this.scriptElement);
+
+
+
+    this.scriptElement1 = this.renderer.createElement('script');
+    this.scriptElement1.type = 'text/javascript';
+    this.scriptElement1.innerHTML = this.analyticsCode1;
+    this.renderer.appendChild(document.head, this.scriptElement1);
+
   
 }
 
@@ -115,6 +122,9 @@ addAnalyticsCodeToHead() {
 removeAnalyticsScript() {
   if (this.scriptElement) {
     this.renderer.removeChild(document.head, this.scriptElement);
+  }
+  if (this.scriptElement1) {
+    this.renderer.removeChild(document.head, this.scriptElement1);
   }
 }
 
