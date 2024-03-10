@@ -15,12 +15,25 @@
     }
   }
 
+  .first-navbar {
+    .nav-item {
+      &:first-child {
+        .nav-link {
+          @include max(map-get($breakpoints, "md")) {
+            background: map-get($colors, green);
+            margin-bottom: 15px;
+          }
+        }
+      }
+    }
+  }
+
   .nav-item {
     &:first-child {
       .nav-link {
         color: map-get($colors, white);
-        border-radius: 3px;
         background: map-get($colors, primary);
+        margin-right: 25px;
 
         &:hover {
           color: map-get($colors, white);
@@ -210,5 +223,18 @@
   @include minMax(map-get($breakpoints, "lg"), map-get($breakpoints, "xl")) {
     font-size: $fsize - 3;
     padding: 0.3rem 0.15rem;
+  }
+}
+
+.mobmenu {
+  @include max(map-get($breakpoints, "lg")) {
+    background: none;
+  }
+  a {
+    &:nth-child(odd) {
+      @include max(map-get($breakpoints, "md")) {
+        background: map-get($colors, lightblue);
+      }
+    }
   }
 }

@@ -50,11 +50,11 @@
                     <div class="d-flex parent-links" *ngIf="footerlinks">
                         <ng-container *ngFor="let menu of footerlinks.slice(1,footerlinks.length)">
                             <div class="links-col">
-                                <h5 class="h5 text-uppercase font-semibold d-flex d-md-block justify-content-between justify-content-md-start" (click)="toggleLinks()">
+                                <h5 class="h5 text-uppercase font-semibold d-flex d-lg-block justify-content-between justify-content-md-start" (click)="toggleLinks()">
                                     <span>{{menu.headerTitle}}</span>
-                                    <span class="d-block d-md-none">+</span>
+                                    <span class="d-block d-lg-none">+</span>
                                 </h5>
-                                <div class="links d-none d-md-block" [class.d-none]="!showLinks">
+                                <div class="links d-none d-lg-block" [class.d-none]="!showLinks">
                                     <ng-container *ngFor="let sm of menu.footerLinks">
                                         <a href="javascript:void(0)" [routerLink]="'/' +sm.seoTitle">{{sm.title}}</a>
                                     </ng-container>

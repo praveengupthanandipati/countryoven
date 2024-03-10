@@ -6,15 +6,18 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./sticky-ribbon.component.scss']
 })
 export class StickyRibbonComponent  implements OnInit  {
+  
   @Input('count') count:number | undefined;
+  showContactRibbon: boolean = false;
   ngOnInit() {
     console.log(this.count)
   }
 
- constructor()
- {
+ constructor(){} 
 
- } 
+ toggleContactRibbon() {
+  this.showContactRibbon = !this.showContactRibbon;
+}
 
   
 }

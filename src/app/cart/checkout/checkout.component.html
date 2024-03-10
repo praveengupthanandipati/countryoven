@@ -26,7 +26,7 @@
                 <div class="box-list card">
                     <div class="tabheading card-header border-bottom-0 bg-white" (click)="addressShow =!addressShow"
                         *ngIf="addressId">Delivery to:
-                        <strong>{{addressName}} </strong> <strong>,  &nbsp;{{city}}</strong>
+                        <strong>{{addressName}} </strong> <strong>, &nbsp;{{city}}</strong>
                     </div>
                     <section class="tabcontentwrap" *ngIf="addressShow">
                         <app-address-list [selectedAddressId]="addressId" (sendAddId)="getaddressId($event)"
@@ -36,8 +36,11 @@
                 <div class="box-list card">
                     <div class="tabheading card-header border-bottom-0 bg-white" (click)="reviewShow =!reviewShow">
                         <!-- <strong>{{addressName}} </strong> <strong>,  &nbsp;{{city}}</strong> -->
-                     <ng-container *ngIf="clickpayment && !reviewShow "> Delivery Date : <strong>{{displaydeliveryDate }}</strong> Delivery Time: <strong>{{displaydeliveryTime}}</strong></ng-container>
-                     <ng-container *ngIf="!clickpayment || reviewShow "> Review Order</ng-container></div>
+                        <ng-container *ngIf="clickpayment && !reviewShow "> Delivery Date :
+                            <strong>{{displaydeliveryDate }}</strong> Delivery Time:
+                            <strong>{{displaydeliveryTime}}</strong></ng-container>
+                        <ng-container *ngIf="!clickpayment || reviewShow "> Review Order</ng-container>
+                    </div>
                     <section class="tabcontentwrap" *ngIf="reviewShow && addressId">
                         <div class="cart-product-item  p-1 mb-1" *ngFor="let items of cartItems">
                             <div class="row border py-1">
@@ -51,14 +54,12 @@
                                                 <a href="javascript:void(0)"
                                                     class="font-black">{{items.productName}}</a>
                                             </p>
-
                                             <p *ngIf="items.additionalWeight">
                                                 <small>Weight: <strong>{{items.additionalWeight}}</strong></small>
                                             </p>
                                             <p *ngIf="items.productId">
                                                 <small>Product Id: <strong>{{items.productId}}</strong></small>
                                             </p>
-
                                             <ul class="list-style-desc mt-2">
                                                 <li *ngIf="items.additionalVoucher"><small> Voucher :</small>
                                                     <strong>{{items.additionalVoucher}}</strong>
@@ -90,14 +91,17 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 pb-2">
-                                <p>Delivery Schedule : <strong>{{displaydeliveryDate }} <ng-container *ngIf="!isReqired"> {{displaydeliveryTime}}</ng-container></strong>
+                                <p>Delivery Schedule : <strong>{{displaydeliveryDate }} <ng-container
+                                            *ngIf="!isReqired"> {{displaydeliveryTime}}</ng-container></strong>
                                     <button class="color-btn border-0 px-2 py-1 small ms-2" data-bs-toggle="modal"
-                                        data-bs-target="#DeliveryModal" (click)="openDatetime()"><span class="icon-edit icomoon"></span> &nbsp; Edit
+                                        data-bs-target="#DeliveryModal" (click)="openDatetime()"><span
+                                            class="icon-edit icomoon"></span> &nbsp; Edit
                                     </button>
                                 </p>
 
-<div class="error error-message" *ngIf="isReqired">Please update Delivery Date and Time</div>
-<div class="" style="color: #1a9d0a;" *ngIf="isChanged">{{msg}}</div>
+                                <div class="error error-message" *ngIf="isReqired">Please update Delivery Date and Time
+                                </div>
+                                <div class="" style="color: #1a9d0a;" *ngIf="isChanged">{{msg}}</div>
 
                             </div>
                             <div class="col-md-6">
@@ -116,10 +120,12 @@
                                             <label><small>Coupon Code</small></label>
                                             <div class="col-8">
                                                 <div class="form-group">
-                                                    <input [readonly]="couponappled" type="text" class="form-control rounded-0"
+                                                    <input [readonly]="couponappled" type="text"
+                                                        class="form-control rounded-0"
                                                         [ngClass]="{'is-invalid' :errorcode }"
                                                         formControlName="couponcode" placeholder="Coupon*">
-                                                        <a *ngIf="couponappled" class="icon-close icomoon" (click)="removeApplycode()"></a>
+                                                    <a *ngIf="couponappled" class="icon-close icomoon"
+                                                        (click)="removeApplycode()"></a>
                                                     <div class="invalid-feedback mt-0 d-block" *ngIf="errorcode">
                                                         <small>{{errorcodemessage}}</small>
                                                     </div>
@@ -130,7 +136,7 @@
                                                     class="color-border-btn py-1 btn">Apply</button>
                                             </div>
 
-                                            
+
                                         </div>
                                     </form>
                                 </div>
@@ -141,7 +147,8 @@
                                                 [class]="currencyClass"></span>
                                             {{totalAmount}}</strong></div>
                                 </div>
-                                <button (click)="SaveOrderDetails()" [disabled]="isReqired" class="color-btn border-0">Continue
+                                <button (click)="SaveOrderDetails()" [disabled]="isReqired"
+                                    class="color-btn border-0">Continue
                                     payment</button>
                             </div>
 
@@ -238,7 +245,7 @@
                             <span
                                 class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
                             <select class="form-select" formControlName="deliveryTime">
-                               <option >Select Time</option>
+                                <option>Select Time</option>
                                 <option *ngFor="let o of deliveryTime" [value]="o.dtime">
                                     <ng-container *ngIf="currencySelected == 'INR'">{{o.dtime}}</ng-container>
                                     <ng-container *ngIf="currencySelected =='USD'">{{o.dtimeCurrency}}</ng-container>
@@ -247,7 +254,7 @@
 
                                 </option>
                             </select>
-                           
+
                         </div>
                         <div class="error" *ngIf="timeerror"> Please select Time</div>
 

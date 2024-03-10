@@ -267,6 +267,13 @@ body {
     padding: 10px 0;
   }
 
+  p{
+    display:none;
+    @include min(map-get($breakpoints, "md")){
+      display:block;
+    }
+  }
+
   h1 {
     font-size: $fsize + 5;
     padding-bottom: 10px;
@@ -275,6 +282,7 @@ body {
 
     @include max(map-get($breakpoints, "sm")) {
       font-size: $fsize;
+      padding-top:10px;
     }
 
     span {
@@ -283,6 +291,11 @@ body {
     }
   }
   .filter-links {
+    display:none;
+    @include min(map-get($breakpoints, "md")){
+      display:block;
+    }
+    
     a {
       color: map-get($colors, primary);
       padding: 6px 15px;
@@ -438,7 +451,23 @@ header.fixed-top {
   top: calc(50% - 90px);
   right: 0;
   z-index: 9999;
-  @include box-shadow(0, 0, 10px, map-get($colors, gray));
+  // @include box-shadow(0, 0, 10px, map-get($colors, gray));
+
+  .toggle_contact{
+    width:30px;
+    height: 30px;   
+    position: absolute;    
+    top:-16px;
+    right:0;
+    border-radius: 5px;
+    line-height: 33px;
+    text-align: center;
+    background:map-get($colors, white);
+    transform: translateY(-15px);
+   
+   
+
+  }
 
   .wapp {
     background: #29a71a;
@@ -591,4 +620,17 @@ header.fixed-top {
   transform: scale(1.2);
     visibility: visible;
   opacity: 1;
+}
+
+.form-floating{
+  label{
+    @include max(map-get($breakpoints, "md")){
+      font-size:$fsize - 2;
+    }
+  }
+  input{
+    @include max(map-get($breakpoints, "md")){
+      padding:0.5rem;
+    }
+  }
 }

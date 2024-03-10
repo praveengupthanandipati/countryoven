@@ -1,8 +1,11 @@
 <app-header></app-header>
 <section class="subpage-login">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-4">
+        <div class="row justify-content-between">
+            <div class="col-md-5 text-center d-none d-md-block">
+                <img src="..//src/assets/images/loginbanner02.jpg" alt="" class="img-fluid w-100">
+            </div>
+            <div class="col-md-6 col-xl-5 align-self-center">
                 <h1 class="h5 font-bold text-center">Welcome back to Country Oven</h1>
                 <form class="login-form pt-3" [formGroup]="userForm" (ngSubmit)="onSubmit()">
                     <div class="input-group mb-3">

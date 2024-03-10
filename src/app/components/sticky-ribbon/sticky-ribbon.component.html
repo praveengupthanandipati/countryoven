@@ -1,17 +1,23 @@
 <div class="stickyribbon">
-    <a target="_blank" href="https://api.whatsapp.com/send?phone=+919848155830&text=Hi" class="sticky-ribbon-link wapp">
-        <span class="icon-whatsapp icomoon"></span>
-    </a>
-    <a href="#contactpop" class="sticky-ribbon-link call-customercare" data-bs-toggle="modal">
-        <span class="icon-call icomoon"></span>
-    </a>
-    <a href="content/contactus" class="sticky-ribbon-link msg">
-        <span class="icon-email icomoon"></span>
-    </a>
-    <a routerLink="/notifications" class="sticky-ribbon-link notifications">
-        <span class="icon-notification icomoon"></span>
-        <div class="number-count">{{count}}</div>
-    </a>
+    <div class="toggle_contact" (click)="toggleContactRibbon()">
+        <span class="icon-right-chevron"></span>
+    </div>
+    <div class="contact-ribbon" [ngClass]="{'hideribbon': showContactRibbon}">
+        <a target="_blank" href="https://api.whatsapp.com/send?phone=+919848155830&text=Hi"
+            class="sticky-ribbon-link wapp">
+            <span class="icon-whatsapp icomoon"></span>
+        </a>
+        <a href="#contactpop" class="sticky-ribbon-link call-customercare" data-bs-toggle="modal">
+            <span class="icon-call icomoon"></span>
+        </a>
+        <a href="content/contactus" class="sticky-ribbon-link msg">
+            <span class="icon-email icomoon"></span>
+        </a>
+        <a routerLink="/notifications" class="sticky-ribbon-link notifications">
+            <span class="icon-notification icomoon"></span>
+            <div class="number-count">{{count}}</div>
+        </a>
+    </div>
 </div>
 
 
@@ -19,7 +25,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Contact</h1>
+                <h3 class="modal-title fs-5" id="exampleModalToggleLabel">Contact</h3>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
