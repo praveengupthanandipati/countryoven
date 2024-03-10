@@ -13,7 +13,7 @@ export class CategoryBannersComponent implements OnInit {
     
   }
   ngOnInit(): void {
-    console.log(this.smallBanners)
+    
   }
 
 
@@ -23,7 +23,7 @@ export class CategoryBannersComponent implements OnInit {
   
   let c=localStorage.getItem('city')?.toLowerCase();   
   
-  console.log(c)
+  
     if(t == 'C')
     {
       t='online-delivery';

@@ -65,7 +65,7 @@ setcounntry()
 
   getPageRoutes() {
     this.route.params.subscribe((params) => {
-      console.log(params);
+      
       this.showlist=false;
       if(params['favspl'] == 'sitemap.xml')
       {
@@ -117,7 +117,7 @@ setcounntry()
           if(params['PageName1']== 'gifts-online')
           {
             localStorage.setItem('city', params['cityname1'])
-            console.log('product',params['cityname1'] )
+            
           }
           this.showproductDetails = false;
           this.showlist=true;

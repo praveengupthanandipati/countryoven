@@ -50,7 +50,7 @@ export class ReferralComponent implements OnInit {
     "CustomerId": this.custID
   }
   this._crud.getReferralCode(data).subscribe(res => {
-    console.log(res)
+    
     this.referalData=res;
    
    

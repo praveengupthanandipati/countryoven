@@ -63,10 +63,10 @@ this.addLoader();
     
  }
   this._crud.corporateOrders(data).subscribe(res => {
-   console.log(res) 
+   
    this.msg=res.successMessage;
    this.msgstatus=true;
-   console.log(this.msgstatus);
+   
    this.removeLoader();
    setTimeout(() => {
     this.msgstatus=false

@@ -10,7 +10,7 @@ export class StickyRibbonComponent  implements OnInit  {
   @Input('count') count:number | undefined;
   showContactRibbon: boolean = false;
   ngOnInit() {
-    console.log(this.count)
+    
   }
 
  constructor(){} 

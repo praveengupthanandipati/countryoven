@@ -80,7 +80,7 @@ export class UserProfileComponent implements OnInit{
       "customerId": custId
     }
     this._crud.getByCustomerId(data).subscribe(res => {
-    console.log(res)  
+    
       this.userForm.patchValue(
         {
           customerFirstName: res.customerFirstName,
@@ -107,7 +107,7 @@ this.getCity(res.stateId)
 
   onaddCountryChange(eve: any) {
     const selectedValue = eve.target.value;
-    console.log(eve.target.value)
+    
     this.stateList=[];
     this.cityList=[];
 

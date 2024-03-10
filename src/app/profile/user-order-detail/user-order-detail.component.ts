@@ -23,7 +23,6 @@ custName: any;
 constructor(private route:ActivatedRoute,private _crud:CurdService, private router:Router)
 {
   const queryParams = this.route.snapshot.queryParams;
-  console.log(queryParams)
 
 
 
@@ -71,7 +70,7 @@ getTrackdetails()
     this.orderdetails=this.order.trackOrderOrderDto;
         this.productdetails=this.order.trackOrderProductDto;
         this.orderstatusdetails=this.order.trackOrderStatusDto;
-    console.log(this.productdetails)
+    
    this.orderstatus=this.orderdetails.orderStatus;
 
 

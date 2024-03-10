@@ -90,7 +90,7 @@ gotoroute( t:any, pname:any)
 
 let c=localStorage.getItem('city')?.toLowerCase();   
 
-console.log(c)
+
   if(t == 'C')
   {
     t='online-delivery';

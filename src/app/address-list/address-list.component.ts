@@ -107,7 +107,7 @@ export class AddressListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.checkoutaddress)
+    
 if(this.checkoutaddress)
     {
     this.adduserForm.get('addcityName')?.setValue(this.cityname);
@@ -212,11 +212,11 @@ if(this.checkoutaddress)
         this.removeLoader();
         if (!res.isEroor) {
 
-          console.log(this.checkoutaddress)
+          
            if(this.checkoutaddress)
            {
          let e = { recipientFirstName: this.adduserForm.value['addRecipientFirstName'], recipientLastName: this.adduserForm.value['addRecipientLastName'], cityName:this.adduserForm.value['addcityName'], addressId: res.addressId, zipCode:this.adduserForm.value['addzipCode']  };
-console.log(e)
+
         let s:boolean=true
           this.sendAddId.emit({ e, s})  
            }
@@ -297,7 +297,7 @@ console.log(e)
     this.selectedAddressData = e.target.value;
 
     this.deliverAddress = this.filterAddressesByAddressId(e.target.value);
-    console.log('2')
+    
   }
 
   addressselected(e: any) {
@@ -305,15 +305,14 @@ console.log(e)
     this.selectedAddressData = e;
 
     this.deliverAddress = this.filterAddressesByAddressId(e);
-    console.log(this.deliverAddress)
-    console.log('1')
+    
   }
 
   getAddressByCustomerId() {
     let data = { "customerId": this.custID }
     this._crud.getAddressByCustomerId(data).subscribe(res => {
       this.originalAddress = res;
-      console.log(res)
+      
 
       if (this.checkoutaddress) {
         this.isCheckout = true;
@@ -346,7 +345,7 @@ console.log(e)
 
 
 
-      console.log(this.deliverAddress)
+      
 
     });
   }

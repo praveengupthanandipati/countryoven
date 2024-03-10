@@ -58,7 +58,7 @@ export class ProfileNavComponent {
 
   logout()
   {
-    console.log('ss')
+    
     localStorage.removeItem('email');
     localStorage.removeItem('custName');
     localStorage.removeItem('customerId');

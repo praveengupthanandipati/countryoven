@@ -42,7 +42,7 @@ getReview()
  // this.custID="26368";
   let data={ "id": this.custID}
   this._crud.getReview(data).subscribe(res => {
-   console.log(res) 
+   
    this.reviewData=res;
   });
 

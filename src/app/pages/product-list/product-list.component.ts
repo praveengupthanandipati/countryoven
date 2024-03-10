@@ -97,7 +97,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   constructor(private renderer: Renderer2, private titleService: Title, private location: Location, private locationStrategy: LocationStrategy,
     private meta: Meta, private _crud: CurdService, private route: ActivatedRoute, private formBuilder: FormBuilder, private router: Router) {
     this.originalcityname = localStorage.getItem('city')
-    console.log('krishna reddy', this.originalcityname)
+    
     this.currency = localStorage.getItem('currency')
     this.country = localStorage.getItem('country');
     this.router.events.subscribe(() => {
@@ -134,9 +134,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.addLoader();
     this.paramMapSubscription = this.route.paramMap.subscribe((params: ParamMap) => {
-    console.log('every time calling')
+    
     setTimeout(() => {
-      console.log(this.filters)
+      
       this.filters=[];
       this.isfilters = false;
       this.products = []
@@ -154,9 +154,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   getnewurl(urlcity: any) {
 
     this.getOldUrl = this.router.url;
-console.log('enter here', this.getOldUrl)
-console.log(urlcity)
-console.log(this.cityname.toLowerCase())
+
     let newurl = this.getOldUrl.replace(urlcity, this.cityname.toLowerCase());
     this.location.replaceState(newurl);
     this.addCanonicalLink(newurl)
@@ -211,7 +209,7 @@ console.log(this.cityname.toLowerCase())
           if(params['PageName1']== 'gifts-online')
           {
           this.getnewurl(this.originalcityname);
-          console.log(this.originalcityname)
+          
           this._crud.updateCity(localStorage.getItem('city'));
          
           }
@@ -233,8 +231,7 @@ console.log(this.cityname.toLowerCase())
           this.PageName = params['PageName'];
 
           if (params['type'] == 'search_result') {
-            // console.log(params['PageName'])  //Hyderabad
-            // console.log(params['cityname']) //flowers
+            
             this.setCity(params['PageName'])
 
             this.getnewurl(params['PageName'])

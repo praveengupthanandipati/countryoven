@@ -34,7 +34,7 @@ getNotifications()
  
   let data={ "CustomerId": this.custID}
   this._crud.getNotification(data).subscribe(res => {
-   console.log(res) 
+   
    this.allNotifications=res;
   });
 

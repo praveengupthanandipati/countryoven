@@ -68,7 +68,7 @@ export class CustomizedCakesComponent {
     } else {
       // Reset the form control and show an error message
 
-      console.log('Invalid file type. Please select a JPG or PNG image.');
+      
     }
 
 
@@ -101,7 +101,7 @@ export class CustomizedCakesComponent {
 
       this._crud.postcustomize(obj).subscribe(res => {
 
-        console.log(res)
+        
         this.msgStatus = true;
         let cuId = res.id;
         let fd = formVal.value;

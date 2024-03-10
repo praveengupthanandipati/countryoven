@@ -76,7 +76,7 @@ couponData:any;
 
     });
     
-    console.log(this.currency)
+    
     if (this.currency == 'INR') {
       this.currencyClass = 'icon-inr'
     }
@@ -106,7 +106,7 @@ couponData:any;
   }
   getaddressId(event: any)
   {
-    console.log(event)
+    
     if(event.s)
     {
       this.addressShow=false
@@ -136,13 +136,13 @@ else
     }
 
     this._crud.postShopingCart(data).subscribe(res => {
-      console.log(res)
+      
       if(res.length > 0)
       {
       this.cartItems = res;
       this.cartCount=res.length;
       this.firstlistItem = this.cartItems[0];
-      console.log(this.firstlistItem)
+      
       this.displaydeliveryDate = this.firstlistItem.deliveryDate;
       this.displaydeliveryTime = this.firstlistItem.deliveryTiming;
       this.originalTotalAmount=this.firstlistItem.grandTotal;
@@ -160,7 +160,7 @@ else
   /* checkout */
   checkDeliveryTimes(zipcode:any)
 {
-  console.log(zipcode)
+  
   let data = {
     "sessionId": this.sessionId,
     "cityName":this.city,
@@ -169,7 +169,7 @@ else
    
   }
   this._crud.checkDeliveryTimes(data).subscribe(res => {
-console.log(res)
+
 this.isReqired=res.isReqired;
 this.isChanged=res.isChanged;
 this.msg=res.message
@@ -233,7 +233,7 @@ removeApplycode()
     if (result.isConfirmed) {
       
       this.couponForm.get('couponcode').setValue('');
-console.log(this.originalTotalAmount)
+
       this.totalAmount=this.originalTotalAmount
       this.finalamount=this.totalAmount;
       this.appliedDiscount=0
@@ -277,7 +277,7 @@ this.reviewShow=false;
     }
 
     this._crud.SaveOrderDetails(data).subscribe(res => {
-      console.log(res);
+      
       this.clickpayment=true;
       this.removeLoader();
 this.paymentstrip=true;
@@ -316,11 +316,11 @@ this.paymentstrip=true;
     }
 
     this._crud.getBindDeliveryDates(data).subscribe(res => {
-      console.log(res);
+      
       this.deliveryDates_array = res
 
       setTimeout(() => {
-        console.log(this.displaydeliveryTime)
+        
        this.userForm.get('deliveryDate')?.setValue(this.displaydeliveryDate);
 
 
@@ -336,7 +336,7 @@ this.paymentstrip=true;
 
           this.deliveryTime = res.deliveryTimingsDtos;
           setTimeout(() => {
-            console.log(this.displaydeliveryTime)
+            
           // this.userForm.get('deliveryTime')?.setValue(this.displaydeliveryTime)
           }, 100);
         
@@ -364,7 +364,7 @@ this.paymentstrip=true;
 
 
   updateDateandtime() {
-    console.log(this.userForm.get('deliveryTime').value)
+    
         if(this.userForm.get('deliveryTime').value.toString() !="" && this.userForm.get('deliveryTime').value.toString() !='Select Time')
         {
           this.timeerror=false;
@@ -382,7 +382,7 @@ this.paymentstrip=true;
               const button: HTMLButtonElement = this.closeButton.nativeElement;
               button.click();
             }
-            console.log(res)
+            
       
           })
         }

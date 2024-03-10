@@ -689,7 +689,11 @@ header.fixed-top {
   padding-left:20px; width: 450px  !important;
   height: 370px !important;
 }
-.left-sidewrap{ width: 90px;}
+.left-sidewrap{ width: 90px;
+
+  .owl-carousel .owl-stage{ width:100% !important}
+
+}
 .leftsideimg
 {
   & img{ width: 80px !important; height: 80px !important; margin-bottom: 5px;}

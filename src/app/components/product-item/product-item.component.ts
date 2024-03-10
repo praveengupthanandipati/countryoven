@@ -66,7 +66,7 @@ if(this.isEggless)
     }
 
     this.city = localStorage.getItem('city')?.toLowerCase();
-    console.log(this.city)
+    
   }
 
 }

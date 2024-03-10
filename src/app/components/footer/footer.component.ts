@@ -17,7 +17,8 @@ export class FooterComponent implements OnInit{
   form:any;
 
   showLinks: boolean = false;
-  toggleLinks() {
+  toggleLinks(m:any) {
+    m.show =!m.show
     this.showLinks = !this.showLinks;
   }
 

@@ -1,6 +1,6 @@
 <div class="stickyribbon">
-    <div class="toggle_contact" (click)="toggleContactRibbon()">
-        <span class="icon-right-chevron"></span>
+    <div class="toggle_contact" (click)="toggleContactRibbon()"  [ngClass]="{'rightribbon': showContactRibbon}">
+        <span  [ngClass]="showContactRibbon ? 'icon-left-chevron': 'icon-close'"></span>
     </div>
     <div class="contact-ribbon" [ngClass]="{'hideribbon': showContactRibbon}">
         <a target="_blank" href="https://api.whatsapp.com/send?phone=+919848155830&text=Hi"

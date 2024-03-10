@@ -13,7 +13,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
-
+showpincode:boolean=false;
   productName: any;
   cityName: any;
   coutryName: any;
@@ -259,6 +259,7 @@ setcounntry()
 
   onSubmit() {
     this.markFormGroupTouched(this.dynamicForm);
+    
     if (this.dynamicForm.valid) {
       const formData = this.dynamicForm.value;
 
@@ -391,7 +392,7 @@ if(res.isError)
       this.productId = res.productId;
       this.isMultipleImages = res.isMultipleImages;
       this.productIamges = res.productIamges;
-      console.log(this.productIamges)
+      
 if(this.isMultipleImages)
 {
   this.myThumbnail= this.productIamges[0].imageName;
@@ -483,15 +484,17 @@ if(this.productId)
             /* pincode */
 
             this.pincodeOptionsDto_array = res.deliveryPinCodes;
-            
-
             if (this.pincodeOptionsDto_array?.length > 0) {
+              this.showpincode=true;
               this.addFormControl('pincodeOptionsDto');
               setTimeout(() => {
                 this.dynamicForm.get('pincodeOptionsDto')?.setValue(null);
 
               }, 1000);
 
+            } else
+            {
+              this.showpincode=false;
             }
             /* pincode */
 
@@ -696,6 +699,30 @@ if(this.productId)
 
       this.dynamicForm.get('deliveryTimes')?.setValue(this.deliveryTime[0].dtime);
       
+
+   /* pincode */
+
+   this.pincodeOptionsDto_array = res.deliveryPinCodes;
+   if (this.pincodeOptionsDto_array?.length > 0) {
+     this.showpincode=true;
+
+    if( this.dynamicForm.get('pincodeOptionsDto') !==null)
+    {
+     this.addFormControl('pincodeOptionsDto');
+    }
+     setTimeout(() => {
+       this.dynamicForm.get('pincodeOptionsDto')?.setValue(null);
+
+     }, 1000);
+
+   } else
+   {
+     this.showpincode=false;
+     this.dynamicForm.get('pincodeOptionsDto')?.clearValidators();
+     this.dynamicForm.get('pincodeOptionsDto')?.updateValueAndValidity();
+   }
+   /* pincode */
+
 
     })
   }

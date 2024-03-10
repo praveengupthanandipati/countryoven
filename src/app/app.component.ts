@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
 
     this._crud.getCountryusingIp().subscribe((data: any) => {
 
-      console.log(data.country)
+      
       this.country = data.country;
 
       if (!localStorage.getItem('country')) {
@@ -65,7 +65,7 @@ export class AppComponent implements OnInit {
 
     this.router.events.subscribe((evt) => {
 
-console.log(evt)
+
 
       if (evt instanceof NavigationEnd) {
 setTimeout(() => {
@@ -103,8 +103,8 @@ setTimeout(() => {
 
   constructor(private route: ActivatedRoute, private _crud: CurdService, private cookieService: CookieService, private router: Router) {
     this.route.params.subscribe((params) => {
-      console.log(params)
-      console.log(params['favspl'])
+      
+      
       if (params['favspl'] == 'sitemap.xml') {
         
         window.location.reload();
@@ -137,7 +137,7 @@ setTimeout(() => {
 
 
   showpopupfn(res: any) {
-    console.log(res)
+    
     if (this.cookieService.check('popupid') && this.cookieService.get('popupid') == res.id) {
 
 

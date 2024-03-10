@@ -31,8 +31,6 @@ payableAmountDollar:any;
  paypalinvoice:any;
 constructor(private _crud:CurdService, private route: Router)
 {
-  console.log(this.amount);
-  console.log(this.saveorderDetails)
 
 
   // this.paypalConfig = {
@@ -57,7 +55,7 @@ constructor(private _crud:CurdService, private route: Router)
       this.walletamount=this.saveorderDetails.walletAmountUSD
      
     }
-    console.log(this.amount)
+    
     this.PaymentPaypal()
   }
 
@@ -66,7 +64,7 @@ constructor(private _crud:CurdService, private route: Router)
     this.iswalletCheck = event.target.checked;
     if (this.iswalletCheck) {
       // Checkbox is checked
-      console.log('Checkbox is checked');
+      
       
       if(this.walletamount >= this.amount)
       {
@@ -88,7 +86,7 @@ constructor(private _crud:CurdService, private route: Router)
       this.displayamount=this.amount;
       this.showwalletbtn=false
 
-      console.log('Checkbox is unchecked');
+      
     }
 
 this.PaymentPaypal()
@@ -112,7 +110,7 @@ this.PaymentPaypal()
         }
     
         this._crud.postWallet(data).subscribe(res => {
-          console.log(res)
+          
     if(res.isEroor)
     {
 this.route.navigateByUrl('failure')
@@ -148,7 +146,7 @@ this.route.navigateByUrl('failure')
         }
     
         this._crud.PaymentPaypal(data).subscribe(res => {
-          console.log(res)
+          
           this.paypalinvoice=res.invoiceId
           this.payableAmountDollar=res.payableAmountDollar
           this.paypalClick=true;
@@ -202,9 +200,9 @@ this.route.navigateByUrl('failure')
                 layout: 'vertical'
             },
             onApprove: (data, actions) => {
-             //   console.log('onApprove - transaction was approved, but not authorized', data, actions);
+           
                 actions.order.get().then((details: any) => {
-                    console.log('onApprove - you can get full order details inside onApprove: ', details);
+                
               if(details.status="APPROVED")
               {
                 localStorage.setItem('orderId', this.paypalinvoice);
@@ -219,20 +217,20 @@ this.route.navigateByUrl('failure')
 
             },
             onClientAuthorization: (data) => {
-                console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+              
               //  this.showSuccess = true;
             },
             onCancel: (data, actions) => {
-                console.log('OnCancel', data, actions);
+                
                // this.showCancel = true;
 
             },
             onError: err => {
-                console.log('OnError', err);
+                
               //  this.showError = true;
             },
             onClick: (data, actions) => {
-                console.log('onClick', data, actions);
+             
                // this.resetStatus();
                
             }
@@ -257,7 +255,7 @@ payupayment()
   
   this._crud.payUBuy(data)
   .subscribe(arg => {
-    console.log(arg)
+    
     const product = arg;
     // <input type="hidden" name="service_provider" value="${paymentDetails.service_provider}"/>
     const paymentDetails = {
@@ -301,7 +299,7 @@ payupayment()
   const winUrl = URL.createObjectURL(
       new Blob([paymentString], { type: "text/html" })
   );
-//  console.log(winUrl)
+
 window.location.href = winUrl; 
 
 

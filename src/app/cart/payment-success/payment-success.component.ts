@@ -15,29 +15,32 @@ transId:any;
 reload:boolean=false;
 scriptElement: any;
 scriptElement1: any;
-analyticsCode: any;
-analyticsCode1: any;
+analyticsCode: string="";
+analyticsCode1: string="";
 constructor(private renderer: Renderer2, private _crud: CurdService, private route: ActivatedRoute, private router: Router, private meta: Meta)
 {
-//  if(localStorage.getItem('orderId'))
-//  {
 
-//   this.orderId= localStorage.getItem('orderId')
-//   this.transId= localStorage.getItem('transcationId')
-//   this.PaymentConfirmation();
-//   localStorage.removeItem('orderId')
-//   localStorage.removeItem('transcationId')
-//  }
-//  else
-//  {
-//   //this.route.navigateByUrl('/')
-//  }
 }
 ngOnInit() {
   this.route.queryParams.subscribe(params => {
-    console.log(params['InvoiceId'])
+  
 
+    let aa={
+      "invoiceId": 992596,
+      "transcationId": "82B73671CB7457221",
+      "analyticsCode": " var gaJsHost = ((\"https:\" == document.location.protocol ) ? \"https://ssl.\" : \"http://www.\"); document.write(unescape(\"%3Cscript src='\" + gaJsHost + \"google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E\"));",
+      "analyticsCode1": "try{  var pageTracker = _gat._getTracker('UA-61530761-1');  pageTracker._trackPageview();  pageTracker._addTrans('CO03102024195223647','Country Oven.in','4320.00','0.00','0.00','','3954','1'); pageTracker._addItem('CO03102024195223647','COFLO371','Eye Glazing Flower Arrangement','Olive Medium','2160.00','2');pageTracker._trackTrans(); } catch(err) {}",
+      "payableAmountDollar": null,
+      "isEroor": false,
+      "errorMessage": null,
+      "successMessage": null
+  };
    
+  // this.analyticsCode=aa.analyticsCode;
+  //  this.analyticsCode1=aa.analyticsCode1;
+  //  this.addAnalyticsCodeToHead();
+
+//this.PaymentConfirmation();
 if(localStorage.getItem('orderId') || params['InvoiceId'] !=undefined )
 {
 
@@ -49,23 +52,16 @@ if(localStorage.getItem('orderId') || params['InvoiceId'] !=undefined )
  
 
 
-console.log('yes')
+
 }
 else
 {
-  console.log('no')
+  
   this.reload=true;
   
 }
 
-    // const invoiceId = params['InvoiceId'];
-    // const transactionId = params['TransactionId'];
-    
-    // Process the data as needed
-    // console.log('InvoiceId:', invoiceId);
-    // console.log('TransactionId:', transactionId);
-   
-    // Once data is processed, navigate to the same route without query parameters
+  
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: {}
@@ -87,9 +83,10 @@ PaymentConfirmation()
   }
   this._crud.PaymentConfirmation(data).subscribe(res => {
   
-   console.log(res);
+   
    this.analyticsCode=res.analyticsCode;
    this.analyticsCode1=res.analyticsCode1;
+   
    this.addAnalyticsCodeToHead();
   });
 }
@@ -98,7 +95,7 @@ PaymentConfirmation()
 gotoorders()
 {
   // /myaccount/orderdetails/7668
-  this.router.navigateByUrl('myaccount/orderdetails/' + this.orderId)   
+ this.router.navigateByUrl('myaccount/orderdetails/' + this.orderId)   
 }
 
 addAnalyticsCodeToHead() {
@@ -106,14 +103,14 @@ addAnalyticsCodeToHead() {
   this.scriptElement = this.renderer.createElement('script');
     this.scriptElement.type = 'text/javascript';
     this.scriptElement.innerHTML = this.analyticsCode;
-    this.renderer.appendChild(document.head, this.scriptElement);
+  // this.renderer.appendChild(document.head, this.scriptElement);
 
 
 
     this.scriptElement1 = this.renderer.createElement('script');
     this.scriptElement1.type = 'text/javascript';
     this.scriptElement1.innerHTML = this.analyticsCode1;
-    this.renderer.appendChild(document.head, this.scriptElement1);
+    // this.renderer.appendChild(document.head, this.scriptElement1);
 
   
 }
@@ -130,6 +127,6 @@ removeAnalyticsScript() {
 
 
 ngOnDestroy(): void {
-  this.removeAnalyticsScript();
+ // this.removeAnalyticsScript();
 }
 }

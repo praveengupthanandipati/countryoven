@@ -62,7 +62,7 @@ export class CartComponent implements OnInit {
     this.currency = localStorage.getItem('currency');
 
     this.currency = localStorage.getItem('currency');
-    console.log(this.currency)
+    
     if (this.currency == 'INR') {
       this.currencyClass = 'icon-inr'
     }
@@ -124,11 +124,11 @@ export class CartComponent implements OnInit {
     }
 
     this._crud.getBindDeliveryDates(data).subscribe(res => {
-      console.log(res);
+      
       this.deliveryDates_array = res
 
       setTimeout(() => {
-        console.log(this.displaydeliveryTime)
+        
         this.userForm.get('deliveryDate')?.setValue(this.displaydeliveryDate);
 
 
@@ -144,7 +144,7 @@ export class CartComponent implements OnInit {
 
           this.deliveryTime = res.deliveryTimingsDtos;
           setTimeout(() => {
-            console.log(this.displaydeliveryTime)
+            
             // this.userForm.get('deliveryTime')?.setValue(this.displaydeliveryTime)
           }, 100);
         
@@ -172,7 +172,7 @@ export class CartComponent implements OnInit {
 
 
   updateDateandtime() {
-    console.log(this.userForm.get('deliveryTime').value)
+    
         if(this.userForm.get('deliveryTime').value.toString() !=""  && this.userForm.get('deliveryTime').value.toString() !='Select Time')
         {
           this.timeerror=false;
@@ -191,7 +191,7 @@ export class CartComponent implements OnInit {
               const button: HTMLButtonElement = this.closeButton.nativeElement;
               button.click();
             }
-            console.log(res)
+            
       
           })
         }
@@ -222,23 +222,20 @@ export class CartComponent implements OnInit {
     this._crud.postShopingCart(data).subscribe(res => {
       this.loader=false;
       this.removeLoader();
-      console.log(this.loader)
+      
       this.cartItems = res;
       this.cartCount = res.length;
 
       this._crud.updateHeaderData(this.cartCount);
 
       this.firstlistItem = this.cartItems[0];
-      console.log(res[0])
+      
       this.displaydeliveryDate = this.firstlistItem.deliveryDate;
       this.displaydeliveryTime = this.firstlistItem.deliveryTiming;
       this.maxLeadTime=this.firstlistItem.maxLeadTime;
-      console.log(this.displaydeliveryTime)
+      
       this.outofdatemessage = this.cartItems.some((item: { outOfDateMessage: any; }) => item.outOfDateMessage);
-      // this.cartItems.each(function(e:any)
-      // {
-      //   console.log(e.outOfDateMessage)
-      // })
+    
       this.getbindDate();
 
     });
@@ -432,7 +429,7 @@ if(flag=='0')
     this._crud.getViewedProducts(data).subscribe(res => {
 
       this.viewedProducts = res;
-console.log(this.viewedProducts)
+
 
     })
   }
@@ -441,6 +438,6 @@ console.log(this.viewedProducts)
   capturephoto(src:any)
   {
     this.customimg=src;
-    console.log(src)
+    
   }
 }

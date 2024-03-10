@@ -66,14 +66,14 @@ if(localStorage.getItem('customerId'))
 
 this.datasubscription=this._curdService.countryData$.subscribe((data)=>{
   
-console.log(data)
+
   this.city=data
 })
 
 this.citysubscription=this._curdService.cityData$.subscribe((data) =>{
-console.log('reddy', data)
+
 this.city=localStorage.getItem('city')
-console.log(this.city)
+
 });
 
    // this.getCarts();
@@ -82,7 +82,7 @@ console.log(this.city)
     if(localStorage.getItem('currency'))
     {
       this.selectedCurrency=localStorage.getItem('currency')
-      console.log(this.selectedCurrency)
+      
     }
     else
     {
@@ -125,10 +125,11 @@ console.log(this.city)
   {
     this.searcherror=false;
     let c=localStorage.getItem('city') ;
-    console.log(this.searchkeyword)
+    
     this.route.navigateByUrl('/search_result'+  '/'+ this.searchkeyword + '/' + c)
     setTimeout(() => {
-      this.searchkeyword=''
+      this.searchkeyword='';
+      this.isVisible=false
     }, 1000);
   }
   else
@@ -150,7 +151,7 @@ console.log(this.city)
   }
   logout()
   {
-    console.log('ss')
+    
     localStorage.removeItem('email');
     localStorage.removeItem('custName');
     localStorage.removeItem('customerId');
