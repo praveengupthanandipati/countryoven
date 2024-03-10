@@ -31,8 +31,8 @@ import { NotificationsComponent } from '../pages/home/notifications/notification
 import { TrackComponent } from '../pages/track/track.component';
 import { CorporateOrdersComponent } from '../pages/corporate-orders/corporate-orders.component';
  
-
-
+import { NgxImageZoomModule } from 'ngx-image-zoom';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 @NgModule({
   declarations: [
     FrontendComponent,
@@ -66,6 +66,8 @@ import { CorporateOrdersComponent } from '../pages/corporate-orders/corporate-or
   imports: [
     CommonModule,
     SharedModule,
+    NgxImageZoomModule,
+    CarouselModule,
     ReactiveFormsModule,
     FrontendRoutingModule
   ]

@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Subscription, timer } from 'rxjs';
 import { CurdService } from 'src/app/services/curd.service';
-
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-product-detail',
@@ -71,6 +71,40 @@ export class ProductDetailComponent implements OnInit {
   selectedFile: any;
   selectedVocucher: any;
   customerId: any = 0;
+
+  customOptions: OwlOptions = {
+    loop: false,
+    autoplayTimeout: 3000,
+    autoplay: false,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    margin: 35,
+    animateIn: true,
+    animateOut: 'fadeOut',
+    dots: false,
+    nav:false,
+    navSpeed: 700,
+    navText: ['<i class="bi bi-chevron-left"></i>', '<i class="bi bi-chevron-right"></i>'],
+    responsive: {
+      0: {
+        items: 1
+      },
+      300: {
+        items: 3
+      },
+      740: {
+        items: 3
+      },
+      940: {
+        items: 3
+      }
+    }
+  }
+  myThumbnail: any;
+  myFullresImage: any;
+
+
   constructor(
     private renderer: Renderer2,
     private meta: Meta, private title: Title,
@@ -317,6 +351,13 @@ setcounntry()
     })
   }
 
+  changeImage(image: string) {
+    this.myThumbnail = image;
+    this.myFullresImage=image
+  //  let index = this.productImagesCompress.indexOf(image);
+    //this.myFullresImage = this.productImages[index];
+  }
+
 
 
   //getProductDetailsById
@@ -350,6 +391,15 @@ if(res.isError)
       this.productId = res.productId;
       this.isMultipleImages = res.isMultipleImages;
       this.productIamges = res.productIamges;
+      console.log(this.productIamges)
+if(this.isMultipleImages)
+{
+  this.myThumbnail= this.productIamges[0].imageName;
+  this.myFullresImage= this.productIamges[0].imageName;
+}
+      // this.myThumbnail = res.data?.product_image || "https://api.myverkoper.com/assets/seller/images/mvk-no-image.png";
+      // this.myFullresImage = res.data?.product_image || "https://api.myverkoper.com/assets/seller/images/mvk-no-image.png";
+
       this.photoRequired = this.productDetails.photoRequired
       if (this.productDetails.categoryId == '1020') {
         this.photoCake = true

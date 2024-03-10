@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { filter, map, switchMap } from 'rxjs';
 import { CurdService } from 'src/app/services/curd.service';
@@ -8,11 +9,13 @@ import { CurdService } from 'src/app/services/curd.service';
   templateUrl: './payment-success.component.html',
   styleUrls: ['./payment-success.component.scss']
 })
-export class PaymentSuccessComponent implements OnInit {
+export class PaymentSuccessComponent implements OnInit,OnDestroy {
 orderId: any;
 transId:any;
 reload:boolean=false;
-constructor( private _crud: CurdService, private route: ActivatedRoute, private router: Router)
+scriptElement: any;
+analyticsCode: any = "<!-- Your analytics code here -->";
+constructor(private renderer: Renderer2, private _crud: CurdService, private route: ActivatedRoute, private router: Router, private meta: Meta)
 {
 //  if(localStorage.getItem('orderId'))
 //  {
@@ -31,6 +34,10 @@ constructor( private _crud: CurdService, private route: ActivatedRoute, private 
 ngOnInit() {
   this.route.queryParams.subscribe(params => {
     console.log(params['InvoiceId'])
+
+    // this.analyticsCode="<script type=\"text/javascript\">  var gaJsHost = ((\"https:\" == document.location.protocol ) ? \"https://ssl.\" : \"http://www.\"); document.write(unescape(\"%3Cscript src='\" + gaJsHost + \"google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E\")); </script><script type='text/javascript'>try{  var pageTracker = _gat._getTracker('UA-61530761-1');  pageTracker._trackPageview();  pageTracker._addTrans('CO03102024174729216','Country Oven.in','499.00','0.00','0.00','','3954','1'); pageTracker._addItem('CO03102024174729216','COCHO479','Assorted Macaron Hamper(6pcs)','Olive Medium','499.00','1');pageTracker._trackTrans(); } catch(err) {}</script>";
+    // this.addAnalyticsCodeToHead();
+
 if(localStorage.getItem('orderId') || params['InvoiceId'] !=undefined )
 {
 
@@ -67,7 +74,7 @@ else
 
 if(this.reload)
 {
-  this.router.navigateByUrl('/')
+  this.router.navigateByUrl('/')    // krishna
 }
 
 }
@@ -80,7 +87,9 @@ PaymentConfirmation()
   }
   this._crud.PaymentConfirmation(data).subscribe(res => {
   
-   console.log(res)
+   console.log(res);
+   this.analyticsCode=res.analyticsCode;
+   this.addAnalyticsCodeToHead();
   });
 }
 
@@ -88,7 +97,29 @@ PaymentConfirmation()
 gotoorders()
 {
   // /myaccount/orderdetails/7668
-  this.router.navigateByUrl('myaccount/orderdetails/' + this.orderId)
+  this.router.navigateByUrl('myaccount/orderdetails/' + this.orderId)   
 }
 
+addAnalyticsCodeToHead() {
+  // const script = this.renderer.createElement('script');
+  // script.type = 'text/javascript';
+  // script.text = this.analyticsCode;
+  this.scriptElement = this.renderer.createElement('script');
+    this.scriptElement.type = 'text/javascript';
+    this.scriptElement.innerHTML = this.analyticsCode;
+    this.renderer.appendChild(document.head, this.scriptElement);
+  
+}
+
+
+removeAnalyticsScript() {
+  if (this.scriptElement) {
+    this.renderer.removeChild(document.head, this.scriptElement);
+  }
+}
+
+
+ngOnDestroy(): void {
+  this.removeAnalyticsScript();
+}
 }

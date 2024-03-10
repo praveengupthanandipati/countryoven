@@ -23,8 +23,31 @@
             <!-- left -->
             <div class="col-md-5">
                 <div class="sticky-top">
+                    <div class="left-sidecontainer" *ngIf="isMultipleImages"> 
+                  <div class="left-sidewrap">  <owl-carousel-o class="leftsideimg" [options]="customOptions">
+                    <ng-container *ngFor="let th of productIamges; index as i">
+                      <ng-template carouselSlide>
+                       <div (click)="changeImage(th.imageName)">
+                        <img   [src]="th.imageName" class="img-fluid w-100" alt="...">
+                    </div>
+                    </ng-template>
+                    </ng-container>
+                  </owl-carousel-o>
+                  </div>
+<div class="right-sidewrap">
+    <lib-ngx-image-zoom
+              [thumbImage]="myThumbnail"
+              [fullImage]="myFullresImage"
+            ></lib-ngx-image-zoom>
+            <span class="tagbadge" *ngIf="tagMsg" [class]="tagClass">{{tagMsg}}</span>
+</div>
+                  </div>
+                     
+
+
                     <!-- carousel -->
-                    <div *ngIf="isMultipleImages" id="carouselExampleDark"
+                    
+                    <!-- <div *ngIf="isMultipleImages" id="carouselExampleDark"
                         class="carousel carousel-dark slide product-detail-carousel d-flex justify-content-between"
                         data-bs-ride="carousel">
                         <div class="carousel-indicators">
@@ -38,14 +61,22 @@
                             <ng-container *ngFor="let th of productIamges; index as i">
                                 <div class="carousel-item" [class.active]="i ==0" data-bs-interval="10000">
                                     <img [src]="th.imageName" class="img-fluid w-100" alt="...">
+                              
+                                  
+                              
                                 </div>
                             </ng-container>
                             <span class="tagbadge" *ngIf="tagMsg" [class]="tagClass">{{tagMsg}}</span>
                         </div>
-                    </div>
+                    </div> -->
                     <div *ngIf="!isMultipleImages">
-                        <img [src]="productDetails?.imageName" class="img-fluid w-100"
-                            alt="...">
+
+                        <lib-ngx-image-zoom
+    [thumbImage]=productDetails?.imageName
+    [fullImage]=productDetails?.imageName
+></lib-ngx-image-zoom>
+                        <!-- <img [src]="productDetails?.imageName" class="img-fluid w-100"
+                            alt="..."> -->
                         <span class="tagbadge" *ngIf="tagMsg" [class]="tagClass">{{tagMsg}}</span>
                     </div>
                     <!--/ carousel -->
