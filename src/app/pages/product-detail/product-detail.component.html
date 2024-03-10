@@ -1,7 +1,7 @@
 <section class="subpage">
     <div class="container">
         <!-- bread crumb-->
-        <div class="row d-none d-md-block">
+        <div class="row">
             <div class="col-md-12">
                 <nav aria-label="breadcrumb" class="align-self-center py-3">
                     <ol class="breadcrumb pb-0 mb-0" *ngIf="productDetails">
@@ -110,7 +110,6 @@
             <div class="col-md-7">
                 <div class="product-detail-right">
                     <h1 class="font-semibold">{{productDetails?.productName}}</h1>
-
                     <div class="price d-flex py-2">
                         <div class="offer-price font-semi-bold"><span class="icomoon font-bold"
                                 [class]="currencyClass"></span>{{productPrice}}</div>
@@ -310,17 +309,14 @@
                                     <div class="pt-1">
                                         <p><small>{{maxLength}} characters allowed.</small></p>
                                     </div>
-
                                     <!-- <div
                                         *ngIf="dynamicForm.get('message')?.hasError('maxLength') || isMaxLengthExceeded">
                                         Maximum length is 25 characters allowed.
                                     </div> -->
-
-
                                 </div>
                                 <div class="mt-3 d-md-flex addtocart-btn">
                                     <!-- <a href="javascript:void(0)" class="color-btn">Add to Cart</a> -->
-                                    <button type="submit" class="color-btn border-0">Add to Cart</button>
+                                    <button type="submit" class="default-btn border-0 background-green font-white">Add to Cart</button>
                                     <span
                                         class="displaytime bg-primary font-white font-bold  ms-md-3 ms-1 px-2 py-2 small rounded-pill align-self-center h6"><span
                                             class="icon-circular-alarm-clock-tool d-inline-block me-1"></span>

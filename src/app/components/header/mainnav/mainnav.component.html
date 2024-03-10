@@ -70,7 +70,7 @@
                             aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 first-navbar">
                             <li *ngFor="let menu of categoryList; let i = index" class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle font-semibold" href="javascript:;" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -80,14 +80,14 @@
                                     *ngIf="menu.subCategoryList.length" [ngClass]="{'rightsidenav': i >= 7}">
                                     <div class="main-div-links d-lg-flex">
                                         <ng-container *ngIf="menu.subCategoryList.length ">
-                                            <div class="background-lightblue"> <a href="javascript:;"
+                                            <div class="background-lightblue mobmenu"> <a href="javascript:;"
                                                     (click)="gotoroute(item.type, item.seoTitle)"
                                                     data-bs-dismiss="offcanvas"
                                                     *ngFor="let item of menu.subCategoryList.slice(0, menu.subCategoryList.length / 2)">{{
                                                     item.title }} <span class="new"
                                                         *ngIf="item.isHighligted">New</span></a>
                                             </div>
-                                            <div class="background-white"> <a href="javascript:;"
+                                            <div class="background-white mobmenu"> <a href="javascript:;"
                                                     (click)="gotoroute(item.type, item.seoTitle)"
                                                     data-bs-dismiss="offcanvas"
                                                     *ngFor="let item of menu.subCategoryList.slice(menu.subCategoryList.length / 2)">{{

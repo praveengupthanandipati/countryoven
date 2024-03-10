@@ -98,10 +98,10 @@
       list-style-type: disc;
       margin-left: 22px;
       margin-bottom: 5px;
-      font-size:$fsize - 2;
+      font-size: $fsize - 2;
 
-      @include max(map-get($breakpoints, "sm")){
-        font-size:$fsize - 3;
+      @include max(map-get($breakpoints, "sm")) {
+        font-size: $fsize - 3;
       }
     }
   }
@@ -132,7 +132,7 @@
   color: #ffffff;
   padding: 3px 5px 2px 5px;
   text-transform: uppercase;
-  border-radius:2px;
+  border-radius: 2px;
   z-index: 99;
 }
 .greencls {
@@ -148,31 +148,31 @@
   background: #005bc2;
 }
 
-.product-detail-tab { 
+.product-detail-tab {
   background: map-get($colors, lightblue);
   min-height: 420px;
 
-   .nav-link {
+  .nav-link {
     text-transform: uppercase;
     color: map-get($colors, black);
     background: map-get($colors, white);
     font-weight: map-get($font-weights, "medium");
-    border:none!important;
+    border: none !important;
     border-radius: 0;
+    font-size: $fsize - 2;
 
-    @include max(map-get($breakpoints, "sm")) {
-      width: 50%;      
+    @include max(map-get($breakpoints, "xl")) {
+      width: 50%;
       font-size: $fsize - 4;
       padding: 10px;
-      border-radius:0;
-      
+      border-radius: 0;
     }
   }
   .nav-link.active {
     background: map-get($colors, darkyellow);
     color: map-get($colors, black);
     font-weight: map-get($font-weights, "medium");
-    border:none!important;
+    border: none !important;
   }
 
   h5 {
@@ -199,7 +199,7 @@
 }
 
 .addtocart-btn {
-  .color-btn {
+  .default-btn {
     @include max(map-get($breakpoints, "sm")) {
       width: 100%;
       position: fixed;
@@ -220,12 +220,14 @@
   }
 }
 
-.form-group{
-  .form-select{
-    &:focus{
+.form-group {
+  .form-select {
+    &:focus {
       box-shadow: none;
     }
   }
 }
 
-app-noproducts-found{ text-align: center;}
+app-noproducts-found {
+  text-align: center;
+}

@@ -22,10 +22,13 @@
                                 <small class="font-gray"> Invoice No:
                                     <span class="font-green font-semibold">{{order.sNo}}</span>
                                 </small>
-
-                                <small class="font-gray d-inline-block ms-3"> Ordered On:
-                                    <span class="font-green font-semibold d-inline-block">{{order.orderedDate}}</span>
+                                <small class="font-gray d-inline-block ms-3"> Order Status: <span
+                                        class="font-green font-semibold">{{order.orderStatus}}</span>
                                 </small>
+
+                                <!-- <small class="font-gray d-inline-block "> Ordered On:
+                                    <span class="font-green font-semibold d-inline-block">{{order.orderedDate}}</span>
+                                </small> -->
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -38,7 +41,7 @@
                     </div>
                 </div>
                 <div class="card-body pb-0 pt-2">
-                    <div class="row pb-2 border-bottom" *ngFor="let innerorder of order.myOrderProductsDtos">
+                    <div class="row pb-2 border-bottom pt-2" *ngFor="let innerorder of order.myOrderProductsDtos">
                         <div class="col-md-2 col-lg-1  col-3">
                             <a (click)="gotoorders(order.orderId)" href="javascript:;">
                                 <img src="{{innerorder.smallimageurl}}" alt="" class="img-fluid">
@@ -49,26 +52,15 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <p class="productname"><a (click)="gotoorders(order.orderId)" href=""
-                                                class="font-black">{{innerorder.productName}}</a></p>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="price">
-                                            <div class="offer-price font-bold">
-                                                <span class="icon-inr icomoon"></span>{{innerorder.subTotal}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 text-md-end py-2 py-md-0">
+                                                class="font-black">{{innerorder.productName}}</a></p>                                       
+                                    </div>                                    
+                                    <div class="col-md-3 text-md-end py-2 py-md-0 d-none">
                                         <div>
                                             <small class="font-gray">Delivery Date: <span
                                                     class="font-green font-semibold">{{order.deliveredDate}}</span></small>
                                         </div>
-                                        <div class="user-order-col">
-                                            <small class="font-gray d-inline-block"> Order Status: <span
-                                                    class="font-green font-semibold">{{order.orderStatus}}</span></small>
-                                        </div>
                                     </div>
-                                </div>
+                                </div>                               
                                 <div>
                                     <p *ngIf="innerorder.additionalWeight"><small class="font-gray"> Weight: <span
                                                 class="font-green font-semibold">{{innerorder.additionalWeight}}</span></small>
@@ -85,6 +77,11 @@
                                     <p *ngIf="innerorder.message"><small class="font-gray"> Message: <span
                                                 class="font-green font-semibold"> {{innerorder.message}}</span></small>
                                     </p>
+                                    <div class="price">
+                                        <div class="offer-price font-bold">
+                                            <span class="icon-inr icomoon"></span>{{innerorder.subTotal}}
+                                        </div>
+                                    </div>
                                 </div>
                             </article>
                         </div>
@@ -103,10 +100,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                          
-
-
                         </div>
                         <div class="col-md-6">
                             <div class="price">
