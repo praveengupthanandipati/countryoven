@@ -56,13 +56,13 @@ export class UserDashboardComponent {
       Link:'/myaccount/user-change-password',
       Icon:'icon-lock',
       Title:'Change Password',
-      LinkName:'Change your Password'
+      LinkName:'Change Your Password'
     },
     {
       Link:'/myaccount/cowallet',
       Icon:'icon-wallet',
       Title:'Co Wallet',
-      LinkName:'Used / Unused Gift Vouchers'
+      LinkName:'Used / Unused Wallet History'
     },
     {
       Link:'/myaccount/referral',
