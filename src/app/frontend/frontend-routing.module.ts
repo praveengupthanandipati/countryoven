@@ -24,6 +24,7 @@ import { PrivacypolicyComponent } from '../pages/privacypolicy/privacypolicy.com
 import { TermsandconditionsComponent } from '../pages/termsandconditions/termsandconditions.component';
 import { NoproductsFoundComponent } from '../pages/noproducts-found/noproducts-found.component';
 import { NotificationsComponent } from '../pages/home/notifications/notifications.component';
+import { CustomgiftsComponent } from '../pages/customgifts/customgifts.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,7 @@ const routes: Routes = [
       {path:'content/aboutus', component:AboutusComponent},
       {path:'content/ourstores', component:StoresComponent},
       {path: 'reviews', component:ReviewsComponent},
+      {path:'customgifts', component:CustomgiftsComponent},
       {path: 'notifications', component:NotificationsComponent},
       {path: 'content/contactus', component:ContactComponent},  
       {path: 'content/couponpartners', component:CouponpartnersComponent},

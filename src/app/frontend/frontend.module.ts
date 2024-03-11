@@ -33,6 +33,7 @@ import { CorporateOrdersComponent } from '../pages/corporate-orders/corporate-or
  
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { CustomgiftsComponent } from '../pages/customgifts/customgifts.component';
 @NgModule({
   declarations: [
     FrontendComponent,
@@ -60,7 +61,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     TermsContentComponent,
     NotificationsComponent,
     TrackComponent,
-    CorporateOrdersComponent
+    CorporateOrdersComponent,
+    CustomgiftsComponent
 
   ],
   imports: [

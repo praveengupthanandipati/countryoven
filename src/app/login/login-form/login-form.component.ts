@@ -17,6 +17,7 @@ export class LoginFormComponent {
   sessionId:any;
   userForm: any;
   orderlogin:boolean=false;
+  giftslogin:boolean=false;
   submitted = false;
   errorMsg:any;
   errorMsgstatus:boolean=false;
@@ -44,9 +45,13 @@ export class LoginFormComponent {
   {
     this.orderlogin=true;
   }
-  else
+  else  if(queryParams['arg'] =='cg')
+  {
+    this.giftslogin=true;
+  } else
   {
     this.orderlogin=false;
+    this.giftslogin=false;
   }
 
   }
@@ -94,6 +99,10 @@ let data={
     {
       this.router.navigateByUrl('/checkout')
     }
+    else if(this.giftslogin)
+    {
+      this.router.navigateByUrl('/customgifts')
+    }
    else
    {
     this.router.navigateByUrl('/')
@@ -116,6 +125,10 @@ gotosignup()
  if(this.orderlogin)
  {
   this.router.navigateByUrl('/signup?arg=ck')
+ }
+ else if(this.giftslogin)
+ {
+  this.router.navigateByUrl('/signup?arg=cg')
  }
  else{
  

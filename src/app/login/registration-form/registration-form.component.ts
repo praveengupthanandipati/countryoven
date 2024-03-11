@@ -19,6 +19,7 @@ export class RegistrationFormComponent {
   msgstatus:boolean=false;
   msg:any;
   orderlogin:boolean=false;
+  giftslogin:boolean=false;
   constructor( private renderer:Renderer2,  private router:Router, private route:ActivatedRoute, private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private cookieService: CookieService){
     this.sessionId= this.cookieService.get('sessionID');
     this.userForm = this.fb.group({
@@ -34,9 +35,15 @@ export class RegistrationFormComponent {
   {
     this.orderlogin=true;
   }
+  else if(queryParams['arg'] =='cg')
+{
+  this.giftslogin=true;
+}
+
   else
   {
     this.orderlogin=false;
+    this.giftslogin=false;
   }
     this._crud.getIpAddress().subscribe((data: any) => {
      this.userIp = data.ip;
@@ -127,6 +134,10 @@ let data={
     if(this.orderlogin)
     {
       this.router.navigateByUrl('/checkout')
+    }
+    else if(this.giftslogin)
+    {
+      this.router.navigateByUrl('/customgifts')
     }
    else
    {
