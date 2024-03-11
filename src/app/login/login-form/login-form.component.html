@@ -12,11 +12,11 @@
                         <div class="form-floating">
                             <input type="text" class="form-control" [ngClass]="{'is-invalid' : userForm.get('usrname')!.invalid && userForm.get('usrname')!.touched}" id="email" placeholder="Enter your Email Address"
                                 formControlName="usrname">
-                            <label for="email">Enter your Email Address <span class="font-red font-bold">*</span></label>
+                            <label for="email">Enter Your Email Address <span class="font-red font-bold">*</span></label>
                         </div>
                        
                         <div *ngIf="submitted &&  userForm.get('usrname')!.invalid" class="invalid-feedback mt-0 d-block">
-                            Enter valid Email address 
+                            Enter Valid Email address 
                         </div>
                     </div>
                     <div class="input-group mb-3">

@@ -6,13 +6,13 @@
                 <img src="..//src/assets/images/loginbanner02.jpg" alt="" class="img-fluid w-100">
             </div>
             <div class="col-md-6 col-xl-5 align-self-center">
-                <h1 class="h5 font-bold text-center">Register with us</h1>
+                <h1 class="h5 font-bold text-center">Sign Up</h1>
                 <form class="login-form pt-3"  [formGroup]="userForm"  (ngSubmit)="onSubmit()">
                     <div class="form-floating mb-3">
                         <input  [ngClass]="{'is-invalid' : userForm.get('usrname')!.invalid && userForm.get('usrname')!.touched}" type="text" class="form-control" id="usrname" placeholder="Enter your Name" formControlName="usrname">
-                        <label for="usrname">Enter your Name <span class="font-red font-bold">*</span></label>
+                        <label for="usrname">Enter Your Name <span class="font-red font-bold">*</span></label>
                         <div *ngIf="submitted && userForm.get('usrname')!.invalid" class="invalid-feedback mt-0 d-block">
-                            Name must be at least 3 characters long
+                            Name must be at least 3 characters
                         </div>
                     </div>
                    
@@ -20,7 +20,7 @@
                         <input  [ngClass]="{'is-invalid' : userForm.get('useremail')!.invalid && userForm.get('useremail')!.touched}" type="text" class="form-control" id="useremail" placeholder="Enter your Email" formControlName="useremail">
                         <label for="useremail">Email Address <span class="font-red font-bold">*</span></label>
                         <div *ngIf="submitted && userForm.get('useremail')!.invalid " class="invalid-feedback mt-0 d-block">
-                            Enter valid Email address 
+                            Enter Valid Email address 
                         </div>
                         <div *ngIf="msgstatus"  class="invalid-feedback mt-0 d-block">
                             {{msg}}
