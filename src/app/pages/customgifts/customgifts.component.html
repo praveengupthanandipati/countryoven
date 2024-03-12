@@ -1,1 +1,28 @@
-<p>customgifts works!</p>
+
+<div class="formwrap">
+<form [formGroup]="form" (ngSubmit)="submit(form)">
+<div class="col-12 col-lg-12">
+    <div class="input-group mb-3">
+        <div class="form-floating">
+            <input type="text" class="form-control" placeholder="Enter Amount"
+                formControlName="amount"   [ngClass]="{'is-invalid': form.get('amount').invalid  && form.get('amount')!.touched}">
+            <label for="amount">Amount <span class="font-red font-bold">*</span></label>
+            <div class="msg-hint" *ngIf="submitted && form.get('amount').invalid"> Amount Required</div>
+        </div>
+    </div>
+</div>
+<div class="col-12 ">
+    <div class="input-group mb-3">
+        <div class="form-floating">
+            <textarea formControlName="message" class="form-control" placeholder="Your Comment" id="YourComment"
+                style="height: 100px" ></textarea>
+            <label for="YourComment">Your Comment <span
+                    class="font-red font-bold">*</span></label>
+                    
+        </div>
+    </div>
+</div>
+<button class="btn color-btn w-100 text-center font-bold"  type="submit" >Submit</button>
+
+</form>
+</div>

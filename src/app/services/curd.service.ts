@@ -416,6 +416,9 @@ postcustomize(obj:any):Observable<any>{
   
                         return this.http.post(`${environment.apiUrl}/ProductDetails/VerifyDeliveryTime`,obj)
                         }
-
+                        postcustomGifts(obj:any):Observable<any>{
+  
+                          return this.http.post(`${environment.apiUrl}/ProductDetails/AddCustomGifts`,obj)
+                          }
 
                     }
