@@ -26,7 +26,7 @@
                                         <input type="text" class="form-control" placeholder="Name "
                                         [ngClass]="{'is-invalid': userForm.get('name').invalid  && userForm.get('name')!.touched}"  formControlName="name">
                                         <label for="Name">Name <span class="font-red font-bold">*</span></label>
-                                        <div class="msg-hint" *ngIf="submitted && userForm.get('name').invalid"> Name must be at least 3 characters long</div>
+                                        <div class="msg-hint" *ngIf="submitted && userForm.get('name').invalid"> Name must be at least 3 characters </div>
                                     </div>
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                                         [ngClass]="{'is-invalid': userForm.get('mobileNo').invalid  && userForm.get('mobileNo')!.touched}"  formControlName="mobileNo">
                                         <label for="MobileNumber">Mobile Number<span
                                                 class="font-red font-bold">*</span></label>
-                                                <div class="msg-hint" *ngIf="submitted && userForm.get('mobileNo').invalid"> Enter valid Mobile Number. Its between  10 to 15  characters</div>
+                                                <div class="msg-hint" *ngIf="submitted && userForm.get('mobileNo').invalid"> Enter Valid Mobile Number. Its between  10 to 15  characters</div>
                                     </div>
                                 </div>
                             </div>
@@ -47,7 +47,7 @@
                                         <input type="text" class="form-control" placeholder="Email"
                                         [ngClass]="{'is-invalid': userForm.get('emailId').invalid  && userForm.get('emailId')!.touched}"  formControlName="emailId">
                                         <label for="Email">Email <span class="font-red font-bold">*</span></label>
-                                        <div class="msg-hint" *ngIf="submitted && userForm.get('emailId').invalid"> Email Required</div>
+                                        <div class="msg-hint" *ngIf="submitted && userForm.get('emailId').invalid"> Enter Valid Email Address</div>
                                     </div>
                                 </div>
                             </div>
@@ -57,7 +57,7 @@
                                         <input type="text" class="form-control" placeholder="Company Name"
                                         [ngClass]="{'is-invalid': userForm.get('companyName').invalid  && userForm.get('companyName')!.touched}"  formControlName="companyName">
                                         <label for="cname">Company Name <span class="font-red font-bold">*</span></label>
-                                        <div class="msg-hint" *ngIf="submitted && userForm.get('companyName').invalid"> Company Name Required</div>
+                                        <div class="msg-hint" *ngIf="submitted && userForm.get('companyName').invalid"> Enter Company Name </div>
                                     </div>
                                 </div>
                             </div>
@@ -91,17 +91,17 @@
                             <p>Delighted to Serve you.</p>
                             <p class="pb-0">IND: +91 40 48789922, +91 9848155830 <br>
                                 Whatsapp : +91 9848155815<br>
-                                USA: 732 790 0578<br>
+                                <!--USA: 732 790 0578<br>-->
                                 Canada: +1 416 628 1206<br>
-                                UK: +44 - 207 101 9225<br>
-                                AUS: +61 - 3 - 99883814</p>
+                                <!--UK: +44 - 207 101 9225<br>
+                                AUS: +61 - 3 - 99883814--></p>
                         </div>
                     </div>
                     <div class="card border mb-3">
                         <div class="card-header">Address</div>
                         <div class="card-body">
                             <p class="pb-0">
-                                <a href="/Stores" class="font-primary font-bold">Check out our stores in USA and
+                                <a href="/content/ourstores" class="font-primary font-bold">Check out our stores in USA and
                                     India.</a>
                             </p>
                         </div>
