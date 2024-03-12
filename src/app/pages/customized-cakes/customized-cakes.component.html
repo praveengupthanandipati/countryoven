@@ -26,7 +26,7 @@
                                         <input type="text" class="form-control" placeholder="Name "
                                             formControlName="name"   [ngClass]="{'is-invalid': form.get('name').invalid  && form.get('name')!.touched}">
                                         <label for="Name">Name <span class="font-red font-bold">*</span></label>
-                                        <div class="msg-hint" *ngIf="submitted && form.get('name').invalid">Name Required</div>
+                                        <div class="msg-hint" *ngIf="submitted && form.get('name').invalid"> Name must be at least 3 characters </div>
                                     </div>
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                                             formControlName="mobile"   [ngClass]="{'is-invalid': form.get('mobile').invalid  && form.get('mobile')!.touched}">
                                         <label for="MobileNumber">Mobile Number<span
                                                 class="font-red font-bold">*</span></label>
-                                                <div class="msg-hint" *ngIf="submitted && form.get('mobile').invalid"> Enter valid Mobile Number. Its between  10 to 15  characters</div>
+                                                <div class="msg-hint" *ngIf="submitted && form.get('mobile').invalid"> Enter Valid Mobile Number. Its between  10 to 15  characters</div>
                                     </div>
                                 </div>
                             </div>
@@ -47,7 +47,7 @@
                                         <input type="text" class="form-control" placeholder="Email"
                                             formControlName="email"   [ngClass]="{'is-invalid': form.get('email').invalid  && form.get('email')!.touched}">
                                         <label for="Email">Email <span class="font-red font-bold">*</span></label>
-                                        <div class="msg-hint" *ngIf="submitted && form.get('email').invalid"> Email Required</div>
+                                        <div class="msg-hint" *ngIf="submitted && form.get('email').invalid">Enter Valid Email Address</div>
                                     </div>
                                 </div>
                             </div>

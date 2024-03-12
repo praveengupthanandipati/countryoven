@@ -30,7 +30,7 @@
                                                 class="font-red font-bold">*</span></label>
                                     </div>
                                     <div *ngIf="submitted && form.get('firstname')!.invalid" class="invalid-feedback mt-0 d-block">
-                                        Name must be at least 3 characters long
+                                        Name must be at least 3 characters 
                                     </div>
                                 </div>
                             </div>
@@ -43,7 +43,7 @@
                                                 class="font-red font-bold">*</span></label>
                                     </div>
                                     <div *ngIf="submitted && form.get('lastname')!.invalid" class="invalid-feedback mt-0 d-block">
-                                        Last name is Required
+                                        Enter Last Name 
                                     </div>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@
                                         <label for="username">Age <span class="font-red font-bold">*</span></label>
                                     </div>
                                     <div *ngIf="submitted && form.get('age')!.invalid" class="invalid-feedback mt-0 d-block">
-                                      Age is Required
+                                      Enter Age 
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                                                 class="font-red font-bold">*</span></label>
                                     </div>
                                     <div *ngIf="submitted && form.get('mobile')!.invalid " class="invalid-feedback mt-0 d-block">
-                                        Enter valid Mobile Number. Its between  10 to 15  characters
+                                        Enter Valid Mobile Number. Its between  10 to 15  digits
                                     </div>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@
                                                 class="font-red font-bold">*</span></label>
                                     </div>
                                     <div *ngIf="submitted && form.get('emailId')!.invalid " class="invalid-feedback mt-0 d-block">
-                                       Email Address is Required
+                                       Enter Valid Email Address 
                                     </div>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@
                                         <label for="country">Country <span class="font-red font-bold">*</span></label>
                                     </div>
                                     <div *ngIf="submitted && form.get('country')!.invalid " class="invalid-feedback mt-0 d-block">
-                                       Country Required
+                                       Enter Country 
                                     </div>
                                 </div>
                             </div>
@@ -111,7 +111,7 @@
                                         {{ updateCharacterCount() }} / {{ maxAddressLength }}
                                      </div>
                                     <div *ngIf="submitted && form.get('address')!.invalid" class="invalid-feedback mt-0 d-block">
-                                        Address must be 100 characters or less.
+                                        Address must be less than 100 characters.
                                     </div>
                                 </div>
                             </div>
@@ -123,7 +123,7 @@
                                         <label for="State">State <span class="font-red font-bold">*</span></label>
                                     </div>
                                     <div *ngIf="submitted && form.get('state')!.invalid " class="invalid-feedback mt-0 d-block">
-                                       State Required
+                                       Enter State 
                                     </div>
                                 </div>
                             </div>
@@ -135,7 +135,7 @@
                                         <label for="City">City <span class="font-red font-bold">*</span></label>
                                     </div>
                                     <div *ngIf="submitted && form.get('city')!.invalid" class="invalid-feedback mt-0 d-block">
-                                       City Required
+                                       Enter City 
                                     </div>
                                 </div>
                             </div>
@@ -175,7 +175,7 @@
                                             franchise <span class="font-red font-bold">*</span></label>
                                     </div>
                                     <div *ngIf="submitted && form.get('proposedLocation')!.invalid" class="invalid-feedback mt-0 d-block">
-                                      Franchise location is Required
+                                      Enter Franchise location 
                                     </div>
                                 </div>
                             </div>
@@ -214,17 +214,17 @@
                             <p>Delighted to Serve you.</p>
                             <p class="pb-0">IND: +91 40 48789922, +91 9848155830 <br>
                                 Whatsapp : +91 9848155815<br>
-                                USA: 732 790 0578<br>
+                                <!--USA: 732 790 0578<br>-->
                                 Canada: +1 416 628 1206<br>
-                                UK: +44 - 207 101 9225<br>
-                                AUS: +61 - 3 - 99883814</p>
+                                <!--UK: +44 - 207 101 9225<br>
+                                AUS: +61 - 3 - 99883814--></p>
                         </div>
                     </div>
                     <div class="card border mb-3">
                         <div class="card-header">Address</div>
                         <div class="card-body">
                             <p class="pb-0">
-                                <a href="/Stores" class="font-primary font-bold">Check out our stores in USA and
+                                <a href="/content/ourstores" class="font-primary font-bold">Check out our stores in USA and
                                     India.</a>
                             </p>
                         </div>
