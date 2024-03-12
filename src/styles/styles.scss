@@ -267,10 +267,10 @@ body {
     padding: 10px 0;
   }
 
-  p{
-    display:none;
-    @include min(map-get($breakpoints, "md")){
-      display:block;
+  p {
+    display: none;
+    @include min(map-get($breakpoints, "md")) {
+      display: block;
     }
   }
 
@@ -282,7 +282,7 @@ body {
 
     @include max(map-get($breakpoints, "sm")) {
       font-size: $fsize;
-      padding-top:10px;
+      padding-top: 10px;
     }
 
     span {
@@ -291,11 +291,11 @@ body {
     }
   }
   .filter-links {
-    display:none;
-    @include min(map-get($breakpoints, "md")){
-      display:block;
+    display: none;
+    @include min(map-get($breakpoints, "md")) {
+      display: block;
     }
-    
+
     a {
       color: map-get($colors, primary);
       padding: 6px 15px;
@@ -422,13 +422,12 @@ ol {
   }
 }
 
-header{
+header {
   @include transition(all, 0.2s ease);
 }
 
 header.fixed-top {
-  
-  .mid-header { 
+  .mid-header {
     .brand-logo {
       width: 100px;
     }
@@ -436,10 +435,11 @@ header.fixed-top {
 }
 
 .modal {
-  z-index: 9999;
+  z-index: 99999;
 }
+
 .modal-backdrop {
-  z-index: 999;
+  z-index: 9999;
 }
 
 .msg-hint {
@@ -453,20 +453,17 @@ header.fixed-top {
   z-index: 9999;
   // @include box-shadow(0, 0, 10px, map-get($colors, gray));
 
-  .toggle_contact{
-    width:30px;
-    height: 30px;   
-    position: absolute;    
-    top:-16px;
-    right:0;
+  .toggle_contact {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: -16px;
+    right: 0;
     border-radius: 5px;
     line-height: 33px;
     text-align: center;
-    background:map-get($colors, white);
+    background: map-get($colors, white);
     transform: translateY(-15px);
-   
-   
-
   }
 
   .wapp {
@@ -574,21 +571,6 @@ header.fixed-top {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @keyframes zoom-in-zoom-out {
   0% {
     transform: scale(1, 1);
@@ -600,67 +582,73 @@ header.fixed-top {
     transform: scale(1, 1);
   }
 }
-.poplayer{ position: fixed; top:0; left:0; right:0; bottom: 0;z-index: 100000;
-  background: rgba(0, 0, 0, .7); visibility:hidden;
-  background: rgba(0,0,0,.7);
-  transition: transform 250ms, opacity 400ms;}
-.centerpopup{ position: relative; width:600px; max-height: 80vh; margin: auto; overflow: auto; background: #fff; min-height: 100px;
-& img{ width: 100%;
-  max-height: 100%;}
-  & .popmsgcontent{ padding: 20px;}
-& .popclose{ position: absolute;
-  right: 0; background: none;     border: 0;
-  padding: 4px; cursor: pointer;
-  top: 0;}
-
+.poplayer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100000;
+  background: rgba(0, 0, 0, 0.7);
+  visibility: hidden;
+  background: rgba(0, 0, 0, 0.7);
+  transition: transform 250ms, opacity 400ms;
+}
+.centerpopup {
+  position: relative;
+  width: 600px;
+  max-height: 80vh;
+  margin: auto;
+  overflow: auto;
+  background: #fff;
+  min-height: 100px;
+  & img {
+    width: 100%;
+    max-height: 100%;
+  }
+  & .popmsgcontent {
+    padding: 20px;
+  }
+  & .popclose {
+    position: absolute;
+    right: 0;
+    background: none;
+    border: 0;
+    padding: 4px;
+    cursor: pointer;
+    top: 0;
+  }
 }
 
 .popupshow {
   display: flex;
   transform: scale(1.2);
-    visibility: visible;
+  visibility: visible;
   opacity: 1;
 }
 
-.form-floating{
-  label{
-    @include max(map-get($breakpoints, "md")){
-      font-size:$fsize - 2;
+.form-floating {
+  label {
+    @include max(map-get($breakpoints, "md")) {
+      font-size: $fsize - 2;
     }
   }
-  input{
-    @include max(map-get($breakpoints, "md")){
-      padding:0.5rem;
+  input {
+    @include max(map-get($breakpoints, "md")) {
+      padding: 0.5rem;
     }
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .ngxImageZoomContainer {
   overflow: inherit !important;
-  max-width:100% !important;
+  max-width: 100% !important;
   width: 100% !important;
   z-index: 8;
   position: relative;
   padding-right: 30px;
+  height: 100% !important;
+  margin-bottom: 25px;
 
   &:after {
     position: absolute;
@@ -686,26 +674,64 @@ header.fixed-top {
   left: 100% !important;
 }
 .ngxImageZoomFullContainer {
-  padding-left:20px; width: 450px  !important;
+  padding-left: 20px;
+  width: 450px !important;
   height: 370px !important;
 }
-.left-sidewrap{ width: 90px;
+.left-sidewrap {
+  width: 90px;
+  @include max(map-get($breakpoints, "lg")) {
+    width: 60px !important;
+  }
 
-  .owl-carousel .owl-stage{ width:100% !important}
+  .owl-carousel .owl-stage {
+    width: 100% !important;
+  }
+}
+.leftsideimg {
+  & img {
+    width: 80px !important;
+    height: 80px !important;
+    margin-bottom: 5px;
 
+    @include max(map-get($breakpoints, "lg")) {
+      width: 50px !important;
+      height: 50px !important;
+    }
+  }
 }
-.leftsideimg
-{
-  & img{ width: 80px !important; height: 80px !important; margin-bottom: 5px;}
+.left-sidecontainer {
+  display: flex;
 }
-.left-sidecontainer{ display: flex;}
-.right-sidewrap
-{
-flex: 1;
-& .ngxImageZoomContainer{ max-width: 100% !important;     width: 100% !important; padding-right: 10px;
-& img.ngxImageZoomThumbnail{ max-width: 100% !important;}
-}
-& .ngxImageZoomFullContainer{ padding-left:20px; width: 450px  !important;}
+.right-sidewrap {
+  flex: 1;
+  & .ngxImageZoomContainer {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-right: 10px;
+    height: 100% !important;
 
+    & img.ngxImageZoomThumbnail {
+      max-width: 100% !important;
+    }
+  }
+  & .ngxImageZoomFullContainer {
+    padding-left: 20px;
+    width: 450px !important;
+  }
 }
-.owl-nav{ display: none !important;}
+.owl-nav {
+  display: none !important;
+}
+
+.login-keypoints {
+  .keypoint {
+    margin-bottom: 3rem;
+
+    .icomoon {
+      font-size: clamp(1.6rem, 3.5vw, 3.5rem);
+      margin-right: 15px;
+      color: map-get($colors, primary);
+    }
+  }
+}

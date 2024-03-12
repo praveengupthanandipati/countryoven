@@ -23,30 +23,24 @@
             <!-- left -->
             <div class="col-md-5">
                 <div class="sticky-top">
-                    <div class="left-sidecontainer" *ngIf="isMultipleImages"> 
-                  <div class="left-sidewrap">  <owl-carousel-o class="leftsideimg" [options]="customOptions">
-                    <ng-container *ngFor="let th of productIamges; index as i">
-                      <ng-template carouselSlide>
-                       <div (click)="changeImage(th.imageName)">
-                        <img   [src]="th.imageName" class="img-fluid w-100" alt="...">
+                    <div class="left-sidecontainer" *ngIf="isMultipleImages">
+                        <div class="left-sidewrap"> <owl-carousel-o class="leftsideimg" [options]="customOptions">
+                                <ng-container *ngFor="let th of productIamges; index as i">
+                                    <ng-template carouselSlide>
+                                        <div (click)="changeImage(th.imageName)">
+                                            <img [src]="th.imageName" class="img-fluid" alt="...">
+                                        </div>
+                                    </ng-template>
+                                </ng-container>
+                            </owl-carousel-o>
+                        </div>
+                        <div class="right-sidewrap">
+                            <lib-ngx-image-zoom [thumbImage]="myThumbnail"
+                                [fullImage]="myFullresImage"></lib-ngx-image-zoom>
+                            <span class="tagbadge" *ngIf="tagMsg" [class]="tagClass">{{tagMsg}}</span>
+                        </div>
                     </div>
-                    </ng-template>
-                    </ng-container>
-                  </owl-carousel-o>
-                  </div>
-<div class="right-sidewrap">
-    <lib-ngx-image-zoom
-              [thumbImage]="myThumbnail"
-              [fullImage]="myFullresImage"
-            ></lib-ngx-image-zoom>
-            <span class="tagbadge" *ngIf="tagMsg" [class]="tagClass">{{tagMsg}}</span>
-</div>
-                  </div>
-                     
-
-
                     <!-- carousel -->
-                    
                     <!-- <div *ngIf="isMultipleImages" id="carouselExampleDark"
                         class="carousel carousel-dark slide product-detail-carousel d-flex justify-content-between"
                         data-bs-ride="carousel">
@@ -71,10 +65,8 @@
                     </div> -->
                     <div *ngIf="!isMultipleImages">
 
-                        <lib-ngx-image-zoom
-    [thumbImage]=productDetails?.imageName
-    [fullImage]=productDetails?.imageName
-></lib-ngx-image-zoom>
+                        <lib-ngx-image-zoom [thumbImage]=productDetails?.imageName
+                            [fullImage]=productDetails?.imageName></lib-ngx-image-zoom>
                         <!-- <img [src]="productDetails?.imageName" class="img-fluid w-100"
                             alt="..."> -->
                         <span class="tagbadge" *ngIf="tagMsg" [class]="tagClass">{{tagMsg}}</span>
@@ -82,14 +74,13 @@
                     <!--/ carousel -->
                     <article *ngIf="productDetails?.deliveryInformationRequired">
                         <p class="text-center py-md-3">
-                            <small class="small">NOTE: Design and icing of cake may vary from the image shown here since
-                                each chef
-                                has his/her own way of baking and designing a cake.
+                            <small class="small" style="font-size:12px;">NOTE: Design and icing of cake may vary from the image shown here since
+                                each chef has his/her own way of baking and designing a cake.
                             </small>
                         </p>
                     </article>
                     <!-- safe instruction-->
-                    <div class="safe-instruction d-none d-md-block" *ngIf="productDetails?.deliveryInformationRequired">
+                    <div class="safe-instruction d-none d-xl-block" *ngIf="productDetails?.deliveryInformationRequired">
                         <div class="safe-inner">
                             <article>
                                 <h3 class="font-bold">Safe & Hygienic Bakery</h3>
@@ -316,7 +307,8 @@
                                 </div>
                                 <div class="mt-3 d-md-flex addtocart-btn">
                                     <!-- <a href="javascript:void(0)" class="color-btn">Add to Cart</a> -->
-                                    <button type="submit" class="default-btn border-0 background-green font-white">Add to Cart</button>
+                                    <button type="submit" class="default-btn border-0 background-green font-white">Add
+                                        to Cart</button>
                                     <span
                                         class="displaytime bg-primary font-white font-bold  ms-md-3 ms-1 px-2 py-2 small rounded-pill align-self-center h6"><span
                                             class="icon-circular-alarm-clock-tool d-inline-block me-1"></span>
@@ -353,8 +345,18 @@
                                 <div class="tab-pane fade show active" *ngIf="productDetails?.description !=''"
                                     id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
                                     <article class="pb-2">
-                                        <span class="font-bold pb-3"> SKU :</span>{{productDetails?.productId}} <span
-                                            class="font-bold pb-3">Vendor Code : </span>{{productDetails?.venderCode}}
+                                        <div class="d-flex">
+                                            <div class="me-2">
+                                                <span class="font-bold pb-3"> SKU :</span>
+                                                <span
+                                                    class="px-2 py-1 d-inline-block background-primary font-white ms-1 rounded-2">{{productDetails?.productId}}</span>
+                                            </div>
+                                            <div>
+                                                <span class="font-bold pb-3">Vendor Code : </span>
+                                                <span
+                                                    class="px-2 py-1 d-inline-block background-primary font-white ms-1 rounded-2">{{productDetails?.venderCode}}</span>
+                                            </div>
+                                        </div>
                                         <div class="py-2">
                                             <div [innerHtml]="productDetails?.description"></div>
 

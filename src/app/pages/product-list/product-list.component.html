@@ -40,8 +40,8 @@
             </div>
             <div class="products-filters d-md-flex justify-content-md-between">
                 <div [ngClass]="{'hide-mobile':!isVisible}" class="filter-mobile">
-                    <a href="" (click)="toggleVisibility()" class="d-block d-md-none font-black"><span class="icon-cancel"></span></a>
-                    <div class="filter-dropdowns d-flex  align-self-center flex-wrap">
+                    <a (click)="toggleVisibility()" class="d-block d-md-none font-black"><span class="icon-cancel"></span></a>
+                    <div class="filter-dropdowns d-flex  align-self-center flex-wrap pt-3 pt-md-0 ">
                         <div class="d-md-flex ms-md-2 mb-md-2 mb-1 mb-md-0 item-filter-dropdown"
                             *ngFor="let filter of filterswrapper">
                             <span class="align-self-center pe-2">{{ filter.filterType }}</span>
@@ -164,7 +164,7 @@
                 </div>
             </div> -->
             <!--/ page nav -->
-            <article class="terms-content" [innerHtml]="metaData?.footerDescription">
+            <article class="terms-content d-none d-lg-block" [innerHtml]="metaData?.footerDescription">
                 <!-- <h5 class="font-bold pb-3">Customers at Country Oven</h5>
                 <p>Welcome to CountryOven - your one-stop-shop for online cakes and flowers gifting! We are thrilled to
                     offer you an exquisite collection of cakes and flowers for all your special occasions. At
