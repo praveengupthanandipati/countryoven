@@ -1,20 +1,18 @@
 @font-face {
-  font-family: "icomoon";
-  src: url("../assets/fonts/icomoon.eot?hi93qa");
-  src: url("../assets/fonts/icomoon.eot?hi93qa#iefix")
-      format("embedded-opentype"),
-    url("../assets/fonts/icomoon.ttf?hi93qa") format("truetype"),
-    url("../assets/fonts/icomoon.woff?hi93qa") format("woff"),
-    url("../assets/fonts/icomoon.svg?hi93qa#icomoon") format("svg");
+  font-family: 'icomoon';
+  src:  url('../assets/fonts/icomoon.eot?t7tral');
+  src:  url('../assets/fonts/icomoon.eot?t7tral#iefix') format('embedded-opentype'),
+    url('../assets/fonts/icomoon.ttf?t7tral') format('truetype'),
+    url('../assets/fonts/icomoon.woff?t7tral') format('woff'),
+    url('../assets/fonts/icomoon.svg?t7tral#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
-[class^="icon-"],
-[class*=" icon-"] {
+[class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: "icomoon" !important;
+  font-family: 'icomoon' !important;
   // speak: never;
   font-style: normal;
   font-weight: normal;
@@ -27,213 +25,222 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-filter:before {
-  content: "\e943";
-}
-.icon-sort:before {
-  content: "\e944";
-}
-.icon-filter1:before {
-  content: "\e945";
-}
-.icon-calendar:before {
+.icon-rating:before {
   content: "\e900";
 }
-.icon-call:before {
+.icon-thumbs-up:before {
   content: "\e901";
 }
-.icon-cancel:before {
+.icon-ribbon:before {
   content: "\e902";
 }
-.icon-cart:before {
+.icon-calendar:before {
   content: "\e903";
 }
-.icon-circular-alarm-clock-tool:before {
+.icon-call:before {
   content: "\e904";
 }
-.icon-close:before {
+.icon-cancel:before {
   content: "\e905";
 }
-.icon-comment:before {
+.icon-cart:before {
   content: "\e906";
 }
-.icon-coupon:before {
+.icon-circular-alarm-clock-tool:before {
   content: "\e907";
 }
-.icon-credit-card:before {
+.icon-close:before {
   content: "\e908";
 }
-.icon-credit-card-failed:before {
+.icon-comment:before {
   content: "\e909";
 }
-.icon-delete:before {
+.icon-coupon:before {
   content: "\e90a";
 }
-.icon-delivery-time:before {
+.icon-credit-card:before {
   content: "\e90b";
 }
-.icon-delivery-truck:before {
+.icon-credit-card-failed:before {
   content: "\e90c";
 }
-.icon-dollar-currency-symbol:before {
+.icon-delete:before {
   content: "\e90d";
 }
-.icon-download:before {
+.icon-delivery-time:before {
   content: "\e90e";
 }
-.icon-draw:before {
+.icon-delivery-truck:before {
   content: "\e90f";
 }
-.icon-edit:before {
+.icon-dollar-currency-symbol:before {
   content: "\e910";
 }
-.icon-email:before {
+.icon-download:before {
   content: "\e911";
 }
-.icon-exit:before {
+.icon-draw:before {
   content: "\e912";
 }
-.icon-fb:before {
+.icon-edit:before {
   content: "\e913";
 }
-.icon-gift-box:before {
+.icon-email:before {
   content: "\e914";
 }
-.icon-info:before {
+.icon-exit:before {
   content: "\e915";
 }
-.icon-inr:before {
+.icon-fb:before {
   content: "\e916";
 }
-.icon-instagram:before {
+.icon-gift-box:before {
   content: "\e917";
 }
-.icon-left-chevron:before {
+.icon-info:before {
   content: "\e918";
 }
-.icon-linkedin:before {
+.icon-inr:before {
   content: "\e919";
 }
-.icon-lock:before {
+.icon-instagram:before {
   content: "\e91a";
 }
-.icon-login:before {
+.icon-left-chevron:before {
   content: "\e91b";
 }
-.icon-magnifying-glass:before {
+.icon-linkedin:before {
   content: "\e91c";
 }
-.icon-menu:before {
+.icon-lock:before {
   content: "\e91d";
 }
-.icon-menufull:before {
+.icon-login:before {
   content: "\e91e";
 }
-.icon-notification:before {
+.icon-magnifying-glass:before {
   content: "\e91f";
 }
-.icon-payment-success:before {
+.icon-menu:before {
   content: "\e920";
 }
-.icon-pin:before {
+.icon-menufull:before {
   content: "\e921";
 }
-.icon-pinterest:before {
+.icon-notification:before {
   content: "\e922";
 }
-.icon-product-research:before {
+.icon-payment-success:before {
   content: "\e923";
 }
-.icon-question:before {
+.icon-pin:before {
   content: "\e924";
 }
-.icon-received:before {
+.icon-pinterest:before {
   content: "\e925";
 }
-.icon-reminders:before {
+.icon-product-research:before {
   content: "\e926";
 }
-.icon-right-chevron:before {
+.icon-question:before {
   content: "\e927";
 }
-.icon-route:before {
+.icon-received:before {
   content: "\e928";
 }
-.icon-satisfaction:before {
+.icon-reminders:before {
   content: "\e929";
 }
-.icon-setting:before {
+.icon-right-chevron:before {
   content: "\e92a";
 }
-.icon-star:before {
+.icon-route:before {
   content: "\e92b";
 }
-.icon-track:before {
+.icon-satisfaction:before {
   content: "\e92c";
 }
-.icon-twitter:before {
+.icon-setting:before {
   content: "\e92d";
 }
-.icon-upload:before {
+.icon-star:before {
   content: "\e92e";
 }
-.icon-upload2:before {
+.icon-track:before {
   content: "\e92f";
 }
-.icon-user:before {
+.icon-twitter:before {
   content: "\e930";
 }
-.icon-whatsapp:before {
+.icon-upload:before {
   content: "\e931";
 }
-.icon-writing:before {
+.icon-upload2:before {
   content: "\e932";
 }
-.icon-bengaluru:before {
+.icon-user:before {
   content: "\e933";
 }
-.icon-charminar:before {
+.icon-whatsapp:before {
   content: "\e934";
 }
-.icon-chennai:before {
+.icon-writing:before {
   content: "\e935";
 }
-.icon-kolkatta:before {
+.icon-bengaluru:before {
   content: "\e936";
 }
-.icon-mumbai:before {
+.icon-charminar:before {
   content: "\e937";
 }
-.icon-redfort:before {
+.icon-chennai:before {
   content: "\e938";
 }
-.icon-top:before {
+.icon-kolkatta:before {
   content: "\e939";
 }
-.icon-arrow-up-1:before {
+.icon-mumbai:before {
   content: "\e93a";
 }
-.icon-arrow-up:before {
+.icon-redfort:before {
   content: "\e93b";
 }
-.icon-newspaper-folded:before {
+.icon-top:before {
   content: "\e93c";
 }
-.icon-blogger:before {
+.icon-arrow-up-1:before {
   content: "\e93d";
 }
-.icon-insta:before {
+.icon-arrow-up:before {
   content: "\e93e";
 }
-.icon-business-and-finance:before {
+.icon-newspaper-folded:before {
   content: "\e93f";
 }
-.icon-reference:before {
+.icon-blogger:before {
   content: "\e940";
 }
-.icon-wallet:before {
+.icon-insta:before {
   content: "\e941";
 }
-.icon-Blogspot:before {
+.icon-business-and-finance:before {
   content: "\e942";
+}
+.icon-reference:before {
+  content: "\e943";
+}
+.icon-wallet:before {
+  content: "\e944";
+}
+.icon-Blogspot:before {
+  content: "\e945";
+}
+.icon-filter:before {
+  content: "\e946";
+}
+.icon-sort:before {
+  content: "\e947";
+}
+.icon-filter1:before {
+  content: "\e948";
 }

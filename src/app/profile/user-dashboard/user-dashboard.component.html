@@ -1,11 +1,19 @@
 <section class="userProfile py-3">
     <div class="container">
-        <nav aria-label="breadcrumb" class="align-self-center">
-            <ol class="breadcrumb pb-0 mb-0">
-                <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">My Account</li>
-            </ol>
-        </nav>
+        <div class="row py-2">
+            <div class="col-6 align-self-center">
+                <nav aria-label="breadcrumb" class="align-self-center">
+                    <ol class="breadcrumb pb-0 mb-0">
+                        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">My Account</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-6 text-end">
+                <a href="/" class="color-btn">Logout</a>
+            </div>
+        </div>
+
         <!-- <div class="profile-page-title px-3 d-flex justify-content-between background-lightprimary py-3 my-2">
             <h5 class="h5 text-uppercase font-bold">My Account</h5>
             <h6 class="h6 tex-end">Hi, {{custName}}</h6>
@@ -13,7 +21,8 @@
         <div class="profile-subpage">
             <div class="row align-items-stretch g-2">
                 <div class="col-md-4 col-6" *ngFor="let userDbItem of userDbItems">
-                    <a class="profile-db-card border p-2 p-md-4 text-cente d-block rounded-4" routerLink="{{userDbItem.Link}}">
+                    <a class="profile-db-card border p-2 p-md-4 text-cente d-block rounded-4"
+                        routerLink="{{userDbItem.Link}}">
                         <div class="mx-auto icon rounded-circle">
                             <span class="{{userDbItem.Icon}} icomoon"></span>
                         </div>
@@ -21,6 +30,7 @@
                         <p class="font-gray text-center"><small>{{userDbItem.LinkName}}</small></p>
                     </a>
                 </div>
+
             </div>
         </div>
     </div>
