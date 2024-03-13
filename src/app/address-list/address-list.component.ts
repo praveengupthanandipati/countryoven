@@ -278,9 +278,23 @@ if(this.checkoutaddress)
          
 
           this.toastr.success(res.successMessage)
+
+          if(this.checkoutaddress)
+          {
+        let e = { recipientFirstName: this.userForm.value['recipientFirstName'], recipientLastName: this.userForm.value['recipientLastName'], cityName:this.cityname, addressId: res.addressId, zipCode:this.userForm.value['zipCode']  };
+
+       let s:boolean=true
+         this.sendAddId.emit({ e, s})  
+          }
+
+
           const button: HTMLButtonElement = this.EditButton.nativeElement;
           button.click();
+         
+          if(!this.checkoutaddress)
+          {
           this.getAddressByCustomerId();
+          }
           this.submitted = false;
         }
         else {

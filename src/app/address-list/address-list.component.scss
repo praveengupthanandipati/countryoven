@@ -22,3 +22,8 @@ textarea {
   color: #aa0400;
   font-weight: 600;
 }
+
+.dummyform{    border: 1px solid #ccc;
+  border-radius: 6px; background: #f7f7f7;
+  min-height: 58px; padding: 5px 10px; & label{     font-size: 14px;
+    color: #979191;}}
