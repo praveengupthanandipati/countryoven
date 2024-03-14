@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
-import { Meta } from '@angular/platform-browser';
+import { DomSanitizer, Meta } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { filter, map, switchMap } from 'rxjs';
 import { CurdService } from 'src/app/services/curd.service';
@@ -15,32 +15,17 @@ transId:any;
 reload:boolean=false;
 scriptElement: any;
 scriptElement1: any;
-analyticsCode: string="";
-analyticsCode1: string="";
-constructor(private renderer: Renderer2, private _crud: CurdService, private route: ActivatedRoute, private router: Router, private meta: Meta)
+analyticsCode: any;
+analyticsCode1: any;
+constructor(private sanitizer: DomSanitizer,private renderer: Renderer2, private _crud: CurdService, private route: ActivatedRoute, private router: Router, private meta: Meta)
 {
 
 }
 ngOnInit() {
   this.route.queryParams.subscribe(params => {
   
+  // this.PaymentConfirmation();
 
-    let aa={
-      "invoiceId": 992596,
-      "transcationId": "82B73671CB7457221",
-      "analyticsCode": " var gaJsHost = ((\"https:\" == document.location.protocol ) ? \"https://ssl.\" : \"http://www.\"); document.write(unescape(\"%3Cscript src='\" + gaJsHost + \"google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E\"));",
-      "analyticsCode1": "try{  var pageTracker = _gat._getTracker('UA-61530761-1');  pageTracker._trackPageview();  pageTracker._addTrans('CO03102024195223647','Country Oven.in','4320.00','0.00','0.00','','3954','1'); pageTracker._addItem('CO03102024195223647','COFLO371','Eye Glazing Flower Arrangement','Olive Medium','2160.00','2');pageTracker._trackTrans(); } catch(err) {}",
-      "payableAmountDollar": null,
-      "isEroor": false,
-      "errorMessage": null,
-      "successMessage": null
-  };
-   
-  // this.analyticsCode=aa.analyticsCode;
-  //  this.analyticsCode1=aa.analyticsCode1;
-  //  this.addAnalyticsCodeToHead();
-
-//this.PaymentConfirmation();
 if(localStorage.getItem('orderId') || params['InvoiceId'] !=undefined )
 {
 
@@ -84,10 +69,10 @@ PaymentConfirmation()
   this._crud.PaymentConfirmation(data).subscribe(res => {
   
    
-   this.analyticsCode=res.analyticsCode;
-   this.analyticsCode1=res.analyticsCode1;
-   
-   this.addAnalyticsCodeToHead();
+  this.analyticsCode=this.sanitizer.bypassSecurityTrustHtml(res.analyticsCode3);
+  this.analyticsCode1=this.sanitizer.bypassSecurityTrustHtml(res.analyticsCode3);
+
+ 
   });
 }
 
