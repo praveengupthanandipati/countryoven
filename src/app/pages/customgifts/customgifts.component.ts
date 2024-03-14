@@ -78,7 +78,7 @@ this.addLoader();
   console.log(res);
 if(!res.isEroor)
 {
-this.route.navigateByUrl('/cart')
+this.route.navigateByUrl('/checkout')
 }
    
   });
