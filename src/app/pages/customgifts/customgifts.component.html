@@ -1,28 +1,45 @@
+<div class="container pt-4">
 
-<div class="formwrap">
-<form [formGroup]="form" (ngSubmit)="submit(form)">
-<div class="col-12 col-lg-12">
-    <div class="input-group mb-3">
-        <div class="form-floating">
-            <input type="text" class="form-control" placeholder="Enter Amount"
-                formControlName="amount"   [ngClass]="{'is-invalid': form.get('amount').invalid  && form.get('amount')!.touched}">
-            <label for="amount">Amount <span class="font-red font-bold">*</span></label>
-            <div class="msg-hint" *ngIf="submitted && form.get('amount').invalid"> Amount Required</div>
+    <div class="row justify-content-center">
+        <div class="col-md-10 text-center">
+            <h2 class="h2">Custom Gifts</h2>
+            <p>A gift is primarily something that conveys your feelings. It could be as imaginative and unique as you
+                are. A creative gift idea always thrills the recipient more than a routine gift article. Country Oven
+                tries to match your expectations in terms of new gift ideas. If you have some thing unusual and highly
+                creative gift idea, please send in your request for the same. We will specially deliver it for you.
+                Please fill in the form and add your comments.</p>
         </div>
     </div>
-</div>
-<div class="col-12 ">
-    <div class="input-group mb-3">
-        <div class="form-floating">
-            <textarea formControlName="message" class="form-control" placeholder="Your Comment" id="YourComment"
-                style="height: 100px" ></textarea>
-            <label for="YourComment">Your Comment <span
-                    class="font-red font-bold">*</span></label>
-                    
+    <div class="row justify-content-center py-2 py-md-5">
+        <div class="col-md-4">
+            <div class="formwrap">
+                <form [formGroup]="form" (ngSubmit)="submit(form)">
+                    <div class="col-12 col-lg-12">
+                        <div class="input-group mb-3">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" placeholder="Enter Amount"
+                                    formControlName="amount"
+                                    [ngClass]="{'is-invalid': form.get('amount').invalid  && form.get('amount')!.touched}">
+                                <label for="amount">Amount <span class="font-red font-bold">*</span></label>
+                                <div class="msg-hint" *ngIf="submitted && form.get('amount').invalid"> Amount Required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 ">
+                        <div class="input-group mb-3">
+                            <div class="form-floating">
+                                <textarea formControlName="message" class="form-control" placeholder="Your Comment"
+                                    id="YourComment" style="height: 100px"></textarea>
+                                <label for="YourComment">Your Comment <span class="font-red font-bold">*</span></label>
+
+                            </div>
+                        </div>
+                    </div>
+                    <button class="color-btn w-100 text-center font-bold border-0" type="submit">Submit</button>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-<button class="btn color-btn w-100 text-center font-bold"  type="submit" >Submit</button>
 
-</form>
 </div>
