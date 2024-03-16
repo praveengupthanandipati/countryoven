@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CurdService } from 'src/app/services/curd.service';
 import {
@@ -29,7 +29,7 @@ paypalClick:boolean=false;
 payableAmountDollar:any;
 
  paypalinvoice:any;
-constructor(private _crud:CurdService, private route: Router)
+constructor(private _crud:CurdService, private route: Router, private renderer:Renderer2)
 {
 
 
@@ -94,9 +94,15 @@ this.PaymentPaypal()
   }
 
 
+  addLoader() {
+    this.renderer.addClass(document.body, 'bodyloader');
+  }
+  removeLoader() {
+    this.renderer.removeClass(document.body, 'bodyloader');
+  }
 
   coWalletDetails() {
-    
+    this.addLoader()
         let data = {
     
           "walletPaymentDto": {
@@ -110,7 +116,7 @@ this.PaymentPaypal()
         }
     
         this._crud.postWallet(data).subscribe(res => {
-          
+          this.removeLoader()
     if(res.isEroor)
     {
 this.route.navigateByUrl('failure')
@@ -120,6 +126,7 @@ this.route.navigateByUrl('failure')
     {
       localStorage.setItem('orderId', res.invoiceId);
       localStorage.setItem('transcationId', res.transcationId);
+      
       this.route.navigateByUrl('payment-success')
 //success page
     }

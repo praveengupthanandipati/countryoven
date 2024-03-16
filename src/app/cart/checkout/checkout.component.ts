@@ -49,6 +49,7 @@ couponData:any;
   userForm:any;
   timeerror:boolean=false;
   currencySelected:any;
+  isCustomGift:boolean=false;
   zipCode:any=0;
   @ViewChild('closeButton')
   closeButton!: ElementRef;
@@ -148,7 +149,7 @@ else
       this.originalTotalAmount=this.firstlistItem.grandTotal;
       this.totalAmount=this.firstlistItem.grandTotal;
       this.finalamount=this.firstlistItem.grandTotal;
-
+this.isCustomGift=this.firstlistItem.isCustomGift;
 
       }
       else
@@ -279,7 +280,7 @@ this.reviewShow=false;
     this._crud.SaveOrderDetails(data).subscribe(res => {
       
       this.clickpayment=true;
-      this.removeLoader();
+     
 this.paymentstrip=true;
       this.savedorderdetails=res
       // "orderId": "CG01282024205158596",
@@ -289,7 +290,9 @@ this.paymentstrip=true;
       // "isEroor": false,
       // "errorMessage": null,
       // "successMessage": "Success"
-
+setTimeout(() => {
+  this.removeLoader();
+}, 2000);
 
 
 // this.route.navigateByUrl('/orders')

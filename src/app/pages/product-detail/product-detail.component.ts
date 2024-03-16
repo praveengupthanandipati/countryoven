@@ -71,7 +71,8 @@ showpincode:boolean=false;
   selectedFile: any;
   selectedVocucher: any;
   customerId: any = 0;
-
+  courierProductMessage:any;
+  fewStockMessage:any;
   customOptions: OwlOptions = {
     loop: false,
     autoplayTimeout: 3000,
@@ -392,7 +393,8 @@ if(res.isError)
       this.productId = res.productId;
       this.isMultipleImages = res.isMultipleImages;
       this.productIamges = res.productIamges;
-      
+      this.courierProductMessage=res.courierProductMessage;
+      this.fewStockMessage=res.fewStockMessage;
 if(this.isMultipleImages)
 {
   this.myThumbnail= this.productIamges[0].imageName;

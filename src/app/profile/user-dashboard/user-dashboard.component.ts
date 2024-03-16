@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { CurdService } from 'src/app/services/curd.service';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -11,15 +14,15 @@ export class UserDashboardComponent {
   email:any;
   custID:any;
   custName:any;
-
-  constructor(private titleService:Title, private meta:Meta)
+  sessionId:any;
+  constructor(private cookieService: CookieService, private titleService:Title, private meta:Meta, private _curdService:CurdService, private route:Router)
   {
 
     this.titleService.setTitle("Countryoven's - My Account");
     this.meta.updateTag({ name: 'description',  content: "Countryoven's - My Account" });
     this.meta.updateTag({ name: 'keywords',  content: "Countryoven's - My Account" });
     this.meta.updateTag({ name: 'classification',  content:"Countryoven's - My Account" });
-  
+    this.sessionId= this.cookieService.get('sessionID')
    if(localStorage.getItem('email'))
    {
     this.isLogend=true;
@@ -72,4 +75,33 @@ export class UserDashboardComponent {
     },
     
   ]
+
+
+
+  
+
+  logout()
+  {
+    
+    localStorage.removeItem('email');
+    localStorage.removeItem('custName');
+    localStorage.removeItem('customerId');
+    localStorage.removeItem('email');
+    
+    let data={
+   
+    
+    
+      "customerId": this.custID,
+      "SessionId":this.sessionId
+   
+   
+    }
+    this._curdService.logout(data).subscribe(res => {
+      
+      this.route.navigateByUrl('/')
+    });
+    
+    
+  }
 }

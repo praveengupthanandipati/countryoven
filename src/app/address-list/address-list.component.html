@@ -5,7 +5,11 @@
                 <div class="col-auto">
                        <select class="form-select" [(ngModel)]="selectedaddress"  (change)="onOptionChange($event)">
                         <ng-container *ngIf="selectedaddress == 'select'">
-                            <option value="select" selected>Select Delivery Address</option>
+                            <option value="select" selected>
+                                <ng-container *ngIf="checkoutaddress">Select Delivery Address</ng-container>
+                                <ng-container *ngIf="!checkoutaddress">Select  Address</ng-container>    
+                            
+                            </option>
                           </ng-container>
                           
                         <option [value]="'all'">All</option>
@@ -20,7 +24,10 @@
         <div class="col-md-6 align-self-center">
             <div class="text-md-end mt-3 mt-md-0 ">
                 <a href="" class="color-btn" (click)="addNewAddress()" data-bs-toggle="modal"
-                    data-bs-target="#AddNewAddress">Add Delivery Address</a>
+                    data-bs-target="#AddNewAddress">
+                    <ng-container *ngIf="checkoutaddress">Add Delivery Address</ng-container>
+                    <ng-container *ngIf="!checkoutaddress">Add New Address</ng-container>
+                </a>
             </div>
         </div>
     </div>
@@ -30,7 +37,7 @@
             *ngFor="let da of deliverAddress">
             <div class="card mt-2 mb-1">
                 <div class="card-header">
-                    <p class="card-title font-gray align-self-center pb-0 mb-0"><span class="d-block small">Deliver to:</span> 
+                    <p class="card-title font-gray align-self-center pb-0 mb-0"><span class="d-block small" *ngIf="checkoutaddress">Deliver to:</span> 
                         <span class="text-black font-semibold">{{da.recipientFirstName}} {{da.recipientLastName}}
                         </span>
                        
@@ -196,7 +203,10 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title font-black" id="staticBackdropLabel">Add Delivery Address</h5>
+                <h5 class="modal-title font-black" id="staticBackdropLabel">
+                    <ng-container *ngIf="checkoutaddress">Add Delivery Address</ng-container>
+                    <ng-container *ngIf="!checkoutaddress">Add New Address</ng-container>
+                    </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" #AddButton></button>
             </div>
             <div class="modal-body">

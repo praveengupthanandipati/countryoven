@@ -17,7 +17,7 @@
 
   .first-navbar {
     .nav-item {
-      &:first-child {
+      &c {
         .nav-link {
           @include max(map-get($breakpoints, "md")) {
             background: map-get($colors, green);
@@ -29,14 +29,14 @@
   }
 
   .nav-item {
-    &:first-child {
+    &.selected {
       .nav-link {
-        color: map-get($colors, white);
-        background: map-get($colors, primary);
-        margin-right: 25px;
+        // color: map-get($colors, white);
+        // background: map-get($colors, primary);
+        // // margin-right: 25px;
 
         &:hover {
-          color: map-get($colors, white);
+          // color: map-get($colors, white);
         }
       }
     }

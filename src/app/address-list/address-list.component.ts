@@ -261,7 +261,7 @@ if(this.checkoutaddress)
           "address1": this.userForm.value['address1'],
           "address2": this.userForm.value['address2'],
           "landmark": this.userForm.value['landmark'],
-          "cityName": this.userForm.value['cityName'],
+          "cityName": this.checkoutaddress ? this.cityname : this.userForm.value['cityName'],
           "stateId": this.userForm.value['stateId'],
           "countryId": 1,
           "zipCode": this.userForm.value['zipCode'].toString(),

@@ -115,7 +115,7 @@
                                 </ng-container>
                                 <div>
 
-                                    <form [formGroup]="couponForm" (ngSubmit)="onSubmit()">
+                                    <form *ngIf="!isCustomGift" [formGroup]="couponForm" (ngSubmit)="onSubmit()">
                                         <div class="row">
                                             <label><small>Coupon Code</small></label>
                                             <div class="col-8">

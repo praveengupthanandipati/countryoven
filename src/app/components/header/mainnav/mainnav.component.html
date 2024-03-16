@@ -71,7 +71,7 @@
                     </div>
                     <div class="offcanvas-body">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 first-navbar">
-                            <li *ngFor="let menu of categoryList; let i = index" class="nav-item dropdown">
+                            <li *ngFor="let menu of categoryList; let i = index" class="nav-item dropdown" [ngClass]="{'selected' : menu.isHighligted }">
                                 <a class="nav-link dropdown-toggle font-semibold" href="javascript:;" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     {{menu.title}}

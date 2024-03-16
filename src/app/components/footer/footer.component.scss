@@ -17,6 +17,7 @@
     line-height: 53px;
     background: map-get($colors, primary);
     z-index: 9999;
+    opacity: 0;
     @include transition(all, 0.3s ease);
     cursor: pointer;
 
@@ -24,6 +25,9 @@
       bottom: 45px;
     }
 
+    &.show{
+      opacity: 1;
+    }
     &:hover {
       background: map-get($colors, white);
 

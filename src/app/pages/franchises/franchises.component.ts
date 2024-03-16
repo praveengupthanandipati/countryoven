@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { EmailValidator, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -17,6 +17,7 @@ export class FranchisesComponent {
   maxAddressLength:any=100;
   submitted:boolean=false;
   constructor(
+    private renderer:Renderer2,
     private titleService:Title, 
     private toastr:ToastrService,
     private meta: Meta, private title:Title,
@@ -59,11 +60,18 @@ export class FranchisesComponent {
     const currentLength = addressControl?.value ? addressControl.value.length : 0;
     return currentLength;
   }
+  
+addLoader() {
+  this.renderer.addClass(document.body, 'bodyloader');
+}
+removeLoader() {
+  this.renderer.removeClass(document.body, 'bodyloader');
+}
   submit(): void {
     this.submitted=true;
     if(this.form.valid)
     {
-  
+  this.addLoader();
 
     let obj = {
       // "UserID": this.userObj.UserID,
@@ -95,7 +103,7 @@ export class FranchisesComponent {
     }
    
     this._crud.postfranchises(obj).subscribe(res => {
-     
+     this.removeLoader();
       if(res.isEroor)
   {
     
@@ -105,6 +113,7 @@ export class FranchisesComponent {
   {
     this.submitted=false;
     this.toastr.success(res.successMessage);
+    this.form.reset();
   }
      
     })
