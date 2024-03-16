@@ -1,75 +1,92 @@
 <app-header></app-header>
 <section class="subpage-login">
     <div class="container">
-        <div class="row justify-content-between">
-            <div class="col-md-6 text-center d-none d-md-block align-self-center">
-                <!-- <img src="..//src/assets/images/loginbanner02.jpg" alt="" class="img-fluid w-100"> -->
-                <div class="login-keypoints">
-                    <div class="keypoint d-flex">
-                        <div>
-                            <span class="icon-ribbon icomoon"></span>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="row justify-content-center">
+                    <div class="col-md-6 text-center d-none d-md-block align-self-center">
+                        <!-- <img src="..//src/assets/images/loginbanner02.jpg" alt="" class="img-fluid w-100"> -->
+                        <div class="login-keypoints">
+                            <div class="keypoint d-flex">
+                                <div>
+                                    <span class="icon-ribbon icomoon"></span>
+                                </div>
+                                <article class="text-start align-self-center">
+                                    <h5 class="font-semibold">Excellence Delivered</h5>
+                                    <p>Trusted since 1993</p>
+                                </article>
+                            </div>
+                            <div class="keypoint d-flex">
+                                <div>
+                                    <span class="icon-thumbs-up icomoon"></span>
+                                </div>
+                                <article class="text-start align-self-center">
+                                    <h5 class="font-semibold">Two Million +</h5>
+                                    <p>Happy Active Customers</p>
+                                </article>
+                            </div>
+                            <div class="keypoint d-flex">
+                                <div>
+                                    <span class="icon-rating icomoon"></span>
+                                </div>
+                                <article class="text-start align-self-center">
+                                    <h5 class="font-semibold">Your Satisfaction</h5>
+                                    <p>is our No.1 priority</p>
+                                </article>
+                            </div>
                         </div>
-                        <article class="text-start align-self-center">
-                            <h5 class="font-bold">Excellence Delivered</h5>
-                            <p>Trusted since 1993</p>
-                        </article>
                     </div>
-                    <div class="keypoint d-flex">
-                        <div>
-                            <span class="icon-thumbs-up icomoon"></span>
-                        </div>
-                        <article class="text-start align-self-center">
-                            <h5 class="font-bold">Two Million +</h5>
-                            <p>Happy Active Customers</p>
-                        </article>
-                    </div>
-                    <div class="keypoint d-flex">
-                        <div>
-                            <span class="icon-rating icomoon"></span>
-                        </div>
-                        <article class="text-start align-self-center">
-                            <h5 class="font-bold">Your Satisfaction</h5>
-                            <p>is our No.1 priority</p>
-                        </article>
+                    <div class="col-md-6 align-self-center">
+                        <h1 class="h5 font-semibold text-center">Sign Up</h1>
+                        <form class="login-form pt-3" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                            <div class="form-floating mb-3">
+                                <input
+                                    [ngClass]="{'is-invalid' : userForm.get('usrname')!.invalid && userForm.get('usrname')!.touched}"
+                                    type="text" class="form-control" id="usrname" placeholder="Enter your Name"
+                                    formControlName="usrname">
+                                <label for="usrname">Enter Your Name <span class="font-red font-bold">*</span></label>
+                                <div *ngIf="submitted && userForm.get('usrname')!.invalid"
+                                    class="invalid-feedback mt-0 d-block">
+                                    Name must be at least 3 characters
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input
+                                    [ngClass]="{'is-invalid' : userForm.get('useremail')!.invalid && userForm.get('useremail')!.touched}"
+                                    type="text" class="form-control" id="useremail" placeholder="Enter your Email"
+                                    formControlName="useremail">
+                                <label for="useremail">Email Address <span class="font-red font-bold">*</span></label>
+                                <div *ngIf="submitted && userForm.get('useremail')!.invalid "
+                                    class="invalid-feedback mt-0 d-block">
+                                    Enter Valid Email address
+                                </div>
+                                <div *ngIf="msgstatus" class="invalid-feedback mt-0 d-block">
+                                    {{msg}}
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input
+                                    [ngClass]="{'is-invalid' : userForm.get('userphone')!.invalid && userForm.get('userphone')!.touched}"
+                                    type="number" class="form-control" id="userphone"
+                                    placeholder="Enter your Phone Number" formControlName="userphone">
+                                <label for="userphone">Mobile Number <span class="font-red font-bold">*</span></label>
+                                <div *ngIf="submitted && userForm.get('userphone')!.invalid "
+                                    class="invalid-feedback mt-0 d-block">
+                                    Enter valid Mobile Number. Its between 10 to 15 characters
+                                </div>
+                            </div>
+
+                            <button type="submit" class="color-btn w-100 text-center font-semibold border-0">Continue as Guest</button>
+                            <p class="py-3 text-center small">Already have an account? <a routerLink="/login"
+                                    class="font-primary font-semibold">Sign In</a></p>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 align-self-center">
-                <h1 class="h5 font-bold text-center">Sign Up</h1>
-                <form class="login-form pt-3"  [formGroup]="userForm"  (ngSubmit)="onSubmit()">
-                    <div class="form-floating mb-3">
-                        <input  [ngClass]="{'is-invalid' : userForm.get('usrname')!.invalid && userForm.get('usrname')!.touched}" type="text" class="form-control" id="usrname" placeholder="Enter your Name" formControlName="usrname">
-                        <label for="usrname">Enter Your Name <span class="font-red font-bold">*</span></label>
-                        <div *ngIf="submitted && userForm.get('usrname')!.invalid" class="invalid-feedback mt-0 d-block">
-                            Name must be at least 3 characters
-                        </div>
-                    </div>
-                   
-                    <div class="form-floating mb-3">
-                        <input  [ngClass]="{'is-invalid' : userForm.get('useremail')!.invalid && userForm.get('useremail')!.touched}" type="text" class="form-control" id="useremail" placeholder="Enter your Email" formControlName="useremail">
-                        <label for="useremail">Email Address <span class="font-red font-bold">*</span></label>
-                        <div *ngIf="submitted && userForm.get('useremail')!.invalid " class="invalid-feedback mt-0 d-block">
-                            Enter Valid Email address 
-                        </div>
-                        <div *ngIf="msgstatus"  class="invalid-feedback mt-0 d-block">
-                            {{msg}}
-                        </div>
-                    </div>
-                    
-                    <div class="form-floating mb-3">
-                        <input  [ngClass]="{'is-invalid' : userForm.get('userphone')!.invalid && userForm.get('userphone')!.touched}" type="number" class="form-control" id="userphone" placeholder="Enter your Phone Number"  formControlName="userphone">
-                        <label for="userphone">Mobile Number <span class="font-red font-bold">*</span></label>
-                        <div *ngIf="submitted && userForm.get('userphone')!.invalid " class="invalid-feedback mt-0 d-block">
-                            Enter valid Mobile Number. Its between  10 to 15  characters
-                        </div>
-                    </div>
-                     
-                    <button type="submit"  class="btn color-btn w-100 text-center font-bold">Continue</button>
-                    <p class="py-3 text-center">Already have an account? <a routerLink="/login"
-                            class="font-primary font-bold">Sign In</a></p>
-                </form>
-            </div>
         </div>
+
     </div>
 </section>
 <router-outlet></router-outlet>

@@ -38,9 +38,25 @@
                 </div>
 
             </div>
-            <div class="products-filters d-md-flex justify-content-md-between">
+            <div class="products-filters d-md-flex justify-content-md-between ">
                 <div [ngClass]="{'hide-mobile':!isVisible}" class="filter-mobile">
-                    <a (click)="toggleVisibility()" class="d-block d-md-none font-black"><span class="icon-cancel"></span></a>
+                    <a (click)="toggleVisibility()" class="d-block d-md-none font-black"><span
+                            class="icon-cancel"></span></a>
+                    <!-- filters display-->
+                    <div class="filters-display pt-4 d-block d-md-none">
+                        <ng-container *ngFor="let filter of filterswrapper">
+                            <ng-container *ngFor="let option of filter.filterOptions">
+                                <a href="javascript:void(0)" class="rounded" *ngIf="option.selected">
+                                    <span class="icon-cancel icomoon"
+                                        (click)="option.selected=false;filterChanged(option)"></span>
+                                    <span>{{option.filterName}}</span>
+                                </a>
+                            </ng-container>
+                        </ng-container>
+
+                        <a *ngIf="isfilters" (click)="filterclear()" class="rounded">Clear All</a>
+                    </div>
+                    <!--/ filters display-->
                     <div class="filter-dropdowns d-flex  align-self-center flex-wrap pt-3 pt-md-0 ">
                         <div class="d-md-flex ms-md-2 mb-md-2 mb-1 mb-md-0 item-filter-dropdown"
                             *ngFor="let filter of filterswrapper">
@@ -107,7 +123,7 @@
                     </ng-container>
                 </ng-container>
 
-                <a *ngIf="isfilters" (click)="filterclear()">Clear All</a>
+                <a *ngIf="isfilters" (click)="filterclear()" class="rounded">Clear All</a>
             </div>
             <!--/ filters display-->
             <ng-container *ngIf="products && products.length >0">
