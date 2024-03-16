@@ -125,7 +125,7 @@ this.autoCompleteList=this.searchList;
 
   gotoroute()
   {
-    console.log(this.searchkeyword)
+   
   if(this.searchkeyword)
   {
     this.searcherror=false;
@@ -197,8 +197,7 @@ this.autoCompleteList=this.searchList;
   onSearchInput(event: any) {
     const value = (event.target as HTMLInputElement).value;
     this.searchkeyword = value;
-    console.log('ddd', this.searchkeyword)
-    console.log(this.searchList)
+    
     this.autoCompleteList = this.filterItems(value);
     this.showAutocomplete = !!this.autoCompleteList.length;
   }

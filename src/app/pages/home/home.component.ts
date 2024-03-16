@@ -51,11 +51,11 @@ this.addLoader();
 this.city=localStorage.getItem('city')
 this.countryname=localStorage.getItem('country');
 this.currency=localStorage.getItem('currency');
-
-
-
     this.getBanners()
+if(this.city)
+{
     this.getProducts();
+}
   }
  
 
@@ -66,7 +66,9 @@ this.currency=localStorage.getItem('currency');
      this.banners=res.banners;
     this.iconicBanners=res.iconicBanners;
     this.smallBanners=res.smallBanners;
-    })
+    }, (error)=>{
+      this.removeLoader()
+        })
   }
 
 
@@ -81,7 +83,9 @@ this.currency=localStorage.getItem('currency');
     this._crud.getProducts(data).subscribe(res => {
      this.removeLoader();
      this.productSecions=res
-    })
+    }, (error)=>{
+      this.removeLoader()
+        })
   }
 
 
