@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -70,7 +70,7 @@ showpincode:boolean=false;
   pName: any;
   selectedFile: any;
   selectedVocucher: any;
-  customerId: any = 0;
+  customerId: any = 0; 
   courierProductMessage:any;
   fewStockMessage:any;
   customOptions: OwlOptions = {
@@ -107,6 +107,7 @@ showpincode:boolean=false;
 
 
   constructor(
+    private elementRef: ElementRef,
     private renderer: Renderer2,
     private meta: Meta, private title: Title,
     private _crud: CurdService, private route: ActivatedRoute, private fb: FormBuilder, private cookieService: CookieService, private router: Router) {
@@ -118,7 +119,12 @@ showpincode:boolean=false;
 
   }
 
-
+  scrollToElement(elementId: string): void {
+    const element = this.elementRef.nativeElement.querySelector(`#${elementId}`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+    }
+  }
 
   ngOnInit(): void {
     this.addLoader();
@@ -271,6 +277,9 @@ setcounntry()
 
 
 
+    } else{
+      this.scrollToElement('elementId')
+    //  window.scrollTo({ top: 600, behavior: 'smooth' });
     }
   }
 
