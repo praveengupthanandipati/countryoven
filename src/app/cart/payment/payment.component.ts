@@ -7,6 +7,7 @@ import {
   
   NgxPaypalComponent
 } from 'ngx-paypal';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -182,10 +183,15 @@ this.route.navigateByUrl('failure')
     
 
       private initConfig(): void {
+
+
         this.payPalConfig = {
             currency: 'USD',
-            clientId: 'ARfPEwaZ0ZBbe_JPe8vSj8BnLZdXVPOKGwtGKTMNgeXJTG0_AuT3VQeB1j4Q3ih8uMRk1oFt2kAbDLKf',
-           // clientId: 'sb',
+
+            clientId:'AVmjc8zNzEu5TRLcO-v5dfQuwEWTbc_l-fRbKlb5Htxh6mRd-5j6IcSr5KOM0C_rOETbyhOIxV0e40Ch', //live
+//            clientId:'ARfPEwaZ0ZBbe_JPe8vSj8BnLZdXVPOKGwtGKTMNgeXJTG0_AuT3VQeB1j4Q3ih8uMRk1oFt2kAbDLKf',
+
+           
             createOrderOnClient: (data) => < ICreateOrderRequest > {
                 intent: 'CAPTURE',
                 purchase_units: [{
