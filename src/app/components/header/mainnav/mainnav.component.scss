@@ -20,7 +20,7 @@
       &c {
         .nav-link {
           @include max(map-get($breakpoints, "md")) {
-            background: map-get($colors, green);
+            background: map-get($colors, primary);
             margin-bottom: 15px;
           }
         }
@@ -226,15 +226,15 @@
   }
 }
 
-.mobmenu {
-  @include max(map-get($breakpoints, "lg")) {
-    background: none;
-  }
-  a {
-    &:nth-child(odd) {
-      @include max(map-get($breakpoints, "md")) {
-        background: map-get($colors, lightblue);
-      }
-    }
-  }
-}
+// .mobmenu {
+//   @include max(map-get($breakpoints, "lg")) {
+//     background: none;
+//   }
+//   a {
+//     &:nth-child(odd) {
+//       @include max(map-get($breakpoints, "md")) {
+//         background: map-get($colors, lightblue);
+//       }
+//     }
+//   }
+// }

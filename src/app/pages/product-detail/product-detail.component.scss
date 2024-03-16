@@ -212,6 +212,8 @@
     }
   }
   .displaytime {
+    background:map-get($colors, lightgreen);
+    color:map-get($colors, green);
     @include max(map-get($breakpoints, "sm")) {
       width: 100%;
       text-align: center;

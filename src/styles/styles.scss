@@ -623,7 +623,7 @@ header.fixed-top {
 
 .popupshow {
   display: flex;
-  
+
   visibility: visible;
   opacity: 1;
 }
@@ -734,5 +734,14 @@ header.fixed-top {
       margin-right: 15px;
       color: map-get($colors, primary);
     }
+    article {
+      p {
+        font-size: $fsize - 2;
+      }
+    }
   }
+}
+
+.signlink{
+  cursor: pointer;
 }

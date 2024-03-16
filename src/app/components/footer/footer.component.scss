@@ -10,12 +10,12 @@
     height: 50px;
     position: fixed;
     bottom: 85px;
-    right: 15px;
+    right: 0;
     border-radius: 50%;
     display: inline-block;
     text-align: center;
     line-height: 53px;
-    background: map-get($colors, primary);
+    background: map-get($colors, white);
     z-index: 9999;
     opacity: 0;
     @include transition(all, 0.3s ease);
@@ -29,16 +29,16 @@
       opacity: 1;
     }
     &:hover {
-      background: map-get($colors, white);
+      background: map-get($colors, primary);
 
       .icomoon {
-        color: map-get($colors, primary);
+        color: map-get($colors, white);
       }
     }
 
     .icomoon {
       font-size: $fsize + 6;
-      color: map-get($colors, white);
+      color: map-get($colors, primary);
     }
   }
   .top-footer {

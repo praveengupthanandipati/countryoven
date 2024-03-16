@@ -7,7 +7,7 @@
                     <div class="deliver-location listheading">
                         <div class="row">
                             <div class="col-md-12 align-self-center">
-                                <p>Logged In as: <strong> {{custName}}</strong></p>
+                                <p><span class="font-semibold font-primary">1.</span> Logged In as: <strong> {{custName}}</strong></p>
                             </div>
                             <!-- <div class="col-md-6">
                                 <div class="d-flex justify-content-end">
@@ -24,6 +24,7 @@
                 </div>
 
                 <div class="box-list card">
+                    <p class="pb-2"> <span class="font-semibold font-primary">2.</span> Select Delivery Address</p>
                     <div class="tabheading card-header border-bottom-0 bg-white" (click)="addressShow =!addressShow"
                         *ngIf="addressId">Delivery to:
                         <strong>{{addressName}} </strong> <strong>, &nbsp;{{city}}</strong>
@@ -39,7 +40,7 @@
                         <ng-container *ngIf="clickpayment && !reviewShow "> Delivery Date :
                             <strong>{{displaydeliveryDate }}</strong> Delivery Time:
                             <strong>{{displaydeliveryTime}}</strong></ng-container>
-                        <ng-container *ngIf="!clickpayment || reviewShow "> Review Order</ng-container>
+                        <ng-container *ngIf="!clickpayment || reviewShow "> <span class="font-semibold font-primary">3.</span> Review Order</ng-container>
                     </div>
                     <section class="tabcontentwrap" *ngIf="reviewShow && addressId">
                         <div class="cart-product-item  p-1 mb-1" *ngFor="let items of cartItems">
@@ -156,7 +157,7 @@
                     </section>
                 </div>
                 <div class="box-list card">
-                    <div class="tabheading card-header border-bottom-0 bg-white">Payment</div>
+                    <div class="tabheading card-header border-bottom-0 bg-white"><span class="font-semibold font-primary">4.</span> Payment</div>
                     <section class="tabcontentwrap" *ngIf="paymentstrip && addressId"> <app-payment
                             [amount]="finalamount" [saveorderDetails]="savedorderdetails"></app-payment></section>
                 </div>
@@ -221,7 +222,7 @@
     <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Update Delivery Date and Time</h5>
+                <h6 class="modal-title">Update Delivery Date and Time</h6>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                     #closeButton></button>
             </div>
@@ -249,22 +250,16 @@
                                 <option *ngFor="let o of deliveryTime" [value]="o.dtime">
                                     <ng-container *ngIf="currencySelected == 'INR'">{{o.dtime}}</ng-container>
                                     <ng-container *ngIf="currencySelected =='USD'">{{o.dtimeCurrency}}</ng-container>
-
-
-
                                 </option>
                             </select>
 
                         </div>
                         <div class="error" *ngIf="timeerror"> Please select Time</div>
-
                         <!-- <div class="invalid-feedback mt-0 d-block"
                         *ngIf="dynamicForm.get('deliveryTimes')!.invalid && dynamicForm.get('deliveryTimes')!.touched">
                         <p class="error-message">Select Time</p>
                     </div> -->
                     </div>
-
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="color-btn border-0" data-bs-dismiss="modal">Close</button>
