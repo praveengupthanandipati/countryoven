@@ -262,8 +262,8 @@
                                                 <option *ngFor="let o of deliveryTime" [value]="o.dtime">
                                                     <ng-container
                                                         *ngIf="currencySelected == 'INR'">{{o.dtime}}</ng-container>
-                                                    <ng-container
-                                                        *ngIf="currencySelected =='USD'">$ {{o.dtimeCurrency}}</ng-container>
+                                                    <ng-container *ngIf="currencySelected =='USD'">
+                                                        {{o.dtimeCurrency}}</ng-container>
                                                 </option>
                                             </select>
                                         </div>
