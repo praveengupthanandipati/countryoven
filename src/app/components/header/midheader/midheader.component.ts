@@ -29,6 +29,10 @@ export class MidheaderComponent  implements OnInit{
   
   currencydrop:any=['INR', 'USD'];
   searchkeyword:any;
+  
+  showAutocomplete: boolean = false;
+  autoCompleteList:any;
+  selectedItemIndex: number | null = null;
   constructor(private route:Router,  private _curdService:CurdService,private cookieService: CookieService)
   {
    if(localStorage.getItem('email'))
@@ -89,7 +93,7 @@ this.city=localStorage.getItem('city')
       
     }
 
-
+this.autoCompleteList=this.searchList;
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
@@ -121,6 +125,7 @@ this.city=localStorage.getItem('city')
 
   gotoroute()
   {
+   
   if(this.searchkeyword)
   {
     this.searcherror=false;
@@ -189,7 +194,43 @@ this.city=localStorage.getItem('city')
   }
 
 
+  onSearchInput(event: any) {
+    const value = (event.target as HTMLInputElement).value;
+    this.searchkeyword = value;
+    
+    this.autoCompleteList = this.filterItems(value);
+    this.showAutocomplete = !!this.autoCompleteList.length;
+  }
 
+  onInputKeyDown(event: KeyboardEvent) {
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      const direction = event.key === 'ArrowDown' ? 1 : -1;
+      if (this.autoCompleteList.length > 0) {
+        if (this.selectedItemIndex === null) {
+          this.selectedItemIndex = direction === 1 ? 0 : this.autoCompleteList.length - 1;
+        } else {
+          this.selectedItemIndex = (this.selectedItemIndex + direction + this.autoCompleteList.length) % this.autoCompleteList.length;
+        }
+      }
+    } else if (event.key === 'Enter' && this.selectedItemIndex !== null) {
+      this.selectItem(this.autoCompleteList[this.selectedItemIndex]);
+    }
+  }
+
+  highlightItem(index: number) {
+    this.selectedItemIndex = index;
+  }
+
+  selectItem(item: string) {
+    this.searchkeyword = item;
+    this.showAutocomplete = false;
+    this.gotoroute()
+  }
+
+  private filterItems(value: string): string[] {
+    return this.searchList.filter((item: string) => item.toLowerCase().includes(value.toLowerCase()));
+  }
 
 
 }

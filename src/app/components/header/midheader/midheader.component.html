@@ -13,12 +13,34 @@
                         <div>
                             <div class="align-self-center px-3 headerinput searchbox">
                                 <div class="pe-2 w-100">
-                                    <input type="text" placeholder="Search Cakes, Flowers, Gifts, etc..."
+                                    <!-- <input type="text" placeholder="Search Cakes, Flowers, Gifts, etc..."
                                         [(ngModel)]="searchkeyword" class="searchinput no-border form-control-plaintext"
                                         list="search-products" (keyup.enter)="gotoroute()" (change)="gotoroute()">
                                     <datalist id="search-products">
                                         <option *ngFor="let i of searchList" [value]="i"></option>
-                                    </datalist>
+                                    </datalist> -->
+
+
+
+                                    <input type="text" 
+                                    placeholder="Search Cakes, Flowers, Gifts, etc..."
+                                    [(ngModel)]="searchkeyword" 
+                                    class="searchinput no-border form-control-plaintext"
+                                    (input)="onSearchInput($event)"
+                                    (keydown)="onInputKeyDown($event)" (keyup.enter)="gotoroute()">
+                             <div *ngIf="showAutocomplete" class="autocomplete">
+                               <ul>
+                                 <li *ngFor="let item of autoCompleteList; let i = index;" 
+                                     [class.active]="selectedItemIndex === i"
+                                     (click)="selectItem(item)"
+                                     (mouseenter)="highlightItem(i)">
+                                   {{ item }}
+                                 </li>
+                               </ul>
+                             </div>
+
+
+
                                 </div>
                                 <span class="icon-magnifying-glass icomoon align-self-center"
                                     (click)="gotoroute()"></span>

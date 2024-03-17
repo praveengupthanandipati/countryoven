@@ -19,7 +19,7 @@ export class CheckoutComponent implements OnInit{
   countryname: any;
   currency: any;
   cartItems: any;
-  userIp: any;
+  userIp: any='not captured';
   addonproducts: any;
   firstlistItem: any;
   customerId: any = 0;

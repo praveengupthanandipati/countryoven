@@ -12,7 +12,7 @@ import { CurdService } from './services/curd.service';
 export class AppComponent implements OnInit {
 
   sessionId: any;
-  country: any;
+  country: any='USA';
   showpopup: boolean = false;
   email: any;
 
@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
   customerId: any = 0;
   onLoadNotifications: any;
   city: any;
-  countryname: any;
+  countryname: any='USA';
   currency: any;
   ngOnInit(): void {
     if (localStorage.getItem('email')) {
