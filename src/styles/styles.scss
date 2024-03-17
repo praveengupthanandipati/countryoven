@@ -159,8 +159,11 @@ body {
 
 .breadcrumb {
   li {
-    font-size: $fsize - 2;
+    font-size: $fsize - 3;
     text-transform: capitalize;
+    @include max(map-get($breakpoints, "sm")){
+      font-size:$fsize - 4;
+    }
     &:first-child {
       &:before {
         content: "";
@@ -181,6 +184,18 @@ body {
   }
   .active {
     color: map-get($colors, primary);
+  }
+  .breadcrumb-item.homebreadcrumb{
+    @include max(map-get($breakpoints, "md")){
+      display: none;
+    }
+  }
+  .breadcrumb-item.homebreadcrumb + .breadcrumb-item{
+   @include max(map-get($breakpoints, "sm")){
+    &:before{
+      content: '';
+    }
+   }
   }
 }
 

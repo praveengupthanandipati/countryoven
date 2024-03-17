@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="box-list card">
-                    <p class="pb-2"> <span class="font-semibold font-primary">2.</span> Select Delivery Address</p>
+                    <p class="pb-2"> <span class="font-semibold font-primary">2.</span> Delivery Address</p>
                     <div class="tabheading card-header border-bottom-0 bg-white" (click)="addressShow =!addressShow"
                         *ngIf="addressId">Delivery to:
                         <strong>{{addressName}} </strong> <strong>, &nbsp;{{city}}</strong>
@@ -38,8 +38,8 @@
                     <div class="tabheading card-header border-bottom-0 bg-white" (click)="reviewShow =!reviewShow">
                         <!-- <strong>{{addressName}} </strong> <strong>,  &nbsp;{{city}}</strong> -->
                         <ng-container *ngIf="clickpayment && !reviewShow "> Delivery Date :
-                            <strong>{{displaydeliveryDate }}</strong> Delivery Time:
-                            <strong>{{displaydeliveryTime}}</strong></ng-container>
+                            <span>{{displaydeliveryDate }}</span> Delivery Time:
+                            <span>{{displaydeliveryTime}}</span></ng-container>
                         <ng-container *ngIf="!clickpayment || reviewShow "> <span class="font-semibold font-primary">3.</span> Review Order</ng-container>
                     </div>
                     <section class="tabcontentwrap" *ngIf="reviewShow && addressId">
@@ -92,8 +92,8 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 pb-2">
-                                <p>Delivery Schedule : <strong>{{displaydeliveryDate }} <ng-container
-                                            *ngIf="!isReqired"> {{displaydeliveryTime}}</ng-container></strong>
+                                <p class="small">Delivery Schedule : <span class="font-semibold">{{displaydeliveryDate }} <ng-container
+                                            *ngIf="!isReqired"> {{displaydeliveryTime}}</ng-container></span>
                                     <button class="color-btn border-0 px-2 py-1 small ms-2" data-bs-toggle="modal"
                                         data-bs-target="#DeliveryModal" (click)="openDatetime()"><span
                                             class="icon-edit icomoon"></span> &nbsp; Edit
@@ -142,7 +142,7 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="col-md-6 text-end">
+                            <div class="col-md-6 text-start text-md-end">
                                 <div class=" totalAmountwrap pb-2 pt-2 pt-md-0">
                                     <div class="totalAmount">Payable Amount : <strong><span
                                                 [class]="currencyClass"></span>
