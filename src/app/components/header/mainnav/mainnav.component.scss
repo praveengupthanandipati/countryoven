@@ -226,6 +226,12 @@
   }
 }
 
+.mobmenu {
+  @include max(map-get($breakpoints, "sm")) {
+    background: map-get($colors, white);
+  }
+}
+
 // .mobmenu {
 //   @include max(map-get($breakpoints, "lg")) {
 //     background: none;

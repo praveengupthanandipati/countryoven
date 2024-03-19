@@ -7,7 +7,11 @@
                     <div class="deliver-location listheading">
                         <div class="row">
                             <div class="col-md-12 align-self-center">
-                                <p><span class="font-semibold font-primary">1.</span> Logged In as: <strong> {{custName}}</strong></p>
+                                <div class="d-flex justify-content-between">
+                                    <p><span class="font-semibold font-primary">1.</span> Logged In as: <strong>
+                                            {{custName}}</strong></p>
+                                    <span>+</span>
+                                </div>
                             </div>
                             <!-- <div class="col-md-6">
                                 <div class="d-flex justify-content-end">
@@ -24,11 +28,16 @@
                 </div>
 
                 <div class="box-list card">
-                    <p class="pb-2"> <span class="font-semibold font-primary">2.</span> Delivery Address</p>
-                    <div class="tabheading card-header border-bottom-0 bg-white" (click)="addressShow =!addressShow"
-                        *ngIf="addressId">Delivery to:
-                        <strong>{{addressName}} </strong> <strong>, &nbsp;{{city}}</strong>
+                    <div class="tabheading card-header border-bottom-0 bg-white d-flex justify-content-between"
+                        (click)="addressShow =!addressShow" *ngIf="addressId">
+                        <div>
+                            <span class="font-semibold font-primary">2</span>. Delivery to:
+                            <span class="font-semibold">{{addressName}} </span> <span class="font-semibold">,
+                                &nbsp;{{city}}</span>
+                        </div>
+                        <span>+</span>
                     </div>
+
                     <section class="tabcontentwrap" *ngIf="addressShow">
                         <app-address-list [selectedAddressId]="addressId" (sendAddId)="getaddressId($event)"
                             [checkoutaddress]="true"></app-address-list>
@@ -37,10 +46,16 @@
                 <div class="box-list card">
                     <div class="tabheading card-header border-bottom-0 bg-white" (click)="reviewShow =!reviewShow">
                         <!-- <strong>{{addressName}} </strong> <strong>,  &nbsp;{{city}}</strong> -->
-                        <ng-container *ngIf="clickpayment && !reviewShow "> Delivery Date :
-                            <span>{{displaydeliveryDate }}</span> Delivery Time:
-                            <span>{{displaydeliveryTime}}</span></ng-container>
-                        <ng-container *ngIf="!clickpayment || reviewShow "> <span class="font-semibold font-primary">3.</span> Review Order</ng-container>
+                        <ng-container *ngIf="clickpayment && !reviewShow "><span
+                                class="font-semibold font-primary">3.</span> Delivery Date :
+                            <span class="font-semibold">{{displaydeliveryDate }}</span> Delivery Time:
+                            <span class="font-semibold">{{displaydeliveryTime}}</span></ng-container>
+                        <ng-container *ngIf="!clickpayment || reviewShow ">
+                            <div class="d-flex justify-content-between">
+                                <p> <span class="font-semibold font-primary">3.</span> <span>Review Order</span></p>
+                                <span>+</span>
+                            </div>
+                        </ng-container>
                     </div>
                     <section class="tabcontentwrap" *ngIf="reviewShow && addressId">
                         <div class="cart-product-item  p-1 mb-1" *ngFor="let items of cartItems">
@@ -92,8 +107,9 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 pb-2">
-                                <p class="small">Delivery Schedule : <span class="font-semibold">{{displaydeliveryDate }} <ng-container
-                                            *ngIf="!isReqired"> {{displaydeliveryTime}}</ng-container></span>
+                                <p class="small">Delivery Schedule : <span class="font-semibold">{{displaydeliveryDate
+                                        }} <ng-container *ngIf="!isReqired">
+                                            {{displaydeliveryTime}}</ng-container></span>
                                     <button class="color-btn border-0 px-2 py-1 small ms-2" data-bs-toggle="modal"
                                         data-bs-target="#DeliveryModal" (click)="openDatetime()"><span
                                             class="icon-edit icomoon"></span> &nbsp; Edit
@@ -157,7 +173,8 @@
                     </section>
                 </div>
                 <div class="box-list card">
-                    <div class="tabheading card-header border-bottom-0 bg-white"><span class="font-semibold font-primary">4.</span> Payment</div>
+                    <div class="tabheading card-header border-bottom-0 bg-white"><span
+                            class="font-semibold font-primary">4.</span> Payment</div>
                     <section class="tabcontentwrap" *ngIf="paymentstrip && addressId"> <app-payment
                             [amount]="finalamount" [saveorderDetails]="savedorderdetails"></app-payment></section>
                 </div>

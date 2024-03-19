@@ -162,8 +162,8 @@ body {
   li {
     font-size: $fsize - 3;
     text-transform: capitalize;
-    @include max(map-get($breakpoints, "sm")){
-      font-size:$fsize - 4;
+    @include max(map-get($breakpoints, "sm")) {
+      font-size: $fsize - 4;
     }
     &:first-child {
       &:before {
@@ -186,17 +186,17 @@ body {
   .active {
     color: map-get($colors, primary);
   }
-  .breadcrumb-item.homebreadcrumb{
-    @include max(map-get($breakpoints, "md")){
+  .breadcrumb-item.homebreadcrumb {
+    @include max(map-get($breakpoints, "md")) {
       display: none;
     }
   }
-  .breadcrumb-item.homebreadcrumb + .breadcrumb-item{
-   @include max(map-get($breakpoints, "sm")){
-    &:before{
-      content: '';
+  .breadcrumb-item.homebreadcrumb + .breadcrumb-item {
+    @include max(map-get($breakpoints, "sm")) {
+      &:before {
+        content: "";
+      }
     }
-   }
   }
 }
 
@@ -480,6 +480,7 @@ header.fixed-top {
     text-align: center;
     background: map-get($colors, white);
     transform: translateY(-15px);
+    cursor: pointer;
   }
 
   .wapp {
@@ -612,8 +613,8 @@ header.fixed-top {
 }
 .centerpopup {
   position: relative;
-  width: 600px;
-  max-height: 80vh;
+  width: 500px;
+  max-height: 90vh;
   margin: auto;
   overflow: auto;
   background: #fff;
@@ -758,6 +759,6 @@ header.fixed-top {
   }
 }
 
-.signlink{
+.signlink {
   cursor: pointer;
 }

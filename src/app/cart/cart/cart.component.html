@@ -26,7 +26,8 @@
                                 </p>
                             </div>
                             <button class="color-btn border-0 px-2 py-1 small" data-bs-toggle="modal"
-                                data-bs-target="#DeliveryModal" (click)="openDatetime()"><span class="icon-edit icomoon"></span> Edit</button>
+                                data-bs-target="#DeliveryModal" (click)="openDatetime()"><span
+                                    class="icon-edit icomoon"></span> Edit</button>
                         </div>
                         <!-- (change)="getBindDeliveryTimes($event)" -->
                         <!-- <div class="col-md-4 pb-2" *ngIf="deliveryDates_array?.length">
@@ -159,11 +160,12 @@
                                 [class]="currencyClass"></span>{{firstlistItem?.grandTotal}}</h6>
                     </div>
                     <button *ngIf="!showcheckoutbtn" [disabled]="outofdatemessage"
-                        class="default-btn background-green d-block width100p border-0 btn-checkout font-white" data-bs-toggle="modal"
-                        data-bs-target="#AddonsProducts" (click)="addOnProducts('0')">Continue to
+                        class="default-btn background-green d-block width100p border-0 btn-checkout font-white"
+                        data-bs-toggle="modal" data-bs-target="#AddonsProducts" (click)="addOnProducts('0')">Continue to
                         Checkout</button>
                     <button *ngIf="showcheckoutbtn" [disabled]="outofdatemessage"
-                        class="default-btn d-block width100p border-0 filter-btn background-green font-white" (click)="gotocheckout()">Continue to
+                        class="default-btn d-block width100p border-0 filter-btn background-green font-white"
+                        (click)="gotocheckout()">Continue to
                         Checkout</button>
                     <div class="row mt-2">
                         <!-- <div class="col-lg-6">
@@ -172,8 +174,7 @@
                         <div class="col-lg-12">
                             <button class="color-btn w-100 d-block cbtn mb-2" [disabled]="outofdatemessage"
                                 data-bs-toggle="modal" data-bs-target="#AddonsProducts"
-                                (click)="addOnProducts('1')">Addons
-                                to Product</button>
+                                (click)="addOnProducts('1')">Addon Products</button>
                         </div>
                     </div>
 
@@ -187,7 +188,7 @@
                 <div>
                     <img src="..//src/assets/images/noproduts-found.svg" alt="" class="img-fluid w-100">
                     <h4 class="h4 text-center">No Products Found</h4>
-                </div> 
+                </div>
                 <!-- <div> <a routerLink="/" class="color-btn">Continue Shopping</a></div> -->
             </div>
         </div>
@@ -216,7 +217,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Addons Products to Cart</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">Addon Products to Cart</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -252,8 +253,10 @@
                 </section>
             </div>
             <div class="modal-footer">
-                <button type="button" class="default-btn border-0 background-green font-white" data-bs-dismiss="modal">Go to Cart</button>
-                <button type="button" class="color-btn border-0" data-bs-dismiss="modal" (click)="gotocheckout()">Proceed
+                <button type="button" class="default-btn border-0 background-green font-white"
+                    data-bs-dismiss="modal">Go to Cart</button>
+                <button type="button" class="color-btn border-0" data-bs-dismiss="modal"
+                    (click)="gotocheckout()">Proceed
                     to Checkout</button>
             </div>
         </div>
@@ -291,7 +294,7 @@
                             <span
                                 class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
                             <select class="form-select" formControlName="deliveryTime">
-                               <option>Select Time</option>
+                                <option>Select Time</option>
                                 <option *ngFor="let o of deliveryTime" [value]="o.dtime">
                                     <ng-container *ngIf="currencySelected == 'INR'">{{o.dtime}}</ng-container>
                                     <ng-container *ngIf="currencySelected =='USD'">{{o.dtimeCurrency}}</ng-container>
@@ -300,7 +303,7 @@
 
                                 </option>
                             </select>
-                           
+
                         </div>
                         <div class="error" *ngIf="timeerror"> Please select Time</div>
 

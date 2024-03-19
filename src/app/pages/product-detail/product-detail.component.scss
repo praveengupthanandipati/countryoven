@@ -213,7 +213,7 @@
     }
   }
   .displaytime {
-    background:map-get($colors, lightgreen);
+    // background:map-get($colors, lightgreen);
     color:map-get($colors, green);
     line-height: 12px;
     @include max(map-get($breakpoints, "sm")) {     
