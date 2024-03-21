@@ -357,7 +357,8 @@ setTimeout(() => {
       "Leadtime": 0,
       "ZipCode": this.zipCode,
       "InstantDelivery": false,
-      "cityName": this.city
+      "cityName": this.city,
+      "IsCustomGift":this.isCustomGift
     }
     this._crud.getBindDeliveryTimes(data).subscribe(res => {
 

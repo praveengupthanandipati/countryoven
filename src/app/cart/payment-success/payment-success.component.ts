@@ -68,10 +68,15 @@ PaymentConfirmation()
   }
   this._crud.PaymentConfirmation(data).subscribe(res => {
   
-   
-  this.analyticsCode=this.sanitizer.bypassSecurityTrustHtml(res.analyticsCode3);
-  this.analyticsCode1=this.sanitizer.bypassSecurityTrustHtml(res.analyticsCode3);
-
+   if(res.isError)
+   {
+    this.router.navigateByUrl('failure')
+   }
+   else
+   {
+    this.analyticsCode=this.sanitizer.bypassSecurityTrustHtml(res.analyticsCode3);
+    this.analyticsCode1=this.sanitizer.bypassSecurityTrustHtml(res.analyticsCode4);
+   }
  
   });
 }
