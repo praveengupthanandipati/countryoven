@@ -57,6 +57,7 @@ couponData:any;
   isReqired: boolean=true;
   isChanged:boolean=false;
   msg:string='';
+  cashbackMessage='';
   constructor(private renderer: Renderer2, private fb: FormBuilder,private route: Router, private toastr: ToastrService, private _crud: CurdService, private cookieService: CookieService) {
     this.sessionId = this.cookieService.get('sessionID')
     this.city = localStorage.getItem('city')
@@ -209,10 +210,11 @@ this.msg=res.message
           {
             this.totalAmount=(this.originalTotalAmount - res.maxDiscount);
           }
-        
+      
         this.finalamount=this.totalAmount;
         this.appliedDiscount=res.maxDiscount
         }
+        this.cashbackMessage=res.cashbackMessage;
         this.errorcode=false;
         this.couponappled=true
       }
@@ -234,7 +236,7 @@ removeApplycode()
     if (result.isConfirmed) {
       
       this.couponForm.get('couponcode').setValue('');
-
+      this.cashbackMessage=''
       this.totalAmount=this.originalTotalAmount
       this.finalamount=this.totalAmount;
       this.appliedDiscount=0

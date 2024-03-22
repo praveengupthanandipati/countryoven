@@ -39,20 +39,21 @@
                     </div>
 
                     <section class="tabcontentwrap" *ngIf="addressShow">
+                       <div style="display: flex;" class="addressflex"> <span class="font-semibold font-primary">2</span>. &nbsp;
                         <app-address-list [selectedAddressId]="addressId" (sendAddId)="getaddressId($event)"
-                            [checkoutaddress]="true"></app-address-list>
+                            [checkoutaddress]="true"></app-address-list></div>
                     </section>
                 </div>
                 <div class="box-list card">
                     <div class="tabheading card-header border-bottom-0 bg-white" (click)="reviewShow =!reviewShow">
                         <!-- <strong>{{addressName}} </strong> <strong>,  &nbsp;{{city}}</strong> -->
                         <ng-container *ngIf="clickpayment && !reviewShow "><span
-                                class="font-semibold font-primary">3.</span> Delivery Date :
+                                class="font-semibold font-primary">3. &nbsp;</span> Delivery Date :
                             <span class="font-semibold">{{displaydeliveryDate }}</span> Delivery Time:
                             <span class="font-semibold">{{displaydeliveryTime}}</span></ng-container>
                         <ng-container *ngIf="!clickpayment || reviewShow ">
                             <div class="d-flex justify-content-between">
-                                <p> <span class="font-semibold font-primary">3.</span> <span>Review Order</span></p>
+                                <p> <span class="font-semibold font-primary">3. </span> <span>Review Order</span></p>
                                 <span>+</span>
                             </div>
                         </ng-container>
@@ -157,6 +158,8 @@
                                         </div>
                                     </form>
                                 </div>
+
+                                <div> {{cashbackMessage}}</div>
                             </div>
                             <div class="col-md-6 text-start text-md-end">
                                 <div class=" totalAmountwrap pb-2 pt-2 pt-md-0">
