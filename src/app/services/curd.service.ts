@@ -266,8 +266,14 @@ forgotpwd(obj:any):Observable<any>{
 
     getCountryusingIp(): Observable<any> {
       
-      return this.http.get('http://ip-api.com/json/');
-      }
+      //return this.http.get('http://ip-api.com/json/'); 
+    return this.http.get('https://ipinfo.io/')  
+    }
+    getCountryusingIp1(ip:any): Observable<any> {
+      
+      //return this.http.get('http://ip-api.com/json/'); 
+    return this.http.get('https://ipinfo.io/' + ip)   
+    }
 
     getCountry(obj:any): Observable<any> {
       return this.http.post(`${environment.apiUrl}/home/Country`,obj)
@@ -408,7 +414,7 @@ postcustomize(obj:any):Observable<any>{
                         //   }
                         // }
                        // return this.http.get<any>(`${this.configUrl}payu-payment`);
-                        return this.http.post<any>(`http://test.countryoven.com/api/payment/PayUPayment`, obj)
+                        return this.http.post<any>(`${environment.apiUrl}/payment/PayUPayment`, obj)
                       }
   
                      

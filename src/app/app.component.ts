@@ -44,21 +44,46 @@ export class AppComponent implements OnInit {
 
     window.scrollTo(0, 0);
 
-    this._crud.getCountryusingIp().subscribe((data: any) => {
+    this._crud.getIpAddress().subscribe((data: any) => {
+      let userIp = data.ip;
+
+      this._crud.getCountryusingIp1(userIp).subscribe((data: any) => {
 
       
-      this.country = data.country;
-
-      if (!localStorage.getItem('country')) {
-        localStorage.setItem('country', this.country)
+      if(data.country =='IN')
+      {
+        
+        this.country='India'
       }
-      if (localStorage.getItem('country') == 'India' && !localStorage.getItem('currency')) {
-        localStorage.setItem('currency', 'INR')
+      else{
+        
+        this.country = data.country;
+  
       }
-
-
-
+        if (!localStorage.getItem('country')) {
+          localStorage.setItem('country', this.country)
+        }
+        if (localStorage.getItem('country') == 'India' && !localStorage.getItem('currency')) {
+          localStorage.setItem('currency', 'INR')
+        }
+      });
     });
+
+    // this._crud.getCountryusingIp().subscribe((data: any) => {
+
+      
+    //   this.country = data.country;
+
+    //   if (!localStorage.getItem('country')) {
+    //     localStorage.setItem('country', this.country)
+    //   }
+    //   if (localStorage.getItem('country') == 'India' && !localStorage.getItem('currency')) {
+    //     localStorage.setItem('currency', 'INR')
+    //   }
+
+
+
+    // });
 
  
 

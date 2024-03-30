@@ -134,10 +134,23 @@ showpincode:boolean=false;
       this.productName = params['PageName'];
       if(!localStorage.getItem('country') || !localStorage.getItem('currency'))
       {
-        this._crud.getCountryusingIp().subscribe((data: any) => {
+
+
+        this._crud.getIpAddress().subscribe((data: any) => {
+          let userIp = data.ip;
+
+        this._crud.getCountryusingIp1(userIp).subscribe((data: any) => {
+
+          let coun;
+          if (data.country == 'IN') {
+            coun = 'India'
+          }
+          else {
+            coun = data.country;
+          }
     if(!localStorage.getItem('country'))
-    {
-      localStorage.setItem('country', data.country)
+    { 
+      localStorage.setItem('country', coun)
     }
  
   if(localStorage.getItem('country') == 'India')
@@ -166,6 +179,8 @@ if(params['cityname'] == 'send-online')
   
 
   });
+
+});
 
       }  else{
         if(params['cityname'] == 'send-online')
