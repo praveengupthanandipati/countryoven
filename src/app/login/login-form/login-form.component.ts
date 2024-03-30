@@ -84,9 +84,9 @@ let data={
   {
     this.errorMsgstatus=true;
     this.errorMsg=res.errorMessage;
-    setTimeout(() => {
-      this.errorMsgstatus=false;
-    }, 4000);
+    // setTimeout(() => {
+    //   this.errorMsgstatus=false;
+    // }, 4000);
     this.toastr.error(res.errorMessage);
   }
   else
@@ -135,6 +135,13 @@ gotosignup()
   this.router.navigateByUrl('/signup')
  }
 }
+
+
+onInputChange() {
+  this.errorMsgstatus=false
+      // this.maxLength = 40 - this.textAreaInput.length;
+     
+    }
 
 }
 

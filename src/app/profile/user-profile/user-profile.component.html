@@ -58,8 +58,8 @@
 
                     <div class="col-lg-4 col-sm-6">
                         <div class="form-floating mb-3">
-                            <textarea class="form-control" id="addressline01" placeholder="Address"
-                                formControlName="Address1"  [ngClass]="{'is-invalid': userForm.get('Address1').invalid  && userForm.get('Address1')!.touched}"></textarea>
+                            <textarea class="form-control"  [(ngModel)]="textAreaInput" id="addressline01" placeholder="Address"
+                                formControlName="Address1" (input)="onMessageInputChange()" maxlength="100"  [ngClass]="{'is-invalid': userForm.get('Address1').invalid  && userForm.get('Address1')!.touched}"></textarea>
                             <label for="addressline01">Address </label>
                             <div class="addresscount">
                                 {{ updateCharacterCount() }} / {{ maxAddressLength }}

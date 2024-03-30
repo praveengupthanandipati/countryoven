@@ -28,7 +28,7 @@
                     </ol>
                 </nav>
                 <div class="d-flex justify-content-between mt-2 mt-md-0">
-                    <h6 class="p-2 ps-0"> Showing:
+                    <h6 class="p-2 ps-0" *ngIf="displayproducts"> Showing:
                         <span class="font-bold font-primary">{{displayproducts}} of {{totalCount}}</span>
                     </h6>
                     <button (click)="toggleVisibility()"
@@ -139,7 +139,7 @@
             <ng-container *ngIf="!(products && products.length >0) && !loading">
                 <app-noproducts-found></app-noproducts-found></ng-container>
 
-            <div class="p-4 mx-auto text-center">
+            <div class="p-4 mx-auto text-center" *ngIf="showloadmore">
                 <a *ngIf="isload" (click)="loadmore()" class="loadmore color-btn d-inline-block rounded-btn">Load
                     More</a>
             </div>

@@ -31,7 +31,7 @@
                         </div>
                         <span class="icon-pin icomoon align-self-center"></span>
                     </div> -->
-                        <select2 [data]="data" (update)="update($event)" class="dropdown-list rounded border-0"
+                        <select2 [data]="data" [noResultMessage]="'Enter Valid DeliveryCity'" (update)="update($event)" class="dropdown-list rounded border-0"
                             placeholder="Enter Your Delivery Location">
                         </select2>
                     </div>

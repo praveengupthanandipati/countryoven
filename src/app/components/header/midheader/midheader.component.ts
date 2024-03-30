@@ -122,15 +122,27 @@ this.autoCompleteList=this.searchList;
   }
 
 
+  gotorouteclick(item:any)
+  {
+  
+    this.searcherror=false;
+    let c=localStorage.getItem('city') ;
+    this.route.navigateByUrl('/search_result'+  '/'+ item + '/' + c)
+    setTimeout(() => {
+      this.searchkeyword='';
+      this.isVisible=false
+    }, 1000);
+ 
+  }
 
   gotoroute()
   {
-   
+    this.showAutocomplete = false;
+   console.log(this.searchkeyword)
   if(this.searchkeyword)
   {
     this.searcherror=false;
     let c=localStorage.getItem('city') ;
-    
     this.route.navigateByUrl('/search_result'+  '/'+ this.searchkeyword + '/' + c)
     setTimeout(() => {
       this.searchkeyword='';
@@ -140,11 +152,7 @@ this.autoCompleteList=this.searchList;
   else
   {
     this.searcherror=true;
-    
   }
- 
-  
-   
   }
   selectLoc()
   {
@@ -223,9 +231,11 @@ this.autoCompleteList=this.searchList;
   }
 
   selectItem(item: string) {
-    this.searchkeyword = item;
+  //  this.searchkeyword = item;
+    //console.log(this.searchkeyword)
     this.showAutocomplete = false;
-    this.gotoroute()
+   // this.gotoroute()
+    this.gotorouteclick(item)
   }
 
   private filterItems(value: string): string[] {

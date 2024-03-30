@@ -270,7 +270,7 @@
                                     [ngClass]="{'is-invalid' : adduserForm.get('addaddress1')!.invalid && adduserForm.get('addaddress1')!.touched}"
                                     placeholder="Address *"  (input)="onMessageInputChange()" maxlength="100"></textarea>
                                 <label for="">Address <span class="font-red font-bold">*</span></label>
-
+ 
                                 <div class="addresscount">
                                     {{ updateCharacterCount() }} / {{ maxAddressLength }}
                                 </div>

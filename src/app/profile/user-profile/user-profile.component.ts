@@ -23,6 +23,7 @@ export class UserProfileComponent implements OnInit{
   msg: any;
   submitted:boolean=false;
   maxAddressLength = 100;
+  textAreaInput = '';
   constructor(private titleService:Title, private meta:Meta,private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private route:Router)
   {
     this.titleService.setTitle("Countryoven's - My Profile");
@@ -219,4 +220,18 @@ gotodashboard()
   this.route.navigateByUrl('/myaccount/dashboard')
 }
 
+
+onMessageInputChange() {
+console.log(this.textAreaInput.length)
+  // this.maxLength = 40 - this.textAreaInput.length;
+  if (this.textAreaInput.length > 100) {
+
+    this.textAreaInput = this.textAreaInput.substring(0, 100);
+
+    // this.isMaxLengthExceeded = true;
+  } else {
+
+    //  this.isMaxLengthExceeded = false;
+  }
+}
 }

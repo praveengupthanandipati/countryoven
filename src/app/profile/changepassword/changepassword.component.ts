@@ -13,6 +13,9 @@ import { CurdService } from 'src/app/services/curd.service';
 export class ChangepasswordComponent {
   userForm:any;
   custName: any;
+  error:boolean=false;
+  errormsg:any;
+  cpwd:any;
   constructor(  private meta: Meta, private title: Title,private toastr: ToastrService,private fb: FormBuilder, private _crud:CurdService, private route:Router)
   {
 
@@ -39,10 +42,15 @@ export class ChangepasswordComponent {
   
   
   
-  
+  onInputChange() {
+this.error=false
+    // this.maxLength = 40 - this.textAreaInput.length;
+   
+  }
   
   onSubmit()
     {
+      this.error=false
       
     let data={
       "customerEmail": localStorage.getItem('email'),
@@ -55,7 +63,9 @@ export class ChangepasswordComponent {
       if(res.isEroor)
       {
         
-        this.toastr.error(res.errorMessage);
+      //  this.toastr.error(res.errorMessage);
+        this.errormsg=res.errorMessage;
+        this.error=true;
       }
       else
       {

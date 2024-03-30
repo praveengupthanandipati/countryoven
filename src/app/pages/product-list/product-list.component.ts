@@ -41,15 +41,16 @@ export class ProductListComponent implements OnInit, OnDestroy {
   currency: any;
   country: any;
   isload: boolean = false;
+  showloadmore: boolean = false;
   private paramMapSubscription: Subscription = new Subscription;
   private paramMapSubscription1: Subscription = new Subscription;
-  
-  isVisible:boolean=false;
-  toggleVisibility(){
-    this.isVisible=!this.isVisible;
+
+  isVisible: boolean = false;
+  toggleVisibility() {
+    this.isVisible = !this.isVisible;
   }
 
- 
+
 
   routeCity(e: any) {
     this.router.navigateByUrl(e.toLowerCase() + '/gift-online');
@@ -97,19 +98,19 @@ export class ProductListComponent implements OnInit, OnDestroy {
   constructor(private renderer: Renderer2, private titleService: Title, private location: Location, private locationStrategy: LocationStrategy,
     private meta: Meta, private _crud: CurdService, private route: ActivatedRoute, private formBuilder: FormBuilder, private router: Router) {
     this.originalcityname = localStorage.getItem('city')
-    
+
     this.currency = localStorage.getItem('currency')
     this.country = localStorage.getItem('country');
     this.router.events.subscribe(() => {
       this.originalcityname = localStorage.getItem('city')
-      
+
       this.currency = localStorage.getItem('currency')
       this.country = localStorage.getItem('country');
     });
 
 
   }
- 
+
 
   addLoader() {
     this.renderer.addClass(document.body, 'bodyloader');
@@ -134,20 +135,20 @@ export class ProductListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.addLoader();
     this.paramMapSubscription = this.route.paramMap.subscribe((params: ParamMap) => {
-    
-    setTimeout(() => {
-      
-      this.filters=[];
-      this.isfilters = false;
-      this.products = []
-      this.getPageRoutes(params);
-      this.getMeta();
-      this.getProductDetails(this.filters, 1, this.sorder);
-      this.getFiltersDetails();
-    }, 1000);
-     
 
-      
+      setTimeout(() => {
+
+        this.filters = [];
+        this.isfilters = false;
+        this.products = []
+        this.getPageRoutes(params);
+        this.getMeta();
+        this.getProductDetails(this.filters, 1, this.sorder);
+        this.getFiltersDetails();
+      }, 1000);
+
+
+
     });
   }
 
@@ -161,10 +162,12 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
 
-  getPageRoutes(params1:any) {
+  getPageRoutes(params1: any) {
 
     this.route.params.subscribe((params) => {
-       if (params['cityname'] == 'send-online') {
+console.log(params)
+
+      if (params['cityname'] == 'send-online') {
 
       }
       else {
@@ -183,9 +186,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
             let urlparms1 = params['favspl'].split('-');
             this.cityname = urlparms1[urlparms1.length - 1];
             this.setCity(this.cityname);
-            this.getnewurl(urlparms1[urlparms1.length - 1])
             this.cityname = this.originalcityname;
-
+            this.getnewurl(urlparms1[urlparms1.length - 1])
+          
             this.typeName = 'SPL';
             let resultArray: any = '';
             for (let i = 0; i < urlparms1.length - 1; i++) {
@@ -206,20 +209,18 @@ export class ProductListComponent implements OnInit, OnDestroy {
           this.typeName = 'CTY';
           this.PageName = params['PageName1'];
           this.cityname = this.originalcityname;
-          if(params['PageName1']== 'gifts-online')
-          {
-          this.getnewurl(this.originalcityname);
-          
-          this._crud.updateCity(localStorage.getItem('city'));
-         
+          if (params['PageName1'] == 'gifts-online') {
+            this.getnewurl(this.originalcityname);
+
+            this._crud.updateCity(localStorage.getItem('city'));
+
           }
-          else
-          {
+          else {
             this.getnewurl(params['cityname1']);
             this._crud.updateCountry(this.cityname)
           }
           // localStorage.setItem('city', this.cityname);
-         
+
         }
         else if (params['type']) {
 
@@ -231,7 +232,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
           this.PageName = params['PageName'];
 
           if (params['type'] == 'search_result') {
-            
+
             this.setCity(params['PageName'])
 
             this.getnewurl(params['PageName'])
@@ -363,12 +364,22 @@ export class ProductListComponent implements OnInit, OnDestroy {
       this.loading = false;
 
       this.productData = res;
-      //  this.products=this.productData.items
+      
+      if (this.productData && (this.productData.totalPages > this.productData.pageNumber)) {
+        this.showloadmore = true
+      }
+      else {
+        this.showloadmore = false
+      }
 
-      this.products = this.products.concat(this.productData.items)
-      this.currentPage = this.productData.pageNumber;
-      this.totalPages = this.productData.totalPages
-      this.totalCount = this.productData.totalCount;
+      if (this.productData)
+      {
+        this.products = this.products.concat(this.productData.items)
+        this.currentPage = this.productData.pageNumber;
+        this.totalPages = this.productData.totalPages
+        this.totalCount = this.productData.totalCount;
+      } 
+     
       if (40 * this.currentPage <= this.totalCount) {
         this.displayproducts = 40 * this.currentPage
       }
@@ -412,8 +423,12 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   loadmore() {
     if (this.currentPage < this.totalPages) {
+      this.showloadmore = true;
       this.currentPage++;
       this.getProductDetails(this.filters, this.currentPage, this.sorder, true);
+    }
+    else {
+      this.showloadmore = false;
     }
     // this.psize=this.psize + 40;
     // this.getProductDetails(this.filters,1, this.sorder);
@@ -500,20 +515,19 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
 
-  private addCanonicalLink(v:any) {
+  private addCanonicalLink(v: any) {
 
 
     const canonicalLink: HTMLLinkElement | null = document.querySelector('link[rel="canonical"]');
     if (canonicalLink) {
       canonicalLink.href = 'https://www.countryoven.com' + v;
     }
-    else
-    {
+    else {
 
       const link: HTMLLinkElement = this.renderer.createElement('link');
       link.rel = 'canonical';
-      
-    
+
+
       link.href = 'https://www.countryoven.com' + v; // Replace with your canonical URL
       this.renderer.appendChild(document.head, link);
     }

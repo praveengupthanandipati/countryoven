@@ -25,6 +25,7 @@ update(event:any)
   this.selectedCity(event.value)
 }
 
+
 ngOnInit(): void {
 
   if(this.env =='noloc')
