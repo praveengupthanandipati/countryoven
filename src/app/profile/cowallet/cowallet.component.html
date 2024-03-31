@@ -41,7 +41,9 @@
                             <td>{{wallet.updatedDate | date}}</td>
                             <td>{{wallet.orderID}}</td>
                             <td>{{wallet.typeofDeposite}}</td>
-                            <td><span class="icomoon icon-inr small"></span> {{wallet.wallet}}</td>
+                            <td> <ng-container  *ngIf="wallet.typeofDeposite != 'Paid for Order'">+</ng-container>
+                                <ng-container *ngIf="wallet.typeofDeposite == 'Paid for Order'">-</ng-container>
+                                <span class="icomoon icon-inr small"></span> {{wallet.wallet}}</td>
                         </tr>
                     </tbody>
                 </table>
