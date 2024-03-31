@@ -1,8 +1,29 @@
 <section class="topheader">
     <div class="custom-container">
         <div class="row justify-content-between">
-            <div class="col-lg-6">
-                <div class="offers">
+            <div class="col-lg-7">
+                <div class="header-contacts">
+                    <a target="_blank" href="https://api.whatsapp.com/send?phone=+919848155830&text=Hi"
+                        class="sticky-ribbon-link wapp">
+                        <span class="icon-whatsapp icomoon"></span>
+                        Whatsapp
+                    </a>
+
+                    <a href="#contactpop" class="sticky-ribbon-link call-customercare">
+                        <span class="icon-call icomoon"></span>
+                        +91 98481 55830
+                    </a>
+                    <a href="content/contactus" class="sticky-ribbon-link msg">
+                        <span class="icon-email icomoon"></span>
+                        Contact us
+                    </a>
+                    <a routerLink="/notifications" class="sticky-ribbon-link notifications">
+                        <span class="icon-notification icomoon"></span>
+                        Notifications
+                    </a>
+
+                </div>
+                <div class="offers d-none">
                     <!-- <h6 class="h6 font-bold">Offers: </h6> -->
                     <div *ngIf="scrollingMessage">
                         <ng-container *ngIf="!scrolling">
@@ -18,7 +39,7 @@
                 </div>
                 <!-- <p>Call Us: (+91)9848155830 </p> -->
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-5">
                 <ul class="nav justify-content-md-end">
                     <li class="nav-item" *ngFor="let menu of topList">
                         <a class="nav-link py-0" (click)="gotoroute(menu.type, menu.seoTitle)"

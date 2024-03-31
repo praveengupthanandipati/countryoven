@@ -14,7 +14,7 @@
       max-width: 130px;
 
       @include max(map-get($breakpoints, "lg")) {
-        width: 75px;
+        width: 65px;
       }
     }
   }

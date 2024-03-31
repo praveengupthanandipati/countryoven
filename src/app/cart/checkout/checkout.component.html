@@ -10,7 +10,7 @@
                                 <div class="d-flex justify-content-between">
                                     <p><span class="font-semibold font-primary">1.</span> Logged In as: <strong>
                                             {{custName}}</strong></p>
-                                    <span>+</span>
+                                    <!-- <span>+</span> -->
                                 </div>
                             </div>
                             <!-- <div class="col-md-6">
@@ -28,14 +28,14 @@
                 </div>
 
                 <div class="box-list card">
-                    <div class="tabheading card-header border-bottom-0 bg-white d-flex justify-content-between"
+                    <div class="tabheading card-header border-bottom-0 bg-transparent d-flex justify-content-between"
                         (click)="addressShow =!addressShow" *ngIf="addressId">
                         <div>
                             <span class="font-semibold font-primary">2</span>. Delivery to:
                             <span class="font-semibold">{{addressName}} </span> <span class="font-semibold">,
                                 &nbsp;{{city}}</span>
                         </div>
-                        <span>+</span>
+                        <!-- <span>+</span> -->
                     </div>
 
                     <section class="tabcontentwrap" *ngIf="addressShow">
@@ -45,7 +45,7 @@
                     </section>
                 </div>
                 <div class="box-list card">
-                    <div class="tabheading card-header border-bottom-0 bg-white" (click)="reviewShow =!reviewShow">
+                    <div class="tabheading card-header border-bottom-0 bg-transparent" (click)="reviewShow =!reviewShow">
                         <!-- <strong>{{addressName}} </strong> <strong>,  &nbsp;{{city}}</strong> -->
                         <ng-container *ngIf="clickpayment && !reviewShow "><span
                                 class="font-semibold font-primary">3. &nbsp;</span> Delivery Date :
@@ -54,7 +54,7 @@
                         <ng-container *ngIf="!clickpayment || reviewShow ">
                             <div class="d-flex justify-content-between">
                                 <p> <span class="font-semibold font-primary">3. </span> <span>Review Order</span></p>
-                                <span>+</span>
+                                <!-- <span>+</span> -->
                             </div>
                         </ng-container>
                     </div>
@@ -176,7 +176,7 @@
                     </section>
                 </div>
                 <div class="box-list card">
-                    <div class="tabheading card-header border-bottom-0 bg-white"><span
+                    <div class="tabheading card-header border-bottom-0 bg-transparent"><span
                             class="font-semibold font-primary">4.</span> Payment</div>
                     <section class="tabcontentwrap" *ngIf="paymentstrip && addressId"> <app-payment
                             [amount]="finalamount" [saveorderDetails]="savedorderdetails"></app-payment></section>
