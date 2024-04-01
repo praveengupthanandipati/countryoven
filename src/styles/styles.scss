@@ -81,6 +81,17 @@ body {
   }
 }
 
+.large-btn {
+  @extend .default-btn;
+  min-height: 50px;
+  max-height: 52px;
+  font-size: $fsize + 3;
+
+  &:hover{
+    opacity:0.9;
+  }
+}
+
 .section-title {
   text-align: center;
 
@@ -467,7 +478,12 @@ header.fixed-top {
   top: calc(50% - 90px);
   right: 0;
   z-index: 9999;
+  display: block;
   // @include box-shadow(0, 0, 10px, map-get($colors, gray));
+
+  @include min(map-get($breakpoints, "lg")){
+    display: none;
+  }
 
   .toggle_contact {
     width: 30px;

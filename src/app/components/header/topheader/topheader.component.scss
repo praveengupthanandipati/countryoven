@@ -37,4 +37,22 @@
   }
 }
 
-.offers *{ line-height: 1;}
+.offers * {
+  line-height: 1;
+}
+
+.header-contacts {
+  display: flex;
+  a {
+    font-size: $fsize - 1;
+    color: map-get($colors, white);
+    margin-right: 25px;
+    display: flex;
+
+    .icomoon{
+      margin:-1px 5px 0 0;
+      display: inline-block;
+      align-self: center;
+    }
+  }
+}

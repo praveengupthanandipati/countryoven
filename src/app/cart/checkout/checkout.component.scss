@@ -79,7 +79,11 @@
 .box-list {
   padding: 15px;
   border: 1px solid (map-get($colors, lightengray));
-  border-radius: 10px;  
+  border-radius: 10px;
+
+  // &:hover {
+  //   background: map-get($colors, lightblue);
+  // }
 
   margin-top: 8px;
   & .tabcontentwrap {
@@ -105,11 +109,16 @@
     width: 100%;
   }
 }
-.form-group{ position: relative;}
+.form-group {
+  position: relative;
+}
 
-.form-group a.icon-close{position: absolute;
-  top: 11px; cursor: pointer;
-  right: 6px;}
+.form-group a.icon-close {
+  position: absolute;
+  top: 11px;
+  cursor: pointer;
+  right: 6px;
+}
 .cart-product-item {
   .productname-checkout {
     font-size: $fsize - 1;
@@ -118,11 +127,15 @@
     font-size: $fsize - 1;
   }
 }
-.error-message{ font-size: 12px; color: red;}
+.error-message {
+  font-size: 12px;
+  color: red;
+}
 
-.addressflex 
-
-{
-  display: flex; align-items: center;
-  & app-address-list{ flex: 1;}
+.addressflex {
+  display: flex;
+  align-items: center;
+  & app-address-list {
+    flex: 1;
+  }
 }

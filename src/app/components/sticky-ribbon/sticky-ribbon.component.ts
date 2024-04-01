@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./sticky-ribbon.component.scss']
 })
 export class StickyRibbonComponent  implements OnInit  {
-  
+ 
   @Input('count') count:number | undefined;
   showContactRibbon: boolean = false;
   ngOnInit() {
@@ -17,7 +17,8 @@ export class StickyRibbonComponent  implements OnInit  {
 
  toggleContactRibbon() {
   this.showContactRibbon = !this.showContactRibbon;
-}
+  localStorage.setItem('showContactRibbon', this.showContactRibbon ? 'true' : 'false');
+} 
 
-  
+
 }

@@ -44,7 +44,7 @@
       p {
         color: map-get($colors, gray);
         padding-top: 10px;
-        font-size:$fsize - 3;        
+        font-size: $fsize - 3;
       }
     }
 
@@ -124,7 +124,9 @@
     border-radius: 5px;
   }
 }
-.right-sidewrap{ position: relative;}
+.right-sidewrap {
+  position: relative;
+}
 .tagbadge {
   position: absolute;
   top: 0;
@@ -214,9 +216,10 @@
   }
   .displaytime {
     // background:map-get($colors, lightgreen);
-    color:map-get($colors, green);
+    color: map-get($colors, green);
     line-height: 12px;
-    @include max(map-get($breakpoints, "sm")) {     
+    background: #f6ff00;
+    @include max(map-get($breakpoints, "sm")) {
       text-align: center;
       display: inline-block;
     }
@@ -235,5 +238,6 @@ app-noproducts-found {
   text-align: center;
 }
 
-
-.form-select{ font-family: sans-serif;}
+.form-select {
+  font-family: sans-serif;
+}
