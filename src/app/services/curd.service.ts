@@ -272,7 +272,7 @@ forgotpwd(obj:any):Observable<any>{
     getCountryusingIp1(ip:any): Observable<any> {
       
       //return this.http.get('http://ip-api.com/json/'); 
-    return this.http.get('https://ipinfo.io/' + ip)   
+    return this.http.get('https://ipapi.co/' + ip + '/json')   
     }
 
     getCountry(obj:any): Observable<any> {
