@@ -31,24 +31,9 @@
                         </ng-container>
 
                         <ng-container *ngIf="!showwalletbtn">
-                            <!-- <div class="card-block background-whitedark py-3 my-2 border-bottom">
-                            <div class="d-flex">
-                                
-                                <div>
-                                    <p><strong>Pay in $ (USD)</strong></p>
-                                    <p class="font-gray pt-2">Accepts all Credit Cards,Debit Cards and Net Banking Click
-                                        on below button to make payment</p>
-                                    <ul class="list-items ps-3">
-                                        <li>Note: The amount will be deducted in USD Dollars</li>
-                                    </ul>
-                                    <div class="pt-2">
-                                        <a href="" data-bs-toggle="modal" data-bs-target="#payment-card"
-                                            class="color-btn">Pay Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
+                          
 
+                          <div class="payflex" [ngClass]="countryCls">
                             <div class="card-block background-whitedark p-3 my-2 border-bottom">
                                 <div class="d-flex">
 
@@ -60,21 +45,10 @@
                                             <li class="small">Note: The amount will be deducted in USD Dollars</li>
                                         </ul>
                                         <div class="pt-1">
-                                            <!-- <button (click)="makePayment()">Pay with PayPal</button> -->
-                                            <!-- <ngx-paypal [config]="payPalConfig"></ngx-paypal> -->
-
-                                            <!-- <div id="paypal-button-container" *ngIf="paypalConfig"></div> -->
-                                            <!-- ngx-paypal button -->
+                                          
                                             <ngx-paypal #ngxPayPal [config]="payPalConfig"
                                                 *ngIf="paypalClick"></ngx-paypal>
-                                            <!-- <ngx-paypal [config]="payPalConfig"></ngx-paypal> -->
-                                            <!-- href="https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-2V841322LP751933M" -->
-                                            <!-- <a (click)="PaymentPaypal()" 
-                                        
-                                            target="_blank" class="btn px-3" style="background:#ffc43a">
-                                            <img src="https://www.paypalobjects.com/images/shared/paypal-logo-129x32.svg"
-                                                alt="" style="width:90px;">
-                                        </a> -->
+                                          
                                         </div>
                                     </div>
                                 </div>
@@ -99,6 +73,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
                         </ng-container>
                     </div>
                 </div>

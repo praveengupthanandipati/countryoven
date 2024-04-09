@@ -28,7 +28,8 @@ paidwalletamount:any;
 displayamount:any;
 paypalClick:boolean=false;
 payableAmountDollar:any;
-
+country:any;
+countryCls:any;
  paypalinvoice:any;
 constructor(private _crud:CurdService, private route: Router, private renderer:Renderer2)
 {
@@ -46,6 +47,15 @@ constructor(private _crud:CurdService, private route: Router, private renderer:R
     this.paidwalletamount=this.amount;
     this.displayamount=this.amount;
     this.currency = localStorage.getItem('currency');
+    this.country=localStorage.getItem('country')
+if(this.country='India')
+{
+  this.countryCls='india'
+}
+else
+{
+  this.countryCls='';
+}
     if (this.currency == 'INR') {
       this.currencyClass = 'icon-inr'
       this.walletamount=this.saveorderDetails.walletAmount;
