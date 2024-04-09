@@ -269,7 +269,7 @@
                             <span
                                 class="icon-calendar font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
                             <select class="form-select" formControlName="deliveryTime">
-                                <!-- <option>Select Time</option> -->
+                                <option>Select Time</option>
                                 <option *ngFor="let o of deliveryTime" [value]="o.dtime">
                                     <ng-container *ngIf="currencySelected == 'INR'">{{o.dtime}}</ng-container>
                                     <ng-container *ngIf="currencySelected =='USD'">{{o.dtimeCurrency}}</ng-container>
