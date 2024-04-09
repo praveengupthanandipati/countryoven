@@ -76,7 +76,20 @@ constructor(private _crud:CurdService, private route: Router, private renderer:R
       {
         this.showwalletbtn=false;
         this.paidwalletamount= this.amount - this.walletamount
-        this.displayamount= this.amount - this.walletamount
+
+
+        if (this.currency == 'USD')
+        {
+          
+          this.displayamount= (this.amount - this.walletamount).toFixed(2);
+        }
+        else
+        {
+          this.displayamount= this.amount - this.walletamount
+        }
+
+
+        
       }
 
 

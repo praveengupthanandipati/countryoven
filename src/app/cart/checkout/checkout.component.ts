@@ -26,7 +26,7 @@ export class CheckoutComponent implements OnInit{
 addressName:any;
 addressCity:any;
 addressId:any;
-addressShow:boolean=true;
+addressShow:boolean=false;
 reviewShow:boolean=false;
 paymentstrip:boolean=false;
 couponForm:any;
@@ -58,6 +58,7 @@ couponData:any;
   isChanged:boolean=false;
   msg:string='';
   cashbackMessage='';
+  prevzipcode:string='';
   constructor(private renderer: Renderer2, private fb: FormBuilder,private route: Router, private toastr: ToastrService, private _crud: CurdService, private cookieService: CookieService) {
     this.sessionId = this.cookieService.get('sessionID')
     this.city = localStorage.getItem('city')
@@ -151,7 +152,9 @@ else
       this.totalAmount=this.firstlistItem.grandTotal;
       this.finalamount=this.firstlistItem.grandTotal;
 this.isCustomGift=this.firstlistItem.isCustomGift;
-
+this.prevzipcode=this.firstlistItem.zipCode ? this.firstlistItem.zipCode :'no'
+console.log(this.prevzipcode)
+this.addressShow=true
       }
       else
       {

@@ -29,6 +29,7 @@ export class AddressListComponent implements OnInit {
   maxAddressLength = 100;
   cityname: any;
   notmatch: boolean = false;
+  notmatchzip:boolean=false;
   textAreaInput = '';
   customaddressObj:any;
   @ViewChild('AddButton')
@@ -41,6 +42,7 @@ export class AddressListComponent implements OnInit {
 
   @Input('checkoutaddress') checkoutaddress: boolean = false;
   @Input('selectedAddressId') selectedAddressId: any;
+  @Input('zipcode') zipCode:string='no';
   @Output() sendAddId: any = new EventEmitter<any>();
   isCheckout: boolean = false;
   addressidobj: any = [];
@@ -51,7 +53,7 @@ export class AddressListComponent implements OnInit {
     this.meta.updateTag({ name: 'keywords', content: "Countryoven's - Address Book" });
     this.meta.updateTag({ name: 'classification', content: "Countryoven's - Address Book" });
 
-
+    console.log(this.zipCode)
 
     if (localStorage.getItem('email')) {
       this.isLogend = true;
@@ -91,7 +93,7 @@ export class AddressListComponent implements OnInit {
       //  addcountryId: ['', Validators.required],
       addzipCode: ['', [Validators.required, Validators.pattern(/^\d{6}$/)]],
     });
-
+    
   }
 
   updateCharacterCount() {
@@ -111,20 +113,43 @@ export class AddressListComponent implements OnInit {
 if(this.checkoutaddress)
     {
     this.adduserForm.get('addcityName')?.setValue(this.cityname);
+    console.log('init enter')
     }
+
+console.log(this.checkoutaddress)
+console.log(this.zipCode)
+    if(this.checkoutaddress && this.zipCode !='no')
+    {
+    this.adduserForm.get('addzipCode')?.setValue(this.zipCode);
+    console.log('entered')
+    console.log(this.zipCode)
+    }
+
     this.selectedaddress = 'select'
     this.getAddressByCustomerId();
   }
   selectAdd(e: any) {
     this.selectedaddress = e.addressId;
-    if (this.cityname.toLowerCase() == e.cityName.toLowerCase()) {
+
+// (this.zipCode == 0 || this.zipCode == e.zipCode)  
+console.log(e)
+    if ((this.cityname.toLowerCase() == e.cityName.toLowerCase())  && (this.zipCode == 'no' || this.zipCode == e.zipCode))  {
       let s: boolean = true
       this.sendAddId.emit({ e, s })
+      console.log('same zip')
     }
     else {
-      this.notmatch = true;
+      if(this.zipCode != e.zipCode)
+      {
+        this.notmatchzip = true;
+      }
+      else{
+        this.notmatch = true;
+      }
+      
       let s: boolean = false
       this.sendAddId.emit({ e, s })
+      console.log('wrong zip')
 
     }
 
@@ -203,7 +228,8 @@ if(this.checkoutaddress)
           "cityName": this.adduserForm.value['addcityName'],
           "stateId": this.adduserForm.value['addstateId'],
           "countryId": 1,
-          "zipCode": this.adduserForm.value['addzipCode'].toString(),
+        //  "zipCode": this.adduserForm.value['addzipCode'].toString(),
+          "zipCode":  (this.checkoutaddress && this.zipCode !='no') ? this.zipCode.toString() : this.adduserForm.value['addzipCode'].toString(), 
           "relationshipId": 10,
           "status": true
         }
@@ -264,7 +290,7 @@ if(this.checkoutaddress)
           "cityName": this.checkoutaddress ? this.cityname : this.userForm.value['cityName'],
           "stateId": this.userForm.value['stateId'],
           "countryId": 1,
-          "zipCode": this.userForm.value['zipCode'].toString(),
+          "zipCode": (this.checkoutaddress && this.zipCode !='no') ? this.zipCode.toString() : this.userForm.value['zipCode'].toString(),
           "relationshipId": 10,
           "status": true
 
@@ -308,6 +334,7 @@ if(this.checkoutaddress)
 
   onOptionChange(e: any) {
     this.notmatch = false;
+    this.notmatchzip = false;
     this.selectedAddressData = e.target.value;
 
     this.deliverAddress = this.filterAddressesByAddressId(e.target.value);
@@ -316,6 +343,7 @@ if(this.checkoutaddress)
 
   addressselected(e: any) {
     this.notmatch = false;
+    this.notmatchzip=false;
     this.selectedAddressData = e;
 
     this.deliverAddress = this.filterAddressesByAddressId(e);

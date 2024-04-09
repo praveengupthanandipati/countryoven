@@ -40,7 +40,7 @@
 
                     <section class="tabcontentwrap" *ngIf="addressShow">
                        <div style="display: flex;" class="addressflex"> <span class="font-semibold font-primary">2</span>. &nbsp;
-                        <app-address-list [selectedAddressId]="addressId" (sendAddId)="getaddressId($event)"
+                        <app-address-list [zipcode]="prevzipcode" [selectedAddressId]="addressId" (sendAddId)="getaddressId($event)"
                             [checkoutaddress]="true"></app-address-list></div>
                     </section>
                 </div>
