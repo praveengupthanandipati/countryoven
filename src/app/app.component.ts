@@ -24,6 +24,8 @@ export class AppComponent implements OnInit {
   countryname: any='USA';
   currency: any;
   ngOnInit(): void {
+
+    
     if (localStorage.getItem('email')) {
       this.email = localStorage.getItem('email');
       this.customerId = localStorage.getItem('customerId')
@@ -204,10 +206,6 @@ setTimeout(() => {
 this._crud.updateHeaderData(this.count);
     });
   }
-
-
-
-
 }
 
 

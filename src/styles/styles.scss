@@ -87,8 +87,8 @@ body {
   max-height: 52px;
   font-size: $fsize + 3;
 
-  &:hover{
-    opacity:0.9;
+  &:hover {
+    opacity: 0.9;
   }
 }
 
@@ -349,10 +349,10 @@ body {
 }
 
 .terms-content {
-  padding-bottom: 20px;
+  padding: 2rem 0;
 
   .h6 {
-    padding-bottom: 15px;
+    padding-bottom: 5px;
   }
 
   p {
@@ -384,7 +384,7 @@ body {
   h5 {
     font-size: $fsize + 5;
     font-weight: map-get($font-weights, bold);
-    padding-bottom: 15px;
+    padding-bottom: 5px;
     @include max(map-get($breakpoints, "sm")) {
       font-size: $fsize + 1;
     }
@@ -481,9 +481,9 @@ header.fixed-top {
   display: block;
   // @include box-shadow(0, 0, 10px, map-get($colors, gray));
 
-  @include min(map-get($breakpoints, "lg")){
-    display: none;
-  }
+  // @include min(map-get($breakpoints, "lg")) {
+  //   display: none;
+  // }
 
   .toggle_contact {
     width: 30px;

@@ -1,5 +1,7 @@
-.contact-ribbon.hideribbon{
+.contact-ribbon.hideribbon {
     transform: translateX(46px);
-    transition: all 0.5s ease;
-    display: none;
+  transition: all 0.5s ease;
+  position: relative;
+//   right: -46px;
+  display: none;
 }

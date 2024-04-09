@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sticky-ribbon',
@@ -6,17 +7,20 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./sticky-ribbon.component.scss']
 })
 export class StickyRibbonComponent  implements OnInit  {
- 
+
+  
   @Input('count') count:number | undefined;
   showContactRibbon: boolean = false;
   ngOnInit() {
-    
+    // Check if the current route is the home page
+    if (this.router.url === '/') {
+      this.showContactRibbon = false;
+    } else {
+      this.showContactRibbon = true;
+    }
   }
 
- constructor(){
-
-  
- } 
+  constructor(private router: Router) {}
 
  toggleContactRibbon() {
   this.showContactRibbon = !this.showContactRibbon;
