@@ -139,13 +139,24 @@ console.log(e)
       console.log('same zip')
     }
     else {
-      if(this.zipCode != e.zipCode)
-      {
-        this.notmatchzip = true;
-      }
-      else{
-        this.notmatch = true;
-      }
+
+if(this.cityname.toLowerCase() != e.cityName.toLowerCase())
+{
+  this.notmatch = true;
+
+}
+else
+{
+  this.notmatchzip = true;
+}
+
+      // if(this.zipCode != e.zipCode)
+      // {
+      //   this.notmatchzip = true;
+      // }
+      // else{
+      //   this.notmatch = true;
+      // }
       
       let s: boolean = false
       this.sendAddId.emit({ e, s })
