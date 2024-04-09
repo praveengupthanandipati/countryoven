@@ -80,15 +80,18 @@
                                     *ngIf="menu.subCategoryList.length" [ngClass]="{'rightsidenav': i >= 7}">
                                     <div class="main-div-links d-lg-flex">
                                         <ng-container *ngIf="menu.subCategoryList.length ">
+                                             <!-- (click)="gotoroute(item.type, item.seoTitle)" -->
                                             <div class="background-lightblue mobmenu"> <a href="javascript:;"
-                                                    (click)="gotoroute(item.type, item.seoTitle)"
+                                                [href]="environment.path + item.urlPath" 
+                                                (click)="gotoroute(item.type, item.seoTitle)"
                                                     data-bs-dismiss="offcanvas"
                                                     *ngFor="let item of menu.subCategoryList.slice(0, menu.subCategoryList.length / 2)">{{
                                                     item.title }} <span class="new"
                                                         *ngIf="item.isHighligted">New</span></a>
                                             </div>
                                             <div class="background-white mobmenu"> <a href="javascript:;"
-                                                    (click)="gotoroute(item.type, item.seoTitle)"
+                                                 [href]="environment.path + item.urlPath" 
+                                                (click)="gotoroute(item.type, item.seoTitle)"
                                                     data-bs-dismiss="offcanvas"
                                                     *ngFor="let item of menu.subCategoryList.slice(menu.subCategoryList.length / 2)">{{
                                                     item.title }} <span class="new"

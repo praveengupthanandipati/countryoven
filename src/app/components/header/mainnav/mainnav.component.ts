@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-
+import {environment} from '../../../../environments/environment'
 @Component({
   selector: 'app-mainnav',
   templateUrl: './mainnav.component.html',
@@ -10,6 +10,7 @@ export class MainnavComponent {
   @Input('categoryList') categoryList:any;
   @Input('menuList') menuList:any;
   city:any;
+  environment = environment;
   constructor(private route:Router)
 {
 

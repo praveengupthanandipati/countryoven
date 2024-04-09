@@ -13,7 +13,10 @@ export class StickyRibbonComponent  implements OnInit  {
     
   }
 
- constructor(){} 
+ constructor(){
+
+  
+ } 
 
  toggleContactRibbon() {
   this.showContactRibbon = !this.showContactRibbon;

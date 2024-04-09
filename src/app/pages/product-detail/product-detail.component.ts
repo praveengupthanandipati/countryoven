@@ -492,10 +492,21 @@ if(this.productId)
         this.addFormControl('deliveryDates');
         this.addFormControl('deliveryTimes');
         setTimeout(() => {
-          this.dynamicForm.get('deliveryDates')?.setValue(this.deliveryDates_array[0].deliveryDateValue);
+let d;
+          if(this.productDetails.previousSelectedDate  && this.productDetails.previousSelectedDate !='')
+          {
+            this.dynamicForm.get('deliveryDates')?.setValue(this.productDetails.previousSelectedDate);
+          d=this.productDetails.previousSelectedDate
+          }
+          else
+          {
+            this.dynamicForm.get('deliveryDates')?.setValue(this.deliveryDates_array[0].deliveryDateValue);
+            d=this.deliveryDates_array[0].deliveryDateValue
+          }
+        
 
           const data = {
-            "DeliveryDate": this.deliveryDates_array[0].deliveryDateValue,
+            "DeliveryDate": d,
             "Leadtime": this.leadTime,
             "ZipCode": 1235,
             "InstantDelivery": false,
@@ -505,7 +516,17 @@ if(this.productId)
 
             this.deliveryTime = res.deliveryTimingsDtos;
 
-            this.dynamicForm.get('deliveryTimes')?.setValue(this.deliveryTime[0].dtime);
+
+            if(this.productDetails.previousSelectedTime  && this.productDetails.previousSelectedTime !='')
+            {
+              this.dynamicForm.get('deliveryTimes')?.setValue(this.productDetails.previousSelectedTime);
+            }
+            else
+            {
+              this.dynamicForm.get('deliveryTimes')?.setValue(this.deliveryTime[0].dtime);
+            }
+
+         //   this.dynamicForm.get('deliveryTimes')?.setValue(this.deliveryTime[0].dtime);
 
             /* pincode */
 
