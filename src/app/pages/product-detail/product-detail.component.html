@@ -314,7 +314,7 @@
                                         {{displayTime}} {{sameDayBlockMessage}}</span>
                                 </div>
                                 <div class="mt-3 d-md-flex addtocart-btn" *ngIf="courierProductMessage">
-                                    <span>{{courierProductMessage}}</span>
+                                    <span class="small font-green font-semibold">{{courierProductMessage}}</span>
                                 </div>
                                 <div class="mt-3 d-md-flex addtocart-btn" *ngIf="fewStockMessage">
                                     <span class="small font-primary font-semibold">{{fewStockMessage}}</span>
@@ -325,181 +325,231 @@
 
                     <!-- poroduct info -->
                     <div class="product-info">
-                        <!-- product info tab starts -->
-                        <div class="product-detail-tab rounded">
-                            <nav>
-                                <div class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                                    <a class="nav-link active border" id="nav-description-tab" data-bs-toggle="tab"
-                                        data-bs-target="#nav-description" type="button" role="tab"
-                                        aria-controls="nav-home" aria-selected="true">Description</a>
-                                    <a class="nav-link border" id="nav-Information-tab" data-bs-toggle="tab"
-                                        data-bs-target="#nav-Information" type="button" role="tab"
-                                        aria-controls="nav-Information" aria-selected="false"
-                                        *ngIf="productDetails?.deliveryInformationRequired">Delivery Information</a>
-                                    <a class="nav-link border" id="nav-Instructions-tab" data-bs-toggle="tab"
-                                        data-bs-target="#nav-Instructions" type="button" role="tab"
-                                        aria-controls="nav-Instructions" aria-selected="false"
-                                        *ngIf="productDetails?.careInstrunctionForCakeRequired || productDetails?.careInstrunctionForFlowerRequired">Care
-                                        Instructions</a>
-                                    <a class="nav-link border" id="nav-review-tab" data-bs-toggle="tab"
-                                        data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review"
-                                        aria-selected="false">Product Reviews</a>
+                        <!-- product info tab starts -->                       
+                            <!-- accordion -->
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseOne" aria-expanded="true"
+                                            aria-controls="collapseOne">
+                                            Description
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse show"
+                                        data-bs-parent="#accordionExample" *ngIf="productDetails?.description !=''">
+                                        <div class="accordion-body">
+                                            <article class="pb-2">
+                                                <div class="d-flex">
+                                                    <div class="me-2">
+                                                        <span class="font-bold pb-3"> SKU :</span>
+                                                        <span
+                                                            class="font-primary font-semibold">{{productDetails?.productId}}</span>
+                                                    </div>
+                                                    <div class="d-none">
+                                                        <span class="font-bold pb-3">Vendor Code : </span>
+                                                        <span
+                                                            class="font-primary font-semibold">{{productDetails?.venderCode}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="py-2">
+                                                    <div [innerHtml]="productDetails?.description"></div>
+
+                                                    <div *ngIf="productDetails?.careInstrunctionForCakeRequired"
+                                                        class="pt-2">
+                                                        <strong>Note:</strong> Every cake that we offer is handcrafted
+                                                        and since each chef has his/her own way of baking and designing
+                                                        the cake,
+                                                        there might be a slight variation in the product in terms of
+                                                        design
+                                                        when compared to the image displayed on the website. The color
+                                                        of the
+                                                        cake could vary based on the flavor selected. Having said that,
+                                                        we at
+                                                        Countryoven.com always make sure that all cakes are very similar
+                                                        to the corresponding images displayed on the website.
+                                                    </div>
+
+                                                    <div *ngIf="productDetails?.careInstrunctionForFlowerRequired">
+                                                        <strong>Note:</strong> Flowers may vary slightly from the image
+                                                        depending upon the local availability. countryoven.com holds the
+                                                        right to replace any flower and/or the color of flowers, vase,
+                                                        and
+                                                        basket based on availability. The replacement may be of
+                                                        equivalent or
+                                                        higher denomination than the representation on the website.
+                                                        Having said
+                                                        that, we at countryoven.com always make sure that all flowers
+                                                        are very
+                                                        similar to the corresponding images displayed on the website.
+                                                    </div>
+                                                </div>
+                                            </article>
+                                        </div>
+                                    </div>
                                 </div>
-                            </nav>
-                            <div class="tab-content p-2 p-md-3" id="nav-tabContent">
-                                <div class="tab-pane fade show active" *ngIf="productDetails?.description !=''"
-                                    id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
-                                    <article class="pb-2">
-                                        <div class="d-flex">
-                                            <div class="me-2">
-                                                <span class="font-bold pb-3"> SKU :</span>
-                                                <span
-                                                    class="font-primary font-semibold">{{productDetails?.productId}}</span>
-                                            </div>
-                                            <div class="d-none">
-                                                <span class="font-bold pb-3">Vendor Code : </span>
-                                                <span
-                                                    class="font-primary font-semibold">{{productDetails?.venderCode}}</span>
-                                            </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" *ngIf="productDetails?.deliveryInformationRequired">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                            aria-expanded="false" aria-controls="collapseTwo">
+                                            Delivery Information
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse"
+                                        data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <article class="pb-2">
+                                                <div class="py-2">
+                                                    <ul class="list-style-desc">
+                                                        <li>Every cake we offer is handcrafted and since each chef has
+                                                            his/her
+                                                            own way of
+                                                            baking and designing a cake, there might be slight variation
+                                                            in the
+                                                            product in
+                                                            terms of design and shape.</li>
+                                                        <li>The chosen delivery time is an estimate and depends on the
+                                                            availability of the
+                                                            product and the destination to which you want the product to
+                                                            be
+                                                            delivered.</li>
+                                                        <li>Since cakes are perishable in nature, we attempt delivery of
+                                                            your
+                                                            order only
+                                                            once. The delivery cannot be redirected to any other
+                                                            address.</li>
+                                                        <li>This product is hand delivered and will not be delivered
+                                                            along with
+                                                            courier
+                                                            products.</li>
+                                                        <li>Occasionally, substitutions of flavours/designs is necessary
+                                                            due to
+                                                            temporary
+                                                            and/or regional unavailability issues.</li>
+                                                    </ul>
+                                                </div>
+                                            </article>
                                         </div>
-                                        <div class="py-2">
-                                            <div [innerHtml]="productDetails?.description"></div>
-
-                                            <div *ngIf="productDetails?.careInstrunctionForCakeRequired" class="pt-2">
-                                                <strong>Note:</strong> Every cake that we offer is handcrafted and since
-                                                each chef has his/her own way of baking and designing the cake, there
-                                                might be a slight variation in the product in terms of design when
-                                                compared to the image displayed on the website. The color of the cake
-                                                could vary based on the flavor selected. Having said that, we at
-                                                Countryoven.com always make sure that all cakes are very similar to the
-                                                corresponding images displayed on the website.
-                                            </div>
-
-                                            <div *ngIf="productDetails?.careInstrunctionForFlowerRequired">
-                                                <strong>Note:</strong> Flowers may vary slightly from the image
-                                                depending upon the local availability. countryoven.com holds the right
-                                                to replace any flower and/or the color of flowers, vase, and basket
-                                                based on availability. The replacement may be of equivalent or higher
-                                                denomination than the representation on the website. Having said that,
-                                                we at countryoven.com always make sure that all flowers are very similar
-                                                to the corresponding images displayed on the website.
-                                            </div>
-                                        </div>
-                                    </article>
+                                    </div>
                                 </div>
-                                <div class="tab-pane fade" id="nav-Information" role="tabpanel"
-                                    *ngIf="productDetails?.deliveryInformationRequired">
-                                    <article class="pb-2">
-                                        <div class="py-2">
-                                            <ul class="list-style-desc">
-                                                <li>Every cake we offer is handcrafted and since each chef has his/her
-                                                    own way of
-                                                    baking and designing a cake, there might be slight variation in the
-                                                    product in
-                                                    terms of design and shape.</li>
-                                                <li>The chosen delivery time is an estimate and depends on the
-                                                    availability of the
-                                                    product and the destination to which you want the product to be
-                                                    delivered.</li>
-                                                <li>Since cakes are perishable in nature, we attempt delivery of your
-                                                    order only
-                                                    once. The delivery cannot be redirected to any other address.</li>
-                                                <li>This product is hand delivered and will not be delivered along with
-                                                    courier
-                                                    products.</li>
-                                                <li>Occasionally, substitutions of flavours/designs is necessary due to
-                                                    temporary
-                                                    and/or regional unavailability issues.</li>
-                                            </ul>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header"
+                                        *ngIf="productDetails?.careInstrunctionForCakeRequired || productDetails?.careInstrunctionForFlowerRequired">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                            aria-expanded="false" aria-controls="collapseThree">
+                                            Care Instructions
+                                        </button>
+                                    </h2>
+                                    <div id="collapseThree" class="accordion-collapse collapse"
+                                        data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <article class="pb-2"
+                                                *ngIf="productDetails?.careInstrunctionForCakeRequired">
+                                                <div class="py-2">
+                                                    <ul class="list-style-desc">
+                                                        <li>Store cream cakes in a refrigerator. Fondant cakes should be
+                                                            stored
+                                                            in an air
+                                                            conditioned environment.</li>
+                                                        <li>Slice and serve the cake at room temperature and make sure
+                                                            it is not
+                                                            exposed to
+                                                            heat.</li>
+                                                        <li>Use a serrated knife to cut a fondant cake.</li>
+                                                        <li>Sculptural elements and figurines may contain wire supports
+                                                            or
+                                                            toothpicks or
+                                                            wooden skewers for support.</li>
+                                                        <li>Please check the placement of these items before serving to
+                                                            small
+                                                            children.</li>
+                                                        <li>The cake should be consumed within 24 hours.</li>
+                                                        <li>Enjoy your cake!</li>
+                                                    </ul>
+                                                </div>
+                                            </article>
+
+                                            <article class="pb-4"
+                                                *ngIf="productDetails?.careInstrunctionForFlowerRequired">
+                                                <div class="py-2">
+                                                    <ul class="list-style-desc">
+                                                        <li>Trim the stems and place the flowers in a clean vase/bowl
+                                                            with clean
+                                                            water.</li>
+
+                                                        <li> Remove the leaves from stem to extend the life of the
+                                                            bouquet.</li>
+
+                                                        <li>Daily replace the water in the vase/bowl with fresh and
+                                                            clean
+                                                            water.s </li>
+                                                    </ul>
+                                                </div>
+                                            </article>
                                         </div>
-                                    </article>
+                                    </div>
                                 </div>
-                                <div class="tab-pane fade" id="nav-Instructions" role="tabpanel"
-                                    *ngIf="productDetails?.careInstrunctionForCakeRequired || productDetails?.careInstrunctionForFlowerRequired">
-                                    <article class="pb-2" *ngIf="productDetails?.careInstrunctionForCakeRequired">
-                                        <div class="py-2">
-                                            <ul class="list-style-desc">
-                                                <li>Store cream cakes in a refrigerator. Fondant cakes should be stored
-                                                    in an air
-                                                    conditioned environment.</li>
-                                                <li>Slice and serve the cake at room temperature and make sure it is not
-                                                    exposed to
-                                                    heat.</li>
-                                                <li>Use a serrated knife to cut a fondant cake.</li>
-                                                <li>Sculptural elements and figurines may contain wire supports or
-                                                    toothpicks or
-                                                    wooden skewers for support.</li>
-                                                <li>Please check the placement of these items before serving to small
-                                                    children.</li>
-                                                <li>The cake should be consumed within 24 hours.</li>
-                                                <li>Enjoy your cake!</li>
-                                            </ul>
-                                        </div>
-                                    </article>
-
-
-                                    <article class="pb-4" *ngIf="productDetails?.careInstrunctionForFlowerRequired">
-                                        <div class="py-2">
-                                            <ul class="list-style-desc">
-                                                <li>Trim the stems and place the flowers in a clean vase/bowl with clean
-                                                    water.</li>
-
-                                                <li> Remove the leaves from stem to extend the life of the bouquet.</li>
-
-                                                <li>Daily replace the water in the vase/bowl with fresh and clean
-                                                    water.s </li>
-                                            </ul>
-                                        </div>
-                                    </article>
-
-
-                                </div>
-                                <div class="tab-pane fade" id="nav-review" role="tabpanel"
-                                    aria-labelledby="nav-review-tab">
-
-                                    <!-- product reviews -->
-                                    <div class="product-reviews">
-                                        <div class="d-flex justify-content-between">
-                                            <!-- <div class="text-end align-self-center">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header"
+                                        *ngIf="productDetails?.careInstrunctionForCakeRequired || productDetails?.careInstrunctionForFlowerRequired">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseFour"
+                                            aria-expanded="false" aria-controls="collapseFour">
+                                            Product Reviews
+                                        </button>
+                                    </h2>
+                                    <div id="collapseFour" class="accordion-collapse collapse"
+                                        data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <!-- product reviews -->
+                                            <div class="product-reviews">
+                                                <div class="d-flex justify-content-between">
+                                                    <!-- <div class="text-end align-self-center">
                                 <a href="javascript:void(0)" class="text-blue font-bold small">View all Reviews</a>
                                 <a href="javascript:void(0)" class="color-btn d-inline-block ms-3">Write Review</a>
                             </div> -->
-                                        </div>
-                                        <p class="font-bold small pb-3">Reviews</p>
-
-                                        <div class="reviews-users">
-
-                                            <ng-container *ngFor="let r of reviewData">
-
-                                                <div class="user-review-item p-3 border rounded mb-2 background-white">
-                                                    <div class="d-flex justify-content-between">
-                                                        <div class="rating-stars">
-
-                                                            <span *ngFor="let number of [0,1,2,3,4]; index as i"
-                                                                class="icon-star "
-                                                                [class.font-primary]="r.avgReviewRate > i"></span>
-
-
-                                                        </div>
-                                                        <span class="small">{{r.reviewDate}}</span>
-                                                    </div>
-                                                    <div class="py-2">
-                                                        <h6 class="font-bold h6 pb-2">{{r.title}}</h6>
-                                                        <p class="font-gray pb-2">{{r.review}}</p>
-                                                        <p><span class="font-bold">{{r.customerName}}</span><small
-                                                                class="small d-inline-block ps-2"><i
-                                                                    class="bi bi-check-lg"></i>
-                                                                Invoice
-                                                                No:{{r.orderId}}</small></p>
-                                                    </div>
                                                 </div>
-                                            </ng-container>
+                                                <p class="font-bold small pb-3">Reviews</p>
+
+                                                <div class="reviews-users">
+
+                                                    <ng-container *ngFor="let r of reviewData">
+
+                                                        <div
+                                                            class="user-review-item p-3 border rounded mb-2 background-white">
+                                                            <div class="d-flex justify-content-between">
+                                                                <div class="rating-stars">
+
+                                                                    <span *ngFor="let number of [0,1,2,3,4]; index as i"
+                                                                        class="icon-star "
+                                                                        [class.font-primary]="r.avgReviewRate > i"></span>
+
+
+                                                                </div>
+                                                                <span class="small">{{r.reviewDate}}</span>
+                                                            </div>
+                                                            <div class="py-2">
+                                                                <h6 class="font-bold h6 pb-2">{{r.title}}</h6>
+                                                                <p class="font-gray pb-2">{{r.review}}</p>
+                                                                <p><span
+                                                                        class="font-bold">{{r.customerName}}</span><small
+                                                                        class="small d-inline-block ps-2"><i
+                                                                            class="bi bi-check-lg"></i>
+                                                                        Invoice
+                                                                        No:{{r.orderId}}</small></p>
+                                                            </div>
+                                                        </div>
+                                                    </ng-container>
+                                                </div>
+                                            </div>
+                                            <!--/ product reviews-->
                                         </div>
                                     </div>
-                                    <!--/ product reviews-->
                                 </div>
                             </div>
-                        </div>
+                            <!--/ accordion -->                       
                         <!--/ product info tab ends-->
 
 
