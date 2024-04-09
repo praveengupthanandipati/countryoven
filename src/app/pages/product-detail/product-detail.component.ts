@@ -107,6 +107,7 @@ showpincode:boolean=false;
 
 
   constructor(
+    private titleService: Title,
     private elementRef: ElementRef,
     private renderer: Renderer2,
     private meta: Meta, private title: Title,
@@ -408,7 +409,7 @@ if(res.isError)
 }
 
       this.removeLoader();
-
+      this.titleService.setTitle(res.title);
       this.breadTitle = res.subCategoryName;
       this.breadcatTitle = res.categoryName;
       this.meta.updateTag({ name: 'description', content: res.metaDescription });

@@ -134,18 +134,21 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
   ngOnInit(): void {
     this.addLoader();
-    this.paramMapSubscription = this.route.paramMap.subscribe((params: ParamMap) => {
+    this.paramMapSubscription = this.route.paramMap.subscribe((params: any) => {
+if(params['params']['cityname'] !='send-online')
+{
+  setTimeout(() => {
 
-      setTimeout(() => {
-
-        this.filters = [];
-        this.isfilters = false;
-        this.products = []
-        this.getPageRoutes(params);
-        this.getMeta();
-        this.getProductDetails(this.filters, 1, this.sorder);
-        this.getFiltersDetails();
-      }, 1000);
+    this.filters = [];
+    this.isfilters = false;
+    this.products = []
+    this.getPageRoutes(params);
+    this.getMeta();
+    this.getProductDetails(this.filters, 1, this.sorder);
+    this.getFiltersDetails();
+  }, 1000);
+}
+     
 
 
 
