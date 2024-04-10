@@ -629,13 +629,17 @@ header.fixed-top {
 }
 .centerpopup {
   position: relative;
-  width: 500px;
+  width: 430px;
   max-height: 90vh;
   margin: auto;
   overflow: auto;
   background: #fff;
   min-height: 100px;
-  max-width: 90%;
+  max-width: 85%;
+
+  @include max(map-get($breakpoints, "md")) {
+    max-width: 75%;
+  }
   & img {
     width: 100%;
     max-height: 100%;
@@ -651,6 +655,11 @@ header.fixed-top {
     padding: 4px;
     cursor: pointer;
     top: 0;
+    background: map-get($colors, white);
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    line-height: 25px;
   }
 }
 
@@ -777,4 +786,14 @@ header.fixed-top {
 
 .signlink {
   cursor: pointer;
+}
+
+.accordion-item{
+  .accordion-header{
+    .accordion-button{
+      &:focus{
+        box-shadow: none;        
+      }
+    }
+  }
 }

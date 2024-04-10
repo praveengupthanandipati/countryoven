@@ -4,8 +4,8 @@
   height: 100%;
   @include transition(all, 0.2s ease);
   border-radius: 10px;
-  @include max (map-get($breakpoints, "md")) {
-    border-radius: 10px;   
+  @include max(map-get($breakpoints, "md")) {
+    border-radius: 10px;
     height: auto;
   }
   border: 1px solid map-get($colors, lightgray);
@@ -17,14 +17,26 @@
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       @include transition(all, 0.2s ease);
-
-      @include minMax(
-        map-get($breakpoints, "xs"),
-        map-get($breakpoints, "sm")
-      ) {
+      height: 440px;
+      object-fit: cover;
+      @include max(map-get($breakpoints, "sm")) {
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
+        height: 160px;
       }
+      @include minMax(
+        map-get($breakpoints, "sm"),
+        map-get($breakpoints, "lg")
+      ) {
+        height: 240px;
+      }
+      @include minMax(
+        map-get($breakpoints, "lg"),
+        map-get($breakpoints, "xxl")
+      ) {
+        height: 300px;
+      }
+     
     }
     .seller-label {
       position: absolute;
