@@ -60,8 +60,9 @@ export class AddressListComponent implements OnInit {
       this.email = localStorage.getItem('email');
       this.custID = localStorage.getItem('customerId')
       this.custName = localStorage.getItem('custName')
-      this.cityname = localStorage.getItem('city')
+    
     }
+    this.cityname = localStorage.getItem('city')
 
     this.userForm = this.fb.group({
       recipientFirstName: ['', [Validators.required, Validators.minLength(3)]],
