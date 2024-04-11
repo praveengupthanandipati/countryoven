@@ -8,6 +8,12 @@
     height: 0;
   }
 
+  .offcanvas {
+    @include max(map-get($breakpoints, "lg")) {
+      z-index: 99999;
+    }
+  }
+
   .brand-logo {
     @include max(map-get($breakpoints, "lg")) {
       width: 120px;
@@ -66,10 +72,41 @@
     }
   }
 
+  .nav-link.dropdown-toggle {
+    @include max(map-get($breakpoints, "lg")) {
+      display: flex;
+      justify-content: space-between;
+      
+    }
+    &:after {
+      @include max(map-get($breakpoints, "lg")) {
+        content: "+";
+        border: none;
+        font-size: $fsize + 3;
+      }
+    }
+  }
+
+  .nav-link.dropdown-toggle.show {
+    @include max(map-get($breakpoints, "md")) {
+      display: flex;
+      justify-content: space-between;
+    }
+    &:after {
+      @include max(map-get($breakpoints, "md")) {
+        content: "-";
+        border: none;
+      }
+    }
+  }
+
   .dropdown-menu-full-width.dropdown-menu.show {
     left: inherit !important;
     margin-top: 0;
     z-index: 9999;
+    @include max(map-get($breakpoints, "md")) {
+      box-shadow: none !important;
+    }
     &.rightsidenav {
       right: 0 !important;
     }
@@ -114,6 +151,7 @@
 
       @include max(map-get($breakpoints, "lg")) {
         min-height: auto;
+        border-right: none;
       }
 
       @include minMax(
@@ -134,6 +172,9 @@
 
 .moremenu {
   height: 100vh;
+  z-index: 99999;
+
+  
 
   .offcanvas-header {
     background: map-get($colors, primary);
@@ -227,8 +268,12 @@
 }
 
 .mobmenu {
-  @include max(map-get($breakpoints, "sm")) {
+  @include max(map-get($breakpoints, "md")) {
     background: map-get($colors, white);
+
+    a {
+      margin-left:25px;
+    }
   }
 }
 
