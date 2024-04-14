@@ -14,15 +14,14 @@
         <!--/ bread crumb-->
         <div class="static-page">
             <h1 class="h3 font-bold font-primary pb-3">All Notifications</h1>
-
             <!-- card -->
-            <div class="card border review-card mb-2" *ngFor="let i of allNotifications">
+            <div class="card shadow mb-3 border-0" *ngFor="let i of allNotifications">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-1">
-                            <img [src]="i.imageURL" class="img-fluid" />
+                        <div class="col-md-2 col-sm-3">
+                            <img [src]="i.imageURL" class="img-fluid w-100 mb-2" />
                         </div>
-                        <div class="col-md-11">
+                        <div class="col-md-10 col-sm-9">
                             <article class="pb-2">
                                 <p>{{i.message}}</p>
                                 <p class="pb-0"><a [attr.href]="i.linkURL">Click here for more details</a></p>

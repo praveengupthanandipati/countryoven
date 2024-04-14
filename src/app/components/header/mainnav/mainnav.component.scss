@@ -22,6 +22,9 @@
   }
 
   .first-navbar {
+    @include min(map-get($breakpoints, "xxl")) {
+      margin: 0 auto;
+    }
     .nav-item {
       &c {
         .nav-link {
@@ -76,7 +79,6 @@
     @include max(map-get($breakpoints, "lg")) {
       display: flex;
       justify-content: space-between;
-      
     }
     &:after {
       @include max(map-get($breakpoints, "lg")) {
@@ -174,8 +176,6 @@
   height: 100vh;
   z-index: 99999;
 
-  
-
   .offcanvas-header {
     background: map-get($colors, primary);
     color: map-get($colors, white);
@@ -272,7 +272,7 @@
     background: map-get($colors, white);
 
     a {
-      margin-left:25px;
+      margin-left: 25px;
     }
   }
 }
