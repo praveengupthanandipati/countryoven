@@ -1,15 +1,22 @@
 <div class="stickyribbon">
-    <div class="toggle_contact" (click)="toggleContactRibbon()"  [ngClass]="{'rightribbon': showContactRibbon}">
-        <span  [ngClass]="showContactRibbon ? 'icon-left-chevron': 'icon-close'"></span>
+    <div class="toggle_contact" (click)="toggleContactRibbon()" [ngClass]="{'rightribbon': showContactRibbon}">
+        <span [ngClass]="showContactRibbon ? 'icon-left-chevron': 'icon-close'"></span>
     </div>
     <div class="contact-ribbon" [ngClass]="{'hideribbon': showContactRibbon}">
         <a target="_blank" href="https://api.whatsapp.com/send?phone=+919848155830&text=Hi"
             class="sticky-ribbon-link wapp">
             <span class="icon-whatsapp icomoon"></span>
         </a>
-        <a href="#contactpop" class="sticky-ribbon-link call-customercare" data-bs-toggle="modal">
+        <!-- mobile-->
+        <a href="callto:(+91)9848155830" class="sticky-ribbon-link call-customercare d-flex d-lg-none">
             <span class="icon-call icomoon"></span>
         </a>
+        <!--/ mobile-->
+        <!-- desktop-->
+        <a href="#contactpop" class="sticky-ribbon-link call-customercare d-none d-lg-flex" data-bs-toggle="modal">
+            <span class="icon-call icomoon"></span>
+        </a>
+        <!--/ desktop-->
         <a href="content/contactus" class="sticky-ribbon-link msg">
             <span class="icon-email icomoon"></span>
         </a>
