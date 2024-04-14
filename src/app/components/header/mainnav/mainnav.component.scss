@@ -37,6 +37,13 @@
     }
   }
 
+  .secondnav{
+    @include min(map-get($breakpoints, "xxl")) {
+     position: absolute;
+     right: 0;
+    }
+  }
+
   .nav-item {
     &.selected {
       .nav-link {
