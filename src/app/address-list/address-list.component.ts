@@ -53,7 +53,7 @@ export class AddressListComponent implements OnInit {
     this.meta.updateTag({ name: 'keywords', content: "Countryoven's - Address Book" });
     this.meta.updateTag({ name: 'classification', content: "Countryoven's - Address Book" });
 
-    console.log(this.zipCode)
+   
 
     if (localStorage.getItem('email')) {
       this.isLogend = true;
@@ -114,16 +114,14 @@ export class AddressListComponent implements OnInit {
 if(this.checkoutaddress)
     {
     this.adduserForm.get('addcityName')?.setValue(this.cityname);
-    console.log('init enter')
+    
     }
 
-console.log(this.checkoutaddress)
-console.log(this.zipCode)
     if(this.checkoutaddress && this.zipCode !='no')
     {
     this.adduserForm.get('addzipCode')?.setValue(this.zipCode);
-    console.log('entered')
-    console.log(this.zipCode)
+    
+    
     }
 
     this.selectedaddress = 'select'
@@ -133,11 +131,11 @@ console.log(this.zipCode)
     this.selectedaddress = e.addressId;
 
 // (this.zipCode == 0 || this.zipCode == e.zipCode)  
-console.log(e)
+
     if ((this.cityname.toLowerCase() == e.cityName.toLowerCase())  && (this.zipCode == 'no' || this.zipCode == e.zipCode))  {
       let s: boolean = true
       this.sendAddId.emit({ e, s })
-      console.log('same zip')
+      
     }
     else {
 
@@ -161,7 +159,7 @@ else
       
       let s: boolean = false
       this.sendAddId.emit({ e, s })
-      console.log('wrong zip')
+      
 
     }
 

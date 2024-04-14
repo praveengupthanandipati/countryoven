@@ -138,7 +138,7 @@ this.autoCompleteList=this.searchList;
   gotoroute()
   {
     this.showAutocomplete = false;
-   console.log(this.searchkeyword)
+   
   if(this.searchkeyword)
   {
     this.searcherror=false;
@@ -232,7 +232,7 @@ this.autoCompleteList=this.searchList;
 
   selectItem(item: string) {
   //  this.searchkeyword = item;
-    //console.log(this.searchkeyword)
+    
     this.showAutocomplete = false;
    // this.gotoroute()
     this.gotorouteclick(item)

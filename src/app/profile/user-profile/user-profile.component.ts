@@ -222,7 +222,7 @@ gotodashboard()
 
 
 onMessageInputChange() {
-console.log(this.textAreaInput.length)
+
   // this.maxLength = 40 - this.textAreaInput.length;
   if (this.textAreaInput.length > 100) {
 

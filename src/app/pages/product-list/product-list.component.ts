@@ -168,7 +168,7 @@ if(params['params']['cityname'] !='send-online')
   getPageRoutes(params1: any) {
 
     this.route.params.subscribe((params) => {
-console.log(params)
+
 
       if (params['cityname'] == 'send-online') {
 
@@ -281,8 +281,7 @@ console.log(params)
 
         }
         else if (this.typeName == 'search_result') {
-          // console.log(params['PageName'])  //Hyderabad
-          // console.log(params['cityname']) //flowers
+         
           this.type = 'SE';
           this.cityname = params['PageName'];
           this.cityname = this.originalcityname;
@@ -337,13 +336,7 @@ console.log(params)
 
 
   setCity(value: any) {
-    // console.log(localStorage.getItem('city'))
-    // if (!localStorage.getItem('city')) {
-    //   localStorage.setItem('city', value)
-    //   this.cityname = localStorage.getItem('city')
-    //   console.log(localStorage.getItem('city'))
-    // }
-    // console.log(localStorage.getItem('city'))
+    
   }
 
   getProductDetails(filters: any, pagenumber?: any, sortOrder?: any, load?: boolean): void {

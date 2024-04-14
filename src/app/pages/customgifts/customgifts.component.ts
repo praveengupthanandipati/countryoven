@@ -75,7 +75,7 @@ this.addLoader();
   }
   this._crud.postcustomGifts(data).subscribe(res => {
     this.removeLoader()
-  console.log(res);
+  
 if(!res.isEroor)
 {
 this.route.navigateByUrl('/checkout')
