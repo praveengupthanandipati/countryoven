@@ -76,7 +76,17 @@ this.datasubscription=this._curdService.countryData$.subscribe((data)=>{
 
 this.citysubscription=this._curdService.cityData$.subscribe((data) =>{
 
-this.city=localStorage.getItem('city')
+this.city=localStorage.getItem('city');
+
+if(localStorage.getItem('currency'))
+{
+  this.selectedCurrency=localStorage.getItem('currency')
+  
+}
+else
+{
+  
+}
 
 });
 
