@@ -8,5 +8,6 @@
       <button class="popclose" (click)="closepopup()"><span class="icon-cancel icomoon"></span></button>
       <a><img *ngIf="onLoadNotifications?.isImage" [src]="onLoadNotifications?.imagePath" /></a>
       <div class="popmsgcontent" *ngIf="onLoadNotifications?.message && !onLoadNotifications?.isImage">{{onLoadNotifications.message}}</div>
-    </div>    
+    </div>
+  
   </div>
