@@ -25,7 +25,7 @@ export class AuthGuard implements CanActivate {
 
 
   openDialog(): void {
-    this.router.navigate(['/login']);
+    this.router.navigateByUrl('/login?arg=re');
   }
 
 

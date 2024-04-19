@@ -56,7 +56,6 @@ export class UserOrdersComponent implements OnInit {
       serviceReview:['']
     });
 
-   
 
    if(localStorage.getItem('email'))
    {
@@ -138,7 +137,7 @@ this.getOrderId=e;
         "customerEmail": this.email,
         "orderID": this.getOrderId,
         "title": this.reviewForm.value['title'],
-        "review": this.reviewForm.value['title'],
+        "review": this.reviewForm.value['review'],
         "reviewDate": new Date(),
         "reviewRate": this.reviewRate,
         "websiteReview": this.websitereviewRate,

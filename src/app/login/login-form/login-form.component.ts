@@ -17,7 +17,8 @@ export class LoginFormComponent {
   sessionId:any;
   userForm: any;
   orderlogin:boolean=false;
-  giftslogin:boolean=false;
+  giftslogin: boolean = false;
+  reviewlogin: boolean = false;
   submitted = false;
   errorMsg:any;
   errorMsgstatus:boolean=false;
@@ -45,13 +46,17 @@ export class LoginFormComponent {
   {
     this.orderlogin=true;
   }
+  else if (queryParams['arg'] == 're') {
+    this.reviewlogin = true;
+  }
   else  if(queryParams['arg'] =='cg')
   {
     this.giftslogin=true;
   } else
   {
     this.orderlogin=false;
-    this.giftslogin=false;
+    this.giftslogin = false;
+    this.reviewlogin = false;
   }
 
   }
@@ -98,6 +103,9 @@ let data={
     if(this.orderlogin)
     {
       this.router.navigateByUrl('/checkout')
+    }
+    else if (this.reviewlogin) {
+      this.router.navigateByUrl('/myaccount/orders')
     }
     else if(this.giftslogin)
     {

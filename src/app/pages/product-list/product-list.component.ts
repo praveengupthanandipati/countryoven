@@ -278,6 +278,8 @@ if(params['params']['cityname'] !='send-online')
 
         else if (this.typeName == 'FLV') {
           this.type = 'FLV';
+          this.sortValue = 'Recommended';
+          this.sorder = 1;
 
         }
         else if (this.typeName == 'search_result') {

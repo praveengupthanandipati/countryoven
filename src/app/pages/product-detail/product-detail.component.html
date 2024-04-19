@@ -292,7 +292,7 @@
                                         <input formControlName="message" [(ngModel)]="textAreaInput"
                                             class="form-control border-0 bg-transparent"
                                             (input)="onMessageInputChange()"
-                                            placeholder="Incase of no message, leave it blank" maxlength="40"
+                                            placeholder="Incase of no message, leave it blank" maxlength="{{maxLengthFixed}}"
                                             type="text">
                                     </div>
                                     <div class="pt-1">
