@@ -25,3 +25,7 @@
     font-size: $fsize - 2;
   }
 }
+
+.color-border-btn:disabled{
+  opacity: .3;
+}

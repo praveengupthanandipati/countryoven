@@ -23,9 +23,9 @@ export class UserOrdersComponent implements OnInit {
   highlightedStars:any;
   stars: number[] = [];
   currentRating: number = 0;
-  reviewRate:any;
-  websitereviewRate:any;
-  serviceReviewRate:any;
+  reviewRate:any =0;
+  websitereviewRate:any=0;
+  serviceReviewRate:any=0;
   webstars: number[] = [];
   webhighlightedStars:any;
   servicestars: number[] = [];
@@ -49,7 +49,7 @@ export class UserOrdersComponent implements OnInit {
 
     this.reviewForm = this.fb.group({
       title: ['', Validators.required],
-      review:[''],
+      review:['', Validators.required],
       email: [''],
       reviewRate:[''],
       websiteReview:[''],
@@ -131,6 +131,11 @@ this.getOrderId=e;
   onaddreview()
   {
   
+if(this.reviewRate !=0 && this.websitereviewRate !=0 && this.serviceReviewRate !=0)
+  {
+
+  
+
     let data = {
       "reviewsDetails": {
      "customerName": this.custName,
@@ -149,7 +154,7 @@ this.getOrderId=e;
         this.toastr.success(res.successMessage)
         const button: HTMLButtonElement = this.closeButton.nativeElement;
         button.click();
-       
+       this.getMyOrders()
 
       }
       else {
@@ -157,6 +162,12 @@ this.getOrderId=e;
       }
      
     });
+
+  }
+
+ 
+
+
   }
 
 
@@ -167,6 +178,7 @@ this.getOrderId=e;
 webRatingfn(r:any)
 {
 this.websitereviewRate=r;
+
 this.webhighlightedStars=this.webstars.map((_, i) => i + 1 <= r);
 }
 

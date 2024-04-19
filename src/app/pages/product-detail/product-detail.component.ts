@@ -14,6 +14,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 })
 export class ProductDetailComponent implements OnInit {
 showpincode:boolean=false;
+prevpincode:any;
   productName: any;
   cityName: any;
   coutryName: any;
@@ -448,7 +449,7 @@ if(this.isMultipleImages)
       this.sameDayBlockMessage = this.productDetails.sameDayBlockMessage;
       this.maxLengthFixed = this.productDetails.maxLength;
       this.maxLength = this.productDetails.maxLength;
-      
+      this.prevpincode=this.productDetails.previousPinCode;
       if (this.photoCakePrice > 0) {
         this.productPrice = parseFloat(this.productPrice) + this.photoCakePrice
       }
@@ -536,12 +537,25 @@ let d;
 
             this.pincodeOptionsDto_array = res.deliveryPinCodes;
             if (this.pincodeOptionsDto_array?.length > 0) {
+              
               this.showpincode=true;
               this.addFormControl('pincodeOptionsDto');
               setTimeout(() => {
                 this.dynamicForm.get('pincodeOptionsDto')?.setValue(null);
-
+                
+if(this.prevpincode !=null)
+  {
+    console.log('vvvv')
+    this.dynamicForm.get('pincodeOptionsDto')?.setValue(this.prevpincode);
+  }
               }, 1000);
+
+            
+
+
+
+
+              
 
             } else
             {
@@ -763,6 +777,9 @@ let d;
     }
      setTimeout(() => {
        this.dynamicForm.get('pincodeOptionsDto')?.setValue(null);
+      
+
+
 
      }, 1000);
 

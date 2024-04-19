@@ -68,33 +68,16 @@ export class AppComponent implements OnInit {
         if (localStorage.getItem('country') == 'India' && !localStorage.getItem('currency')) {
           localStorage.setItem('currency', 'INR')
         }
+
+console.log('krishna')
+        this._crud.updateCurrencyData(localStorage.getItem('currency'));
+
       });
     });
 
-    // this._crud.getCountryusingIp().subscribe((data: any) => {
-
-      
-    //   this.country = data.country;
-
-    //   if (!localStorage.getItem('country')) {
-    //     localStorage.setItem('country', this.country)
-    //   }
-    //   if (localStorage.getItem('country') == 'India' && !localStorage.getItem('currency')) {
-    //     localStorage.setItem('currency', 'INR')
-    //   }
-
-
-
-    // });
-
- 
-
-
+   
     this.router.events.subscribe((evt) => {
-
-
-
-      if (evt instanceof NavigationEnd) {
+   if (evt instanceof NavigationEnd) {
 setTimeout(() => {
   if (localStorage.getItem('city')) {
     this.city=localStorage.getItem('city')
