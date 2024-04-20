@@ -33,7 +33,7 @@ const routes: Routes = [
 
 
       {path: 'franchise', component:FranchisesComponent}, 
-      {path:'home', component:HomeComponent} ,
+      {path:'home', redirectTo:'/'} ,
       {path: 'careers', component:CareersComponent},
       {path: 'customizedcakes', component:CustomizedCakesComponent},
       {path: 'corporateorders', component:CorporateOrdersComponent },

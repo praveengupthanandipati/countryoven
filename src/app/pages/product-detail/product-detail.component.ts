@@ -336,7 +336,8 @@ setcounntry()
       }
     }
     this._crud.getSaveProductDetails(data).subscribe(res => {
-
+      if(!res.isEroor)     
+        {
       if (res.sNo) {
         this.sNo = res.sNo;
 
@@ -353,6 +354,14 @@ setcounntry()
 
         // alert(res.successMessage)
       }
+
+
+    }
+    else
+    {
+      
+      this.removeLoader();
+    }
     });
 
 
@@ -545,7 +554,7 @@ let d;
                 
 if(this.prevpincode !=null)
   {
-    console.log('vvvv')
+    
     this.dynamicForm.get('pincodeOptionsDto')?.setValue(this.prevpincode);
   }
               }, 1000);
@@ -747,6 +756,17 @@ if(this.prevpincode !=null)
 
 
   }
+
+
+getBindPincode(e:any)
+{
+  const selectedValue = (e.target as HTMLSelectElement).value;
+  
+  this.prevpincode=selectedValue
+}
+
+
+
   getBindDeliveryTimes(e: any) {
     const selectedValue = (e.target as HTMLSelectElement).value;
 
@@ -778,7 +798,12 @@ if(this.prevpincode !=null)
      setTimeout(() => {
        this.dynamicForm.get('pincodeOptionsDto')?.setValue(null);
       
-
+              
+       if(this.prevpincode !=null)
+        {
+          
+          this.dynamicForm.get('pincodeOptionsDto')?.setValue(this.prevpincode);
+        }
 
 
      }, 1000);

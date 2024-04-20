@@ -79,13 +79,13 @@
                                                 value="Decrease Value" *ngIf="CartItem.quantity >1">-</div>
                                             <input type="number" readonly id="number" min="0"
                                                 [(ngModel)]="CartItem.quantity" />
-                                            <div class="value-button" value="Increase Value"
-                                                (click)="incrementQuantity(i, CartItem.sNo)">+</div>
-                                            <!-- <a (click)="updateCartItem(CartItem.sNo, CartItem.quantity)"
-                                                    class="btn small btn-primary btn-sm ms-2">Update</a> -->
+                                            <button class="value-button" value="Increase Value"
+                                                (click)="incrementQuantity(i, CartItem.sNo)" [disabled]="incrementbtn">+</button>
+                                           
                                         </div>
+                                      <span class="leftstock">  {{errmsg}}</span>
 
-                                        <!-- <img *ngIf="CartItem.customPhoto" style="width:50px; margin-top:5px" src="https://r6x6m2y8.stackpathcdn.com/productimages/small/tingling-pineapple-punch-cake.jpg" /> -->
+                                      
 
                                         <ul class="list-style-desc mt-2">
                                             <li *ngIf="CartItem.productId">Product Id :
