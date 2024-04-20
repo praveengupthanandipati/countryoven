@@ -77,25 +77,6 @@ export class ProductsComponent implements OnInit {
 
 
 
-
-      // this._crud.getCountryusingIp().subscribe((data: any) => {
-      //   if (!localStorage.getItem('country')) {
-      //     localStorage.setItem('country', data.country)
-      //   }
-
-      //   if (localStorage.getItem('country') == 'India') {
-      //     if (!localStorage.getItem('currency')) {
-      //       localStorage.setItem('currency', 'INR')
-      //     }
-      //   }
-      //   else {
-      //     if (!localStorage.getItem('currency')) {
-      //       localStorage.setItem('currency', 'USD')
-      //     }
-      //   }
-      //   this.getCountryStatus = localStorage.getItem('country') ? true : false;
-
-      // });
     }
 
 
