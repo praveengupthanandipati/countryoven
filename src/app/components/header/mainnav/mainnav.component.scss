@@ -37,10 +37,10 @@
     }
   }
 
-  .secondnav{
+  .secondnav {
     @include min(map-get($breakpoints, "xxl")) {
-     position: absolute;
-     right: 0;
+      position: absolute;
+      right: 0;
     }
   }
 

@@ -33,7 +33,6 @@
   }
 }
 
-
 .row-flex {
   display: flex;
   flex-wrap: wrap;
@@ -57,11 +56,37 @@
 
 .section-heading {
   .h4 {
-    font-size:clamp(1.2rem, 1.5vw, 1.5rem);
+    font-size: clamp(1.2rem, 1.5vw, 1.5rem);
   }
   .color-btn {
     @include max(map-get($breakpoints, "sm")) {
       font-size: $fsize - 3;
     }
+  }
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  background: map-get($colors, primary);
+  width: 40px;
+  height: 40px;
+  top: 50%;
+  margin-top: -20px;
+
+  @include max(map-get($breakpoints, "md")){
+    display: none;
+  }
+
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    width: 25px;
+  }
+}
+
+.carousel-indicators {
+  button {
+    background: map-get($colors, primary);
+    height: 3px;
+    border:0;
   }
 }
