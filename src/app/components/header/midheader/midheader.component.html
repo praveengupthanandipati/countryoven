@@ -61,15 +61,14 @@
                                 </a>
                             </div>
                             <div class="col-md-3  col-5">
-                                <!-- <span class="align-self-center d-none d-md-inline-block pe-2">Currency</span> -->
+                             
                                 <div class="headerinput align-self-center select-currency">
                                     <select class="form-select border-0 select-currency" (change)="onCurrecnySelected()"
                                         [(ngModel)]="selectedCurrency" aria-label="">
                                         <option *ngFor="let c of currencydrop" [value]="c" class="font-black font-bold">
-                                            <!-- <span  class="d-inline-block pe-2"></span>  -->
+                                            
                                             {{ c }}</option>
-                                        <!-- <option value="INR">INR - ₹</option>
-                                            <option value="usa">USA - $</option> -->
+                                       
                                     </select>
                                 </div>
 
@@ -88,7 +87,7 @@
                         aria-expanded="false">
                         <div><span class="icon-user icomoon"></span></div>
                         <div *ngIf="custName">
-                            <small class="text-uppercase font-semibold">{{custName}}</small>
+                            <small class="text-uppercase font-semibold custname">{{custName}}</small>
                         </div>
                         <div *ngIf="!custName">
                             <small class="text-uppercase font-semibold">Hi Guest</small>

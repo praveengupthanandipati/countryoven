@@ -186,11 +186,11 @@
                                             <p class="error-message">Select Voucher</p>
                                         </div>
                                     </div>
-
+                                  
                                     <div class="col-md-6" *ngIf="pincodeOptionsDto_array?.length >0 && showpincode">
                                         <div class="form-group pb-2">
                                             <label class="align-self-center pe-2">Select Pincode:</label>
-                                            <select class="form-select" formControlName="pincodeOptionsDto">
+                                            <select class="form-select" (change)="getBindPincode($event)" formControlName="pincodeOptionsDto">
                                                 <option [value]="null" disabled selected>Choose</option>
                                                 <option *ngFor="let o of pincodeOptionsDto_array" [ngValue]="o">
                                                     {{o}}</option>
@@ -292,7 +292,7 @@
                                         <input formControlName="message" [(ngModel)]="textAreaInput"
                                             class="form-control border-0 bg-transparent"
                                             (input)="onMessageInputChange()"
-                                            placeholder="Incase of no message, leave it blank" maxlength="40"
+                                            placeholder="Incase of no message, leave it blank" maxlength="{{maxLengthFixed}}"
                                             type="text">
                                     </div>
                                     <div class="pt-1">

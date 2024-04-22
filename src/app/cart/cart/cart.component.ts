@@ -44,8 +44,9 @@ export class CartComponent implements OnInit {
   closeButton!: ElementRef;
   timeerror:boolean=false;
   dateerror:boolean=false;
-
-
+incrementbtn:boolean=false;
+decrementbtn:boolean=false
+errmsg:any;
 
   constructor(private titleService:Title, private meta:Meta,private fb: FormBuilder, private renderer: Renderer2, private route: Router, private toastr: ToastrService, private _crud: CurdService, private cookieService: CookieService) {
 
@@ -243,16 +244,17 @@ export class CartComponent implements OnInit {
 
 
   incrementQuantity(index: number, sno: any) {
+    this.incrementbtn=true;
     this.cartItems[index].quantity++;
     let quntity= this.cartItems[index].quantity
-    this.updateCartItem(sno,quntity)
+    this.updateCartItem(sno,quntity,index,'i')
   }
 
   decrementQuantity(index: number,sno: any) {
     if (this.cartItems[index].quantity > 0) {
       this.cartItems[index].quantity--;
       let quntity= this.cartItems[index].quantity
-this.updateCartItem(sno,quntity)
+this.updateCartItem(sno,quntity, index, 'd')
 
     }
   }
@@ -260,7 +262,7 @@ this.updateCartItem(sno,quntity)
 
 
 
-  updateCartItem(sno: any, quntity: any) {
+  updateCartItem(sno: any, quntity: any, index:any, status:any) {
 
     let data = {
       "sno": sno,
@@ -272,7 +274,17 @@ this.updateCartItem(sno,quntity)
       if (!res.isEroor) {
 
         this.getCarts();
-
+this.incrementbtn=false;
+this.errmsg=""
+      }
+      else
+      {
+console.log(res)
+this.errmsg=res.errorMessage;
+if(status =='i')
+  {
+    this.cartItems[index].quantity--;
+  }
       }
     });
   }

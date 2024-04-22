@@ -47,7 +47,7 @@
   .nav-item {
     &.selected {
       .nav-link {
-        // color: map-get($colors, white);
+        color: map-get($colors, primary);
         // background: map-get($colors, primary);
         // // margin-right: 25px;
 

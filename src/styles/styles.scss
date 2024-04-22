@@ -636,17 +636,21 @@ header.fixed-top {
   background: #fff;
   min-height: 100px;
   max-width: 85%;
+  border-radius: 15px;
 
   @include max(map-get($breakpoints, "md")) {
     max-width: 75%;
   }
+
   & img {
     width: 100%;
     max-height: 100%;
   }
+
   & .popmsgcontent {
     padding: 20px;
   }
+
   & .popclose {
     position: absolute;
     right: 0;

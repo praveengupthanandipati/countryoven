@@ -18,6 +18,14 @@ export class CurdService {
 
 
 
+  private currencyDataSubject = new Subject<string>();
+  currencyData$ = this.currencyDataSubject.asObservable();
+  updateCurrencyData(data: any) {
+    this.currencyDataSubject.next(data);
+  }
+
+
+
 private countryDataSubject = new Subject<string>();
 countryData$=this.countryDataSubject.asObservable();
 updateCountry(data:any)

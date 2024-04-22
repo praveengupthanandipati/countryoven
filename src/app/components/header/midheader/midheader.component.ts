@@ -7,93 +7,105 @@ import { CurdService } from 'src/app/services/curd.service';
 @Component({
   selector: 'app-midheader',
   templateUrl: './midheader.component.html',
-  styleUrls:['./midheader.component.scss']
+  styleUrls: ['./midheader.component.scss']
 })
-export class MidheaderComponent  implements OnInit{
-  @Input('searchList') searchList:any;
-  isLogend:boolean=false;
-  email:any;
-  custID:any;
-  custName:any;
-  count:any;
-  sessionId:any;
-  city:any;
-  countryname:any;
-  currency:any;
-  customerId:any=0;
-  searcherror:boolean=false;
+export class MidheaderComponent implements OnInit {
+  @Input('searchList') searchList: any;
+  isLogend: boolean = false;
+  email: any;
+  custID: any;
+  custName: any;
+  count: any;
+  sessionId: any;
+  city: any;
+  countryname: any;
+  currency: any;
+  customerId: any = 0;
+  searcherror: boolean = false;
   private subscription!: Subscription;
-  private datasubscription !:Subscription;
+  private datasubscription !: Subscription;
   private citysubscription!: Subscription;
-  selectedCurrency:any;
-  
-  currencydrop:any=['INR', 'USD'];
-  searchkeyword:any;
-  
+  private currencysubscription!: Subscription;
+  selectedCurrency: any;
+
+  currencydrop: any = ['INR', 'USD'];
+  searchkeyword: any;
+
   showAutocomplete: boolean = false;
-  autoCompleteList:any;
+  autoCompleteList: any;
   selectedItemIndex: number | null = null;
-  constructor(private route:Router,  private _curdService:CurdService,private cookieService: CookieService)
-  {
-   if(localStorage.getItem('email'))
-   {
-    this.email=localStorage.getItem('email');
-    this.custID=localStorage.getItem('customerId')
-    this.custName=localStorage.getItem('custName')
-   }
+  constructor(private route: Router, private _curdService: CurdService, private cookieService: CookieService) {
+    if (localStorage.getItem('email')) {
+      this.email = localStorage.getItem('email');
+      this.custID = localStorage.getItem('customerId')
+      this.custName = localStorage.getItem('custName')
+    }
 
 
 
-   this.sessionId= this.cookieService.get('sessionID')
-   this.city=localStorage.getItem('city')
-this.countryname=localStorage.getItem('country');
-this.currency=localStorage.getItem('currency');
-if(localStorage.getItem('customerId'))
-{
- this.customerId=localStorage.getItem('customerId')
-}
+    this.sessionId = this.cookieService.get('sessionID')
+    this.city = localStorage.getItem('city')
+    
+    this.countryname = localStorage.getItem('country');
+    this.currency = localStorage.getItem('currency');
+    if (localStorage.getItem('customerId')) {
+      this.customerId = localStorage.getItem('customerId')
+    }
 
   }
-  onCurrecnySelected()
-  {
-    
-    
+  onCurrecnySelected() {
+
+
     localStorage.setItem('currency', this.selectedCurrency)
     window.location.reload();
   }
 
   ngOnInit(): void {
-      this.subscription = this._curdService.headerData$.subscribe((data) => {
-      
-      this.count=data;
+    this.subscription = this._curdService.headerData$.subscribe((data) => {
+
+      this.count = data;
     });
 
-this.datasubscription=this._curdService.countryData$.subscribe((data)=>{
-  
+    this.datasubscription = this._curdService.countryData$.subscribe((data) => {
 
-  this.city=data
-})
 
-this.citysubscription=this._curdService.cityData$.subscribe((data) =>{
+      this.city = data
+      
+    })
 
-this.city=localStorage.getItem('city')
+    this.currencysubscription = this._curdService.currencyData$.subscribe((data) => {
+     
+     this.city = localStorage.getItem('city');
+    });
 
-});
-
-   // this.getCarts();
     
 
-    if(localStorage.getItem('currency'))
-    {
-      this.selectedCurrency=localStorage.getItem('currency')
+    this.citysubscription = this._curdService.cityData$.subscribe((data) => {
+
+      this.city = localStorage.getItem('city');
       
+      if (localStorage.getItem('currency')) {
+        this.selectedCurrency = localStorage.getItem('currency')
+
+      }
+      else {
+
+      }
+
+    });
+
+    // this.getCarts();
+
+
+    if (localStorage.getItem('currency')) {
+      this.selectedCurrency = localStorage.getItem('currency')
+
     }
-    else
-    {
-      
+    else {
+
     }
 
-this.autoCompleteList=this.searchList;
+    this.autoCompleteList = this.searchList;
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
@@ -103,90 +115,82 @@ this.autoCompleteList=this.searchList;
 
 
 
-  getCarts()
-  {
-  let data={
+  getCarts() {
+    let data = {
       customerId: this.customerId,
       sessionId: this.sessionId,
       cityName: this.city,
       countryName: this.countryname,
       currencySelected: this.currency
     }
-  
+
     this._curdService.headerShopingCart(data).subscribe(res => {
-      
-     
-      this.count=res.cartItemsCount;
-  
-          });
+
+
+      this.count = res.cartItemsCount;
+
+    });
   }
 
 
-  gotorouteclick(item:any)
-  {
-  
-    this.searcherror=false;
-    let c=localStorage.getItem('city') ;
-    this.route.navigateByUrl('/search_result'+  '/'+ item + '/' + c)
+  gotorouteclick(item: any) {
+
+    this.searcherror = false;
+    let c = localStorage.getItem('city');
+    this.route.navigateByUrl('/search_result' + '/' + item + '/' + c)
     setTimeout(() => {
-      this.searchkeyword='';
-      this.isVisible=false
+      this.searchkeyword = '';
+      this.isVisible = false
     }, 1000);
- 
+
   }
 
-  gotoroute()
-  {
+  gotoroute() {
     this.showAutocomplete = false;
-   console.log(this.searchkeyword)
-  if(this.searchkeyword)
-  {
-    this.searcherror=false;
-    let c=localStorage.getItem('city') ;
-    this.route.navigateByUrl('/search_result'+  '/'+ this.searchkeyword + '/' + c)
-    setTimeout(() => {
-      this.searchkeyword='';
-      this.isVisible=false
-    }, 1000);
+
+    if (this.searchkeyword) {
+      this.searcherror = false;
+      let c = localStorage.getItem('city');
+      this.route.navigateByUrl('/search_result' + '/' + this.searchkeyword + '/' + c)
+      setTimeout(() => {
+        this.searchkeyword = '';
+        this.isVisible = false
+      }, 1000);
+    }
+    else {
+      this.searcherror = true;
+    }
   }
-  else
-  {
-    this.searcherror=true;
-  }
-  }
-  selectLoc()
-  {
-    if(localStorage.getItem('city'))
-{
- 
-}
+  selectLoc() {
+    if (localStorage.getItem('city')) {
+
+    }
 
   }
-  logout()
-  {
-    
+  logout() {
+
     localStorage.removeItem('email');
     localStorage.removeItem('custName');
     localStorage.removeItem('customerId');
     localStorage.removeItem('email');
-    
-    let data={
-   
-    
-    
+
+    let data = {
+
+
+
       "customerId": this.custID,
-      "SessionId":this.sessionId
-   
-   
+      "SessionId": this.sessionId
+
+
     }
     this._curdService.logout(data).subscribe(res => {
       window.location.reload();
       window.location.href = '/';
     });
-    
-    
-    
-    
+
+
+
+
     // this.route.navigateByUrl('/')
 
 
@@ -196,16 +200,16 @@ this.autoCompleteList=this.searchList;
     // window.location.reload();
   }
 
-  isVisible:boolean=false;
-  toggleVisibilitySearch(){
-    this.isVisible=!this.isVisible;
+  isVisible: boolean = false;
+  toggleVisibilitySearch() {
+    this.isVisible = !this.isVisible;
   }
 
 
   onSearchInput(event: any) {
     const value = (event.target as HTMLInputElement).value;
     this.searchkeyword = value;
-    
+
     this.autoCompleteList = this.filterItems(value);
     this.showAutocomplete = !!this.autoCompleteList.length;
   }
@@ -231,10 +235,10 @@ this.autoCompleteList=this.searchList;
   }
 
   selectItem(item: string) {
-  //  this.searchkeyword = item;
-    //console.log(this.searchkeyword)
+    //  this.searchkeyword = item;
+
     this.showAutocomplete = false;
-   // this.gotoroute()
+    // this.gotoroute()
     this.gotorouteclick(item)
   }
 

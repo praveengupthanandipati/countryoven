@@ -14,6 +14,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 })
 export class ProductDetailComponent implements OnInit {
 showpincode:boolean=false;
+prevpincode:any;
   productName: any;
   cityName: any;
   coutryName: any;
@@ -60,6 +61,7 @@ showpincode:boolean=false;
   textAreaInput = '';
   isMaxLengthExceeded = false;
   maxLength: any = 40;
+  maxLengthFixed: any = 40;
   message: string = '';
   sameDayBlockMessage: any;
   selectedItem: any;
@@ -334,7 +336,8 @@ setcounntry()
       }
     }
     this._crud.getSaveProductDetails(data).subscribe(res => {
-
+      if(!res.isEroor)     
+        {
       if (res.sNo) {
         this.sNo = res.sNo;
 
@@ -351,6 +354,14 @@ setcounntry()
 
         // alert(res.successMessage)
       }
+
+
+    }
+    else
+    {
+      
+      this.removeLoader();
+    }
     });
 
 
@@ -445,7 +456,9 @@ if(this.isMultipleImages)
       this.egglessstatus = this.productDetails?.egglessTagMessage;
       this.duration = this.productDetails?.sameDayBlockTime ? this.productDetails?.sameDayBlockTime : 0
       this.sameDayBlockMessage = this.productDetails.sameDayBlockMessage;
-      
+      this.maxLengthFixed = this.productDetails.maxLength;
+      this.maxLength = this.productDetails.maxLength;
+      this.prevpincode=this.productDetails.previousPinCode;
       if (this.photoCakePrice > 0) {
         this.productPrice = parseFloat(this.productPrice) + this.photoCakePrice
       }
@@ -533,12 +546,25 @@ let d;
 
             this.pincodeOptionsDto_array = res.deliveryPinCodes;
             if (this.pincodeOptionsDto_array?.length > 0) {
+              
               this.showpincode=true;
               this.addFormControl('pincodeOptionsDto');
               setTimeout(() => {
                 this.dynamicForm.get('pincodeOptionsDto')?.setValue(null);
-
+                
+if(this.prevpincode !=null)
+  {
+    
+    this.dynamicForm.get('pincodeOptionsDto')?.setValue(this.prevpincode);
+  }
               }, 1000);
+
+            
+
+
+
+
+              
 
             } else
             {
@@ -605,7 +631,7 @@ let d;
 
       if (this.messageRequired) {
         this.addFormControl('message');
-        this.dynamicForm?.get('message')?.setValidators([this.maxLengthValidator(40)]);
+        this.dynamicForm?.get('message')?.setValidators([this.maxLengthValidator(this.maxLengthFixed)]);
 
       }
 
@@ -616,10 +642,10 @@ let d;
 
   onMessageInputChange() {
 
-    this.maxLength = 40 - this.textAreaInput.length;
-    if (this.textAreaInput.length > 40) {
+    this.maxLength = this.maxLengthFixed - this.textAreaInput.length;
+    if (this.textAreaInput.length > this.maxLengthFixed) {
 
-      this.textAreaInput = this.textAreaInput.substring(0, 40);
+      this.textAreaInput = this.textAreaInput.substring(0, this.maxLengthFixed);
       this.isMaxLengthExceeded = true;
     } else {
       this.isMaxLengthExceeded = false;
@@ -730,6 +756,17 @@ let d;
 
 
   }
+
+
+getBindPincode(e:any)
+{
+  const selectedValue = (e.target as HTMLSelectElement).value;
+  
+  this.prevpincode=selectedValue
+}
+
+
+
   getBindDeliveryTimes(e: any) {
     const selectedValue = (e.target as HTMLSelectElement).value;
 
@@ -760,6 +797,14 @@ let d;
     }
      setTimeout(() => {
        this.dynamicForm.get('pincodeOptionsDto')?.setValue(null);
+      
+              
+       if(this.prevpincode !=null)
+        {
+          
+          this.dynamicForm.get('pincodeOptionsDto')?.setValue(this.prevpincode);
+        }
+
 
      }, 1000);
 

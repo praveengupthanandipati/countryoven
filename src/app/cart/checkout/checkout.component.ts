@@ -153,7 +153,7 @@ else
       this.finalamount=this.firstlistItem.grandTotal;
 this.isCustomGift=this.firstlistItem.isCustomGift;
 this.prevzipcode=this.firstlistItem.zipCode ? this.firstlistItem.zipCode :'no'
-console.log(this.prevzipcode)
+
 this.addressShow=true
       }
       else

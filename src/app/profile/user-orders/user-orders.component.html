@@ -166,7 +166,12 @@
                     <div class="form-floating mb-3">
                         <textarea class="form-control" placeholder="Enter Review Description*" formControlName="review"
                             style="height:120px"></textarea>
-                        <label>Enter Review Description </label>
+                        <label>Enter Review Description* </label>
+
+                        <div *ngIf="reviewForm.get('review')!.invalid && reviewForm.get('review')!.touched"
+                        class="invalid-feedback mt-0 d-block">
+                        Enter Review Description
+                    </div>
                     </div>
 
                     <div class="mb-3">
@@ -175,6 +180,12 @@
                             <span *ngFor="let star of stars; let i = index" (click)="rate(star)"
                                 [class.active]="highlightedStars[i]">&#9733;</span>
                         </div>
+
+
+                        <div *ngIf="reviewRate == 0"
+                        class="invalid-feedback mt-0 d-block">
+                        Enter Review                    </div>
+
                     </div>
                     <div class="mb-3">
                         <label>Webiste review</label>
@@ -182,6 +193,9 @@
                             <span *ngFor="let star of webstars; let i = index" (click)="webRatingfn(star)"
                                 [class.active]="webhighlightedStars[i]">&#9733;</span>
                         </div>
+                        <div *ngIf="websitereviewRate == 0"
+                        class="invalid-feedback mt-0 d-block">
+                        Enter Review                    </div>
                     </div>
                     <div class="mb-3">
                         <label>Service review</label>
@@ -189,6 +203,9 @@
                             <span *ngFor="let star of servicestars; let i = index" (click)="serviceRatingfn(star)"
                                 [class.active]="servicehighlightedStars[i]">&#9733;</span>
                         </div>
+                        <div *ngIf="serviceReviewRate == 0"
+                        class="invalid-feedback mt-0 d-block">
+                        Enter Review                    </div>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" [disabled]="!reviewForm.valid" class="color-border-btn">Submit
