@@ -39,11 +39,12 @@ export class HomeComponent implements OnInit{
 
   ngOnInit(): void {
     this.titleService.setTitle('Order Cake Online | Send Cake Online to India - Country Oven');
-    this.meta.updateTag({ name: 'description',  content: 'Online cake delivery - Through Country Oven, order a cake online to surprise your beloved ones. Send a cake to India with same-day delivery from anywhere with just one click. Order now!' });
-    this.meta.updateTag({ name: 'keywords',  content: 'keywords" content="Order Birthday Cake Online ,order cake online ,birthday cakes delivered ,send cake to India ,online cake delivery in india ,send birthday cake online' });
+    this.meta.updateTag({ name: 'description', content: 'Order cake online at Countryoven. Send a cake to India with same-day delivery from anywhere with one click.Tap to Order now! and surprise your loved ones.' });
+    this.meta.updateTag({ name: 'keywords',  content: 'Order Birthday Cake Online ,order cake online ,birthday cakes delivered ,send cake to India ,online cake delivery in india ,send birthday cake online' });
     this.meta.updateTag({ name: 'classification',  content: 'Order Birthday Cake Online ,order cake online ,birthday cakes delivered ,send cake to India ,online cake delivery in india ,send birthday cake online' });
 
-this.addLoader();
+    this.addLoader();
+    this.addCanonicalLink();
 
 //localStorage.setItem('currency', 'INR')
 
@@ -71,6 +72,25 @@ if(this.city)
         })
   }
 
+  private addCanonicalLink() {
+
+
+    const canonicalLink: HTMLLinkElement | null = document.querySelector('link[rel="canonical"]');
+    if (canonicalLink) {
+      canonicalLink.href = 'https://www.countryoven.com';
+    }
+    else {
+
+      const link: HTMLLinkElement = this.renderer.createElement('link');
+      link.rel = 'canonical';
+
+
+      link.href = 'https://www.countryoven.com'; // Replace with your canonical URL
+      this.renderer.appendChild(document.head, link);
+    }
+
+
+  }
 
   
   getProducts(): void {
