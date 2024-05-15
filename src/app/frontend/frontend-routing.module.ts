@@ -25,12 +25,23 @@ import { TermsandconditionsComponent } from '../pages/termsandconditions/termsan
 import { NoproductsFoundComponent } from '../pages/noproducts-found/noproducts-found.component';
 import { NotificationsComponent } from '../pages/home/notifications/notifications.component';
 import { CustomgiftsComponent } from '../pages/customgifts/customgifts.component';
+import { OopsComponent } from '../pages/404/404.component';
+import { MothersDayCakesComponent } from '../pages/occasions/mothers-day-cakes/mothers-day-cakes.component';
+import { RrevComponent } from '../pages/rrev/rrev.component';
+import { MothersDayFlowersComponent } from '../pages/occasions/mothers-day-flowers/mothers-day-flowers.component';
+import { MothersDayHampersComponent } from '../pages/occasions/mothers-day-hampers/mothers-day-hampers.component';
+import { MothersDayGiftsComponent } from '../pages/occasions/mothers-day-gifts/mothers-day-gifts.component';
 
 const routes: Routes = [
   {
     path: '', component: FrontendComponent, children: [
       {path:'', component:HomeComponent},
 
+      { path: '404', component: OopsComponent },
+      { path: 'order/mothers-day-cakes-online', component: MothersDayCakesComponent },
+      { path: 'order/mothers-day-flowers-online', component: MothersDayFlowersComponent },
+      { path: 'order/mothers-day-gifts-online', component: MothersDayGiftsComponent },
+      { path: 'order/mothers-day-hampers-online', component: MothersDayHampersComponent },
 
       {path: 'franchise', component:FranchisesComponent}, 
       {path:'home', redirectTo:'/'} ,
@@ -38,14 +49,15 @@ const routes: Routes = [
       {path: 'customizedcakes', component:CustomizedCakesComponent},
       {path: 'corporateorders', component:CorporateOrdersComponent },
 
-      {path:'content/aboutus', component:AboutusComponent},
+      { path: 'content/aboutus', component: AboutusComponent },
+      
       {path:'content/ourstores', component:StoresComponent},
       {path: 'reviews', component:ReviewsComponent},
+      { path: 'rrev/index/1', component: RrevComponent },
       {path:'customgifts', component:CustomgiftsComponent},
       {path: 'notifications', component:NotificationsComponent},
       {path: 'content/contactus', component:ContactComponent},  
       {path: 'content/couponpartners', component:CouponpartnersComponent},
-    
       {path: 'content/customerservices', component:CustomerServicesComponent},
       {path: 'Help', component:HelpComponent},
       {path:'content/faq', component:FaqComponent},

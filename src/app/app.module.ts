@@ -16,6 +16,7 @@ import { CustomerServicesComponent } from './pages/customer-services/customer-se
 import { HelpComponent } from './pages/help/help.component';
 import { FaqComponent } from './pages/faq/faq.component';
 import { ShippingComponent } from './pages/shipping/shipping.component';
+//import { MothersDayCakesComponent } from './pages/occasions/mothers-day-cakes/mothers-day-cakes.component';
 import { DeliverCitiesComponent } from './pages/deliver-cities/deliver-cities.component';
 import { ReturnpolicyComponent } from './pages/returnpolicy/returnpolicy.component';
 import { PrivacypolicyComponent } from './pages/privacypolicy/privacypolicy.component';
@@ -36,6 +37,7 @@ import { TermsandconditionsComponent } from './pages/termsandconditions/termsand
     HelpComponent,
     FaqComponent,
     ShippingComponent,
+    //MothersDayCakesComponent,
     DeliverCitiesComponent,
     ReturnpolicyComponent,
     PrivacypolicyComponent,
