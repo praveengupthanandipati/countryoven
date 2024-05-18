@@ -80,10 +80,11 @@
                                             <input type="number" readonly id="number" min="0"
                                                 [(ngModel)]="CartItem.quantity" />
                                             <button class="value-button" value="Increase Value"
-                                                (click)="incrementQuantity(i, CartItem.sNo)" [disabled]="incrementbtn">+</button>
-                                           
+                                                (click)="incrementQuantity(i, CartItem.sNo)"
+                                                [disabled]="incrementbtn">+</button>
+
                                         </div>
-                                      <span class="leftstock font-semibold">{{errmsg}}</span>   
+                                        <span class="leftstock font-semibold">{{errmsg}}</span>
                                         <ul class="list-style-desc mt-2">
                                             <li *ngIf="CartItem.productId">Product Id :
                                                 <strong>{{CartItem.productId}}</strong>
