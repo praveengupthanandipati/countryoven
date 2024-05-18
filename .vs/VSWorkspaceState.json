@@ -4,8 +4,10 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\pages",
-    "\\src\\app\\pages\\aboutus",
-    "\\src\\app\\pages\\occasions"
+    "\\src\\app\\pages\\404",
+    "\\src\\app\\pages\\occasions",
+    "\\src\\app\\services"
   ],
+  "SelectedNode": "\\src\\app\\pages\\404\\404.component.ts",
   "PreviewInSolutionExplorer": false
 }
