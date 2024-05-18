@@ -68,7 +68,7 @@
   }
   .price {
     .offer-price {
-      font-size: $fsize * 3;
+      font-size: $fsize * 2;
 
       @include max(map-get($breakpoints, "sm")) {
         font-size: $fsize * 2;

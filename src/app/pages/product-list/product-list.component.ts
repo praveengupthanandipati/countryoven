@@ -362,7 +362,11 @@ if(params['params']['cityname'] !='send-online')
       this.loading = false;
 
       this.productData = res;
-      
+      if (this.productData && this.productData.totalCount == 0 && data.productFilters.length==0) {
+        this.router.navigateByUrl('/404')
+      }
+
+
       if (this.productData && (this.productData.totalPages > this.productData.pageNumber)) {
         this.showloadmore = true
       }

@@ -1,0 +1,33 @@
+@import "../../../styles/styles";
+
+.rating span {
+  margin-right: 20px;
+  cursor: pointer;
+  font-size: 26px;
+}
+
+.active {
+  color: goldenrod;
+}
+
+.static-page {
+  text-align: center;
+}
+
+.productname {
+  @include max(map-get($breakpoints, "md")) {
+    font-size: $fsize - 2;
+  }
+}
+
+* {
+  font-size: $fsize;
+
+  @include max(map-get($breakpoints, "md")) {
+    font-size: $fsize - 2;
+  }
+}
+
+.color-border-btn:disabled {
+  opacity: .3;
+}
