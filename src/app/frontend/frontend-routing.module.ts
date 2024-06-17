@@ -31,6 +31,10 @@ import { RrevComponent } from '../pages/rrev/rrev.component';
 import { MothersDayFlowersComponent } from '../pages/occasions/mothers-day-flowers/mothers-day-flowers.component';
 import { MothersDayHampersComponent } from '../pages/occasions/mothers-day-hampers/mothers-day-hampers.component';
 import { MothersDayGiftsComponent } from '../pages/occasions/mothers-day-gifts/mothers-day-gifts.component';
+import { FathersDayCakesComponent } from '../pages/occasions/fathers-day-cakes/fathers-day-cakes.component';
+import { FathersDayFlowersComponent } from '../pages/occasions/fathers-day-flowers/fathers-day-flowers.component';
+import { FathersDayGiftsComponent } from '../pages/occasions/fathers-day-gifts/fathers-day-gifts.component';
+import { FathersDayHampersComponent } from '../pages/occasions/fathers-day-hampers/fathers-day-hampers.component';
 
 const routes: Routes = [
   {
@@ -42,6 +46,13 @@ const routes: Routes = [
       { path: 'order/mothers-day-flowers-online', component: MothersDayFlowersComponent },
       { path: 'order/mothers-day-gifts-online', component: MothersDayGiftsComponent },
       { path: 'order/mothers-day-hampers-online', component: MothersDayHampersComponent },
+
+      { path: 'order/fathers-day-cakes-online', component: FathersDayCakesComponent },
+      { path: 'order/fathers-day-flowers-online', component: FathersDayFlowersComponent },
+      { path: 'order/fathers-day-gifts-online', component: FathersDayGiftsComponent },
+      { path: 'order/fathers-day-hampers-online', component: FathersDayHampersComponent },
+
+
 
       {path: 'franchise', component:FranchisesComponent}, 
       {path:'home', redirectTo:'/'} ,

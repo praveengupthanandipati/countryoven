@@ -51,86 +51,102 @@
                 </div>
 
                 <div class="cart-product-item border p-2 mb-3" *ngFor="let CartItem of cartItems; let i = index">
-                    <p class="pb-2 px-4 text-danger small font-bold">
-                        {{CartItem.outOfDateMessage}}</p>
-                    <div class="row">
-                        <div class="col-md-2 col-3">
-                            <a [routerLink]="'/' + cityName + '/send-online/' + CartItem.seoProductName">
-                                <img src="{{CartItem.produtImage}}" alt="" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="col-md-10 col-9">
-                            <div class="row justify-content-between">
-                                <div class="col-md-8">
-                                    <div>
-                                        <p class="title-ofproduct">
-                                            <a href="javascript:void(0)"
-                                                [routerLink]="'/' + cityName + '/send-online/' + CartItem.seoProductName"
-                                                class="font-black">{{CartItem.productName}}</a>
-                                        </p>
-
-                                        <div class="price py-1">
-                                            <div class="offer-price font-semibold"><span class=" icomoon"
-                                                    [class]="currencyClass"></span>{{CartItem.subTotal}}
-                                            </div>
-                                        </div>
-                                        <div class="btnsec">
-                                            <div class="value-button " (click)="decrementQuantity(i,CartItem.sNo)"
-                                                value="Decrease Value" *ngIf="CartItem.quantity >1">-</div>
-                                            <input type="number" readonly id="number" min="0"
-                                                [(ngModel)]="CartItem.quantity" />
-                                            <button class="value-button" value="Increase Value"
-                                                (click)="incrementQuantity(i, CartItem.sNo)" [disabled]="incrementbtn">+</button>
-                                           
-                                        </div>
-                                      <span class="leftstock font-semibold">{{errmsg}}</span>   
-                                        <ul class="list-style-desc mt-2">
-                                            <li *ngIf="CartItem.productId">Product Id :
-                                                <strong>{{CartItem.productId}}</strong>
-                                            </li>
-                                            <li *ngIf="CartItem.customPhoto">Custom Photo :
-                                                <img class="smallimg" [src]="CartItem.customPhoto" />
-                                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                    data-bs-target="#imgModal"
-                                                    (click)="capturephoto(CartItem.customPhoto)"
-                                                    class="d-inline-block ps-2"
-                                                    style="text-decoration: underline;">View</a>
-                                            </li>
-
-                                            <li *ngIf="CartItem.additionalVoucher">Voucher :
-                                                <strong>{{CartItem.additionalVoucher}}</strong>
-                                            </li>
-
-                                            <li *ngIf="CartItem.additionalWeight">Weight :
-                                                <strong>{{CartItem.additionalWeight}}</strong>
-                                            </li>
-                                            <li *ngIf="CartItem.egglessPrice"> Eggless Price:
-                                                <strong><span
-                                                        [class]="currencyClass"></span>{{CartItem.egglessPrice}}</strong>
-                                            </li>
-
-                                            <li *ngIf="CartItem.flavour">Flavour :
-                                                <strong>{{CartItem.flavour}}</strong>
-                                            </li>
-                                            <li *ngIf="CartItem.additionalNumber">Number :
-                                                <strong>{{CartItem.additionalNumber}}</strong>
-                                            </li>
-                                            <li *ngIf="CartItem.message">Message:
-                                                <strong>{{CartItem.message}}</strong>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="text-end">
-                                        <a href="javascript:void(0)" (click)="DeleteCartItem(CartItem.sNo)"><span
-                                                class="icon-delete font-bold font-red h5"></span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                  <p class="pb-2 px-4 text-danger small font-bold">
+                    {{CartItem.outOfDateMessage}}
+                  </p>
+                  <p class="pb-2 px-4 text-danger small font-bold">
+                    {{MinCartMessage}}
+                  </p>
+                  <div class="row">
+                    <div class="col-md-2 col-3">
+                      <a [routerLink]="'/' + cityName + '/send-online/' + CartItem.seoProductName">
+                        <img src="{{CartItem.produtImage}}" alt="" class="img-fluid">
+                      </a>
                     </div>
+                    <div class="col-md-10 col-9">
+                      <div class="row justify-content-between">
+                        <div class="col-md-8">
+                          <div>
+                            <p class="title-ofproduct">
+                              <a href="javascript:void(0)"
+                                 [routerLink]="'/' + cityName + '/send-online/' + CartItem.seoProductName"
+                                 class="font-black">{{CartItem.productName}}</a>
+                            </p>
+
+                            <div class="price py-1">
+                              <div class="offer-price font-semibold">
+                                <span class=" icomoon"
+                                      [class]="currencyClass"></span>{{CartItem.subTotal}}
+                              </div>
+                            </div>
+                            <div class="btnsec">
+                              <div class="value-button " (click)="decrementQuantity(i,CartItem.sNo)"
+                                   value="Decrease Value" *ngIf="CartItem.quantity >1">-</div>
+                              <input type="number" readonly id="number" min="0"
+                                     [(ngModel)]="CartItem.quantity" />
+                              <button class="value-button" value="Increase Value"
+                                      (click)="incrementQuantity(i, CartItem.sNo)" [disabled]="incrementbtn">
+                                +
+                              </button>
+
+                            </div>
+                            <span class="leftstock font-semibold">{{CartItem.errmsg}}</span>
+                            <ul class="list-style-desc mt-2">
+                              <li *ngIf="CartItem.productId">
+                                Product Id :
+                                <strong>{{CartItem.productId}}</strong>
+                              </li>
+                              <li *ngIf="CartItem.customPhoto">
+                                Custom Photo :
+                                <img class="smallimg" [src]="CartItem.customPhoto" />
+                                <a href="javascript:void(0)" data-bs-toggle="modal"
+                                   data-bs-target="#imgModal"
+                                   (click)="capturephoto(CartItem.customPhoto)"
+                                   class="d-inline-block ps-2"
+                                   style="text-decoration: underline;">View</a>
+                              </li>
+
+                              <li *ngIf="CartItem.additionalVoucher">
+                                Voucher :
+                                <strong>{{CartItem.additionalVoucher}}</strong>
+                              </li>
+
+                              <li *ngIf="CartItem.additionalWeight">
+                                Weight :
+                                <strong>{{CartItem.additionalWeight}}</strong>
+                              </li>
+                              <li *ngIf="CartItem.egglessPrice">
+                                Eggless Price:
+                                <strong>
+                                  <span [class]="currencyClass"></span>{{CartItem.egglessPrice}}
+                                </strong>
+                              </li>
+
+                              <li *ngIf="CartItem.flavour">
+                                Flavour :
+                                <strong>{{CartItem.flavour}}</strong>
+                              </li>
+                              <li *ngIf="CartItem.additionalNumber">
+                                Number :
+                                <strong>{{CartItem.additionalNumber}}</strong>
+                              </li>
+                              <li *ngIf="CartItem.message">
+                                Message:
+                                <strong>{{CartItem.message}}</strong>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="text-end">
+                            <a href="javascript:void(0)" (click)="DeleteCartItem(CartItem.sNo)">
+                              <span class="icon-delete font-bold font-red h5"></span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
             </div>
             <div class="col-md-4">
@@ -169,7 +185,7 @@
                             <a routerLink="/" class="color-border-btn d-block cbtn w-100 mb-2">Continue to Shopping</a>
                         </div> -->
                         <div class="col-lg-12">
-                            <button class="color-btn w-100 d-block cbtn mb-2" [disabled]="outofdatemessage"
+                            <button class="color-btn w-100 d-block cbtn mb-2" 
                                 data-bs-toggle="modal" data-bs-target="#AddonsProducts"
                                 (click)="addOnProducts('1')">Addons</button>
                         </div>
@@ -252,7 +268,7 @@
             <div class="modal-footer">
                 <button type="button" class="default-btn border-0 background-green font-white"
                     data-bs-dismiss="modal">Go to Cart</button>
-                <button type="button" class="color-btn border-0" data-bs-dismiss="modal"
+                <button type="button" class="color-btn border-0" data-bs-dismiss="modal" [disabled]="outofdatemessage"
                     (click)="gotocheckout()">Proceed
                     to Checkout</button>
             </div>

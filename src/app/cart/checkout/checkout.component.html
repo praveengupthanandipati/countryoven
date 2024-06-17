@@ -120,11 +120,11 @@
                                     </button>
                                 </p>
 
-                                <div class="error error-message" *ngIf="isReqired">Please update Delivery Date and Time
+                                <div class="error error-message" *ngIf="isReqired && !isChanged">
+                                  Please update Delivery Date and Time
+                                  </div>
+                                  <div class="" style="color: #1a9d0a;" *ngIf="isChanged">{{msg}}</div>
                                 </div>
-                                <div class="" style="color: #1a9d0a;" *ngIf="isChanged">{{msg}}</div>
-
-                            </div>
                             <div class="col-md-6">
                                 <!-- <p>Delivery City:<strong>{{city}}</strong></p> -->
                                 <ng-container *ngIf="couponappled && couponData.couponType =='Instant'">

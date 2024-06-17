@@ -339,7 +339,8 @@ setTimeout(() => {
           "ZipCode": this.zipCode,
           "InstantDelivery": false,
           "cityName": this.city,
-          "IsCustomGift":this.isCustomGift
+          "IsCustomGift": this.isCustomGift,
+          "sessionId": this.cookieService.get('sessionID')
         }
         this._crud.getBindDeliveryTimes(data).subscribe(res => {
 
@@ -363,7 +364,8 @@ setTimeout(() => {
       "ZipCode": this.zipCode,
       "InstantDelivery": false,
       "cityName": this.city,
-      "IsCustomGift":this.isCustomGift
+      "IsCustomGift": this.isCustomGift,
+      "sessionId": this.cookieService.get('sessionID')
     }
     this._crud.getBindDeliveryTimes(data).subscribe(res => {
 

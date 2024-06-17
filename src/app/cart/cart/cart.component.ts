@@ -30,6 +30,7 @@ export class CartComponent implements OnInit {
   coutryName: string | null;
   currencySelected: string | null;
   outofdatemessage: boolean = false;
+  MinCartMessage: any;
   currencyClass: any;
   deliveryDates_array: any;
   displaydeliveryDate: any;
@@ -46,7 +47,7 @@ export class CartComponent implements OnInit {
   dateerror:boolean=false;
 incrementbtn:boolean=false;
 decrementbtn:boolean=false
-errmsg:any;
+    productId: any;
 
   constructor(private titleService:Title, private meta:Meta,private fb: FormBuilder, private renderer: Renderer2, private route: Router, private toastr: ToastrService, private _crud: CurdService, private cookieService: CookieService) {
 
@@ -139,7 +140,9 @@ errmsg:any;
           "Leadtime": 0,
           "ZipCode": 1235,
           "InstantDelivery": false,
-          "cityName": this.cityName
+          "cityName": this.cityName,
+          "productId": this.productId,
+          "sessionId": this.cookieService.get('sessionID')
         }
         this._crud.getBindDeliveryTimes(data).subscribe(res => {
 
@@ -162,7 +165,9 @@ errmsg:any;
       "Leadtime": 0,
       "ZipCode": 1235,
       "InstantDelivery": false,
-      "cityName": this.cityName
+      "cityName": this.cityName,
+      "productId": this.productId,
+      "sessionId": this.cookieService.get('sessionID')
     }
     this._crud.getBindDeliveryTimes(data).subscribe(res => {
 
@@ -233,12 +238,29 @@ errmsg:any;
       
       this.displaydeliveryDate = this.firstlistItem.deliveryDate;
       this.displaydeliveryTime = this.firstlistItem.deliveryTiming;
-      this.maxLeadTime=this.firstlistItem.maxLeadTime;
-      
-      this.outofdatemessage = this.cartItems.some((item: { outOfDateMessage: any; }) => item.outOfDateMessage);
+      this.maxLeadTime = this.firstlistItem.maxLeadTime;
+      this.MinCartMessage = "";
+      if (this.currencySelected == 'INR') {
+        if (this.firstlistItem?.totalAmount <= 250) {
+          this.outofdatemessage = true;
+          this.MinCartMessage = "Minimum Cart Value is greater than 250";
+        }
+        else {
+          this.outofdatemessage = this.cartItems.some((item: { outOfDateMessage: any; }) => item.outOfDateMessage);
+        }
+      }
+      else
+      {
+        if (this.firstlistItem?.totalAmount <= 250/75) {
+          this.outofdatemessage = true;
+          this.MinCartMessage = "Minimum Cart Value is greater than 3$";
+        }
+        else {
+          this.outofdatemessage = this.cartItems.some((item: { outOfDateMessage: any; }) => item.outOfDateMessage);
+        }
+      }
     
       this.getbindDate();
-
     });
   }
 
@@ -271,16 +293,16 @@ this.updateCartItem(sno,quntity, index, 'd')
     this.addLoader();
     this._crud.updateQuantity(data).subscribe(res => {
       this.removeLoader();
+      this.incrementbtn = false;
       if (!res.isEroor) {
 
         this.getCarts();
-this.incrementbtn=false;
-this.errmsg=""
+        this.cartItems[index].errmsg = "";
       }
       else
       {
-console.log(res)
-this.errmsg=res.errorMessage;
+        console.log(res)
+        this.cartItems[index].errmsg = res.errorMessage;
 if(status =='i')
   {
     this.cartItems[index].quantity--;

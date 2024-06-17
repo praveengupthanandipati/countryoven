@@ -521,12 +521,11 @@
                                                         <div
                                                             class="user-review-item p-3 border rounded mb-2 background-white">
                                                             <div class="d-flex justify-content-between">
-                                                                <div class="rating-stars">
+                                                                <div class="rating-stars">                                                                  
 
                                                                     <span *ngFor="let number of [0,1,2,3,4]; index as i"
                                                                         class="icon-star "
                                                                         [class.font-primary]="r.avgReviewRate > i"></span>
-
 
                                                                 </div>
                                                                 <span class="small">{{r.reviewDate}}</span>

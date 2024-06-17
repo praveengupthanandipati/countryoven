@@ -524,7 +524,9 @@ let d;
             "Leadtime": this.leadTime,
             "ZipCode": 1235,
             "InstantDelivery": false,
-            "cityName": this.cityName
+            "cityName": this.cityName,
+            "ProductId": this.productId,
+            "sessionId": this.cookieService.get('sessionID')
           }
           this._crud.getBindDeliveryTimes(data).subscribe(res => {
 
@@ -769,13 +771,14 @@ getBindPincode(e:any)
 
   getBindDeliveryTimes(e: any) {
     const selectedValue = (e.target as HTMLSelectElement).value;
-
     const data = {
       "DeliveryDate": selectedValue,
       "Leadtime": this.leadTime,
       "ZipCode": 1235,
       "InstantDelivery": false,
-      "cityName": this.cityName
+      "cityName": this.cityName,
+      "ProductId": this.productId,
+      "sessionId": this.cookieService.get('sessionID')
     }
     this._crud.getBindDeliveryTimes(data).subscribe(res => {
 
