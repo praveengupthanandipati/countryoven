@@ -50,6 +50,7 @@ prevpincode:any;
   currency: any;
   currencyClass: any;
   stockQuantityStatus: boolean = false;
+  inActiveProduct: boolean = false;
   isNewArriavalstatus: boolean = false;
   egglessstatus: boolean = false;
   tagMsg: any;
@@ -451,7 +452,8 @@ if(this.isMultipleImages)
       this.productPrice = this.productDetails.dicountPrice;
       this.pName = this.productDetails.productName;
       this.originalproductPrice = this.productDetails.dicountPrice;
-      this.stockQuantityStatus = parseInt(this.productDetails?.stockQuantity) <=0 ? true : false;
+      this.stockQuantityStatus = parseInt(this.productDetails?.stockQuantity) <= 0 ? true : false;
+      this.inActiveProduct = this.productDetails?.inActiveProduct ? true : false;
       this.isNewArriavalstatus = this.productDetails?.isNewArriaval;
       this.egglessstatus = this.productDetails?.egglessTagMessage;
       this.duration = this.productDetails?.sameDayBlockTime ? this.productDetails?.sameDayBlockTime : 0

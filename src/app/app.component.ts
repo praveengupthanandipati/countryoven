@@ -147,7 +147,6 @@ setTimeout(() => {
 
 
   showpopupfn(res: any) {
-    
     if (this.cookieService.check('popupid') && this.cookieService.get('popupid') == res.id) {
 
 
@@ -181,7 +180,8 @@ setTimeout(() => {
     }
 
     this._crud.headerShopingCart(data).subscribe(res => {
-      this.onLoadNotifications=res.onLoadNotifications;
+      this.onLoadNotifications = res.onLoadNotifications;
+      if (this.onLoadNotifications!=null)
       this.showpopupfn(res.onLoadNotifications)
       
 

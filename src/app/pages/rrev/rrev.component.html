@@ -1,37 +1,102 @@
-<!-- <app-header></app-header> -->
 <section class="userProfile py-3">
-  <div class="container">    
-    <div class="userprofile-body">
-      <div class="row justify-content-center py-4">
-        <div class="col-md-8">
-           <h1 class="text-center h3 font-primary border-bottom pb-3 mb-3">Ratings &amp; Reviews</h1>
-          <br />
-          <p class="text-center">Please write review and get Rs:50 to your wallet and 20% discount on next order</p>
-
-          <div class="p-2 p-md-5 bg-white shadow rounded mt-2 mt-md-5">
-            <article>
-              <h3 class="h5">Order No: <span class="font-semibold font-primary">970696</span></h3>
-              <p><small>All Fields are Mandatory</small></p>
-            </article>
-            <div class="rating-div pt-t pt-md-5">
-              <p><small>Produt Rating <span class="font-red">*</span> </small></p>
-              <div class="starts-rating">
-                <div class="rating-stars">
-                  <span class="icon-star"></span>
-                  <span class="icon-star"></span>
-                  <span class="icon-star"></span>
-                  <span class="icon-star"></span>
-                  <span class="icon-star"></span>
-                </div>
-
-              </div>
-            </div>
+  <div class="userprofile-body">
+    <div class="row justify-content-center ">
+      <div class="col-md-8">
+        <h1 class="text-center h3 text-danger border-bottom pb-3 ">Ratings &amp; Reviews</h1>
+        <br />
+        <div class="container">
+          <div class="card-header text-center">
+            Tell others about your Experience-write a review
           </div>
-
+          <p class="text-center font-primary">
+            Please write review and get Rs:50 to your wallet and 20% discount on next
+            order
+          </p>
+          <div class="p-2 p-md-5 bg-white shadow rounded mt-2 ">
+            <form [formGroup]="reviewForm" class="form-horizontal">
+              <article>
+                <h3 class="h5">Order No: <span class="font-semibold font-primary text-danger">970696</span></h3>
+              </article>
+              <p><small class="text-muted">All Fields are Mandatory</small></p>
+              <div class="mb-3">
+                <label>Product Rating</label>
+                <div class="rating">
+                  <span *ngFor="let star of productStar; let i = index" (click)="rate(star)"
+                        [class.active]="productHighlightedStars[i]">&#9733;</span>
+                </div>
+                <div *ngIf="productReviewRate == 0" class="invalid-feedback mt-0 d-block"> Submit Product Review </div>
+              </div>
+              <div class="mb-3">
+                <label>Service review</label>
+                <div class="rating">
+                  <span *ngFor="let star of ServiceWebstars; let i = index" (click)="webRatingfn(star)"
+                        [class.active]="ServiceWebhighlightedStars[i]">&#9733;</span>
+                </div>
+                <div *ngIf="ServiceReviewRate == 0" class="invalid-feedback mt-0 d-block"> Submit Service Review </div>
+              </div>
+              <label>Caption<span class="font-red">*</span></label>
+              <div class="form-floating mb-3">
+                <input [ngClass]="{'is-invalid' : reviewForm.get('caption')!.invalid && reviewForm.get('caption')!.touched}"
+                       class="form-control" placeholder="Enter Caption" formControlName="caption">
+                <label for="userphone">Enter Caption <span class="font-red font-bold">*</span></label>
+                <div *ngIf="reviewForm.get('caption')!.invalid && reviewForm.get('caption')!.touched"
+                     class="invalid-feedback mt-0 d-block">
+                  Enter Caption
+                </div>
+              </div>
+              <label>Review<span class="font-red">*</span></label>
+              <div class="form-floating mb-3">
+                <textarea class="form-control" placeholder="Enter Review" formControlName="review"
+                          style="height:120px"></textarea>
+                <label>Enter Review</label>
+                <div *ngIf="reviewForm.get('review')!.invalid && reviewForm.get('review')!.touched"
+                     class="invalid-feedback mt-0 d-block">
+                  Enter Review
+                </div>
+              </div>
+              <div class="group-gap">
+                <label class="mb-3">Do you Refer CountryOven Or Buy Again from CountryOven</label>
+                <div class="d-block my-3">
+                  <div class="custom-control custom-radio">
+                    <input id="Yes" type="radio" class="custom-control-input" formControlName="refer" value="true"
+                           name="refer">
+                    <label class="custom-control-label" for="Yes">Yes</label>&nbsp;
+                    <input id="No" type="radio" class="custom-control-input" formControlName="refer" value="false"
+                           name="refer">
+                    <label class="custom-control-label" for="No">No</label>
+                  </div>
+                </div>
+              </div>
+              <label>Recipient Name<span class="font-red">*</span></label>
+              <div class="form-floating mb-3">
+                <input [ngClass]="{'is-invalid' : reviewForm.get('recipient')!.invalid && reviewForm.get('recipient')!.touched}"
+                       class="form-control" placeholder="Enter Recipient" formControlName="recipient">
+                <label for="userphone">Enter Recipient <span class="font-red font-bold">*</span></label>
+                <div *ngIf="reviewForm.get('recipient')!.invalid && reviewForm.get('recipient')!.touched"
+                     class="invalid-feedback mt-0 d-block">
+                  Enter Recipient
+                </div>
+              </div>
+              <label>Email Id<span class="font-red">*</span></label>
+              <div class="form-floating mb-3">
+                <input [ngClass]="{'is-invalid' : reviewForm.get('email')!.invalid && reviewForm.get('email')!.touched}"
+                       class="form-control" placeholder="Enter Email" formControlName="email">
+                <label for="userphone">Enter Email <span class="font-red font-bold">*</span></label>
+                <div *ngIf="reviewForm.get('email')!.invalid && reviewForm.get('email')!.touched"
+                     class="invalid-feedback mt-0 d-block">
+                  Enter Email
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" [disabled]="!reviewForm.valid" (click)="onaddreview()" class="color-border-btn">
+                  Submit
+                  Rating
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
-

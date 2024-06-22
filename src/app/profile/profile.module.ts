@@ -13,6 +13,7 @@ import { UserVouchersComponent } from './user-vouchers/user-vouchers.component';
 import { MyaccountComponent } from './myaccount/myaccount.component';
 import { CowalletComponent } from './cowallet/cowallet.component';
 import { ReferralComponent } from './referral/referral.component';
+import { RrevComponent } from '../pages/rrev/rrev.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ReferralComponent } from './referral/referral.component';
     UserProfileComponent,
     ProfileNavComponent,
     UserOrdersComponent,
+    RrevComponent,
     UserOrderDetailComponent,
     UserAddressComponent,
     ChangepasswordComponent,

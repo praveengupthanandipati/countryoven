@@ -100,464 +100,493 @@
             <!--/ left -->
             <!-- right -->
             <div class="col-md-7">
-                <div class="product-detail-right">
-                    <h1 class="font-semibold">{{productDetails?.productName}}</h1>
-                    <div class="price d-flex py-2">
-                        <div class="offer-price font-semi-bold" id="elementId"><span class="icomoon font-bold"
-                                [class]="currencyClass"></span>{{productPrice}}</div>
-                        <div class="mrp font-semi-bold align-self-center px-2" *ngIf="productDetails?.discount">
-                            <span class=" icomoon font-bold"
-                                [class]="currencyClass"></span>{{productDetails?.productPrice}}
+              <div class="product-detail-right">
+                <h1 class="font-semibold">{{productDetails?.productName}}</h1>
+                <div class="price d-flex py-2">
+                  <div class="offer-price font-semi-bold" id="elementId">
+                    <span class="icomoon font-bold"
+                          [class]="currencyClass"></span>{{productPrice}}
+                  </div>
+                  <div class="mrp font-semi-bold align-self-center px-2" *ngIf="productDetails?.discount">
+                    <span class=" icomoon font-bold"
+                          [class]="currencyClass"></span>{{productDetails?.productPrice}}
+                  </div>
+                  <div class="offer-percentage align-self-center " *ngIf="productDetails?.discount">
+                    <small class="font-bold">({{productDetails?.discount}}% off)</small>
+                  </div>
+                  <!-- <p class="align-self-center ps-2 small">Inclusive of all taxes</p> -->
+                </div>
+
+                <div *ngIf="isEggless" class="pb-2 eggless">
+                  <input type="checkbox" (click)="egglesscheck($event)" [(ngModel)]="isegglessChecked" />
+                  <label class="ps-2">Eggless Price</label>
+                  <span class="icomoon" [class]="currencyClass"></span>:{{egglessPrice}}
+                </div>
+
+                <div *ngIf="photoRequired || photoCake" class="pb-2 eggless">
+
+                  <label class="ps-2">Photo price</label>
+                  <span class="icomoon" [class]="currencyClass"></span>:{{photoCakePrice}}
+                </div>
+
+
+                <ng-container *ngIf="stockQuantityStatus">
+                  <p class="font-semibold clr-green">This Product is temporarily out of Stock</p>
+                </ng-container>
+                <ng-container *ngIf="inActiveProduct">
+                  <p class="font-semibold clr-green">This Product is temporarily unavailable for this Location</p>
+                </ng-container>
+
+                <ng-container *ngIf="!stockQuantityStatus && !inActiveProduct && productDetails">
+                  <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
+                    <div class="basic-features row ">
+                      <div class="row">
+                        <div class="col-md-6 col-6 pe-md-0" *ngIf="flavourOptionsDto_array?.length >0">
+                          <div class="form-group mb-2">
+                            <label class="align-self-center pe-2">Select Flavour:</label>
+                            <select class="form-select" formControlName="flavourOptionsDto">
+                              <option [value]="null" disabled selected>Choose</option>
+                              <option *ngFor="let o of flavourOptionsDto_array"
+                                      [value]="o.optionValue">
+                                {{o.optionValue}}
+                              </option>
+                            </select>
+                            <div class="invalid-feedback mt-0 d-block"
+                                 *ngIf="dynamicForm.get('flavourOptionsDto')!.invalid && dynamicForm.get('flavourOptionsDto')!.touched">
+                              <p class="error-message font-bold">Select Flavour</p>
+                            </div>
+                          </div>
                         </div>
-                        <div class="offer-percentage align-self-center " *ngIf="productDetails?.discount"><small
-                                class="font-bold">({{productDetails?.discount}}% off)</small>
+                        <div class="col-md-6 col-6 pe-md-0 ps-md-3"
+                             *ngIf="weightOptionsDto_array?.length >0">
+                          <div class="form-group mb-2 ps-2">
+                            <label class="align-self-center pe-2">Select Weight:</label>
+                            <select (change)="onQtyChange($event)" class="form-select"
+                                    formControlName="weightOptionsDto" [(ngModel)]="selectedItem">
+                              <ng-container *ngFor="let o of weightOptionsDto_array;let first = first">
+                                <option [id]="o.optionId" [ngValue]="o">{{o.optionValue}}</option>
+                              </ng-container>
+                            </select>
+                            <div class="invalid-feedback mt-0 d-block"
+                                 *ngIf="dynamicForm.get('weightOptionsDto')!.invalid && dynamicForm.get('weightOptionsDto')!.touched">
+                              <p class="error-message font-bold">Select Weight</p>
+                            </div>
+                          </div>
+
+
                         </div>
-                        <!-- <p class="align-self-center ps-2 small">Inclusive of all taxes</p> -->
-                    </div>
+                        <div class="col-md-4 col-6" *ngIf="voucherOptionsDto_array?.length >0">
+                          <div class="form-group pb-2">
+                            <label class="align-self-center pe-2">Select Voucher:</label>
+                            <select class="form-select" [(ngModel)]="selectedVoucher"
+                                    formControlName="voucherOptionsDto" (change)="onVoucherChange($event)">
+                              <option *ngFor="let o of voucherOptionsDto_array" [id]="o.optionId"
+                                      [ngValue]="o">
+                                {{o.optionValue}}
+                              </option>
+                            </select>
+                          </div>
 
-                    <div *ngIf="isEggless" class="pb-2 eggless">
-                        <input type="checkbox" (click)="egglesscheck($event)" [(ngModel)]="isegglessChecked" />
-                        <label class="ps-2">Eggless Price</label>
-                        <span class="icomoon" [class]="currencyClass"></span>:{{egglessPrice}}
-                    </div>
+                          <div class="invalid-feedback mt-0 d-block"
+                               *ngIf="dynamicForm.get('voucherOptionsDto')!.invalid && dynamicForm.get('voucherOptionsDto')!.touched">
+                            <p class="error-message">Select Voucher</p>
+                          </div>
+                        </div>
 
-                    <div *ngIf="photoRequired || photoCake" class="pb-2 eggless">
-
-                        <label class="ps-2">Photo price</label>
-                        <span class="icomoon" [class]="currencyClass"></span>:{{photoCakePrice}}
-                    </div>
-
-
-                    <ng-container *ngIf="stockQuantityStatus">
-                        <p class="font-semibold clr-green">This Product is temporarily out of Stock</p>
-                    </ng-container>
-
-                    <ng-container *ngIf="!stockQuantityStatus && productDetails">
-                        <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
-                            <div class="basic-features row ">
-                                <div class="row">
-                                    <div class="col-md-6 col-6 pe-md-0" *ngIf="flavourOptionsDto_array?.length >0">
-                                        <div class="form-group mb-2">
-                                            <label class="align-self-center pe-2">Select Flavour:</label>
-                                            <select class="form-select" formControlName="flavourOptionsDto">
-                                                <option [value]="null" disabled selected>Choose</option>
-                                                <option *ngFor="let o of flavourOptionsDto_array"
-                                                    [value]="o.optionValue">
-                                                    {{o.optionValue}}</option>
-                                            </select>
-                                            <div class="invalid-feedback mt-0 d-block"
-                                                *ngIf="dynamicForm.get('flavourOptionsDto')!.invalid && dynamicForm.get('flavourOptionsDto')!.touched">
-                                                <p class="error-message font-bold">Select Flavour</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-6 pe-md-0 ps-md-3"
-                                        *ngIf="weightOptionsDto_array?.length >0">
-                                        <div class="form-group mb-2 ps-2">
-                                            <label class="align-self-center pe-2">Select Weight:</label>
-                                            <select (change)="onQtyChange($event)" class="form-select"
-                                                formControlName="weightOptionsDto" [(ngModel)]="selectedItem">
-                                                <ng-container
-                                                    *ngFor="let o of weightOptionsDto_array;let first = first">
-                                                    <option [id]="o.optionId" [ngValue]="o">{{o.optionValue}}</option>
-                                                </ng-container>
-                                            </select>
-                                            <div class="invalid-feedback mt-0 d-block"
-                                                *ngIf="dynamicForm.get('weightOptionsDto')!.invalid && dynamicForm.get('weightOptionsDto')!.touched">
-                                                <p class="error-message font-bold">Select Weight</p>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                    <div class="col-md-4 col-6" *ngIf="voucherOptionsDto_array?.length >0">
-                                        <div class="form-group pb-2">
-                                            <label class="align-self-center pe-2">Select Voucher:</label>
-                                            <select class="form-select" [(ngModel)]="selectedVoucher"
-                                                formControlName="voucherOptionsDto" (change)="onVoucherChange($event)">
-                                                <option *ngFor="let o of voucherOptionsDto_array" [id]="o.optionId"
-                                                    [ngValue]="o">
-                                                    {{o.optionValue}}</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="invalid-feedback mt-0 d-block"
-                                            *ngIf="dynamicForm.get('voucherOptionsDto')!.invalid && dynamicForm.get('voucherOptionsDto')!.touched">
-                                            <p class="error-message">Select Voucher</p>
-                                        </div>
-                                    </div>
-                                  
-                                    <div class="col-md-6" *ngIf="pincodeOptionsDto_array?.length >0 && showpincode">
-                                        <div class="form-group pb-2">
-                                            <label class="align-self-center pe-2">Select Pincode:</label>
-                                            <select class="form-select" (change)="getBindPincode($event)" formControlName="pincodeOptionsDto">
-                                                <option [value]="null" disabled selected>Choose</option>
-                                                <option *ngFor="let o of pincodeOptionsDto_array" [ngValue]="o">
-                                                    {{o}}</option>
-                                            </select>
-                                            <div class="invalid-feedback mt-0 d-block"
-                                                *ngIf="dynamicForm.get('pincodeOptionsDto')!.invalid && dynamicForm.get('pincodeOptionsDto')!.touched">
-                                                <p class="error-message">Select Pincode</p>
-                                            </div>
-                                        </div>
-
-                                        <!-- <div class="invalid-feedback mt-0 d-block"
-                                            *ngIf="dynamicForm.get('pincodeOptionsDto')!.invalid && dynamicForm.get('pincodeOptionsDto')!.touched">
-                                            <p class="error-message">Select Pincode</p>
-                                        </div> -->
-                                    </div>
-
-
-                                    <div class="col-md-6" *ngIf="numberOptionsDto_array?.length >0">
-                                        <div class="form-group pb-2">
-                                            <label class="align-self-center pe-2">Select Cake Design Number:</label>
-                                            <select class="form-select" formControlName="numberOptionsDto">
-                                                <option [value]="null" disabled selected>Select</option>
-                                                <option *ngFor="let o of numberOptionsDto_array"
-                                                    [value]="o.optionValue">
-                                                    {{o.optionValue}}</option>
-                                            </select>
-                                            <div class="invalid-feedback mt-0 d-block"
-                                                *ngIf="dynamicForm.get('numberOptionsDto')!.invalid && dynamicForm.get('numberOptionsDto')!.touched">
-                                                <p class="error-message font-bold">Select Number</p>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                </div>
+                        <div class="col-md-6" *ngIf="pincodeOptionsDto_array?.length >0 && showpincode">
+                          <div class="form-group pb-2">
+                            <label class="align-self-center pe-2">Select Pincode:</label>
+                            <select class="form-select" (change)="getBindPincode($event)" formControlName="pincodeOptionsDto">
+                              <option [value]="null" disabled selected>Choose</option>
+                              <option *ngFor="let o of pincodeOptionsDto_array" [ngValue]="o">
+                                {{o}}
+                              </option>
+                            </select>
+                            <div class="invalid-feedback mt-0 d-block"
+                                 *ngIf="dynamicForm.get('pincodeOptionsDto')!.invalid && dynamicForm.get('pincodeOptionsDto')!.touched">
+                              <p class="error-message">Select Pincode</p>
                             </div>
+                          </div>
 
-                            <div class="row">
+                          <!-- <div class="invalid-feedback mt-0 d-block"
+                *ngIf="dynamicForm.get('pincodeOptionsDto')!.invalid && dynamicForm.get('pincodeOptionsDto')!.touched">
+                <p class="error-message">Select Pincode</p>
+            </div> -->
+                        </div>
 
-                                <div class="col-sm-6 pb-2" *ngIf="deliveryDates_array?.length">
-                                    <div class="form-group">
-                                        <label>Select Delivery Date </label>
-                                        <div class="form-group d-flex p-1 p-md-2  background-lightprimary rounded">
-                                            <span
-                                                class="icon-calendar font-primary icomoon h5 d-none d-md-inline-block pe-2 align-self-center"></span>
-                                            <select class="form-select" (change)="getBindDeliveryTimes($event)"
-                                                formControlName="deliveryDates">
-                                                <option *ngFor="let o of deliveryDates_array"
-                                                    [value]="o.deliveryDateValue">
-                                                    {{o.deliveryDateText}}</option>
-                                            </select>
-                                        </div>
-                                        <div class="invalid-feedback mt-0 d-block"
-                                            *ngIf="dynamicForm.get('deliveryDates')!.invalid && dynamicForm.get('deliveryDates')!.touched">
-                                            <p class="error-message">Select Delivery Date</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 pb-2" *ngIf="deliveryDates_array?.length">
-                                    <div class="form-group">
-                                        <label>Select Time</label>
-                                        <div class="form-group d-flex p-1 p-md-2  background-lightprimary rounded">
-                                            <span
-                                                class="icon-calendar font-primary icomoon h5 d-none d-md-inline-block pe-2 align-self-center"></span>
-                                            <select class="form-select" formControlName="deliveryTimes">
-                                                <option *ngFor="let o of deliveryTime" [value]="o.dtime">
-                                                    <ng-container
-                                                        *ngIf="currencySelected == 'INR'">{{o.dtime}}</ng-container>
-                                                    <ng-container *ngIf="currencySelected =='USD'">
-                                                        {{o.dtimeCurrency}}</ng-container>
-                                                </option>
-                                            </select>
-                                        </div>
-                                        <div class="invalid-feedback mt-0 d-block"
-                                            *ngIf="dynamicForm.get('deliveryTimes')!.invalid && dynamicForm.get('deliveryTimes')!.touched">
-                                            <p class="error-message">Select Time</p>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="col-md-12" *ngIf="photoRequired">
-                                    <label>Browse a picture for photo cake</label>
-                                    <div class="form-group d-flex p-2  background-lightprimary rounded"
-                                        [ngClass]="{'is-invalid': dynamicForm.get('photo')?.invalid  && dynamicForm.get('photo')!.touched}">
-                                        <span
-                                            class="icon-upload2 font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
-                                        <input type="file" (change)="onFileSelected($event)" formControlName="photo"
-                                            accept="image/jpeg, image/png" class="form-control border-0 bg-transparent"
-                                            placeholder="Browse a picture for photo cake">
-                                    </div>
-                                    <div class="msg-hint"
-                                        *ngIf="dynamicForm.get('photo')?.invalid && dynamicForm.get('photo')!.touched">
-                                        Image Required</div>
-                                </div>
-                                <div class="col-md-12 mt-1" *ngIf="messageRequired">
-                                    <label>Enter Message</label>
-                                    <div class="form-group d-flex p-2  background-lightprimary rounded">
-                                        <span
-                                            class="icon-writing font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
-                                        <input formControlName="message" [(ngModel)]="textAreaInput"
-                                            class="form-control border-0 bg-transparent"
-                                            (input)="onMessageInputChange()"
-                                            placeholder="Incase of no message, leave it blank" maxlength="{{maxLengthFixed}}"
-                                            type="text">
-                                    </div>
-                                    <div class="pt-1">
-                                        <p><small>{{maxLength}} characters allowed.</small></p>
-                                    </div>
-                                    <!-- <div
-                                        *ngIf="dynamicForm.get('message')?.hasError('maxLength') || isMaxLengthExceeded">
-                                        Maximum length is 25 characters allowed.
-                                    </div> -->
-                                </div>
-                                <div class="mt-3 d-md-flex addtocart-btn">
-                                    <!-- <a href="javascript:void(0)" class="color-btn">Add to Cart</a> -->
-                                    <button type="submit" class="large-btn border-0 background-green font-white"><span
-                                            class="icon-cart"></span> Add
-                                        to Cart</button>
-                                    <span
-                                        class="displaytime  font-semibold  ms-md-3 ms-1 px-2 py-1 small rounded-pill align-self-center h6"><span
-                                            class="icon-circular-alarm-clock-tool d-inline-block me-1"></span>
-                                        {{displayTime}} {{sameDayBlockMessage}}</span>
-                                </div>
-                                <div class="mt-3 d-md-flex addtocart-btn" *ngIf="courierProductMessage">
-                                    <span class="small font-green font-semibold">{{courierProductMessage}}</span>
-                                </div>
-                                <div class="mt-3 d-md-flex addtocart-btn" *ngIf="fewStockMessage">
-                                    <span class="small font-primary font-semibold">{{fewStockMessage}}</span>
-                                </div>
+                        <div class="col-md-6" *ngIf="numberOptionsDto_array?.length >0">
+                          <div class="form-group pb-2">
+                            <label class="align-self-center pe-2">Select Cake Design Number:</label>
+                            <select class="form-select" formControlName="numberOptionsDto">
+                              <option [value]="null" disabled selected>Select</option>
+                              <option *ngFor="let o of numberOptionsDto_array"
+                                      [value]="o.optionValue">
+                                {{o.optionValue}}
+                              </option>
+                            </select>
+                            <div class="invalid-feedback mt-0 d-block"
+                                 *ngIf="dynamicForm.get('numberOptionsDto')!.invalid && dynamicForm.get('numberOptionsDto')!.touched">
+                              <p class="error-message font-bold">Select Number</p>
                             </div>
-                        </form>
-                    </ng-container>
-
-                    <!-- poroduct info -->
-                    <div class="product-info">
-                        <!-- product info tab starts -->                       
-                            <!-- accordion -->
-                            <div class="accordion" id="accordionExample">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#collapseOne" aria-expanded="true"
-                                            aria-controls="collapseOne">
-                                            Description
-                                        </button>
-                                    </h2>
-                                    <div id="collapseOne" class="accordion-collapse collapse show"
-                                        data-bs-parent="#accordionExample" *ngIf="productDetails?.description !=''">
-                                        <div class="accordion-body">
-                                            <article class="pb-2">
-                                                <div class="d-flex">
-                                                    <div class="me-2">
-                                                        <span class="font-bold pb-3"> SKU :</span>
-                                                        <span
-                                                            class="font-primary font-semibold">{{productDetails?.productId}}</span>
-                                                    </div>
-                                                    <div class="d-none">
-                                                        <span class="font-bold pb-3">Vendor Code : </span>
-                                                        <span
-                                                            class="font-primary font-semibold">{{productDetails?.venderCode}}</span>
-                                                    </div>
-                                                </div>
-                                                <div class="py-2">
-                                                    <div [innerHtml]="productDetails?.description"></div>
-
-                                                    <div *ngIf="productDetails?.careInstrunctionForCakeRequired"
-                                                        class="pt-2">
-                                                        <strong>Note:</strong> Every cake that we offer is handcrafted
-                                                        and since each chef has his/her own way of baking and designing
-                                                        the cake,
-                                                        there might be a slight variation in the product in terms of
-                                                        design
-                                                        when compared to the image displayed on the website. The color
-                                                        of the
-                                                        cake could vary based on the flavor selected. Having said that,
-                                                        we at
-                                                        Countryoven.com always make sure that all cakes are very similar
-                                                        to the corresponding images displayed on the website.
-                                                    </div>
-
-                                                    <div *ngIf="productDetails?.careInstrunctionForFlowerRequired">
-                                                        <strong>Note:</strong> Flowers may vary slightly from the image
-                                                        depending upon the local availability. countryoven.com holds the
-                                                        right to replace any flower and/or the color of flowers, vase,
-                                                        and
-                                                        basket based on availability. The replacement may be of
-                                                        equivalent or
-                                                        higher denomination than the representation on the website.
-                                                        Having said
-                                                        that, we at countryoven.com always make sure that all flowers
-                                                        are very
-                                                        similar to the corresponding images displayed on the website.
-                                                    </div>
-                                                </div>
-                                            </article>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" *ngIf="productDetails?.deliveryInformationRequired">
-                                        <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                                            aria-expanded="false" aria-controls="collapseTwo">
-                                            Delivery Information
-                                        </button>
-                                    </h2>
-                                    <div id="collapseTwo" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            <article class="pb-2">
-                                                <div class="py-2">
-                                                    <ul class="list-style-desc">
-                                                        <li>Every cake we offer is handcrafted and since each chef has
-                                                            his/her
-                                                            own way of
-                                                            baking and designing a cake, there might be slight variation
-                                                            in the
-                                                            product in
-                                                            terms of design and shape.</li>
-                                                        <li>The chosen delivery time is an estimate and depends on the
-                                                            availability of the
-                                                            product and the destination to which you want the product to
-                                                            be
-                                                            delivered.</li>
-                                                        <li>Since cakes are perishable in nature, we attempt delivery of
-                                                            your
-                                                            order only
-                                                            once. The delivery cannot be redirected to any other
-                                                            address.</li>
-                                                        <li>This product is hand delivered and will not be delivered
-                                                            along with
-                                                            courier
-                                                            products.</li>
-                                                        <li>Occasionally, substitutions of flavours/designs is necessary
-                                                            due to
-                                                            temporary
-                                                            and/or regional unavailability issues.</li>
-                                                    </ul>
-                                                </div>
-                                            </article>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header"
-                                        *ngIf="productDetails?.careInstrunctionForCakeRequired || productDetails?.careInstrunctionForFlowerRequired">
-                                        <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#collapseThree"
-                                            aria-expanded="false" aria-controls="collapseThree">
-                                            Care Instructions
-                                        </button>
-                                    </h2>
-                                    <div id="collapseThree" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            <article class="pb-2"
-                                                *ngIf="productDetails?.careInstrunctionForCakeRequired">
-                                                <div class="py-2">
-                                                    <ul class="list-style-desc">
-                                                        <li>Store cream cakes in a refrigerator. Fondant cakes should be
-                                                            stored
-                                                            in an air
-                                                            conditioned environment.</li>
-                                                        <li>Slice and serve the cake at room temperature and make sure
-                                                            it is not
-                                                            exposed to
-                                                            heat.</li>
-                                                        <li>Use a serrated knife to cut a fondant cake.</li>
-                                                        <li>Sculptural elements and figurines may contain wire supports
-                                                            or
-                                                            toothpicks or
-                                                            wooden skewers for support.</li>
-                                                        <li>Please check the placement of these items before serving to
-                                                            small
-                                                            children.</li>
-                                                        <li>The cake should be consumed within 24 hours.</li>
-                                                        <li>Enjoy your cake!</li>
-                                                    </ul>
-                                                </div>
-                                            </article>
-
-                                            <article class="pb-4"
-                                                *ngIf="productDetails?.careInstrunctionForFlowerRequired">
-                                                <div class="py-2">
-                                                    <ul class="list-style-desc">
-                                                        <li>Trim the stems and place the flowers in a clean vase/bowl
-                                                            with clean
-                                                            water.</li>
-
-                                                        <li> Remove the leaves from stem to extend the life of the
-                                                            bouquet.</li>
-
-                                                        <li>Daily replace the water in the vase/bowl with fresh and
-                                                            clean
-                                                            water.s </li>
-                                                    </ul>
-                                                </div>
-                                            </article>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header"
-                                        *ngIf="productDetails?.careInstrunctionForCakeRequired || productDetails?.careInstrunctionForFlowerRequired">
-                                        <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#collapseFour"
-                                            aria-expanded="false" aria-controls="collapseFour">
-                                            Product Reviews
-                                        </button>
-                                    </h2>
-                                    <div id="collapseFour" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            <!-- product reviews -->
-                                            <div class="product-reviews">
-                                                <div class="d-flex justify-content-between">
-                                                    <!-- <div class="text-end align-self-center">
-                                <a href="javascript:void(0)" class="text-blue font-bold small">View all Reviews</a>
-                                <a href="javascript:void(0)" class="color-btn d-inline-block ms-3">Write Review</a>
-                            </div> -->
-                                                </div>
-                                                <p class="font-bold small pb-3">Reviews</p>
-
-                                                <div class="reviews-users">
-
-                                                    <ng-container *ngFor="let r of reviewData">
-
-                                                        <div
-                                                            class="user-review-item p-3 border rounded mb-2 background-white">
-                                                            <div class="d-flex justify-content-between">
-                                                                <div class="rating-stars">                                                                  
-
-                                                                    <span *ngFor="let number of [0,1,2,3,4]; index as i"
-                                                                        class="icon-star "
-                                                                        [class.font-primary]="r.avgReviewRate > i"></span>
-
-                                                                </div>
-                                                                <span class="small">{{r.reviewDate}}</span>
-                                                            </div>
-                                                            <div class="py-2">
-                                                                <h6 class="font-bold h6 pb-2">{{r.title}}</h6>
-                                                                <p class="font-gray pb-2">{{r.review}}</p>
-                                                                <p><span
-                                                                        class="font-bold">{{r.customerName}}</span><small
-                                                                        class="small d-inline-block ps-2"><i
-                                                                            class="bi bi-check-lg"></i>
-                                                                        Invoice
-                                                                        No:{{r.orderId}}</small></p>
-                                                            </div>
-                                                        </div>
-                                                    </ng-container>
-                                                </div>
-                                            </div>
-                                            <!--/ product reviews-->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/ accordion -->                       
-                        <!--/ product info tab ends-->
+                          </div>
 
 
+                        </div>
+                      </div>
                     </div>
-                    <!--/product info-->
+
+                    <div class="row">
+
+                      <div class="col-sm-6 pb-2" *ngIf="deliveryDates_array?.length">
+                        <div class="form-group">
+                          <label>Select Delivery Date </label>
+                          <div class="form-group d-flex p-1 p-md-2  background-lightprimary rounded">
+                            <span class="icon-calendar font-primary icomoon h5 d-none d-md-inline-block pe-2 align-self-center"></span>
+                            <select class="form-select" (change)="getBindDeliveryTimes($event)"
+                                    formControlName="deliveryDates">
+                              <option *ngFor="let o of deliveryDates_array"
+                                      [value]="o.deliveryDateValue">
+                                {{o.deliveryDateText}}
+                              </option>
+                            </select>
+                          </div>
+                          <div class="invalid-feedback mt-0 d-block"
+                               *ngIf="dynamicForm.get('deliveryDates')!.invalid && dynamicForm.get('deliveryDates')!.touched">
+                            <p class="error-message">Select Delivery Date</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 pb-2" *ngIf="deliveryDates_array?.length">
+                        <div class="form-group">
+                          <label>Select Time</label>
+                          <div class="form-group d-flex p-1 p-md-2  background-lightprimary rounded">
+                            <span class="icon-calendar font-primary icomoon h5 d-none d-md-inline-block pe-2 align-self-center"></span>
+                            <select class="form-select" formControlName="deliveryTimes">
+                              <option *ngFor="let o of deliveryTime" [value]="o.dtime">
+                                <ng-container *ngIf="currencySelected == 'INR'">{{o.dtime}}</ng-container>
+                                <ng-container *ngIf="currencySelected =='USD'">
+                                  {{o.dtimeCurrency}}
+                                </ng-container>
+                              </option>
+                            </select>
+                          </div>
+                          <div class="invalid-feedback mt-0 d-block"
+                               *ngIf="dynamicForm.get('deliveryTimes')!.invalid && dynamicForm.get('deliveryTimes')!.touched">
+                            <p class="error-message">Select Time</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-12" *ngIf="photoRequired">
+                        <label>Browse a picture for photo cake</label>
+                        <div class="form-group d-flex p-2  background-lightprimary rounded"
+                             [ngClass]="{'is-invalid': dynamicForm.get('photo')?.invalid  && dynamicForm.get('photo')!.touched}">
+                          <span class="icon-upload2 font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
+                          <input type="file" (change)="onFileSelected($event)" formControlName="photo"
+                                 accept="image/jpeg, image/png" class="form-control border-0 bg-transparent"
+                                 placeholder="Browse a picture for photo cake">
+                        </div>
+                        <div class="msg-hint"
+                             *ngIf="dynamicForm.get('photo')?.invalid && dynamicForm.get('photo')!.touched">
+                          Image Required
+                        </div>
+                      </div>
+                      <div class="col-md-12 mt-1" *ngIf="messageRequired">
+                        <label>Enter Message</label>
+                        <div class="form-group d-flex p-2  background-lightprimary rounded">
+                          <span class="icon-writing font-primary icomoon h5 d-inline-block pe-2 align-self-center"></span>
+                          <input formControlName="message" [(ngModel)]="textAreaInput"
+                                 class="form-control border-0 bg-transparent"
+                                 (input)="onMessageInputChange()"
+                                 placeholder="Incase of no message, leave it blank" maxlength="{{maxLengthFixed}}"
+                                 type="text">
+                        </div>
+                        <div class="pt-1">
+                          <p><small>{{maxLength}} characters allowed.</small></p>
+                        </div>
+                        <!-- <div
+              *ngIf="dynamicForm.get('message')?.hasError('maxLength') || isMaxLengthExceeded">
+              Maximum length is 25 characters allowed.
+          </div> -->
+                      </div>
+                      <div class="mt-3 d-md-flex addtocart-btn">
+                        <!-- <a href="javascript:void(0)" class="color-btn">Add to Cart</a> -->
+                        <button type="submit" class="large-btn border-0 background-green font-white">
+                          <span class="icon-cart"></span> Add
+                          to Cart
+                        </button>
+                        <span class="displaytime  font-semibold  ms-md-3 ms-1 px-2 py-1 small rounded-pill align-self-center h6">
+                          <span class="icon-circular-alarm-clock-tool d-inline-block me-1"></span>
+                          {{displayTime}} {{sameDayBlockMessage}}
+                        </span>
+                      </div>
+                      <div class="mt-3 d-md-flex addtocart-btn" *ngIf="courierProductMessage">
+                        <span class="small font-green font-semibold">{{courierProductMessage}}</span>
+                      </div>
+                      <div class="mt-3 d-md-flex addtocart-btn" *ngIf="fewStockMessage">
+                        <span class="small font-primary font-semibold">{{fewStockMessage}}</span>
+                      </div>
+                    </div>
+                  </form>
+                </ng-container>
+
+                <!-- poroduct info -->
+                <div class="product-info">
+                  <!-- product info tab starts -->
+                  <!-- accordion -->
+                  <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true"
+                                aria-cofntrols="collapseOne">
+                          Description
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse show"
+                           data-bs-parent="#accordionExample" *ngIf="productDetails?.description !=''">
+                        <div class="accordion-body">
+                          <article class="pb-2">
+                            <div class="d-flex">
+                              <div class="me-2">
+                                <span class="font-bold pb-3"> SKU :</span>
+                                <span class="font-primary font-semibold">{{productDetails?.productId}}</span>
+                              </div>
+                              <div class="d-none">
+                                <span class="font-bold pb-3">Vendor Code : </span>
+                                <span class="font-primary font-semibold">{{productDetails?.venderCode}}</span>
+                              </div>
+                            </div>
+                            <div class="py-2">
+                              <div [innerHtml]="productDetails?.description"></div>
+
+                              <div *ngIf="productDetails?.careInstrunctionForCakeRequired"
+                                   class="pt-2">
+                                <strong>Note:</strong> Every cake that we offer is handcrafted
+                                and since each chef has his/her own way of baking and designing
+                                the cake,
+                                there might be a slight variation in the product in terms of
+                                design
+                                when compared to the image displayed on the website. The color
+                                of the
+                                cake could vary based on the flavor selected. Having said that,
+                                we at
+                                Countryoven.com always make sure that all cakes are very similar
+                                to the corresponding images displayed on the website.
+                              </div>
+
+                              <div *ngIf="productDetails?.careInstrunctionForFlowerRequired">
+                                <strong>Note:</strong> Flowers may vary slightly from the image
+                                depending upon the local availability. countryoven.com holds the
+                                right to replace any flower and/or the color of flowers, vase,
+                                and
+                                basket based on availability. The replacement may be of
+                                equivalent or
+                                higher denomination than the representation on the website.
+                                Having said
+                                that, we at countryoven.com always make sure that all flowers
+                                are very
+                                similar to the corresponding images displayed on the website.
+                              </div>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" *ngIf="productDetails?.deliveryInformationRequired">
+                        <button class="accordion-button collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                aria-expanded="false" aria-controls="collapseTwo">
+                          Delivery Information
+                        </button>
+                      </h2>
+                      <div id="collapseTwo" class="accordion-collapse collapse"
+                           data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <article class="pb-2">
+                            <div class="py-2">
+                              <ul class="list-style-desc">
+                                <li>
+                                  Every cake we offer is handcrafted and since each chef has
+                                  his/her
+                                  own way of
+                                  baking and designing a cake, there might be slight variation
+                                  in the
+                                  product in
+                                  terms of design and shape.
+                                </li>
+                                <li>
+                                  The chosen delivery time is an estimate and depends on the
+                                  availability of the
+                                  product and the destination to which you want the product to
+                                  be
+                                  delivered.
+                                </li>
+                                <li>
+                                  Since cakes are perishable in nature, we attempt delivery of
+                                  your
+                                  order only
+                                  once. The delivery cannot be redirected to any other
+                                  address.
+                                </li>
+                                <li>
+                                  This product is hand delivered and will not be delivered
+                                  along with
+                                  courier
+                                  products.
+                                </li>
+                                <li>
+                                  Occasionally, substitutions of flavours/designs is necessary
+                                  due to
+                                  temporary
+                                  and/or regional unavailability issues.
+                                </li>
+                              </ul>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header"
+                          *ngIf="productDetails?.careInstrunctionForCakeRequired || productDetails?.careInstrunctionForFlowerRequired">
+                        <button class="accordion-button collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                aria-expanded="false" aria-controls="collapseThree">
+                          Care Instructions
+                        </button>
+                      </h2>
+                      <div id="collapseThree" class="accordion-collapse collapse"
+                           data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <article class="pb-2"
+                                   *ngIf="productDetails?.careInstrunctionForCakeRequired">
+                            <div class="py-2">
+                              <ul class="list-style-desc">
+                                <li>
+                                  Store cream cakes in a refrigerator. Fondant cakes should be
+                                  stored
+                                  in an air
+                                  conditioned environment.
+                                </li>
+                                <li>
+                                  Slice and serve the cake at room temperature and make sure
+                                  it is not
+                                  exposed to
+                                  heat.
+                                </li>
+                                <li>Use a serrated knife to cut a fondant cake.</li>
+                                <li>
+                                  Sculptural elements and figurines may contain wire supports
+                                  or
+                                  toothpicks or
+                                  wooden skewers for support.
+                                </li>
+                                <li>
+                                  Please check the placement of these items before serving to
+                                  small
+                                  children.
+                                </li>
+                                <li>The cake should be consumed within 24 hours.</li>
+                                <li>Enjoy your cake!</li>
+                              </ul>
+                            </div>
+                          </article>
+
+                          <article class="pb-4"
+                                   *ngIf="productDetails?.careInstrunctionForFlowerRequired">
+                            <div class="py-2">
+                              <ul class="list-style-desc">
+                                <li>
+                                  Trim the stems and place the flowers in a clean vase/bowl
+                                  with clean
+                                  water.
+                                </li>
+
+                                <li>
+                                  Remove the leaves from stem to extend the life of the
+                                  bouquet.
+                                </li>
+
+                                <li>
+                                  Daily replace the water in the vase/bowl with fresh and
+                                  clean
+                                  water.s
+                                </li>
+                              </ul>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header"
+                          *ngIf="productDetails?.careInstrunctionForCakeRequired || productDetails?.careInstrunctionForFlowerRequired">
+                        <button class="accordion-button collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#collapseFour"
+                                aria-expanded="false" aria-controls="collapseFour">
+                          Product Reviews
+                        </button>
+                      </h2>
+                      <div id="collapseFour" class="accordion-collapse collapse"
+                           data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <!-- product reviews -->
+                          <div class="product-reviews">
+                            <div class="d-flex justify-content-between">
+                              <!-- <div class="text-end align-self-center">
+                    <a href="javascript:void(0)" class="text-blue font-bold small">View all Reviews</a>
+                    <a href="javascript:void(0)" class="color-btn d-inline-block ms-3">Write Review</a>
+                </div> -->
+                            </div>
+                            <p class="font-bold small pb-3">Reviews</p>
+
+                            <div class="reviews-users">
+
+                              <ng-container *ngFor="let r of reviewData">
+
+                                <div class="user-review-item p-3 border rounded mb-2 background-white">
+                                  <div class="d-flex justify-content-between">
+                                    <div class="rating-stars">
+
+                                      <span *ngFor="let number of [0,1,2,3,4]; index as i"
+                                            class="icon-star "
+                                            [class.font-primary]="r.avgReviewRate > i"></span>
+
+                                    </div>
+                                    <span class="small">{{r.reviewDate}}</span>
+                                  </div>
+                                  <div class="py-2">
+                                    <h6 class="font-bold h6 pb-2">{{r.title}}</h6>
+                                    <p class="font-gray pb-2">{{r.review}}</p>
+                                    <p>
+                                      <span class="font-bold">{{r.customerName}}</span><small class="small d-inline-block ps-2">
+                                        <i class="bi bi-check-lg"></i>
+                                        Invoice
+                                        No:{{r.orderId}}
+                                      </small>
+                                    </p>
+                                  </div>
+                                </div>
+                              </ng-container>
+                            </div>
+                          </div>
+                          <!--/ product reviews-->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--/ accordion -->
+                  <!--/ product info tab ends-->
 
 
                 </div>
+                <!--/product info-->
+
+
+              </div>
             </div>
             <!--/ right -->
         </div>
