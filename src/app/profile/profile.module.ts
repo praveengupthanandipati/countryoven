@@ -14,6 +14,7 @@ import { MyaccountComponent } from './myaccount/myaccount.component';
 import { CowalletComponent } from './cowallet/cowallet.component';
 import { ReferralComponent } from './referral/referral.component';
 import { RrevComponent } from '../pages/rrev/rrev.component';
+import { BakeryReviewsComponent } from '../pages/bakery-reviews/bakery-reviews.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { RrevComponent } from '../pages/rrev/rrev.component';
     UserVouchersComponent,
     MyaccountComponent,
     CowalletComponent,
-    ReferralComponent
+    ReferralComponent,
+    BakeryReviewsComponent
   ],
   imports: [
     CommonModule,

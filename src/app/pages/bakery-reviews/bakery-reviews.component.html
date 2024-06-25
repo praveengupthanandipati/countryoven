@@ -1,0 +1,162 @@
+<section class="userProfile py-3">
+    <div class="userprofile-body">
+        <div class="row justify-content-center ">
+            <div class="col-md-8">
+                <h1 class="text-center h3 text-danger border-bottom pb-3 ">County Oven Bakery Review</h1>
+                <br />
+                <div class="container">
+                    <div class="card-header text-center">
+                        Tell others about your Experience-write a review
+                    </div>
+                    <!--<p class="text-center font-primary">
+                      Kindly leave a review to receive 20% off on your website order or 10% off on your bakery order.
+                    </p>-->
+                    <div class="p-2 p-md-5 bg-white shadow rounded mt-2 ">
+                      <form [formGroup]="reviewForm" class="form-horizontal">
+                        <p class="mb-4"><small class="text-muted">All Fields are Mandatory</small></p>
+                        <div class="group-gap">
+                          <label>Please Select Country Oven Outlet<span class="font-red">*</span></label>
+                          <div class="d-block my-3 ">
+                            <div class="custom-control custom-radio ">
+                              <input id="Ameerpet" type="radio" class="custom-control-input"
+                                     formControlName="oulet" value="Ameerpet" name="oulet" (keyup)="buttonValidation()">
+                              <label class="custom-control-label"
+                                     for="Ameerpet"> Ameerpet</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input id="Madhapur" type="radio" class="custom-control-input"
+                                     formControlName="oulet" value="Madhapur" name="oulet" (keyup)="buttonValidation()">
+                              <label class="custom-control-label"
+                                     for="Madhapur"> Madhapur</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input id="Sri Nagar Colony" type="radio" class="custom-control-input"
+                                     formControlName="oulet" value="Sri Nagar Colony" name="oulet" (keyup)="buttonValidation()">
+                              <label class="custom-control-label" for="Sri Nagar Colony"> Sri Nagar Colony
+                              </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input id="Mint Leaf" type="radio" class="custom-control-input"
+                                     formControlName="oulet" value="Mint Leaf" name="oulet" (keyup)="buttonValidation()">
+                              <label class="custom-control-label" for="Mint Leaf"> Mint Leaf</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="group-gap">
+                          <label>Type Of Order <span class="font-red">*</span></label>
+                          <div class="d-block my-3">
+                            <div class="custom-control custom-radio">
+                              <input id="Dine-In" type="radio" class="custom-control-input"
+                                     formControlName="orderType" value="Dine-In" name="orderType">
+                              <label class="custom-control-label"
+                                     for="Dine-In">Dine-In</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                              <input id="Take Away" type="radio" class="custom-control-input"
+                                     formControlName="orderType" value="Take Away" name="orderType" (keyup)="buttonValidation()">
+                              <label class="custom-control-label" for="Take Away">Take Away</label>
+                            </div>
+                          </div>
+                        </div>
+
+                        <label>Customer Name<span class="font-red">*</span></label>
+                        <div class="form-floating mb-3">
+                          <input [ngClass]="{'is-invalid' : reviewForm.get('customer')!.invalid && reviewForm.get('customer')!.touched}"
+                                 class="form-control" placeholder="Enter customer" formControlName="customer" (keyup)="buttonValidation()">
+                          <label for="userphone">
+                            Enter Customer Name <span class="font-red font-bold">*</span>
+                          </label>
+                          <div *ngIf="reviewForm.get('customer')!.invalid && reviewForm.get('customer')!.touched"
+                               class="invalid-feedback mt-0 d-block">
+                            Enter Customer Name
+                          </div>
+                        </div>
+                        <label>Mobile Number<span class="font-red">*</span></label>
+                        <div class="form-floating mb-3">
+                          <input [ngClass]="{'is-invalid' : reviewForm.get('mobileNumber')!.invalid && reviewForm.get('mobileNumber')!.touched}"
+                                 class="form-control" type="number" placeholder="Enter mobileNumber"
+                                 formControlName="mobileNumber" (keyup)="buttonValidation()">
+                          <label for="userphone">
+                            Enter Mobile Number <span class="font-red font-bold">*</span>
+                          </label>
+                          <div *ngIf="reviewForm.get('mobileNumber')!.invalid && reviewForm.get('customer')!.touched"
+                               class="invalid-feedback mt-0 d-block">
+                            Enter Mobile Number.
+                          </div>
+                        </div>
+                        <label>Email Id</label>
+                        <div class="form-floating mb-3">
+                          <input [ngClass]="{'is-invalid' : reviewForm.get('email')!.invalid && reviewForm.get('email')!.touched}"
+                                 class="form-control" placeholder="Enter Email" type="email" formControlName="email" (keyup)="buttonValidation()">
+                          <label for="userphone">Enter Email </label>
+                          <div *ngIf="reviewForm.get('email').invalid && (reviewForm.get('email').dirty || reviewForm.get('email').touched)"
+                               class="alert alert-danger">
+                            <div *ngIf="reviewForm.get('email')!.invalid">
+                              Enter Valid Email Id.
+                            </div>
+                          </div>
+                        </div>
+                        <div class="mb-3 font-primary">
+                          Please Provide your rating here:
+                        </div>
+                        <div class="mb-3">
+                          <label>Food quality<span class="font-red">*</span></label>
+                          <div class="rating">
+                            <span *ngFor="let star of productStar; let i = index" (click)="rate(star)"
+                                  [class.active]="productHighlightedStars[i]">&#9733;</span>
+                          </div>
+                          <div *ngIf="productReviewRate == 0 && reviewForm.get('customer')!.touched" class="invalid-feedback mt-0 d-block">
+                            Enter Food quality rating
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                          <label>Food Taste<span class="font-red">*</span></label>
+                          <div class="rating">
+                            <span *ngFor="let star of foodStar; let i = index" (click)="food(star)"
+                                  [class.active]="foodHighlightedStars[i]">&#9733;</span>
+                          </div>
+                          <div *ngIf="foodReviewRate == 0 && reviewForm.get('customer')!.touched" class="invalid-feedback mt-0 d-block">
+                            Enter
+                            Food Taste rating
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                          <label>Service<span class="font-red">*</span></label>
+                          <div class="rating">
+                            <span *ngFor="let star of ServiceWebstars; let i = index"
+                                  (click)="webRatingfn(star)"
+                                  [class.active]="ServiceWebhighlightedStars[i]">&#9733;</span>
+                          </div>
+                          <div *ngIf="ServiceReviewRate == 0 && reviewForm.get('customer')!.touched" class="invalid-feedback mt-0 d-block">
+                            Enter
+                            Service rating
+                          </div>
+                        </div>
+
+                        <div class="mb-3">
+                          <label>Ambience<span class="font-red">*</span></label>
+                          <div class="rating">
+                            <span *ngFor="let star of ambiencestars; let i = index" (click)="ambience(star)"
+                                  [class.active]="ambiencehlightedStars[i]">&#9733;</span>
+                          </div>
+                          <div *ngIf="ambienceReviewRate == 0 && reviewForm.get('customer')!.touched" class="invalid-feedback mt-0 d-block">
+                            Enter
+                            Ambience rating
+                          </div>
+                        </div>
+                        <label>Feedback/Suggestion</label>
+                        <div class="form-floating mb-3">
+                          <textarea class="form-control" placeholder="Enter Review" formControlName="review"
+                                    style="height:120px" (keyup)="buttonValidation()"></textarea>
+                          <label>Write a review</label>
+                          <div *ngIf="reviewForm.get('review')!.invalid && reviewForm.get('review')!.touched"
+                               class="invalid-feedback mt-0 d-block">
+                            Write a review
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="submit" [disabled]="!buttonAction" (click)="onaddreview()"
+                                  class="color-border-btn">
+                            Submit
+                            Rating
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

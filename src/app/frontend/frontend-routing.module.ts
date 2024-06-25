@@ -35,6 +35,7 @@ import { FathersDayCakesComponent } from '../pages/occasions/fathers-day-cakes/f
 import { FathersDayFlowersComponent } from '../pages/occasions/fathers-day-flowers/fathers-day-flowers.component';
 import { FathersDayGiftsComponent } from '../pages/occasions/fathers-day-gifts/fathers-day-gifts.component';
 import { FathersDayHampersComponent } from '../pages/occasions/fathers-day-hampers/fathers-day-hampers.component';
+import { BakeryReviewsComponent } from '../pages/bakery-reviews/bakery-reviews.component';
 
 const routes: Routes = [
   {
@@ -64,7 +65,8 @@ const routes: Routes = [
       
       {path:'content/ourstores', component:StoresComponent},
       {path: 'reviews', component:ReviewsComponent},
-      { path: 'rrev/index/1', component: RrevComponent },
+      { path: 'rrev/index/:id', component: RrevComponent },
+      {path:'bakeryreview', component:BakeryReviewsComponent},
       {path:'customgifts', component:CustomgiftsComponent},
       {path: 'notifications', component:NotificationsComponent},
       {path: 'content/contactus', component:ContactComponent},  

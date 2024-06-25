@@ -357,7 +357,10 @@ postcustomize(obj:any):Observable<any>{
 
     return this.http.post(`${environment.apiUrl}/Reviews/RecAdd`, obj)
   }
+  addRating1(obj: any): Observable<any> {
 
+    return this.http.post(`${environment.apiUrl}/Reviews/Bakery`, obj)
+  }
     getReview(obj:any):Observable<any>{
   
       return this.http.post(`${environment.apiUrl}/Reviews/GetAll`,obj)
