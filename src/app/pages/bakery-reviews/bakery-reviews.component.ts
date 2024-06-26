@@ -31,7 +31,7 @@ export class BakeryReviewsComponent {
       review: [''],
       orderType: ['', Validators.required],
       oulet: ['', Validators.required],
-      mobileNumber: ['', Validators.required],
+      mobileNumber: ['', [Validators.required, Validators.pattern(/^\d{10,15}$/)]],
       email: ['', Validators.email],
     });
   }
@@ -51,61 +51,62 @@ export class BakeryReviewsComponent {
   rate(rating: number): void {
     this.productReviewRate = rating;
     this.productHighlightedStars = this.productStar.map((_, i) => i + 1 <= rating);
-    this.buttonValidation();
+    this.buttonValidation('ptodiuct', '');
   }
   food(rating: number): void {
     this.foodReviewRate = rating;
     this.foodHighlightedStars = this.foodStar.map((_, i) => i + 1 <= rating);
-    this.buttonValidation();
+    this.buttonValidation('food', '');
   }
   ambience(rating: number): void {
     this.ambienceReviewRate = rating;
     this.ambiencehlightedStars = this.foodStar.map((_, i) => i + 1 <= rating);
-    this.buttonValidation();
+    this.buttonValidation('amience', '');
   }
   webRatingfn(r: any) {
     this.ServiceReviewRate = r;
     this.ServiceWebhighlightedStars = this.ServiceWebstars.map((_, i) => i + 1 <= r);
-    this.buttonValidation();
+    this.buttonValidation('service', '');
   }
-  buttonValidation() {
-    if (this.ambienceReviewRate > 0 && this.foodReviewRate > 0 
+  buttonValidation(event: any, name: any) {
+    if (this.ambienceReviewRate > 0 && this.foodReviewRate > 0
       && this.productReviewRate > 0 && this.ServiceReviewRate > 0
-       && this.reviewForm.valid) {
+      && this.reviewForm.valid) {
       this.buttonAction = true;
     }
+
   }
   onaddreview() {
-    if (this.ambienceReviewRate > 0 && this.foodReviewRate > 0 
+    if (this.ambienceReviewRate > 0 && this.foodReviewRate > 0
       && this.productReviewRate > 0 && this.ServiceReviewRate > 0
-       && this.reviewForm.valid) {
-    const payload = {
-      "reviewsDetails": {
-        "customerName": this.reviewForm.controls.customer.value,
-        "mobileNumber": this.reviewForm.controls.mobileNumber.value.toString(),
-        "email": this.reviewForm.controls.email.value,
-        "comments": this.reviewForm.controls.review.value,
-        "reviewDate": new Date(),
-        "status": true,
-        "orderType": this.reviewForm.controls.orderType.value,
-        "outlet": this.reviewForm.controls.oulet.value,
-        "productRating": this.productReviewRate,
-        "serviceRating": this.ServiceReviewRate,
-        "foodTasteRating": this.foodReviewRate,
-        "ambienceRating": this.ambienceReviewRate
+      && this.reviewForm.valid) {
+      const payload = {
+        "reviewsDetails": {
+          "customerName": this.reviewForm.controls.customer.value,
+          "mobileNumber": this.reviewForm.controls.mobileNumber.value.toString(),
+          "email": this.reviewForm.controls.email.value,
+          "comments": this.reviewForm.controls.review.value,
+          "reviewDate": new Date(),
+          "status": true,
+          "orderType": this.reviewForm.controls.orderType.value,
+          "outlet": this.reviewForm.controls.oulet.value,
+          "productRating": this.productReviewRate,
+          "serviceRating": this.ServiceReviewRate,
+          "foodTasteRating": this.foodReviewRate,
+          "ambienceRating": this.ambienceReviewRate
+        }
       }
-    }
-    this._crud.addRating1(payload).subscribe(res => {
-      if (!res.isEroor) {
-        this.toastr.success(res.successMessage);
-        this.cancel();
-      }
-      else {
-        this.toastr.error(res.errorMessage)
-      }
+      this._crud.addRating1(payload).subscribe(res => {
+        if (!res.isEroor) {
+          this.toastr.success(res.successMessage);
+          this.cancel();
+        }
+        else {
+          this.toastr.error(res.errorMessage)
+        }
 
-    });
-  }
+      });
+    }
   }
   cancel() {
     this.reviewForm.reset();
