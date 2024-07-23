@@ -57,72 +57,19 @@
                                 </h5>
                                 <div class="links d-none d-lg-block" [class.d-none]="!menu.show">
                                     <ng-container *ngFor="let sm of menu.footerLinks">
-                                        <a href="javascript:void(0)" [routerLink]="'/' +sm.seoTitle">{{sm.title}}</a>
+                                        <a title="{{sm.title}}" href="javascript:void(0)" [routerLink]="'/' +sm.seoTitle">{{sm.title}}</a>
                                     </ng-container>
                                 </div>
                             </div>
                         </ng-container>
 
-
-                        <!-- <div class="links-col">
-                            <h5 class="h5 text-uppercase font-extrabold">Customer Services</h5>
-                            <div class="links">
-                                <a href="javascript:void(0)">Customize a Cake</a>
-                                <a href="javascript:void(0)">Corporate Orders</a>
-                                <a href="javascript:void(0)">Referral Program</a>
-                                <a href="javascript:void(0)">Support</a>
-                                <a href="javascript:void(0)">Help</a>
-                            </div>
-                        </div>
-                        <div class="links-col">
-                            <h5 class="h5 text-uppercase font-extrabold">Help</h5>
-                            <div class="links">
-                                <a href="javascript:void(0)">FAQ’s</a>
-                                <a href="javascript:void(0)">Shipping / Delivery</a>
-                                <a href="javascript:void(0)">Delivery Cities</a>
-                                <a href="javascript:void(0)">Return Policy</a>
-                                <a href="javascript:void(0)">Privacy Policy</a>
-                            </div>
-                        </div>
-                        <div class="links-col">
-                            <h5 class="h5 text-uppercase font-extrabold">Gift's by City</h5>
-                            <div class="links">
-                                <a href="javascript:void(0)">Hyderabad</a>
-                                <a href="javascript:void(0)">Bengaluru</a>
-                                <a href="javascript:void(0)">Vizag</a>
-                                <a href="javascript:void(0)">Vijayawada</a>
-                                <a href="javascript:void(0)">Chennai</a>
-                                <a href="javascript:void(0)" class="morelink font-bold">More Cities....</a>
-                            </div>
-                        </div>
-                        <div class="links-col">
-                            <h5 class="h5 text-uppercase font-extrabold">Occasions</h5>
-                            <div class="links">
-                                <a href="javascript:void(0)">1st Anniversary Gifts</a>
-                                <a href="javascript:void(0)">25th Anniversary Gifts</a>
-                                <a href="javascript:void(0)">1st Birthday Cakes</a>
-                                <a href="javascript:void(0)">Birthday Cakes</a>
-                                <a href="javascript:void(0)">Anniversary Cakes</a>
-                                <a href="javascript:void(0)" class="morelink font-bold">More Occasions....</a>
-                            </div>
-                        </div>
-                        <div class="links-col">
-                            <h5 class="h5 text-uppercase font-extrabold">Sitemap</h5>
-                            <div class="links">
-                                <a href="javascript:void(0)">Category Sitemap</a>
-                                <a href="javascript:void(0)">Subcategory Sitemap</a>
-                                <a href="javascript:void(0)">Occasion Sitemap</a>
-                                <a href="javascript:void(0)">Special Sitemap</a>
-                                <a href="javascript:void(0)">Product Detail Sitemap</a>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
                     <h5 class="h5 text-uppercase font-extrabold pb-0">News Letter</h5>
-                    <p><small>Get updates on promotions and offers coupons</small></p>
+                    <p><small>Subscribe for exclusive deals and latest updates</small></p>
                     <form [formGroup]="form" (ngSubmit)="subscribe()">
                         <div class="form-group d-flex newsletter mb-4 shadow">
                             <input type="text" class="form-control border-0 rounded-0" name="" placeholder="Your Email"
@@ -136,15 +83,16 @@
                 </div>
                 <div class="col-md-4 align-self-center">
                     <div class="text-end">
-                        <img src="assets/images/footer-cards.png" alt="" class="payment-img" />
+                        <img src="assets/images/footer-cards.png" alt="Footer Cards" height="34" width="353" title="Footer Cards" class="payment-img" />
                     </div>
                 </div>
                 <div class="col-md-4 align-self-center">
+                  <!--<div class=" text-uppercase font-semibold text-center">upcoming occasions</div>-->
                     <div class="footer-mainlinks pt-3 text-center" *ngIf="footerlinks && footerlinks[0]">
                         <ng-container *ngFor="let sm of footerlinks[0].footerLinks">
                             <ng-container *ngIf="sm.title !='Blog'">
                                 <a href="javascript:void(0)" [routerLink]="sm.seoTitle"
-                                    class="">{{sm.title}}</a>
+                                    class="font-fbold">{{sm.title}}</a>
                             </ng-container>
                             <ng-container *ngIf="sm.title=='Blog'">
                                 <a [href]="'https://' + sm.seoTitle" target="_blank"
@@ -167,21 +115,21 @@
                     <div class="footer-social">
                       <a href="https://www.facebook.com/countryovenbakeries/" target="_blank"
                          class="d-inline-block p-3">
-                        <span class="icon-fb icomoon"></span>
+                        <span class="icon-fb icomoon"></span><p class="d-none">Facebook</p>
                       </a>
                         <a href="https://twitter.com/CountryOven93" target="_blank" class="d-inline-block p-3">
-                            <span class="icon-twitter icomoon"></span>
+                            <span class="icon-twitter icomoon"></span><p class="d-none">Twitter</p>
                         </a>
 
                         <a href="https://in.pinterest.com/CountryOven4U/" target="_blank" class="d-inline-block p-3">
-                            <span class="icon-pinterest icomoon"></span>
+                            <span class="icon-pinterest icomoon"></span><p class="d-none">Pinterest</p>
                         </a>
                         <a href="https://www.instagram.com/countryovenbakers/" target="_blank"
                             class="d-inline-block p-3">
-                            <span class="icon-instagram icomoon"></span>
+                            <span class="icon-instagram icomoon"></span><p class="d-none">Instagram</p>
                         </a>
                         <a href="https://countryovenglobal.blogspot.com/" target="_blank" class="d-inline-block p-3">
-                            <span class="icon-Blogspot icomoon"></span>
+                            <span class="icon-Blogspot icomoon"></span><p class="d-none">Blog</p>
                         </a>
                     </div>
                 </div>

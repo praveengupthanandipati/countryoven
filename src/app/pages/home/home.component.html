@@ -9,15 +9,10 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item" *ngFor="let b of banners; let i = index" [class.active]="i === 0">
-                <img [src]="b.imageName" [alt]="b.seoName" (click)="gotoroute(b.type, b.seoName)"
+                <img [src]="b.imageName" [alt]="b.name" [title]="b.name" [height]="549" [width]="1920" (click)="gotoroute(b.type, b.seoName)" 
                     class="img-fluid w-100">
             </div>
-            <!-- <div class="carousel-item">
-                <img src="assets/images/banner02.jpg" alt="" class="img-fluid w-100">
-            </div>
-            <div class="carousel-item">
-                <img src="assets/images/banner03.jpg" alt="" class="img-fluid w-100">
-            </div> -->
+            
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
             data-bs-slide="prev">
@@ -32,54 +27,8 @@
     </div>
 </section>
 <app-categories *ngIf="iconicBanners" [iconicBanners]="iconicBanners"></app-categories>
-<!-- Find gifts-->
-<!-- <section class="find-gifts">
-    <div class="container">
-        <div class="section-title">
-            <h5 class="h5 font-bold">Find Gifts For your Loved Ones</h5>
-            <P>Celebrate with Surprise Your Loved Ones</P>
-        </div>
-        <form class="form">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="form-group d-flex pincode">
-                        <span class="icon-pin icomoon align-self-center"></span>
-                        <input type="text" placeholder="Enter Pincode"
-                            class="form-control w-100 border-0 bg-transparent">
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Select Occasion</option>
-                            <option value="1">Birthday</option>
-                            <option value="2">Anniversary</option>
-                            <option value="3">Other Celebrations</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Select Gift Type</option>
-                            <option value="1">Cakes</option>
-                            <option value="2">Flowers</option>
-                            <option value="3">Combos</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <button class="color-btn text-uppercase w-100 border-0 border-radius-0 font-bold">Find
-                        Gifts</button>
-                </div>
-            </div>
-        </form>
 
-    </div>
-</section> -->
-<!--/ Find gifts-->
 <app-category-banners *ngIf="smallBanners" [smallBanners]="smallBanners"></app-category-banners>
-
 
 <ng-container *ngFor="let cat of productSecions">
 

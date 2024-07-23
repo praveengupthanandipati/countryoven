@@ -76,9 +76,9 @@
                   [ngClass]="{'is-invalid' : reviewForm.get('mobileNumber')!.invalid && reviewForm.get('mobileNumber')!.touched}"
                   class="form-control" type="number" placeholder="Enter mobileNumber"
                   formControlName="mobileNumber"(keyup)="buttonValidation($event,'mobileNumber')">
-                <!-- <label for="userphone">
+                 <label for="userphone">
                   Enter Mobile Number <span class="font-red font-bold">*</span>
-                </label> -->
+                </label> 
                 <div *ngIf="reviewForm.get('mobileNumber')!.invalid && reviewForm.get('mobileNumber')!.touched"
                   class="invalid-feedback mt-0 d-block">
                   Please Enter Valid Mobile Number.

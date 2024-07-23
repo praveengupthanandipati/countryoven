@@ -36,6 +36,8 @@ import { FathersDayFlowersComponent } from '../pages/occasions/fathers-day-flowe
 import { FathersDayGiftsComponent } from '../pages/occasions/fathers-day-gifts/fathers-day-gifts.component';
 import { FathersDayHampersComponent } from '../pages/occasions/fathers-day-hampers/fathers-day-hampers.component';
 import { BakeryReviewsComponent } from '../pages/bakery-reviews/bakery-reviews.component';
+import { BirthdayCakesComponent } from '../pages/occasions/birthday-cakes/birthday-cakes.component';
+import { ParentsDayComponent } from '../pages/occasions/parents-day/parents-day.component';
 
 const routes: Routes = [
   {
@@ -53,6 +55,8 @@ const routes: Routes = [
       { path: 'order/fathers-day-gifts-online', component: FathersDayGiftsComponent },
       { path: 'order/fathers-day-hampers-online', component: FathersDayHampersComponent },
 
+      { path: 'birthday-cakes', component: BirthdayCakesComponent },
+      { path: 'parents-day-gifts', component: ParentsDayComponent },
 
 
       {path: 'franchise', component:FranchisesComponent}, 

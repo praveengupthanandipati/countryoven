@@ -41,28 +41,6 @@
                         </div>
                     </div>
                     <!-- carousel -->
-                    <!-- <div *ngIf="isMultipleImages" id="carouselExampleDark"
-                        class="carousel carousel-dark slide product-detail-carousel d-flex justify-content-between"
-                        data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                            <ng-container *ngFor="let th of productIamges; index as i">
-                                <button type="button" data-bs-target="#carouselExampleDark" [attr.data-bs-slide-to]=i
-                                    class="active" aria-current="true" aria-label="Slide 1">
-                                    <img [src]="th.imageName" class="img-fluid w-100" alt="..."></button>
-                            </ng-container>
-                        </div>
-                        <div class="carousel-inner">
-                            <ng-container *ngFor="let th of productIamges; index as i">
-                                <div class="carousel-item" [class.active]="i ==0" data-bs-interval="10000">
-                                    <img [src]="th.imageName" class="img-fluid w-100" alt="...">
-                              
-                                  
-                              
-                                </div>
-                            </ng-container>
-                            <span class="tagbadge" *ngIf="tagMsg" [class]="tagClass">{{tagMsg}}</span>
-                        </div>
-                    </div> -->
                     <div *ngIf="!isMultipleImages">
 
                         <lib-ngx-image-zoom [thumbImage]=productDetails?.imageName
@@ -112,7 +90,7 @@
                           [class]="currencyClass"></span>{{productDetails?.productPrice}}
                   </div>
                   <div class="offer-percentage align-self-center " *ngIf="productDetails?.discount">
-                    <small class="font-bold">({{productDetails?.discount}}% off)</small>
+                    <small class="font-bold">({{productDetails?.discount}}% OFF)</small>
                   </div>
                   <!-- <p class="align-self-center ps-2 small">Inclusive of all taxes</p> -->
                 </div>
@@ -350,7 +328,7 @@
                           <article class="pb-2">
                             <div class="d-flex">
                               <div class="me-2">
-                                <span class="font-bold pb-3"> SKU :</span>
+                                <span class="font-bold pb-3"> SKU : </span>
                                 <span class="font-primary font-semibold">{{productDetails?.productId}}</span>
                               </div>
                               <div class="d-none">

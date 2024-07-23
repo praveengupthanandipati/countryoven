@@ -31,8 +31,6 @@ export class MothersDayCakesComponent  {
       link.href = 'https://www.countryoven.com/order/mothers-day-cakes-online'; // Replace with your canonical URL
       this.renderer.appendChild(document.head, link);
     }
-
-
   }
 }
 

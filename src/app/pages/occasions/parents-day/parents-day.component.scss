@@ -1,0 +1,315 @@
+@import "../../../../styles/styles";
+
+.list-products-body {
+  .products-filters {
+    padding: 15px 0 0 0;
+    font-size: $fsize - 2;
+
+    @include max(map-get($breakpoints, "md")) {
+      padding: 10px 0 15px 0;
+    }
+
+    .filter-dropdowns {
+      button.dropdown-toggle {
+        background: none;
+        padding: 5px 7px;
+        border-radius: 5px;
+        border: 1px solid map-get($colors, gray);
+        font-size: $fsize - 1;
+
+        @include max(map-get($breakpoints, "md")) {
+          padding: 5px;
+          width: 100%;
+          margin-top: 3px;
+        }
+      }
+      .item-filter-dropdown {
+        @include max(map-get($breakpoints, "md")) {
+          width: 46%;
+          margin-bottom: 10px;
+          margin: 0 5px;
+
+          button {
+            text-align: left;
+          }
+        }
+      }
+      .dropdown-item {
+        cursor: pointer;
+
+        span {
+          font-size: $fsize - 2;
+        }
+
+        &:active {
+          background: none;
+        }
+      }
+    }
+  }
+}
+.products-list-items {
+  .app-product-col {
+    margin-bottom: 25px;
+  }
+}
+
+.pagenavrow {
+  padding: 45px 0;
+  color: map-get($colors, black);
+
+  .page-item {
+    background: map-get($colors, white);
+    margin: 0 3px;
+
+    .page-link {
+      border-radius: 4px;
+      color: map-get($colors, black);
+      font-size: $fsize - 1;
+
+      &:hover {
+        background: map-get($colors, primary);
+        color: map-get($colors, white);
+      }
+    }
+  }
+  .active {
+    .page-link {
+      background: map-get($colors, primary);
+      color: map-get($colors, white);
+      border-color: map-get($colors, primary);
+    }
+  }
+}
+
+.filters-display {
+  @include max(map-get($breakpoints, "md")) {
+    padding-bottom: 1rem;
+  }
+  a {
+    background: map-get($colors, lightgray);
+    padding: 10px;
+    color: map-get($colors, black);
+    margin-right: 10px;
+    font-size: $fsize - 2;
+    display: inline-block;
+    cursor: pointer;
+
+    @include max(map-get($breakpoints, "sm")) {
+      padding: 5px;
+      margin-bottom: 5px;
+    }
+
+    .icomoon {
+      font-size: $fsize - 4;
+      margin-right: 10px;
+    }
+  }
+}
+
+.breadcrumb-item {
+  font-size: $fsize - 2;
+  a {
+    cursor: pointer;
+    &:hover {
+      color: #bf0067 !important;
+    }
+  }
+}
+
+.loadmore {
+  color: map-get($colors, white);
+  font-weight: 600;
+  cursor: pointer;
+  padding-left: 35px;
+  padding-right: 35px;
+}
+app-noproducts-found {
+  text-align: center;
+}
+.filter-btn {
+  // position: fixed;
+  // bottom: 0;
+  // left: 0;
+  padding: 0 10px;
+  text-align: center;
+  // z-index: 999;
+  // width: 100%;
+  border-radius: 5px;
+}
+
+.filter-mobile {
+  @include transition(all, 0.3s ease);
+  @include max(map-get($breakpoints, "md")) {
+    background: white;
+    padding: 1rem;
+    margin-bottom: 20px;
+    // position: fixed;
+    // bottom: 40px;
+    // overflow: auto;
+    // height: 100vh;
+    // z-index: 99;
+    // left: 0;
+    // right: 0;
+    @include box-shadow(0, 0, 10px, map-get($colors, gray));
+    // width: 100%;
+    border-radius: 10px;
+  }
+}
+
+.dropdown-menu {
+  li.dropdown-item-filter {
+    height: 240px;
+    overflow-y: auto;
+  }
+}
+
+.app-product-item {
+  height: 100%;
+  @include transition(all, 0.2s ease);
+  border-radius: 10px;
+
+  @include max(map-get($breakpoints, "md")) {
+    border-radius: 10px;
+    height: auto;
+  }
+
+  border: 1px solid map-get($colors, lightgray);
+
+  .product-item-figure {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    img {
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      @include transition(all, 0.2s ease);
+      // height: 440px;
+      // object-fit: cover;
+      @include max(map-get($breakpoints, "sm")) {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        // height: 160px;
+      }
+
+      @include minMax( map-get($breakpoints, "sm"), map-get($breakpoints, "lg") ) {
+        // height: 240px;
+      }
+
+      @include minMax( map-get($breakpoints, "lg"), map-get($breakpoints, "xxl") ) {
+        // height: 300px;
+      }
+    }
+
+    .seller-label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: map-get($colors, primary);
+      color: map-get($colors, white);
+      font-size: $fsize - 3;
+      padding: 5px;
+      border-top-left-radius: 20px;
+    }
+  }
+
+  .item-title {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    position: relative;
+    @include transition(all, 0.2s ease);
+
+    @include max(map-get($breakpoints, "sm")) {
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+
+    h5 {
+      font-size: $fsize - 1;
+      line-height: 1.5rem;
+      height: 30px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      @include max(map-get($breakpoints, "md")) {
+        line-height: 1.1rem;
+        font-size: $fsize - 3;
+        height: 30px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+        white-space: nowrap;
+      }
+
+      a {
+        color: map-get($colors, darkgray);
+      }
+    }
+
+    .item-footer {
+      font-size: $fsize - 2;
+
+      @include max(map-get($breakpoints, "md")) {
+        font-size: $fsize - 4;
+      }
+
+      .icomoon {
+        color: map-get($colors, primary);
+        margin-right: 5px;
+      }
+
+      .deliver-date {
+        p {
+          color: map-get($colors, black);
+
+          span {
+            color: map-get($colors, primary);
+          }
+        }
+      }
+    }
+  }
+
+  &:hover {
+    @include box-shadow(0, 3px, 8px, lighten(map-get($colors, gray), 20%));
+
+    .item-title {
+      margin-top: -15px;
+    }
+
+    .product-item-figure {
+      img {
+        transform: scale(1.06, 1.06);
+      }
+    }
+  }
+}
+
+.tagbadge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 10px;
+  color: #ffffff;
+  padding: 5px;
+  text-transform: uppercase;
+  border-top-left-radius: 10px;
+}
+
+.greencls {
+  background: green;
+}
+
+.errorcls {
+  background: #ff0000;
+}
+
+.bluecls {
+  background: #005bc2;
+}
+
+.rating-specialpage{
+    width:150px;   
+}

@@ -251,7 +251,7 @@ decrementbtn:boolean=false
       }
       else
       {
-        if (this.firstlistItem?.totalAmount <= 250/75) {
+        if (this.firstlistItem?.totalAmount <= 250/80) {
           this.outofdatemessage = true;
           this.MinCartMessage = "Minimum Cart Value is greater than 3$";
         }
@@ -301,7 +301,6 @@ this.updateCartItem(sno,quntity, index, 'd')
       }
       else
       {
-        console.log(res)
         this.cartItems[index].errmsg = res.errorMessage;
 if(status =='i')
   {

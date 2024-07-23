@@ -69,7 +69,6 @@ export class AppComponent implements OnInit {
           localStorage.setItem('currency', 'INR')
         }
 
-console.log('krishna')
         this._crud.updateCurrencyData(localStorage.getItem('currency'));
 
       });

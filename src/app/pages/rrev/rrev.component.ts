@@ -36,7 +36,6 @@ export class RrevComponent {
     this.ServiceWebstars = Array(5).fill(0).map((_, i) => i + 1);
     this.ServiceWebhighlightedStars = Array(5).fill(false);
     this.orderId = this.route1.url;
-    console.log(this.orderId._value[2].path)
   }
   rate(rating: number): void {
     this.productReviewRate = rating;

@@ -1,24 +1,25 @@
-<div class="stickyribbon">
+<div class="stickyribbon ">
     <div class="toggle_contact" (click)="toggleContactRibbon()" [ngClass]="{'rightribbon': showContactRibbon}">
         <span [ngClass]="showContactRibbon ? 'icon-left-chevron': 'icon-close'"></span>
     </div>
     <div class="contact-ribbon" [ngClass]="{'hideribbon': showContactRibbon}">
         <a target="_blank" href="https://api.whatsapp.com/send?phone=+919848155830&text=Hi"
-            class="sticky-ribbon-link wapp">
+            class="sticky-ribbon-link wapp"><p class="d-none">Whatsapp</p>
             <span class="icon-whatsapp icomoon"></span>
         </a>
         <!-- mobile-->
         <a href="tel:+919848155830" class="sticky-ribbon-link call-customercare d-flex d-lg-none">
-            <span class="icon-call icomoon"></span>
+            <span class="icon-call icomoon"></span><p class="d-none">(+91)9848155830</p>
         </a>
         <!--/ mobile-->
         <!-- desktop-->
         <a href="#contactpop" class="sticky-ribbon-link call-customercare d-none d-lg-flex" data-bs-toggle="modal">
-            <span class="icon-call icomoon"></span>
+            <span class="icon-call icomoon"></span><p class="d-none">Contact popup</p>
         </a>
         <!--/ desktop-->
         <a href="content/contactus" class="sticky-ribbon-link msg">
-            <span class="icon-email icomoon"></span>
+          <span class="icon-email icomoon"></span>
+          <p class="d-none">Contact us</p>
         </a>
         <a routerLink="/notifications" class="sticky-ribbon-link notifications">
             <span class="icon-notification icomoon"></span>
