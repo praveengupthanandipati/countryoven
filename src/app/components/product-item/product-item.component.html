@@ -1,41 +1,52 @@
 <div class="app-product-item">
-    <figure class="product-item-figure">
-        <!-- <a [routerLink]="'/product-detail/' + Productvalue.seoProductName" > -->
-        <a [routerLink]="'/'+city + '/send-online/' + Productvalue.seoProductName">
-            <!-- hyderabad/send-online/ -->
-            <img src="{{Productvalue.imageURL}}" alt="{{Productvalue.altProductName}}" title="{{Productvalue.altProductName}}" class="img-fluid w-100">
-            <span class="tagbadge" *ngIf="tagMsg" [class]="tagClass">{{tagMsg}}</span>
-        </a>
-        <!-- <span class="seller-label">{{Productvalue.productName}}</span> -->
-    </figure>
-    <div class="item-title p-2 p-md-3 bg-white">
-        <h5>
-            <a [routerLink]="'/'+city + '/send-online/' + Productvalue.seoProductName"
-                href="javascript:void(0)">{{Productvalue.productName}}</a>
-        </h5>
-        <div class="price d-flex py-md-2 border-bottom">
-            <div class="offer-price font-semibold"><span class="icomoon font-semibold"
-                    [class]="currencyClass"></span>{{Productvalue.dicountPrice}}</div>
-            <ng-container *ngIf="Productvalue.discount > 0">
-                <div class="mrp font-semibold align-self-center px-2">
-                    <span class="icon-issr icomoon font-semibold"
-                        [class]="currencyClass"></span>{{Productvalue.productPrice}}
-                </div>
-                <div class="offer-percentage align-self-center "><small
-                        class="font-semibold">{{Productvalue.discount}}% OFF</small></div>
-            </ng-container>
+  <figure class="product-item-figure">
+    <!-- <a [routerLink]="'/product-detail/' + Productvalue.seoProductName" > -->
+    <a [routerLink]="'/'+city + '/send-online/' + Productvalue.seoProductName">
+      <!-- hyderabad/send-online/ -->
+      <!--<picture>
+    <source data-srcset="{{Productvalue.we}}" type="image/webp" srcset="{{Productvalue.imageURL}}">
+    <img width="400" height="400" class="img-fluid w-100"
+         src="{{Productvalue.imageURL}}" data-src="{{Productvalue.imageURL}}"
+         alt={{Productvalue.altProductName}} title="{{Productvalue.altProductName}}">
+  </picture>-->
+      <img src="{{Productvalue.webpImageURL}}" alt="{{Productvalue.altProductName}}" title="{{Productvalue.altProductName}}" class="img-fluid w-100">
+      <span class="tagbadge" *ngIf="tagMsg" [class]="tagClass">{{tagMsg}}</span>
+    </a>
+    <!-- <span class="seller-label">{{Productvalue.productName}}</span> -->
+  </figure>
+  <div class="item-title p-2 p-md-3 bg-white">
+    <h5>
+      <a [routerLink]="'/'+city + '/send-online/' + Productvalue.seoProductName"
+         href="javascript:void(0)">{{Productvalue.productName}}</a>
+    </h5>
+    <div class="price d-flex py-md-2 border-bottom">
+      <div class="offer-price font-semibold">
+        <span class="icomoon font-semibold"
+              [class]="currencyClass"></span>{{Productvalue.dicountPrice}}
+      </div>
+      <ng-container *ngIf="Productvalue.discount > 0">
+        <div class="mrp font-semibold align-self-center px-2">
+          <span class="icon-issr icomoon font-semibold"
+                [class]="currencyClass"></span>{{Productvalue.productPrice}}
         </div>
-        <div class="d-flex justify-content-between pt-2 item-footer">
-            <div>
-                <p *ngIf="Productvalue.weightText"><span class="font-semibold">{{Productvalue.weightText}}</span></p>
-
-                <!-- <span class="icon-star icomoon"></span>
-                <span>{{Productvalue.Rating}}</span> -->
-            </div>
-            <div class="deliver-date">
-                <p class="font-semibold"><span class="me-0 icon-calendar icomoon"></span> &nbsp;
-                    <span>{{Productvalue.leadTimeDays}}</span></p>
-            </div>
+        <div class="offer-percentage align-self-center ">
+          <small class="font-semibold">{{Productvalue.discount}}% OFF</small>
         </div>
+      </ng-container>
     </div>
+    <div class="d-flex justify-content-between pt-2 item-footer">
+      <div>
+        <p *ngIf="Productvalue.weightText"><span class="font-semibold">{{Productvalue.weightText}}</span></p>
+
+        <!-- <span class="icon-star icomoon"></span>
+        <span>{{Productvalue.Rating}}</span> -->
+      </div>
+      <div class="deliver-date">
+        <p class="font-semibold">
+          <span class="me-0 icon-calendar icomoon"></span> &nbsp;
+          <span>{{Productvalue.leadTimeDays}}</span>
+        </p>
+      </div>
+    </div>
+  </div>
 </div>

@@ -43,8 +43,8 @@
                     <!-- carousel -->
                     <div *ngIf="!isMultipleImages">
 
-                        <lib-ngx-image-zoom [thumbImage]=productDetails?.imageName
-                            [fullImage]=productDetails?.imageName></lib-ngx-image-zoom>
+                        <lib-ngx-image-zoom [thumbImage]=productDetails?.webPImageName
+                            [fullImage]=productDetails?.webPImageName></lib-ngx-image-zoom>
                         <!-- <img [src]="productDetails?.imageName" class="img-fluid w-100"
                             alt="..."> -->
                         <span class="tagbadge" *ngIf="tagMsg" [class]="tagClass">{{tagMsg}}</span>
