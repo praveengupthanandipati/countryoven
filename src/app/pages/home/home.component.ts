@@ -20,6 +20,16 @@ export class HomeComponent implements OnInit{
   currency:any;
    showLines: number = 3;
 
+     //show new gifts
+     catitems=[
+      {name: "Cakes", image:"assets/images/catnew/cakes.jpg", show:true},
+      {name: "Flowers", image:"assets/images/catnew/flowers.jpg", show:true},
+      {name: "Chocklates", image:"assets/images/catnew/chocklates.jpg", show:true},
+      {name: "Combos", image:"assets/images/catnew/combos.jpg", show:true},
+      {name: "Dry Fruits", image:"assets/images/catnew/dryfruits.jpg", show:true},
+      {name: "Gifts", image:"assets/images/catnew/gifts.jpg", show:true},
+    ]
+
   showMore() {
     this.showLines += 3; // Increase by desired number of lines
   }
@@ -45,6 +55,9 @@ export class HomeComponent implements OnInit{
 
     this.addLoader();
     this.addCanonicalLink();
+
+
+  
 
 //localStorage.setItem('currency', 'INR')
 
