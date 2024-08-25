@@ -54,6 +54,35 @@
   }
 }
 
+.cat-col {
+  a {
+    display: block;
+    height: 100%;
+
+    figure {
+      overflow: hidden;
+
+      img {
+        @include transition(all, 0.2s ease);
+      }
+    }
+    h6{
+      color:map-get($colors, black);
+    }
+    &:hover {
+      box-shadow: 0 0 5px #ccc;
+      figure {
+        img {
+          transform: scale(1.1);
+        }        
+      }
+      h6{
+        color:map-get($colors, primary);
+      }
+    }
+  }
+}
+
 .section-heading {
   .h4 {
     font-size: clamp(1.2rem, 1.5vw, 1.5rem);
@@ -73,7 +102,7 @@
   top: 50%;
   margin-top: -20px;
 
-  @include max(map-get($breakpoints, "md")){
+  @include max(map-get($breakpoints, "md")) {
     display: none;
   }
 
@@ -87,6 +116,6 @@
   button {
     background: map-get($colors, primary);
     height: 3px;
-    border:0;
+    border: 0;
   }
 }

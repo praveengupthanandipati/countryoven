@@ -61,6 +61,7 @@
       color: map-get($colors, black);
       font-size: $fsize - 1;
       text-transform: uppercase;
+      border-radius:5px;
 
       @include minMax(
         map-get($breakpoints, "lg"),
@@ -74,7 +75,8 @@
       }
 
       &:hover {
-        color: map-get($colors, primary);
+        color: map-get($colors, white);
+        background:map-get($colors, primary);
       }
     }
     .spllink {
