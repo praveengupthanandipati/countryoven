@@ -36,8 +36,25 @@
                             class="icon-filter icomoon h6 me-2 d-inline-block"></span>Filter </button>
 
                 </div>
-
             </div>
+            <!-- categories images links-->
+             <section class="categories-links-listpage py-3">
+                <div class="d-flex flex-wrap justify-content-center">
+                    <div  *ngFor="let item of catitems">
+                        <div class="cat-col">
+                            <a href="#">
+                                <figure>
+                                    <img [src]="item.image" [alt]="item.name" class="img-fluid w-100 rounded">
+                                </figure>
+                                <h6 class="text-center py-3 font-black">
+                                    {{item.name}}
+                                </h6>
+                            </a>
+                        </div>
+                    </div>       
+                </div>
+             </section>
+             <!--/ categories images links-->
             <div class="products-filters d-md-flex justify-content-md-between ">
                 <div [ngClass]="{'hide-mobile':!isVisible}" class="filter-mobile">
                     <a (click)="toggleVisibility()" class="d-block d-md-none font-black"><span

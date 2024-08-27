@@ -30,6 +30,31 @@
 
 <app-category-banners *ngIf="smallBanners" [smallBanners]="smallBanners"></app-category-banners>
 
+<section class="categories-all">
+    <div class="custom-container">
+        <div class="row justify-content-center border-bottom pb-3">
+            <div class="col-12 text-center">
+                <h4 class="h4 font-semibold">Most Popular Categories</h4>
+            </div>            
+        </div>
+        <div class="row py-2 py-md-4">
+            <div class="col-lg-2 col-6 col-sm-4" *ngFor="let item of catitems">
+                <div class="cat-col">
+                    <a href="#">
+                        <figure>
+                            <img [src]="item.image" [alt]="item.name" class="img-fluid w-100 rounded">
+                        </figure>
+                        <h6 class="text-center py-3">
+                            {{item.name}}
+                        </h6>
+                    </a>
+                </div>
+            </div>            
+        </div>
+    </div>
+</section>
+
+
 <ng-container *ngFor="let cat of productSecions">
 
     <section class="product-row py-2 py-md-4">

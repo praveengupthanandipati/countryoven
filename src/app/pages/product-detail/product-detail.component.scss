@@ -241,3 +241,12 @@ app-noproducts-found {
 .form-select {
   font-family: sans-serif;
 }
+
+.reviews-users{
+  display: flex;
+  flex-wrap: wrap;
+  .user-review-item{
+    width:33%;
+    margin:0 2px;
+  }
+}
