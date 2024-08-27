@@ -70,7 +70,8 @@
                         </div>
                     </div>
                     <div class="py-3">
-                        <p><span class="icon-lock"></span> <small>100% Safe and Secure Payments</small></p>
+                        <p class="pb-2"><span class="icon-lock"></span> <small> 100% Safe and Secure Payments</small></p>
+                        <p style="font-size:14px;"> <span class="font-semibold">Payment Methods:</span> Master Card, Visa Card, Paypal, Pay U  </p>
                     </div>
                     <!--/ safe instructions-->
                 </div>
@@ -80,6 +81,12 @@
             <div class="col-md-7">
               <div class="product-detail-right">
                 <h1 class="font-semibold">{{productDetails?.productName}}</h1>
+                <div class="product-detail-rating pt-2">
+                  <div class="d-flex">
+                     <div class="d-inline-block px-2 background-green font-white rounded-1">4.5 <span class="icon-star icomoon"></span> </div>
+                     <a href="javascript:void(0)" class="d-inline-block ps-2">350 Reviews</a>
+                  </div>
+                </div>
                 <div class="price d-flex py-2">
                   <div class="offer-price font-semi-bold" id="elementId">
                     <span class="icomoon font-bold"
@@ -316,7 +323,7 @@
                   <div class="accordion" id="accordionExample">
                     <div class="accordion-item">
                       <h2 class="accordion-header">
-                        <button class="accordion-button font-semibold" type="button" data-bs-toggle="collapse"
+                        <button class="accordion-button font-bold" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseOne" aria-expanded="true"
                                 aria-cofntrols="collapseOne">
                           Description
@@ -329,11 +336,11 @@
                             <div class="d-flex">
                               <div class="me-2">
                                 <span class="font-bold pb-3"> SKU : </span>
-                                <span class="font-primary font-semibold">{{productDetails?.productId}}</span>
+                                <span class="font-primary font-bold">{{productDetails?.productId}}</span>
                               </div>
                               <div class="d-none">
                                 <span class="font-bold pb-3">Vendor Code : </span>
-                                <span class="font-primary font-semibold">{{productDetails?.venderCode}}</span>
+                                <span class="font-primary font-bold">{{productDetails?.venderCode}}</span>
                               </div>
                             </div>
                             <div class="py-2">
@@ -374,7 +381,7 @@
                     </div>
                     <div class="accordion-item">
                       <h2 class="accordion-header" *ngIf="productDetails?.deliveryInformationRequired">
-                        <button class="accordion-button collapsed font-semibold" type="button"
+                        <button class="accordion-button collapsed font-bold" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#collapseTwo"
                                 aria-expanded="false" aria-controls="collapseTwo">
                           Delivery Information
@@ -430,7 +437,7 @@
                     <div class="accordion-item">
                       <h2 class="accordion-header"
                           *ngIf="productDetails?.careInstrunctionForCakeRequired || productDetails?.careInstrunctionForFlowerRequired">
-                        <button class="accordion-button collapsed font-semibold" type="button"
+                        <button class="accordion-button collapsed font-bold" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#collapseThree"
                                 aria-expanded="false" aria-controls="collapseThree">
                           Care Instructions
@@ -498,63 +505,7 @@
                           </article>
                         </div>
                       </div>
-                    </div>
-                    <div class="accordion-item">
-                      <h2 class="accordion-header"
-                          *ngIf="productDetails?.careInstrunctionForCakeRequired || productDetails?.careInstrunctionForFlowerRequired">
-                        <button class="accordion-button collapsed font-semibold" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#collapseFour"
-                                aria-expanded="false" aria-controls="collapseFour">
-                          Product Reviews
-                        </button>
-                      </h2>
-                      <div id="collapseFour" class="accordion-collapse collapse"
-                           data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                          <!-- product reviews -->
-                          <div class="product-reviews">
-                            <div class="d-flex justify-content-between">
-                              <!-- <div class="text-end align-self-center">
-                    <a href="javascript:void(0)" class="text-blue font-bold small">View all Reviews</a>
-                    <a href="javascript:void(0)" class="color-btn d-inline-block ms-3">Write Review</a>
-                </div> -->
-                            </div>
-                            <p class="font-bold small pb-3">Reviews</p>
-
-                            <div class="reviews-users">
-
-                              <ng-container *ngFor="let r of reviewData">
-
-                                <div class="user-review-item p-3 border rounded mb-2 background-white">
-                                  <div class="d-flex justify-content-between">
-                                    <div class="rating-stars">
-
-                                      <span *ngFor="let number of [0,1,2,3,4]; index as i"
-                                            class="icon-star "
-                                            [class.font-primary]="r.avgReviewRate > i"></span>
-
-                                    </div>
-                                    <span class="small">{{r.reviewDate}}</span>
-                                  </div>
-                                  <div class="py-2">
-                                    <h6 class="font-bold h6 pb-2">{{r.title}}</h6>
-                                    <p class="font-gray pb-2">{{r.review}}</p>
-                                    <p>
-                                      <span class="font-bold">{{r.customerName}}</span><small class="small d-inline-block ps-2">
-                                        <i class="bi bi-check-lg"></i>
-                                        Invoice
-                                        No:{{r.orderId}}
-                                      </small>
-                                    </p>
-                                  </div>
-                                </div>
-                              </ng-container>
-                            </div>
-                          </div>
-                          <!--/ product reviews-->
-                        </div>
-                      </div>
-                    </div>
+                    </div>                   
                   </div>
                   <!--/ accordion -->
                   <!--/ product info tab ends-->
@@ -575,6 +526,37 @@
 
 
         <!--/ product detail-->
+
+        <!-- reviews-->
+          <section class="reviews-product-detail mt-2 mt-md-5">
+            <h5 class="font-bold pb-3 mb-2 h5 border-bottom">Customers Saying</h5>
+            <div class="reviews-users pt-3">
+
+              <ng-container *ngFor="let r of reviewData">
+                <div class="user-review-item p-3 border rounded mb-2 background-white">
+                  <div class="d-flex justify-content-between">
+                    <div class="rating-stars">
+                      <span *ngFor="let number of [0,1,2,3,4]; index as i" class="icon-star"  [class.font-primary]="r.avgReviewRate > i"></span>
+
+                    </div>
+                    <span class="small">{{r.reviewDate}}</span>
+                  </div>
+                  <div class="py-2">
+                    <h6 class="font-bold h6 pb-2">{{r.title}}</h6>
+                    <p class="font-gray pb-2">{{r.review}}</p>
+                    <p>
+                      <span class="font-bold">{{r.customerName}}</span><small class="small d-inline-block ps-2">
+                        <i class="bi bi-check-lg"></i>
+                        Invoice
+                        No:{{r.orderId}}
+                      </small>
+                    </p>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </section>
+         <!--/ reviews-->
         <!-- you may also like -->
         <section class="you-may-also-like my-5" *ngIf="allProducts?.length > 0">
             <h5 class="font-bold pb-3 mb-2 h5 border-bottom ">You may also like</h5>

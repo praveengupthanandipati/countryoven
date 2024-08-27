@@ -150,3 +150,23 @@
     padding-top: 7px;
     display: inline-block;
 }
+
+.filters-pop{
+  display: flex;
+  flex-wrap: nowrap;
+  width:98%;
+  overflow-x: auto;
+  a{
+    font-size:14px;
+    text-wrap: nowrap;
+
+    &:focus{
+      border: none;
+      outline: none;
+    }
+  }
+  .selected{
+    border-bottom:2px solid map-get($colors, primary);
+    color:map-get($colors, primary);
+  }
+}

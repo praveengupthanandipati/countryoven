@@ -13,8 +13,9 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
-showpincode:boolean=false;
-prevpincode:any;
+
+  showpincode:boolean=false;
+  prevpincode:any;
   productName: any;
   cityName: any;
   coutryName: any;

@@ -163,3 +163,27 @@ app-noproducts-found {
     overflow-y: auto;
   }
 }
+
+.categories-links-listpage {
+  .cat-col {
+    width: 140px;
+    margin: 0 8px;
+
+    @include max(map-get($breakpoints, "md")) {
+      width: 90px;
+    }
+
+    figure {
+      width: 100%;
+      img {
+        height: 160px;
+        object-fit: cover;
+        width: 100%;
+
+        @include max(map-get($breakpoints, "md")) {
+          height: 100px;
+        }
+      }
+    }
+  }
+}
