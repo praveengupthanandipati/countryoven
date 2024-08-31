@@ -13,12 +13,14 @@
     position: relative;
     width: 100%;
     overflow: hidden;
+    aspect-ratio: 1/1;
+    height: auto;
     img {
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       @include transition(all, 0.2s ease);
-      // height: 440px;
-      // object-fit: cover;
+      object-fit: contain;
+      height: 100%;   
       @include max(map-get($breakpoints, "sm")) {
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;

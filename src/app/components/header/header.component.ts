@@ -37,7 +37,7 @@ export class HeaderComponent  implements OnInit {
          this.topList=res.topList;
          this.notificationsCount=res.notificationsCount;
          this.onLoadNotifications=res.onLoadNotifications;
-         this.showribbon=true;
+         //this.showribbon=true;
 
          
         })

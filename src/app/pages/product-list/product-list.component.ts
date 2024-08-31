@@ -50,6 +50,18 @@ export class ProductListComponent implements OnInit, OnDestroy {
     this.isVisible = !this.isVisible;
   }
 
+   //show new gifts
+   catitems=[
+    {name: "Cakes", image:"assets/images/catnew/cakes.jpg", show:true},
+    {name: "Flowers", image:"assets/images/catnew/flowers.jpg", show:true},
+    {name: "Chocklates", image:"assets/images/catnew/chocklates.jpg", show:true},
+    {name: "Combos", image:"assets/images/catnew/combos.jpg", show:true},
+    {name: "Dry Fruits", image:"assets/images/catnew/dryfruits.jpg", show:true},
+    {name: "Gifts", image:"assets/images/catnew/gifts.jpg", show:true},
+    {name: "Chocklates", image:"assets/images/catnew/chocklates.jpg", show:true},
+    {name: "Combos", image:"assets/images/catnew/combos.jpg", show:true},   
+  ]
+
 
 
   routeCity(e: any) {

@@ -1,13 +1,19 @@
 <header>
-    <!-- *ngIf="scrollingMessage" -->
-    <app-topheader  [topList]="topList" [scrolling]="scrollingOn"
-        [scrollingMessage]="scrollingMessage"></app-topheader>
-    <app-midheader *ngIf="searchList" [searchList]="searchList"></app-midheader>
-    <app-mainnav  [class.fixed-top]="isScrolled" *ngIf="categoryList && menuList" [menuList]="menuList" [categoryList]="categoryList"></app-mainnav>
+  <!-- *ngIf="scrollingMessage" -->
+  <app-topheader [topList]="topList" [scrolling]="scrollingOn"
+                 [scrollingMessage]="scrollingMessage"></app-topheader>
+  <app-midheader *ngIf="searchList" [searchList]="searchList"></app-midheader>
+  <app-mainnav [class.fixed-top]="isScrolled" *ngIf="categoryList && menuList" [menuList]="menuList" [categoryList]="categoryList"></app-mainnav>
 
 </header>
 <ng-container>
-    <app-displylocpopup></app-displylocpopup>
+  <app-displylocpopup></app-displylocpopup>
 </ng-container>
-
+ <!--<h6 class="h6 font-bold">Offers: </h6>--> 
+<p *ngIf="!scrollingOn">
+  {{scrollingMessage}}
+</p>
+<marquee *ngIf="scrollingOn" class="font-primary font-semibold">
+  {{scrollingMessage}}
+</marquee>
 <app-sticky-ribbon *ngIf="showribbon" [count]="notificationsCount"></app-sticky-ribbon>

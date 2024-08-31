@@ -1,15 +1,11 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
 <div class="app-product-item">
   <figure class="product-item-figure">
     <!-- <a [routerLink]="'/product-detail/' + Productvalue.seoProductName" > -->
     <a [routerLink]="'/'+city + '/send-online/' + Productvalue.seoProductName">
       <!-- hyderabad/send-online/ -->
-      <!--<picture>
-    <source data-srcset="{{Productvalue.we}}" type="image/webp" srcset="{{Productvalue.imageURL}}">
-    <img width="400" height="400" class="img-fluid w-100"
-         src="{{Productvalue.imageURL}}" data-src="{{Productvalue.imageURL}}"
-         alt={{Productvalue.altProductName}} title="{{Productvalue.altProductName}}">
-  </picture>-->
-      <img src="{{Productvalue.webpImageURL}}" alt="{{Productvalue.altProductName}}" title="{{Productvalue.altProductName}}" class="img-fluid w-100">
+      <img loading="lazy" width="410" height="410" [src]="Productvalue.webpImageURL" alt="{{Productvalue.altProductName}}" title="{{Productvalue.altProductName}}" class="img-fluid w-100">
       <span class="tagbadge" *ngIf="tagMsg" [class]="tagClass">{{tagMsg}}</span>
     </a>
     <!-- <span class="seller-label">{{Productvalue.productName}}</span> -->

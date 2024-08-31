@@ -184,7 +184,7 @@ body {
     }
 
     &:before {
-      content: "\e92a";
+      content: "\e92b";
       font-family: "icomoon" !important;
       font-size: $fsize - 5;
       position: relative;
@@ -767,9 +767,9 @@ header.fixed-top {
     width: 450px !important;
   }
 }
-.owl-nav {
-  display: none !important;
-}
+// .owl-nav {
+//   display: none !important;
+// }
 
 .login-keypoints {
   .keypoint {
@@ -792,12 +792,33 @@ header.fixed-top {
   cursor: pointer;
 }
 
-.accordion-item{
-  .accordion-header{
-    .accordion-button{
-      &:focus{
-        box-shadow: none;        
+.accordion-item {
+  .accordion-header {
+    .accordion-button {
+      &:focus {
+        box-shadow: none;
       }
     }
   }
+}
+.owl-dots {
+  display: none !important;
+}
+
+.owl-carousel .owl-nav .owl-prev,
+.owl-prev,
+.owl-next {
+  position: absolute !important;
+  top: 36% !important;
+  transform: translateY(-50%) !important;
+  background-color: black !important;
+  color: white !important;
+}
+
+.owl-prev {
+  left: -2rem !important;
+}
+
+.owl-next {
+  right: -2rem !important;
 }

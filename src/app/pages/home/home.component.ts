@@ -1,6 +1,7 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CurdService } from 'src/app/services/curd.service';
 
 
@@ -8,68 +9,104 @@ import { CurdService } from 'src/app/services/curd.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls:['./home.component.scss']
+  styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit{
-  banners:any;
-  iconicBanners:any;
-  smallBanners:any;
+export class HomeComponent implements OnInit {
+  banners: any;
+  iconicBanners: any;
+  smallBanners: any;
   productSecions: any;
-  city:any;
-  countryname:any;
-  currency:any;
-   showLines: number = 3;
+  city: any;
+  countryname: any;
+  currency: any;
+  showLines: number = 3;
+  customOptions: OwlOptions = {
+    nav: true,
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: true,
+    autoplay: false,
+    margin: 15,
+    navSpeed: 700,
+       navText: ['<span aria-label="Previous">‹</span>', '<span aria-label="Next">›</span>'],
+    responsive: {
+      0: {
+        items: 2
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      },
+      940: {
+        items: 4
+      }
+    },
+  }
+  //show new gifts
+  catitems = [
+    { name: "Cakes", image: "assets/images/catnew/cakes.jpg", show: true },
+    { name: "Flowers", image: "assets/images/catnew/flowers.jpg", show: true },
+    { name: "Chocklates", image: "assets/images/catnew/chocklates.jpg", show: true },
+    { name: "Combos", image: "assets/images/catnew/combos.jpg", show: true },
+    { name: "Dry Fruits", image: "assets/images/catnew/dryfruits.jpg", show: true },
+    { name: "Gifts", image: "assets/images/catnew/gifts.jpg", show: true },
+  ]
+  subCategoryBanners: any;
 
   showMore() {
     this.showLines += 3; // Increase by desired number of lines
   }
-  constructor(private _crud:CurdService, private route:Router,  private renderer: Renderer2,  private meta:Meta, private titleService:Title)
-  {
-  
+  constructor(private _crud: CurdService, private route: Router, private renderer: Renderer2, private meta: Meta, private titleService: Title) {
+
   }
 
-  addLoader()
-  {
+  addLoader() {
     this.renderer.addClass(document.body, 'bodyloader');
   }
-  removeLoader()
-  {
+  removeLoader() {
     this.renderer.removeClass(document.body, 'bodyloader');
   }
 
   ngOnInit(): void {
     this.titleService.setTitle('Order Cake Online | Send Cake Online to India - Country Oven');
     this.meta.updateTag({ name: 'description', content: 'Order cake online at Countryoven. Send a cake to India with same-day delivery from anywhere with one click.Tap to Order now! and surprise your loved ones.' });
-    this.meta.updateTag({ name: 'keywords',  content: 'Order Birthday Cake Online ,order cake online ,birthday cakes delivered ,send cake to India ,online cake delivery in india ,send birthday cake online' });
-    this.meta.updateTag({ name: 'classification',  content: 'Order Birthday Cake Online ,order cake online ,birthday cakes delivered ,send cake to India ,online cake delivery in india ,send birthday cake online' });
+    this.meta.updateTag({ name: 'keywords', content: 'Order Birthday Cake Online ,order cake online ,birthday cakes delivered ,send cake to India ,online cake delivery in india ,send birthday cake online' });
+    this.meta.updateTag({ name: 'classification', content: 'Order Birthday Cake Online ,order cake online ,birthday cakes delivered ,send cake to India ,online cake delivery in india ,send birthday cake online' });
 
     this.addLoader();
     this.addCanonicalLink();
 
-//localStorage.setItem('currency', 'INR')
 
 
-this.city=localStorage.getItem('city')
-this.countryname=localStorage.getItem('country');
-this.currency=localStorage.getItem('currency');
+
+    //localStorage.setItem('currency', 'INR')
+
+
+    this.city = localStorage.getItem('city')
+    this.countryname = localStorage.getItem('country');
+    this.currency = localStorage.getItem('currency');
     this.getBanners()
-if(this.city)
-{
-    this.getProducts();
-}
+    if (this.city) {
+      this.getProducts();
+    }
   }
- 
+
 
   getBanners(): void {
     this.addLoader();
     this._crud.getBanners().subscribe(res => {
-     this.removeLoader();
-     this.banners=res.banners;
-    this.iconicBanners=res.iconicBanners;
-    this.smallBanners=res.smallBanners;
-    }, (error)=>{
+      this.removeLoader();
+      this.banners = res.banners;
+      this.iconicBanners = res.iconicBanners;
+      this.smallBanners = res.smallBanners;
+      this.subCategoryBanners = res.categoryBanners;
+    }, (error) => {
       this.removeLoader()
-        })
+    })
   }
 
   private addCanonicalLink() {
@@ -92,69 +129,61 @@ if(this.city)
 
   }
 
-  
+
   getProducts(): void {
     this.addLoader();
-    const data={
-      cityname:this.city,
-      country:this.countryname,
-      currencySelected:this.currency
-    }    
+    const data = {
+      cityname: this.city,
+      country: this.countryname,
+      currencySelected: this.currency
+    }
     this._crud.getProducts(data).subscribe(res => {
-     this.removeLoader();
-     this.productSecions=res
-    }, (error)=>{
+      this.removeLoader();
+      this.productSecions = res
+    }, (error) => {
       this.removeLoader()
-        })
+    })
   }
 
 
-gotoroute( t:any, pname:any)
-{
+  gotoroute(t: any, pname: any) {
 
-let c=localStorage.getItem('city')?.toLowerCase();   
-
-
-  if(t == 'C')
-  {
-    t='online-delivery';
-    // this.route.navigateByUrl('/'+ t + '/'+ c + '/' + pname)
-    this.route.navigateByUrl('/'+ pname + '/'+ c + '/' + t) 
-  } else if(t=='SC')
-  {
-    t='order';
-    this.route.navigateByUrl('/'+ t + '/'+ c + '/' + pname)
-  }
-  else if(t=='OCC')
-  {
-    t='send';
-    this.route.navigateByUrl('/'+ t + '/'+ c + '/' + pname)
-  }
-  else if(t=='SPL')
-  {
-  
-    this.route.navigateByUrl('/'+ pname +'-' + c)
-  }
-  else if(t=='FLV')
-  {
-    
-    let link=pname + '-to-' +c
-    this.route.navigateByUrl('/'+ link)
-  }
-  else if(t=='CTY')
-  {
-    
-   
-    this.route.navigateByUrl('/'+c +'/'+pname)
-  }
- 
-  else
-  {
-    // t=t
-  }
+    let c = localStorage.getItem('city')?.toLowerCase();
 
 
-}
+    if (t == 'C') {
+      t = 'online-delivery';
+      // this.route.navigateByUrl('/'+ t + '/'+ c + '/' + pname)
+      this.route.navigateByUrl('/' + pname + '/' + c + '/' + t)
+    } else if (t == 'SC') {
+      t = 'order';
+      this.route.navigateByUrl('/' + t + '/' + c + '/' + pname)
+    }
+    else if (t == 'OCC') {
+      t = 'send';
+      this.route.navigateByUrl('/' + t + '/' + c + '/' + pname)
+    }
+    else if (t == 'SPL') {
+
+      this.route.navigateByUrl('/' + pname + '-' + c)
+    }
+    else if (t == 'FLV') {
+
+      let link = pname + '-to-' + c
+      this.route.navigateByUrl('/' + link)
+    }
+    else if (t == 'CTY') {
+
+
+      this.route.navigateByUrl('/' + c + '/' + pname)
+    }
+
+    else {
+      // t=t
+    }
+
+
+  }
 
 
 
