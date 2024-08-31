@@ -35,21 +35,31 @@
         <div class="row justify-content-center border-bottom pb-3">
             <div class="col-12 text-center">
                 <h4 class="h4 font-semibold">Most Popular Categories</h4>
-            </div>            
+            </div>
         </div>
         <div class="row py-2 py-md-4">
-            <div class="col-lg-2 col-6 col-sm-4" *ngFor="let item of catitems">
+            <div class="col-lg-2 col-6 col-sm-4" *ngFor="let category of subCategoryBanners">
                 <div class="cat-col">
-                    <a href="#">
+                    <!-- <a href="#">
                         <figure>
-                            <img [src]="item.image" [alt]="item.name" class="img-fluid w-100 rounded">
+                            <img [src]="item.imageName" [alt]="item.name" class="img-fluid w-100 rounded">
                         </figure>
+                        <a [routerLink]="'/'+city + '/send-online/' + item.seoProductName"
+                            href="javascript:void(0)">{{item.productName}}</a>
                         <h6 class="text-center py-3">
                             {{item.name}}
                         </h6>
+                    </a> -->
+                    <a class="category-col"
+                        (click)="gotoroute(category.type, category.seoName)" href="javascript:void(0)">
+                        <figure>
+                            <img [src]="category.imageName" width="220" height="150" alt={{category.name}}
+                                title={{category.name}}>
+                        </figure>
+                        <h6 class="py-2">{{category.name}}</h6>
                     </a>
                 </div>
-            </div>            
+            </div>
         </div>
     </div>
 </section>
@@ -74,9 +84,14 @@
         <section class="custom-container">
             <div class="products-list mt-3">
                 <div class="row g-2">
-                    <div class="col-md-3 col-6" *ngFor="let productitem of cat.productList  | slice:0:4">
-                        <app-product-item [Productvalue]="productitem" class="app-product-col"></app-product-item>
-                    </div>
+                    <!-- <div class="col-md-3 col-6" *ngFor="let productitem of cat.productList  | slice:0:4"> -->
+                    <owl-carousel-o [options]="customOptions">
+                        <ng-template carouselSlide *ngFor="let Productvalue1 of cat.productList">
+                            <app-product-item [Productvalue]="Productvalue1" class="app-product-col"></app-product-item>
+                        </ng-template>
+                    </owl-carousel-o>
+                    <!-- <app-product-item [Productvalue]="productitem" class="app-product-col"></app-product-item> -->
+                    <!-- </div> -->
                 </div>
             </div>
         </section>
