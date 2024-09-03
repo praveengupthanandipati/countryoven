@@ -5,7 +5,7 @@
         <h1 class="h5 font-medium pb-3 sub-page-title">Shopping Cart ({{cartCount}})</h1>
         <div class="row" *ngIf="cartItems.length > 0">
             <div class="col-md-8">
-                <div class="deliver-location d-flex justify-content-between p-2 border">
+                <div class="deliver-location d-flex justify-content-between px-2 border">
                     <div class="d-flex location-date-time">
                         <span class="icon-route h1 font-primary"></span>
                         <div class="ps-3 align-self-center d-sm-flex">
@@ -177,7 +177,7 @@
                         data-bs-toggle="modal" data-bs-target="#AddonsProducts" (click)="addOnProducts('0')">Continue to
                         Checkout</button>
                     <button *ngIf="showcheckoutbtn" [disabled]="outofdatemessage"
-                        class="default-btn d-block width100p border-0 filter-btn background-green font-white"
+                        class="default-btn d-block w-100 border-0 filter-btn background-green font-white"
                         (click)="gotocheckout()">Continue to
                         Checkout</button>
                     <div class="row mt-2">
@@ -189,7 +189,7 @@
                         </button>
                       </div>
                       <div class="col-lg-12">
-                        <a routerLink="/" class="default-btn w-100 background-green font-white d-block cbtn mb-2">Continue to Shopping</a>
+                        <a routerLink="/" class="default-btn d-block w-100 border-0 filter-btn background-green font-white">Continue to Shopping</a>
                       </div>
                     </div>
 

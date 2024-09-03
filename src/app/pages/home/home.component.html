@@ -9,8 +9,9 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item" *ngFor="let b of banners; let i = index" [class.active]="i === 0">
-                <img  [src]="b.imageName" [alt]="b.name" [title]="b.name" [height]="549" [width]="1920" (click)="gotoroute(b.type, b.seoName)" 
-                    class="img-fluid w-100">
+                <img  [src]="b.imageName" [alt]="b.name" [title]="b.name"  (click)="gotoroute(b.type, b.seoName)" 
+                    class="img-fluid w-100 d-none d-md-block">
+                <img  src="assets/images/adbanner01.jpg" alt="category list" class="img-fluid w-100 d-md-none d-block">
             </div>
             
         </div>
@@ -53,10 +54,9 @@
                     <a class="category-col"
                         (click)="gotoroute(category.type, category.seoName)" href="javascript:void(0)">
                         <figure>
-                            <img [src]="category.imageName" width="220" height="150" alt={{category.name}}
-                                title={{category.name}}>
+                            <img [src]="category.imageName"  alt={{category.name}} title={{category.name}} class="w-100">
                         </figure>
-                        <h6 class="py-2">{{category.name}}</h6>
+                        <h6 class="py-2 text-center">{{category.name}}</h6>
                     </a>
                 </div>
             </div>
