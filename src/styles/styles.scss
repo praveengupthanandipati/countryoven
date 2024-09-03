@@ -813,12 +813,30 @@ header.fixed-top {
   transform: translateY(-50%) !important;
   background-color: black !important;
   color: white !important;
+  font-size: 3rem;
+ 
 }
 
 .owl-prev {
-  left: -2rem !important;
+  left: 1rem !important; 
+
+  @include max(map-get($breakpoints, "md")) {
+    left: -1rem !important; 
+  }
 }
 
 .owl-next {
-  right: -2rem !important;
+  right: 1rem !important; 
+
+  @include max(map-get($breakpoints, "md")) {
+    right: -1rem !important; 
+  }
+}
+
+.owl-theme .owl-nav [class*=owl-]{
+  font-size: 3rem;
+
+  @include max(map-get($breakpoints, "md")) {
+    font-size: 2rem;
+  }
 }
