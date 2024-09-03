@@ -111,7 +111,23 @@
     width: 25px;
   }
 }
+.owl-carousel .owl-nav .owl-prev,
+.owl-prev,
+.owl-next {
+  position: absolute !important;
+  top: 36% !important;
+  transform: translateY(-50%) !important;
+  background-color: black !important;
+  color: white !important;
+}
 
+.owl-prev {
+  left: -2rem !important;
+}
+
+.owl-next {
+  right: -2rem !important;
+}
 .carousel-indicators {
   button {
     background: map-get($colors, primary);

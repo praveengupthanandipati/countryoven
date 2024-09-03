@@ -106,6 +106,32 @@ export class ProductDetailComponent implements OnInit {
       }
     }
   }
+  customOptions1: OwlOptions = {
+    nav: true,
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: false,
+    autoplay: false,
+    // margin: 15,
+    navSpeed: 700,
+    navText: ['<span aria-label="Previous">‹</span>', '<span aria-label="Next">›</span>'],
+    responsive: {
+      0: {
+        items: 2
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      },
+      940: {
+        items: 4
+      }
+    },    
+  }
   myThumbnail: any;
   myFullresImage: any;
 
