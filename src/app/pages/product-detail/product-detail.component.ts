@@ -119,10 +119,10 @@ export class ProductDetailComponent implements OnInit {
     navText: ['<span aria-label="Previous">‹</span>', '<span aria-label="Next">›</span>'],
     responsive: {
       0: {
-        items: 2
+        items: 1
       },
       400: {
-        items: 2
+        items: 1
       },
       740: {
         items: 3
