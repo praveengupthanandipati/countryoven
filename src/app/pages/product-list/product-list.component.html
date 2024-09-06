@@ -38,10 +38,11 @@
                 </div>
             </div>
             <!-- categories images links-->
-             <section class="categories-links-listpage py-3">
-                <img  src="assets/images/list-banner.webp" alt="category list" class="img-fluid w-100">
+            <section class="categories-links-listpage py-3">
+                <span *ngFor="let item1 of pramotionBanners"><img [src]="item1.image" [alt]="item1.name"
+                        alt="category list" class="img-fluid w-100"></span>
                 <div class="d-flex flex-wrap justify-content-center d-none">
-                    <div  *ngFor="let item of catitems">
+                    <div *ngFor="let item of catitems">
                         <div class="cat-col">
                             <a href="#">
                                 <figure>
@@ -52,15 +53,15 @@
                                 </h6>
                             </a>
                         </div>
-                    </div>       
+                    </div>
                 </div>
-             </section>
-             <!--/ categories images links-->
+            </section>
+            <!--/ categories images links-->
             <div class="products-filters d-md-flex justify-content-md-between ">
                 <div [ngClass]="{'hide-mobile':!isVisible}" class="filter-mobile">
                     <a (click)="toggleVisibility()" class="d-block d-md-none font-black"><span
                             class="icon-cancel"></span></a>
-                 
+
                     <div class="filter-dropdowns d-flex  align-self-center flex-wrap pt-1 pt-md-0 mb-2 mb-md-0 ">
                         <div class="d-md-flex ms-md-2 mb-md-2 mb-1 mb-md-0 item-filter-dropdown"
                             *ngFor="let filter of filterswrapper">
