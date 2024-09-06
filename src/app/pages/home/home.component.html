@@ -11,7 +11,10 @@
             <div class="carousel-item" *ngFor="let b of banners; let i = index" [class.active]="i === 0">
                 <img  [src]="b.imageName" [alt]="b.name" [title]="b.name"  (click)="gotoroute(b.type, b.seoName)" 
                     class="img-fluid w-100 d-none d-md-block">
-                <img  src="assets/images/adbanner01.jpg" alt="category list" class="img-fluid w-100 d-md-none d-block">
+                    <span *ngFor="let b of mobileBanners">
+                        <img  [src]="b.imageName" alt="category list" class="img-fluid w-100 d-md-none d-block">
+                    </span>
+                <!-- <img  src="assets/images/adbanner01.jpg" alt="category list" class="img-fluid w-100 d-md-none d-block"> -->
             </div>
             
         </div>
