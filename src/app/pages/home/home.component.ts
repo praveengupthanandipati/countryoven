@@ -56,6 +56,7 @@ export class HomeComponent implements OnInit {
     { name: "Gifts", image: "assets/images/catnew/gifts.jpg", show: true },
   ]
   subCategoryBanners: any;
+  mobileBanners: any;
 
   showMore() {
     this.showLines += 3; // Increase by desired number of lines
@@ -103,6 +104,7 @@ export class HomeComponent implements OnInit {
       this.banners = res.banners;
       this.iconicBanners = res.iconicBanners;
       this.smallBanners = res.smallBanners;
+      this.mobileBanners = res.mobileBanners;
       this.subCategoryBanners = res.categoryBanners;
     }, (error) => {
       this.removeLoader()

@@ -242,13 +242,59 @@ app-noproducts-found {
   font-family: sans-serif;
 }
 
-.reviews-users{
+.reviews-users {
   display: flex;
   flex-wrap: wrap;
-  .user-review-item{
-    width:100%;
-    margin:0 2px;
-    height: 330px;
+  .user-review-item {
+    width: 100%;
+    margin: 0 2px;
+    height: 330px;  
+
+    &:nth-child(3n+1){
+      .name-char{
+        .name{
+          span{
+            background:#9fa8da;
+          }
+        }
+      }
+    }
+    &:nth-child(3n+2){
+      .name-char{
+        .name{
+          span{
+            background:#ff8a65;
+          }
+        }
+      }
+    }
+    &:nth-child(3n+4){
+      .name-char{
+        .name{
+          span{
+            background:#5e97f6;
+          }
+        }
+      }
+    }
+   
+
+
+
+    .name-char {
+      .name {
+        span {
+          display: inline-block;
+          width: 50px;
+          height: 50px;
+          text-align: center;
+          line-height: 50px;
+          font-size: $fsize * 2;
+          border-radius: 50%;
+          color:map-get($colors, white);
+        }
+      }
+    }
   }
 }
 .owl-carousel .owl-nav .owl-prev,

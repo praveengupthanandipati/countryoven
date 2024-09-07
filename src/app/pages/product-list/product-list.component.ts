@@ -46,6 +46,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   private paramMapSubscription1: Subscription = new Subscription;
 
   isVisible: boolean = false;
+  pramotionBanners: any;
   toggleVisibility() {
     this.isVisible = !this.isVisible;
   }
@@ -156,6 +157,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
           this.getPageRoutes(params);
           this.addSchema();
           this.getMeta();
+          this.getBanners();
           this.getProductDetails(this.filters, 1, this.sorder);
           this.getFiltersDetails();
         }, 1000);
@@ -369,7 +371,15 @@ export class ProductListComponent implements OnInit, OnDestroy {
   setCity(value: any) {
 
   }
-
+  getBanners(): void {
+    this.addLoader();
+    this._crud.getBanners().subscribe(res => {
+      this.removeLoader();
+      this.pramotionBanners = res.promotionBanners;
+    }, (error) => {
+      this.removeLoader()
+    })
+  }
   getProductDetails(filters: any, pagenumber?: any, sortOrder?: any, load?: boolean): void {
     this.addLoader();
 
