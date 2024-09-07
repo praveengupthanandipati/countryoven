@@ -518,22 +518,15 @@
       <h5 class="font-bold pb-3 mb-2 h5 border-bottom">Customers Saying</h5>
       <owl-carousel-o [options]="customOptions1">
         <ng-template carouselSlide *ngFor="let r of reviewData">
-      <div class="reviews-users pt-3">
-        <!-- <owl-carousel-o [options]="customOptions1">
+          <div class="reviews-users pt-3">
+            <!-- <owl-carousel-o [options]="customOptions1">
           <ng-template carouselSlide *ngFor="let r of reviewData"> -->
             <!-- <ng-container *ngFor="let r of reviewData"> -->
             <div class="user-review-item p-3 border rounded mb-2 background-white">
-              <div class="d-flex justify-content-between">
-                <div class="rating-stars">
-                  <span *ngFor="let number of [0,1,2,3,4]; index as i" class="icon-star"
-                    [class.font-primary]="r.avgReviewRate > i"></span>
-
+              <div class="name-char pb-3">
+                <div class="name">
+                  <span>A</span>
                 </div>
-                <span class="small">{{r.reviewDate}}</span>
-              </div>
-              <div class="py-2">
-                <h6 class="font-bold h6 pb-2">{{r.title}}</h6>
-                <p class="font-gray pb-2">{{r.review}}</p>
                 <p>
                   <span class="font-bold">{{r.customerName}}</span><small class="small d-inline-block ps-2">
                     <i class="bi bi-check-lg"></i>
@@ -542,13 +535,29 @@
                   </small>
                 </p>
               </div>
+             
+              <div>
+                <div class="d-flex justify-content-between">
+                  <div class="rating-stars">
+                    <span *ngFor="let number of [0,1,2,3,4]; index as i" class="icon-star"
+                      [class.font-primary]="r.avgReviewRate > i"></span>
+
+                  </div>
+                  <span class="small">{{r.reviewDate}}</span>
+                </div>
+                <div class="py-2">
+                  <h6 class="font-semibold h6 pb-2"><i>{{r.title}}</i></h6>
+                  <p class="font-gray pb-2"><small>{{r.review}}
+                  </small></p>
+                </div>
+              </div>
             </div>
             <!-- </ng-container> -->
-          <!-- </ng-template>
+            <!-- </ng-template>
         </owl-carousel-o> -->
-      </div>
-       </ng-template>
-        </owl-carousel-o>
+          </div>
+        </ng-template>
+      </owl-carousel-o>
     </section>
     <!--/ reviews-->
     <!-- you may also like -->
