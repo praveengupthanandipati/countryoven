@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
     autoplay: false,
     margin: 15,
     navSpeed: 700,
-       navText: ['<span aria-label="Previous">‹</span>', '<span aria-label="Next">›</span>'],
+    navText: ['<span aria-label="Previous">‹</span>', '<span aria-label="Next">›</span>'],
     responsive: {
       0: {
         items: 2
@@ -57,12 +57,12 @@ export class HomeComponent implements OnInit {
   ]
   subCategoryBanners: any;
   mobileBanners: any;
+  screenSize: boolean = false;
 
   showMore() {
     this.showLines += 3; // Increase by desired number of lines
   }
   constructor(private _crud: CurdService, private route: Router, private renderer: Renderer2, private meta: Meta, private titleService: Title) {
-
   }
 
   addLoader() {
@@ -73,6 +73,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.screenSize = window.screen.width > 767
     this.titleService.setTitle('Order Cake Online | Send Cake Online to India - Country Oven');
     this.meta.updateTag({ name: 'description', content: 'Order cake online at Countryoven. Send a cake to India with same-day delivery from anywhere with one click.Tap to Order now! and surprise your loved ones.' });
     this.meta.updateTag({ name: 'keywords', content: 'Order Birthday Cake Online ,order cake online ,birthday cakes delivered ,send cake to India ,online cake delivery in india ,send birthday cake online' });
