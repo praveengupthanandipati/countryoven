@@ -11,12 +11,17 @@
             <div class="carousel-item" *ngFor="let b of banners; let i = index" [class.active]="i === 0">
                 <img  [src]="b.imageName" [alt]="b.name" [title]="b.name"  (click)="gotoroute(b.type, b.seoName)" 
                     class="img-fluid w-100 d-none d-md-block">
-                    <span *ngFor="let b of mobileBanners">
-                        <img  [src]="b.imageName" alt="category list" class="img-fluid w-100 d-md-none d-block">
-                    </span>
+                    <!-- <span *ngFor="let ba of mobileBanners">
+                        <img  [src]="ba.imageName" alt="category list" class="img-fluid w-100 d-md-none d-block" (click)="gotoroute(b.type, b.seoName)" >
+                    </span> -->
                 <!-- <img  src="assets/images/adbanner01.jpg" alt="category list" class="img-fluid w-100 d-md-none d-block"> -->
             </div>
-            
+            <div class="carousel-item" *ngFor="let ba of mobileBanners; let i = index" [class.active]="i === 0">
+                <!-- <span *ngFor="let ba of mobileBanners"> -->
+                    <img  [src]="ba.imageName" alt="category list" class="img-fluid w-100 d-md-none d-block" (click)="gotoroute(ba.type, ba.seoName)">
+                <!-- </span> -->
+                <!-- <img  src="assets/images/adbanner01.jpg" alt="category list" class="img-fluid w-100 d-md-none d-block"> -->
+            </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
             data-bs-slide="prev">
