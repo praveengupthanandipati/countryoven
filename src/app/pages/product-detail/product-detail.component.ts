@@ -122,13 +122,13 @@ export class ProductDetailComponent implements OnInit {
         items: 1
       },
       400: {
-        items: 1
+        items: 2
       },
       740: {
         items: 2
       },
       940: {
-        items: 3
+        items: 4
       }
     },    
   }

@@ -1,8 +1,8 @@
 export const environment = {
     production: false,
     apiKey: 'devKey',
-    //  apiLoginUrl: 'http://localhost:5120/api',
-    //  apiUrl: 'http://localhost:5120/api',
+      //apiLoginUrl: 'http://localhost:5120/api',
+      //apiUrl: 'http://localhost:5120/api',
     apiLoginUrl: 'https://api.countryoven.com/api',
     apiUrl: 'https://api.countryoven.com/api',
     path:'http://localhost:4200'
