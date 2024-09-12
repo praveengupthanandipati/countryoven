@@ -35,7 +35,8 @@
               </owl-carousel-o>
             </div>
             <div class="right-sidewrap">
-              <lib-ngx-image-zoom [thumbImage]="myThumbnail" [fullImage]="myFullresImage"></lib-ngx-image-zoom>
+              <lib-ngx-image-zoom [thumbImage]="myThumbnail" [fullImage]="myFullresImage" [circularLens]="true"
+                [magnification]="1"></lib-ngx-image-zoom>
               <span class="tagbadge" *ngIf="tagMsg" [class]="tagClass">{{tagMsg}}</span>
             </div>
           </div>
@@ -535,7 +536,7 @@
                   </small>
                 </p>
               </div>
-             
+
               <div>
                 <div class="d-flex justify-content-between">
                   <div class="rating-stars">
@@ -548,7 +549,7 @@
                 <div class="py-2">
                   <h6 class="font-semibold h6 pb-2"><i>{{r.title}}</i></h6>
                   <p class="font-gray pb-2"><small>{{r.review}}
-                  </small></p>
+                    </small></p>
                 </div>
               </div>
             </div>
