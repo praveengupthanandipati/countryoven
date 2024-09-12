@@ -46,7 +46,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   private paramMapSubscription1: Subscription = new Subscription;
 
   isVisible: boolean = false;
-  pramotionBanners: any;
+  promotionBanners: any;
   toggleVisibility() {
     this.isVisible = !this.isVisible;
   }
@@ -375,7 +375,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
     this.addLoader();
     this._crud.getBanners().subscribe(res => {
       this.removeLoader();
-      this.pramotionBanners = res.promotionBanners;
+      this.promotionBanners = res.promotionBanners;
     }, (error) => {
       this.removeLoader()
     })

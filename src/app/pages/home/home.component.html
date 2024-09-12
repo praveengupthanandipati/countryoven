@@ -13,10 +13,6 @@
                 <div class="carousel-item" *ngFor="let b of banners; let i = index" [class.active]="i === 0">
                     <img [src]="b.imageName" [alt]="b.name" [title]="b.name" (click)="gotoroute(b.type, b.seoName)"
                         class="img-fluid w-100 d-none d-md-block">
-                    <!-- <span *ngFor="let ba of mobileBanners">
-                            <img  [src]="ba.imageName" alt="category list" class="img-fluid w-100 d-md-none d-block" (click)="gotoroute(b.type, b.seoName)" >
-                        </span> -->
-                    <!-- <img  src="assets/images/adbanner01.jpg" alt="category list" class="img-fluid w-100 d-md-none d-block"> -->
                 </div>
             </div>
         </span>
@@ -26,8 +22,6 @@
                     <!-- <span *ngFor="let ba of mobileBanners"> -->
                     <img [src]="ba.imageName" alt="category list" class="img-fluid w-100 d-md-none d-block"
                         (click)="gotoroute(ba.type, ba.seoName)">
-                    <!-- </span> -->
-                    <!-- <img  src="assets/images/adbanner01.jpg" alt="category list" class="img-fluid w-100 d-md-none d-block"> -->
                 </div>
             </div>
         </span>
@@ -71,7 +65,7 @@
                     <a class="category-col" (click)="gotoroute(category.type, category.seoName)"
                         href="javascript:void(0)">
                         <figure>
-                            <img [src]="category.imageName" alt={{category.name}} title={{category.name}} class="w-100">
+                            <img [src]="category.imageName" alt={{category.name}} title={{category.name}} class="img-fluid w-100 rounded">
                         </figure>
                         <h6 class="py-2 text-center">{{category.name}}</h6>
                     </a>
